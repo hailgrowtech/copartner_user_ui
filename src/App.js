@@ -1,5 +1,5 @@
 import React from "react";
-import { Hero, Navbar } from "./components";
+import { Expertise, Hero, Navbar, Subscription } from "./components";
 import styles from "./style";
 import { ErrorPage } from "./components";
 import {
@@ -24,6 +24,8 @@ function App() {
               </div>
             }
           />
+          <Route path="expertise" element={ <Expertise /> } />
+          <Route path="subscription" element={ <Subscription /> } />
         </Route>
       </>
     )
