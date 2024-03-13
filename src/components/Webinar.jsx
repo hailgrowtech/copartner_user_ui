@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 import styles from "../style";
 
-const Subscription = () => {
+const Webinar = () => {
   return (
     <section
       id="home"
@@ -15,12 +15,12 @@ const Subscription = () => {
             className="flex-1 font-poppins font-semibold md:text-[62px] text-[36px]
       text-gradient md:leading-[84px] leading-[48px]"
           >
-            Subscription
+            Webinar
           </span>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Subscription;
+export default Webinar

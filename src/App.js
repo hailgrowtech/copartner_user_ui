@@ -1,5 +1,5 @@
 import React from "react";
-import { Expertise, Hero, Navbar, Subscription } from "./components";
+import { Expertise, Hero, Navbar, Subscription, Wallet, Webinar } from "./components";
 import styles from "./style";
 import { ErrorPage } from "./components";
 import {
@@ -24,26 +24,10 @@ function App() {
               </div>
             }
           />
-          <Route
-            path="expertise"
-            element={
-              <div className={`${styles.flexStart}`}>
-                <div className={`${styles.boxWidth}`}>
-                  <Expertise />
-                </div>
-              </div>
-            }
-          />
-          <Route
-            path="subscription"
-            element={
-              <div className={`${styles.flexStart}`}>
-                <div className={`${styles.boxWidth}`}>
-                  <Subscription />
-                </div>
-              </div>
-            }
-          />
+          <Route path="expertise" element={ <Expertise /> } />
+          <Route path="subscription" element={ <Subscription /> } />
+          <Route path="webinar" element={<Webinar />} />
+          <Route path="wallet" element={<Wallet />} />
         </Route>
       </>
     )
