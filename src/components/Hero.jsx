@@ -1,10 +1,11 @@
 import React from "react";
 import styles from "../style";
+import "../Hero.css"
 import { hero, userImg, userBck, stars, telegram, arrow } from "../assets";
 
 const Hero = () => {
   return (
-    <div className={`flex md:flex-col flex-col sm:py-8 py-6`}>
+    <div className={`flex md:flex-col flex-col sm:py-8 py-6 background-img-div`}>
       <div
         className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6 z-10 relative`}
       >
@@ -261,13 +262,13 @@ const Hero = () => {
           </div>
 
           <div className="sm:w-[365px] sm:h-[174px] sm:px-[3rem] px-[1rem] w-[171px] h-[232px] flex flex-col justify-center">
-            <span className="sm:w-[365px] sm:h-[36px] w-[171px] h-[36px] font-[600] sm:text-[18px] text-[14px] leading-[36px] text-lightWhite">
+            <span className="text-white sm:w-[365px] sm:h-[36px] w-[171px] h-[36px] font-[600] sm:text-[18px] text-[14px] leading-[36px] text-lightWhite">
               Experience Matters
             </span>
             <span className="text-dimWhite sm:w-[365px] sm:h-[56px] w-[171px] h-[66px] font-[400] sm:text-[16px] text-[14px] leading-[28px]">
               Elevate Your Investments with Our Proven Stock Market Expertise.
             </span>
-            <button className="sm:w-[147px] sm:h-[40px] w-[110px] h-[30px] rounded-[6px] bg-lightWhite sm:text-[14px] text-[10px] font-[500] sm:leading-[16px] leading-[12px]">
+            <button className="bg-white sm:w-[147px] sm:h-[40px] w-[110px] h-[30px] rounded-[6px] bg-lightWhite sm:text-[14px] text-[10px] font-[500] sm:leading-[16px] leading-[12px]">
               Explore More
             </button>
           </div>
