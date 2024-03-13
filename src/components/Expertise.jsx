@@ -62,25 +62,25 @@ const Expertise = () => {
             </span>
           </div>
         </div>
-        <div className="w-full flex flex-row bg-[#18181B80] rounded-2xl p-4 ">
+        <div className="w-full flex flex-row bg-[#18181B80] rounded-2xl p-6">
           <div className="flex-col-6">
-            <a className="text-white flex-col-3 mx-6" href="">
+            <button className="text-white flex-col-3 mx-6">
               All
-            </a>
-            <a className="text-white flex-col-3 mx-6" href="">
+            </button>
+            <button className="text-white flex-col-3 mx-6">
               Futures & Options
-            </a>
-            <a className="text-white flex-col-3 mx-6" href="">
+            </button>
+            <button className="text-white flex-col-3 mx-6">
               Commodity
-            </a>
-            <a className="text-white flex-col-3 mx-6" href="">
+            </button>
+            <button className="text-white flex-col-3 mx-6">
               Investor
-            </a>
+            </button>
           </div>
           <div className="flex-col-6 ms-auto">
-            <select name="cars" id="cars">
+            <select name="cars" id="cars" className="text-white bg-gray-800 bg-opacity-50 rounded-xl pe-20 py-1">
               <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
+              <option value="saab">Alto</option>
               <option value="mercedes">Mercedes</option>
               <option value="audi">Audi</option>
             </select>
