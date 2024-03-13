@@ -9,25 +9,25 @@ const Hero = () => {
       <div className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6 z-10 relative`}>
         <div className="flex flex-row justify-between items-center sm:w-[603px] w-full h-[158px]">
           <span className="flex-1 font-poppins font-semibold md:text-[62px] text-[36px]
-          text-gradient md:leading-[84px] leading-[48px]">
+          text-gradient md:leading-[64px] leading-[48px]">
             Unlock Financial Potential
           </span>
         </div>
 
-        <p className='font-poppins font-[500] text-[#7a7a7a] md:text-[15px] md:leading-[28px]
-        text-[10px] leading-[16px] mt-5'>
+        <p className='font-poppins font-[500] text-dimWhite md:text-[15px] md:leading-[28px]
+        text-[10px] leading-[16px]'>
           Transform Your Future with Strategic Stock Market Insights!"
         </p>
 
-       <div className='flex items-center gap-8 mt-8'>
+       <div className='flex items-center gap-8 mt-[1rem]'>
        <button className='text-white font-normal text-[15px] leading-[28px]'>
         Explore More
        </button>
        <img src={arrow} alt='arrow' className='w-[16px] h-[16px]' />
        </div>
 
-       <div className='flex pt-[4rem] grid grid-cols-2 md:flex'>
-        <div className='md:w-[256px] h-[285px] rounded-[11px] p-4 relative flex flex-col items-center'>
+       <div className='flex pt-[2rem] grid grid-cols-2 md:flex'>
+        <div className='md:w-[256px] h-[285px] rounded-[11px] p-4 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out'>
           <div className='w-full h-[146px] relative'>
             <img
             src={userBck}
@@ -61,7 +61,7 @@ const Hero = () => {
                 <span className='text-white font-[600] text-[10px] leading-[12px]'>7+</span>
               </div>
             </div>
-            <div className='w-[1.4px] h-[37px] bg-white'></div>
+            <div className='w-[1.4px] h-[37px] bg-lightWhite'></div>
             <div className='flex'>
               <div className='flex flex-col w-[52px] h-[33px] items-center'>
                 <span className='text-dimWhite font-[400] text-[8.6px] leading-[10px]'>Followers</span>
@@ -79,7 +79,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className='md:w-[256px] h-[285px] rounded-[11px] p-4 relative flex flex-col items-center'>
+        <div className='md:w-[256px] h-[285px] rounded-[11px] p-4 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%]'>
           <div className='w-full h-[146px] relative'>
             <img
             src={userBck}
@@ -113,7 +113,7 @@ const Hero = () => {
                 <span className='text-white font-[600] text-[10px] leading-[12px]'>7+</span>
               </div>
             </div>
-            <div className='w-[3px] h-[37px] bg-white'></div>
+            <div className='w-[3px] h-[37px] bg-lightWhite'></div>
             <div className='flex'>
               <div className='flex flex-col w-[52px] h-[33px] items-center'>
                 <span className='text-dimWhite font-[400] text-[8.6px] leading-[10px]'>Followers</span>
@@ -131,7 +131,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className='md:w-[256px] h-[285px] rounded-[11px] p-4 relative flex flex-col items-center'>
+        <div className='md:w-[256px] h-[285px] rounded-[11px] p-4 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%]'>
           <div className='w-full h-[146px] relative'>
             <img
             src={userBck}
@@ -165,7 +165,7 @@ const Hero = () => {
                 <span className='text-white font-[600] text-[10px] leading-[12px]'>7+</span>
               </div>
             </div>
-            <div className='w-[3px] h-[37px] bg-white'></div>
+            <div className='w-[3px] h-[37px] bg-lightWhite'></div>
             <div className='flex'>
               <div className='flex flex-col w-[52px] h-[33px] items-center'>
                 <span className='text-dimWhite font-[400] text-[8.6px] leading-[10px]'>Followers</span>
@@ -183,14 +183,14 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className='sm:w-[365px] sm:h-[174px] w-[171px] h-[232px] flex flex-col justify-between'>
-          <span className='sm:w-[365px] sm:h-[36px] w-[171px] h-[36px] font-[600] text-[30px] leading-[36px] text-lightWhite'>
+        <div className='sm:w-[365px] sm:h-[174px] sm:px-[3rem] px-[1rem] w-[171px] h-[232px] flex flex-col justify-center'>
+          <span className='sm:w-[365px] sm:h-[36px] w-[171px] h-[36px] font-[600] sm:text-[30px] sm:text-[18px] text-[14px] leading-[36px] text-lightWhite'>
           Experience Matters
           </span>
-          <span className='text-dimWhite sm:w-[365px] sm:h-[56px] w-[171px] h-[66px] font-[400] text-[16px] leading-[28px]'>
+          <span className='text-dimWhite sm:w-[365px] sm:h-[56px] w-[171px] h-[66px] font-[400] sm:text-[16px] text-[14px] leading-[28px]'>
           Elevate Your Investments with Our Proven Stock Market Expertise.
           </span>
-          <button className='sm:w-[147px] sm:h-[40px] w-[110px] h-[30px] rounded-[6px] bg-white text-[14px] font-[500] leading-[16px]'>
+          <button className='sm:w-[147px] sm:h-[40px] w-[110px] h-[30px] rounded-[6px] bg-lightWhite sm:text-[14px] text-[10px] font-[500] sm:leading-[16px] leading-[12px]'>
             Explore More
           </button>
         </div>
