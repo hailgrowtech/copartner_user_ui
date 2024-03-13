@@ -200,7 +200,7 @@ const Hero = () => {
      {/* <div className={`flex-1 flex justify-center items-center md:my-0 my-10 relative md:bottom-[10rem] bottom-[20rem]`}>
       <img src={hero} alt="billing" className="w-[1462px] relative md:z-auto" />
      </div> */}
-     <Expertise />
+     {/* <Expertise /> */}
   </div>
   )
 }
