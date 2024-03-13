@@ -1,5 +1,5 @@
 import React from "react";
-import { Expertise, Hero, Navbar, Subscription, Webinar, Wallet } from "./components";
+import { Expertise, Hero, Navbar, Subscription } from "./components";
 import styles from "./style";
 import { ErrorPage } from "./components";
 import {
@@ -40,26 +40,6 @@ function App() {
               <div className={`${styles.flexStart}`}>
                 <div className={`${styles.boxWidth}`}>
                   <Subscription />
-                </div>
-              </div>
-            }
-          />
-          <Route
-            path="webinar"
-            element={
-              <div className={`${styles.flexStart}`}>
-                <div className={`${styles.boxWidth}`}>
-                  <Webinar />
-                </div>
-              </div>
-            }
-          />
-          <Route
-            path="wallet"
-            element={
-              <div className={`${styles.flexStart}`}>
-                <div className={`${styles.boxWidth}`}>
-                  <Wallet />
                 </div>
               </div>
             }
