@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { logo, menu, close } from "../assets";
 import { navLinks } from "../constants";
 import styles from "../style";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
@@ -13,19 +13,20 @@ const Navbar = () => {
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <nav className="w-full flex pt-6 justify-between items-center">
-            <a href="/">
+            <Link to="/">
               <img src={logo} alt="LOGO" className="w-[134px] h-[42px]" />
-            </a>
+            </Link>
 
             <ul className="list-none sm:flex hidden justify-center items-center flex-1">
               {navLinks.map((nav, index) => (
                 <li
                   key={nav.id}
+                  onClick={() => setActive(nav.title)}
                   className={`font-poppins font-normal cursor-pointer text-[16px]
                         ${active === nav.title ? "text-white" : "text-dimWhite"}
                         ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
                 >
-                  <a href={`#${nav.id}`}>{nav.title}</a>
+                  <Link to={`${nav.id === "home" ? "/" : nav.id}`}>{nav.title}</Link>
                 </li>
               ))}
             </ul>
@@ -60,6 +61,7 @@ const Navbar = () => {
                   {navLinks.map((nav, index) => (
                     <li
                       key={nav.id}
+                      onClick={() => setActive(nav.title)}
                       className={`font-poppins font-normal cursor-pointer text-[16px]
                            ${
                              active === nav.title
@@ -68,7 +70,7 @@ const Navbar = () => {
                            }
                            ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
                     >
-                      <a href={`#${nav.id}`}>{nav.title}</a>
+                      <Link to={`${nav.id === "home" ? "/" : nav.id}`}>{nav.title}</Link>
                     </li>
                   ))}
 
