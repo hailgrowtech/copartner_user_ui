@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className={`${styles.boxWidth}`}>
           <nav className="w-full flex pt-6 justify-between items-center">
             <a href="/">
-              <img src={logo} alt="LOGO" className="w-[134px] h-[42px]" />
+              <img src={logo} alt="LOGO" className="w-[144px] h-[39px]" />
             </a>
 
             <ul className="list-none sm:flex hidden justify-center items-center flex-1">
@@ -25,7 +25,7 @@ const Navbar = () => {
                         ${active === nav.title ? "text-white" : "text-dimWhite"}
                         ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
                 >
-                  <a href={`#${nav.id}`}>{nav.title}</a>
+                  <a href={`${nav.id}`}>{nav.title}</a>
                 </li>
               ))}
             </ul>
@@ -68,7 +68,7 @@ const Navbar = () => {
                            }
                            ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
                     >
-                      <a href={`#${nav.id}`}>{nav.title}</a>
+                      <a href={`${nav.id}`}>{nav.title}</a>
                     </li>
                   ))}
 

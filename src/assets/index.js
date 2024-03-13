@@ -6,6 +6,7 @@ import userImg from './userImg.png';
 import userBck from './userBck.png';
 import stars from './stars.png';
 import telegram from './telegram.png';
+import arrow from './arrow.png'
 
 export {
     logo,
@@ -16,4 +17,5 @@ export {
     userBck,
     stars,
     telegram,
+    arrow,
 }
