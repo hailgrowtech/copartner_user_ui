@@ -1,15 +1,16 @@
 import React from "react";
 import styles from "../style";
+import "../Hero.css"
 import { hero, userImg, userBck, stars, telegram } from "../assets";
 
 const Hero = () => {
   return (
     <section
       id="home"
-      className={`flex md:flex-row flex-col ${styles.paddingY}`}
+      className={`flex md:flex-row flex-col ${styles.paddingY} background-img-div`}
     >
       <div
-        className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6 z-10 relative md:bottom-[10rem]`}
+        className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6 z-10 relative md:bottom-[1rem]`}
       >
         <div className="flex flex-row justify-between items-center w-full">
           <span
@@ -30,16 +31,6 @@ const Hero = () => {
         <button className="text-white font-normal text-[15px] leading-[28px] mt-8">
           Explore More
         </button>
-      </div>
-
-      <div
-        className={`flex-1 flex justify-center items-center md:my-0 my-10 relative md:bottom-[10rem] bottom-[21rem]`}
-      >
-        <img
-          src={hero}
-          alt="billing"
-          className="w-[1462px] relative md:z-auto"
-        />
       </div>
     </section>
   );
