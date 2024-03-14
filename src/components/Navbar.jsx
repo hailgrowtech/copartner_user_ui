@@ -3,6 +3,7 @@ import { logo, menu, close } from "../assets";
 import { navLinks } from "../constants";
 import styles from "../style";
 import { Link, Outlet } from "react-router-dom";
+import Footer from "./Footer";
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
@@ -86,6 +87,7 @@ const Navbar = () => {
         </div>
       </div>
       <Outlet />
+      <Footer />
     </>
   );
 };
