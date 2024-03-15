@@ -8,7 +8,7 @@ const Footer = () => {
     <div className="footer">
       <div className="footer-container text-white">
         <div className="footer-left my-auto">
-          <h5>Stock P Logo</h5>
+          <h5 className="font-bold">Stock P Logo</h5>
           <div className="text-[#A1A1AACC]">
           Our partnerships have delivered great value to our projects and we’re happy to share some of their feedback below
             <div className="social-icons">

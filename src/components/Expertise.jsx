@@ -7,23 +7,23 @@ const Expertise = () => {
   return (
     <section
       id="home"
-      className={`flex md:flex-row flex-col ${styles.paddingY}`}
+      className={`flex md:flex-row flex-col md:px-0 px-3 ${styles.paddingY}`}
     >
       <div
-        className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6 z-10 md:bottom-[10rem]`}
+        className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 z-10 md:bottom-[10rem]`}
       >
         <section className="w-full">
           <div className="flex flex-row justify-between items-center w-full">
             <span
-              className="flex-1 font-poppins font-bold md:text-[72px] text-[36px]
-      text-gradient md:leading-[88px] leading-[48px] text-center mb-8"
+              className="flex-1 font-inter font-bold md:text-[72px] text-[36px]
+      text-gradient md:leading-[88px] leading-[44px] text-center md:mb-8 mb-2"
             >
-              Your team, <br /> reimagined.
+              Your Team, <br /> Reimagined.
             </span>
           </div>
           <div className="flex flex-row justify-between items-center w-full mb-8">
             <span
-              className="flex-1 font-inter font-medium md:text-[18px] text-[36px]
+              className="flex-1 font-inter font-medium md:text-[18px] text-[12px]
       text-[#FFFFFF] md:leading-[28px] leading-[16px] text-center"
             >
               Take your team up a level with easy-to-use tools, effortless{" "}
@@ -31,7 +31,7 @@ const Expertise = () => {
               templates and efficient workflows.
             </span>
           </div>
-          <div className="flex flex-row justify-between items-center w-full pt-6 gap-x-5">
+          <div className="md:flex md:flex-row grid grid-cols-2 justify-between items-center w-full md:pt-6 md:gap-x-5 gap-2">
             <div className="flex-col-3 hover:bg-[#18181B] hover:opacity[70%] rounded-2xl">
               <img src="./Div [order-2].png" alt="img1" />
             </div>
@@ -42,10 +42,10 @@ const Expertise = () => {
               <img src="./Div [order-2].png" alt="img3" />
             </div>
             <div className="flex-col-3">
-              <div className="font-inter font-semibold md:text-[30px] text-[24px] md:leading-[36px] leading-[18px] text-white mb-6">
-                Lorem ipsum dolor sit <br /> amet consectetur.
+              <div className="font-inter font-semibold md:text-[30px] text-[18px] md:leading-[36px] leading-[18px] text-white md:mb-6 mb-2">
+              Experience Matters
               </div>
-              <div className="font-inter font-normal md:text-[16px] text-[10px] md:leading-[28px] leading-[12px] text-white text-opacity-60 mb-6">
+              <div className="font-inter font-normal md:text-[16px] text-[10px] md:leading-[28px] leading-[12px] text-white text-opacity-60 md:mb-6 mb-4">
                 Empower your teams to build better processes, for a better
                 workplace.
               </div>
@@ -56,11 +56,11 @@ const Expertise = () => {
           </div>
         </section>
         <section className="Our-expertise w-full">
-          <div className="flex flex-row justify-between w-full mt-16 mb-8">
-            <div className="flex-col-6 font-inter font-bold md:text-[50px] text-[24px] subheading-gradient md:leading-[50px] leading-[18px] text-white mb-6">
+          <div className="md:flex md:flex-row md:justify-between text-center w-full md:mt-16 mt-10 md:mb-8 mb-3">
+            <div className="flex-col-6 font-inter font-bold md:text-[50px] text-[30px] subheading-gradient md:leading-[50px] leading-[51px] text-white md:mb-6">
               Our Expertise
             </div>
-            <div className="flex-col-6 font-normal text-[#A1A1AACC] md:text-[18px] md:leading-[28px]">
+            <div className="flex-col-6 font-normal text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
               With Cobalt, managing your business finances is effortless, <br />{" "}
               empowering.{" "}
               <span className="text-white">
@@ -68,20 +68,20 @@ const Expertise = () => {
               </span>
             </div>
           </div>
-          <div className="w-full flex flex-row bg-[#18181B80] rounded-2xl p-4">
-            <div className="flex-col-6 my-auto">
-              <button className="text-white flex-col-3 mx-6">All</button>
-              <button className="flex-col-3 mx-6 text-[#A1A1AACC] hover:text-white">
+          <div className="w-full flex flex-row bg-[#18181B80] rounded-2xl p-3">
+            <div className="md:flex-col-6 md:text-[16px] text-[10px] flex flex-row my-auto">
+              <button className="text-white md:flex-col-3 md:mx-6 mx-2">All</button>
+              <button className="md:flex-col-3 md:mx-6 mx-2 text-[#A1A1AACC] hover:text-white">
                 Futures & Options
               </button>
-              <button className="flex-col-3 mx-6 text-[#A1A1AACC] hover:text-white">Commodity</button>
-              <button className="flex-col-3 mx-6 text-[#A1A1AACC] hover:text-white">Investor</button>
+              <button className="md:flex-col-3 md:mx-6 mx-2 text-[#A1A1AACC] hover:text-white">Commodity</button>
+              <button className="md:flex-col-3 md:mx-6 mx-2 text-[#A1A1AACC] hover:text-white">Investor</button>
             </div>
-            <div className="flex-col-6 ms-auto me-6">
+            <div className="md:flex-col-6 ms-auto flex flex-row">
               <select
                 name="cars"
                 id="cars"
-                className="text-white bg-gray-800 bg-opacity-50 rounded-xl ps-6 pe-20 py-2 border-2 border-[#4e4e4ecc]"
+                className="text-white bg-gray-800 bg-opacity-50 rounded-lg md:text-[16px] text-[10px] md:ps-6 ps-2 md:pe-20 md:py-2 py-1 border-2 border-[#4e4e4ecc]"
               >
                 <option disabled>Price</option>
                 <option value="volvo">Volvo</option>
@@ -91,7 +91,7 @@ const Expertise = () => {
               </select>
             </div>
           </div>
-          <div className="w-full flex flex-row my-8">
+          <div className="w-full md:flex hidden md:flex-row my-8">
             <div className="flex-col-5 hover:bg-[#18181B] hover:opacity[70%] rounded-2xl">
               <img src="./card1.png" alt="card1" />
             </div>
@@ -102,11 +102,11 @@ const Expertise = () => {
           <Card />
         </section>
         <section className="top-expertise w-full">
-          <div className="mt-16 mb-8">
-            <div className="flex-col-6 font-inter font-bold md:text-[50px] text-[24px] subheading-gradient md:leading-[50px] leading-[18px] text-white mb-6">
+          <div className="mt-16 mb-8 md:text-left text-center">
+            <div className="font-inter font-bold md:text-[50px] text-[30px] subheading-gradient md:leading-[50px] leading-[51px] text-white md:mb-6">
               Top Expertise
             </div>
-            <div className="flex-col-6 font-normal text-[#A1A1AACC] md:text-[18px] md:leading-[28px]">
+            <div className="font-normal text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
               Empower your teams to build better processes, for a better
               workplace.
             </div>
@@ -116,33 +116,25 @@ const Expertise = () => {
           </div>
         </section>
         <section className="similar-interest w-full">
-          <div className="mt-16 mb-8">
-            <div className="flex-col-6 font-inter font-bold md:text-[50px] text-[24px] subheading-gradient md:leading-[50px] leading-[18px] text-white mb-6">
+          <div className="mt-16 mb-8 md:text-left text-center">
+            <div className="font-inter font-bold md:text-[50px] text-[30px] subheading-gradient md:leading-[50px] leading-[51px] text-white md:mb-6">
               Similar To Your Interest
             </div>
-            <div className="flex-col-6 font-normal text-[#A1A1AACC] md:text-[18px] md:leading-[28px]">
+            <div className="font-normal text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
               Empower your teams to build better processes, for a better
               workplace.
             </div>
           </div>
-          <div className="flex flex-row w-full justify-around">
-            <div className="flex-col-4 hover:bg-[#18181B] hover:opacity[70%] rounded-2xl">
-              <img className="w-96" src="./card1.png" alt="" />
-            </div>
-            <div className="flex-col-4 hover:bg-[#18181B] hover:opacity[70%] rounded-2xl">
-              <img className="w-96" src="./card1.png" alt="" />
-            </div>
-            <div className="flex-col-4 hover:bg-[#18181B] hover:opacity[70%] rounded-2xl">
-              <img className="w-96" src="./card1.png" alt="" />
-            </div>
+          <div>
+            <Card />
           </div>
         </section>
         <section className="our-users-say w-full">
           <div className="mt-16 mb-8 text-center">
-            <div className="flex-col-6 font-inter font-bold md:text-[50px] text-[24px] subheading-gradient md:leading-[50px] leading-[18px] text-white mb-6">
+            <div className="font-inter font-bold md:text-[50px] text-[30px] subheading-gradient md:leading-[50px] leading-[51px] text-white md:mb-6">
               What Our Users Say
             </div>
-            <div className="flex-col-6 font-normal text-[#A1A1AACC] md:text-[18px] md:leading-[28px]">
+            <div className="font-normal text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
               Empower your teams to build better processes, for a better <br /> workplace.
             </div>
           </div>

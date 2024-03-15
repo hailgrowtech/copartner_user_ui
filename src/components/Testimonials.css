@@ -135,3 +135,37 @@
     font-size: 1rem;
   }
   
+  @media (max-width: 1060px) {
+    .testimonial p {
+      font-size: 14px;
+      line-height: 24px;
+    }
+    
+    .testimonial-slider {
+      padding: 0;
+    }
+
+    .testimonial {
+      padding: 0;
+    }
+
+    .author-name {
+      font-size: 10px;
+      line-height: 12px;
+    }
+
+    .author-designation {
+      font-size: 8px;
+      line-height: 10px;
+      opacity: 50%;
+    }
+
+    .author-image {
+      width: 28px;
+      height: 28px;
+    }
+
+    .testimonial-arrow {
+      width: 3rem;
+    }
+  }

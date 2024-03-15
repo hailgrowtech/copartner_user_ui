@@ -7,7 +7,6 @@
   
   .expert-grid {
     display: grid;
-    padding: 0 1.5rem;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
   }
@@ -32,6 +31,7 @@
     object-fit:contain;
     position: relative;
     z-index: 2; /* Ensure profile image is in front of background */
+    mask-image: linear-gradient(rgba(0, 0, 0, 1) 70%, transparent);
   }
   
   .dark-overlay {
@@ -55,7 +55,7 @@
   }
   
   .info {
-    padding: 1.5rem;
+    padding: 0 1.5rem 1rem;
   }
   
   .name-rating {
@@ -138,4 +138,60 @@
   
   .prize span{
     font-size: 2rem;
+  }
+
+  @media (max-width: 1060px) {
+    .expert-grid {
+      gap: 14px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 2rem;
+    }
+
+    .profile-image {
+      width: 210px;
+      height: 112px;
+    }
+
+    .info {
+      padding: 10px 1rem;
+    }
+
+    .name-role h3 {
+      font-size: 14px;
+      line-height: 10px;
+    }
+
+    .name-role p {
+      font-size: 10px;
+    }
+
+    .name-rating {
+      font-size: 10px;
+    }
+
+    .experience-followers span {
+      font-size: 10px;
+    }
+
+    .experience, .followers {
+      font-size: 10px;
+    }
+
+    .description {
+      font-size: 10px;
+    }
+
+    button {
+      font-size: 8px;
+      border: 1px;
+    }
+
+    .telegram {
+      width: 14px;
+      height: 14px;
+    }
+
+    .prize-subscription {
+      margin-top: 0.5rem;
+    }
   }

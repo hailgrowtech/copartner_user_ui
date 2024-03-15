@@ -33,7 +33,7 @@ const Navbar = () => {
             </ul>
 
             <div style={{ marginLeft: "1rem" }}>
-              <button className="text-dimWhite w-[117px] p-[3px] rounded-[36px] border border-solid border-white border-opacity-60 flex justify-center">
+              <button className="text-dimWhite w-[117px] py-[5px] ms-6 rounded-[36px] border border-solid border-white border-opacity-60 flex justify-center">
                 Refer & Earn
               </button>
             </div>
