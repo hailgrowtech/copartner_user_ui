@@ -100,7 +100,7 @@ const ExpertCard = ({ expert }) => {
       <div className="background-wrapper">
         <img src={backgroundImage} alt="Background" className="background-image" />
         <div>
-          <img src={expert.image} alt={`Profile of ${expert.name}`} className="profile-image" />
+          <img src={expert.image} alt={`Profile of ${expert.name}`} className="profile-image mx-auto" />
         </div>
       </div>
       <div className="info">

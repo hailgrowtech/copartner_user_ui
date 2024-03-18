@@ -33,15 +33,15 @@ const Expertise = () => {
           </div>
           <div className="md:flex md:flex-row grid grid-cols-2 justify-between items-center w-full md:pt-6 md:gap-x-5 gap-2">
             <div className="flex-col-3 hover:bg-[#18181B] hover:opacity[70%] rounded-2xl">
-              <img src="./Div [order-2].png" alt="img1" />
+              <img className="mx-auto" src="./Div [order-2].png" alt="img1" />
             </div>
             <div className="flex-col-3 hover:bg-[#18181B] hover:opacity[70%] rounded-2xl">
-              <img src="./Div [order-2].png" alt="img2" />
+              <img className="mx-auto" src="./Div [order-2].png" alt="img2" />
             </div>
             <div className="flex-col-3 hover:bg-[#18181B] hover:opacity[70%] rounded-2xl">
-              <img src="./Div [order-2].png" alt="img3" />
+              <img className="mx-auto" src="./Div [order-2].png" alt="img3" />
             </div>
-            <div className="flex-col-3">
+            <div className="flex-col-3 mx-auto">
               <div className="font-inter font-semibold md:text-[30px] text-[18px] md:leading-[36px] leading-[18px] text-white md:mb-6 mb-2">
               Experience Matters
               </div>
