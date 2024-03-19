@@ -1,11 +1,11 @@
 import React from "react";
-import styles from "../style";
-import "../Hero.css"
-import { hero, userImg, userBck, stars, telegram, arrow } from "../assets";
+import styles from "../../style";
+import "./Hero.css"
+import { hero, userImg, userBck, stars, telegram, arrow } from "../../assets";
 
 const Hero = () => {
   return (
-    <div className={`flex md:flex-col flex-col sm:py-8 py-6 background-img-div`}>
+    <div className={`flex md:flex-col flex-col ${styles.paddingY} background-img-div`}>
       <div
         className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6 z-10 relative`}
       >

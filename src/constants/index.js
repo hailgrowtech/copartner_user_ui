@@ -1,4 +1,4 @@
-import { logo, userImg, userBck, stars, telegram } from "../assets";
+import { logo, userImg, userBck, stars, telegram, clientImg, testimonialImg } from "../assets";
 
 export const navLinks = [
   {
@@ -22,6 +22,107 @@ export const navLinks = [
     title: "Wallet",
   },
 ];
+
+
+export const expertsData = [
+  {
+    id: 1,
+    image: clientImg,
+    name: 'John Doe',
+    role: 'Stock Market',
+    rating: 4.5,
+    experience: '10+',
+    followers: 5289,
+    description: 'Have full control of your business finances on the go using our iOS',
+    prize: '5000',
+  },
+
+  {
+    id: 2,
+    image: clientImg,
+    name: 'John Doe',
+    role: 'Stock Market',
+    rating: 4.5,
+    experience: '10+',
+    followers: 5289,
+    description: 'Have full control of your business finances on the go using our iOS',
+    prize: '5000',
+  },
+
+
+  {
+    id: 3,
+    image: clientImg,
+    name: 'John Doe',
+    role: 'Stock Market',
+    rating: 4.5,
+    experience: '10+',
+    followers: 5289,
+    description: 'Have full control of your business finances on the go using our iOS',
+    prize: '5000',
+  },
+  
+  {
+    id: 4,
+    image: clientImg,
+    name: 'John Doe',
+    role: 'Stock Market',
+    rating: 4.5,
+    experience: '10+',
+    followers: 5289,
+    description: 'Have full control of your business finances on the go using our iOS',
+    prize: '5000',
+  },
+
+  {
+    id: 5,
+    image: clientImg,
+    name: 'John Doe',
+    role: 'Stock Market',
+    rating: 4.5,
+    experience: '10+',
+    followers: 5289,
+    description: 'Have full control of your business finances on the go using our iOS',
+    prize: '5000',
+  },
+
+  {
+    id: 6,
+    image: clientImg,
+    name: 'John Doe',
+    role: 'Stock Market',
+    rating: 4.5,
+    experience: '10+',
+    followers: 5289,
+    description: 'Have full control of your business finances on the go using our iOS',
+    prize: '5000',
+  },
+];
+
+export const testimonialsData = [
+  {
+    id: 1,
+    text: "Since 2019, Gravity team has been an astounding market maker for Bitkub. They have proven themselves to be one of the most consistent, committed and driven market makers on our exchange. Gravity Team has contributed high-quality volume and has proven to be very reliable and trustworthy partner. We strongly advocate Gravity Team as they have been an indispensable part of our market-making team.",
+    author: "Atthakrit Chimplapibul",
+    image: testimonialImg,
+    designation: "CEO, Company A",
+  },
+  {
+    id: 2,
+    text: "Since 2019, Gravity team has been an astounding market maker for Bitkub. Gravity Team has contributed high-quality volume and has proven to be very reliable and trustworthy partner. We strongly advocate Gravity Team as they have been an indispensable part of our market-making team.",
+    author: "Jane Smith",
+    image: testimonialImg,
+    designation: "CTO, Company B",
+  },
+  {
+    id: 3,
+    text: "Becoming an affiliate partner was a great decision. The referral program is rewarding and easy to use.",
+    author: "Bob Johnson",
+    image: testimonialImg,
+    designation: "COO, Company C",
+  },
+];
+
 
 // export const hero_experience = [
 //   {

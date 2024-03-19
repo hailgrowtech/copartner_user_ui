@@ -1,12 +1,12 @@
 import React from "react";
-import styles from "../style";
+import styles from "../../style";
 import Card from "./Profile_Component";
-import Testimonials from "./Testimonials";
+import SingleCard from './Single_Card';
+import Testimonials from "../Testimonials/Testimonials";
 
 const Expertise = () => {
   return (
     <section
-      id="home"
       className={`flex md:flex-row flex-col md:px-0 px-3 ${styles.paddingY}`}
     >
       <div
@@ -31,19 +31,13 @@ const Expertise = () => {
               templates and efficient workflows.
             </span>
           </div>
-          <div className="md:flex md:flex-row grid grid-cols-2 justify-between items-center w-full md:pt-6 md:gap-x-5 gap-2">
-            <div className="flex-col-3 hover:bg-[#18181B] hover:opacity[70%] rounded-2xl">
-              <img className="mx-auto" src="./Div [order-2].png" alt="img1" />
-            </div>
-            <div className="flex-col-3 hover:bg-[#18181B] hover:opacity[70%] rounded-2xl">
-              <img className="mx-auto" src="./Div [order-2].png" alt="img2" />
-            </div>
-            <div className="flex-col-3 hover:bg-[#18181B] hover:opacity[70%] rounded-2xl">
-              <img className="mx-auto" src="./Div [order-2].png" alt="img3" />
-            </div>
+          <div className="md:flex md:flex-row grid grid-cols-2 justify-between items-center w-full md:pt-6 md:gap-x-2 gap-2">
+            <SingleCard />
+            <SingleCard />
+            <SingleCard />
             <div className="flex-col-3 mx-auto">
               <div className="font-inter font-semibold md:text-[30px] text-[18px] md:leading-[36px] leading-[18px] text-white md:mb-6 mb-2">
-              Experience Matters
+                Experience Matters
               </div>
               <div className="font-inter font-normal md:text-[16px] text-[10px] md:leading-[28px] leading-[12px] text-white text-opacity-60 md:mb-6 mb-4">
                 Empower your teams to build better processes, for a better
@@ -70,12 +64,18 @@ const Expertise = () => {
           </div>
           <div className="w-full flex flex-row bg-[#18181B80] rounded-2xl p-3">
             <div className="md:flex-col-6 md:text-[16px] text-[10px] flex flex-row my-auto">
-              <button className="text-white md:flex-col-3 md:mx-6 mx-2">All</button>
+              <button className="text-white md:flex-col-3 md:mx-6 mx-2">
+                All
+              </button>
               <button className="md:flex-col-3 md:mx-6 mx-2 text-[#A1A1AACC] hover:text-white">
                 Futures & Options
               </button>
-              <button className="md:flex-col-3 md:mx-6 mx-2 text-[#A1A1AACC] hover:text-white">Commodity</button>
-              <button className="md:flex-col-3 md:mx-6 mx-2 text-[#A1A1AACC] hover:text-white">Investor</button>
+              <button className="md:flex-col-3 md:mx-6 mx-2 text-[#A1A1AACC] hover:text-white">
+                Commodity
+              </button>
+              <button className="md:flex-col-3 md:mx-6 mx-2 text-[#A1A1AACC] hover:text-white">
+                Investor
+              </button>
             </div>
             <div className="md:flex-col-6 ms-auto flex flex-row">
               <select
@@ -135,7 +135,8 @@ const Expertise = () => {
               What Our Users Say
             </div>
             <div className="font-normal text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
-              Empower your teams to build better processes, for a better <br /> workplace.
+              Empower your teams to build better processes, for a better <br />{" "}
+              workplace.
             </div>
           </div>
         </section>

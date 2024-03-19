@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { logo, menu, close } from "../assets";
-import { navLinks } from "../constants";
-import styles from "../style";
+import { logo, menu, close, hamburgerImg, hamburgerBg } from "../../assets";
+import { navLinks } from "../../constants";
+import styles from "../../style";
 import { Link, Outlet } from "react-router-dom";
-import Footer from "./Footer";
+import Footer from "../Footer/Footer";
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
@@ -11,9 +11,11 @@ const Navbar = () => {
 
   return (
     <>
-      <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+      <div
+        className={`${styles.paddingX} ${styles.flexCenter} fixed top-0 z-50 w-full bg-[#06030E80]`}
+      >
         <div className={`${styles.boxWidth}`}>
-          <nav className="w-full flex pt-6 justify-between items-center">
+          <nav className="w-full flex md:pt-6 py-2 justify-between items-center">
             <Link to="/">
               <img src={logo} alt="LOGO" className="w-[134px] h-[42px]" />
             </Link>
@@ -27,7 +29,9 @@ const Navbar = () => {
                         ${active === nav.title ? "text-white" : "text-dimWhite"}
                         ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
                 >
-                  <Link to={`${nav.id === "home" ? "/" : nav.id}`}>{nav.title}</Link>
+                  <Link to={`${nav.id === "home" ? "/" : nav.id}`}>
+                    {nav.title}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -49,7 +53,12 @@ const Navbar = () => {
               <div
                 className={`${
                   toggle ? "flex" : "hidden"
-                } justify-center items-center fixed top-0 left-0 z-50 w-full h-full p-3 bg-slate-500`}
+                } justify-center items-center fixed top-0 left-0 z-50 w-full h-full p-3 bg-[#06030E] bg-gradient-to-tr`}
+                style={{
+                  backgroundImage: `url(${hamburgerImg}), url(${hamburgerBg})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundPositionY: "bottom"
+                }}
               >
                 <img
                   src={close}
@@ -58,25 +67,33 @@ const Navbar = () => {
                   onClick={() => setToggle(false)}
                 />
 
-                <ul className="list-none flex flex-col justify-end items-center">
+                <ul className="list-none flex flex-col justify-end items-center -mt-28 gap-4">
+                  <li className="font-poppins font-normal cursor-pointer text-[16px] text-white mb-8">
+                    <img src={logo} alt="" />
+                  </li>
                   {navLinks.map((nav, index) => (
                     <li
                       key={nav.id}
-                      onClick={() => setActive(nav.title)}
+                      onClick={() => {
+                        setActive(nav.title);
+                        setToggle(false);
+                      }}
                       className={`font-poppins font-normal cursor-pointer text-[16px]
                            ${
                              active === nav.title
                                ? "text-white"
-                               : "text-dimWhite"
+                               : "text-[#393F48]"
                            }
                            ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
                     >
-                      <Link to={`${nav.id === "home" ? "/" : nav.id}`}>{nav.title}</Link>
+                      <Link to={`${nav.id === "home" ? "/" : nav.id}`}>
+                        {nav.title}
+                      </Link>
                     </li>
                   ))}
 
                   <li className="mt-4">
-                    <button className="text-dimWhite w-[117px] p-[3px] rounded-[36px] border border-solid border-white border-opacity-60 flex justify-center">
+                    <button className="text-dimWhite text-[11px] py-1 px-4 rounded-[36px] border border-solid border-white border-opacity-60 flex  items-center">
                       Refer & Earn
                     </button>
                   </li>
