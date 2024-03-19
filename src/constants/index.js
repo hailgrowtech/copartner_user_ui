@@ -1,4 +1,5 @@
-import { logo, userImg, userBck, stars, telegram } from "../assets";
+import { logo, userImg, userBck, stars, telegram, clientImg, courseImg } from "../assets";
+
 
 export const navLinks = [
   {
@@ -21,6 +22,117 @@ export const navLinks = [
     id: "wallet",
     title: "Wallet",
   },
+];
+
+
+export const expertsData = [
+  {
+    id: 1,
+    image: clientImg,
+    name: 'John Doe',
+    role: 'Stock Market',
+    rating: 4.5,
+    experience: '10+',
+    followers: 5289,
+    description: 'Have full control of your business finances on the go using our iOS',
+    prize: '5000',
+  },
+
+  {
+    id: 2,
+    image: clientImg,
+    name: 'John Doe',
+    role: 'Stock Market',
+    rating: 4.5,
+    experience: '10+',
+    followers: 5289,
+    description: 'Have full control of your business finances on the go using our iOS',
+    prize: '5000',
+  },
+
+
+  {
+    id: 3,
+    image: clientImg,
+    name: 'John Doe',
+    role: 'Stock Market',
+    rating: 4.5,
+    experience: '10+',
+    followers: 5289,
+    description: 'Have full control of your business finances on the go using our iOS',
+    prize: '5000',
+  },
+  
+  {
+    id: 4,
+    image: clientImg,
+    name: 'John Doe',
+    role: 'Stock Market',
+    rating: 4.5,
+    experience: '10+',
+    followers: 5289,
+    description: 'Have full control of your business finances on the go using our iOS',
+    prize: '5000',
+  },
+
+  {
+    id: 5,
+    image: clientImg,
+    name: 'John Doe',
+    role: 'Stock Market',
+    rating: 4.5,
+    experience: '10+',
+    followers: 5289,
+    description: 'Have full control of your business finances on the go using our iOS',
+    prize: '5000',
+  },
+
+  {
+    id: 6,
+    image: clientImg,
+    name: 'John Doe',
+    role: 'Stock Market',
+    rating: 4.5,
+    experience: '10+',
+    followers: 5289,
+    description: 'Have full control of your business finances on the go using our iOS',
+    prize: '5000',
+  },
+
+];
+
+export const courses = [
+  {
+    imageUrl: courseImg,
+    title: 'Insights at your fingertips',
+    instructor: 'Rohit Aggi',
+    followers: '3.1k',
+    experience: '7+',
+    duration: '3 hrs',
+    session: '3',
+    price: '1,999/-'
+  },
+  {
+    imageUrl: courseImg,
+    title: 'Insights at your fingertips',
+    instructor: 'Rohit Aggi',
+    followers: '2.5k',
+    experience: '5+',
+    duration: '2 hrs',
+    session: '2',
+    price: '1,499/-'
+  },
+  
+  {
+      imageUrl: courseImg,
+      title: 'Insights at your fingertips',
+      instructor: 'Rohit Aggi',
+      followers: '2.5k',
+      experience: '5+',
+      duration: '2 hrs',
+      session: '2',
+      price: '1,499/-'
+    },
 ];
 
 // export const hero_experience = [

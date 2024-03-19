@@ -75,6 +75,17 @@
   animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
+.text-gradient-2 {
+  background: linear-gradient(135deg, #FFFFFF 0%, #71717A 100%),
+  linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  text-fill-color: transparent;
+}
+
+
 @-webkit-keyframes slide-top {
   0% {
     -webkit-transform: translateY(100px);
@@ -130,3 +141,35 @@
   background: rgba(255, 255, 255, 0.6);
   filter: blur(750px);
 }
+
+/* Join Telegram Button In Course Card  */
+
+.join-Telegram{
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 5px;
+  color: #fff;
+}
+
+.join-Telegram svg{
+  font-size: 20px;
+  color: #3eabd9;
+  background-color: #fff;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+
+/* SubHeadings of the page */
+
+.subheading-color{
+    font-weight: 700;
+    background: linear-gradient(#FFFFFF, #71717A);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+

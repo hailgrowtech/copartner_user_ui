@@ -39,7 +39,7 @@ function App() {
             element={
               <div className={`${styles.flexStart}`}>
                 <div className={`${styles.boxWidth}`}>
-                  <Subscription />
+                  <Subscription/>
                 </div>
               </div>
             }
