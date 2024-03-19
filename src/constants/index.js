@@ -133,6 +133,26 @@ export const courses = [
       session: '2',
       price: '1,499/-'
     },
+  {
+      imageUrl: courseImg,
+      title: 'Insights at your fingertips',
+      instructor: 'Rohit Aggi',
+      followers: '2.5k',
+      experience: '5+',
+      duration: '2 hrs',
+      session: '2',
+      price: '1,499/-'
+    },
+  {
+      imageUrl: courseImg,
+      title: 'Insights at your fingertips',
+      instructor: 'Rohit Aggi',
+      followers: '2.5k',
+      experience: '5+',
+      duration: '2 hrs',
+      session: '2',
+      price: '1,499/-'
+    },
 ];
 
 // export const hero_experience = [

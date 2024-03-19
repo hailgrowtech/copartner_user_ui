@@ -61,9 +61,12 @@ const Subscription = () => {
           </div>
         </div>
         {/* Second Container Div */}
-        <div className="flex md:flex-row justify-center mx-auto w-full md:w-3/3">
+        <div className="flex md:flex-row justify-center mx-auto w-full md:w-3/3 mb-8">
           <CourseList />
         </div>
+        <button className="bg-white rounded-md hover:bg-white text-base text-black py-2 px-8">
+          Explore More
+        </button>
       </section>
 
       {/* Fourth Section: Similar Your Interest Expertises */}
@@ -77,10 +80,8 @@ const Subscription = () => {
 
         {/* Retro design course */}
         <div className="flex md:flex-row justify-center mx-auto w-full md:w-3/3">
-        <RetroCards />
+          <RetroCards />
         </div>
-
-
       </section>
       {/* Sixth Section: Course By Expertise */}
       <section className={styles.emptySection}>
