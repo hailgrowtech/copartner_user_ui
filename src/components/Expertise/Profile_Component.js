@@ -48,7 +48,7 @@ const ExpertCard = ({ expert }) => {
 const Expertise = () => {
   return (
     <section className="section">
-      <div className="expert-grid">
+      <div className="expert-grid md:px-6">
         {expertsData.map((expert) => (
           <ExpertCard key={expert.id} expert={expert} />
         ))}
