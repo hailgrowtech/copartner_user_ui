@@ -3,7 +3,7 @@ import styles from "../style";
 import Card from "./Profile_Component";
 import CourseList from "./CourseList";
 import ProfileCard from "./Profile_Card";
-import RetroCards from "./RetroCards"; // Import RetroCards component
+import RetroCards from "./RetroCards";
 
 const Subscription = () => {
   return (
@@ -31,8 +31,7 @@ const Subscription = () => {
             {" "}
       </section>
 
-      {/* Second Section: Our Expertise */}
-      <section className="Our-expertise w-full text-center md:px-16">
+      <section className="Our-expertise w-full text-center md:px-16 md:mb-12">
         <h2 className="font-inter md:text-[50px] text-[30px] md:leading-[50px] text-left leading-[51px] md:mb-6 px-4 subheading-color">
           Our Expertise
         </h2>
@@ -42,48 +41,51 @@ const Subscription = () => {
         <ProfileCard />
       </section>
 
+      <section className={`${styles.emptySection} w-full md:px-16 text-white`}>
+      <div className="mb-4 md:mb-8">
+          <div className="md:mr-4">
+            <h2 className="font-semibold text-xl md:text-5xl pb-4 subheading-color">
+            Similar Your Interest Expertises
+            </h2>
+          </div>
+          <div className="font-normal text-[#A1A1AACC] text-left md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
+          Empower your teams to build better processes, for a better workplace.
+          </div>
+        </div>
+        <Card />
+      </section>
+
       <section
-        className={`${styles.emptySection} w-full text-center md:px-16 text-white`}
+        className={`${styles.emptySection} w-full text-center md:px-16 md:my-12 text-white`}
       >
-        {/* Third Section: Continue Course */}
         <div className="flex flex-col md:flex-row items-center justify-between mb-4 md:mb-0">
           <div className="md:mr-4">
             <h2 className="font-semibold text-xl md:text-5xl pl-5 pb-4 subheading-color">
-              Continue Course
+            Course By Expertise
             </h2>
           </div>
           <div className="flex-col-6 font-normal text-[#A1A1AACC] text-left md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
-            With Cobalt, managing your business finances is effortless, <br />{" "}
-            empowering.{" "}
+            With Cobalt, managing your business finances is  effortless, <br /> and empowering
             <span className="text-white">
-              Say no to spreadsheets and tools designed in the 80s.
+              . Say no to spreadsheets and tools designed in the 80s.
             </span>
           </div>
         </div>
-        {/* Second Container Div */}
         <div className="flex md:flex-row justify-center mx-auto w-full md:w-3/3 mb-8">
           <CourseList />
         </div>
         <button className="bg-white rounded-md hover:bg-white text-base text-black py-2 px-8">
           Explore More
         </button>
-      </section>
+      </section>      
 
-      {/* Fourth Section: Similar Your Interest Expertises */}
-      <section className="text-white">
-        <h2>Similar Your Interest Expertises</h2>
-      </section>
-
-      {/* Fifth Section: Course By Expertise */}
       <section className="text-white">
         <h2>Course By Expertise</h2>
 
-        {/* Retro design course */}
         <div className="flex md:flex-row justify-center mx-auto w-full md:w-3/3">
           <RetroCards />
         </div>
       </section>
-      {/* Sixth Section: Course By Expertise */}
       <section className={styles.emptySection}>
         <h2>Course By Expertise</h2>
       </section>

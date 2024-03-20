@@ -13,7 +13,7 @@ const formatFollowers = (followers) => {
 
 const ExpertCardSub = ({ expert }) => {
   return (
-    <div className='profile-div rounded-2xl p-1 md:p-1 mb-8'>
+    <div className='profile-div rounded-2xl p-1 md:p-1'>
       <div className="background-wrapper">
         <img src={backgroundImage} alt="Background" className="background-image" />
         <div>
