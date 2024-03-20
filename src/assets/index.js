@@ -7,10 +7,11 @@ import userBck from './userBck.png';
 import stars from './stars.png';
 import telegram from './telegram.png';
 import arrow from './arrow.png'
-import clientImg from '../assets/Expertise/image 11.png';
-import testimonialImg from '../assets/Testimonials/Ellipse 1483.png';
-import hamburgerImg from '../assets/Group 5796.png'
-import hamburgerBg from '../assets/middle-left-2.png.png'
+import clientImg from './Expertise/image 11.png';
+import testimonialImg from './Testimonials/Ellipse 1483.png';
+import hamburgerImg from './Group 5796.png'
+import hamburgerBg from './middle-left-2.png.png'
+import homeBg from './Div.png'
 
 export {
     logo,
@@ -25,5 +26,6 @@ export {
     clientImg,
     testimonialImg,
     hamburgerImg,
-    hamburgerBg
+    hamburgerBg,
+    homeBg
 }

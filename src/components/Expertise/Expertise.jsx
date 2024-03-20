@@ -2,12 +2,11 @@ import React from "react";
 import styles from "../../style";
 import Card from "./Profile_Component";
 import SingleCard from './Single_Card';
-import Testimonials from "../Testimonials/Testimonials";
 
 const Expertise = () => {
   return (
     <section
-      className={`flex md:flex-row flex-col md:px-0 px-3 ${styles.paddingY}`}
+      className={`flex md:flex-row flex-col md:px-0 px-3 ${styles.paddingY} expertise-Bg`}
     >
       <div
         className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 z-10 md:bottom-[10rem]`}
@@ -128,20 +127,6 @@ const Expertise = () => {
           <div>
             <Card />
           </div>
-        </section>
-        <section className="our-users-say w-full">
-          <div className="mt-16 mb-8 text-center">
-            <div className="font-inter font-bold md:text-[50px] text-[30px] subheading-gradient md:leading-[50px] leading-[51px] text-white md:mb-6">
-              What Our Users Say
-            </div>
-            <div className="font-normal text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
-              Empower your teams to build better processes, for a better <br />{" "}
-              workplace.
-            </div>
-          </div>
-        </section>
-        <section className="Users-testimonials">
-          <Testimonials />
         </section>
       </div>
     </section>

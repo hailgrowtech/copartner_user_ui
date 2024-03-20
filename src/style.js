@@ -8,11 +8,14 @@ const styles = {
     flexStart: "flex justify-center items-start",
   
     paddingX: "sm:px-16 px-6",
-    paddingY: "sm:py-32 py-24",
+    paddingY: "sm:pt-32 sm:pb-16 pt-24 pb-12",
     padding: "sm:px-16 px-6 sm:py-12 py-4",
   
     marginX: "sm:mx-16 mx-6",
     marginY: "sm:my-16 my-6",
+
+    scrolledNavbar: "bg-transparent",
+    transparentNavbar: "bg-[#06030eea]"
   };
   
   export const layout = {

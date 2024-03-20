@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { logo, menu, close, hamburgerImg, hamburgerBg } from "../../assets";
+import React, { useEffect, useState } from "react";
+import { logo, menu, close, hamburgerBg } from "../../assets";
 import { navLinks } from "../../constants";
 import styles from "../../style";
 import { Link, Outlet } from "react-router-dom";
@@ -8,16 +8,36 @@ import Footer from "../Footer/Footer";
 const Navbar = () => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+      if (scrollTop > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup function
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <>
       <div
-        className={`${styles.paddingX} ${styles.flexCenter} fixed top-0 z-50 w-full bg-[#06030E80]`}
+        className={`${styles.paddingX} ${styles.flexCenter} fixed top-0 z-50 w-full ${
+          isScrolled ? styles.transparentNavbar : styles.scrolledNavbar
+        }`}
       >
         <div className={`${styles.boxWidth}`}>
-          <nav className="w-full flex md:pt-6 py-2 justify-between items-center">
+          <nav className="w-full flex md:py-5 py-4 justify-between items-center">
             <Link to="/">
-              <img src={logo} alt="LOGO" className="w-[134px] h-[42px]" />
+              <img src={logo} alt="LOGO" className="w-[134px] h-[38px]" />
             </Link>
 
             <ul className="list-none sm:flex hidden justify-center items-center flex-1">
@@ -53,11 +73,12 @@ const Navbar = () => {
               <div
                 className={`${
                   toggle ? "flex" : "hidden"
-                } justify-center items-center fixed top-0 left-0 z-50 w-full h-full p-3 bg-[#06030E] bg-gradient-to-tr`}
+                } justify-center items-center fixed top-0 left-0 z-50 w-full h-full p-3 bg-gradient-to-tr`}
                 style={{
-                  backgroundImage: `url(${hamburgerImg}), url(${hamburgerBg})`,
+                  backgroundImage: `url(${hamburgerBg})`,
                   backgroundRepeat: "no-repeat",
-                  backgroundPositionY: "bottom"
+                  backgroundPositionY: "bottom",
+                  backgroundSize: "35rem"
                 }}
               >
                 <img
@@ -69,7 +90,7 @@ const Navbar = () => {
 
                 <ul className="list-none flex flex-col justify-end items-center -mt-28 gap-4">
                   <li className="font-poppins font-normal cursor-pointer text-[16px] text-white mb-8">
-                    <img src={logo} alt="" />
+                    <img width={"200rem"} src={logo} alt="" />
                   </li>
                   {navLinks.map((nav, index) => (
                     <li

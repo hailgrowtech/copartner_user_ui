@@ -140,6 +140,13 @@
     font-size: 2rem;
   }
 
+  .expertise-Bg {
+    background-image: url('../../assets/Div.png'), url('../../assets/middle-left.png');
+    background-repeat: no-repeat, no-repeat;
+    background-position: 25rem -20rem, -20rem 75rem;
+    background-size: auto, 45rem;
+  }
+
   @media (max-width: 1060px) {
     .expert-grid {
       gap: 14px;
@@ -193,5 +200,9 @@
 
     .prize-subscription {
       margin-top: 0.5rem;
+    }
+
+    .expertise-Bg {
+      background-position: -15rem -25rem, -25rem 40rem;
     }
   }
