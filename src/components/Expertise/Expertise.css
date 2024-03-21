@@ -17,8 +17,8 @@
   
   .background-image {
     width: 100%;
-    max-height: 200px; /* Adjust height as needed */
-    object-fit: cover;
+    max-height: 150px; /* Adjust height as needed */
+    object-fit: contain;
     position: absolute;
     top: 0;
     left: 0;
@@ -27,7 +27,7 @@
   
   .profile-image {
     width: 100%;
-    max-height: 200px;
+    max-height: 150px;
     object-fit:contain;
     position: relative;
     z-index: 2; /* Ensure profile image is in front of background */

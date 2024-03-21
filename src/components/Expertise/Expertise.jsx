@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../../style";
 import Card from "./Profile_Component";
 import SingleCard from './Single_Card';
+import DoubleCard from './Double_Card'
 
 const Expertise = () => {
   return (
@@ -30,17 +31,22 @@ const Expertise = () => {
               templates and efficient workflows.
             </span>
           </div>
-          <div className="md:flex md:flex-row grid grid-cols-2 justify-between items-center w-full md:pt-6 md:gap-x-2 gap-2">
-            <SingleCard />
-            <SingleCard />
-            <SingleCard />
-            <div className="flex-col-3 mx-auto">
+          <div className="md:flex md:flex-row grid grid-cols-2 justify-between items-center w-full md:pt-6 md:gap-x-6 md:px-6 gap-2">
+            <div className="md:w-1/4">
+              <SingleCard />
+            </div>
+            <div className="md:w-1/4">
+              <SingleCard />
+            </div>
+            <div className="md:w-1/4">
+              <SingleCard />
+            </div>
+            <div className="flex-col-3 mx-auto md:w-2/4">
               <div className="font-inter font-semibold md:text-[30px] text-[18px] md:leading-[36px] leading-[18px] text-white md:mb-6 mb-2">
                 Experience Matters
               </div>
               <div className="font-inter font-normal md:text-[16px] text-[10px] md:leading-[28px] leading-[12px] text-white text-opacity-60 md:mb-6 mb-4">
-                Empower your teams to build better processes, for a better
-                workplace.
+              Connect with India’s leading SEBI registered Research Analysts, guiding you thoroughly to maximising profits in the dynamic world of stock trading.
               </div>
               <button className="font-inter text-black font-semibold bg-[#FFFFFF] md:text-[14px] text-[10px] md:leading-[16px] leading-[12px] p-2 rounded border-[#000000]-950 border-2">
                 Explore More
@@ -53,11 +59,10 @@ const Expertise = () => {
             <div className="flex-col-6 font-inter font-bold md:text-[50px] text-[30px] subheading-gradient md:leading-[50px] leading-[51px] text-white md:mb-6">
               Our Expertise
             </div>
-            <div className="flex-col-6 font-normal text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
-              With Cobalt, managing your business finances is effortless, <br />{" "}
-              empowering.{" "}
+            <div className="flex-col-6 font-normal text-left text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
+            Dive into the expertise of our{ " "}
               <span className="text-white">
-                Say no to spreadsheets and tools designed in the 80s.
+              SEBI registered research analysts, <br /> guiding you towards trading success with precision and insight.
               </span>
             </div>
           </div>
@@ -90,12 +95,13 @@ const Expertise = () => {
               </select>
             </div>
           </div>
-          <div className="w-full md:flex hidden md:flex-row my-8">
-            <div className="flex-col-5 hover:bg-[#18181B] hover:opacity[70%] rounded-2xl">
-              <img src="./card1.png" alt="card1" />
+          <div className="w-full md:flex hidden md:flex-row my-8 px-6">
+            <div className="w-2/5 hover:bg-[#18181B] rounded-2xl px-4">
+              <DoubleCard />
             </div>
-            <div className="flex-col-7 hover:bg-[#18181B] hover:opacity[70%] rounded-2xl mx-auto">
-              <img src="./card1.png" alt="card2" />
+            <div className=" w-8"></div>
+            <div className="w-3/5 hover:bg-[#18181B] rounded-2xl px-16">
+              <DoubleCard />
             </div>
           </div>
           <Card />
@@ -106,8 +112,7 @@ const Expertise = () => {
               Top Expertise
             </div>
             <div className="font-normal text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
-              Empower your teams to build better processes, for a better
-              workplace.
+            Access top-tier, highly skilled SEBI Registered experts for unparalleled trading guidance.
             </div>
           </div>
           <div>
@@ -120,8 +125,7 @@ const Expertise = () => {
               Similar To Your Interest
             </div>
             <div className="font-normal text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
-              Empower your teams to build better processes, for a better
-              workplace.
+            Discover related analysts with similar expertise to enhance your trading decisions and broaden your market insights.
             </div>
           </div>
           <div>

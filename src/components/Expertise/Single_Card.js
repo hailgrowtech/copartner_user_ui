@@ -12,12 +12,12 @@ const Card = () => {
             className={`profile-image`}
             style={{
               backgroundImage: `url(${userBck})`,
-              backgroundSize: 'cover',
+              backgroundSize: '15rem',
               backgroundPosition: 'center',
             }}
           />
         </div>
-        <div className="w-[161px] h-[33px] flex justify-between mt-6 mx-auto">
+        <div className="md:w-[200px] w-[150px] h-[33px] flex justify-between mt-6 mx-auto">
           <div className="flex flex-col gap-1">
             <span className="text-[12px] leading-[12px] font-[500] text-white">
               Arun Kumar
@@ -33,7 +33,7 @@ const Card = () => {
             </span>
           </div>
         </div>
-        <div className="w-[161px] h-[33px] flex justify-between mt-2 mx-auto text-white">
+        <div className="md:w-[200px] w-[150px] h-[33px] flex justify-between mt-2 mx-auto text-white">
           <div className="flex">
             <div className="flex flex-col w-[52px] h-[33px] items-center">
               <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">

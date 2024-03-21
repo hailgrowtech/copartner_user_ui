@@ -3,9 +3,9 @@
 import React from 'react';
 import './Expertise.css';
 import { expertsData } from '../../constants';
-import backgroundImage from '../../assets/Expertise/background.png';
 import { FaTelegram } from "react-icons/fa6";
 import { IoIosArrowForward } from "react-icons/io";
+import { userBck } from '../../assets';
 
 const formatFollowers = (followers) => {
   if (followers > 999) {
@@ -19,7 +19,7 @@ const ExpertCard = ({ expert }) => {
   return (
     <div className='profile-div rounded-2xl'>
       <div className="background-wrapper">
-        <img src={backgroundImage} alt="Background" className="background-image" />
+        <img src={userBck} alt="Background" className="background-image" />
         <div>
           <img src={expert.image} alt={`Profile of ${expert.name}`} className="profile-image mx-auto" />
         </div>
