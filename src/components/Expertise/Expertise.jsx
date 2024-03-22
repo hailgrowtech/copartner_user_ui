@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "../../style";
 import Card from "./Profile_Component";
-import SingleCard from './Single_Card';
-import DoubleCard from './Double_Card'
+import SingleCard from "./Single_Card";
+import DoubleCard from "./Double_Card";
 
 const Expertise = () => {
   return (
@@ -10,7 +10,7 @@ const Expertise = () => {
       className={`flex md:flex-row flex-col md:px-0 px-3 ${styles.paddingY} expertise-Bg`}
     >
       <div
-        className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 z-10 md:bottom-[10rem]`}
+        className={`flex-1 ${styles.flexStart} flex-col xl:px-0 md:px-28 z-10 md:bottom-[10rem]`}
       >
         <section className="w-full">
           <div className="flex flex-row justify-between items-center w-full">
@@ -31,7 +31,7 @@ const Expertise = () => {
               templates and efficient workflows.
             </span>
           </div>
-          <div className="md:flex md:flex-row grid grid-cols-2 justify-between items-center w-full md:pt-6 md:gap-x-6 md:px-6 gap-2">
+          <div className="md:flex md:flex-row grid grid-cols-2 justify-between items-center w-full md:pt-6 md:gap-x-6 gap-3">
             <div className="md:w-1/4">
               <SingleCard />
             </div>
@@ -46,7 +46,9 @@ const Expertise = () => {
                 Experience Matters
               </div>
               <div className="font-inter font-normal md:text-[16px] text-[10px] md:leading-[28px] leading-[12px] text-white text-opacity-60 md:mb-6 mb-4">
-              Connect with India’s leading SEBI registered Research Analysts, guiding you thoroughly to maximising profits in the dynamic world of stock trading.
+                Connect with India’s leading SEBI registered Research Analysts,
+                guiding you thoroughly to maximising profits in the dynamic
+                world of stock trading.
               </div>
               <button className="font-inter text-black font-semibold bg-[#FFFFFF] md:text-[14px] text-[10px] md:leading-[16px] leading-[12px] p-2 rounded border-[#000000]-950 border-2">
                 Explore More
@@ -60,24 +62,25 @@ const Expertise = () => {
               Our Expertise
             </div>
             <div className="flex-col-6 font-normal text-left text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
-            Dive into the expertise of our{ " "}
+              Dive into the expertise of our{" "}
               <span className="text-white">
-              SEBI registered research analysts, <br /> guiding you towards trading success with precision and insight.
+                SEBI registered research analysts, <br /> guiding you towards
+                trading success with precision and insight.
               </span>
             </div>
           </div>
           <div className="w-full flex flex-row bg-[#18181B80] rounded-2xl p-3">
             <div className="md:flex-col-6 md:text-[16px] text-[10px] flex flex-row my-auto">
-              <button className="text-white md:flex-col-3 md:mx-6 mx-2">
+              <button className="text-white md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px]">
                 All
               </button>
-              <button className="md:flex-col-3 md:mx-6 mx-2 text-[#A1A1AACC] hover:text-white">
+              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-[#A1A1AACC] hover:text-white">
                 Futures & Options
               </button>
-              <button className="md:flex-col-3 md:mx-6 mx-2 text-[#A1A1AACC] hover:text-white">
+              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-[#A1A1AACC] hover:text-white">
                 Commodity
               </button>
-              <button className="md:flex-col-3 md:mx-6 mx-2 text-[#A1A1AACC] hover:text-white">
+              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-[#A1A1AACC] hover:text-white">
                 Investor
               </button>
             </div>
@@ -95,7 +98,7 @@ const Expertise = () => {
               </select>
             </div>
           </div>
-          <div className="w-full md:flex hidden md:flex-row my-8 px-6">
+          <div className="w-full md:flex hidden md:flex-row my-8">
             <div className="w-2/5 hover:bg-[#18181B] rounded-2xl px-4">
               <DoubleCard />
             </div>
@@ -112,7 +115,8 @@ const Expertise = () => {
               Top Expertise
             </div>
             <div className="font-normal text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
-            Access top-tier, highly skilled SEBI Registered experts for unparalleled trading guidance.
+              Access top-tier, highly skilled SEBI Registered experts for
+              unparalleled trading guidance.
             </div>
           </div>
           <div>
@@ -125,7 +129,8 @@ const Expertise = () => {
               Similar To Your Interest
             </div>
             <div className="font-normal text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
-            Discover related analysts with similar expertise to enhance your trading decisions and broaden your market insights.
+              Discover related analysts with similar expertise to enhance your
+              trading decisions and broaden your market insights.
             </div>
           </div>
           <div>

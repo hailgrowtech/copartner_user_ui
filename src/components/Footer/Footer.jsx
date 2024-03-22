@@ -1,98 +1,68 @@
-// src/assets/footer/Footer.js
 import React from "react";
-import "./Footer.css";
-import { FaFacebook, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
-import Testimonials from "../Testimonials/Testimonials";
-import { logo } from "../../assets";
-
+import { logo, facebook, linkedin, twitter, instagram } from "../../assets";
+const ProductList = [
+  "About Us",
+  "FAQ's",
+  "Privacy Policy",
+  "Terms of Service",
+  "Disclaimer",
+  "Submit Grievance",
+  "Features",
+];
+const CommunityList = ["Subscription", "Courses", "Webinar"];
 const Footer = () => {
   return (
-    <div>
-      <section className="px-4 pb-8 our-users-say w-full">
-        <div className="text-center">
-          <div className="font-inter font-bold md:text-[50px] text-[30px] subheading-gradient md:leading-[50px] leading-[51px] text-white md:mb-6">
-            What Our Users Say
-          </div>
-          <div className="font-normal text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
-            Empower your teams to build better processes, for a better <br />{" "}
-            workplace.
-          </div>
+    <div className="md:w-[1440px] w-full md:h-[198px] h-[506px] md:pt-[6rem] pt-[1rem] justify-around border-t border-solid border-white border-opacity-10 flex md:flex-row flex-col items-center">
+      <div className="flex flex-col gap-[1rem]">
+        <img src={logo} alt="" className="md:w-56 w-40" />
+        <span className="md:w-[296px] w-[296px] md:h-[84px] h-[66px] font-normal md:text-[16px] text-[14px] md:leading-[28px] leading-[22px] text-dimWhite">
+          Our partnerships have delivered great value to our projects and we’re
+          happy to share some of their feedback below
+        </span>
+        <div className="flex gap-7 rounded-full">
+          <a href="">
+            <img src={facebook} alt="Facebook" className="w-8" />
+          </a>
+          <a href="">
+            <img src={linkedin} alt="LinkeDin" className="w-8" />
+          </a>
+          <a href="">
+            <img src={twitter} alt="Twitter" className="w-8" />
+          </a>
+          <a href="">
+            <img src={instagram} alt="Instagram" className="w-8" />
+          </a>
         </div>
-        <Testimonials />
-      </section>
-      <div className="footer">
-        <div className="footer-container text-white">
-          <div className="footer-left my-auto">
-            <h5 className="font-bold"><img className=" md:w-56 w-40" src={logo} alt="" /></h5>
-            <div className="text-[#A1A1AACC]">
-              Our partnerships have delivered great value to our projects and
-              we’re happy to share some of their feedback below
-              <div className="social-icons">
-                <a href="#home" target="_blank">
-                  <FaFacebook />
-                </a>
-                <a href="#home" target="_blank">
-                  <FaLinkedin />
-                </a>
-                <a href="#home" target="_blank">
-                  <FaTwitter />
-                </a>
-                <a href="#home" target="_blank">
-                  <FaInstagram />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="footer-empty-column"></div>
-
-          <div className="footer-right">
-            <div className="footer-column">
-              <h3>Product</h3>
-              <ul>
-                <li>
-                  <a href="#home">About Us</a>
-                </li>
-                <li>
-                  <a href="#home">FAQ’s</a>
-                </li>
-                <li>
-                  <a href="#home">Privacy Policy</a>
-                </li>
-                <li>
-                  <a href="#home">Terms of Service</a>
-                </li>
-                <li>
-                  <a href="#home">Disclaimer</a>
-                </li>
-                <li>
-                  <a href="#home">Submit Grievance</a>
-                </li>
-                <li>
-                  <a href="#home">Features</a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="footer-column">
-              <h3>Community</h3>
-              <ul>
-                <li>
-                  <a href="#home">Subscription</a>
-                </li>
-                <li>
-                  <a href="#home">Courses</a>
-                </li>
-                <li>
-                  <a href="#home">Webinar</a>
-                </li>
-              </ul>
-            </div>
-          </div>
+      </div>
+      <div className="flex flex-row gap-[4rem]">
+        <div className="flex flex-col justify-around w-full h-[220px]">
+          <span className="w-[48px] h-[15px] font-medium text-[1.2rem] leading-[14.7px] mb-4 text-white">
+            Product
+          </span>
+          {ProductList.map((product) => (
+            <span
+              key={product}
+              className="font-normal text-[0.9rem] leading-[14.7px] text-dimWhite hover:text-white"
+            >
+              {product}
+            </span>
+          ))}
+        </div>
+        <div className="flex flex-col justify-between w-[117px] h-[110px]">
+          <span className="w-[48px] h-[15px] font-medium text-[1.2rem] leading-[14.7px] mb-4 text-white">
+            Community
+          </span>
+          {CommunityList.map((community) => (
+            <span
+              key={community}
+              className="font-normal text-[0.9rem] leading-[14.7px] text-dimWhite hover:text-white"
+            >
+              {community}
+            </span>
+          ))}
         </div>
       </div>
     </div>
   );
 };
-
 export default Footer;

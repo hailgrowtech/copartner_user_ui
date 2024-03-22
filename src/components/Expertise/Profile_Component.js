@@ -17,7 +17,7 @@ const formatFollowers = (followers) => {
 
 const ExpertCard = ({ expert }) => {
   return (
-    <div className='profile-div rounded-2xl'>
+    <div className='profile-div rounded-xl'>
       <div className="background-wrapper">
         <img src={userBck} alt="Background" className="background-image" />
         <div>
@@ -48,7 +48,7 @@ const ExpertCard = ({ expert }) => {
 const Expertise = () => {
   return (
     <section className="section">
-      <div className="expert-grid md:px-6">
+      <div className="expert-grid">
         {expertsData.map((expert) => (
           <ExpertCard key={expert.id} expert={expert} />
         ))}

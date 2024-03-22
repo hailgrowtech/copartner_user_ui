@@ -6,7 +6,7 @@ import { IoIosArrowForward } from "react-icons/io";
 
 const SingleExpertCard = () => {
   return (
-    <div className='profile-div rounded-2xl'>
+    <div className='profile-div rounded-xl'>
       <div className="background-wrapper">
         <img src={userBck} alt="Background" className="background-image" />
         <div>

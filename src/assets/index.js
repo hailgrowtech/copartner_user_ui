@@ -12,6 +12,10 @@ import hamburgerImg from './Group 5796.png';
 import hamburgerBg from './middle-left-2.png.png';
 import homeBg from './Div.png';
 import LogOut from './Login 2.png';
+import instagram from './instagram.png';
+import facebook from './facebook.png';
+import twitter from './twitter.png';
+import linkedin from './linkedin.png';
 
 export {
     logo,
@@ -27,5 +31,9 @@ export {
     hamburgerImg,
     hamburgerBg,
     homeBg,
-    LogOut
+    LogOut,
+    facebook,
+    linkedin,
+    twitter,
+    instagram
 }

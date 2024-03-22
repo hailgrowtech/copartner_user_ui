@@ -3,7 +3,7 @@
 .footer-container {
   display: flex;
   justify-content: space-between;
-  padding: 0 8.5rem;
+  padding: 0 7rem;
 }
 
 .footer-left {

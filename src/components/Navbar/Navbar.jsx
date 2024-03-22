@@ -13,13 +13,13 @@ const Navbar = () => {
 
   useEffect(() => {
     if (toggle) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
 
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [toggle]);
 
@@ -150,7 +150,9 @@ const Navbar = () => {
         </div>
       </div>
       <Outlet />
-      <Footer />
+      <div className={`sm:pb-[6rem] pb-6`}>
+        <Footer />
+      </div>
     </>
   );
 };
