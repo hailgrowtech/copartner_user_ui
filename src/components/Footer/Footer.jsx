@@ -1,15 +1,20 @@
 import React from "react";
 import { logo, facebook, linkedin, twitter, instagram } from "../../assets";
+import { Link } from "react-router-dom";
 const ProductList = [
-  "About Us",
-  "FAQ's",
-  "Privacy Policy",
-  "Terms of Service",
-  "Disclaimer",
-  "Submit Grievance",
-  "Features",
+  { name: "About Us", link: "/about" },
+  { name: "FAQ's", link: "/faqs" },
+  { name: "Privacy Policy", link: "/privacy" },
+  { name: "Terms of Service", link: "/terms_of_service" },
+  { name: "Disclaimer", link: "/disclaimer" },
+  { name: "Submit Grievance", link: "/grievance" },
+  { name: "Features", link: "/features" },
 ];
-const CommunityList = ["Subscription", "Courses", "Webinar"];
+const CommunityList = [
+  { name: "Subscription", link: "/subscription" },
+  { name: "Courses", link: "/courses" },
+  { name: "Webinar", link: "/webinar" },
+];
 const Footer = () => {
   return (
     <div className="md:w-[1440px] w-full md:h-[198px] h-[506px] md:pt-[6rem] pt-[1rem] justify-around border-t border-solid border-white border-opacity-10 flex md:flex-row flex-col items-center">
@@ -40,25 +45,27 @@ const Footer = () => {
             Product
           </span>
           {ProductList.map((product) => (
-            <span
-              key={product}
-              className="font-normal text-[0.9rem] leading-[14.7px] text-dimWhite hover:text-white"
+            <Link
+              to={product.link}
+              key={product.link}
+              className="font-normal text-[0.9rem] text-left leading-[14.7px] text-dimWhite hover:text-white"
             >
-              {product}
-            </span>
+              {product.name}
+            </Link>
           ))}
         </div>
-        <div className="flex flex-col justify-between w-[117px] h-[110px]">
+        <div className="flex flex-col justify-between w-[117px] h-[105px] mt-[5px]">
           <span className="w-[48px] h-[15px] font-medium text-[1.2rem] leading-[14.7px] mb-4 text-white">
             Community
           </span>
           {CommunityList.map((community) => (
-            <span
-              key={community}
-              className="font-normal text-[0.9rem] leading-[14.7px] text-dimWhite hover:text-white"
+            <Link
+              to={community.link}
+              key={community.link}
+              className="font-normal text-[0.9rem] leading-[14.7px] text-dimWhite text-left hover:text-white"
             >
-              {community}
-            </span>
+              {community.name}
+            </Link>
           ))}
         </div>
       </div>

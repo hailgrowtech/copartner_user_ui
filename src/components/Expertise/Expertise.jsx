@@ -61,7 +61,7 @@ const Expertise = () => {
             <div className="flex-col-6 font-inter font-bold md:text-[50px] text-[30px] subheading-gradient md:leading-[50px] leading-[51px] text-white md:mb-6">
               Our Expertise
             </div>
-            <div className="flex-col-6 font-normal text-left text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
+            <div className="flex-col-6 font-normal md:text-left text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
               Dive into the expertise of our{" "}
               <span className="text-white">
                 SEBI registered research analysts, <br /> guiding you towards

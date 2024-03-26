@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { logo, menu, hamburgerBg, LogOut } from "../../assets";
 import { navLinks } from "../../constants";
 import styles from "../../style";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 
@@ -10,6 +10,7 @@ const Navbar = () => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     if (toggle) {
@@ -39,6 +40,20 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const currentPath = location.pathname;
+
+    const activeNav = navLinks.find(
+      (nav) =>
+        `/${nav.id}` === currentPath ||
+        (nav.id === "home" && currentPath === "/")
+    );
+
+    if (activeNav) {
+      setActive(activeNav.title);
+    }
+  }, [location]);
+
   return (
     <>
       <div
@@ -60,10 +75,10 @@ const Navbar = () => {
                   key={nav.id}
                   onClick={() => setActive(nav.title)}
                   className={`font-poppins font-normal cursor-pointer text-[16px]
-                        ${active === nav.title ? "text-white" : "text-dimWhite"}
-                        ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
+                    ${active === nav.title ? "text-white" : "text-dimWhite"}
+                    ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
                 >
-                  <Link to={`${nav.id === "home" ? "/" : nav.id}`}>
+                  <Link to={`${nav.id === "home" ? "/" : `/${nav.id}`}`}>
                     {nav.title}
                   </Link>
                 </li>
