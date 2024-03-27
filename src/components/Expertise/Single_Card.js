@@ -1,5 +1,5 @@
 import React from "react";
-import { arrow, stars, telegram, userBck, userImg } from "../../assets";
+import { stars, userBck, userImg } from "../../assets";
 
 const Card = () => {
   return (
@@ -26,7 +26,7 @@ const Card = () => {
               Stock Market
             </span>
           </div>
-          <div className="w-[32px] h-[15px] flex gap-2">
+          <div className="w-[32px] h-[15px] flex gap-1">
             <img src={stars} alt="stars" className="w-[11.5px] h-[11.5px]" />
             <span className="text-white font-[600] text-[11.5px] leading-[14px]">
               4.4

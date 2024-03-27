@@ -1,86 +1,77 @@
-import React, { useState, useEffect } from 'react';
-import './Testimonials.css';
-import LeftIcon from '../../assets/Testimonials/pagination-default.svg (1).svg';
-import RightIcon from '../../assets/Testimonials/pagination-default.svg.svg';
-import { testimonialsData } from '../../constants';
+import React, { useState, useEffect } from "react";
+import { testimonialLeft, testimonialRight } from "../../assets";
+import { testimonialsData } from "../../constants";
 
 const Testimonials = () => {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [direction, setDirection] = useState('next'); // New state to track the direction of the slide
-
-  useEffect(() => {
-    // Whenever currentTestimonial changes, add the 'enter' class to start the animation
-    const testimonialElement = document.querySelector('.testimonial');
-    if (testimonialElement) {
-      testimonialElement.classList.remove('testimonial-enter-active');
-      setTimeout(() => {
-        testimonialElement.classList.add('testimonial-enter-active');
-      }, 0); // Timeout ensures class is added after re-render
+  
+  const [count, setCount] = useState(0);
+  const handdlePrevious = () => {
+    if (count === 0) {
+      setCount(testimonialsData.length - 1);
+    } else {
+      setCount(count - 1);
     }
-  }, [currentTestimonial]);
-
-  const nextTestimonial = () => {
-    setDirection('next');
-    setCurrentTestimonial((prev) => (prev === testimonialsData.length - 1 ? 0 : prev + 1));
   };
-
-  const prevTestimonial = () => {
-    setDirection('prev');
-    setCurrentTestimonial((prev) => (prev === 0 ? testimonialsData.length - 1 : prev - 1));
+  const handleNext = () => {
+    if (count === testimonialsData.length - 1) {
+      setCount(0);
+    } else {
+      setCount(count + 1);
+    }
   };
-
-  const Dots = () => (
-    <div className="pagination-dots">
-      {testimonialsData.map((_, index) => (
-        <span
-          key={index}
-          onClick={() => setCurrentTestimonial(index)}
-          className={index === currentTestimonial ? 'dot active-btn' : 'dot'}
-        />
-      ))}
-    </div>
-  );
-
-  // Calculate the animation class based on the direction
-  const getAnimationClass = () => {
-    return direction === 'next' ? 'testimonial-enter' : 'testimonial-exit';
-  };
-
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      handleNext();
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [count]);
+  
   return (
-    <div className="testimonial-section">
-      <div className="testimonial-center">
-        <div className="testimonial-slider md:mt-0 mt-4">
+    <div className="flex flex-col items-center justify-center sm:py-[1rem] py-6">
+      <div className="flex justify-between md:gap-[6rem] gap-0 items-center">
+        <button onClick={handdlePrevious}>
           <img
-            src={LeftIcon}
-            className="testimonial-arrow"
-            onClick={prevTestimonial}
-            alt="Previous Testimonial"
+            src={testimonialLeft}
+            alt="LeftIcon"
+            className="md:w-[58px] md:h-[58px] w-[44px] h-[44px]"
           />
-          <div
-            key={currentTestimonial}
-            className={`testimonial ${getAnimationClass()}`}
-          >
-            <p>{testimonialsData[currentTestimonial].text}</p>
-            <div className="author-info">
-              <img
-                src={testimonialsData[currentTestimonial].image}
-                alt={`Author ${testimonialsData[currentTestimonial].author}`}
-                className="author-image"
-              />
-              <div className="author-details">
-                <h5 className="author-name">{testimonialsData[currentTestimonial].author}</h5>
-                <h6 className="author-designation">{testimonialsData[currentTestimonial].designation}</h6>
+        </button>
+        <div className="flex-grow flex flex-col justify-center gap-[4rem] items-center">
+          <div className="flex flex-col justify-center items-center text-white">
+            <span className="md:w-[678px] md:h-[343px] w-[283px] h-[262px] font-[400] md:text-[26px] text-[14px] md:leading-[44px] leading-[23px] text-lightWhite text-center flex mb-4 items-center">
+              {testimonialsData[count].text}
+            </span>
+            <div className="flex flex-col md:w-[252px] w-[150px] md:h-[56px] h-[30px] justify-center items-center">
+              <div className="flex flex-row gap-[10px]">
+                <img
+                  src={testimonialsData[count].image}
+                  alt="OUR_USERS"
+                  className="md:w-[40px] w-[27px] md:h-[40px] h-[27px]"
+                />
+                <div className="flex flex-col">
+                  <span className="md:h-[25px] h-[13px] font-[700] md:text-[18px] text-[10px] md:leading-[23px] leading-[12px] text-lightWhite">
+                    {testimonialsData[count].author}
+                  </span>
+                  <span className="md:h-[19px] h-[10px] font-[300] md:text-[14px] text-[8px] md:leading-[18.4px] leading-[10px] text-dimWhite">
+                    {testimonialsData[count].designation}
+                  </span>
+                </div>
               </div>
             </div>
+            <div className="flex justify-center gap-[6px] mt-[1rem]">
+              <button className="w-[8px] h-[8px] bg_three-dots_active rounded-[4px]"></button>
+              <button className="w-[8px] h-[8px] bg_three-dots rounded-[4px]"></button>
+              <button className="w-[8px] h-[8px] bg_three-dots rounded-[4px]"></button>
+            </div>
           </div>
-          <img
-            src={RightIcon}
-            className="testimonial-arrow"
-            onClick={nextTestimonial}
-            alt="Next Testimonial"
-          />
         </div>
-        <Dots />
+        <button onClick={handleNext}>
+          <img
+            src={testimonialRight}
+            alt="RightIcon"
+            className="md:w-[58px] md:h-[58px] w-[44px] h-[44px]"
+          />
+        </button>
       </div>
     </div>
   );

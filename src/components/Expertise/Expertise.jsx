@@ -16,9 +16,9 @@ const Expertise = () => {
           <div className="flex flex-row justify-between items-center w-full">
             <span
               className="flex-1 font-inter font-bold md:text-[72px] text-[36px]
-      text-gradient md:leading-[88px] leading-[44px] text-center md:mb-8 mb-2"
+      text-gradient md:leading-[88px] leading-[44px] text-center md:mb-8 mb-2 pb-3"
             >
-              Your Team, <br /> Reimagined.
+              Analyst Expertise Across <br /> Market Segments
             </span>
           </div>
           <div className="flex flex-row justify-between items-center w-full mb-8">

@@ -16,6 +16,8 @@ import instagram from './instagram.png';
 import facebook from './facebook.png';
 import twitter from './twitter.png';
 import linkedin from './linkedin.png';
+import testimonialLeft from './Testimonials/pagination-default.svg (1).svg'
+import testimonialRight from './Testimonials/pagination-default.svg.svg'
 
 export {
     logo,
@@ -35,5 +37,7 @@ export {
     facebook,
     linkedin,
     twitter,
-    instagram
+    instagram,
+    testimonialLeft,
+    testimonialRight
 }

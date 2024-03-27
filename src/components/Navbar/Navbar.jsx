@@ -66,7 +66,7 @@ const Navbar = () => {
         <div className={`${styles.boxWidth}`}>
           <nav className="w-full flex md:py-5 py-4 justify-between items-center">
             <Link to="/">
-              <img src={logo} alt="LOGO" className="w-[134px] h-[38px]" />
+              <img src={logo} alt="LOGO" className="w-[143px] h-[39px]" />
             </Link>
 
             <ul className="list-none sm:flex hidden justify-center items-center flex-1">
