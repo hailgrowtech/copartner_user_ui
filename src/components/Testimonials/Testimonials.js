@@ -3,8 +3,14 @@ import { testimonialLeft, testimonialRight } from "../../assets";
 import { testimonialsData } from "../../constants";
 
 const Testimonials = () => {
-  
+
+  const [activeDot, setActiveDot] = useState(0);
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setActiveDot(count);
+  }, [count]);
+  
   const handdlePrevious = () => {
     if (count === 0) {
       setCount(testimonialsData.length - 1);
@@ -25,7 +31,7 @@ const Testimonials = () => {
     }, 5000);
     return () => clearInterval(timer);
   }, [count]);
-  
+
   return (
     <div className="flex flex-col items-center justify-center sm:py-[1rem] py-6">
       <div className="flex justify-between md:gap-[6rem] gap-0 items-center">
@@ -59,9 +65,16 @@ const Testimonials = () => {
               </div>
             </div>
             <div className="flex justify-center gap-[6px] mt-[1rem]">
-              <button className="w-[8px] h-[8px] bg_three-dots_active rounded-[4px]"></button>
-              <button className="w-[8px] h-[8px] bg_three-dots rounded-[4px]"></button>
-              <button className="w-[8px] h-[8px] bg_three-dots rounded-[4px]"></button>
+              {testimonialsData.map((_, index) => (
+                <button
+                  key={index}
+                  className={`w-[8px] h-[8px] rounded-[4px] ${
+                    index === activeDot
+                      ? "bg_three-dots_active"
+                      : "bg_three-dots"
+                  }`}
+                ></button>
+              ))}
             </div>
           </div>
         </div>
