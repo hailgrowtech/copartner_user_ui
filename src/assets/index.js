@@ -6,8 +6,8 @@ import userBck from './userBck.png';
 import stars from './stars.png';
 import telegram from './telegram.png';
 import arrow from './arrow.png'
-import clientImg from './Expertise/image 11.png';
-import testimonialImg from './Testimonials/Ellipse 1483.png';
+import clientImg from './userImg.png';
+import testimonialImg from './testimonialProfile.png';
 import hamburgerImg from './Group 5796.png';
 import hamburgerBg from './middle-left-2.png.png';
 import homeBg from './Div.png';
@@ -16,8 +16,8 @@ import instagram from './instagram.png';
 import facebook from './facebook.png';
 import twitter from './twitter.png';
 import linkedin from './linkedin.png';
-import testimonialLeft from './Testimonials/pagination-default.svg (1).svg'
-import testimonialRight from './Testimonials/pagination-default.svg.svg'
+import testimonialLeft from './testimonialRight.svg'
+import testimonialRight from './testimonialLeft.svg'
 
 export {
     logo,
