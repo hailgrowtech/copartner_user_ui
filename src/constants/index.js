@@ -88,7 +88,7 @@ export const expertsData = [
   },
 
   {
-    id: 6,
+    id: 5,
     image: clientImg,
     name: 'John Doe',
     role: 'Stock Market',
@@ -110,7 +110,7 @@ export const courses = [
     experience: '7+',
     duration: '3 hrs',
     session: '3',
-    price: '1,999/-'
+    price: '₹1,999/-'
   },
   {
     imageUrl: courseImg,
@@ -120,7 +120,7 @@ export const courses = [
     experience: '5+',
     duration: '2 hrs',
     session: '2',
-    price: '1,499/-'
+    price: '₹1,499/-'
   },
   
   {
@@ -131,7 +131,7 @@ export const courses = [
       experience: '5+',
       duration: '2 hrs',
       session: '2',
-      price: '1,499/-'
+      price: '₹1,499/-'
     },
   {
       imageUrl: courseImg,
@@ -141,7 +141,7 @@ export const courses = [
       experience: '5+',
       duration: '2 hrs',
       session: '2',
-      price: '1,499/-'
+      price: '₹1,499/-'
     },
   {
       imageUrl: courseImg,
@@ -151,8 +151,80 @@ export const courses = [
       experience: '5+',
       duration: '2 hrs',
       session: '2',
-      price: '1,499/-'
+      price: '₹1,499/-'
     },
+];
+
+export const continueCoursesData = [
+  {
+    imageUrl: courseImg,
+    title: 'Continue Course 1',
+    image: clientImg,
+    instructor: 'Instructor 1',
+    followers: 1500,
+    experience: '2',
+    duration: '2',
+    session: '10',
+    completedSession: '5', 
+  },
+  {
+    imageUrl: courseImg,
+    title: 'Continue Course 2',
+    image: clientImg,
+    instructor: 'Instructor 2',
+    followers: 2000,
+    experience: '3',
+    duration: '3',
+    session: '12',
+    completedSession: '7',
+  },
+  {
+    imageUrl: courseImg,
+    title: 'Continue Course 3',
+    image: clientImg,
+    instructor: 'Instructor 3',
+    followers: 1800,
+    experience: '2.5',
+    duration: '2.5',
+    session: '8',
+    completedSession: '4',
+  }
+];
+
+export const completedCoursesData = [
+  {
+    title: 'Completed Course 1',
+    imageUrl: courseImg,
+    image: clientImg,
+    instructor: 'Instructor 1',
+    experience: '2 yrs',
+    followers: '1000+',
+    duration: '4 weeks',
+    session: '20',
+    completedSession: '20',
+  },
+  {
+    title: 'Completed Course 2',
+    imageUrl: courseImg,
+    image: clientImg,
+    instructor: 'Instructor 2',
+    experience: '3 yrs',
+    followers: '1500+',
+    duration: '6 weeks',
+    session: '30',
+    completedSession: '30',
+  },
+  {
+    title: 'Completed Course 2',
+    imageUrl: courseImg,
+    image: clientImg,
+    instructor: 'Instructor 2',
+    experience: '3 yrs',
+    followers: '1500+',
+    duration: '6 weeks',
+    session: '30',
+    completedSession: '30',
+  },
 ];
 
 // export const hero_experience = [

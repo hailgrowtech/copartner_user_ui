@@ -19,5 +19,5 @@ export {
     stars,
     telegram,
     clientImg,
-    courseImg
+    courseImg,
 }
