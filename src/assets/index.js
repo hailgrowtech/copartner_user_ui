@@ -12,7 +12,7 @@ import Ads from './Ads.png';
 import stock_1 from './stockImg_1.png';
 import stock_2 from './stockImg_2.png';
 import stock_3 from './stockImg_3.png';
-import secondExpertise from './Div [flex].png';
+import secondExpertise from './secondExpertise.png';
 import testimonialRight from './testimonialRight.png';
 import testimonialLeft from './testimonialLeft.png';
 import testimonialProfile from './testimonialProfile.png';
