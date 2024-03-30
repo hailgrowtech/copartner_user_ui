@@ -1,12 +1,12 @@
 import Navbar from "./Navbar";
-import Hero from "./Hero";
+import Home from "./Home/Hero";
 import Expertise from "./Expertise";
 import Subscription from "./Subscription";
 import ErrorPage from "./ErrorPage"
 
 export {
     Navbar,
-    Hero,
+    Home,
     Subscription,
     Expertise,
     ErrorPage
