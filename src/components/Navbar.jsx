@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { logo, menu, hamburgerBg, LogOut } from "../../assets";
-import { navLinks } from "../../constants";
-import styles from "../../style";
+import { logo, menu, hamburgerBg, LogOut } from "../assets";
+import { navLinks } from "../constants";
+import styles from "../style";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import Footer from "../Footer/Footer";
+import { Footer } from ".";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 
 const Navbar = () => {

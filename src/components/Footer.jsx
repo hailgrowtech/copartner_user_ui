@@ -1,7 +1,7 @@
 import React from "react";
-import { logo, facebook, linkedin, twitter, instagram } from "../../assets";
+import { logo, facebook, linkedin, twitter, instagram } from "../assets";
 import { Link } from "react-router-dom";
-import Testimonials from "../Testimonials/Testimonials";
+import { Testimonials } from ".";
 const ProductList = [
   { name: "About Us", link: "/about" },
   { name: "FAQ's", link: "/faqs" },

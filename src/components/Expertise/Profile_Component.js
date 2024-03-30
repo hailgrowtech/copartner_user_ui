@@ -1,7 +1,6 @@
 // src/components/assets/expertise/expertise.js
 
 import React from 'react';
-import './Expertise.css';
 import { expertsData } from '../../constants';
 import { userBck, stars, arrow, telegram } from '../../assets';
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import './Expertise.css';
 import { clientImg, stars, userBck, telegram, arrow } from '../../assets';
 
 const SingleExpertCard = () => {
