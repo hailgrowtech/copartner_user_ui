@@ -9,7 +9,7 @@ const CourseCardsCarousel = () => {
   const [isHovered, setIsHovered] = useState(false);
   const carouselRef = useRef(null);
 
-  const carouselItems = courses.slice(0, 5);
+  const carouselItems = courses.slice(0, 6);
 
   useEffect(() => {
     const intervalId = setInterval(() => {

@@ -2,6 +2,7 @@ import React from 'react';
 import styles from "../style";
 import {ExpertCard, CourseInfo, RecommendCourse} from '../components/index.js'
 import Card from "./Profile_Component";
+import CourseCardsCarousel from './CourseCardsCarousel.js';
 
 
 
@@ -40,11 +41,16 @@ const SubscriptionCourseDetail = () => {
           <div className="flex-col-6 font-normal md:text-left text-center text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
             Dive into the expertise of our{" "}
             <span className="text-white">
-            Uncover trading secrets with courses led by <br /> SEBI Registered research analysts.
+            Uncover trading secrets with courses led by SEBI Registered research analysts.
             </span>
           </div>
         </div>
+        <div className='md:block hidden'>
         <RecommendCourse />
+        </div>
+        <div className='md:hidden'>
+        <CourseCardsCarousel/>
+        </div>
           </section>
         </div>
       </div>

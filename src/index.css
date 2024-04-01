@@ -175,6 +175,7 @@
 
 .custom-progress-bar {
   height: 5px;
+  margin: 8px 0;
   width: 100%;
   background-color: #FFFFFF;
   border-radius: 10px;
@@ -188,11 +189,10 @@
 
 
 
-/*Carousel */
 .carousel {
-  width: 377px;
-  margin-right: 5px;
-  margin-left: 20px;
+  width: 370px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .carousel-inner {
@@ -202,11 +202,13 @@
 
 .carousel-slide {
   flex: 0 0 auto;
-  width: 380px;
+  width: 370px;
   padding: 1px;
   margin-right: -10px;
   cursor: pointer;
 }
+
+
 
 
 /* ExpertCard Background Positioning */
@@ -220,4 +222,11 @@
 
 .subscription-RA-img {
   mask-image: linear-gradient(rgba(0, 0, 0, 1) 70%, transparent);
+}
+
+@media (max-width: 1060px) {
+  .subscription-RA-bg {
+      background-size: 22rem;
+      background-position: 22vw 6vh;
+  }
 }

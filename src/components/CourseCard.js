@@ -8,7 +8,7 @@ const CourseCard = ({ courseData }) => {
 
   return (
     <div className="w-full md:w-1/3 p-2 rounded-md mb-8 md:mb-0">
-      <div className="w-full overflow-hidden relative rounded-lg hover:bg-[#18181b8c] hover:border-[#f4f4f51d] transition-all duration-300">
+      <div className="w-full overflow-hidden relative rounded-lg hover:bg-[#18181b8c] bg-[#18181b8c] hover:border-[#f4f4f51d] border-[#f4f4f51d] transition-all duration-300">
 
         <img
           src={imageUrl}

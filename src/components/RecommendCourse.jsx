@@ -1,12 +1,12 @@
 import React from 'react';
 import starImage from '../assets/Stars Minimalistic.png';
 import telegramImage from '../assets/telegram.png';
-import { recommendCoursesData } from '../constants';
+import { courses } from '../constants';
 
 const RecommendCourse = () => {
   return (
     <div className="flex flex-wrap justify-center">
-      {recommendCoursesData.slice(0, 6).map((course, index) => (
+      {courses.slice(0, 6).map((course, index) => (
         <div key={index} className="w-full md:w-1/3 p-3 rounded-md mb-8 md:mb-0">
           <div className="w-full overflow-hidden relative rounded-lg bg-[#18181ba6] border border-solid border-[#f4f4f51d]">
             <img

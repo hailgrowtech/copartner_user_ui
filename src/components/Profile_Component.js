@@ -48,7 +48,7 @@ const ExpertCard = ({ expert }) => {
         <div className="prize-subscription text-white">
           <button className='flex items-center mx-auto py-1.5 px-5 border-solid border-2 border-[#4e4e4ecc] rounded-3xl'>
             <img src={telegramImage} alt="Telegram" className='md:w-6 md:h-6 w-4 h-4 me-3' />
-            Join Telegram
+            <p className='text-[8px] md:text-lg'>Join Telegram</p>
             <IoIosArrowForward className='ms-3' />
           </button>
         </div>
@@ -59,7 +59,7 @@ const ExpertCard = ({ expert }) => {
 
 const Expertise = () => {
   return (
-    <section className="section px-1 md:px-16">
+    <section className="section px-1 md:px-5">
       <div className="expert-grid grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
         {expertsData.map((expert) => (
           <ExpertCard key={expert.id} expert={expert} />

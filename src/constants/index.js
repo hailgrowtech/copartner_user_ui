@@ -153,6 +153,16 @@ export const courses = [
       session: '2',
       price: '₹1,499/-'
     },
+    {
+      imageUrl: courseImg,
+      title: 'Insights at your fingertips',
+      instructor: 'Rohit Aggi',
+      followers: '3.1k',
+      experience: '7+',
+      duration: '3 hrs',
+      session: '3',
+      price: '₹1,999/-'
+    },
 ];
 
 export const continueCoursesData = [
@@ -230,6 +240,7 @@ export const completedCoursesData = [
 export const recommendCoursesData = [
   {
     imageUrl: courseImg,
+    rating: '4.4',
     title: 'Continue Course 1',
     image: clientImg,
     instructor: 'Instructor 1',
@@ -242,6 +253,7 @@ export const recommendCoursesData = [
   {
     imageUrl: courseImg,
     title: 'Continue Course 2',
+    rating: '4.4',
     image: clientImg,
     instructor: 'Instructor 2',
     followers: 2000,
@@ -253,6 +265,7 @@ export const recommendCoursesData = [
   {
     imageUrl: courseImg,
     title: 'Continue Course 3',
+    rating: '4.4',
     image: clientImg,
     instructor: 'Instructor 3',
     followers: 1800,
@@ -264,6 +277,7 @@ export const recommendCoursesData = [
   {
     imageUrl: courseImg,
     title: 'Continue Course 3',
+    rating: '4.4',
     image: clientImg,
     instructor: 'Instructor 3',
     followers: 1800,
@@ -275,6 +289,7 @@ export const recommendCoursesData = [
   {
     imageUrl: courseImg,
     title: 'Continue Course 3',
+    rating: '4.4',
     image: clientImg,
     instructor: 'Instructor 3',
     followers: 1800,
@@ -286,6 +301,7 @@ export const recommendCoursesData = [
   {
     imageUrl: courseImg,
     title: 'Continue Course 3',
+    rating: '4.4',
     image: clientImg,
     instructor: 'Instructor 3',
     followers: 1800,
@@ -295,6 +311,42 @@ export const recommendCoursesData = [
     completedSession: '4',
   }
 ];
+
+export const expertData = [
+{
+  name: "Arun Kumar",
+  role: "Futures & Options",
+  experience: '7years',
+  followers: "31.5k",
+  description:
+    "Take your team up a level with easy-to-use tools, effortless templates and efficient workflows.",
+  rating: 4.4,
+  image: userImg
+}
+];
+
+export const sessionsData = Array.from({ length: 5 }, (_, index) => ({
+  id: index + 1,
+  title: `Session ${index + 1} Title`,
+  description: 'Get full control of your business finances.',
+  duration: '20min',
+}));
+
+// Create an object containing course information
+export const singleCourse = {
+  imageUrl: courseImg,
+  title: 'Course Title',
+  level: 'Medium',
+  duration: '7 hr 20m',
+  sessions: 5,
+  completedSessions: 3,
+  amount: '₹ 1,999/-',
+  buyDate: '28/01/2024',
+  access: 'Lifetime Access',
+  sessionsDetails: sessionsData,
+  aboutCourse:
+    "Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam sagittis nisl faucibus. Sed adipiscing condimentum volutpat cursus in risus sed sit. Ipsum aliquam urna porttitor eu. Volutpat ac sit at semper tortor vulputate. Purus pulvinar vestibulum cras odio. Congue amet sagittis dui pellentesque consectetur pellentesque et fermentum. Arcu elementum tempor nulla quis aenean fusce ut vulputate. A quam vitae magna pellentesque. Ut volutpat adipiscing purus faucibus duis orci. Accumsan venenatis eu vitae interdum dolor. Nunc at nibh habitant condimentum vitae. Semper luctus vulputate lacinia sit diam tellus id vitae. Morbi aliquet bibendum scelerisque vestibulum aliquet venenatis eu et. Proin bibendum eget lectus consequat id vitae. Eu hendrerit lobortis turpis quam ornare egestas tincidunt donec nulla. Justo nisi ac diam mauris cursus turpis lacus. Vulputate cras sem nec id eget. Cras lectus vestibulum dictum enim. Mauris ultrices etiam ac facilisis malesuada. Odio accumsan fringilla malesuada faucibus fusce pellentesque. Non nunc cursus nisl odio. Pellentesque laoreet molestie proin tincidunt cursus. Integer non odio turpis ac sem aliquam in ante congue. Erat pharetra sed semper duis duis penatibus. Ut congue interdum cras convallis eu nibh quis. Arcu at accumsan neque ultricies tellus massa leo nulla sed.",
+};
 
 // export const hero_experience = [
 //   {
