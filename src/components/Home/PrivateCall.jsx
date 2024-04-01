@@ -22,6 +22,7 @@ const PrivateCall = () => {
       </div>
     </div>
     <CourseList />
+    
     </>
   );
 };

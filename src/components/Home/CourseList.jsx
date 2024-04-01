@@ -3,7 +3,8 @@ import StockPlatform from "./StockPlatform";
 import ExpertiseCourse from "./ExpertiseCourse";
 import { courseExpertise_data } from "../../constants";
 import "./CourseList.css";
-import ContinueCardsCarousel from "./ContinueCardsCarousel";
+import CourseCardsCarousel from "./CourseCardsCarousel";
+
 const CourseList = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
@@ -20,7 +21,7 @@ const CourseList = () => {
 
   return (
     <>
-      <div className="{`flex flex-col items-center justify-center md:py-[4rem] py-[0]`}">
+      <div className="flex flex-col items-center justify-center md:py-[4rem] py-[0]">
         <div className="flex sm:justify-between justify-center items-center flex-col sm:flex-row gap-2">
           <span className="font-poppins h-[52px] font-[700] md:text-[50px] text-[30px] sm:text-start text-center text-gradient-2 leading-[51px]">
             Course By Expertise
@@ -39,7 +40,7 @@ const CourseList = () => {
         {isSmallScreen ? (
           <div className="md:hidden flex">
             {courseExpertise_data.map((course, index) => (
-              <ContinueCardsCarousel key={index} courseData={course} />
+              <CourseCardsCarousel key={index} courseData={course} />
             ))}
           </div>
         ) : (
@@ -51,7 +52,7 @@ const CourseList = () => {
         )}
       </div>
 
-      <button className="md:w-[147px] md:h-[40px] md:flex hidden items-center justify-center hidden flex w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px] mx-[34rem]">
+      <button className="md:w-[147px] md:h-[40px] hidden md:flex items-center justify-center flex w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px] mx-[34rem]">
           Explore More
       </button>
 

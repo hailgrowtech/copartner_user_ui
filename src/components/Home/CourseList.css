@@ -6,18 +6,22 @@
   }
 
   .carousel {
-    /* width: 377px; */
+    /* width: 500px; */
     margin-right: 5px;
-    margin-left: 20px;
+    margin-left: 5px;
   }
   .carousel-inner {
     display: flex;
-    transition: transform 15.5s ease;
-  }
+    transition: transform 0.5s ease;
+    -webkit-transition: transform 0.5s ease;
+    -moz-transition: transform 0.5s ease;
+    -ms-transition: transform 0.5s ease;
+    -o-transition: transform 0.5s ease;
+}
   .carousel-slide {
     flex: 0 0 auto;
-    width: 380px;
+    width: 377px;
     padding: 1px;
-    margin-right: -10px;
+    margin-right: -5px;
     cursor: pointer;
   }
