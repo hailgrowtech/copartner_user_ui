@@ -46,7 +46,7 @@ const ExpertCard = ({ expert }) => {
           {expert.description}
         </div>
         <div className="prize-subscription text-white">
-          <button className='flex items-center mx-auto py-1.5 px-2 border-solid border-2 border-[#4e4e4ecc] rounded-3xl'>
+          <button className='flex items-center mx-auto py-1.5 px-5 border-solid border-2 border-[#4e4e4ecc] rounded-3xl'>
             <img src={telegramImage} alt="Telegram" className='md:w-6 md:h-6 w-4 h-4 me-3' />
             Join Telegram
             <IoIosArrowForward className='ms-3' />

@@ -207,3 +207,17 @@
   margin-right: -10px;
   cursor: pointer;
 }
+
+
+/* ExpertCard Background Positioning */
+.subscription-RA-bg {
+  background-image: url("./assets/userBck.png");
+  background-repeat: no-repeat;
+  background-position: 28vw 1vh;
+  background-size: 55rem;
+  z-index: 50;
+}
+
+.subscription-RA-img {
+  mask-image: linear-gradient(rgba(0, 0, 0, 1) 70%, transparent);
+}

@@ -21,12 +21,12 @@ const Subscription = () => {
         >
           <div className="justify-between items-center w-full">
             <span className="flex-1 font-poppins font-semibold md:text-[62px] text-[36px] text-gradient md:leading-[84px] leading-[48px]">
-              Your Team, <br /> reimagined.
+            Explore Our <br /> Premium Groups
             </span>
             <p className="mt-4 text-center text-white md:text-xl text-sm md:block hidden">
-              Take your team up a level with easy-to-use tools, 
-              <br/>effortless{" "}
-               templates, and efficient workflows.
+            Access premium insights from our expert team, guiding you 
+              <br/>towards successful{" "}
+               trades and informed decisions in the markets.
             </p>
 
             <p className="mt-4 text-center text-white md:text-xl text-sm md:hidden">
@@ -42,7 +42,7 @@ const Subscription = () => {
           Our Expertise
         </h2>
         <p className="font-normal text-[#A1A1AACC] md:text-[18px] text-left text-[11px] md:leading-[28px] leading-[17px] mb-8 px-4">
-          Empower your teams to build better processes, for a better workplace.
+        Dive into the expertise of our SEBI registered research analysts, guiding you towards trading success with precision and insight.
         </p>
         <div className="md:px-10 flex flex-row justify-center">
           <ProfileCard />
@@ -57,8 +57,7 @@ const Subscription = () => {
           <div className="flex-col-6 font-normal md:text-left text-center text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
             Dive into the expertise of our{" "}
             <span className="text-white">
-              SEBI registered research analysts, <br /> guiding you towards
-              trading success with precision and insight.
+            Ready to resume your journey towards mastering the markets?<br />  Dive back into our comprehensive course and pick up right where you left off.
             </span>
           </div>
         </div>
@@ -81,7 +80,7 @@ const Subscription = () => {
             Similar Your Interest Expertises
           </h2>
           <p className="font-normal text-[#A1A1AACC] md:px-[2px] px-[10px] text-center md:text-left md:text-[18px] text-[14px] md:leading-[28px] leading-[17px]">
-            Empower your teams to build better processes for a better workplace.
+          Discover related analysts with similar expertise to enhance your trading decisions and broaden your market insights.
           </p>
         </div>
         <div className="flex justify-center">
@@ -99,8 +98,7 @@ const Subscription = () => {
           <div className="flex-col-6 font-normal md:text-left text-center text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
             Dive into the expertise of our{" "}
             <span className="text-white">
-              SEBI registered research analysts, <br /> guiding you towards
-              trading success with precision and insight.
+            Uncover trading secrets with courses led by <br /> SEBI Registered research analysts.
             </span>
           </div>
         </div>
@@ -126,8 +124,8 @@ const Subscription = () => {
           <div className="flex-col-6 font-normal md:text-left text-center text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
             Dive into the expertise of our{" "}
             <span className="text-white">
-              SEBI registered research analysts, <br /> guiding you towards
-              trading success with precision and insight.
+            Great job completing your course! Keep an eye on your inbox for a detailed summary of  <br /> 
+            your progress and valuable insights to continue your trading journey with confidence.
             </span>
           </div>
         </div>

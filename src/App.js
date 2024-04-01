@@ -1,5 +1,5 @@
 import React from "react";
-import { Expertise, Hero, Navbar, Subscription } from "./components";
+import { Expertise, Hero, Navbar, Subscription, SubscriptionCourseDetail } from "./components";
 import styles from "./style";
 import { ErrorPage } from "./components";
 import {
@@ -40,6 +40,16 @@ function App() {
               <div className={`${styles.flexStart}`}>
                 <div className={`${styles.boxWidth}`}>
                   <Subscription/>
+                </div>
+              </div>
+            }
+          />
+          <Route
+            path="subscription/course"
+            element={
+              <div className={`${styles.flexStart}`}>
+                <div className={`${styles.boxWidth}`}>
+                  <SubscriptionCourseDetail />
                 </div>
               </div>
             }
