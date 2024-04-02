@@ -1,10 +1,10 @@
 import React from 'react';
-import './css/card.css';
-import backgroundImage from '../assets/userBck.png';
-import { expertsData } from '../constants';
-import starImage from "../assets/Stars Minimalistic.png";
-import telegramImage from "../assets/telegram.png";
-import { arrow } from '../assets';
+import '../css/card.css';
+import backgroundImage from '../../assets/userBck.png';
+import { expertsData } from '../../constants';
+import starImage from "../../assets/Stars Minimalistic.png";
+import telegramImage from "../../assets/telegram.png";
+import { arrow } from '../../assets';
 
 const formatFollowers = (followers) => {
   if (followers > 999) {

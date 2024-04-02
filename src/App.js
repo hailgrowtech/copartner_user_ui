@@ -1,8 +1,10 @@
 import React from "react";
-import { Expertise, Navbar, Subscription, SubscriptionCourseDetail } from "./components";
+import { Expertise, Navbar} from "./components";
 import styles from "./style";
 import { ErrorPage } from "./components";
 import Hero from "./components/Home/Hero";
+import Subscription from "./components/Subscription/Subscription";
+import SubscriptionCourseDetail from "./components/Subscription/SubscriptionCourseDetail";
 import {
   Route,
   RouterProvider,

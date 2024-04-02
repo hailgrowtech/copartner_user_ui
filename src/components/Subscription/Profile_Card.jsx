@@ -1,8 +1,8 @@
 import React from 'react';
-import './css/card.css';
-import backgroundImage from '../assets/userBck.png';
-import { expertsData } from '../constants';
-import StarImage from '../assets/Stars Minimalistic.png';
+import '../css/card.css';
+import backgroundImage from '../../assets/userBck.png';
+import { expertsData } from '../../constants';
+import StarImage from '../../assets/Stars Minimalistic.png';
 import { Link } from 'react-router-dom';
 
 const formatFollowers = (followers) => {

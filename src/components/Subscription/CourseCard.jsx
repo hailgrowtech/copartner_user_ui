@@ -1,7 +1,7 @@
 import React from 'react';
-import starImage from '../assets/Stars Minimalistic.png';
-import telegramImage from '../assets/telegram.png';
-import Client from '../assets/image 11 (1).png';
+import starImage from '../../assets/Stars Minimalistic.png';
+import telegramImage from '../../assets/telegram.png';
+import Client from '../../assets/image 11 (1).png';
 
 const CourseCard = ({ courseData }) => {
   const { imageUrl, title, instructor, followers, experience, duration, session, price } = courseData;

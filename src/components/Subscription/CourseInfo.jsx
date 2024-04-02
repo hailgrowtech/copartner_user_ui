@@ -1,12 +1,12 @@
 import React from 'react';
-import calender from '../assets/calender.png';
-import chart from '../assets/chart.png';
-import price from '../assets/Rupee.png';
-import video from '../assets/video.png';
-import rate from '../assets/rateVideo.png';
-import time from '../assets/time.png';
-import devices from '../assets/devices.png';
-import {singleCourse} from '../constants';
+import calender from '../../assets/calender.png';
+import chart from '../../assets/chart.png';
+import price from '../../assets/Rupee.png';
+import video from '../../assets/video.png';
+import rate from '../../assets/rateVideo.png';
+import time from '../../assets/time.png';
+import devices from '../../assets/devices.png';
+import {singleCourse} from '../../constants';
 
 const CourseInfo = () => {
   return (

@@ -1,8 +1,9 @@
 import React from 'react';
-import styles from "../style";
-import {ExpertCard, CourseInfo, RecommendCourse} from '../components/index.js'
+import styles from "../../style.js";
+import {ExpertCard, CourseInfo} from '../index.js'
 import Card from "./Profile_Component";
 import CourseCardsCarousel from './CourseCardsCarousel.jsx';
+import RecommendCourse from './RecommendCourse.jsx';
 
 const SubscriptionCourseDetail = () => {
   return (
@@ -33,17 +34,17 @@ const SubscriptionCourseDetail = () => {
           </section>
           
           <section>
-  <div className="md:flex md:flex-row md:justify-between text-center w-full md:mt-16 mt-10 md:mb-8 mb-1 md:px-[20px]">
-    <div className="subheading-color md:text-[35px]">
-      Course By Expertise
-    </div>
-    <div className="flex-col-6 font-normal md:text-left text-center text-[#A1A1AACC] md:text-[20px] text-[11px] md:leading-[28px] leading-[17px] md:ml-4 md:pl-4 ">
-      <p className='p-4'>
-      Dive into the expertise of our{" "}
-      <span className="text-white">Uncover trading secrets with courses led by SEBI Registered research analysts.</span>
-      </p>
-    </div>
-  </div>
+          <div className="md:flex md:flex-row md:justify-between text-center w-full md:mt-16 mt-10 md:mb-8 mb-1 md:px-[10px]">
+          <div className="flex-col-6 font-inter font-bold md:text-[50px] text-[30px] subheading-color md:leading-[50px] leading-[51px] md:mb-6">
+            Course By Expertise
+          </div>
+          <div className="flex-col-6 font-normal md:text-left text-center text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
+          Unlock the Secrets of Success:{" "}
+            <span className="text-white">
+            Enroll in Our Strategic Stock Market Expertise Courses.
+            </span>
+          </div>
+        </div>
   <div className='md:block hidden'>
     <RecommendCourse />
   </div>
