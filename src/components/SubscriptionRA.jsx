@@ -21,6 +21,7 @@ import CourseCardsCarousel from "./CourseCardsCarousel";
 import CourseCard from "./CourseCard";
 
 const SubscriptionRA = () => {
+
   const carouselItems = courses.slice(0, 5);
 
   return (
@@ -404,18 +405,14 @@ const SubscriptionRA = () => {
                   Buy Now
                 </button>
               </div>
-              <button className="flex items-center md:text-base text-xs">
-                Explore More{" "}
-                <img className="w-4 ms-3" src={arrow} alt="arrow" />
-              </button>
             </div>
           </div>
-          <div className="">
+          <div>
             <div className="md:block hidden">
               <p className="subheading-gradient text-3xl font-bold mb-4">
                 About Course
               </p>
-              <div className="text-[#A1A1AACC] mb-6">
+              <div className="text-[#A1A1AACC] mb-12">
                 <p className="mb-5">
                   Lorem ipsum dolor sit amet consectetur. Et fames faucibus sed
                   porttitor. In amet at et sit donec. Eleifend dui rhoncus sit
@@ -470,9 +467,6 @@ const SubscriptionRA = () => {
                   tellus massa leo nulla sed.
                 </p>
               </div>
-              <button className="flex items-center mb-4">
-                Close <img className="w-4 ms-3" src={arrow} alt="arrow" />
-              </button>
             </div>
             <div className="md:hidden">
               <CourseCardsCarousel />
