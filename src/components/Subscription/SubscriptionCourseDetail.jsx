@@ -7,7 +7,7 @@ import RecommendCourse from './RecommendCourse.jsx';
 
 const SubscriptionCourseDetail = () => {
   return (
-    <div className={`${styles.paddingX}`}>
+    <div className={`${styles.paddingY}`}>
       <div className={`${styles.boxWidth}`}>
         <div className="text-white">
 

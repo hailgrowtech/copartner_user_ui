@@ -2,7 +2,7 @@ import React from 'react';
 import { continueCoursesData } from '../../constants';
 import starImage from '../../assets/Stars Minimalistic.png';
 import telegramImage from '../../assets/telegram.png';
-import { arrow } from '../../assets';
+import arrow from '../../assets/arrow.png'; // Assuming arrow image path
 
 const ContinueCards = () => {
   return (
@@ -77,11 +77,9 @@ const ContinueCards = () => {
               </div>
              
               <div className="mt-4 pt-3 flex justify-center items-center">
-                <button className="continueBtn bg-transparent border rounded-3xl border-[#ffffff6b] text-base py-2 px-8 flex items-center">
+                <button className="continueBtn" style={{ backgroundColor: 'transparent', border: '1px solid #ffffff6b', borderRadius: '20px', padding: '10px 20px', color: 'white', display: 'flex', alignItems: 'center' }}>
                   Continue Course
-                  <div className="w-5 h-5">
-                  <img src={arrow} alt="" />
-                  </div>
+                  <img src={arrow} alt="" className='md:w-5 md:mt-1 w-5 mt-1' style={{ marginLeft: '5px' }} />
                 </button>
               </div>
             </div>
