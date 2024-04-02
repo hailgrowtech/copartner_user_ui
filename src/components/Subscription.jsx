@@ -8,13 +8,14 @@ import CompletedCards from "./CompletedCards";
 import ContinueCardsCarousel from "./ContinueCardsCarousel ";
 import CompletedCardsCarousel from "./CompletedCardsCarousel";
 import CourseCardsCarousel from "./CourseCardsCarousel";
+import './Hero.css'
 
 const Subscription = () => {
   return (
-    <>
+    <div className="background-img-div">
       <section
         id="subscription"
-        className={`flex md:flex-row flex-col ${styles.paddingY}`}
+        className={`flex md:flex-row flex-col ${styles.paddingY} `}
       >
         <div
           className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6 z-10 md:bottom-[10rem] text-center`}
@@ -140,7 +141,7 @@ const Subscription = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

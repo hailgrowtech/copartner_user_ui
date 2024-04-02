@@ -148,7 +148,9 @@ const ContinueCardsCarousel = () => {
                     <div className="mt-4 pt-3 flex justify-center items-center">
                       <button className="bg-transparent border rounded-3xl border-[#ffffff6b] text-base text-white py-2 px-8 flex items-center">
                         Continue Course
+                        <div className="w-5 h-5">
                         <img src={arrow} alt="" />
+                        </div>
                       </button>
                     </div>
                   </div>

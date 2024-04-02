@@ -49,7 +49,9 @@ const ExpertCard = ({ expert }) => {
           <button className='flex items-center mx-auto py-1.5 px-5 border-solid border-2 border-[#4e4e4ecc] rounded-3xl'>
             <img src={telegramImage} alt="Telegram" className='md:w-6 md:h-6 w-4 h-4 me-3' />
             <p className='text-[8px] md:text-lg'>Join Telegram</p>
+            <div className="w-5 h-5">
             <img src={arrow} alt="" />
+            </div>
           </button>
         </div>
       </div>

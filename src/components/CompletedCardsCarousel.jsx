@@ -152,7 +152,9 @@ const CompletedCardsCarousel = () => {
                         <button className="bg-transparent border rounded-3xl border-[#ffffff6b] text-base text-white py-2 px-8 flex items-center">
                           Feedback
                         </button>
+                        {/* <div className="w-5 h-5">
                         <img src={arrow} alt="" />
+                        </div> */}
                       </a>
                     </div>
                   </div>
