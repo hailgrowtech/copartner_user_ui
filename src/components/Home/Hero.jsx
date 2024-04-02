@@ -3,10 +3,11 @@ import styles from "../../style";
 import { arrow } from "../../assets";
 import Expertise from "./Expertise";
 import { expertise_data } from "../../constants";
+import './Hero.css'
 
 const Hero = () => {
   return (
-    <div className={`flex md:flex-col ${styles.paddingX} flex-col md:pt-8 pt-6`}>
+    <div className={`flex md:flex-col ${styles.paddingX} flex-col md:pt-8 pt-6 background-img-div`}>
       <div
         className={`${styles.flexStart} flex-col z-10 relative`}
       >
