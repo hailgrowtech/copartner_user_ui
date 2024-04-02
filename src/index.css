@@ -239,3 +239,40 @@
       background-position: 22vw 6vh;
   }
 }
+
+.carousel-container-desktop {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-desktop {
+  display: flex;
+  align-items: center;
+  overflow: hidden; /* Hide overflowing content */
+}
+
+.carousel-inner-desktop {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-slide-desktop {
+  flex: 0 0 auto;
+  width: 300px; /* Adjust as needed */
+  margin-right: 10px; /* Adjust spacing between slides */
+}
+
+.carousel-btn-desktop {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.carousel-btn-desktop.prev {
+  margin-right: 10px;
+}
+
+.carousel-btn-desktop.next {
+  margin-left: 10px;
+}
