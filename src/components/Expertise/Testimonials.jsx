@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { testimonialLeft, testimonialRight } from "../assets";
-import { testimonialsData } from "../constants";
+import { testimonialLeft, testimonialRight } from "../../assets";
+import { testimonialsData } from "../../constants";
 
 const Testimonials = () => {
 

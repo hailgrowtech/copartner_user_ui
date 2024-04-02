@@ -5,9 +5,9 @@ import Subscription from "./Subscription";
 import ErrorPage from "./ErrorPage"
 import Wallet from "./Wallet"
 import Webinar from "./Webinar";
-import Footer from "./Footer";
-import Testimonials from "./Testimonials";
-import SubscriptionRA from "./SubscriptionRA";
+import Footer from "./Expertise/Footer";
+import Testimonials from "./Expertise/Testimonials";
+import SubscriptionRA from "./Subscription RA/SubscriptionRA";
 
 export {
     Navbar,

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import CourseCard from "./CourseCard";
-import { courses } from "../constants";
+import { courses } from "../../constants";
 
 const CourseCardsCarousel = () => {
   const [startX, setStartX] = useState(null);

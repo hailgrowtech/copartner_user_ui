@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { stars, telegram, userImg } from '../assets';
+import { stars, telegram, userImg } from '../../assets';
 
 const CourseCard = ({ courseData }) => {
   const { imageUrl, title, instructor, followers, experience, duration, session, price } = courseData;

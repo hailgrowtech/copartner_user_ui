@@ -28,7 +28,7 @@ function App() {
           <Route path="subscription" element={ <Subscription /> } />
           <Route path="webinar" element={<Webinar />} />
           <Route path="wallet" element={<Wallet />} />
-          <Route path="ra-detail" element={<SubscriptionRA />} />
+          <Route path="subscription/ra-detail" element={<SubscriptionRA />} />
         </Route>
       </>
     )

@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "../style";
+import styles from "../../style";
 import "./SubscriptionRA.css";
-import { courses } from "../constants";
+import { courses } from "../../constants";
 import {
   anywhereAccess,
   arrow,
@@ -16,7 +16,7 @@ import {
   telegram,
   tick,
   userImg,
-} from "../assets";
+} from "../../assets";
 import CourseCardsCarousel from "./CourseCardsCarousel";
 import CourseCard from "./CourseCard";
 
