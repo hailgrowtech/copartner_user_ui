@@ -38,7 +38,7 @@ const Subscription = () => {
       </section>
 
       <section className=" w-full text-center md:px-16 md:mb-12">
-        <h2 className="font-inter md:text-[50px] text-[30px] md:leading-[50px] text-left leading-[51px] md:mb-6 px-4 subheading-color">
+        <h2 className="md:text-[50px] text-[30px] md:leading-[50px] text-left leading-[51px] md:mb-6 px-4 subheading-color">
           Our Expertise
         </h2>
         <p className="font-normal text-[#A1A1AACC] md:text-[18px] text-left text-[11px] md:leading-[28px] leading-[17px] mb-8 px-4">

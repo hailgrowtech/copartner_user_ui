@@ -30,7 +30,7 @@ const CourseInfo = () => {
           />
         </div>
         <div className="w-full flex flex-col justify-center pl-4">
-          <h3 className="font-inter font-semibold md:text-[50px] text-[16px] md:leading-[50px] leading-[24px] md:mb-6">
+          <h3 className="font-semibold md:text-[50px] text-[16px] md:leading-[50px] leading-[24px] md:mb-6">
             {singleCourse.title}
           </h3>
           <div className="custom-progress-bar md:mb-5 ">
