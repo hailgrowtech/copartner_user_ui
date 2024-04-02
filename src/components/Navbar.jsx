@@ -3,7 +3,7 @@ import { logo, menu, hamburgerBg, LogOut, close } from "../assets";
 import { navLinks } from "../constants";
 import styles from "../style";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import { Footer } from "./Home/Footer";
+import Footer from "./Home/Footer";
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
