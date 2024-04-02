@@ -1,9 +1,5 @@
 import React from "react";
-<<<<<<< HEAD
-import { Expertise, Navbar, Subscription } from "./components";
-=======
 import { Expertise, Hero, Navbar, Subscription, SubscriptionCourseDetail } from "./components";
->>>>>>> Subscription_ui
 import styles from "./style";
 import { ErrorPage } from "./components";
 import Hero from "./components/Home/Hero";
