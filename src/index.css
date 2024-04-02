@@ -22,7 +22,6 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
 }
 
 .text-gradient-2 {
@@ -89,6 +88,16 @@
   animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
+.text-gradient-2 {
+  background: linear-gradient(135deg, #FFFFFF 0%, #71717A 100%),
+  linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+
 @-webkit-keyframes slide-top {
   0% {
     -webkit-transform: translateY(100px);
@@ -143,4 +152,104 @@
 .white__gradient {
   background: rgba(255, 255, 255, 0.6);
   filter: blur(750px);
+}
+
+/* Join Telegram Button In Course Card  */
+
+.join-Telegram{
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 5px;
+  color: #fff;
+}
+
+.join-Telegram svg{
+  font-size: 20px;
+  color: #3eabd9;
+  background-color: #fff;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+/* CourseCards Different Dimension */
+
+.courseCard > div:nth-child(4) {
+  width: calc((100% / 5) * 3);
+}
+
+.courseCard > div:nth-child(5) {
+  width: calc((100% / 5) * 2);
+}
+
+
+/* SubHeadings of the page */
+
+.subheading-color{
+    font-weight: 700;
+    background: linear-gradient(#FFFFFF, #71717A);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.custom-progress-bar {
+  height: 5px;
+  margin: 8px 0;
+  width: 100%;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg, #FFFFFF 0%, #51ABEC 100%);
+}
+
+
+
+.carousel {
+  width: 370px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-slide {
+  flex: 0 0 auto;
+  width: 370px;
+  padding: 1px;
+  margin-right: -10px;
+  cursor: pointer;
+}
+
+
+
+
+/* ExpertCard Background Positioning */
+.subscription-RA-bg {
+  background-image: url("./assets/userBck.png");
+  background-repeat: no-repeat;
+  background-position: 32vw 1vh;
+  background-size: 55rem;
+  z-index: 50;
+}
+
+.subscription-RA-img {
+  mask-image: linear-gradient(rgba(0, 0, 0, 1) 70%, transparent);
+}
+
+@media (max-width: 1060px) {
+  .subscription-RA-bg {
+      background-size: 22rem;
+      background-position: 22vw 6vh;
+  }
 }

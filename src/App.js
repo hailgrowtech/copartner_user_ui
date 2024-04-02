@@ -1,5 +1,9 @@
 import React from "react";
+<<<<<<< HEAD
 import { Expertise, Navbar, Subscription } from "./components";
+=======
+import { Expertise, Hero, Navbar, Subscription, SubscriptionCourseDetail } from "./components";
+>>>>>>> Subscription_ui
 import styles from "./style";
 import { ErrorPage } from "./components";
 import Hero from "./components/Home/Hero";
@@ -40,7 +44,17 @@ function App() {
             element={
               <div className={`${styles.flexStart}`}>
                 <div className={`${styles.boxWidth}`}>
-                  <Subscription />
+                  <Subscription/>
+                </div>
+              </div>
+            }
+          />
+          <Route
+            path="subscription/course"
+            element={
+              <div className={`${styles.flexStart}`}>
+                <div className={`${styles.boxWidth}`}>
+                  <SubscriptionCourseDetail />
                 </div>
               </div>
             }

@@ -25,6 +25,9 @@ import courseImg2 from './courseImg2.png';
 import courseImg3 from './courseImg3.png';
 import courseUser from './courseExpertiseImg.png';
 
+import courseImg from './courseImg.png';
+import clientImg from './userImg.png'
+import arrow from './arrow.png'
 export {
     logo,
     menu,
@@ -52,4 +55,8 @@ export {
     courseImg2,
     courseImg3,
     courseUser,
+    clientImg,
+    courseImg,
+    arrow,
 }
+
