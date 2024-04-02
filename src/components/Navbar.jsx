@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { logo, menu, hamburgerBg, LogOut } from "../assets";
+import { logo, menu, hamburgerBg, LogOut, close } from "../assets";
 import { navLinks } from "../constants";
 import styles from "../style";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { Footer } from ".";
-import { IoIosCloseCircleOutline } from "react-icons/io";
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
@@ -110,11 +109,12 @@ const Navbar = () => {
                   backgroundSize: "30rem",
                 }}
               >
-                <IoIosCloseCircleOutline
-                  alt="Close"
-                  className="w-[28px] h-[28px] object-contain cursor-pointer text-dimWhite mt-8 absolute top-4 right-4"
+                <button
+                  className="w-[31px] h-[31px] object-contain cursor-pointer text-dimWhite mt-6 absolute top-4 right-4"
                   onClick={() => setToggle(false)}
-                />
+                >
+                  <img src={close} alt="Close" />
+                </button>
 
                 <ul className="list-none flex flex-col justify-end items-center gap-4">
                   <li className="font-poppins font-normal cursor-pointer text-[16px] text-white mb-6">
