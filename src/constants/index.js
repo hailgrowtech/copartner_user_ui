@@ -1,4 +1,4 @@
-import { logo, userImg, userBck, stars, telegram, clientImg, testimonialImg } from "../assets";
+import { logo, userImg, userBck, stars, telegram, clientImg, testimonialImg, courseImg } from "../assets";
 
 export const navLinks = [
   {
@@ -97,6 +97,81 @@ export const expertsData = [
     description: 'Have full control of your business finances on the go using our iOS',
     prize: '5000',
   },
+];
+
+export const recommendCoursesData = [
+  {
+    imageUrl: courseImg,
+    rating: '4.4',
+    title: 'Continue Course 1',
+    image: clientImg,
+    instructor: 'Instructor 1',
+    followers: 1500,
+    experience: '2',
+    duration: '2',
+    session: '10',
+    completedSession: '5', 
+  },
+  {
+    imageUrl: courseImg,
+    title: 'Continue Course 2',
+    rating: '4.4',
+    image: clientImg,
+    instructor: 'Instructor 2',
+    followers: 2000,
+    experience: '3',
+    duration: '3',
+    session: '12',
+    completedSession: '7',
+  },
+  {
+    imageUrl: courseImg,
+    title: 'Continue Course 3',
+    rating: '4.4',
+    image: clientImg,
+    instructor: 'Instructor 3',
+    followers: 1800,
+    experience: '2.5',
+    duration: '2.5',
+    session: '8',
+    completedSession: '4',
+  },
+  {
+    imageUrl: courseImg,
+    title: 'Continue Course 3',
+    rating: '4.4',
+    image: clientImg,
+    instructor: 'Instructor 3',
+    followers: 1800,
+    experience: '2.5',
+    duration: '2.5',
+    session: '8',
+    completedSession: '4',
+  },
+  {
+    imageUrl: courseImg,
+    title: 'Continue Course 3',
+    rating: '4.4',
+    image: clientImg,
+    instructor: 'Instructor 3',
+    followers: 1800,
+    experience: '2.5',
+    duration: '2.5',
+    session: '8',
+    completedSession: '4',
+  },
+  {
+    imageUrl: courseImg,
+    title: 'Continue Course 3',
+    rating: '4.4',
+    image: clientImg,
+    instructor: 'Instructor 3',
+    followers: 1800,
+    experience: '2.5',
+    duration: '2.5',
+    session: '8',
+    completedSession: '4',
+  }
 ];
 
 export const testimonialsData = [

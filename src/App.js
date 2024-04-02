@@ -1,5 +1,5 @@
 import React from "react";
-import { Expertise, Hero, Navbar, Subscription, Wallet, Webinar } from "./components";
+import { Expertise, Hero, Navbar, Subscription, SubscriptionRA, Wallet, Webinar } from "./components";
 import styles from "./style";
 import { ErrorPage } from "./components";
 import {
@@ -28,6 +28,7 @@ function App() {
           <Route path="subscription" element={ <Subscription /> } />
           <Route path="webinar" element={<Webinar />} />
           <Route path="wallet" element={<Wallet />} />
+          <Route path="ra-detail" element={<SubscriptionRA />} />
         </Route>
       </>
     )

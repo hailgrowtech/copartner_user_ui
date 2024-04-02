@@ -7,6 +7,7 @@ import Wallet from "./Wallet"
 import Webinar from "./Webinar";
 import Footer from "./Footer";
 import Testimonials from "./Testimonials";
+import SubscriptionRA from "./SubscriptionRA";
 
 export {
     Navbar,
@@ -18,4 +19,5 @@ export {
     Webinar,
     Footer,
     Testimonials,
+    SubscriptionRA,
 }

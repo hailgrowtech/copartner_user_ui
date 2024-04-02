@@ -18,6 +18,15 @@ import twitter from './twitter.png';
 import linkedin from './linkedin.png';
 import testimonialRight from './testimonialRight.svg'
 import testimonialLeft from './testimonialLeft.svg'
+import tick from './tick.png'
+import layer from './layer.png'
+import courseImg from './courseImg.png'
+import level from './Level-icon.png'
+import duration from './Duration-icon.png'
+import sessions from './Sessions-icon.png'
+import anywhereAccess from './AccessAnywhere-icon.png'
+import lifetimeAccess from './LifetimeAccess-icon.png'
+import bookmark from './Bookmark.png'
 
 export {
     logo,
@@ -39,5 +48,14 @@ export {
     twitter,
     instagram,
     testimonialLeft,
-    testimonialRight
+    testimonialRight,
+    tick,
+    layer,
+    courseImg,
+    level,
+    duration,
+    sessions,
+    anywhereAccess,
+    lifetimeAccess,
+    bookmark
 }
