@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
-import { AiOutlineRight } from "react-icons/ai";
 import { continueCoursesData } from "../constants";
 import Client from "../assets/image 11 (1).png";
 import starImage from '../assets/Stars Minimalistic.png';
 import telegramImage from '../assets/telegram.png';
+import {arrow} from '../assets'
+
 
 const CompletedCardsCarousel = () => {
   const [startX, setStartX] = useState(null);
@@ -150,8 +151,8 @@ const CompletedCardsCarousel = () => {
                       <a href="https://kahanation.com">
                         <button className="bg-transparent border rounded-3xl border-[#ffffff6b] text-base text-white py-2 px-8 flex items-center">
                           Feedback
-                          <AiOutlineRight className="ml-1" />
                         </button>
+                        <img src={arrow} alt="" />
                       </a>
                     </div>
                   </div>

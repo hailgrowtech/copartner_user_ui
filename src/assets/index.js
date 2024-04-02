@@ -8,6 +8,7 @@ import stars from './stars.png';
 import telegram from './telegram.png';
 import courseImg from './courseImg.png';
 import clientImg from './userImg.png'
+import arrow from './arrow.png'
 export {
     logo,
     menu,
@@ -19,5 +20,6 @@ export {
     telegram,
     clientImg,
     courseImg,
+    arrow,
 }
 

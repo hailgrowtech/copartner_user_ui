@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-import { AiOutlineRight } from "react-icons/ai";
 import { continueCoursesData } from "../constants";
 import starImage from "../assets/Stars Minimalistic.png";
 import telegramImage from "../assets/telegram.png";
+import { arrow } from "../assets";
 
 const ContinueCardsCarousel = () => {
   const [startX, setStartX] = useState(null);
@@ -148,7 +148,7 @@ const ContinueCardsCarousel = () => {
                     <div className="mt-4 pt-3 flex justify-center items-center">
                       <button className="bg-transparent border rounded-3xl border-[#ffffff6b] text-base text-white py-2 px-8 flex items-center">
                         Continue Course
-                        <AiOutlineRight className="ml-1" />
+                        <img src={arrow} alt="" />
                       </button>
                     </div>
                   </div>

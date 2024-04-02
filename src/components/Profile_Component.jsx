@@ -1,10 +1,10 @@
 import React from 'react';
 import './css/card.css';
 import backgroundImage from '../assets/userBck.png';
-import { IoIosArrowForward } from "react-icons/io";
 import { expertsData } from '../constants';
 import starImage from "../assets/Stars Minimalistic.png";
 import telegramImage from "../assets/telegram.png";
+import { arrow } from '../assets';
 
 const formatFollowers = (followers) => {
   if (followers > 999) {
@@ -49,7 +49,7 @@ const ExpertCard = ({ expert }) => {
           <button className='flex items-center mx-auto py-1.5 px-5 border-solid border-2 border-[#4e4e4ecc] rounded-3xl'>
             <img src={telegramImage} alt="Telegram" className='md:w-6 md:h-6 w-4 h-4 me-3' />
             <p className='text-[8px] md:text-lg'>Join Telegram</p>
-            <IoIosArrowForward className='ms-3' />
+            <img src={arrow} alt="" />
           </button>
         </div>
       </div>
