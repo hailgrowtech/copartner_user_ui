@@ -1,28 +1,18 @@
 import React, { useState, useRef, useEffect } from "react";
-import { continueCoursesData } from "../constants";
-import starImage from "../assets/Stars Minimalistic.png";
-import telegramImage from "../assets/telegram.png";
-import { arrow } from "../assets";
+import { continueCoursesData } from "../../constants";
+import Client from "../../assets/image 11 (1).png";
+import starImage from '../../assets/Stars Minimalistic.png';
+import telegramImage from '../../assets/telegram.png';
+import {arrow} from '../../assets'
 
-const ContinueCardsCarousel = () => {
+
+const CompletedCardsCarousel = () => {
   const [startX, setStartX] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const carouselRef = useRef(null);
 
   const carouselItems = continueCoursesData.slice(0, 3);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      if (!isHovered) {
-        setCurrentIndex((prevIndex) =>
-          prevIndex === carouselItems.length - 1 ? 0 : prevIndex + 1
-        );
-      }
-    }, 3000);
-
-    return () => clearInterval(intervalId);
-  }, [currentIndex, isHovered, carouselItems.length]);
 
   const handleTouchStart = (e) => {
     setStartX(e.touches[0].clientX);
@@ -32,7 +22,6 @@ const ContinueCardsCarousel = () => {
     if (!startX) return;
 
     const diff = e.touches[0].clientX - startX;
-
     if (diff > 50) {
       setCurrentIndex((prevIndex) =>
         prevIndex === 0 ? carouselItems.length - 1 : prevIndex - 1
@@ -50,19 +39,35 @@ const ContinueCardsCarousel = () => {
     setStartX(null);
   };
 
-  const handleHover = (hovering) => {
-    setIsHovered(hovering);
+  useEffect(() => {
+    let intervalId;
+    if (!isHovered) {
+      intervalId = setInterval(() => {
+        setCurrentIndex((prevIndex) =>
+          prevIndex === carouselItems.length - 1 ? 0 : prevIndex + 1
+        );
+      }, 3000);
+    }
+    return () => clearInterval(intervalId);
+  }, [isHovered, carouselItems.length]);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
   };
 
   return (
     <div
-      className="flex items-center justify-center mt-[20px]"
+      className="carousel-container"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
       ref={carouselRef}
-      onMouseEnter={() => handleHover(true)}
-      onMouseLeave={() => handleHover(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <div className="carousel">
         <div
@@ -83,27 +88,21 @@ const ContinueCardsCarousel = () => {
                     }}
                   />
                   <div className="absolute top-0 right-0 m-2 flex items-center justify-center rounded-full bg-opacity-50 text-white">
-                    <img
-                      src={starImage}
-                      alt="Star"
-                      className="w-4 h-4 mr-1"
-                    />
+                    <img src={starImage} alt="Star" className="w-4 h-4 mr-1" />
                     <span className="mr-1">4.4</span>
                   </div>
-
                   <div className="px-4">
                     <div className="mt-4 custom-progress-bar">
                       <div className="progress"></div>
                     </div>
                   </div>
-
                   <div className="p-4 relative z-10">
                     <h3 className="text-2xl text-left">{item.title}</h3>
                     <div className="flex items-center mt-4">
                       <div className="flex-1 flex items-center">
                         <div className="h-8 w-8 rounded-full overflow-hidden mr-2">
                           <img
-                            src={item.image}
+                            src={Client}
                             alt="Profile"
                             className="h-full w-full object-cover"
                           />
@@ -112,46 +111,51 @@ const ContinueCardsCarousel = () => {
                           {item.instructor}
                         </p>
                         <div className="flex-1 flex justify-end">
-                          <span className="join-Telegram flex text-[#A1A1AACC]">
-                            Join <img src={telegramImage} alt="Telegram" className="w-4 h-4 ml-1" />
-                          </span>
+                          <span className="join-Telegram flex text-[#A1A1AACC]"> Join <img src={telegramImage} alt="Telegram" className="w-5 h-5 ml-1" /></span>
                         </div>
                       </div>
                     </div>
                     <div className="border-white mt-2 pt-1 flex justify-center">
                       <div className="border-r border-white px-[80px] text-center">
-                        <p className="mb-1 text-[#eeeef8cc]">Experience</p>
+                        <p className="mb-1 text-[#ffffffa0]">Experience</p>
                         <p>{item.experience}</p>
                       </div>
                       <div className="px-[80px] text-center">
-                        <p className="mb-1 text-[#A1A1AACC]">Followers</p>
+                        <p className="mb-1 text-[#ffffffa0]">Followers</p>
                         <p>{item.followers}</p>
                       </div>
                     </div>
                     <div className="mt-2 pt-3 flex justify-between">
                       <div className="pl-1">
                         <p className="mb-1 text-[#A1A1AACC]">
-                          Duration: <span className="text-white">{item.duration}</span>{" "}
+                          Duration:{" "}
+                          <span className="text-white">{item.duration}</span>{" "}
                         </p>
                       </div>
                       <div className="px-4">
                         <p className="mb-1 text-[#A1A1AACC] text-right">
-                          Session: <span className="text-white">{item.session}</span>
+                          Session:{" "}
+                          <span className="text-white">{item.session}</span>
                         </p>
                       </div>
                     </div>
                     <div className="pl-1">
                       <p className="mb-1 text-[#A1A1AACC]">
-                        Completed Session: <span className="text-white">{item.completedSession}</span>{" "}
+                        Completed Session:{" "}
+                        <span className="text-white">
+                          {item.completedSession}
+                        </span>{" "}
                       </p>
                     </div>
                     <div className="mt-4 pt-3 flex justify-center items-center">
-                      <button className="bg-transparent border rounded-3xl border-[#ffffff6b] text-base text-white py-2 px-8 flex items-center">
-                        Continue Course
-                        <div className="w-5 h-5">
+                      <a href="https://kahanation.com">
+                        <button className="bg-transparent border rounded-3xl border-[#ffffff6b] text-base text-white py-2 px-8 flex items-center">
+                          Feedback
+                        </button>
+                        {/* <div className="w-5 h-5">
                         <img src={arrow} alt="" />
-                        </div>
-                      </button>
+                        </div> */}
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -164,4 +168,4 @@ const ContinueCardsCarousel = () => {
   );
 };
 
-export default ContinueCardsCarousel;
+export default CompletedCardsCarousel;

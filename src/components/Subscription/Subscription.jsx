@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../style";
+import styles from "../../style";
 import Card from "./Profile_Component";
 import CourseList from "./CourseList";
 import ProfileCard from "./Profile_Card";
@@ -8,7 +8,7 @@ import CompletedCards from "./CompletedCards";
 import ContinueCardsCarousel from "./ContinueCardsCarousel ";
 import CompletedCardsCarousel from "./CompletedCardsCarousel";
 import CourseCardsCarousel from "./CourseCardsCarousel";
-import './Hero.css'
+import '../Hero.css'
 
 const Subscription = () => {
   return (

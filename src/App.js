@@ -1,7 +1,8 @@
 import React from "react";
-import { Expertise, Hero, Navbar, Subscription, SubscriptionCourseDetail, SubscriptionRA, Wallet, Webinar } from "./components";
+import { Expertise, Navbar, Subscription, SubscriptionCourseDetail, SubscriptionRA, Wallet, Webinar } from "./components";
 import styles from "./style";
 import { ErrorPage } from "./components";
+import Hero from "./components/Home/Hero";
 import {
   Route,
   RouterProvider,

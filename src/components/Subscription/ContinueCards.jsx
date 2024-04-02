@@ -1,8 +1,8 @@
 import React from 'react';
-import { continueCoursesData } from '../constants';
-import starImage from '../assets/Stars Minimalistic.png';
-import telegramImage from '../assets/telegram.png';
-import { arrow } from '../assets';
+import { continueCoursesData } from '../../constants';
+import starImage from '../../assets/Stars Minimalistic.png';
+import telegramImage from '../../assets/telegram.png';
+import { arrow } from '../../assets';
 
 const ContinueCards = () => {
   return (
