@@ -1,6 +1,6 @@
 import React from 'react';
 import './css/card.css';
-import backgroundImage from '../assets/background.png';
+import backgroundImage from '../assets/userBck.png';
 import { IoIosArrowForward } from "react-icons/io";
 import { expertsData } from '../constants';
 import starImage from "../assets/Stars Minimalistic.png";

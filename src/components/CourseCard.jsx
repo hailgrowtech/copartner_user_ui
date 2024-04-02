@@ -5,6 +5,7 @@ import Client from '../assets/image 11 (1).png';
 
 const CourseCard = ({ courseData }) => {
   const { imageUrl, title, instructor, followers, experience, duration, session, price } = courseData;
+  
 
   return (
     <div className="w-full md:w-1/3 p-2 rounded-md mb-8 md:mb-0">

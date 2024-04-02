@@ -6,7 +6,6 @@ import bookmark from '../assets/Vector.png';
 import arrow from '../assets/arrow.png';
 import { expertData } from "../constants";
 
-
 const ExpertCard = () => {
   return (
     <div>
@@ -19,6 +18,7 @@ const ExpertCard = () => {
                   {expert.name}
                 </span>
               </div>
+              
               <span className="font-normal opacity-60 md:leading-[28px] md:text-[22px] text-[12px]">
                 {expert.role}
               </span>
@@ -44,6 +44,12 @@ const ExpertCard = () => {
                 <img className="w-4 ms-3" src={arrow} alt="arrow icon" />
               </button>
             </div>
+            <div className="md:block hidden">
+              <button className="flex items-center md:text-base text-xs mt-2">
+                Explore More
+                <img className="w-4 ms-3" src={arrow} alt="arrow" />
+              </button>
+            </div>
           </div>
           <div className="flex mx-auto">
             <img className="subscription-RA-img md:w-[400px] w-[470px] my-auto" src={expert.image} alt="" />
@@ -55,6 +61,12 @@ const ExpertCard = () => {
           <div className="absolute md:bottom-3 bottom-12 right-3 rounded-full cursor-pointer transition duration-300 hover:scale-110 hover:bg-[#ffffff5e] hover:rounded-full p-2">
             <img src={bookmark} alt="Save icon" className="w-5" />
           </div>
+          <div className="md:hidden absolute md:bottom-3 bottom-3 right-3 rounded-full cursor-pointer transition duration-300 hover:scale-110 hover:bg-[#ffffff5e] hover:rounded-full p-2">
+              <button className="flex items-center md:text-base text-xs mt-2">
+                Explore More
+                <img className="w-4 ms-3" src={arrow} alt="arrow" />
+              </button>
+            </div>
         </section>
       ))}
     </div>

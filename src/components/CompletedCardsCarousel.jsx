@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { AiOutlineRight } from "react-icons/ai";
 import { continueCoursesData } from "../constants";
-import { BsTelegram } from "react-icons/bs";
 import Client from "../assets/image 11 (1).png";
 import starImage from '../assets/Stars Minimalistic.png';
 import telegramImage from '../assets/telegram.png';

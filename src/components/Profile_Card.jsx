@@ -1,6 +1,6 @@
 import React from 'react';
 import './css/card.css';
-import backgroundImage from '../assets/background.png';
+import backgroundImage from '../assets/userBck.png';
 import { expertsData } from '../constants';
 import StarImage from '../assets/Stars Minimalistic.png';
 import { Link } from 'react-router-dom';
@@ -39,8 +39,10 @@ const ExpertCardSub = ({ expert }) => {
         </div>
         <div className="description text-[#A1A1AACC] mb-2 text-sm md:text-base text-left leading-3">{expert.description}</div>
         <div className="prize-subscription text-white text-center gap-4">
+          <Link to="/subscription/course">
           <button className='flex items-center bg-[#ffffff32] mx-auto my-2 py-1 px-2 md:py-2 md:px-6 border-solid border-2 border-[#4e4e4ecc] rounded-3xl md:block hidden'>1 month Subscription</button>
           <button className='flex items-center bg-[#ffffff32] mx-auto my-2 py-1 px-2 md:py-2 md:px-6 border-solid border-2 border-[#4e4e4ecc] rounded-3xl md:hidden'>1 month Subs.</button>
+          </Link>
           <span className="text-[#A1A1AACC] block md:inline md:text-[15px] text-[10px]">21 Days Left</span>
         </div>
       </div>
