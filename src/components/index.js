@@ -1,5 +1,5 @@
 import Navbar from "./Navbar";
-import Home from "./Home/Hero";
+// import Home from "./Home/Hero";
 import Expertise from "./Expertise";
 import Subscription from "./Subscription.jsx";
 import ErrorPage from "./ErrorPage";
@@ -11,7 +11,7 @@ import RecommendCourse from "./RecommendCourse.jsx"
 
 export {
     Navbar,
-    Home,
+    // Home,
     Subscription,
     Expertise,
     ErrorPage,

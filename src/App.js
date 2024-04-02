@@ -1,5 +1,5 @@
 import React from "react";
-import { Expertise, Hero, Navbar, Subscription, SubscriptionCourseDetail } from "./components";
+import { Expertise, Navbar, Subscription, SubscriptionCourseDetail } from "./components";
 import styles from "./style";
 import { ErrorPage } from "./components";
 import Hero from "./components/Home/Hero";
