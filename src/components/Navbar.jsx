@@ -3,6 +3,7 @@ import { logo, menu, close } from "../assets";
 import { navLinks } from "../constants";
 import styles from "../style";
 import { Link, Outlet } from "react-router-dom";
+import Footer from "./Home/Footer";
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
@@ -10,24 +11,24 @@ const Navbar = () => {
 
   return (
     <>
-      <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+      <div className={`${styles.paddingX} ${styles.flexCenter}`}> 
         <div className={`${styles.boxWidth}`}>
           <nav className="w-full flex pt-6 justify-between items-center">
-            <Link to="/">
-              <img src={logo} alt="LOGO" className="w-[134px] h-[42px]" />
+          <Link to="/">
+              <img src={logo} alt="LOGO" className="md:w-[150px] w-[121px] md:h-[39px] h-[33px]" />
             </Link>
 
             <ul className="list-none sm:flex hidden justify-center items-center flex-1">
               {navLinks.map((nav, index) => (
-                <li
-                  key={nav.id}
-                  onClick={() => setActive(nav.title)}
-                  className={`font-poppins font-normal cursor-pointer text-[16px]
-                        ${active === nav.title ? "text-white" : "text-dimWhite"}
-                        ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
-                >
-                  <Link to={`${nav.id === "home" ? "/" : nav.id}`}>{nav.title}</Link>
-                </li>
+                 <li
+                 key={nav.id}
+                 onClick={() => setActive(nav.title)}
+                 className={`font-poppins font-normal cursor-pointer text-[16px]
+                       ${active === nav.title ? "text-white" : "text-dimWhite"}
+                       ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
+               >
+                 <Link to={`${nav.id === "home" ? "/" : nav.id}`}>{nav.title}</Link>
+               </li>
               ))}
             </ul>
 
@@ -86,6 +87,9 @@ const Navbar = () => {
         </div>
       </div>
       <Outlet />
+      <div className={`sm:pb-[6rem] py-6`}>
+      <Footer />
+      </div>
     </>
   );
 };

@@ -1,7 +1,8 @@
 import React from "react";
-import { Expertise, Hero, Navbar, Subscription } from "./components";
+import { Expertise, Navbar, Subscription } from "./components";
 import styles from "./style";
 import { ErrorPage } from "./components";
+import Hero from "./components/Home/Hero";
 import {
   Route,
   RouterProvider,
@@ -19,7 +20,7 @@ function App() {
             element={
               <div className={`${styles.flexStart}`}>
                 <div className={`${styles.boxWidth}`}>
-                  <Hero />
+                  <Hero/>
                 </div>
               </div>
             }

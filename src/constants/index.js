@@ -1,4 +1,12 @@
-import { logo, userImg, userBck, stars, telegram } from "../assets";
+import { logo, 
+  userImg, userBck, 
+  stars, telegram, 
+  arrow, expertise,
+  stock_1, stock_2, stock_3,
+  secondExpertise, courseImg,
+  courseImg2, courseImg3, courseUser,
+ } 
+from "../assets";
 
 export const navLinks = [
   {
@@ -23,180 +31,262 @@ export const navLinks = [
   },
 ];
 
-// export const hero_experience = [
-//   {
-//     id: "1",
-//     icon: userBck,
-//     userImg: userImg,
-//     name:"Arun Kumar",
-//     content:
-//       "The best credit cards offer some tantalizing combinations of promotions and prizes",
-//   },
-//   {
-//     id: "2",
-//     icon: shield,
-//     title: "100% Secured",
-//     content:
-//       "We take proactive steps make sure your information and transactions are secure.",
-//   },
-//   {
-//     id: "3",
-//     icon: send,
-//     title: "Balance Transfer",
-//     content:
-//       "A balance transfer credit card can save you a lot of money in interest charges.",
-//   },
-// ];
+export const expertise_type = [
+  {
+    id: 1,
+    image: expertise,
+    title: 'Futures',
+    followers: '4K + More',
+    describe: 'Our SEBI Registered experts with their expertise, help traders gain a deeper understanding of risk management, leverage, and market dynamics for profitability.',
+    button: 'Explore All',
+    arrowIcon: arrow,
+  }, 
+  {
+    id: 2,
+    image: expertise,
+    title: 'Commodity',
+    followers: '4K + More',
+    describe: 'Our SEBI Registered experts with their expertise, help traders gain a deeper understanding of risk management, leverage, and market dynamics for profitability.',
+    button: 'Explore All',
+    arrowIcon: arrow,
+  }, 
+  {
+    id: 3,
+    image: expertise,
+    image2: secondExpertise,
+    title: 'Equity',
+    followers: '4K + More',
+    describe: 'Our SEBI Registered experts with their expertise, help traders gain a deeper understanding of risk management, leverage, and market dynamics for profitability.',
+    button: 'Explore All',
+    arrowIcon: arrow,
+  }, 
+]
 
-// export const feedback = [
-//   {
-//     id: "feedback-1",
-//     content:
-//       "Money is only a tool. It will take you wherever you wish, but it will not replace you as the driver.",
-//     name: "Herman Jensen",
-//     title: "Founder & Leader",
-//     img: people01,
-//   },
-//   {
-//     id: "feedback-2",
-//     content:
-//       "Money makes your life easier. If you're lucky to have it, you're lucky.",
-//     name: "Steve Mark",
-//     title: "Founder & Leader",
-//     img: people02,
-//   },
-//   {
-//     id: "feedback-3",
-//     content:
-//       "It is usually people in the money business, finance, and international trade that are really rich.",
-//     name: "Kenn Gallagher",
-//     title: "Founder & Leader",
-//     img: people03,
-//   },
-// ];
+export const expertise_data = [
+  {
+    id: "1",
+    icon: userBck,
+    userImg: userImg,
+    name:"Arun Kumar",
+    title: 'Stock Market',
+    ratingIcon: stars,
+    rating: '4.4',
+    experience: 'Experience',
+    totalExp: '7+',
+    followers: 'Followers',
+    totalFollowers: '3.1k',
+    content:
+      "Have full control of your business finances on the go using our iOS/Android mobile apps. Because, you know, it’s 2023.",
+    telegram: telegram,
+    greet: 'Join Telegram',
+    arrowIcon: arrow,
+  },
+  {
+    id: "2",
+    icon: userBck,
+    userImg: userImg,
+    name:"Arun Kumar",
+    title: 'Stock Market',
+    ratingIcon: stars,
+    rating: '4.4',
+    experience: 'Experience',
+    totalExp: '7+',
+    followers: 'Followers',
+    totalFollowers: '3.1k',
+    content:
+      "Have full control of your business finances on the go using our iOS/Android mobile apps. Because, you know, it’s 2023.",
+    telegram: telegram,
+    greet: 'Join Telegram',
+    arrowIcon: arrow,
+  },
+  {
+    id: "3",
+    icon: userBck,
+    userImg: userImg,
+    name:"Arun Kumar",
+    title: 'Stock Market',
+    ratingIcon: stars,
+    rating: '4.4',
+    experience: 'Experience',
+    totalExp: '7+',
+    followers: 'Followers',
+    totalFollowers: '3.1k',
+    content:
+      "Have full control of your business finances on the go using our iOS/Android mobile apps. Because, you know, it’s 2023.",
+    telegram: telegram,
+    greet: 'Join Telegram',
+    arrowIcon: arrow,
+  },
+  {
+    id: "4",
+    icon: userBck,
+    userImg: userImg,
+    name:"Arun Kumar",
+    title: 'Stock Market',
+    ratingIcon: stars,
+    rating: '4.4',
+    experience: 'Experience',
+    totalExp: '7+',
+    followers: 'Followers',
+    totalFollowers: '3.1k',
+    content:
+      "Have full control of your business finances on the go using our iOS/Android mobile apps. Because, you know, it’s 2023.",
+    telegram: telegram,
+    greet: 'Join Telegram',
+    arrowIcon: arrow,
+  },
+  {
+    id: "5",
+    icon: userBck,
+    userImg: userImg,
+    name:"Arun Kumar",
+    title: 'Stock Market',
+    ratingIcon: stars,
+    rating: '4.4',
+    experience: 'Experience',
+    totalExp: '7+',
+    followers: 'Followers',
+    totalFollowers: '3.1k',
+    content:
+      "Have full control of your business finances on the go using our iOS/Android mobile apps. Because, you know, it’s 2023.",
+    telegram: telegram,
+    greet: 'Join Telegram',
+    arrowIcon: arrow,
+  },
+  {
+    id: "6",
+    icon: userBck,
+    userImg: userImg,
+    name:"Arun Kumar",
+    title: 'Stock Market',
+    ratingIcon: stars,
+    rating: '4.4',
+    experience: 'Experience',
+    totalExp: '7+',
+    followers: 'Followers',
+    totalFollowers: '3.1k',
+    content:
+      "Have full control of your business finances on the go using our iOS/Android mobile apps. Because, you know, it’s 2023.",
+    telegram: telegram,
+    greet: 'Join Telegram',
+    arrowIcon: arrow,
+  },
+];
 
-// export const stats = [
-//   {
-//     id: "stats-1",
-//     title: "User Active",
-//     value: "3800+",
-//   },
-//   {
-//     id: "stats-2",
-//     title: "Trusted by Company",
-//     value: "230+",
-//   },
-//   {
-//     id: "stats-3",
-//     title: "Transaction",
-//     value: "$230M+",
-//   },
-// ];
+export const stock_data = [
+  {
+    id: "1",
+    content:
+      "Ask anything, anytime, anywhere. Stuck while programming? Need some copy? Or just have a question - Ask AI.",
+    title: "Lorem Ipsum Dolor",
+    img: stock_1,
+  },
+  {
+    id: "2",
+    content:
+      "Keep everything safe and updated across your Macs. Perfect to switch between personal and work setup.",
+    title: "Lorem Ipsum Dolor",
+    img: stock_2,
+  },
+  {
+    id: "3",
+    content:
+      "Make Raycast your own with gorgeous pre-made themes or design your own and share it with the community.",
+    name: "Kenn Gallagher",
+    title: "Lorem Ipsum Dolor",
+    img: stock_3,
+  },
+];
 
-// export const footerLinks = [
-//   {
-//     title: "Useful Links",
-//     links: [
-//       {
-//         name: "Content",
-//         link: "https://www.hoobank.com/content/",
-//       },
-//       {
-//         name: "How it Works",
-//         link: "https://www.hoobank.com/how-it-works/",
-//       },
-//       {
-//         name: "Create",
-//         link: "https://www.hoobank.com/create/",
-//       },
-//       {
-//         name: "Explore",
-//         link: "https://www.hoobank.com/explore/",
-//       },
-//       {
-//         name: "Terms & Services",
-//         link: "https://www.hoobank.com/terms-and-services/",
-//       },
-//     ],
-//   },
-//   {
-//     title: "Community",
-//     links: [
-//       {
-//         name: "Help Center",
-//         link: "https://www.hoobank.com/help-center/",
-//       },
-//       {
-//         name: "Partners",
-//         link: "https://www.hoobank.com/partners/",
-//       },
-//       {
-//         name: "Suggestions",
-//         link: "https://www.hoobank.com/suggestions/",
-//       },
-//       {
-//         name: "Blog",
-//         link: "https://www.hoobank.com/blog/",
-//       },
-//       {
-//         name: "Newsletters",
-//         link: "https://www.hoobank.com/newsletters/",
-//       },
-//     ],
-//   },
-//   {
-//     title: "Partner",
-//     links: [
-//       {
-//         name: "Our Partner",
-//         link: "https://www.hoobank.com/our-partner/",
-//       },
-//       {
-//         name: "Become a Partner",
-//         link: "https://www.hoobank.com/become-a-partner/",
-//       },
-//     ],
-//   },
-// ];
-
-// export const socialMedia = [
-//   {
-//     id: "social-media-1",
-//     icon: instagram,
-//     link: "https://www.instagram.com/",
-//   },
-//   {
-//     id: "social-media-2",
-//     icon: facebook,
-//     link: "https://www.facebook.com/",
-//   },
-//   {
-//     id: "social-media-3",
-//     icon: twitter,
-//     link: "https://www.twitter.com/",
-//   },
-//   {
-//     id: "social-media-4",
-//     icon: linkedin,
-//     link: "https://www.linkedin.com/",
-//   },
-// ];
-
-// export const clients = [
-//   {
-//     id: "client-1",
-//     logo: airbnb,
-//   },
-//   {
-//     id: "client-2",
-//     logo: binance,
-//   },
-//   {
-//     id: "client-3",
-//     logo: coinbase,
-//   },
-//   {
-//     id: "client-4",
-//     logo: dropbox,
-//   },
-// ];
+export const courseExpertise_data = [
+  {
+    id: "1",
+    cardImg: courseImg,
+    title: "Insights at your fingertips 1",
+    image: courseUser,
+    userName: 'Rohit Aggi',
+    ratingIcon: stars,
+    rating: '4.4',
+    telegramImg: telegram,
+    experience: 'Experience',
+    totalExp: '7+',
+    followers: 'Followers',
+    totalFollowers: '3.1k',
+    callTime: 'Duration : 3 hrs',
+    callSession: 'Session : 3',
+    price: '₹1,999',
+    btn: 'Buy Now',
+  },
+  {
+    id: "2",
+    cardImg: courseImg,
+    title: "Insights at your fingertips 2",
+    image: courseUser,
+    userName: 'Rohit Aggi',
+    ratingIcon: stars,
+    rating: '4.4',
+    telegramImg: telegram,
+    experience: 'Experience',
+    totalExp: '7+',
+    followers: 'Followers',
+    totalFollowers: '3.1k',
+    callTime: 'Duration : 3 hrs',
+    callSession: 'Session : 3',
+    price: '₹1,999',
+    btn: 'Buy Now',
+  },
+  {
+    id: "3",
+    cardImg: courseImg,
+    title: "Insights at your fingertips 3",
+    image: courseUser,
+    userName: 'Rohit Aggi',
+    ratingIcon: stars,
+    rating: '4.4',
+    telegramImg: telegram,
+    experience: 'Experience',
+    totalExp: '7+',
+    followers: 'Followers',
+    totalFollowers: '3.1k',
+    callTime: 'Duration : 3 hrs',
+    callSession: 'Session : 3',
+    price: '₹1,999',
+    btn: 'Buy Now',
+  },
+  {
+    id: "4",
+    cardImg: courseImg2,
+    title: "Insights at your fingertips 4",
+    image: courseUser,
+    userName: 'Rohit Aggi',
+    ratingIcon: stars,
+    rating: '4.4',
+    telegramImg: telegram,
+    experience: 'Experience',
+    totalExp: '7+',
+    followers: 'Followers',
+    totalFollowers: '3.1k',
+    callTime: 'Duration : 3 hrs',
+    callSession: 'Session : 3',
+    price: '₹1,999',
+    btn: 'Buy Now',
+  },
+  {
+    id: "5",
+    cardImg: courseImg3,
+    title: "Insights at your fingertips 5",
+    image: courseUser,
+    userName: 'Rohit Aggi',
+    ratingIcon: stars,
+    rating: '4.4',
+    telegramImg: telegram,
+    experience: 'Experience',
+    totalExp: '7+',
+    followers: 'Followers',
+    totalFollowers: '3.1k',
+    callTime: 'Duration : 3 hrs',
+    callSession: 'Session : 3',
+    price: '₹1,999',
+    btn: 'Buy Now',
+  },
+];
