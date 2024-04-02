@@ -1,10 +1,8 @@
 import React from "react";
-import { Expertise, Navbar} from "./components";
+import { Expertise, Navbar, Subscription, SubscriptionCourseDetail, SubscriptionRA, Wallet, Webinar } from "./components";
 import styles from "./style";
 import { ErrorPage } from "./components";
 import Hero from "./components/Home/Hero";
-import Subscription from "./components/Subscription/Subscription";
-import SubscriptionCourseDetail from "./components/Subscription/SubscriptionCourseDetail";
 import {
   Route,
   RouterProvider,
@@ -57,6 +55,10 @@ function App() {
               </div>
             }
           />
+          <Route path="expertise" element={ <Expertise /> } />
+          <Route path="webinar" element={<Webinar />} />
+          <Route path="wallet" element={<Wallet />} />
+          <Route path="subscription/ra-detail" element={<SubscriptionRA />} />
         </Route>
       </>
     )
