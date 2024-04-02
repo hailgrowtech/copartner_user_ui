@@ -279,6 +279,7 @@
   width: 370px;
   margin-right: 10px;
   margin-left: 10px;
+}
 .bg_three-dots_active {
   background: linear-gradient(135deg, #665dcd 0%, #5fa4e6 44.76%, #d2ab67 100%);
 }
@@ -390,7 +391,7 @@
   transform: translateX(-50%);
 }
 
-.prize-subscription {
+/* .prize-subscription {
   display: flex;
   justify-content: space-between;
   margin-top: 1.5rem;
@@ -417,7 +418,7 @@
 .prize-subscription a:hover {
   box-shadow: inset 200px 0 0 0 #000;
   color: #fff;
-}
+} */
 
 .prize {
   font-size: 1.2rem;
@@ -535,7 +536,7 @@
       background-position: 22vw 6vh;
   }
 }
-  width: 100%;
+  /* width: 100%;
   display: inline-block;
-}
+} */
 /* Subscription RA-detail END */
