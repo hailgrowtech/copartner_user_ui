@@ -7,11 +7,11 @@ import './Hero.css'
 
 const Hero = () => {
   return (
-    <div className={`flex md:flex-col ${styles.paddingX} flex-col md:pt-8 pt-6 background-img-div`}>
+    <div className={`flex md:flex-col ${styles.paddingX} flex-col ${styles.paddingY} background-img-div`}>
       <div
         className={`${styles.flexStart} flex-col z-10 relative`}
       >
-        <div className="flex flex-col justify-between md:pt-[5rem] pt-[3rem] md:w-[603px]">
+        <div className="flex flex-col justify-between md:w-[603px]">
           <span
             className="font-poppins font-semibold md:text-[72px] text-[36px]
           text-gradient md:leading-[84px] leading-[48px] font-[700]"
