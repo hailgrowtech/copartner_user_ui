@@ -26,7 +26,7 @@ const StockPlatform = () => {
         {stock_data.map((stock) => (
           <div
             key={stock.id}
-            className="flex flex-col gap-[2rem] items-center md:w-[337px] md:h-[335px] w-[335px] h-[338px] rounded-[11px] hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
+            className="flex flex-col gap-[1rem] py-[8px] items-center md:w-[337px] md:h-[393px] w-[335px] h-[338px] rounded-[11px] hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
           >
             <img
               src={stock.img}

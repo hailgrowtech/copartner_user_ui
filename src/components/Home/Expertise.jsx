@@ -156,7 +156,9 @@ const Expertise = () => {
             {expertise_type.map((type) => (
               <div
                 key={type.id}
-                className={`w-[176px] h-[248px] sm:w-[290px] sm:h-[386px] flex flex-col items-baseline justify-evenly sm:my-4 ${
+                className={`w-[176px] h-[248px] sm:w-[290px] sm:h-[386px] flex flex-col items-baseline p-4
+                rounded-[11px] hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out
+                justify-evenly sm:my-4 ${
                   type.id === 3 && isSmallScreen
                     ? "md:w-[290px] md:h-[386px] w-[361px] h-[198px]"
                     : ""

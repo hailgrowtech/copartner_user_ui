@@ -13,8 +13,8 @@ const ExpertiseCourse = ({ courseData }) => {
   
   return (
     <>
-      <div className="w-full md:w-1/3 p-2 rounded-md mb-2 md:mb-10">
-        <div className="w-full overflow-hidden relative rounded-lg bg-[#18181ba6] border border-solid border-[#f4f4f51d]">
+      <div className="w-full md:w-1/3 p-2 rounded-md mb-2 md:mb-5">
+        <div className="w-full overflow-hidden relative rounded-lg hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out">
           <img
             src={cardImg}
             alt="Course_Image"

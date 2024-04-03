@@ -302,23 +302,23 @@ export const stock_data = [
   {
     id: "1",
     content:
-      "Ask anything, anytime, anywhere. Stuck while programming? Need some copy? Or just have a question - Ask AI.",
-    title: "Lorem Ipsum Dolor",
+      "Our platform offers easy-to-use tools and customised services to traders, authorised by SEBI registered Research Analysts, making it simple to execute trades and manage the portfolio.",
+    title: "For Traders",
     img: stock_1,
   },
   {
     id: "2",
     content:
-      "Keep everything safe and updated across your Macs. Perfect to switch between personal and work setup.",
-    title: "Lorem Ipsum Dolor",
+      "Connect with traders actively seeking valuable information, ensuring your analysis reaches an interested audience that enhances your visibility and credibility.",
+    title: "For RAs",
     img: stock_2,
   },
   {
     id: "3",
     content:
-      "Make Raycast your own with gorgeous pre-made themes or design your own and share it with the community.",
+      "A one stop solution platform that provides a transparent access to comprehensive analysis and a vibrant network of traders and experts and resources needed for informed decision-making and profitable trading journeys.",
     name: "Kenn Gallagher",
-    title: "Lorem Ipsum Dolor",
+    title: "",
     img: stock_3,
   },
 ];

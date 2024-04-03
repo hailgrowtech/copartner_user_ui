@@ -21,19 +21,16 @@ const CourseList = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center md:py-[4rem] py-[0]">
-        <div className="flex sm:justify-between justify-center items-center flex-col sm:flex-row gap-2">
-          <span className="font-poppins h-[52px] font-[700] md:text-[50px] text-[30px] sm:text-start text-center text-gradient-2 leading-[51px]">
-            Course By Expertise
-          </span>
-          <span className="md:w-[600px] md:h-[56px] w-[328px] h-[34px] font-[400] md:text-[18px] text-[12px] md:leading-[28px] leading-[17px] text-dimWhite sm:text-start text-center">
-            Dive into our expert-led stock market courses to navigate through
-            the{" "}
-            <span className="text-lightWhite">
-              stock market world with a profitable setup.
-            </span>
-          </span>
+      <div className="md:flex md:flex-row md:justify-between text-center w-full md:mt-16 mt-10 md:mb-8 mb-1 md:px-[10px]">
+        <div className="flex-col-6 font-inter font-bold md:text-[50px] text-[30px] subheading-color md:leading-[50px] leading-[51px] md:mb-6">
+          Course By Expertise
         </div>
+        <span className="md:w-[600px] md:h-[56px] w-[328px] h-[34px] font-[400] md:text-[18px] text-[12px] md:leading-[28px] leading-[17px] text-dimWhite sm:text-start text-center">
+          Unlock the Secrets of Success:{" "}
+          <span className="text-lightWhite">
+            Enroll in Our Strategic Stock Market Expertise Courses.
+          </span>
+        </span>
       </div>
 
       <div>
@@ -53,7 +50,7 @@ const CourseList = () => {
       </div>
 
       <button className="md:w-[147px] md:h-[40px] hidden md:flex items-center justify-center flex w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px] mx-[34rem]">
-          Explore More
+        Explore More
       </button>
 
       <StockPlatform />
