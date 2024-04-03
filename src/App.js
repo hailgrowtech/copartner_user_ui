@@ -1,7 +1,8 @@
 import React from "react";
-import { Expertise, Hero, Navbar, Subscription, SubscriptionCourseDetail } from "./components";
+import { Expertise, Navbar, Subscription, SubscriptionCourseDetail, SubscriptionRA, Wallet, Webinar } from "./components";
 import styles from "./style";
 import { ErrorPage } from "./components";
+import Hero from "./components/Home/Hero";
 import {
   Route,
   RouterProvider,
@@ -19,7 +20,7 @@ function App() {
             element={
               <div className={`${styles.flexStart}`}>
                 <div className={`${styles.boxWidth}`}>
-                  <Hero />
+                  <Hero/>
                 </div>
               </div>
             }
@@ -54,6 +55,10 @@ function App() {
               </div>
             }
           />
+          <Route path="expertise" element={ <Expertise /> } />
+          <Route path="webinar" element={<Webinar />} />
+          <Route path="wallet" element={<Wallet />} />
+          <Route path="subscription/ra-detail" element={<SubscriptionRA />} />
         </Route>
       </>
     )

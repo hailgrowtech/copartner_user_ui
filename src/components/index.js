@@ -1,17 +1,22 @@
 import Navbar from "./Navbar";
-import Hero from "./Hero";
-import Expertise from "./Expertise";
-import Subscription from "./Subscription.jsx";
+import Home from "./Home/Hero";
+import Expertise from "./Expertise/Expertise.jsx";
+import Subscription from "./Subscription/Subscription.jsx";
 import ErrorPage from "./ErrorPage";
-import SubscriptionCourseDetail from './SubscriptionCourseDetail.jsx';
+import SubscriptionCourseDetail from './Subscription/SubscriptionCourseDetail.jsx';
 import ExpertCard from "./ExpertCard.jsx";
-import CourseInfo from "./CourseInfo.jsx";
-import RecommendCourse from "./RecommendCourse.jsx"
+import RecommendCourse from "./Subscription/RecommendCourse.jsx"
+import Wallet from "./Wallet"
+import Webinar from "./Webinar";
+import Footer from "./Expertise/Footer";
+import Testimonials from "./Expertise/Testimonials";
+import SubscriptionRA from "./Subscription RA/SubscriptionRA";
+import CourseInfo from "./Subscription/CourseInfo.jsx";
 
 
 export {
     Navbar,
-    Hero,
+    Home,
     Subscription,
     Expertise,
     ErrorPage,
@@ -19,4 +24,10 @@ export {
     CourseInfo,
     ExpertCard,
     RecommendCourse,
+    Wallet,
+    Webinar,
+    Footer,
+    Testimonials,
+    SubscriptionRA,
+    
 }
