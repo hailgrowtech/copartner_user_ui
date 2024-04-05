@@ -3,6 +3,7 @@ import styles from "../../style";
 import Card from "./Profile_Component";
 import SingleCard from "./Single_Card";
 import DoubleCard from "./Double_Card";
+import { Link } from "react-router-dom";
 
 const Expertise = () => {
   return (
@@ -50,9 +51,9 @@ const Expertise = () => {
                 guiding you thoroughly to maximising profits in the dynamic
                 world of stock trading.
               </div>
-              <button className="font-inter text-black font-semibold bg-[#FFFFFF] md:text-[14px] text-[10px] md:leading-[16px] leading-[12px] p-2 rounded border-[#000000]-950 border-2">
+              <Link to="explore-expertise" className="font-inter text-black font-semibold bg-[#FFFFFF] md:text-[14px] text-[10px] md:leading-[16px] leading-[12px] p-2 rounded border-[#000000]-950 border-2">
                 Explore More
-              </button>
+              </Link>
             </div>
           </div>
         </section>

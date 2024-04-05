@@ -12,7 +12,7 @@ import Footer from "./Expertise/Footer";
 import Testimonials from "./Expertise/Testimonials";
 import SubscriptionRA from "./Subscription RA/SubscriptionRA";
 import CourseInfo from "./Subscription/CourseInfo.jsx";
-
+import ExpertiseExplore from "./Expertise/ExpertiseExplore";
 
 export {
     Navbar,
@@ -28,6 +28,6 @@ export {
     Webinar,
     Footer,
     Testimonials,
-    SubscriptionRA,
-    
+    SubscriptionRA,    
+    ExpertiseExplore,
 }
