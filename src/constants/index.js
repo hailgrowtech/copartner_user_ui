@@ -483,7 +483,7 @@ export const expertsData = [
   },
 
   {
-    id: 5,
+    id: 6,
     image: userImg,
     name: "John Doe",
     role: "Stock Market",

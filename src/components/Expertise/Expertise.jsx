@@ -24,7 +24,7 @@ const Expertise = () => {
           </div>
           <div className="flex flex-row justify-between items-center w-full mb-8">
             <span
-              className="flex-1 font-inter font-medium md:text-[18px] text-[12px]
+              className="flex-1 font-inter md:text-xl text-[12px]
       text-[#FFFFFF] md:leading-[28px] leading-[16px] text-center"
             >
               Take your team up a level with easy-to-use tools, effortless{" "}

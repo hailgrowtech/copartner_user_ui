@@ -73,6 +73,7 @@ const Expertise = () => {
                     <img
                       src={expert.ratingIcon}
                       className="sm:w-[12.3px] sm:h-[12.3px] w-[8px] h-[8px]"
+                      alt="rating"
                     />
                     <span className="text-lightWhite font-[600] sm:text-[11.5px] sm:leading-[14px] text-[8px] leading-[10px]">
                       {expert.rating}

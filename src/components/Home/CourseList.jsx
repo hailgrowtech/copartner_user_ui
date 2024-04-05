@@ -4,6 +4,7 @@ import ExpertiseCourse from "./ExpertiseCourse";
 import { courseExpertise_data } from "../../constants";
 import "./CourseList.css";
 import CourseCardsCarousel from "./CourseCardsCarousel";
+import { Link } from "react-router-dom";
 
 const CourseList = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -48,11 +49,11 @@ const CourseList = () => {
           </div>
         )}
       </div>
-
-      <button className="md:w-[147px] md:h-[40px] hidden md:flex items-center justify-center flex w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px] mx-[34rem]">
-        Explore More
-      </button>
-
+      <Link to="courses/explore-courses">
+        <button className="md:w-[147px] md:h-[40px] md:flex md:mt-0 mt-4 items-center justify-center flex w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px] mx-auto">
+          Explore More
+        </button>
+      </Link>
       <StockPlatform />
     </>
   );
