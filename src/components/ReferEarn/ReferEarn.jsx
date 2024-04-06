@@ -12,7 +12,7 @@ const ReferEarn = () => {
       >
         <div className="flex flex-col justify-center items-center w-[328px] h-[143px]">
           <div className="flex justify-center md:gap-[1rem] gap-[0px]">
-            <span className="md:w-[286px] md:h-[52px] w-[187px] h-[52px] font-inter font-[700] md:text-[50px] md:text-[36px] text-[30px] text-gradient-2 md:leading-[51px] leading-[48px]">
+            <span className="md:w-[320px] md:h-[52px] w-[187px] h-[52px] font-inter font-[700] md:text-[50px] md:text-[36px] text-[30px] text-gradient-2 md:leading-[51px] leading-[48px]">
               Refer & Earn
             </span>
             <img
@@ -42,12 +42,12 @@ const ReferEarn = () => {
             <img src={referearn} alt="" className="md:w-[596px] md:h-[251px] w-[361px] h-[152px] md:mt-[5rem] mt-[0rem]" />
         </div>
 
-        <div className="md:w-[540px] md:h-[50px] w-[358px] h-[50px] rounded-[12px] bg-white flex justify-center items-center md:p-0 p-[10px] mt-[5rem]">
+        <div className="md:w-[520px] md:h-[50px] w-[358px] h-[50px] rounded-[12px] bg-white flex justify-center items-center md:p-0 p-[10px] mt-[5rem]">
             <input type="text" placeholder="Lorem ipsum dolor sit amet consectetur." className="text-black font-inter font-[500] text-[13px] leading-[16px] w-[382px] h-[16px]" />
             <button className="w-[118px] h-[42px] rounded-[12px] font-[500] text-[14px] bg-[#0081F1] text-white">Copy Link</button>
         </div>
 
-        <button className="w-[223px] h-[40px] rounded-[6px] bg-white text-black mt-[2rem] font-inter font-[500] text-[14px] leading-[16px]">
+        <button className="hidden w-[223px] h-[40px] rounded-[6px] bg-white text-black mt-[2rem] font-inter font-[500] text-[14px] leading-[16px]">
             Become a Affiliate Partner
         </button>
       </div>

@@ -43,6 +43,7 @@ import referearn from './referearn.png'
 import lorem from './loremImg.png'
 import lorem2 from './loremImg2.png'
 import lorem3 from './loremImg3.png'
+import invoiceImg from './invoice.png'
 
 export {
     logo,
@@ -90,4 +91,5 @@ export {
     lorem, 
     lorem2,
     lorem3,
+    invoiceImg,
 }

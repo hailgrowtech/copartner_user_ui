@@ -15,6 +15,7 @@ import {
   courseImg3,
   courseUser,
   testimonialImg,
+  invoiceImg,
 } from "../assets";
 
 export const navLinks = [
@@ -677,3 +678,78 @@ export const singleCourse = {
   aboutCourse:
     "Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam sagittis nisl faucibus. Sed adipiscing condimentum volutpat cursus in risus sed sit. Ipsum aliquam urna porttitor eu. Volutpat ac sit at semper tortor vulputate. Purus pulvinar vestibulum cras odio. Congue amet sagittis dui pellentesque consectetur pellentesque et fermentum. Arcu elementum tempor nulla quis aenean fusce ut vulputate. A quam vitae magna pellentesque. Ut volutpat adipiscing purus faucibus duis orci. Accumsan venenatis eu vitae interdum dolor. Nunc at nibh habitant condimentum vitae. Semper luctus vulputate lacinia sit diam tellus id vitae. Morbi aliquet bibendum scelerisque vestibulum aliquet venenatis eu et. Proin bibendum eget lectus consequat id vitae. Eu hendrerit lobortis turpis quam ornare egestas tincidunt donec nulla. Justo nisi ac diam mauris cursus turpis lacus. Vulputate cras sem nec id eget. Cras lectus vestibulum dictum enim. Mauris ultrices etiam ac facilisis malesuada. Odio accumsan fringilla malesuada faucibus fusce pellentesque. Non nunc cursus nisl odio. Pellentesque laoreet molestie proin tincidunt cursus. Integer non odio turpis ac sem aliquam in ante congue. Erat pharetra sed semper duis duis penatibus. Ut congue interdum cras convallis eu nibh quis. Arcu at accumsan neque ultricies tellus massa leo nulla sed.",
 };
+
+export const walletData = [
+  {
+    transcationId: "#12324654685",
+    date: "26/01/2024",
+    subscription: "Expertise Basic",
+    name: "Rohit",
+    amount: "₹1,999 ",
+    invoice: invoiceImg,
+  },
+  {
+    transcationId: "#12324654685",
+    date: "26/01/2024",
+    subscription: "Expertise Basic",
+    name: "Varun",
+    amount: "₹1,999 ",
+    invoice: invoiceImg,
+  },
+  {
+    transcationId: "#12324654685",
+    date: "26/01/2024",
+    subscription: "Expertise Basic",
+    name: "Amit",
+    amount: "₹1,999 ",
+    invoice: invoiceImg,
+  },
+  {
+    transcationId: "#12324654685",
+    date: "26/01/2024",
+    subscription: "Expertise Basic",
+    name: "Shivam",
+    amount: "₹1,999 ",
+    invoice: invoiceImg,
+  },
+  {
+    transcationId: "#12324654685",
+    date: "26/01/2024",
+    subscription: "Expertise Basic",
+    name: "Vinit",
+    amount: "₹1,999 ",
+    invoice: invoiceImg,
+  },
+  {
+    transcationId: "#12324654685",
+    date: "26/01/2024",
+    subscription: "Expertise Basic",
+    name: "Priyank",
+    amount: "₹1,999 ",
+    invoice: invoiceImg,
+  },
+  {
+    transcationId: "#12324654685",
+    date: "26/01/2024",
+    subscription: "Expertise Basic",
+    name: "Nikhil",
+    amount: "₹1,999 ",
+    invoice: invoiceImg,
+  },
+  {
+    transcationId: "#12324654685",
+    date: "26/01/2024",
+    subscription: "Expertise Basic",
+    name: "Rohit",
+    amount: "₹1,999 ",
+    invoice: invoiceImg,
+  },
+  {
+    transcationId: "#12324654685",
+    date: "26/01/2024",
+    subscription: "Expertise Basic",
+    name: "Mohan",
+    amount: "₹1,999 ",
+    invoice: invoiceImg,
+  },
+];

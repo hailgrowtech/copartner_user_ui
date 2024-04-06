@@ -6,7 +6,7 @@ import ErrorPage from "./ErrorPage";
 import SubscriptionCourseDetail from './Subscription/SubscriptionCourseDetail.jsx';
 import ExpertCard from "./ExpertCard.jsx";
 import RecommendCourse from "./Subscription/RecommendCourse.jsx"
-import Wallet from "./Wallet"
+import Wallet from "./Wallet/Wallet.jsx"
 import Webinar from "./Webinar";
 import Footer from "./Expertise/Footer";
 import Testimonials from "./Expertise/Testimonials";
