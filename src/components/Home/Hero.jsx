@@ -3,15 +3,13 @@ import styles from "../../style";
 import { arrow } from "../../assets";
 import Expertise from "./Expertise";
 import { expertise_data } from "../../constants";
-import "./Hero.css";
-import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <div
-      className={`flex md:flex-col ${styles.paddingX} ${styles.paddingY} flex-col background-img-div`}
-    >
-      <div className={`${styles.flexStart} flex-col z-10 relative`}>
+    <div className={`flex md:flex-col ${styles.paddingX} flex-col ${styles.paddingY} background-img-div`}>
+      <div
+        className={`${styles.flexStart} flex-col z-10 relative`}
+      >
         <div className="flex flex-col justify-between md:w-[603px]">
           <span
             className="font-poppins md:text-[72px] text-[36px]

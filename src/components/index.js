@@ -6,9 +6,9 @@ import ErrorPage from "./ErrorPage";
 import SubscriptionCourseDetail from './Subscription/SubscriptionCourseDetail.jsx';
 import ExpertCard from "./ExpertCard.jsx";
 import RecommendCourse from "./Subscription/RecommendCourse.jsx"
-import Wallet from "./Wallet"
+import Wallet from "./Wallet/Wallet.jsx"
 import Webinar from "./Webinar";
-import Footer from "./Expertise/Footer";
+import Footer from "./Home/Footer";
 import Testimonials from "./Expertise/Testimonials";
 import SubscriptionRA from "./Subscription RA/SubscriptionRA";
 import CourseInfo from "./Subscription/CourseInfo.jsx";

@@ -8,6 +8,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
+import ReferEarn from "./components/ReferEarn/ReferEarn";
 
 function App() {
   const router = createBrowserRouter(
@@ -60,6 +61,16 @@ function App() {
           <Route path="subscription/ra-detail" element={<SubscriptionRA />} />
           <Route path="expertise/explore-expertise" element={<ExpertiseExplore />} />
           <Route path="courses/explore-courses" element={<CoursesExplore />} />
+          <Route
+            path="refer&earn"
+            element={
+              <div className={`${styles.flexStart}`}>
+                <div className={`${styles.boxWidth}`}>
+                  <ReferEarn />
+                </div>
+              </div>
+            }
+          />
         </Route>
       </>
     )

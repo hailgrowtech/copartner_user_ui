@@ -84,11 +84,13 @@ const Navbar = () => {
               ))}
             </ul>
 
+            <Link to="/refer&earn">
             <div style={{ marginLeft: "1rem" }}>
               <button className="text-dimWhite text-[11px] py-1 px-4 ms-8 rounded-[36px] border border-solid border-white border-opacity-60 flex  items-center">
                 Refer & Earn
               </button>
             </div>
+            </Link>
 
             <div className="sm:hidden flex flex-1 justify-end items-center">
               <img
@@ -141,11 +143,13 @@ const Navbar = () => {
                     </li>
                   ))}
 
+                  <Link to="/refer&earn">
                   <li className="mt-4">
-                    <button className="text-dimWhite text-[11px] py-1 px-4 rounded-[36px] border border-solid border-white border-opacity-60 flex  items-center">
+                    <button onClick={() => setToggle(false)} className="text-dimWhite text-[11px] py-1 px-4 rounded-[36px] border border-solid border-white border-opacity-60 flex  items-center">
                       Refer & Earn
                     </button>
                   </li>
+                  </Link>
 
                   <li className="mt-28">
                     <button className="text-black font-semibold text-[11px] py-1 px-4 rounded-[4px] border-2 border-solid bg-white border-dimWhite border-opacity-60 flex items-center">

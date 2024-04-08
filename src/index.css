@@ -522,7 +522,9 @@
       background-position: 22vw 6vh;
   }
 }
-  /* width: 100%;
-  display: inline-block;
-} */
-/* Subscription RA-detail END */
+
+.background-img-div {
+  background-image: url("./assets/hero.png");
+  background-position: top right;
+  background-repeat: no-repeat;
+}

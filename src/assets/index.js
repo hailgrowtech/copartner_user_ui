@@ -38,6 +38,12 @@ import anywhereAccess from './AccessAnywhere-icon.png'
 import lifetimeAccess from './LifetimeAccess-icon.png'
 import bookmark from './Bookmark.png'
 import close from './close.png'
+import dollor from './dollor.png'
+import referearn from './referearn.png'
+import lorem from './loremImg.png'
+import lorem2 from './loremImg2.png'
+import lorem3 from './loremImg3.png'
+import invoiceImg from './invoice.png'
 
 export {
     logo,
@@ -71,7 +77,7 @@ export {
     courseImg3,
     courseUser,
     courseImg,
-
+    dollor,
     tick,
     layer,
     level,
@@ -80,5 +86,10 @@ export {
     anywhereAccess,
     lifetimeAccess,
     bookmark,
-    close
+    close, 
+    referearn, 
+    lorem, 
+    lorem2,
+    lorem3,
+    invoiceImg,
 }
