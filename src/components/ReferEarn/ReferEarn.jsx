@@ -12,7 +12,7 @@ const ReferEarn = () => {
       >
         <div className="flex flex-col justify-center items-center w-[328px] h-[143px]">
           <div className="flex justify-center md:gap-[1rem] gap-[0px]">
-            <span className="md:w-[320px] md:h-[52px] w-[187px] h-[52px] font-inter font-[700] md:text-[50px] md:text-[36px] text-[30px] text-gradient-2 md:leading-[51px] leading-[48px]">
+            <span className="md:w-[340px] md:h-[52px] w-[187px] h-[52px] font-inter font-[700] md:text-[50px] text-[30px] text-gradient-2 md:leading-[51px] leading-[48px]">
               Refer & Earn
             </span>
             <img
