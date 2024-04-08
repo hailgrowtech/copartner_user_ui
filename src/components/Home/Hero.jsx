@@ -3,7 +3,6 @@ import styles from "../../style";
 import { arrow } from "../../assets";
 import Expertise from "./Expertise";
 import { expertise_data } from "../../constants";
-import './Hero.css'
 
 const Hero = () => {
   return (
