@@ -1,5 +1,4 @@
 import {
-  logo,
   userImg,
   userBck,
   stars,

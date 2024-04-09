@@ -3,6 +3,7 @@ import styles from "../../style";
 import { arrow } from "../../assets";
 import Expertise from "./Expertise";
 import { expertise_data } from "../../constants";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -33,10 +34,12 @@ const Hero = () => {
         <div className="pt-[2rem] grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:flex">
           {expertise_data.slice(0, 3).map((expert, id) => {
             return (
+              <Link to="subscription/ra-detail">
               <div
                 key={expert.id}
                 className="md:w-[256px] md:h-[285px] sm:w-[172px] sm:h-[210px] gap-[3px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
               >
+                
                 <div className="w-[72px] h-[98px] md:w-[256px] md:h-[146px]  relative profile-image mb-4">
                   <img
                     src={expert.icon}
@@ -50,7 +53,7 @@ const Hero = () => {
                   />
                 </div>
 
-                <div className="flex md:w-[212px] md:h-[26px] sm:w-[157px] sm:h-[22px] flex justify-between md:gap-0 gap-[2.2rem]">
+                <div className="flex md:w-[212px] md:h-[26px] sm:w-[157px] sm:h-[22px] justify-between md:gap-0 gap-[2.2rem]">
                   <div className="flex flex-col gap-1">
                     <span className="text-[12px] leading-[12px] font-[500] text-white">
                       {expert.name}
@@ -111,6 +114,7 @@ const Hero = () => {
                   </div>
                 </div>
               </div>
+                </Link>
             );
           })}
 

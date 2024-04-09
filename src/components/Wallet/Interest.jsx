@@ -61,6 +61,7 @@ const Interest = () => {
                       <img
                         src={expert.ratingIcon}
                         className="md:w-[12.3px] md:h-[12.3px] w-[8px] h-[8px]"
+                        alt="rating"
                       />
                       <span className="text-lightWhite font-[600] md:text-[11.5px] md:leading-[14px] text-[8px] leading-[10px]">
                         {expert.rating}
@@ -148,6 +149,7 @@ const Interest = () => {
                       <img
                         src={expert.ratingIcon}
                         className="md:w-[12.3px] md:h-[12.3px] w-[8px] h-[8px]"
+                        alt="rating"
                       />
                       <span className="text-lightWhite font-[600] md:text-[11.5px] md:leading-[14px] text-[8px] leading-[10px]">
                         {expert.rating}
