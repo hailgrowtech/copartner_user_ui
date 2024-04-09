@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { expertise_data } from '../../constants'
+import { Link } from "react-router-dom";
 
 const Interest = () => {
   const [smallScreen, setSmallScreen] = useState(false);
@@ -27,10 +28,11 @@ const Interest = () => {
         </span>
       </div>
 
-      <div className="md:gap-[12rem] gap-0 md:p-0 md:p-[1rem] p-[1.5rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-2">
+      <div className="md:gap-[12rem] gap-0 md:p-0 p-[1.5rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-2">
         {smallScreen
           ? expertise_data.slice(0, 4).map((expert, id) => {
               return (
+                <Link to="/subscription/ra-detail">
                 <div
                   key={expert.id}
                   className=":w-[172px] :h-[210px] gap-[3px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
@@ -115,10 +117,12 @@ const Interest = () => {
                     </div>
                   </div>
                 </div>
+                </Link>
               );
             })
           : expertise_data.slice(0, 3).map((expert, id) => {
               return (
+                <Link to="/subscription/ra-detail">
                 <div
                   key={expert.id}
                   className="w-[384px] h-[385px] gap-[3px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
@@ -203,6 +207,7 @@ const Interest = () => {
                     </div>
                   </div>
                 </div>
+                </Link>
               );
             })}
       </div>

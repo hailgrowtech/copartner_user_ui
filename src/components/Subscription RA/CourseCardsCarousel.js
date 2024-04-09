@@ -62,7 +62,7 @@ const CourseCardsCarousel = () => {
       onMouseEnter={() => handleHover(true)}
       onMouseLeave={() => handleHover(false)}
     >
-      <div className="carousel">
+      <div style={{marginLeft: "-2rem"}} className="carousel">
         <div
           className="carousel-inner"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
