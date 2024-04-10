@@ -52,7 +52,10 @@ const ExpertCard = () => {
             </div>
           </div>
           <div className="flex mx-auto">
-            <img className="subscription-RA-img md:w-[400px] w-[470px] my-auto" src={expert.image} alt="" />
+            <img className="subscription-RA-img md:w-[400px] w-[470px] my-auto" src={expert.image} alt=""
+             style={{
+                  maskImage: 'linear-gradient(rgba(0, 0, 0, 1) 70%, transparent)'
+                }}/>
           </div>
           <div className="flex text-white items-end absolute top-6 right-6">
             <img className="md:w-8 w-4 md:h-8 h-4 me-1" src={stars} alt="star icon" />

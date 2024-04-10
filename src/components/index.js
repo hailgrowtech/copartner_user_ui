@@ -12,6 +12,9 @@ import Footer from "./Expertise/Footer";
 import Testimonials from "./Expertise/Testimonials";
 import SubscriptionRA from "./Subscription RA/SubscriptionRA";
 import CourseInfo from "./Subscription/CourseInfo.jsx";
+import Profile from "./Profile/Profile.jsx"
+import Blog from './Blog/Blog.jsx'
+import BlogPage from './Blog/BlogPage.jsx'
 
 
 export {
@@ -29,5 +32,7 @@ export {
     Footer,
     Testimonials,
     SubscriptionRA,
-    
+    Profile,
+    Blog,
+    BlogPage,
 }

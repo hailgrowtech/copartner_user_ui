@@ -38,6 +38,12 @@ import anywhereAccess from './AccessAnywhere-icon.png'
 import lifetimeAccess from './LifetimeAccess-icon.png'
 import bookmark from './Bookmark.png'
 import close from './close.png'
+import mail from './mail.png';
+import call from './call.png';
+import edit from './edit.png';
+import Blog1 from './Blog1.png';
+import Blog2 from './blog2.png';
+import Blog3 from './blog3.png';
 
 export {
     logo,
@@ -71,7 +77,9 @@ export {
     courseImg3,
     courseUser,
     courseImg,
-
+    mail,
+    call,
+    edit,
     tick,
     layer,
     level,
@@ -80,5 +88,8 @@ export {
     anywhereAccess,
     lifetimeAccess,
     bookmark,
-    close
+    close,
+    Blog1,
+    Blog2,
+    Blog3,
 }

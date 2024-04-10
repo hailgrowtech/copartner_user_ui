@@ -50,7 +50,7 @@ const Subscription = () => {
         </div>
       </section>
 
-      <section className="text-white py-5">
+      {/* <section className="text-white py-5">
         <div className="md:flex md:flex-row md:justify-between text-center w-full md:mt-16 mt-10 md:mb-8 mb-3 md:px-[80px]">
           <div className="flex-col-6 font-inter font-bold md:text-[50px] text-[30px] subheading-color md:leading-[50px] leading-[51px] md:mb-6">
             Continue Course
@@ -73,7 +73,7 @@ const Subscription = () => {
             <ContinueCardsCarousel />
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className={`${styles.emptySection} w-full md:px-20 text-white`}>
         <div className="mb-4 md:mb-8">
@@ -117,19 +117,20 @@ const Subscription = () => {
         </button>
       </section>
 
-      <section className="w-full py-10 md:px-20 text-white">
-        <div className="md:flex md:flex-row md:justify-between text-center w-full md:mt-16 mt-10 md:mb-8 mb-3 md:px-[50px]">
-          <div className="flex-col-6 font-inter font-bold md:text-[50px] text-[30px] subheading-color md:leading-[50px] leading-[51px] md:mb-6">
-            Completed Courses
+      {/* <section className={`w-full md:px-5 text-white`}>
+      <div className="md:flex md:flex-row md:justify-between text-center w-full md:mt-16 mt-10 md:mb-8 mb-1 md:px-50">
+       <div className="flex-col-6 text-left font-inter font-bold md:text-[50px] text-[30px] subheading-color md:leading-[50px] leading-[51px] md:mb-6 md:mx-[10rem]">
+            Course By Expertise
           </div>
-          <div className="flex-col-6 font-normal md:text-left text-center text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
-            Dive into the expertise of our{" "}
-            <span className="text-white">
-            Great job completing your course! Keep an eye on your inbox for a detailed summary of  <br /> 
-            your progress and valuable insights to continue your trading journey with confidence.
-            </span>
-          </div>
-        </div>
+          <div className="flex-col-6 font-normal pl-[10rem] md:text-left text-center text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
+    <p className="">
+    With Cobalt, managing your business finances is effortless, empowering, and anything but boring. {" "}
+    <span className="text-white">
+      Say no to spreadsheets and tools designed in the 80s.
+      </span>
+    </p>
+  </div>
+</div>
         <div className="flex justify-center">
           <div className="md:block hidden">
             <CompletedCards />
@@ -140,8 +141,14 @@ const Subscription = () => {
             <CompletedCardsCarousel />
           </div>
         </div>
+      </section> */}
+
+       {/* New section */}
+       <section className="w-full text-center md:px-16 md:mb-12">
+       
       </section>
     </div>
+    
   );
 };
 

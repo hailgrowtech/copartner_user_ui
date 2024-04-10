@@ -15,6 +15,9 @@ import {
   courseImg3,
   courseUser,
   testimonialImg,
+  Blog1,
+  Blog2,
+  Blog3,
 } from "../assets";
 
 export const navLinks = [
@@ -677,3 +680,120 @@ export const singleCourse = {
   aboutCourse:
     "Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam sagittis nisl faucibus. Sed adipiscing condimentum volutpat cursus in risus sed sit. Ipsum aliquam urna porttitor eu. Volutpat ac sit at semper tortor vulputate. Purus pulvinar vestibulum cras odio. Congue amet sagittis dui pellentesque consectetur pellentesque et fermentum. Arcu elementum tempor nulla quis aenean fusce ut vulputate. A quam vitae magna pellentesque. Ut volutpat adipiscing purus faucibus duis orci. Accumsan venenatis eu vitae interdum dolor. Nunc at nibh habitant condimentum vitae. Semper luctus vulputate lacinia sit diam tellus id vitae. Morbi aliquet bibendum scelerisque vestibulum aliquet venenatis eu et. Proin bibendum eget lectus consequat id vitae. Eu hendrerit lobortis turpis quam ornare egestas tincidunt donec nulla. Justo nisi ac diam mauris cursus turpis lacus. Vulputate cras sem nec id eget. Cras lectus vestibulum dictum enim. Mauris ultrices etiam ac facilisis malesuada. Odio accumsan fringilla malesuada faucibus fusce pellentesque. Non nunc cursus nisl odio. Pellentesque laoreet molestie proin tincidunt cursus. Integer non odio turpis ac sem aliquam in ante congue. Erat pharetra sed semper duis duis penatibus. Ut congue interdum cras convallis eu nibh quis. Arcu at accumsan neque ultricies tellus massa leo nulla sed.",
 };
+
+
+export const blogs = [
+  {
+    id: 10001,
+    imageUrl: Blog1,
+    title: "Unlocking Your Trading Potential: A Guide to Our Platform",
+    heading1: "Unlocking Your Trading Potential: A Guide to Our Platform",
+    content1: `In this fast-paced world of stock trading, having the right tools and insights can make all the difference between success and missed opportunities. That is where our platform comes in, especially designed to empower traders of all levels with the resources they need to thrive in the market. One of the standout features of our platform is the access to real-time market insights with SEBI registered expert analysis.`,
+    content2: `Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam sagittis nisl faucibus. Sed adipiscing condimentum volutpat cursus in risus sed sit. Ipsum aliquam urna porttitor eu. Volutpat ac sit at semper tortor vulputate.
+Purus pulvinar vestibulum cras odio. Congue amet sagittis dui pellentesque consectetur pellentesque et fermentum. Arcu elementum tempor nulla quis aenean fusce ut vulputate. A quam vitae magna pellentesque. Ut volutpat adipiscing purus faucibus duis orci. Accumsan venenatis eu vitae interdum dolor. Nunc at nibh habitant condimentum vitae. Semper luctus vulputate lacinia sit diam tellus id vitae. Morbi aliquet bibendum scelerisque vestibulum aliquet venenatis eu et. Proin bibendum eget lectus consequat id vitae. Eu hendrerit lobortis turpis quam ornare egestas tincidunt donec nulla. Justo nisi ac diam mauris cursus turpis lacus.
+Vulputate cras sem nec id eget. Cras lectus vestibulum dictum enim. Mauris ultrices etiam ac facilisis malesuada. Odio accumsan fringilla malesuada faucibus fusce pellentesque. Non nunc cursus nisl odio. Pellentesque laoreet molestie proin tincidunt cursus. Integer non odio turpis ac sem aliquam in ante congue. Erat pharetra sed semper duis duis penatibus. Ut congue interdum cras convallis eu nibh quis. Arcu at accumsan neque ultricies tellus massa leo nulla sed.`,
+    heading2: "How Our Platform Works",
+    content3: `Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam sagittis nisl faucibus. Sed adipiscing condimentum volutpat cursus in risus sed sit. Ipsum aliquam urna porttitor eu. Volutpat ac sit at semper tortor vulputate.
+Purus pulvinar vestibulum cras odio. Congue amet sagittis dui pellentesque consectetur pellentesque et fermentum. Arcu elementum tempor nulla quis aenean fusce ut vulputate. A quam vitae magna pellentesque. Ut volutpat adipiscing purus faucibus duis orci. Accumsan venenatis eu vitae interdum dolor. Nunc at nibh habitant condimentum vitae. Semper luctus vulputate lacinia sit diam tellus id vitae. Morbi aliquet bibendum scelerisque vestibulum aliquet venenatis eu et. Proin bibendum eget lectus consequat id vitae. Eu hendrerit lobortis turpis quam ornare egestas tincidunt donec nulla. Justo nisi ac diam mauris cursus turpis lacus.`,
+    bio: "Choose the alerts you need and receive them via email, mobile or Slack. Review and take action in one click."
+  },
+  {
+    id: 10002,
+    imageUrl: Blog2,
+    title: "Unlocking Your Trading Potential: A Guide to Our Platform",
+    heading1: "Introduction to Our Platform",
+    content1: `In this fast-paced world of stock trading, having the right tools and insights can make all the difference between success and missed opportunities. That is where our platform comes in, especially designed to empower traders of all levels with the resources they need to thrive in the market. One of the standout features of our platform is the access to real-time market insights with SEBI registered expert analysis.`,
+    content2: `Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam sagittis nisl faucibus. Sed adipiscing condimentum volutpat cursus in risus sed sit. Ipsum aliquam urna porttitor eu. Volutpat ac sit at semper tortor vulputate.
+Purus pulvinar vestibulum cras odio. Congue amet sagittis dui pellentesque consectetur pellentesque et fermentum. Arcu elementum tempor nulla quis aenean fusce ut vulputate. A quam vitae magna pellentesque. Ut volutpat adipiscing purus faucibus duis orci. Accumsan venenatis eu vitae interdum dolor. Nunc at nibh habitant condimentum vitae. Semper luctus vulputate lacinia sit diam tellus id vitae. Morbi aliquet bibendum scelerisque vestibulum aliquet venenatis eu et. Proin bibendum eget lectus consequat id vitae. Eu hendrerit lobortis turpis quam ornare egestas tincidunt donec nulla. Justo nisi ac diam mauris cursus turpis lacus.
+Vulputate cras sem nec id eget. Cras lectus vestibulum dictum enim. Mauris ultrices etiam ac facilisis malesuada. Odio accumsan fringilla malesuada faucibus fusce pellentesque. Non nunc cursus nisl odio. Pellentesque laoreet molestie proin tincidunt cursus. Integer non odio turpis ac sem aliquam in ante congue. Erat pharetra sed semper duis duis penatibus. Ut congue interdum cras convallis eu nibh quis. Arcu at accumsan neque ultricies tellus massa leo nulla sed.`,
+    heading2: "How Our Platform Works",
+    content3: `Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam sagittis nisl faucibus. Sed adipiscing condimentum volutpat cursus in risus sed sit. Ipsum aliquam urna porttitor eu. Volutpat ac sit at semper tortor vulputate.
+Purus pulvinar vestibulum cras odio. Congue amet sagittis dui pellentesque consectetur pellentesque et fermentum. Arcu elementum tempor nulla quis aenean fusce ut vulputate. A quam vitae magna pellentesque. Ut volutpat adipiscing purus faucibus duis orci. Accumsan venenatis eu vitae interdum dolor. Nunc at nibh habitant condimentum vitae. Semper luctus vulputate lacinia sit diam tellus id vitae. Morbi aliquet bibendum scelerisque vestibulum aliquet venenatis eu et. Proin bibendum eget lectus consequat id vitae. Eu hendrerit lobortis turpis quam ornare egestas tincidunt donec nulla. Justo nisi ac diam mauris cursus turpis lacus.`,
+    bio: "Choose the alerts you need and receive them via email, mobile or Slack. Review and take action in one click."
+  },
+  {
+    id: 10003,
+    imageUrl: Blog3,
+    title: "Unlocking Your Trading Potential: A Guide to Our Platform",
+    heading1: "Introduction to Our Platform",
+    content1: `In this fast-paced world of stock trading, having the right tools and insights can make all the difference between success and missed opportunities. That is where our platform comes in, especially designed to empower traders of all levels with the resources they need to thrive in the market. One of the standout features of our platform is the access to real-time market insights with SEBI registered expert analysis.`,
+    content2: `Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam sagittis nisl faucibus. Sed adipiscing condimentum volutpat cursus in risus sed sit. Ipsum aliquam urna porttitor eu. Volutpat ac sit at semper tortor vulputate.
+Purus pulvinar vestibulum cras odio. Congue amet sagittis dui pellentesque consectetur pellentesque et fermentum. Arcu elementum tempor nulla quis aenean fusce ut vulputate. A quam vitae magna pellentesque. Ut volutpat adipiscing purus faucibus duis orci. Accumsan venenatis eu vitae interdum dolor. Nunc at nibh habitant condimentum vitae. Semper luctus vulputate lacinia sit diam tellus id vitae. Morbi aliquet bibendum scelerisque vestibulum aliquet venenatis eu et. Proin bibendum eget lectus consequat id vitae. Eu hendrerit lobortis turpis quam ornare egestas tincidunt donec nulla. Justo nisi ac diam mauris cursus turpis lacus.
+Vulputate cras sem nec id eget. Cras lectus vestibulum dictum enim. Mauris ultrices etiam ac facilisis malesuada. Odio accumsan fringilla malesuada faucibus fusce pellentesque. Non nunc cursus nisl odio. Pellentesque laoreet molestie proin tincidunt cursus. Integer non odio turpis ac sem aliquam in ante congue. Erat pharetra sed semper duis duis penatibus. Ut congue interdum cras convallis eu nibh quis. Arcu at accumsan neque ultricies tellus massa leo nulla sed.`,
+    heading2: "How Our Platform Works",
+    content3: `Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam sagittis nisl faucibus. Sed adipiscing condimentum volutpat cursus in risus sed sit. Ipsum aliquam urna porttitor eu. Volutpat ac sit at semper tortor vulputate.
+Purus pulvinar vestibulum cras odio. Congue amet sagittis dui pellentesque consectetur pellentesque et fermentum. Arcu elementum tempor nulla quis aenean fusce ut vulputate. A quam vitae magna pellentesque. Ut volutpat adipiscing purus faucibus duis orci. Accumsan venenatis eu vitae interdum dolor. Nunc at nibh habitant condimentum vitae. Semper luctus vulputate lacinia sit diam tellus id vitae. Morbi aliquet bibendum scelerisque vestibulum aliquet venenatis eu et. Proin bibendum eget lectus consequat id vitae. Eu hendrerit lobortis turpis quam ornare egestas tincidunt donec nulla. Justo nisi ac diam mauris cursus turpis lacus.`,
+    bio: "Choose the alerts you need and receive them via email, mobile or Slack. Review and take action in one click."
+  },
+  {
+    id: 10004,
+    imageUrl: Blog2,
+    title: "Unlocking Your Trading Potential: A Guide to Our Platform",
+    heading1: "Introduction to Our Platform",
+    content1: `In this fast-paced world of stock trading, having the right tools and insights can make all the difference between success and missed opportunities. That is where our platform comes in, especially designed to empower traders of all levels with the resources they need to thrive in the market. One of the standout features of our platform is the access to real-time market insights with SEBI registered expert analysis.`,
+    content2: `Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam sagittis nisl faucibus. Sed adipiscing condimentum volutpat cursus in risus sed sit. Ipsum aliquam urna porttitor eu. Volutpat ac sit at semper tortor vulputate.
+Purus pulvinar vestibulum cras odio. Congue amet sagittis dui pellentesque consectetur pellentesque et fermentum. Arcu elementum tempor nulla quis aenean fusce ut vulputate. A quam vitae magna pellentesque. Ut volutpat adipiscing purus faucibus duis orci. Accumsan venenatis eu vitae interdum dolor. Nunc at nibh habitant condimentum vitae. Semper luctus vulputate lacinia sit diam tellus id vitae. Morbi aliquet bibendum scelerisque vestibulum aliquet venenatis eu et. Proin bibendum eget lectus consequat id vitae. Eu hendrerit lobortis turpis quam ornare egestas tincidunt donec nulla. Justo nisi ac diam mauris cursus turpis lacus.
+Vulputate cras sem nec id eget. Cras lectus vestibulum dictum enim. Mauris ultrices etiam ac facilisis malesuada. Odio accumsan fringilla malesuada faucibus fusce pellentesque. Non nunc cursus nisl odio. Pellentesque laoreet molestie proin tincidunt cursus. Integer non odio turpis ac sem aliquam in ante congue. Erat pharetra sed semper duis duis penatibus. Ut congue interdum cras convallis eu nibh quis. Arcu at accumsan neque ultricies tellus massa leo nulla sed.`,
+    heading2: "How Our Platform Works",
+    content3: `Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam sagittis nisl faucibus. Sed adipiscing condimentum volutpat cursus in risus sed sit. Ipsum aliquam urna porttitor eu. Volutpat ac sit at semper tortor vulputate.
+Purus pulvinar vestibulum cras odio. Congue amet sagittis dui pellentesque consectetur pellentesque et fermentum. Arcu elementum tempor nulla quis aenean fusce ut vulputate. A quam vitae magna pellentesque. Ut volutpat adipiscing purus faucibus duis orci. Accumsan venenatis eu vitae interdum dolor. Nunc at nibh habitant condimentum vitae. Semper luctus vulputate lacinia sit diam tellus id vitae. Morbi aliquet bibendum scelerisque vestibulum aliquet venenatis eu et. Proin bibendum eget lectus consequat id vitae. Eu hendrerit lobortis turpis quam ornare egestas tincidunt donec nulla. Justo nisi ac diam mauris cursus turpis lacus.`,
+    bio: "Choose the alerts you need and receive them via email, mobile or Slack. Review and take action in one click."
+  },
+  {
+    id: 10005,
+    imageUrl: Blog1,
+    title: "Unlocking Your Trading Potential: A Guide to Our Platform",
+    heading1: "Introduction to Our Platform",
+    content1: `In this fast-paced world of stock trading, having the right tools and insights can make all the difference between success and missed opportunities. That is where our platform comes in, especially designed to empower traders of all levels with the resources they need to thrive in the market. One of the standout features of our platform is the access to real-time market insights with SEBI registered expert analysis.`,
+    content2: `Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam sagittis nisl faucibus. Sed adipiscing condimentum volutpat cursus in risus sed sit. Ipsum aliquam urna porttitor eu. Volutpat ac sit at semper tortor vulputate.
+Purus pulvinar vestibulum cras odio. Congue amet sagittis dui pellentesque consectetur pellentesque et fermentum. Arcu elementum tempor nulla quis aenean fusce ut vulputate. A quam vitae magna pellentesque. Ut volutpat adipiscing purus faucibus duis orci. Accumsan venenatis eu vitae interdum dolor. Nunc at nibh habitant condimentum vitae. Semper luctus vulputate lacinia sit diam tellus id vitae. Morbi aliquet bibendum scelerisque vestibulum aliquet venenatis eu et. Proin bibendum eget lectus consequat id vitae. Eu hendrerit lobortis turpis quam ornare egestas tincidunt donec nulla. Justo nisi ac diam mauris cursus turpis lacus.
+Vulputate cras sem nec id eget. Cras lectus vestibulum dictum enim. Mauris ultrices etiam ac facilisis malesuada. Odio accumsan fringilla malesuada faucibus fusce pellentesque. Non nunc cursus nisl odio. Pellentesque laoreet molestie proin tincidunt cursus. Integer non odio turpis ac sem aliquam in ante congue. Erat pharetra sed semper duis duis penatibus. Ut congue interdum cras convallis eu nibh quis. Arcu at accumsan neque ultricies tellus massa leo nulla sed.`,
+    heading2: "How Our Platform Works",
+    content3: `Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam sagittis nisl faucibus. Sed adipiscing condimentum volutpat cursus in risus sed sit. Ipsum aliquam urna porttitor eu. Volutpat ac sit at semper tortor vulputate.
+Purus pulvinar vestibulum cras odio. Congue amet sagittis dui pellentesque consectetur pellentesque et fermentum. Arcu elementum tempor nulla quis aenean fusce ut vulputate. A quam vitae magna pellentesque. Ut volutpat adipiscing purus faucibus duis orci. Accumsan venenatis eu vitae interdum dolor. Nunc at nibh habitant condimentum vitae. Semper luctus vulputate lacinia sit diam tellus id vitae. Morbi aliquet bibendum scelerisque vestibulum aliquet venenatis eu et. Proin bibendum eget lectus consequat id vitae. Eu hendrerit lobortis turpis quam ornare egestas tincidunt donec nulla. Justo nisi ac diam mauris cursus turpis lacus.`,
+    bio: "Choose the alerts you need and receive them via email, mobile or Slack. Review and take action in one click."
+  },
+  {
+    id: 10006,
+    imageUrl: Blog2,
+    title: "Unlocking Your Trading Potential: A Guide to Our Platform",
+    heading1: "Introduction to Our Platform",
+    content1: `In this fast-paced world of stock trading, having the right tools and insights can make all the difference between success and missed opportunities. That is where our platform comes in, especially designed to empower traders of all levels with the resources they need to thrive in the market. One of the standout features of our platform is the access to real-time market insights with SEBI registered expert analysis.`,
+    content2: `Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam sagittis nisl faucibus. Sed adipiscing condimentum volutpat cursus in risus sed sit. Ipsum aliquam urna porttitor eu. Volutpat ac sit at semper tortor vulputate.
+Purus pulvinar vestibulum cras odio. Congue amet sagittis dui pellentesque consectetur pellentesque et fermentum. Arcu elementum tempor nulla quis aenean fusce ut vulputate. A quam vitae magna pellentesque. Ut volutpat adipiscing purus faucibus duis orci. Accumsan venenatis eu vitae interdum dolor. Nunc at nibh habitant condimentum vitae. Semper luctus vulputate lacinia sit diam tellus id vitae. Morbi aliquet bibendum scelerisque vestibulum aliquet venenatis eu et. Proin bibendum eget lectus consequat id vitae. Eu hendrerit lobortis turpis quam ornare egestas tincidunt donec nulla. Justo nisi ac diam mauris cursus turpis lacus.
+Vulputate cras sem nec id eget. Cras lectus vestibulum dictum enim. Mauris ultrices etiam ac facilisis malesuada. Odio accumsan fringilla malesuada faucibus fusce pellentesque. Non nunc cursus nisl odio. Pellentesque laoreet molestie proin tincidunt cursus. Integer non odio turpis ac sem aliquam in ante congue. Erat pharetra sed semper duis duis penatibus. Ut congue interdum cras convallis eu nibh quis. Arcu at accumsan neque ultricies tellus massa leo nulla sed.`,
+    heading2: "How Our Platform Works",
+    content3: `Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam sagittis nisl faucibus. Sed adipiscing condimentum volutpat cursus in risus sed sit. Ipsum aliquam urna porttitor eu. Volutpat ac sit at semper tortor vulputate.
+Purus pulvinar vestibulum cras odio. Congue amet sagittis dui pellentesque consectetur pellentesque et fermentum. Arcu elementum tempor nulla quis aenean fusce ut vulputate. A quam vitae magna pellentesque. Ut volutpat adipiscing purus faucibus duis orci. Accumsan venenatis eu vitae interdum dolor. Nunc at nibh habitant condimentum vitae. Semper luctus vulputate lacinia sit diam tellus id vitae. Morbi aliquet bibendum scelerisque vestibulum aliquet venenatis eu et. Proin bibendum eget lectus consequat id vitae. Eu hendrerit lobortis turpis quam ornare egestas tincidunt donec nulla. Justo nisi ac diam mauris cursus turpis lacus.`,
+    bio: "Choose the alerts you need and receive them via email, mobile or Slack. Review and take action in one click."
+  },
+  {
+    id: 10007,
+    imageUrl: Blog1,
+    title: "Unlocking Your Trading Potential: A Guide to Our Platform",
+    heading1: "Introduction to Our Platform",
+    content1: `In this fast-paced world of stock trading, having the right tools and insights can make all the difference between success and missed opportunities. That is where our platform comes in, especially designed to empower traders of all levels with the resources they need to thrive in the market. One of the standout features of our platform is the access to real-time market insights with SEBI registered expert analysis.`,
+    content2: `Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam sagittis nisl faucibus. Sed adipiscing condimentum volutpat cursus in risus sed sit. Ipsum aliquam urna porttitor eu. Volutpat ac sit at semper tortor vulputate.
+Purus pulvinar vestibulum cras odio. Congue amet sagittis dui pellentesque consectetur pellentesque et fermentum. Arcu elementum tempor nulla quis aenean fusce ut vulputate. A quam vitae magna pellentesque. Ut volutpat adipiscing purus faucibus duis orci. Accumsan venenatis eu vitae interdum dolor. Nunc at nibh habitant condimentum vitae. Semper luctus vulputate lacinia sit diam tellus id vitae. Morbi aliquet bibendum scelerisque vestibulum aliquet venenatis eu et. Proin bibendum eget lectus consequat id vitae. Eu hendrerit lobortis turpis quam ornare egestas tincidunt donec nulla. Justo nisi ac diam mauris cursus turpis lacus.
+Vulputate cras sem nec id eget. Cras lectus vestibulum dictum enim. Mauris ultrices etiam ac facilisis malesuada. Odio accumsan fringilla malesuada faucibus fusce pellentesque. Non nunc cursus nisl odio. Pellentesque laoreet molestie proin tincidunt cursus. Integer non odio turpis ac sem aliquam in ante congue. Erat pharetra sed semper duis duis penatibus. Ut congue interdum cras convallis eu nibh quis. Arcu at accumsan neque ultricies tellus massa leo nulla sed.`,
+    heading2: "How Our Platform Works",
+    content3: `Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam sagittis nisl faucibus. Sed adipiscing condimentum volutpat cursus in risus sed sit. Ipsum aliquam urna porttitor eu. Volutpat ac sit at semper tortor vulputate.
+Purus pulvinar vestibulum cras odio. Congue amet sagittis dui pellentesque consectetur pellentesque et fermentum. Arcu elementum tempor nulla quis aenean fusce ut vulputate. A quam vitae magna pellentesque. Ut volutpat adipiscing purus faucibus duis orci. Accumsan venenatis eu vitae interdum dolor. Nunc at nibh habitant condimentum vitae. Semper luctus vulputate lacinia sit diam tellus id vitae. Morbi aliquet bibendum scelerisque vestibulum aliquet venenatis eu et. Proin bibendum eget lectus consequat id vitae. Eu hendrerit lobortis turpis quam ornare egestas tincidunt donec nulla. Justo nisi ac diam mauris cursus turpis lacus.`,
+    bio: "Choose the alerts you need and receive them via email, mobile or Slack. Review and take action in one click."
+  },
+  {
+    id: 10008,
+    imageUrl: Blog3,
+    title: "Unlocking Your Trading Potential: A Guide to Our Platform",
+    heading1: "Introduction to Our Platform",
+    content1: `In this fast-paced world of stock trading, having the right tools and insights can make all the difference between success and missed opportunities. That is where our platform comes in, especially designed to empower traders of all levels with the resources they need to thrive in the market. One of the standout features of our platform is the access to real-time market insights with SEBI registered expert analysis.`,
+    content2: `Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam sagittis nisl faucibus. Sed adipiscing condimentum volutpat cursus in risus sed sit. Ipsum aliquam urna porttitor eu. Volutpat ac sit at semper tortor vulputate.
+Purus pulvinar vestibulum cras odio. Congue amet sagittis dui pellentesque consectetur pellentesque et fermentum. Arcu elementum tempor nulla quis aenean fusce ut vulputate. A quam vitae magna pellentesque. Ut volutpat adipiscing purus faucibus duis orci. Accumsan venenatis eu vitae interdum dolor. Nunc at nibh habitant condimentum vitae. Semper luctus vulputate lacinia sit diam tellus id vitae. Morbi aliquet bibendum scelerisque vestibulum aliquet venenatis eu et. Proin bibendum eget lectus consequat id vitae. Eu hendrerit lobortis turpis quam ornare egestas tincidunt donec nulla. Justo nisi ac diam mauris cursus turpis lacus.
+Vulputate cras sem nec id eget. Cras lectus vestibulum dictum enim. Mauris ultrices etiam ac facilisis malesuada. Odio accumsan fringilla malesuada faucibus fusce pellentesque. Non nunc cursus nisl odio. Pellentesque laoreet molestie proin tincidunt cursus. Integer non odio turpis ac sem aliquam in ante congue. Erat pharetra sed semper duis duis penatibus. Ut congue interdum cras convallis eu nibh quis. Arcu at accumsan neque ultricies tellus massa leo nulla sed.`,
+    heading2: "How Our Platform Works",
+    content3: `Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam sagittis nisl faucibus. Sed adipiscing condimentum volutpat cursus in risus sed sit. Ipsum aliquam urna porttitor eu. Volutpat ac sit at semper tortor vulputate.
+Purus pulvinar vestibulum cras odio. Congue amet sagittis dui pellentesque consectetur pellentesque et fermentum. Arcu elementum tempor nulla quis aenean fusce ut vulputate. A quam vitae magna pellentesque. Ut volutpat adipiscing purus faucibus duis orci. Accumsan venenatis eu vitae interdum dolor. Nunc at nibh habitant condimentum vitae. Semper luctus vulputate lacinia sit diam tellus id vitae. Morbi aliquet bibendum scelerisque vestibulum aliquet venenatis eu et. Proin bibendum eget lectus consequat id vitae. Eu hendrerit lobortis turpis quam ornare egestas tincidunt donec nulla. Justo nisi ac diam mauris cursus turpis lacus.`,
+    bio: "Choose the alerts you need and receive them via email, mobile or Slack. Review and take action in one click."
+  },
+
+];
