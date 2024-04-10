@@ -4,6 +4,7 @@ import ExpertiseCourse from "./ExpertiseCourse";
 import { courseExpertise_data } from "../../constants";
 import "./CourseList.css";
 import CourseCardsCarousel from "./CourseCardsCarousel";
+import { Link } from "react-router-dom";
 
 const CourseList = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);

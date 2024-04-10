@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { expertise_data } from "../../constants";
 import { Ads, mobBanner2, webBanner2 } from "../../assets";
 import CommodityExpertise from "./CommodityExpertise";
+import { Link } from "react-router-dom";
 
 const OptionExpertise = () => {
   const [smallScreen, setSmallScreen] = useState(false);
@@ -43,6 +44,7 @@ const OptionExpertise = () => {
       <div className="flex gap-[1rem] py-[2rem] md:py-[4rem] grid md:grid-cols-3 grid-cols-2">
         {expertise_data.slice(0, 3).map((expert, id) => {
           return (
+            <Link to="/subscription/ra-detail">
             <div
               key={expert.id}
               className="md:w-[384px] md:h-[385px] sm:w-[172px] sm:h-[210px] gap-[3px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
@@ -126,6 +128,7 @@ const OptionExpertise = () => {
                 </div>
               </div>
             </div>
+            </Link>
           );
         })}
 

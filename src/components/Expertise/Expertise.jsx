@@ -3,6 +3,7 @@ import styles from "../../style";
 import Card from "./Profile_Component";
 import SingleCard from "./Single_Card";
 import DoubleCard from "./Double_Card";
+import { Link } from "react-router-dom";
 
 const Expertise = () => {
   return (
@@ -23,7 +24,7 @@ const Expertise = () => {
           </div>
           <div className="flex flex-row justify-between items-center w-full mb-8">
             <span
-              className="flex-1 font-inter font-medium md:text-[18px] text-[12px]
+              className="flex-1 font-inter md:text-xl text-[12px]
       text-[#FFFFFF] md:leading-[28px] leading-[16px] text-center"
             >
               Take your team up a level with easy-to-use tools, effortless{" "}
@@ -50,9 +51,9 @@ const Expertise = () => {
                 guiding you thoroughly to maximising profits in the dynamic
                 world of stock trading.
               </div>
-              <button className="font-inter text-black font-semibold bg-[#FFFFFF] md:text-[14px] text-[10px] md:leading-[16px] leading-[12px] p-2 rounded border-[#000000]-950 border-2">
+              <Link to="explore-expertise" className="font-inter text-black font-semibold bg-[#FFFFFF] md:text-[14px] text-[10px] md:leading-[16px] leading-[12px] p-2 rounded border-[#000000]-950 border-2">
                 Explore More
-              </button>
+              </Link>
             </div>
           </div>
         </section>

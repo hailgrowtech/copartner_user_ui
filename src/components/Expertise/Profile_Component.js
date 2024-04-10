@@ -3,6 +3,7 @@
 import React from 'react';
 import { expertsData } from '../../constants';
 import { userBck, stars, arrow, telegram } from '../../assets';
+import { Link } from 'react-router-dom';
 
 const formatFollowers = (followers) => {
   if (followers > 999) {
@@ -54,7 +55,9 @@ const Expertise = () => {
     <section className="section">
       <div className="expert-grid">
         {expertsData.map((expert) => (
+          <Link to="/subscription/ra-detail">
           <ExpertCard key={expert.id} expert={expert} />
+          </Link>
         ))}
       </div>
     </section>

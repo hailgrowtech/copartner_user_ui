@@ -13,6 +13,8 @@ import Testimonials from "./Expertise/Testimonials";
 import SubscriptionRA from "./Subscription RA/SubscriptionRA";
 import CourseInfo from "./Subscription/CourseInfo.jsx";
 import ReferEarn from './ReferEarn/ReferEarn.jsx'
+import ExpertiseExplore from "./Expertise/ExpertiseExplore";
+import CoursesExplore from "./Courses/CoursesExplore.jsx";
 
 export {
     Navbar,
@@ -29,5 +31,7 @@ export {
     Footer,
     Testimonials,
     SubscriptionRA,
-    ReferEarn
+    ReferEarn,
+    ExpertiseExplore,
+    CoursesExplore,
 }

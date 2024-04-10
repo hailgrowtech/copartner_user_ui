@@ -8,7 +8,8 @@ import CompletedCards from "./CompletedCards";
 import ContinueCardsCarousel from "./ContinueCardsCarousel ";
 import CompletedCardsCarousel from "./CompletedCardsCarousel";
 import CourseCardsCarousel from "./CourseCardsCarousel";
-import '../Hero.css'
+import "../Hero.css";
+import { Link } from "react-router-dom";
 
 const Subscription = () => {
   return (
@@ -22,17 +23,17 @@ const Subscription = () => {
         >
           <div className="justify-between items-center w-full">
             <span className="flex-1 font-poppins font-semibold md:text-[62px] text-[36px] text-gradient md:leading-[84px] leading-[48px]">
-            Explore Our <br /> Premium Groups
+              Explore Our <br /> Premium Groups
             </span>
             <p className="mt-4 text-center text-white md:text-xl text-sm md:block hidden">
-            Access premium insights from our expert team, guiding you 
-              <br/>towards successful{" "}
-               trades and informed decisions in the markets.
+              Access premium insights from our expert team, guiding you
+              <br />
+              towards successful trades and informed decisions in the markets.
             </p>
 
             <p className="mt-4 text-center text-white md:text-xl text-sm md:hidden">
               Take your team up a level with easy-to-use tools, effortless{" "}
-               templates, and efficient workflows.
+              templates, and efficient workflows.
             </p>
           </div>
         </div>
@@ -43,7 +44,8 @@ const Subscription = () => {
           Our Expertise
         </h2>
         <p className="font-normal text-[#A1A1AACC] md:text-[18px] text-left text-[11px] md:leading-[28px] leading-[17px] mb-8 px-4">
-        Dive into the expertise of our SEBI registered research analysts, guiding you towards trading success with precision and insight.
+          Dive into the expertise of our SEBI registered research analysts,
+          guiding you towards trading success with precision and insight.
         </p>
         <div className="md:px-10 flex flex-row justify-center">
           <ProfileCard />
@@ -58,7 +60,9 @@ const Subscription = () => {
           <div className="flex-col-6 font-normal md:text-left text-center text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
             Dive into the expertise of our{" "}
             <span className="text-white">
-            Ready to resume your journey towards mastering the markets?<br />  Dive back into our comprehensive course and pick up right where you left off.
+              Ready to resume your journey towards mastering the markets?
+              <br /> Dive back into our comprehensive course and pick up right
+              where you left off.
             </span>
           </div>
         </div>
@@ -81,7 +85,8 @@ const Subscription = () => {
             Similar Your Interest Expertises
           </h2>
           <p className="font-normal text-[#A1A1AACC] md:px-[2px] px-[10px] text-center md:text-left md:text-[18px] text-[14px] md:leading-[28px] leading-[17px]">
-          Discover related analysts with similar expertise to enhance your trading decisions and broaden your market insights.
+            Discover related analysts with similar expertise to enhance your
+            trading decisions and broaden your market insights.
           </p>
         </div>
         <div className="flex justify-center">
@@ -99,22 +104,24 @@ const Subscription = () => {
           <div className="flex-col-6 font-normal md:text-left text-center text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
             Dive into the expertise of our{" "}
             <span className="text-white">
-            Uncover trading secrets with courses led by <br /> SEBI Registered research analysts.
+              Uncover trading secrets with courses led by <br /> SEBI Registered
+              research analysts.
             </span>
           </div>
         </div>
         <div className="flex md:flex-row justify-center mx-auto w-full md:w-3/3 mb-8">
-        <div className="md:block hidden">
-          <CourseList />
+          <div className="md:block hidden">
+            <CourseList />
           </div>
           <div className="md:hidden">
-        <CourseCardsCarousel />
+            <CourseCardsCarousel />
+          </div>
         </div>
-        </div>
-        
-        <button className="bg-white rounded-md hover:bg-white text-base text-black py-2 px-8">
-          Explore More
-        </button>
+        <Link to="/courses/explore-courses">
+          <button className="bg-white rounded-md hover:bg-white text-base text-black py-2 px-8">
+            Explore More
+          </button>
+        </Link>
       </section>
 
       <section className="w-full py-10 md:px-20 text-white">
@@ -122,13 +129,13 @@ const Subscription = () => {
           <div className="flex-col-6 font-inter font-bold md:text-[50px] text-[30px] subheading-color md:leading-[50px] leading-[51px] md:mb-6">
             Completed Courses
           </div>
-          <div className="flex-col-6 font-normal md:text-left text-center text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
-            Dive into the expertise of our{" "}
-            <span className="text-white">
-            Great job completing your course! Keep an eye on your inbox for a detailed summary of  <br /> 
-            your progress and valuable insights to continue your trading journey with confidence.
+          <span className="md:w-[508px] md:h-[84px] flex-col-6 font-normal md:text-left text-center text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
+            Great job completing your course! Keep an eye on your inbox for a
+            detailed summary of <span className="text-lightWhite">
+            your progress and valuable insights to continue
+            your trading journey with confidence.
             </span>
-          </div>
+          </span>
         </div>
         <div className="flex justify-center">
           <div className="md:block hidden">

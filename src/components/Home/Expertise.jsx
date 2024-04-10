@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { expertise_data, expertise_type } from "../../constants";
 import { telegram } from "../../assets";
 import PrivateCall from "./PrivateCall";
+import { Link } from "react-router-dom";
 
 const Expertise = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 640);
@@ -43,6 +44,7 @@ const Expertise = () => {
         <div className="flex p-[1rem] gap-[1rem] sm:p-[4rem] p-[1.5rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-2">
           {expertise_data.map((expert, id) => {
             return (
+              <Link to="/subscription/ra-detail">
               <div
                 key={expert.id}
                 className="sm:w-[384px] sm:h-[460px] w-[172px] h-[229px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
@@ -73,6 +75,7 @@ const Expertise = () => {
                     <img
                       src={expert.ratingIcon}
                       className="sm:w-[12.3px] sm:h-[12.3px] w-[8px] h-[8px]"
+                      alt="rating"
                     />
                     <span className="text-lightWhite font-[600] sm:text-[11.5px] sm:leading-[14px] text-[8px] leading-[10px]">
                       {expert.rating}
@@ -126,6 +129,7 @@ const Expertise = () => {
                   </div>
                 </div>
               </div>
+              </Link>
             );
           })}
         </div>
@@ -205,14 +209,16 @@ const Expertise = () => {
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <button className="text-lightWhite sm:h-[27px] h-[17px] font-normal sm:text-[14px] text-[8.6px] sm:leading-[26px] leading-[16px]">
+                  <Link to="expertise/explore-expertise">
+                  <button className="text-lightWhite gap-1 flex items-center sm:h-[27px] h-[17px] font-normal sm:text-[14px] text-[8.6px] sm:leading-[26px] leading-[16px]">
                     {type.button}
-                  </button>
                   <img
                     src={type.arrowIcon}
                     alt="arrow"
                     className="w-[15px] h-[15px]"
                   />
+                  </button>
+                  </Link>
                 </div>
               </div>
             ))}

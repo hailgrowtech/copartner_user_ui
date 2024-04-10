@@ -70,7 +70,7 @@ const ContinueCardsCarousel = () => {
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {carouselItems.map((item) => (
-            <div key={item.id} className="carousel-slide">
+            <div key={item.title} className="carousel-slide">
               <div className="w-full md:w-1/3 p-3 rounded-md mb-8 md:mb-0">
                 <div className="w-full overflow-hidden relative rounded-lg bg-[#18181ba6] border border-solid border-[#f4f4f51d]">
                   <img

@@ -3,6 +3,7 @@ import styles from "../../style";
 import { arrow } from "../../assets";
 import Expertise from "./Expertise";
 import { expertise_data } from "../../constants";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -12,15 +13,14 @@ const Hero = () => {
       >
         <div className="flex flex-col justify-between md:w-[603px]">
           <span
-            className="font-poppins font-semibold md:text-[72px] text-[36px]
+            className="font-poppins md:text-[72px] text-[36px]
           text-gradient md:leading-[84px] leading-[48px] font-[700]"
           >
             Invest, Learn and Earn
           </span>
-          <p
-            className="font-poppins md:w-[876px] md:h-[28px] w-[360px] h-[17px] font-[500] text-dimWhite md:text-[18px] text-[12px] md:leading-[28px] leading-[16px]"
-          >
-            Get partnered with our SEBI Registered Research Analysts to start your profitable trading journey.
+          <p className="font-poppins md:w-[876px] md:h-[28px] w-[360px] h-[17px] font-[500] text-dimWhite md:text-[18px] text-[12px] md:leading-[28px] leading-[16px]">
+            Get partnered with our SEBI Registered Research Analysts to start
+            your profitable trading journey.
           </p>
         </div>
 
@@ -31,13 +31,15 @@ const Hero = () => {
           <img src={arrow} alt="arrow" className="w-[16px] h-[16px]" />
         </div>
 
-        <div className="flex pt-[2rem] grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:flex">
+        <div className="pt-[2rem] grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:flex">
           {expertise_data.slice(0, 3).map((expert, id) => {
             return (
+              <Link to="subscription/ra-detail">
               <div
                 key={expert.id}
                 className="md:w-[256px] md:h-[285px] sm:w-[172px] sm:h-[210px] gap-[3px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
               >
+                
                 <div className="w-[72px] h-[98px] md:w-[256px] md:h-[146px]  relative profile-image mb-4">
                   <img
                     src={expert.icon}
@@ -51,7 +53,7 @@ const Hero = () => {
                   />
                 </div>
 
-                <div className="flex md:w-[212px] md:h-[26px] sm:w-[157px] sm:h-[22px] flex justify-between md:gap-0 gap-[2.2rem]">
+                <div className="flex md:w-[212px] md:h-[26px] sm:w-[157px] sm:h-[22px] justify-between md:gap-0 gap-[2.2rem]">
                   <div className="flex flex-col gap-1">
                     <span className="text-[12px] leading-[12px] font-[500] text-white">
                       {expert.name}
@@ -64,6 +66,7 @@ const Hero = () => {
                     <img
                       src={expert.ratingIcon}
                       className="w-[11.5px] h-[11.5px]"
+                      alt="rating"
                     />
                     <span className="text-white font-[600] text-[11.5px] leading-[14px]">
                       {expert.rating}
@@ -111,6 +114,7 @@ const Hero = () => {
                   </div>
                 </div>
               </div>
+                </Link>
             );
           })}
 
@@ -120,12 +124,15 @@ const Hero = () => {
             </span>
 
             <span className="text-dimWhite md:w-[365px] md:h-[86px] w-[171px] h-[90px] font-[400] md:text-[16px] text-[14px] md:leading-[28px] leading-[21px]">
-            Connect with India’s leading SEBI registered Research Analysts, guiding you thoroughly to maximising profits in the dynamic world of stock trading.
+              Connect with India’s leading SEBI registered Research Analysts,
+              guiding you thoroughly to maximising profits in the dynamic world
+              of stock trading.
             </span>
-
-            <button className="md:w-[147px] md:h-[40px] w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px] md:mt-0 mt-[4rem]">
-              Explore More
-            </button>
+            <Link to="expertise">
+              <button className="md:w-[147px] md:h-[40px] w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px] md:mt-0 mt-[4rem]">
+                Explore More
+              </button>
+            </Link>
           </div>
         </div>
       </div>

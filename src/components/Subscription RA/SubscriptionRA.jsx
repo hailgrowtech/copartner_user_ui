@@ -61,7 +61,7 @@ const SubscriptionRA = () => {
               Take your team up a level with easy-to-use tools, effortless
               templates and efficient workflows.
             </div>
-            <div className="text-white flex items-center md:w-[400px] md:justify-between md:gap-0 gap-4 md:mb-5 mb-3">
+            {/* <div className="text-white flex items-center md:w-[400px] md:justify-between md:gap-0 gap-4 md:mb-5 mb-3">
               <div className="subheading-gradient md:text-3xl text-base font-bold">
                 Basic
               </div>
@@ -71,7 +71,7 @@ const SubscriptionRA = () => {
                   1 Month Access
                 </span>
               </div>
-            </div>
+            </div> */}
             <div className="border-[1px] border-[#f4f4f535] border-opacity-30 md:rounded-3xl rounded-2xl md:w-44 w-32 md:mb-6">
               <button className="flex mx-auto md:py-2 py-1 items-center">
                 <img

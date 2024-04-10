@@ -15,6 +15,7 @@ const formatFollowers = (followers) => {
 
 const ExpertCardSub = ({ expert }) => {
   return (
+    <Link to="/subscription/ra-detail">
     <div className='profile-div rounded-2xl p-1 md:p-1'>
       <div className="background-wrapper">
         <img src={backgroundImage} alt="Background" className="background-image" />
@@ -47,6 +48,7 @@ const ExpertCardSub = ({ expert }) => {
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 
