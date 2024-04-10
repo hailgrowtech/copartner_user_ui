@@ -50,25 +50,14 @@ const Navbar = () => {
 
     if (activeNav) {
       setActive(activeNav.title);
+    } else {
+      setActive(null)
     }
   }, [location]);
 
   const handleClick = (title) => {
     setActive(title);
   };
-
-  const handleOutsideClick = (e) => {
-    if (!e.target.closest("li")) {
-      setActive("li");
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("click", handleOutsideClick);
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
-  }, []);
 
   return (
     <>
@@ -189,7 +178,7 @@ const Navbar = () => {
         </div>
       </div>
       <Outlet />
-      <div className={`sm:pb-[6rem] pb-6`}>
+      <div className={`sm:pb-[3rem] pb-6`}>
         <Footer />
       </div>
     </>

@@ -39,18 +39,12 @@ const Footer = () => {
             we’re happy to share some of their feedback below
           </span>
           <div className="flex gap-7 rounded-full">
-            <a target="_blank" rel="noreferrer" href="">
-              <img src={facebook} alt="Facebook" className="w-8" />
-            </a>
             <a
               target="_blank"
               rel="noreferrer"
               href="https://www.linkedin.com/company/copartnerindia/"
             >
               <img src={linkedin} alt="LinkeDin" className="w-8" />
-            </a>
-            <a target="_blank" rel="noreferrer" href="">
-              <img src={twitter} alt="Twitter" className="w-8" />
             </a>
             <a
               target="_blank"
