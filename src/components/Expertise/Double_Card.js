@@ -1,8 +1,10 @@
 import React from 'react';
 import { clientImg, stars, userBck, telegram, arrow } from '../../assets';
+import { Link } from 'react-router-dom';
 
 const SingleExpertCard = () => {
   return (
+    <Link to="/subscription/ra-detail">
     <div className='profile-div rounded-xl'>
       <div className="background-wrapper">
         <img src={userBck} alt="Background" className="background-image" />
@@ -36,6 +38,7 @@ const SingleExpertCard = () => {
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 

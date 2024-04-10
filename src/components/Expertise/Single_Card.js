@@ -1,8 +1,10 @@
 import React from "react";
 import { stars, userBck, userImg } from "../../assets";
+import { Link } from "react-router-dom";
 
 const Card = () => {
   return (
+    <Link to="/subscription/buy">
     <div className="mx-auto">
       <div className="flex-col-3 hover:bg-[#18181B] rounded-xl md:px-8 pb-2">
         <div className="sm:h-[146px] md:mx-auto h-[100px]">
@@ -68,6 +70,7 @@ const Card = () => {
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 
