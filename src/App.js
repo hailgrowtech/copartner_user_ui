@@ -10,6 +10,8 @@ import {
 } from "react-router-dom";
 import About from "./components/About/About";
 import FAQs from "./components/About/FAQs";
+import PrivacyPolicy from "./components/About/PrivacyPolicy";
+import Terms from "./components/About/Terms";
 
 function App() {
   const router = createBrowserRouter(
@@ -75,6 +77,8 @@ function App() {
           />
           <Route path="about" element={<About />} />
           <Route path="faqs" element={<FAQs />} />
+          <Route path='privacy' element={<PrivacyPolicy />} />
+          <Route path="terms_of_service" element={<Terms />} />
         </Route>
       </>
     )
