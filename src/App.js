@@ -1,5 +1,5 @@
 import React from "react";
-import { Expertise, Navbar, Subscription, SubscriptionCourseDetail, SubscriptionRA, Wallet, Webinar, ErrorPage, ExpertiseExplore, CoursesExplore, ReferEarn } from "./components";
+import { Expertise, Navbar, Subscription, SubscriptionCourseDetail, SubscriptionRA, Wallet, Webinar, ErrorPage, ExpertiseExplore, CoursesExplore, SubscriptionBuy, ReferEarn  } from "./components";
 import styles from "./style";
 import Hero from "./components/Home/Hero";
 import {
@@ -60,6 +60,7 @@ function App() {
           <Route path="webinar" element={<Webinar />} />
           <Route path="wallet" element={<Wallet />} />
           <Route path="subscription/ra-detail" element={<SubscriptionRA />} />
+          <Route path="subscription/buy" element={<SubscriptionBuy />} />
           <Route path="expertise/explore-expertise" element={<ExpertiseExplore />} />
           <Route path="courses/explore-courses" element={<CoursesExplore />} />
           <Route

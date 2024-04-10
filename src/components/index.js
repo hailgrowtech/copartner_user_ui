@@ -15,6 +15,7 @@ import CourseInfo from "./Subscription/CourseInfo.jsx";
 import ReferEarn from './ReferEarn/ReferEarn.jsx'
 import ExpertiseExplore from "./Expertise/ExpertiseExplore";
 import CoursesExplore from "./Courses/CoursesExplore.jsx";
+import SubscriptionBuy from "./Subscription RA/SubscriptionBuy.jsx";
 
 export {
     Navbar,
@@ -34,4 +35,5 @@ export {
     ReferEarn,
     ExpertiseExplore,
     CoursesExplore,
+    SubscriptionBuy
 }
