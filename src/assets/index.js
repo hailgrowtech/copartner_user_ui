@@ -44,6 +44,9 @@ import edit from './edit.png';
 import Blog1 from './Blog1.png';
 import Blog2 from './blog2.png';
 import Blog3 from './blog3.png';
+import contact from './contact.png';
+import message from './message.png'
+import location from './location.png'
 
 export {
     logo,
@@ -92,4 +95,7 @@ export {
     Blog1,
     Blog2,
     Blog3,
+    contact,
+    message,
+    location,
 }

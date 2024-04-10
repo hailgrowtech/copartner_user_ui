@@ -15,6 +15,8 @@ import CourseInfo from "./Subscription/CourseInfo.jsx";
 import Profile from "./Profile/Profile.jsx"
 import Blog from './Blog/Blog.jsx'
 import BlogPage from './Blog/BlogPage.jsx'
+import ContactUs from "./ContacUs/Contact.jsx";
+
 
 
 export {
@@ -35,4 +37,5 @@ export {
     Profile,
     Blog,
     BlogPage,
+    ContactUs,
 }

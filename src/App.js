@@ -1,5 +1,5 @@
 import React from "react";
-import { Expertise, Navbar, Subscription, SubscriptionCourseDetail, SubscriptionRA, Wallet, Webinar, Profile, Blog, BlogPage } from "./components"; // Import the Profile component
+import { ContactUs, Expertise, Navbar, Subscription, SubscriptionCourseDetail, SubscriptionRA, Wallet, Webinar, Profile, Blog, BlogPage } from "./components"; // Import the Profile component, ContactUs component
 import styles from "./style";
 import { ErrorPage } from "./components";
 import Hero from "./components/Home/Hero";
@@ -70,6 +70,7 @@ function App() {
           <Route path="subscription/ra-detail" element={<SubscriptionRA />} />
           <Route path="profile" element={<Profile />} />
           <Route path="blogs" element={<Blog />} />
+          <Route path="contact-us" element={<ContactUs />} />
           <Route path="/blogs/:blogId" element={<BlogPage />} />
         </Route>
       </>
