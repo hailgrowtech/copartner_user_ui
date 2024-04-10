@@ -785,13 +785,13 @@ export const mission_vision = [
     id: 1,
     image: vision,
     title: 'Mission',
-    des: 'Lorem ipsum dolor sit amet consectetur. Lectus pretium viverra sed urna vitae varius accumsan. Ut volutpat dictum nisl sed duis. At ut eu ullamcorper pharetra enim suspendisse facilisis. Elementum a in egestas donec. Dignissim nibh massa egestas diam adipiscing duis tincidunt. Sit nam arcu in dictum tellus auctor leo enim enim.'
+    des: 'Our mission at Copartner is to empower traders and analysts by providing a trusted platform where they can connect, collaborate and thrive in the world of stock market trading. Through our user-friendly platform and valuable resources, we aim to foster a community-driven environment that promotes transparency, education and success for all participants. Join us as we will revolutionise the way traders and analysts interact, making the stock market accessible and profitable for everyone.'
   }, 
   {
     id: 2,
     image: vision2,
     title: 'Vision',
-    des: 'Lorem ipsum dolor sit amet consectetur. Lectus pretium viverra sed urna vitae varius accumsan. Ut volutpat dictum nisl sed duis. At ut eu ullamcorper pharetra enim suspendisse facilisis. Elementum a in egestas donec. Dignissim nibh massa egestas diam adipiscing duis tincidunt. Sit nam arcu in dictum tellus auctor leo enim enim. '
+    des: 'At Copartner, our vision is to become the go-to platform for traders and analysts, revolutionising stock market trading and investing. We aspire to create a vibrant community where knowledge is shared freely, empowering individuals to make informed decisions and achieve financial success. With our user-centric approach and innovative solutions, we aim to simplify access to market insights,encouraging a culture of collaboration and growth for all. '
   }
 ]
 

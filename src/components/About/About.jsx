@@ -13,38 +13,37 @@ const About = () => {
       <div className="flex flex-col md:gap-[2rem] gap-[1rem]">
         <div className="flex md:flex-row items-center flex-col justify-center gap-[1rem]">
           <div className={`flex-col text-center md:gap-[2rem] gap-0`}>
-            <div className="justify-between items-center">
-              <span className="flex-1 font-poppins font-[700] md:text-[72px] text-[44px] text-gradient md:leading-[84px] leading-[48px]">
-                Your team, <br />
-                reimagined.
+            <div className="flex flex-col justify-between items-center">
+              <span className="font-poppins font-[700] md:text-[72px] text-[44px] text-gradient md:leading-[84px] leading-[48px]">
+                Invest, Learn and <br /> Earn
               </span>
 
-              <p className="md:w-[508px] md:h-[56px] w-[341px] h-[32px] font-inter font-[500] mt-4 text-lightWhite md:text-[18px] text-[12px] md:leading-[28px] leading-[16px]">
-                Take your team up a level with easy-to-use tools, effortless{" "}
-                templates, and efficient workflows.
+              <p className="md:w-[702px] md:h-[56px] w-[341px] h-[32px] font-inter font-[500] mt-4 text-lightWhite md:text-[18px] text-[12px] md:leading-[28px] leading-[16px]">
+                Get partnered with our SEBI Registered Research Analysts to
+                start your profitable trading journey.
               </p>
             </div>
           </div>
         </div>
 
-        <div className="flex md:flex-row flex-col justify-center mt-[2rem]">
-          <img src={about_us} alt="About_Us" className="md:w-[596px] md:h-[320px] w-[425px] h-[215px]" />
-          <div className="md:w-[570px] md:h-[296px] flex flex-col justify-between md:text-start text-center">
+        <div className="flex md:flex-row flex-col justify-center items-center md:mt-[0rem] mt-[1rem]">
+          <img
+            src={about_us}
+            alt="About_Us"
+            className="md:w-[596px] md:h-[320px] w-[425px] h-[215px]"
+          />
+          <div className="md:w-[570px] md:h-[196px] flex flex-col justify-center items-center md:text-start text-center">
             <span className="md:w-[570px] md:h-[72px] w-[380px] h-[50px] font-inter font-[600] md:text-[30px] text-[16px] text-lightWhite md:leading-[36px] leading-[20px] md:px-0 px-[8px]">
-              Unlocking Your Trading Potential: A Guide to Our Platform:-
+              WELCOME TO COPARTNER
             </span>
             <span className="md:w-[570px] md:h-[144px] w-[380px] h-[180px] font-inter font-[500] md:text-[16px] text-[12px] text-dimWhite leading-[24px] md:px-0 px-[8px]">
-              In this fast-paced world of stock trading, having the right tools
-              and insights can make all the difference between success and
-              missed opportunities. That is where our platform comes in,
-              especially designed to empower traders of all levels with the
-              resources they need to thrive in the market. One of the standout
-              features of our platform is the access to real-time market
-              insights with SEBI registered expert analysis.
-            </span>
-            <span className="md:w-[570px] w-[380px] h-[48px] font-inter font-[500] md:text-[16px] text-[12px] text-dimWhite leading-[24px]">
-              In this fast-paced world of stock trading, having the right tools
-              and insights can make all the difference between success.
+              Welcome to Copartner, where traders and analysts unite to redefine
+              the stock market experience. Whether you're a new trader seeking
+              expert insights or an analyst looking to showcase your expertise,
+              our platform is your gateway to success. Join our vibrant
+              community, where collaboration, knowledge sharing and financial
+              growth thrive. Get ready to embark on a journey of discovery,
+              empowerment and endless possibilities.
             </span>
           </div>
         </div>
@@ -54,21 +53,26 @@ const About = () => {
             <span className="md:w-[385px] h-[52px] font-inter font-[700] md:text-[50px] text-[30px] text-gradient-2 leading-[51px]">
               Mission & Vision
             </span>
-            <span className="md:w-[1104px] md:h-[56px] w-[328px] h-[34px] font-[400] md:text-[18px] text-[12px] md:leading-[28px] leading-[17px] text-dimWhite md:text-start text-center">
-              Lorem ipsum dolor sit amet consectetur. Lectus pretium viverra sed
-              urna vitae varius accumsan. Ut volutpat dictum nisl sed duis. At
-              ut eu ullamcorper pharetra enim suspendisse facilisis. Elementum a
-              in egestas donec.
+            <span className="md:w-[1190px] md:h-[56px] w-[328px] h-[34px] font-[400] md:text-[18px] text-[12px] md:leading-[28px] leading-[17px] text-dimWhite md:text-start text-center">
+              We're dedicated to helping traders and analysts succeed through
+              our platform, while also aiming to transform the stock market
+              landscape by creating a supportive community focused on sharing
+              knowledge and achieving financial goals.
             </span>
           </div>
 
           <div className="flex flex-col md:py-0 py-[2rem]">
             {mission_vision.map((mission) => {
               return (
-                <div key={mission.id} className={`md:w-[1280px] md:h-[500px] flex`}>
+                <div
+                  key={mission.id}
+                  className={`md:w-[1280px] md:h-[500px] flex`}
+                >
                   <div
                     className={`flex items-center gap-[1rem] ${
-                      mission.id % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
+                      mission.id % 2 === 0
+                        ? "md:flex-row-reverse"
+                        : "md:flex-row"
                     } flex-col`}
                   >
                     <img
@@ -114,7 +118,7 @@ const About = () => {
                 />
                 <div className="flex flex-col gap-[1rem]">
                   <span className="text-lightWhite md:w-[190px] md:h-[27px] w-[164px] h-[27px] font-[600] md:text-[20px] text-[18px] leading-[27px] md:text-start text-left">
-                    For Traders
+                    {aboutus.title}
                   </span>
                   <span className="text-dimWhite w-[257px] h-[96px] text-[16px] font-[400] leading-[24px] text-left">
                     {aboutus.content}
