@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 const ProductList = [
   { name: "About Us", link: "/about" },
   { name: "FAQ's", link: "/faqs" },
+  { name: "Features", link: "/features" },
+  { name: "Blog", link: "/blog" },
   { name: "Privacy Policy", link: "/privacy" },
   { name: "Terms of Service", link: "/terms_of_service" },
-  { name: "Disclaimer", link: "/disclaimer" },
-  { name: "Submit Grievance", link: "/grievance" },
-  { name: "Features", link: "/features" },
 ];
 const CommunityList = [
   { name: "Subscription", link: "/subscription" },
