@@ -10,9 +10,8 @@ const ProductList = [
   { name: "Terms of Service", link: "/terms_of_service" },
 ];
 const CommunityList = [
+  { name: "Expertises", link: "/expertise" },
   { name: "Subscription", link: "/subscription" },
-  { name: "Courses", link: "/courses" },
-  { name: "Webinar", link: "/webinar" },
 ];
 
 const scrollToTop = () => {
