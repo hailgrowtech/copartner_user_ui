@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { logo, menu, hamburgerBg, LogOut, close } from "../assets";
+import { logo, menu, hamburgerBg, LogOut, close, userImg } from "../assets";
 import { navLinks } from "../constants";
 import styles from "../style";
 import { Link, Outlet, useLocation } from "react-router-dom";
@@ -90,6 +90,11 @@ const Navbar = () => {
               </button>
             </div>
 
+            {/* Profile icon for desktop */}
+            <div className="hidden sm:flex items-center">
+              <img src={userImg} alt="Profile" className="w-8 h-8 mx-4 rounded-full" />
+            </div>
+
             <div className="sm:hidden flex flex-1 justify-end items-center">
               <img
                 src={toggle ? undefined : menu}
@@ -98,6 +103,7 @@ const Navbar = () => {
                 onClick={() => setToggle(!toggle)}
               />
 
+              {/* Mobile menu */}
               <div
                 className={`${
                   toggle ? "flex" : "hidden"
@@ -116,10 +122,13 @@ const Navbar = () => {
                   <img src={close} alt="Close" />
                 </button>
 
+                {/* Logo in mobile menu */}
                 <ul className="list-none flex flex-col justify-end items-center gap-4">
                   <li className="font-poppins font-normal cursor-pointer text-[16px] text-white mb-6">
                     <img width={"200rem"} src={logo} alt="" />
                   </li>
+
+                  {/* Navigation links in mobile menu */}
                   {navLinks.map((nav, index) => (
                     <li
                       key={nav.id}
@@ -141,13 +150,15 @@ const Navbar = () => {
                     </li>
                   ))}
 
+                  {/* Refer & Earn button in mobile menu */}
                   <li className="mt-4">
                     <button className="text-dimWhite text-[11px] py-1 px-4 rounded-[36px] border border-solid border-white border-opacity-60 flex  items-center">
                       Refer & Earn
                     </button>
                   </li>
 
-                  <li className="mt-28">
+                  {/* Logout button in mobile menu */}
+                  <li className="mt-4">
                     <button className="text-black font-semibold text-[11px] py-1 px-4 rounded-[4px] border-2 border-solid bg-white border-dimWhite border-opacity-60 flex items-center">
                       Logout{" "}
                       <img
