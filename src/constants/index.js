@@ -16,6 +16,8 @@ import {
   courseUser,
   testimonialImg,
   invoiceImg,
+  vision, vision2,
+  aboutFeature, aboutFeature2, aboutFeature3
 } from "../assets";
 
 export const navLinks = [
@@ -321,6 +323,30 @@ export const stock_data = [
     name: "Kenn Gallagher",
     title: "",
     img: stock_3,
+  },
+];
+
+export const aboutUs_data = [
+  {
+    id: "1",
+    content:
+      "Gain access to insights and strategies curated by SEBI-registered analysts, ensuring informed decisions in your trading journey.",
+    title: "Expert Guidance",
+    img: aboutFeature,
+  },
+  {
+    id: "2",
+    content:
+      "Join a vibrant community of experts and analysts, where you can interact, exchange ideas and stay updated on market trends. Engage in discussions, attend webinars and network with like-minded individuals.",
+    title: "Active Community",
+    img: aboutFeature2,
+  },
+  {
+    id: "3",
+    content:
+      "Navigate the complexities of the stock market with ease using our intuitive tools and resources. From advanced analytics to real-time market data and educational materials, our platform provides everything you need.",
+    title: "User-Friendly Tools",
+    img: aboutFeature3,
   },
 ];
 
@@ -753,3 +779,41 @@ export const walletData = [
     invoice: invoiceImg,
   },
 ];
+
+export const mission_vision = [
+  {
+    id: 1,
+    image: vision,
+    title: 'Mission',
+    des: 'Lorem ipsum dolor sit amet consectetur. Lectus pretium viverra sed urna vitae varius accumsan. Ut volutpat dictum nisl sed duis. At ut eu ullamcorper pharetra enim suspendisse facilisis. Elementum a in egestas donec. Dignissim nibh massa egestas diam adipiscing duis tincidunt. Sit nam arcu in dictum tellus auctor leo enim enim.'
+  }, 
+  {
+    id: 2,
+    image: vision2,
+    title: 'Vision',
+    des: 'Lorem ipsum dolor sit amet consectetur. Lectus pretium viverra sed urna vitae varius accumsan. Ut volutpat dictum nisl sed duis. At ut eu ullamcorper pharetra enim suspendisse facilisis. Elementum a in egestas donec. Dignissim nibh massa egestas diam adipiscing duis tincidunt. Sit nam arcu in dictum tellus auctor leo enim enim. '
+  }
+]
+
+export const faq_data = [
+  {
+    id: 1,
+    title: 'What type of research do you provide?',
+    des: 'We provide comprehensive research reports, market analysis and trading strategies across various sectors and assets to help traders make informed investment and trading decisions.'
+  },
+  {
+    id: 2,
+    title: 'How can I access your research reports and analysis?',
+    des: "Our research reports and analysis are available to subscribers through our online platform. Once you subscribe to our services, you'll gain access to our library of research content, which you can view and download at your convenience."
+  },
+  {
+    id: 3,
+    title: 'Do you offer educational resources for beginner traders?',
+    des: "Yes, we offer educational resources, such as webinars, tutorials, and articles, designed to help beginner traders understand the fundamentals of investing and trading. These resources cover topics like technical analysis, fundamental analysis, risk management and many more topics."
+  },
+  {
+    id: 4,
+    title: 'How often do you update your research?',
+    des: "We update our research regularly to reflect the latest market trends and developments. Typically, we publish new research reports and analysis on a weekly basis, ensuring our clients have access to up-to-date information."
+  },
+]

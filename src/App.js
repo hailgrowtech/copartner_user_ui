@@ -1,5 +1,5 @@
 import React from "react";
-import { Expertise, Navbar, Subscription, SubscriptionCourseDetail, SubscriptionRA, Wallet, Webinar } from "./components";
+import { Expertise, Navbar, Subscription, SubscriptionCourseDetail, SubscriptionRA, Wallet, Webinar, ReferEarn } from "./components";
 import styles from "./style";
 import { ErrorPage } from "./components";
 import Hero from "./components/Home/Hero";
@@ -9,7 +9,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import ReferEarn from "./components/ReferEarn/ReferEarn";
+import About from "./components/About/About";
 
 function App() {
   const router = createBrowserRouter(
@@ -70,6 +70,7 @@ function App() {
               </div>
             }
           />
+          <Route path="about" element={<About />} />
         </Route>
       </>
     )

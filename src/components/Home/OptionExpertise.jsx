@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { expertise_data } from "../../constants";
-import { Ads } from "../../assets";
+import { Ads, mobBanner2, webBanner2 } from "../../assets";
 import CommodityExpertise from "./CommodityExpertise";
 
 const OptionExpertise = () => {
+  const [smallScreen, setSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setSmallScreen(window.innerWidth < 768);
+    };
+
+    checkScreenSize();
+
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
   return (
-    <div className={`flex flex-col sm:pt-[4rem]`}>
+    <div className={`flex flex-col sm:pt-[6rem]`}>
       <div className="flex flex-row justify-between xl:px-0">
         <div className="flex flex-col md:h-[52px] h-[34px] justify-center md:justify-between md:items-start">
           <div className="flex flex-row md:h-[52px] h-[34px] justify-center md:justify-between items-center">
@@ -126,9 +140,24 @@ const OptionExpertise = () => {
             </button>
         </div>
       </div>
-      <div className="flex justify-center items-center sm:w-full sm:h-[400px] w-full h-[192px] md:mb-[4rem] mb-[0] rounded-[12px]">
-        <img src={Ads} alt="Advertisement" className="max-w-full max-h-full" />
-      </div>
+      
+      {smallScreen ? (
+          <div className="flex justify-center items-center w-full md:mb-[4rem] mb-[0] rounded-[12px]">
+            <img
+              src={mobBanner2}
+              alt="Advertisement"
+              className="max-w-full max-h-full"
+            />
+          </div>
+        ) : (
+          <div className="flex justify-center items-center w-full md:mb-[4rem] mb-[0] rounded-[12px]">
+            <img
+              src={webBanner2}
+              alt="Advertisement"
+              className="max-w-full max-h-full"
+            />
+          </div>
+        )}
       <CommodityExpertise />
     </div>
   );

@@ -12,7 +12,7 @@ import Footer from "./Home/Footer";
 import Testimonials from "./Expertise/Testimonials";
 import SubscriptionRA from "./Subscription RA/SubscriptionRA";
 import CourseInfo from "./Subscription/CourseInfo.jsx";
-
+import ReferEarn from './ReferEarn/ReferEarn.jsx'
 
 export {
     Navbar,
@@ -29,5 +29,5 @@ export {
     Footer,
     Testimonials,
     SubscriptionRA,
-    
+    ReferEarn
 }

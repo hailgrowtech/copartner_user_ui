@@ -21,7 +21,7 @@ const CourseList = () => {
 
   return (
     <>
-      <div className="md:flex md:flex-row md:justify-between text-center w-full md:mt-16 mt-10 md:mb-8 mb-1 md:px-[10px]">
+      {/* <div className="md:flex md:flex-row md:justify-between text-center w-full md:mt-16 mt-10 md:mb-8 mb-1 md:px-[10px]">
         <div className="flex-col-6 font-inter font-bold md:text-[50px] text-[30px] subheading-color md:leading-[50px] leading-[51px] md:mb-6">
           Course By Expertise
         </div>
@@ -51,7 +51,7 @@ const CourseList = () => {
 
       <button className="md:w-[147px] md:h-[40px] hidden md:flex items-center justify-center flex w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px] mx-[34rem]">
         Explore More
-      </button>
+      </button> */}
 
       <StockPlatform />
     </>

@@ -44,6 +44,16 @@ import lorem from './loremImg.png'
 import lorem2 from './loremImg2.png'
 import lorem3 from './loremImg3.png'
 import invoiceImg from './invoice.png'
+import about_us from './about_us.png'
+import vision from './about_vision.png'
+import vision2 from './about_vision2.png'
+import mobBanner from './banner.jpg'
+import mobBanner2 from './banner1.jpg'
+import webBanner from './WebsiteBanner.jpg'
+import webBanner2 from './WebsiteBanner2.jpg'
+import aboutFeature from './aboutfeature.png'
+import aboutFeature2 from './aboutfeature2.png'
+import aboutFeature3 from './aboutfeature3.png'
 
 export {
     logo,
@@ -92,4 +102,14 @@ export {
     lorem2,
     lorem3,
     invoiceImg,
+    about_us,
+    vision,
+    vision2,
+    mobBanner,
+    mobBanner2,
+    webBanner,
+    webBanner2,
+    aboutFeature,
+    aboutFeature2,
+    aboutFeature3
 }
