@@ -129,15 +129,13 @@ const Subscription = () => {
           <div className="flex-col-6 font-inter font-bold md:text-[50px] text-[30px] subheading-color md:leading-[50px] leading-[51px] md:mb-6">
             Completed Courses
           </div>
-          <div className="flex-col-6 font-normal md:text-left text-center text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
-            Dive into the expertise of our{" "}
-            <span className="text-white">
-              Great job completing your course! Keep an eye on your inbox for a
-              detailed summary of <br />
-              your progress and valuable insights to continue your trading
-              journey with confidence.
+          <span className="md:w-[508px] md:h-[84px] flex-col-6 font-normal md:text-left text-center text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
+            Great job completing your course! Keep an eye on your inbox for a
+            detailed summary of <span className="text-lightWhite">
+            your progress and valuable insights to continue
+            your trading journey with confidence.
             </span>
-          </div>
+          </span>
         </div>
         <div className="flex justify-center">
           <div className="md:block hidden">
