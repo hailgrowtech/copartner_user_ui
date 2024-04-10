@@ -815,4 +815,14 @@ export const faq_data = [
     title: 'How often do you update your research?',
     des: "We update our research regularly to reflect the latest market trends and developments. Typically, we publish new research reports and analysis on a weekly basis, ensuring our clients have access to up-to-date information."
   },
+  {
+    id: 5,
+    title: 'What type of research do you provide?',
+    des: 'We provide comprehensive research reports, market analysis and trading strategies across various sectors and assets to help traders make informed investment and trading decisions.'
+  },
+  {
+    id: 6,
+    title: 'How can I access your research reports and analysis?',
+    des: "Our research reports and analysis are available to subscribers through our online platform. Once you subscribe to our services, you'll gain access to our library of research content, which you can view and download at your convenience."
+  },
 ]

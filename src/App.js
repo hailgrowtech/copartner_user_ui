@@ -9,6 +9,7 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import About from "./components/About/About";
+import FAQs from "./components/About/FAQs";
 
 function App() {
   const router = createBrowserRouter(
@@ -72,6 +73,7 @@ function App() {
             }
           />
           <Route path="about" element={<About />} />
+          <Route path="faqs" element={<FAQs />} />
         </Route>
       </>
     )

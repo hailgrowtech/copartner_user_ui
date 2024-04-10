@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { faq_data } from "../../constants";
+import styles from "../../style";
 
 const FAQs = () => {
   const [expandedId, setExpandedId] = useState(1);
@@ -27,7 +28,7 @@ const FAQs = () => {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className={`flex md:flex-col flex-col ${styles.paddingY} md:px-[7rem] px-0 expertise-Bg`}>
       <span className="md:w-[124px] h-[52px] font-inter font-[700] md:text-[50px] text-[30px] text-gradient-2 leading-[51px] md:text-start text-center">
         FAQs
       </span>
@@ -58,7 +59,7 @@ const FAQs = () => {
           ))}
         </div>
       ) : (
-        <div className="w-[1204px] h-[256px] grid grid-cols-2 mt-[2rem] mb-[12rem] gap-[1rem]">
+        <div className="w-[1204px] h-[556px] grid grid-cols-2 mt-[2rem] mb-[12rem] gap-[1rem]">
           {faq_data.map((faq) => {
             return (
               <div className="w-[592px] h-[256px] flex flex-col border py-[3rem] gap-[1rem] border-solid border-[rgba(255,255,255,0.3)] p-[4rem] items-center rounded-[8px]">

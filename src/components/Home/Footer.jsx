@@ -15,8 +15,17 @@ const CommunityList = [
   { name: "Courses", link: "/courses" },
   { name: "Webinar", link: "/webinar" },
 ];
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+};
+
 const Footer = () => {
   return (
+    <>
     <div className="md:w-[1440px] w-full md:h-[198px] h-[506px] md:pt-[6rem] pt-[1rem] justify-around border-t border-solid border-white border-opacity-10 flex md:flex-row flex-col items-center">
       <div className="flex flex-col gap-[1rem]">
         <img src={logo} alt="" className="md:w-56 w-40" />
@@ -46,6 +55,7 @@ const Footer = () => {
           </span>
           {ProductList.map((product) => (
             <Link
+              onClick={scrollToTop}
               to={product.link}
               key={product.link}
               className="font-normal text-[0.9rem] text-left leading-[14.7px] text-dimWhite hover:text-white"
@@ -60,6 +70,7 @@ const Footer = () => {
           </span>
           {CommunityList.map((community) => (
             <Link
+              onClick={scrollToTop}
               to={community.link}
               key={community.link}
               className="font-normal text-[0.9rem] leading-[14.7px] text-dimWhite text-left hover:text-white"
@@ -70,6 +81,10 @@ const Footer = () => {
         </div>
       </div>
     </div>
+    <span className="text-dimWhite flex justify-center md:w-full mx-auto w-[270px] items-center text-center font-[400] text-[13px] leading-[15px] md:mt-[6rem]">
+    @copyright 2019. All rights reserved
+    </span>
+    </>
   );
 };
 export default Footer;
