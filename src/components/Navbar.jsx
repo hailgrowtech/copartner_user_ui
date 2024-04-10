@@ -92,7 +92,9 @@ const Navbar = () => {
 
             {/* Profile icon for desktop */}
             <div className="hidden sm:flex items-center">
-              <img src={userImg} alt="Profile" className="w-8 h-8 mx-4 rounded-full" />
+              <Link to="/profile">
+                <img src={userImg} alt="Profile" className="w-8 h-8 mx-4 rounded-full" />
+              </Link>
             </div>
 
             <div className="sm:hidden flex flex-1 justify-end items-center">
@@ -126,6 +128,13 @@ const Navbar = () => {
                 <ul className="list-none flex flex-col justify-end items-center gap-4">
                   <li className="font-poppins font-normal cursor-pointer text-[16px] text-white mb-6">
                     <img width={"200rem"} src={logo} alt="" />
+                  </li>
+
+                  {/* Profile icon in mobile menu */}
+                  <li className="flex items-center">
+                    <Link to="/profile">
+                      <img src={userImg} alt="Profile" className="w-8 h-8 mx-4 rounded-full" />
+                    </Link>
                   </li>
 
                   {/* Navigation links in mobile menu */}
