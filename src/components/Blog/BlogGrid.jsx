@@ -38,7 +38,7 @@ const BlogGrid = () => {
       {displayedBlogs < totalBlogs && ( // Render Explore More button if there are more blogs to display
         <div className="w-full flex justify-center mt-4">
           <button className="bg-white text-black py-2 px-4 rounded-md" onClick={handleExploreMore}>
-            Explore More
+            Top Blogs
           </button>
         </div>
       )}
