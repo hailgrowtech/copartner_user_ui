@@ -34,12 +34,12 @@ export const navLinks = [
     title: "Expertise",
   },
   {
-    id: "webinar",
-    title: "Webinar",
-  },
-  {
     id: "wallet",
     title: "Wallet",
+  },
+  {
+    id: "contact_us",
+    title: "Contact Us",
   },
 ];
 

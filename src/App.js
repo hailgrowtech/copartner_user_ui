@@ -70,7 +70,7 @@ function App() {
           <Route path="subscription/ra-detail" element={<SubscriptionRA />} />
           <Route path="profile" element={<Profile />} />
           <Route path="blogs" element={<Blog />} />
-          <Route path="contact-us" element={<ContactUs />} />
+          <Route path="contact_us" element={<ContactUs />} />
           <Route path="/blogs/:blogId" element={<BlogPage />} />
         </Route>
       </>
