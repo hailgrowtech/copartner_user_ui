@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const ProductList = [
   { name: "About Us", link: "/about" },
   { name: "FAQ's", link: "/faqs" },
-  { name: "Features", link: "/features" },
-  { name: "Blog", link: "/blog" },
+  { name: "Features", link: "/about" },
+  { name: "Blog", link: "/blogs" },
   { name: "Privacy Policy", link: "/privacy" },
   { name: "Terms of Service", link: "/terms_of_service" },
 ];
@@ -50,8 +50,8 @@ const Footer = () => {
         </div>
         <div className="flex flex-row gap-[4rem]">
           <div className="flex flex-col justify-around w-full h-[220px]">
-            <span className="w-[48px] h-[15px] font-medium text-[1.2rem] leading-[14.7px] mb-4 text-white">
-              Product
+            <span className="w-[48px] h-[15px] font-medium text-[12.6px] leading-[14.7px] mb-4 text-white">
+              Company
             </span>
             {ProductList.map((product) => (
               <Link
@@ -65,8 +65,8 @@ const Footer = () => {
             ))}
           </div>
           <div className="flex flex-col justify-between w-[117px] h-[105px] mt-[5px]">
-            <span className="w-[48px] h-[15px] font-medium text-[1.2rem] leading-[14.7px] mb-4 text-white">
-              Community
+            <span className="w-[89px] h-[15px] font-medium text-[12.6px] leading-[14.7px] mb-4 text-white">
+              What We Offer
             </span>
             {CommunityList.map((community) => (
               <Link
@@ -81,7 +81,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <span className="text-dimWhite flex justify-center md:w-full mx-auto w-[270px] items-center text-center font-[400] text-[13px] leading-[15px] md:mt-[6rem]">
+      <span className="text-dimWhite flex justify-center md:w-full mx-auto w-[170px] items-center text-center font-[400] text-[13px] leading-[15px] md:mt-[6rem]">
         @copyright 2019. All rights reserved
       </span>
     </>

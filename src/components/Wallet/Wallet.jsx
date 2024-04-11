@@ -31,12 +31,12 @@ const Wallet = () => {
               className={`${styles.flexStart} flex-col text-center md:gap-[2rem] gap-0`}
             >
               <div className="justify-between items-center">
-                <span className="flex-1 font-poppins font-[700] md:text-[72px] text-[44px] text-gradient md:leading-[84px] leading-[48px]">
+                <span className="flex-1 font-inter font-[700] md:text-[72px] text-[44px] text-gradient md:leading-[74px] leading-[48px]">
                   Your team, <br />
                   reimagined.
                 </span>
 
-                <p className="md:w-[508px] md:h-[56px] w-[341px] h-[32px] font-inter font-[500] mt-4 text-lightWhite md:text-[18px] text-[12px] md:leading-[28px] leading-[16px] flex items-center justify-center">
+                <p className="md:w-[508px] md:h-[56px] w-[341px] h-[32px] font-inter font-[500] mt-4 text-dimWhite md:text-[18px] text-[12px] md:leading-[28px] leading-[16px] flex items-center justify-center">
                   Take your team up a level with easy-to-use tools, effortless{" "}
                   templates, and efficient workflows.
                 </p>

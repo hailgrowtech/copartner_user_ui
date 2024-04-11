@@ -14,18 +14,17 @@ const Expertise = () => {
         className={`flex-1 ${styles.flexStart} flex-col xl:px-0 md:px-28 z-10 md:bottom-[10rem]`}
       >
         <section className="w-full">
-          <div className="flex flex-row justify-between items-center w-full">
+          <div className="flex flex-col items-center w-full">
             <span
-              className="flex-1 font-inter font-bold md:text-[72px] text-[36px]
-      text-gradient md:leading-[88px] leading-[44px] text-center md:mb-8 mb-2 pb-3"
+              className="font-inter font-[700] md:text-[72px] text-[36px]
+      text-gradient md:leading-[88px] leading-[44px] text-center md:mb-2 mb-2"
             >
               Analyst Expertise Across <br /> Market Segments
             </span>
-          </div>
-          <div className="flex flex-row justify-between items-center w-full mb-8">
+
             <span
-              className="flex-1 font-inter md:text-xl text-[12px]
-      text-[#FFFFFF] md:leading-[28px] leading-[16px] text-center"
+              className="font-inter md:text-xl text-[12px]
+      text-dimWhite md:leading-[28px] leading-[16px] text-center"
             >
               Take your team up a level with easy-to-use tools, effortless{" "}
               <br />
@@ -89,13 +88,12 @@ const Expertise = () => {
               <select
                 name="cars"
                 id="cars"
-                className="text-white bg-gray-800 bg-opacity-50 rounded-lg md:text-[16px] text-[10px] md:ps-6 ps-2 md:pe-20 md:py-2 py-1 border-2 border-[#4e4e4ecc]"
+                className="text-white bg-gray-800 bg-opacity-50 rounded-lg md:text-[16px] text-[10px] md:ps-1 ps-2 md:pe-20 md:py-2 py-1 border-2 border-[#4e4e4ecc]"
               >
                 <option disabled>Price</option>
-                <option value="volvo">Volvo</option>
-                <option value="saab">Alto</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
+                <option value="volvo">High-to-Low</option>
+                <option value="saab">Low-to-High</option>
+                <option value="saab">Top Rated</option>
               </select>
             </div>
           </div>

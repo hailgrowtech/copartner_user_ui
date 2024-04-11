@@ -59,7 +59,7 @@ const Card = () => {
           </div>
         </div>
         <div className="flex my-2">
-          <div className="md:w-[120px] w-[100px] md:h-[26px] h-[20px] flex md:items-center justify-center rounded-[21.5px] border-[0.67px] border-solid border-[rgba(255,255,255,0.3)] md:me-auto md:ms-0 mx-auto bg-gray-600">
+          <div className="md:w-[120px] w-[100px] md:h-[26px] h-[20px] flex md:items-center justify-center rounded-[21.5px] border-[0.67px] border-solid border-[rgba(255,255,255,0.3)] md:me-auto md:ms-0 mx-auto bg-[#ffffff32]">
             <div className="flex justify-center items-center gap-2">
               <button className="text-white font-[400] text-[8.6px] leading-[19px]">
                 1 Month Subscription

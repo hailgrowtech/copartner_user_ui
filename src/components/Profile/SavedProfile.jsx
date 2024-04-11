@@ -3,7 +3,7 @@ import Card from "../Subscription/Profile_Component";
 
 const SavedProfile = () => {
   return (
-    <div className="container bg-transparent mt-10 md:p-8 p-0 rounded-lg border-2 border-[#ffffff34]">
+    <div className="container bg-transparent mt-10 md:p-8 p-0 rounded-lg border-[#ffffff34]">
       <div className='md:pb-5'>
       <div className="subheading-color md:text-left text-center font-bold md:text-[50px] text-[30px] md:leading-[50px] leading-[51px]">Favorite Expertise
       </div>

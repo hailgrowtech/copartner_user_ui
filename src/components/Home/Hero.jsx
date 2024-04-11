@@ -13,12 +13,12 @@ const Hero = () => {
       >
         <div className="flex flex-col justify-between md:w-[603px]">
           <span
-            className="font-poppins md:text-[72px] text-[36px]
-          text-gradient md:leading-[84px] leading-[48px] font-[700]"
+            className="font-inter md:text-[72px] text-[36px]
+          text-gradient md:leading-[74px] leading-[48px] font-[700]"
           >
             Invest, Learn and Earn
           </span>
-          <p className="font-poppins md:w-[876px] md:h-[28px] w-[360px] h-[17px] font-[500] text-dimWhite md:text-[18px] text-[12px] md:leading-[28px] leading-[16px]">
+          <p className="font-inter md:w-[876px] md:h-[28px] w-[360px] h-[17px] text-dimWhite md:text-[18px] text-[12px] md:leading-[28px] leading-[16px]">
             Get partnered with our SEBI Registered Research Analysts to start
             your profitable trading journey.
           </p>
@@ -58,7 +58,7 @@ const Hero = () => {
                     <span className="text-[12px] leading-[12px] font-[500] text-white">
                       {expert.name}
                     </span>
-                    <span className="text-[8px] leading-[10px] font-[400] text-dimWhite">
+                    <span className="text-[12px] leading-[10px] font-[400] text-dimWhite">
                       {expert.title}
                     </span>
                   </div>

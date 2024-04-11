@@ -1,19 +1,12 @@
 import React from "react";
 import styles from "../../style";
 import Card from "./Profile_Component";
-import CourseList from "./CourseList";
 import ProfileCard from "./Profile_Card";
-// import ContinueCards from "./ContinueCards";
-// import CompletedCards from "./CompletedCards";
-// import ContinueCardsCarousel from "./ContinueCardsCarousel ";
-// import CompletedCardsCarousel from "./CompletedCardsCarousel";
-import CourseCardsCarousel from "./CourseCardsCarousel";
-import "../Hero.css";
-import { Link } from "react-router-dom";
+import "../Hero.css"; 
 
 const Subscription = () => {
   return (
-    <div className="background-img-div">
+    <div className="expertise-Bg">
       <section
         id="subscription"
         className={`flex md:flex-row flex-col ${styles.paddingY} `}
@@ -22,16 +15,16 @@ const Subscription = () => {
           className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6 z-10 md:bottom-[10rem] text-center`}
         >
           <div className="justify-between items-center w-full">
-            <span className="flex-1 font-poppins font-semibold md:text-[62px] text-[36px] text-gradient md:leading-[84px] leading-[48px]">
+            <span className="font-inter font-[700] md:text-[62px] text-[36px] text-gradient md:leading-[74px] leading-[48px]">
               Explore Our <br /> Premium Groups
             </span>
-            <p className="mt-4 text-center text-white md:text-xl text-sm md:block hidden">
+            <p className="mt-2 text-center text-dimWhite md:text-xl text-sm md:block hidden">
               Access premium insights from our expert team, guiding you
               <br />
               towards successful trades and informed decisions in the markets.
             </p>
 
-            <p className="mt-4 text-center text-white md:text-xl text-sm md:hidden">
+            <p className="mt-4 text-center text-dimWhite md:text-xl text-sm md:hidden">
               Take your team up a level with easy-to-use tools, effortless{" "}
               templates, and efficient workflows.
             </p>
@@ -94,7 +87,7 @@ const Subscription = () => {
         </div>
       </section>
 
-      <section
+      {/* <section
         className={`${styles.emptySection} w-full text-center md:px-16 md:my-12 text-white`}
       >
         <div className="md:flex md:flex-row md:justify-between text-center w-full md:mt-16 mt-10 md:mb-8 mb-1 md:px-[50px]">
@@ -122,7 +115,7 @@ const Subscription = () => {
             Explore More
           </button>
         </Link>
-      </section>
+      </section> */}
 
       {/* <section className={`w-full md:px-5 text-white`}>
       <div className="md:flex md:flex-row md:justify-between text-center w-full md:mt-16 mt-10 md:mb-8 mb-1 md:px-50">

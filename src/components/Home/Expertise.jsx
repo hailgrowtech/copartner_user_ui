@@ -132,7 +132,7 @@ const Expertise = () => {
               </Link>
             );
           })}
-        </div>
+        </div> 
 
         <div
           className={`sm:flex grid-cols-1 sm:items-center sm:gap-6 gap-3 xl:px-0`}

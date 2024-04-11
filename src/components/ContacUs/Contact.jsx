@@ -4,7 +4,7 @@ import { call, message, location, contact } from "../../assets";
 
 const ContactUs = () => {
   return (
-    <div className={`flex flex-col ${styles.paddingY}`}>
+    <div className={`flex flex-col ${styles.paddingY} expertise-Bg`}>
       <div
         className={`flex-1 ${styles.flexCenter} flex-col xl:px-0 sm:px-4 px-2 z-10 md:bottom-[10rem] text-center`}
       >

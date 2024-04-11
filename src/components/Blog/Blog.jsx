@@ -4,7 +4,7 @@ import BlogGrid from "./BlogGrid";
 
 const Blog = () => {
   return (
-    <section id="" className={`flex flex-col ${styles.paddingY} `}>
+    <section id="" className={`flex flex-col ${styles.paddingY} expertise-Bg`}>
       <div
         className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6 z-10 md:bottom-[10rem] text-center`}
       >
