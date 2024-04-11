@@ -58,7 +58,16 @@ function App() {
               </div>
             }
           />
-          <Route path="expertise" element={ <Expertise /> } />
+          <Route
+            path="blogs"
+            element={
+              <div className={`${styles.flexStart}`}>
+                <div className={`${styles.boxWidth}`}>
+                  <Blog/>
+                </div>
+              </div>
+            }
+          />
           <Route path="webinar" element={<Webinar />} />
           <Route path="wallet" element={<Wallet />} />
           <Route path="subscription/ra-detail" element={<SubscriptionRA />} />
@@ -79,6 +88,10 @@ function App() {
           <Route path="faqs" element={<FAQs />} />
           <Route path='privacy' element={<PrivacyPolicy />} />
           <Route path="terms_of_service" element={<Terms />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="blogs" element={<Blog />} />
+          <Route path="contact_us" element={<ContactUs />} />
+          <Route path="/blogs/:blogId" element={<BlogPage />} />
         </Route>
       </>
     )

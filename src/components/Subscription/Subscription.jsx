@@ -3,10 +3,10 @@ import styles from "../../style";
 import Card from "./Profile_Component";
 import CourseList from "./CourseList";
 import ProfileCard from "./Profile_Card";
-import ContinueCards from "./ContinueCards";
-import CompletedCards from "./CompletedCards";
-import ContinueCardsCarousel from "./ContinueCardsCarousel ";
-import CompletedCardsCarousel from "./CompletedCardsCarousel";
+// import ContinueCards from "./ContinueCards";
+// import CompletedCards from "./CompletedCards";
+// import ContinueCardsCarousel from "./ContinueCardsCarousel ";
+// import CompletedCardsCarousel from "./CompletedCardsCarousel";
 import CourseCardsCarousel from "./CourseCardsCarousel";
 import "../Hero.css";
 import { Link } from "react-router-dom";
@@ -52,7 +52,7 @@ const Subscription = () => {
         </div>
       </section>
 
-      <section className="text-white py-5">
+      {/* <section className="text-white py-5">
         <div className="md:flex md:flex-row md:justify-between text-center w-full md:mt-16 mt-10 md:mb-8 mb-3 md:px-[80px]">
           <div className="flex-col-6 font-inter font-bold md:text-[50px] text-[30px] subheading-color md:leading-[50px] leading-[51px] md:mb-6">
             Continue Course
@@ -77,7 +77,7 @@ const Subscription = () => {
             <ContinueCardsCarousel />
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className={`${styles.emptySection} w-full md:px-20 text-white`}>
         <div className="mb-4 md:mb-8">
@@ -124,10 +124,10 @@ const Subscription = () => {
         </Link>
       </section>
 
-      <section className="w-full py-10 md:px-20 text-white">
-        <div className="md:flex md:flex-row md:justify-between text-center w-full md:mt-16 mt-10 md:mb-8 mb-3 md:px-[50px]">
-          <div className="flex-col-6 font-inter font-bold md:text-[50px] text-[30px] subheading-color md:leading-[50px] leading-[51px] md:mb-6">
-            Completed Courses
+      {/* <section className={`w-full md:px-5 text-white`}>
+      <div className="md:flex md:flex-row md:justify-between text-center w-full md:mt-16 mt-10 md:mb-8 mb-1 md:px-50">
+       <div className="flex-col-6 text-left font-inter font-bold md:text-[50px] text-[30px] subheading-color md:leading-[50px] leading-[51px] md:mb-6 md:mx-[10rem]">
+            Course By Expertise
           </div>
           <span className="md:w-[508px] md:h-[84px] flex-col-6 font-normal md:text-left text-center text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
             Great job completing your course! Keep an eye on your inbox for a
@@ -147,8 +147,14 @@ const Subscription = () => {
             <CompletedCardsCarousel />
           </div>
         </div>
+      </section> */}
+
+       {/* New section */}
+       <section className="w-full text-center md:px-16 md:mb-12">
+       
       </section>
     </div>
+    
   );
 };
 

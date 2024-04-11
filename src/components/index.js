@@ -16,6 +16,12 @@ import ReferEarn from './ReferEarn/ReferEarn.jsx'
 import ExpertiseExplore from "./Expertise/ExpertiseExplore";
 import CoursesExplore from "./Courses/CoursesExplore.jsx";
 import SubscriptionBuy from "./Subscription RA/SubscriptionBuy.jsx";
+import Profile from "./Profile/Profile.jsx"
+import Blog from './Blog/Blog.jsx'
+import BlogPage from './Blog/BlogPage.jsx'
+import ContactUs from "./ContacUs/Contact.jsx";
+
+
 
 export {
     Navbar,
@@ -35,5 +41,9 @@ export {
     ReferEarn,
     ExpertiseExplore,
     CoursesExplore,
-    SubscriptionBuy
+    SubscriptionBuy,
+    Profile,
+    Blog,
+    BlogPage,
+    ContactUs,
 }

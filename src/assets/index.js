@@ -54,6 +54,15 @@ import webBanner2 from './WebsiteBanner2.jpg'
 import aboutFeature from './aboutfeature.png'
 import aboutFeature2 from './aboutfeature2.png'
 import aboutFeature3 from './aboutfeature3.png'
+import mail from './mail.png';
+import call from './call.png';
+import edit from './edit.png';
+import Blog1 from './Blog1.png';
+import Blog2 from './blog2.png';
+import Blog3 from './blog3.png';
+import contact from './contact.png';
+import message from './message.png'
+import location from './location.png'
 
 export {
     logo,
@@ -88,6 +97,9 @@ export {
     courseUser,
     courseImg,
     dollor,
+    mail,
+    call,
+    edit,
     tick,
     layer,
     level,
@@ -111,5 +123,11 @@ export {
     webBanner2,
     aboutFeature,
     aboutFeature2,
-    aboutFeature3
+    aboutFeature3,
+    Blog1,
+    Blog2,
+    Blog3,
+    contact,
+    message,
+    location,
 }
