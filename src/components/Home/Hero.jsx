@@ -34,8 +34,7 @@ const Hero = () => {
         <div className="pt-[2rem] grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:flex">
           {expertise_data.slice(0, 3).map((expert, id) => {
             return (
-              <Link to="subscription/ra-detail">
-              <div
+              <Link to="subscription/ra-detail"
                 key={expert.id}
                 className="md:w-[256px] md:h-[285px] sm:w-[172px] sm:h-[210px] gap-[3px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
               >
@@ -113,8 +112,7 @@ const Hero = () => {
                     />
                   </div>
                 </div>
-              </div>
-                </Link>
+              </Link>
             );
           })}
 

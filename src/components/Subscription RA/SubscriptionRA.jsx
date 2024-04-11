@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../style";
 import "./SubscriptionRA.css";
 import { courses } from "../../constants";
@@ -21,8 +21,26 @@ import CourseCardsCarousel from "./CourseCardsCarousel";
 import CourseCard from "./CourseCard";
 
 const SubscriptionRA = () => {
-
+  
   const carouselItems = courses.slice(0, 5);
+  const [backgroundColor, setBackgroundColor] = useState("#18181B80");
+  const [backgroundColor2, setBackgroundColor2] = useState("#18181B80");
+
+  const handleMouseOver = () => {
+    setBackgroundColor("transparent");
+  };
+
+  const handleMouseOut = () => {
+    setBackgroundColor("#18181B80");
+  };
+
+  const handleMouseOver2 = () => {
+    setBackgroundColor2("transparent");
+  };
+
+  const handleMouseOut2 = () => {
+    setBackgroundColor2("#18181B80");
+  };
 
   return (
     <section
@@ -151,7 +169,10 @@ const SubscriptionRA = () => {
             </div>
           </div>
           <div className="text-white flex my-auto w-1/2 gap-8">
-            <div className="flex-1 rounded-2xl bg-[#18181B80] p-5">
+            <div
+              style={{ backgroundColor }}
+              className="flex-1 rounded-2xl bg-[#18181B80] p-5 basic-div"
+            >
               <div className="text-right opacity-60 md:flex hidden">
                 21 Days Left
               </div>
@@ -191,7 +212,11 @@ const SubscriptionRA = () => {
                 </button>
               </div>
             </div>
-            <div className="flex-1 bg-opacity-5 p-5">
+            <div
+              className="flex-1 bg-opacity-5 p-5 hover:bg-[#18181B80] rounded-2xl standard-div"
+              onMouseOver={handleMouseOver}
+              onMouseOut={handleMouseOut}
+            >
               <div className="md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1 md:mt-6 mt-0">
                 Standard
               </div>
@@ -308,14 +333,21 @@ const SubscriptionRA = () => {
               <div className="text-3xl font-bold subheading-gradient mb-4">
                 Subscription Plan
               </div>
-              <div className="flex rounded-2xl p-4 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
+              <div
+                style={{ backgroundColor: backgroundColor2 }}
+                className="flex rounded-2xl p-4 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]"
+              >
                 <div className="flex-1 text-left">
                   <p className="text-lg subheading-gradient">Basic</p>
                   <p className="text-[#C6CDD5] text-sm">1 Month Access</p>
                 </div>
                 <p className="flex-1 text-3xl font-bold">₹2,999</p>
               </div>
-              <div className="flex rounded-2xl p-4 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
+              <div
+                onMouseOver={handleMouseOver2}
+                onMouseOut={handleMouseOut2}
+                className="flex rounded-2xl p-4 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]"
+              >
                 <div className="flex-1 text-left">
                   <p className="text-lg subheading-gradient">Standard</p>
                   <p className="text-[#C6CDD5] text-sm">3 Month Access</p>
@@ -324,7 +356,7 @@ const SubscriptionRA = () => {
               </div>
               <div className="text-center">
                 <button className="bg-white text-black px-12 py-2 rounded-lg border-gray-700 border-4">
-                  Renew
+                  Buy Now
                 </button>
               </div>
             </div>

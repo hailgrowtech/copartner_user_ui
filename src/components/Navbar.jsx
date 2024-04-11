@@ -11,13 +11,6 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
   useEffect(() => {
     if (toggle) {
       document.body.style.overflow = "hidden";
@@ -75,7 +68,7 @@ const Navbar = () => {
           isScrolled ? styles.transparentNavbar : styles.scrolledNavbar
         }`}
       >
-        <div className={`${styles.boxWidth}`} onClick={scrollToTop}>
+        <div className={`${styles.boxWidth}`}>
           <nav className="w-full flex md:py-5 py-4 justify-between items-center">
             <Link to="/">
               <img src={logo} alt="LOGO" className="w-[143px] h-[39px]" />

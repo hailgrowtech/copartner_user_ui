@@ -44,8 +44,7 @@ const Expertise = () => {
         <div className="flex p-[1rem] gap-[1rem] sm:p-[4rem] p-[1.5rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-2">
           {expertise_data.map((expert, id) => {
             return (
-              <Link to="/subscription/ra-detail">
-              <div
+              <Link to="/subscription/ra-detail"
                 key={expert.id}
                 className="sm:w-[384px] sm:h-[460px] w-[172px] h-[229px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
               >
@@ -128,7 +127,6 @@ const Expertise = () => {
                     />
                   </div>
                 </div>
-              </div>
               </Link>
             );
           })}
