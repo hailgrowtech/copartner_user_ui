@@ -54,7 +54,7 @@ const CourseList = () => {
         Explore More
       </button> */}
 
-      <StockPlatform />
+      {/* <StockPlatform /> */}
     </>
   );
 };

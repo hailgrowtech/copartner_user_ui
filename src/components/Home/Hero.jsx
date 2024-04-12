@@ -36,7 +36,7 @@ const Hero = () => {
             return (
               <Link to="subscription/ra-detail"
                 key={expert.id}
-                className="md:w-[256px] md:h-[285px] sm:w-[172px] sm:h-[210px] gap-[3px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
+                className="md:w-[256px] md:h-[285px] w-[172px] h-[230px] gap-[3px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
               >
                 
                 <div className="w-[72px] h-[98px] md:w-[256px] md:h-[146px]  relative profile-image mb-4">
@@ -95,7 +95,7 @@ const Hero = () => {
                   </div>
                 </div>
 
-                <div className="w-[140px] h-[26px] flex items-center justify-center rounded-[21.5px] border-[0.67px] border-solid border-[rgba(255,255,255,0.3)] mt-2 md:mt-0">
+                <div className="md:w-[140px] md:h-[26px] w-[146px] h-[32px] flex items-center justify-center rounded-[21.5px] border-[1.5px] border-[#4e4e4ecc] mt-2 md:mt-0">
                   <div className="flex justify-center items-center gap-2">
                     <img
                       src={expert.telegram}

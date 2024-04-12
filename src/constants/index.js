@@ -216,7 +216,7 @@ export const expertise_data = [
     icon: userBck,
     userImg: userImg,
     name: "Arun Kumar",
-    title: "Feature & Option",
+    title: "Option",
     ratingIcon: stars,
     rating: "4.4",
     experience: "Experience",
@@ -288,7 +288,7 @@ export const expertise_data = [
     icon: userBck,
     userImg: userImg,
     name: "Arun Kumar",
-    title: "Feature & Option",
+    title: "Option",
     ratingIcon: stars,
     rating: "4.4",
     experience: "Experience",
@@ -448,8 +448,9 @@ export const courseExpertise_data = [
 export const expertsData = [
   {
     id: 1,
+    icon: userBck,
     image: userImg,
-    name: "John Doe",
+    name: "Arun Kumer",
     role: "Commodity",
     rating: 4.5,
     experience: "10+",
@@ -461,9 +462,10 @@ export const expertsData = [
 
   {
     id: 2,
+    icon: userBck,
     image: userImg,
-    name: "John Doe",
-    role: "Feature & Option",
+    name: "Arun Kumer",
+    role: "Option",
     rating: 4.5,
     experience: "10+",
     followers: 5289,
@@ -474,8 +476,9 @@ export const expertsData = [
 
   {
     id: 3,
+    icon: userBck,
     image: userImg,
-    name: "John Doe",
+    name: "Arun Kumer",
     role: "Equity",
     rating: 4.5,
     experience: "10+",
@@ -487,8 +490,9 @@ export const expertsData = [
 
   {
     id: 4,
+    icon: userBck,
     image: userImg,
-    name: "John Doe",
+    name: "Arun Kumer",
     role: "Commodity",
     rating: 4.5,
     experience: "10+",
@@ -500,8 +504,9 @@ export const expertsData = [
 
   {
     id: 5,
+    icon: userBck,
     image: userImg,
-    name: "John Doe",
+    name: "Arun Kumer",
     role: "Equity",
     rating: 4.5,
     experience: "10+",
@@ -513,9 +518,10 @@ export const expertsData = [
 
   {
     id: 6,
+    icon: userBck,
     image: userImg,
-    name: "John Doe",
-    role: "Feature & Option",
+    name: "Arun Kumer",
+    role: "Option",
     rating: 4.5,
     experience: "10+",
     followers: 5289,

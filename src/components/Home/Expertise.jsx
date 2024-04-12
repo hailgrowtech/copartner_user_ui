@@ -20,7 +20,7 @@ const Expertise = () => {
 
   return (
     <>
-      <div className={`flex flex-col sm:py-[4rem] py-6`}>
+      <div className={`flex flex-col sm:py-[4rem] py-[30px] `}>
         <div
           className={`{styles.flexStart} flex-col gap-2 xl:px-0`}
         >
@@ -29,7 +29,7 @@ const Expertise = () => {
               className="font-poppins font-[700] md:text-[50px] text-[30px]
                     text-gradient-2 leading-[51px]"
             >
-              Our Expertise
+              Our Expertise 
             </span>
           </div>
 
@@ -46,7 +46,7 @@ const Expertise = () => {
             return (
               <Link to="/subscription/ra-detail"
                 key={expert.id}
-                className="sm:w-[384px] sm:h-[460px] w-[172px] h-[229px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
+                className="sm:w-[384px] sm:h-[460px] w-[172px] h-[250px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
               >
                 <div className="w-[72px] h-[98px] sm:w-[384px] sm:h-[219px]  relative profile-image mb-4">
                   <img
@@ -110,32 +110,32 @@ const Expertise = () => {
                   </span>
                 </div>
 
-                <div className="sm:w-[211px] sm:h-[40px] w-[96px] h-[18px] flex items-center justify-center rounded-[21.5px] border-[0.67px] border-solid border-[rgba(255,255,255,0.3)]">
-                  <div className="flex justify-center items-center gap-2">
-                    <img
-                      src={telegram}
-                      alt="Telegram"
-                      className="sm:w-[24px] sm:h-[24px] w-[11px] h-[11px]"
-                    />
-                    <button className="text-lightWhite font-[400] sm:text-[15px] text-[7px] sm:leading-[28px] leading-[13px]">
-                      {expert.greet}
-                    </button>
-                    <img
-                      src={expert.arrowIcon}
-                      alt="arrow"
-                      className="sm:w-[16px] sm:h-[16px] w-[7px] h-[7px]"
-                    />
-                  </div>
+                <div className="md:w-[211px] md:h-[40px] w-[146px] h-[32px] flex items-center justify-center rounded-[21.5px] border-[1.5px] border-[#4e4e4ecc] mt-2 md:mt-0">
+                <div className="flex justify-center items-center gap-2">
+                  <img
+                    src={expert.telegram}
+                    alt="Telegram"
+                    className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"
+                  />
+                  <button className="text-white font-[400] md:text-[15px] text-[10px] leading-[19px]">
+                    {expert.greet}
+                  </button>
+                  <img
+                    src={expert.arrowIcon}
+                    alt="arrow"
+                    className="md:w-[16px] md:h-[16px] w-[11px] h-[11px]"
+                  />
                 </div>
+              </div>
               </Link>
             );
           })}
         </div> 
 
         <div
-          className={`sm:flex grid-cols-1 sm:items-center sm:gap-6 gap-3 xl:px-0`}
+          className={`sm:flex grid-cols-1 sm:items-center sm:gap-6 gap-3 xl:px-0 md:py-0 py-[30px]`}
         >
-          <div className="flex flex-col md:gap-[2rem] gap-[5px]">
+          <div className="flex flex-col md:gap-[2rem] gap-[5px] md:py-0 mb-4">
             <div className="flex flex-row md:h-[52px] h-[34px] justify-center md:justify-between items-center">
               <span
                 className="font-poppins font-[700] md:text-[50px] text-[30px]
@@ -187,7 +187,7 @@ const Expertise = () => {
                   <span className="text-lightWhite sm:w-[139px] sm:h-[16px] w-[162px] h-[26px] font-[600] sm:text-[18px] text-[16px] sm:leading-[25px] leading-[15px]">
                     {type.title}
                   </span>
-                  <span className="text-dimWhite sm:h-[26px] h-[16px] font-[600] sm:text-[13px] text-[8px] sm:leading-[25px] leading-[15px]">
+                  <span className="text-dimWhite md:w-[120px] md:h-[26px] w-[45px] h-[16px] font-[600] sm:text-[13px] text-[8px] sm:leading-[25px] leading-[15px]">
                     {type.followers}
                   </span>
                 </div>
@@ -198,10 +198,6 @@ const Expertise = () => {
                         ? "w-[330px] h-[28px]"
                         : "md:w-[147px] md:h-[55px]"
                     } sm:text-[15px] text-[9px] sm:leading-[23px] leading-[13.7px]`}
-                    // style={{
-                    //   width: isSmallScreen && type.id === 3 ? "330px" : "147px",
-                    //   height: isSmallScreen && type.id === 3 ? "28px" : "55px",
-                    // }}
                   >
                     {type.describe}
                   </span>
