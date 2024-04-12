@@ -5,10 +5,10 @@ import { dollor, referearn, lorem, lorem2, lorem3 } from "../../assets";
 const ReferEarn = () => {
   return (
     <div
-      className={`flex md:flex-col ${styles.paddingY} ${styles.paddingX} flex-col`}
+      className={`flex md:flex-col ${styles.paddingY} ${styles.paddingX} flex-col expertise-Bg`}
     >
       <div
-        className='flex flex-col items-center'
+        className='flex flex-col items-center' 
       >
         <div className="flex flex-col justify-center items-center w-[328px] h-[143px]">
           <div className="flex justify-center md:gap-[1rem] gap-[0px]">
