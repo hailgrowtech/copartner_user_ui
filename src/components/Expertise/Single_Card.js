@@ -19,7 +19,7 @@ const Card = () => {
             }}
           />
         </div>
-        <div className="sm:w-[200px] w-[150px] h-[33px] flex justify-between mt-6 mx-auto">
+        <div className="sm:w-[200px] w-[150px] h-[33px] flex justify-between mt-2 mx-auto">
           <div className="flex flex-col gap-1">
             <span className="text-[12px] leading-[12px] font-[500] text-white">
               Arun Kumar
@@ -35,7 +35,7 @@ const Card = () => {
             </span>
           </div>
         </div>
-        <div className="sm:w-[200px] w-[150px] h-[33px] flex justify-between mt-2 mx-auto text-white">
+        <div className="sm:w-[200px] w-[150px] h-[33px] flex justify-between mx-auto text-white">
           <div className="flex">
             <div className="flex flex-col w-[52px] h-[33px] items-center">
               <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">
@@ -58,10 +58,10 @@ const Card = () => {
             </div>
           </div>
         </div>
-        <div className="flex my-2">
-          <div className="md:w-[120px] w-[100px] md:h-[26px] h-[20px] flex md:items-center justify-center rounded-[21.5px] border-[0.67px] border-solid border-[rgba(255,255,255,0.3)] md:me-auto md:ms-0 mx-auto bg-[#ffffff32]">
+        <div className="flex flex-col">
+          <div className=" w-[80%] flex md:items-center justify-center rounded-[21.5px] border-[0.67px] border-solid border-[rgba(255,255,255,0.3)] md:me-auto md:ms-0 mx-auto bg-[#ffffff32] mb-2">
             <div className="flex justify-center items-center gap-2">
-              <button className="text-white font-[400] text-[8.6px] leading-[19px]">
+              <button className="text-white font-[400] text-[10px] leading-[19px] py-0.5">
                 1 Month Subscription
               </button>
             </div>

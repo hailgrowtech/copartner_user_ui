@@ -56,7 +56,7 @@ function App() {
               </div>
             }
           />
-          <Route
+          {/* <Route
             path="subscription/course"
             element={
               <div className={`${styles.flexStart}`}>
@@ -65,7 +65,7 @@ function App() {
                 </div>
               </div>
             }
-          />
+          /> */}
           <Route
             path="blogs"
             element={

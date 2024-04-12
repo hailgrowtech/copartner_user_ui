@@ -23,7 +23,7 @@ const ExpertCard = ({ expert }) => {
         </div>
       </div>
       <div className="info">
-        <div className="name-rating md:mb-6 mb-2">
+        <div className="name-rating md:mb-6 mb-1">
           <div className="name-role text-white">
             <h3>{expert.name}</h3>
             <p>{expert.role}</p>
@@ -34,16 +34,16 @@ const ExpertCard = ({ expert }) => {
             </div>
           </div>
         </div>
-        <div className="experience-followers text-white md:mb-5 mb-2">
+        <div className="experience-followers text-white md:mb-5 mb-1">
           <div className="experience"> <span>Experience</span> <br/>{expert.experience}</div>
           <div className="followers"> <span>Followers </span><br/>{formatFollowers(expert.followers)}</div>
         </div>
-        <div className="description text-[#A1A1AACC] md:mb-6 mb-2 text-[15px]">{expert.description}</div>
+        <div className="description text-[#A1A1AACC] md:mb-6 mb-1 md:text-[15px] text-[8px]">{expert.description}</div>
         <div className="prize-subscription text-white">
-          <button className='flex items-center mx-auto md:py-1.5 py-1 md:px-6 px-2 border-solid border-2 border-[#4e4e4ecc] rounded-3xl'>
-            <img width={"24rem"} src={telegram} alt='telegram' className='rounded-[50%] text-[1.5rem] telegram me-3' />
-              Join Telegram
-            <img width={"17rem"} src={arrow} alt='arrow' className='ms-3'/></button>
+          <button className='flex justify-center items-center mx-auto md:py-1.5 py-1 md:px-6 w-full border-solid border-2 border-[#4e4e4ecc] rounded-3xl'>
+            <img width={"24rem"} src={telegram} alt='telegram' className='rounded-[50%] text-[1.5rem] telegram me-2' />
+              <span className='text-xs py-0.5'>Join Telegram</span>
+            <img width={"17rem"} src={arrow} alt='arrow' className='ms-2'/></button>
         </div>
       </div>
     </div>

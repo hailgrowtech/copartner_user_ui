@@ -144,9 +144,9 @@ const SubscriptionRA = () => {
               <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-[#A1A1AACC] hover:text-white">
                 About Subscriptions
               </button>
-              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-[#A1A1AACC] hover:text-white">
+              {/* <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-[#A1A1AACC] hover:text-white">
                 Courses
-              </button>
+              </button> */}
               <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] md:inline hidden text-[9.5px] text-[#A1A1AACC] hover:text-white">
                 Reviews
               </button>
@@ -390,7 +390,7 @@ const SubscriptionRA = () => {
             Explore More <img className="w-4 h-4" src={arrow} alt="" />
           </button>
         </section>
-        <section className="border-2 rounded-2xl border-[#f4f4f50e] md:p-10 px-4 py-6 text-white w-full">
+        {/* <section className="border-2 rounded-2xl border-[#f4f4f50e] md:p-10 px-4 py-6 text-white w-full">
           <p className="md:text-5xl text-3xl subheading-gradient font-bold md:mb-9 mb-4">
             Courses
           </p>
@@ -513,7 +513,7 @@ const SubscriptionRA = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
       </div>
     </section>
   );
