@@ -39,7 +39,7 @@ const Hero = () => {
                 className="md:w-[256px] md:h-[285px] w-[172px] h-[230px] gap-[3px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
               >
                 
-                <div className="w-[72px] h-[98px] md:w-[256px] md:h-[146px]  relative profile-image mb-4">
+                <div className="w-[72px] h-[98px] md:w-[256px] md:h-[146px]  relative profile-image_1 mb-4">
                   <img
                     src={expert.icon}
                     alt="background"

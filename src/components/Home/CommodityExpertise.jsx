@@ -40,7 +40,7 @@ const CommodityExpertise = () => {
               key={expert.id}
               className="sm:w-[384px] sm:h-[460px] w-[172px] h-[250px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
             >
-              <div className="w-[72px] h-[98px] sm:w-[384px] sm:h-[219px]  relative profile-image mb-4">
+              <div className="w-[72px] h-[98px] sm:w-[384px] sm:h-[219px]  relative profile-image_1 mb-4">
                 <img
                   src={expert.icon}
                   alt="background"

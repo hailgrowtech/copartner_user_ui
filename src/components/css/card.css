@@ -24,14 +24,14 @@
     z-index: 1; 
   }
   
-  /* .profile-image {
+  .profile-image_1 {
     width: 100%;
     max-height: 200px;
     object-fit:contain;
     position: relative;
     z-index: 2;
     mask-image: linear-gradient(rgba(0, 0, 0, 1) 70%, transparent);
-  } */
+  }
   
   .dark-overlay {
     position: relative;
