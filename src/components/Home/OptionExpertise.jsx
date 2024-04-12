@@ -112,7 +112,7 @@ const OptionExpertise = () => {
               </div>
 
               <div className="sm:w-[300px] sm:h-[72px] w-[144px] h-[32px] mb-4 sm:block contents">
-                <span className="text-dimWhite sm:text-[14px] text-[7px] sm:w-[278px] sm:h-[24px] sm:leading-[24px] leading-[11px] mb-[5px]">
+                <span className="text-dimWhite sm:text-[14px] text-[8px] sm:w-[278px] sm:h-[24px] sm:leading-[24px] leading-[11px] mb-[5px]">
                   {expert.content}
                 </span>
               </div>
@@ -137,16 +137,16 @@ const OptionExpertise = () => {
             </Link>
           );
         })}
-        <div className="md:hidden flex flex-col w-[1751px] h-[120px] mt-[6rem] justify-between">
+        <div className="md:hidden flex flex-col w-[171px] h-[150px] mt-[4rem] justify-evenly px-[0.5rem]">
           <p
-            className="font-poppins md:w-[737px] md:h-[28px] w-[171px] h-[66px] font-[400] text-dimWhite md:text-[18px] text-[14px] md:leading-[28px]
-            leading-[22px] md:text-start text-center md:hidden flex"
+            className="font-inter md:w-[737px] md:h-[28px] w-[171px] h-[66px] font-[400] text-dimWhite md:text-[18px] text-[14px] md:leading-[28px]
+            leading-[22px] md:text-start text-center md:hidden flex items-start text-start"
           >
             Empower your teams to build better processes, for a better
             workplace.
           </p>
           <Link to="expertise/explore-expertise">
-            <button className="md:flex items-center justify-center md:hidden flex w-[110px] h-[30px] rounded-[4.5px] bg-lightWhite text-[10px] font-[500] leading-[12px] md:ml-0 ml-[2rem]">
+            <button className="md:flex items-center justify-center md:hidden flex w-[110px] h-[30px] rounded-[4.5px] bg-lightWhite text-[10px] font-[500] leading-[12px] md:ml-0">
               Explore More
             </button>
           </Link>

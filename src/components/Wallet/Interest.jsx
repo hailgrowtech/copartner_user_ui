@@ -96,7 +96,7 @@ const Interest = () => {
               </div>
 
               <div className="sm:w-[300px] sm:h-[72px] w-[144px] h-[32px] mb-4 sm:block contents">
-                <span className="text-dimWhite sm:text-[14px] text-[7px] sm:w-[278px] sm:h-[24px] sm:leading-[24px] leading-[11px] mb-[5px]">
+                <span className="text-dimWhite sm:text-[14px] text-[8px] sm:w-[278px] sm:h-[24px] sm:leading-[24px] leading-[11px] mb-[5px]">
                   {expert.content}
                 </span>
               </div>
@@ -185,7 +185,7 @@ const Interest = () => {
               </div>
 
               <div className="sm:w-[300px] sm:h-[72px] w-[144px] h-[32px] mb-4 sm:block contents">
-                <span className="text-dimWhite sm:text-[14px] text-[7px] sm:w-[278px] sm:h-[24px] sm:leading-[24px] leading-[11px] mb-[5px]">
+                <span className="text-dimWhite sm:text-[14px] text-[8px] sm:w-[278px] sm:h-[24px] sm:leading-[24px] leading-[11px] mb-[5px]">
                   {expert.content}
                 </span>
               </div>
