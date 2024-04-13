@@ -43,6 +43,10 @@ export const navLinks = [
     id: "contact_us",
     title: "Contact Us",
   },
+  {
+    id: "profile",
+    title: "Profile",
+  },
 ];
 
 export const expertise_type = [
