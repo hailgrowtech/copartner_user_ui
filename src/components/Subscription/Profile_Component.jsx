@@ -26,7 +26,7 @@ const ExpertCard = ({ expert }) => {
           <img
             src={expert.image}
             alt={`Profile of ${expert.name}`}
-            className="profile-image mx-auto"
+            className="profile-image md:max-h-48 mx-auto"
           />
         </div>
       </div>
@@ -59,11 +59,19 @@ const ExpertCard = ({ expert }) => {
 };
 
 const Expertise = () => {
+  
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section className="section px-1 md:px-5">
       <div className="expert-grid grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
         {expertsData.map((expert) => (
-          <Link to="/subscription/ra-detail">
+          <Link onClick={scrollToTop} to="/subscription/ra-detail">
             <ExpertCard key={expert.id} expert={expert} />
           </Link>
         ))}

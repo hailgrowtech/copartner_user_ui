@@ -5,6 +5,14 @@ import CommodityExpertise from "./CommodityExpertise";
 import { Link } from "react-router-dom";
 
 const OptionExpertise = () => {
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   const [smallScreen, setSmallScreen] = useState(false);
 
   useEffect(() => {
@@ -40,7 +48,7 @@ const OptionExpertise = () => {
           </p>
         </div>
 
-        <Link to="expertise/explore-expertise">
+        <Link onClick={scrollToTop} to="expertise/explore-expertise">
           <button className="md:w-[147px] md:h-[40px] md:flex items-center justify-center hidden flex w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px]">
             Explore More
           </button>
@@ -50,7 +58,7 @@ const OptionExpertise = () => {
       <div className="flex p-[1rem] gap-[1rem] sm:p-[4rem] p-[1.5rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-2">
         {expertise_data.slice(0, 3).map((expert, id) => {
           return (
-            <Link
+            <Link onClick={scrollToTop}
               to="/subscription/ra-detail"
               key={expert.id}
               className="sm:w-[384px] sm:h-[460px] w-[172px] h-[250px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
@@ -145,7 +153,7 @@ const OptionExpertise = () => {
             Empower your teams to build better processes, for a better
             workplace.
           </p>
-          <Link to="expertise/explore-expertise">
+          <Link onClick={scrollToTop} to="expertise/explore-expertise">
             <button className="md:flex items-center justify-center md:hidden flex w-[110px] h-[30px] rounded-[4.5px] bg-lightWhite text-[10px] font-[500] leading-[12px] md:ml-0">
               Explore More
             </button>

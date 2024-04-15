@@ -3,15 +3,23 @@ import { stars, userBck, userImg } from "../../assets";
 import { Link } from "react-router-dom";
 
 const Card = () => {
+  
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <Link to="/subscription/buy">
+    <Link onClick={scrollToTop} to="/subscription/buy">
     <div className="mx-auto">
       <div className="flex-col-3 hover:bg-[#18181B] rounded-xl md:px-8 pb-2">
         <div className="sm:h-[146px] md:mx-auto h-[100px]">
           <img
             src={userImg}
             alt="User"
-            className={`profile-image mx-auto`}
+            className={`profile-image md:max-h-36 mx-auto`}
             style={{
               backgroundImage: `url(${userBck})`,
               backgroundSize: "15rem",

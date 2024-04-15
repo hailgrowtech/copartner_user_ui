@@ -14,8 +14,16 @@ const formatFollowers = (followers) => {
 };
 
 const ExpertCardSub = ({ expert }) => {
+  
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <Link to="/subscription/ra-detail">
+    <Link onClick={scrollToTop} to="/subscription/ra-detail">
       <div className="profile-div rounded-2xl p-1 md:p-1">
         <div className="background-wrapper">
           <img
@@ -27,7 +35,7 @@ const ExpertCardSub = ({ expert }) => {
             <img
               src={expert.image}
               alt={`Profile of ${expert.name}`}
-              className="profile-image mx-auto"
+              className="profile-image md:max-h-36 mx-auto"
             />
           </div>
         </div>

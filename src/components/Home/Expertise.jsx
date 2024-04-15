@@ -5,6 +5,14 @@ import PrivateCall from "./PrivateCall";
 import { Link } from "react-router-dom";
 
 const Expertise = () => {
+  
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 640);
 
   useEffect(() => {
@@ -44,7 +52,7 @@ const Expertise = () => {
         <div className="flex p-[1rem] gap-[1rem] sm:p-[4rem] p-[1.5rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-2">
           {expertise_data.map((expert, id) => {
             return (
-              <Link to="/subscription/ra-detail"
+              <Link onClick={scrollToTop} to="/subscription/ra-detail"
                 key={expert.id}
                 className="sm:w-[384px] sm:h-[460px] w-[172px] h-[250px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
               >
@@ -203,7 +211,7 @@ const Expertise = () => {
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Link to="expertise/explore-expertise">
+                  <Link onClick={scrollToTop} to="expertise/explore-expertise">
                   <button className="text-lightWhite gap-1 flex items-center sm:h-[27px] h-[17px] font-normal sm:text-[14px] text-[8.6px] sm:leading-[26px] leading-[16px]">
                     {type.button}
                   <img

@@ -15,13 +15,6 @@ import Terms from "./components/About/Terms";
 
 function App() {
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
@@ -106,7 +99,7 @@ function App() {
   );
 
   return (
-    <div className="bg-[#06030E] w-full overflow-hidden" onClick={scrollToTop}>
+    <div className="bg-[#06030E] w-full overflow-hidden">
       <RouterProvider router={router} />
     </div>
   );

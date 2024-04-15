@@ -3,13 +3,21 @@ import { clientImg, stars, userBck, telegram, arrow } from '../../assets';
 import { Link } from 'react-router-dom';
 
 const SingleExpertCard = () => {
+  
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <Link to="/subscription/ra-detail">
+    <Link onClick={scrollToTop} to="/subscription/ra-detail">
     <div className='profile-div rounded-xl'>
       <div className="background-wrapper">
         <img src={userBck} alt="Background" className="background-image" />
         <div>
-          <img src={clientImg} alt="Default Profile" className="profile-image mx-auto" />
+          <img src={clientImg} alt="Default Profile" className="profile-image_1 mx-auto" />
         </div>
       </div>
       <div className="info">
