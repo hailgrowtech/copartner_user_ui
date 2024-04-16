@@ -107,7 +107,7 @@ const Navbar = () => {
 
             {/* Profile icon for desktop */}
             <div className="hidden sm:flex items-center">
-              <Link to="/profile">
+              <Link onClick={scrollToTop} to="/profile">
                 <img src={userImg} alt="Profile" className="w-8 h-8 mx-4 rounded-full" />
               </Link>
             </div>
