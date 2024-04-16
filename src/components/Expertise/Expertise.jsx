@@ -6,7 +6,6 @@ import DoubleCard from "./Double_Card";
 import { Link } from "react-router-dom";
 
 const Expertise = () => {
-  
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -58,7 +57,11 @@ const Expertise = () => {
                 guiding you thoroughly to maximising profits in the dynamic
                 world of stock trading.
               </div>
-              <Link onClick={scrollToTop} to="explore-expertise" className="font-inter text-black font-semibold bg-[#FFFFFF] md:text-[14px] text-[10px] md:leading-[16px] leading-[12px] p-2 rounded border-[#000000]-950 border-2">
+              <Link
+                onClick={scrollToTop}
+                to="explore-expertise"
+                className="font-inter text-black font-semibold bg-[#FFFFFF] md:text-[14px] text-[10px] md:leading-[16px] leading-[12px] p-2 rounded border-[#000000]-950 border-2"
+              >
                 Explore More
               </Link>
             </div>
@@ -106,15 +109,8 @@ const Expertise = () => {
             </div>
           </div>
           <div className="w-full md:flex hidden md:flex-row my-8">
-            <div className="w-2/5 hover:bg-[#18181B] rounded-2xl px-4">
-              <DoubleCard />
-            </div>
-            <div className=" w-8"></div>
-            <div className="w-3/5 hover:bg-[#18181B] rounded-2xl px-16">
-              <DoubleCard />
-            </div>
+            <Card />
           </div>
-          <Card />
         </section>
         <section className="top-expertise w-full">
           <div className="mt-16 mb-8 md:text-left text-center">

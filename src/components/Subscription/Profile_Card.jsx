@@ -67,18 +67,18 @@ const ExpertCardSub = ({ expert }) => {
               {formatFollowers(expert.followers)}
             </div>
           </div>
-          <div className="description text-[#A1A1AACC] mb-2 text-sm md:text-base text-left leading-3">
+          <div className="description text-[#A1A1AACC] mb-2 text-[7px] md:text-base text-left leading-3">
             {expert.description}
           </div>
-          <div className="flex flex-col">
-            <div className=" w-[90%] flex md:items-center justify-center rounded-[21.5px] border-[0.67px] border-solid border-[rgba(255,255,255,0.3)] md:me-auto md:ms-0 mx-auto bg-[#ffffff32] mb-2">
+          <div className="flex flex-col justify-center">
+            <div className=" w-[90%] flex md:items-center md:py-1 justify-center rounded-[21.5px] border-[0.67px] border-solid border-[rgba(255,255,255,0.3)] mx-auto bg-[#ffffff32] mb-2">
               <div className="flex justify-center items-center gap-2">
-                <button className="text-white font-[400] text-[10px] leading-[19px] py-0.5">
+                <button className="text-white font-[400] md:text-sm text-[10px] leading-[19px] py-0.5">
                   1 Month Subscription
                 </button>
               </div>
             </div>
-            <div className="md:ms-auto flex items-center mx-auto text-gray-500 text-[10px]">
+            <div className="md:ms-auto flex items-center mx-auto text-gray-500 md:text-sm text-[10px]">
               21 Days Left
             </div>
           </div>
