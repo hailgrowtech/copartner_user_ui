@@ -11,6 +11,13 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   useEffect(() => {
     if (toggle) {
       document.body.style.overflow = "hidden";
@@ -83,14 +90,14 @@ const Navbar = () => {
                     ${active === nav.title ? "text-white" : "text-dimWhite"}
                     ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
                 >
-                  <Link to={`${nav.id === "home" ? "/" : `/${nav.id}`}`}>
+                  <Link onClick={scrollToTop} to={`${nav.id === "home" ? "/" : `/${nav.id}`}`}>
                     {nav.title}
                   </Link>
                 </li>
               ))}
             </ul>
 
-            <Link to="/refer&earn">
+            <Link onClick={scrollToTop} to="/refer&earn">
               <div style={{ marginLeft: "1rem" }}>
                 <button className="text-dimWhite text-[11px] py-1 px-4 ms-8 rounded-[36px] border border-solid border-white border-opacity-60 flex  items-center">
                   Refer & Earn
@@ -154,13 +161,13 @@ const Navbar = () => {
                            }
                            ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
                     >
-                      <Link to={`${nav.id === "home" ? "/" : nav.id}`}>
+                      <Link onClick={scrollToTop} to={`${nav.id === "home" ? "/" : nav.id}`}>
                         {nav.title}
                       </Link>
                     </li>
                   ))}
 
-                  <Link to="/refer&earn">
+                  <Link onClick={scrollToTop} to="/refer&earn">
                     <li className="mt-4">
                       <button
                         onClick={() => setToggle(false)}
