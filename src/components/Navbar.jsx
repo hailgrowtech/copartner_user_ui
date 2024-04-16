@@ -75,7 +75,7 @@ const Navbar = () => {
             </Link>
 
             <ul className="list-none sm:flex hidden justify-center items-center flex-1">
-              {navLinks.map((nav, index) => (
+              {navLinks.slice(0,5).map((nav, index) => (
                 <li
                   key={nav.id}
                   onClick={() => handleClick(nav.title)}
@@ -136,13 +136,6 @@ const Navbar = () => {
                 <ul className="list-none flex flex-col justify-end items-center gap-4">
                   <li className="font-poppins font-normal cursor-pointer text-[16px] text-white mb-6">
                     <img width={"200rem"} src={logo} alt="" />
-                  </li>
-
-                  {/* Profile icon in mobile menu */}
-                  <li className="flex items-center">
-                    <Link to="/profile">
-                      <img src={userImg} alt="Profile" className="w-8 h-8 mx-4 rounded-full" />
-                    </Link>
                   </li>
 
                   {/* Navigation links in mobile menu */}

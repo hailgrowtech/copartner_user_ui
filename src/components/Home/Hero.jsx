@@ -6,6 +6,14 @@ import { expertise_data } from "../../constants";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className={`flex md:flex-col ${styles.paddingX} flex-col ${styles.paddingY} background-img-div`}>
       <div
@@ -34,7 +42,7 @@ const Hero = () => {
         <div className="pt-[2rem] grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:flex">
           {expertise_data.slice(0, 3).map((expert, id) => {
             return (
-              <Link to="subscription/ra-detail"
+              <Link onClick={scrollToTop} to="subscription/ra-detail"
                 key={expert.id}
                 className="md:w-[256px] md:h-[285px] w-[172px] h-[230px] gap-[3px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
               >
@@ -126,7 +134,7 @@ const Hero = () => {
               guiding you thoroughly to maximising profits in the dynamic world
               of stock trading.
             </span>
-            <Link to="expertise">
+            <Link onClick={scrollToTop} to="expertise">
               <button className="md:w-[147px] md:h-[40px] w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px] md:mt-0 mt-[4rem]">
                 Explore More
               </button>
