@@ -12,7 +12,7 @@ module.exports = {
         secondary: "#00f6ff",
         customGray: '#18181B',
         lightWhite: "rgba(255, 255, 255, 1)",
-        dimWhite: "rgba(255, 255, 255, 0.6)",
+        dimWhite: "#C9C9C9",
         dimBlue: "rgba(9, 151, 124, 0.1)",
       },
       fontFamily: {

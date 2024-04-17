@@ -46,7 +46,7 @@ const ExpertCard = ({ expert }) => {
           <div className="experience"> <span>Experience</span> <br/>{expert.experience}</div>
           <div className="followers"> <span>Followers </span><br/>{formatFollowers(expert.followers)}</div>
         </div>
-        <div className="description text-[#A1A1AACC] md:mb-6 mb-1 md:text-[15px] text-[8px]">{expert.description}</div>
+        <div className="description text-dimWhite md:mb-6 mb-1 md:text-[15px] text-[8px]">{expert.description}</div>
         <div className="prize-subscription text-white">
           <button className='flex justify-center items-center mx-auto md:py-1.5 py-1 md:px-6 w-full border-solid border-2 border-[#4e4e4ecc] rounded-3xl'>
             <img width={"24rem"} src={telegram} alt='telegram' className='rounded-[50%] text-[1.5rem] telegram me-2' />

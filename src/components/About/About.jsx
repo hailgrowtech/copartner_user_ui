@@ -42,7 +42,7 @@ const About = () => {
                 Invest, Learn and Earn
               </span>
 
-              <p className="md:w-[702px] md:h-[56px] w-[341px] h-[32px] font-inter font-[500] mt-4 text-dimWhite md:text-[18px] text-[12px] md:leading-[28px] leading-[16px]">
+              <p className="md:w-[702px] md:h-[56px] w-[341px] h-[32px] font-inter font-[500] mt-4 text-dimWhite md:text-[18px] text-[14px] md:leading-[28px] leading-[16px]">
                 Get partnered with our SEBI Registered Research Analysts to
                 start your profitable trading journey.
               </p>
@@ -50,17 +50,17 @@ const About = () => {
           </div>
         </div>
 
-        <div className="flex md:flex-row flex-col justify-center items-center md:mt-[0rem] mt-[1rem]">
+        <div className="flex md:flex-row flex-col justify-center items-center md:mt-[0rem] mt-[-1rem]">
           <img
             src={about_us}
             alt="About_Us"
             className="md:w-[596px] md:h-[320px] w-[325px] h-[185px]"
           />
-          <div className="md:w-[570px] md:h-[196px] flex flex-col justify-center items-center md:text-start text-center">
-            <span className="md:w-[570px] md:h-[72px] w-[380px] h-[50px] font-inter font-[600] md:text-[30px] text-[16px] text-lightWhite md:leading-[36px] leading-[20px] md:px-0 px-[8px]">
+          <div className="md:w-[570px] md:h-[196px] flex flex-col justify-center items-center text-start">
+            <span className="md:w-[570px] md:h-[72px] w-[380px] h-[30px] font-inter font-[600] md:text-[30px] md:text-[16px] text-[18px] text-lightWhite md:leading-[36px] leading-[20px] md:px-0 md:px-[8px] px-[20px]">
               WELCOME TO COPARTNER
             </span>
-            <span className="md:w-[570px] md:h-[144px] w-[380px] h-[180px] font-inter font-[500] md:text-[16px] text-[12px] text-dimWhite leading-[24px] md:px-0 px-[8px]">
+            <span className="md:w-[570px] md:h-[144px] w-[380px] h-[180px] font-inter font-[500] md:text-[16px] text-[14px] text-dimWhite md:leading-[24px] leading-[21px] md:px-0 md:px-[8px] px-[20px]">
               Welcome to Copartner, where traders and analysts unite to redefine
               the stock market experience. Whether you're a new trader seeking
               expert insights or an analyst looking to showcase your expertise,
@@ -72,12 +72,12 @@ const About = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-[2rem] py-[2rem]">
-          <div className="flex flex-col md:flex-start md:items-start flex-center items-center">
+        <div className="flex flex-col md:gap-[2rem] md:py-[2rem] md:mt-0 mt-[2rem] md:px-0 px-2">
+          <div className="flex flex-col md:flex-start items-start flex-center">
             <span className="md:w-[385px] h-[52px] font-inter font-[700] md:text-[50px] text-[30px] text-gradient-2 leading-[51px]">
-              Mission & Vision
+              Mission & Vission
             </span>
-            <span className="md:w-[1190px] md:h-[56px] w-[328px] h-[34px] font-[400] md:text-[18px] text-[12px] md:leading-[28px] leading-[17px] text-dimWhite md:text-start text-center">
+            <span className="md:w-[1190px] md:h-[56px] w-[328px] h-[95px] font-[400] md:text-[18px] text-[14px] md:leading-[28px] leading-[20px] text-dimWhite text-start">
               We're dedicated to helping traders and analysts succeed through
               our platform, while also aiming to transform the stock market
               landscape by creating a supportive community focused on sharing
@@ -85,7 +85,7 @@ const About = () => {
             </span>
           </div>
 
-          <div className="flex flex-col md:py-0 py-[2rem]">
+          <div className="flex flex-col md:gap-0 gap-4 md:py-0 py-[2rem]">
             {mission_vision.map((mission) => {
               return (
                 <div
@@ -102,14 +102,14 @@ const About = () => {
                     <img
                       src={mission.image}
                       alt="MISSION_IMAGE"
-                      className="md:w-[545px] md:h-[500px] w-[245px] h-[200px]"
+                      className="md:w-[505px] md:h-[450px] w-[340px] h-[240px]"
                     />
                     <div className="w-[1px] h-[180px] bg-white md:flex hidden"></div>
-                    <div className="flex flex-col md:px-[1rem] md:text-start text-center justify-evenly">
-                      <span className=" font-inter font-[500] md:text-[32px] text-[24px] text-lightWhite md:leading-[48px] leading-[24px]">
+                    <div className="flex flex-col md:px-[1rem] text-start gap-2">
+                      <span className="font-inter font-[500] md:text-[32px] text-[24px] text-lightWhite md:leading-[48px] leading-[24px] md:px-0 px-2">
                         {mission.title}
                       </span>
-                      <span className=" font-inter font-[400] md:text-[15px] text-[12px] text-dimWhite md:leading-[28px] leading-[16px] md:px-0 px-[10px]">
+                      <span className=" font-inter font-[400] md:text-[15px] text-[14px] text-dimWhite md:leading-[28px] leading-[20px] md:px-0 px-[10px]">
                         {mission.des}
                       </span>
                     </div>
@@ -120,11 +120,11 @@ const About = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:py-[6rem] items-center justify-center"> 
-          <span className="md:w-[208px] h-[52px] font-inter font-[700] md:text-[50px] text-[30px] text-gradient-2 leading-[51px] md:text-start text-center">
+        <div className="flex flex-col md:py-[4rem] md:px-0 px-4"> 
+          <span className="md:w-[208px] h-[52px] font-inter font-[700] md:text-[50px] text-[30px] text-gradient-2 leading-[51px] text-start">
             Features
           </span>
-          <span className="md:w-[615px] md:h-[28px] w-[398px] h-[34px] font-[400] md:text-[18px] text-[12px] md:leading-[28px] leading-[17px] text-dimWhite md:text-start text-center">
+          <span className="md:w-[615px] md:h-[28px] w-[358px] h-[34px] font-[400] md:text-[18px] text-[14px] md:leading-[28px] leading-[17px] text-dimWhite text-start">
             Empower your teams to build better processes, for a better
             workplace.
           </span>
@@ -140,11 +140,11 @@ const About = () => {
                   alt="STOCK_IMAGES"
                   className="md:w-[289px] w-[288px] h-[150px]"
                 />
-                <div className="flex flex-col gap-[1rem]">
-                  <span className="text-lightWhite md:w-[190px] w-[164px] font-[600] md:text-[20px] text-[18px] leading-[27px] text-left">
+                <div className="flex flex-col md:gap-[1rem]">
+                  <span className="text-lightWhite md:w-[190px] w-[164px] font-[600] md:text-[20px] text-[18px] md:leading-[27px] md:text-left">
                     {aboutus.title}
                   </span>
-                  <span className="text-dimWhite w-[257px] max-h-full text-[16px] font-[400] leading-[24px] text-left">
+                  <span className="text-dimWhite w-[257px] max-h-full md:text-[16px] text-[14px] font-[400] md:leading-[24px] md:text-left">
                     {aboutus.content}
                   </span>
                 </div>
@@ -153,11 +153,11 @@ const About = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center">
-          <span className="md:w-[124px] h-[52px] font-inter font-[700] md:text-[50px] text-[30px] text-gradient-2 leading-[51px] md:text-start text-center">
+        <div className="flex flex-col md:items-center justify-center">
+          <span className="md:w-[124px] h-[52px] font-inter font-[700] md:text-[50px] text-[30px] text-gradient-2 leading-[51px] text-start md:px-0 px-4">
             FAQs
           </span>
-          <span className="md:w-[615px] md:h-[28px] w-[398px] h-[34px] font-[400] md:text-[18px] text-[12px] md:leading-[28px] leading-[17px] text-dimWhite md:text-start text-center">
+          <span className="md:w-[615px] md:h-[28px] w-[398px] h-[34px] font-[400] md:text-[18px] text-[14px] md:leading-[28px] leading-[17px] text-dimWhite text-start md:px-0 px-4">
             Empower your teams to build better processes, for a better
             workplace.
           </span>

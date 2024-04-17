@@ -37,11 +37,11 @@ const CourseCard = ({ courseData }) => {
                 <img src={Client} alt="Profile" className="h-full w-full object-cover" />
               </div>
 
-              <p className="text-sm font-medium text-[#A1A1AACC]">{instructor}</p>
+              <p className="text-sm font-medium text-dimWhite">{instructor}</p>
             </div>
 
             <div className="flex-1 flex justify-end">
-              <span className="join-Telegram flex text-[#A1A1AACC]"> Join <img src={telegramImage} alt="Telegram" className="w-5 h-5 ml-1" /></span>
+              <span className="join-Telegram flex text-dimWhite"> Join <img src={telegramImage} alt="Telegram" className="w-5 h-5 ml-1" /></span>
             </div>
           </div>
 
@@ -58,16 +58,16 @@ const CourseCard = ({ courseData }) => {
 
           <div className="mt-2 pt-3 flex justify-between">
             <div className="pl-1">
-              <p className="mb-1 text-[#A1A1AACC]">Duration: <span className="text-white">{duration}</span> </p>
+              <p className="mb-1 text-dimWhite">Duration: <span className="text-white">{duration}</span> </p>
             </div>
             <div className="px-4">
-              <p className="mb-1 text-[#A1A1AACC] text-right">Session: <span className="text-white">{session}</span></p>
+              <p className="mb-1 text-dimWhite text-right">Session: <span className="text-white">{session}</span></p>
             </div>
           </div>
 
           <div className="mt-4 pt-3 flex justify-between items-center">
             <div>
-              <p className="text-[#A1A1AACC]"><span className="text-white text-2xl font-bold">{price}</span> </p>
+              <p className="text-dimWhite"><span className="text-white text-2xl font-bold">{price}</span> </p>
             </div>
             <div>
               <button className="bg-white rounded-md hover:bg-white text-base text-black py-1 px-8">

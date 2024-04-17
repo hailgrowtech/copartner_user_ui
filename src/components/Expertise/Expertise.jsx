@@ -31,7 +31,7 @@ const Expertise = () => {
             </span>
 
             <span
-              className="font-inter md:text-xl text-[12px]
+              className="font-inter md:text-xl text-[13px]
       text-dimWhite md:leading-[28px] leading-[16px] text-center"
             >
               Take your team up a level with easy-to-use tools, effortless{" "}
@@ -69,10 +69,10 @@ const Expertise = () => {
             <div className="flex-col-6 font-inter font-bold md:text-[50px] text-[30px] subheading-gradient md:leading-[50px] leading-[51px] text-white md:mb-6">
               Our Expertise
             </div>
-            <div className="flex-col-6 font-normal md:text-left text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
+            <div className="flex-col-6 font-normal md:text-left text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] leading-[17px]">
               Dive into the expertise of our{" "}
               <span className="text-white">
-                SEBI registered research analysts, <br /> guiding you towards
+                SEBI registered research analysts, guiding you towards
                 trading success with precision and insight.
               </span>
             </div>
@@ -82,13 +82,13 @@ const Expertise = () => {
               <button className="text-white md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px]">
                 All
               </button>
-              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-[#A1A1AACC] hover:text-white">
+              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
                 Futures & Options
               </button>
-              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-[#A1A1AACC] hover:text-white">
+              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
                 Commodity
               </button>
-              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-[#A1A1AACC] hover:text-white">
+              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
                 Investor
               </button>
             </div>
@@ -121,7 +121,7 @@ const Expertise = () => {
             <div className="font-inter font-bold md:text-[50px] text-[30px] subheading-gradient md:leading-[50px] leading-[51px] text-white md:mb-6">
               Top Expertise
             </div>
-            <div className="font-normal text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
+            <div className="font-normal text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] leading-[17px]">
               Access top-tier, highly skilled SEBI Registered experts for
               unparalleled trading guidance.
             </div>
@@ -135,7 +135,7 @@ const Expertise = () => {
             <div className="font-inter font-bold md:text-[50px] text-[30px] subheading-gradient md:leading-[50px] leading-[51px] text-white md:mb-6">
               Similar To Your Interest
             </div>
-            <div className="font-normal text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
+            <div className="font-normal text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] leading-[17px]">
               Discover related analysts with similar expertise to enhance your
               trading decisions and broaden your market insights.
             </div>

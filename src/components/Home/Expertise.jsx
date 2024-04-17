@@ -42,19 +42,19 @@ const Expertise = () => {
           </div>
 
           <p
-            className="font-poppins md:w-[1136px] md:h-[28px] w-[328px] h-[34px] font-[400] text-dimWhite sm:text-[18px] text-[11px] md:leading-[28px] sm:leading-[17px]
+            className="font-poppins md:w-[1136px] md:h-[28px] w-[328px] h-[34px] font-[400] text-dimWhite sm:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
                  leading-[16px] sm:text-start mt-2 text-center"
           >
             Dive into the expertise of our SEBI registered research analysts, guiding you towards trading success with precision and insight.
           </p>
         </div>
 
-        <div className="flex p-[1rem] gap-[1rem] sm:p-[4rem] p-[1.5rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-2">
+        <div className="flex p-[1rem] gap-[1rem] sm:p-[4rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px]">
           {expertise_data.map((expert, id) => {
             return (
               <Link onClick={scrollToTop} to="/subscription/ra-detail"
                 key={expert.id}
-                className="sm:w-[384px] sm:h-[460px] w-[172px] h-[250px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
+                className="md:w-[384px] md:h-[400px] w-[172px] h-[250px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
               >
                 <div className="w-[72px] h-[98px] sm:w-[384px] sm:h-[219px]  relative profile-image_1 mb-4">
                   <img
@@ -70,11 +70,11 @@ const Expertise = () => {
                 </div>
 
                 <div className="w-[154px] h-[22px] sm:w-[319px] sm:h-[40px] flex justify-between px-[5px] sm:px-[1rem]">
-                  <div className="flex flex-col w-[68px] h-[22px] sm:w-[101px] sm:h-[40px] gap-2">
+                  <div className="flex flex-col h-[22px] w-full md:h-[40px] gap-2">
                     <span className="sm:text-[18px] text-[12px] sm:leading-[18px] leading-[8px] font-[500] text-lightWhite">
                       {expert.name}
                     </span>
-                    <span className="sm:text-[13px] text-[8px] sm:leading-[16px] leading-[9.6px] font-[400] text-dimWhite">
+                    <span className="sm:text-[13px] text-[10px] sm:leading-[16px] leading-[9.6px] font-[400] text-dimWhite">
                       {expert.title}
                     </span>
                   </div>
@@ -90,30 +90,30 @@ const Expertise = () => {
                   </div>
                 </div>
 
-                <div className="sm:w-[256px] sm:h-[50px] w-[143px] h-[22px] flex items-start mt-2 justify-between">
-                  <div className="flex flex-col sm:w-[78px] sm:h-[50px] w-[43px] h-[22px] items-center">
-                    <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[8px] leading-[10px]">
+                <div className="sm:w-[256px] sm:h-[50px] w-[143px] h-[44px] flex items-start md:mt-2 mt-4 justify-around">
+                  <div className="flex flex-col sm:w-[78px] sm:h-[50px] w-[43px] h-[22px] items-center justify-between">
+                    <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
                       {expert.experience}
                     </span>
-                    <span className="text-lightWhite font-[600] sm:text-[15px] sm:leading-[18px] text-[8px] leading-[10px]">
+                    <span className="text-lightWhite font-[600] sm:text-[15px] sm:leading-[18px] text-[10px] leading-[10px]">
                       {expert.totalExp}
                     </span>
                   </div>
                   <div className="sm:w-[1.4px] sm:h-[40px] w-[0.4px] h-[16px] bg-lightWhite"></div>
                   <div className="flex">
                     <div className="flex flex-col sm:w-[78px] sm:h-[50px] w-[43px] h-[22px] items-center">
-                      <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[8px] leading-[10px]">
+                      <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
                         {expert.followers}
                       </span>
-                      <span className="text-lightWhite font-[600] sm:text-[15px] sm:leading-[18px] text-[8px] leading-[10px]">
+                      <span className="text-lightWhite font-[600] sm:text-[15px] sm:leading-[18px] text-[10px] leading-[10px]">
                         {expert.totalFollowers}
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="sm:w-[300px] sm:h-[72px] w-[144px] h-[32px] mb-4 sm:block contents">
-                  <span className="text-dimWhite sm:text-[14px] text-[7px] sm:w-[278px] sm:h-[24px] sm:leading-[24px] leading-[11px] mb-[5px]">
+                <div className="md:w-[300px] md:h-[72px] w-[144px] h-[42px] mb-4 sm:block contents">
+                  <span className="text-dimWhite md:text-[14px] text-[11px] sm:leading-[24px] md:leading-[12px] leading-[14px]">
                     {expert.content}
                   </span>
                 </div>
@@ -166,12 +166,12 @@ const Expertise = () => {
             {expertise_type.map((type) => (
               <div
                 key={type.id}
-                className={`w-[176px] h-[248px] sm:w-[290px] sm:h-[386px] flex flex-col items-baseline p-4
+                className={`flex flex-col items-baseline p-4
                 rounded-[11px] hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out
                 justify-evenly sm:my-4 ${
                   type.id === 3 && isSmallScreen
-                    ? "md:w-[290px] md:h-[386px] w-[361px] h-[198px]"
-                    : ""
+                    ? "md:w-[290px] md:h-[386px] w-[340px] h-[238px]"
+                    : "w-[165px] h-[300px] md:w-[290px] md:h-[386px]"
                 }`}
               >
                 <img
@@ -190,12 +190,12 @@ const Expertise = () => {
                     isSmallScreen && type.id === 3
                       ? "flex-row sm:flex-col"
                       : "flex-col sm:flex-row"
-                  } ${isSmallScreen && type.id === 3 ? 'gap-[8rem]' : 'gap-0'}`}
+                  } ${isSmallScreen && type.id === 3 ? 'gap-[6rem]' : 'gap-0'}`}
                 >
-                  <span className="text-lightWhite sm:w-[139px] sm:h-[16px] w-[162px] h-[26px] font-[600] sm:text-[18px] text-[16px] sm:leading-[25px] leading-[15px]">
+                  <span className="text-lightWhite sm:w-[139px] sm:h-[16px] w-[162px] h-[18px] font-[600] sm:text-[18px] text-[16px] sm:leading-[25px] leading-[15px]">
                     {type.title}
                   </span>
-                  <span className="text-dimWhite md:w-[120px] md:h-[26px] w-[45px] h-[16px] font-[600] sm:text-[13px] text-[8px] sm:leading-[25px] leading-[15px]">
+                  <span className="text-dimWhite md:w-[120px] md:h-[18px] w-[55px] h-[16px] font-[600] sm:text-[13px] text-[10px] sm:leading-[25px] leading-[15px]">
                     {type.followers}
                   </span>
                 </div>
@@ -203,16 +203,16 @@ const Expertise = () => {
                   <span
                     className={`text-dimWhite font-[400] ${
                       isSmallScreen && type.id === 3
-                        ? "w-[330px] h-[28px]"
+                        ? "w-[320px] h-[42px]"
                         : "md:w-[147px] md:h-[55px]"
-                    } sm:text-[15px] text-[9px] sm:leading-[23px] leading-[13.7px]`}
+                    } sm:text-[15px] text-[11px] sm:leading-[23px] leading-[13.7px]`}
                   >
                     {type.describe}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Link onClick={scrollToTop} to="expertise/explore-expertise">
-                  <button className="text-lightWhite gap-1 flex items-center sm:h-[27px] h-[17px] font-normal sm:text-[14px] text-[8.6px] sm:leading-[26px] leading-[16px]">
+                  <button className="text-lightWhite gap-1 flex items-center sm:h-[27px] h-[17px] font-normal sm:text-[14px] text-[12.6px] sm:leading-[26px] leading-[16px]">
                     {type.button}
                   <img
                     src={type.arrowIcon}

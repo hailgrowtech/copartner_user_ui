@@ -67,7 +67,7 @@ const ExpertCardSub = ({ expert }) => {
               {formatFollowers(expert.followers)}
             </div>
           </div>
-          <div className="description text-[#A1A1AACC] mb-2 text-sm md:text-base text-left leading-3">
+          <div className="description text-dimWhite mb-2 text-sm md:text-base text-left leading-3">
             {expert.description}
           </div>
           <div className="flex flex-col">

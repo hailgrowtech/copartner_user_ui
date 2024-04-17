@@ -44,38 +44,38 @@ const ContinueCards = () => {
                       />
                     </div>
 
-                    <p className="text-sm font-medium text-[#A1A1AACC]">
+                    <p className="text-sm font-medium text-dimWhite">
                       {course.instructor}
                     </p>
 
                     <div className="flex-1 flex justify-end items-center">
-                      <span className="join-Telegram flex text-[#A1A1AACC]"> Join <img src={telegramImage} alt="Telegram" className="w-5 h-5 ml-1" /></span>
+                      <span className="join-Telegram flex text-dimWhite"> Join <img src={telegramImage} alt="Telegram" className="w-5 h-5 ml-1" /></span>
                     </div>
                   </div>
                 </div>
 
                 <div className="border-white mt-2 pt-1 flex justify-center">
                   <div className="border-r border-white px-[60px] text-center">
-                    <p className="mb-1 text-[#A1A1AACC]">Experience</p>
+                    <p className="mb-1 text-dimWhite">Experience</p>
                     <p>{course.experience}</p>
                   </div>
                   <div className="px-[60px] text-center">
-                    <p className="mb-1 text-[#A1A1AACC]">Followers</p>
+                    <p className="mb-1 text-dimWhite">Followers</p>
                     <p>{course.followers}</p>
                   </div>
                 </div>
 
                 <div className="mt-2 pt-3 flex justify-between">
                   <div className="pl-1">
-                    <p className="mb-1 text-[#A1A1AACC]">Duration: <span className="text-white">{course.duration}</span> </p>
+                    <p className="mb-1 text-dimWhite">Duration: <span className="text-white">{course.duration}</span> </p>
                   </div>
                   <div className="px-4">
-                    <p className="mb-1 text-[#A1A1AACC] text-right">Session: <span className="text-white">{course.session}</span></p>
+                    <p className="mb-1 text-dimWhite text-right">Session: <span className="text-white">{course.session}</span></p>
                   </div>
                 </div>
 
                 <div className="pl-1">
-                  <p className="mb-1 text-[#A1A1AACC]">Completed Session: <span className="text-white">{course.completedSession}</span> </p>
+                  <p className="mb-1 text-dimWhite">Completed Session: <span className="text-white">{course.completedSession}</span> </p>
                 </div>
 
                 <div className="mt-4 pt-3 flex justify-center items-center">

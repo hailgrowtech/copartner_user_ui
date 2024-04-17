@@ -36,7 +36,7 @@
 //             <div className="flex-col-6 font-inter font-bold md:text-[50px] text-[30px] subheading-color md:leading-[50px] leading-[51px] my-auto">
 //               Course By Expertise
 //             </div>
-//             <div className="flex-col-6 font-normal md:text-left text-center my-auto text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
+//             <div className="flex-col-6 font-normal md:text-left text-center my-auto text-dimWhite md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
 //               Unlock the Secrets of Success:{" "}
 //               <span className="text-white">
 //                 Enroll in Our Strategic Stock Market Expertise Courses.
@@ -55,7 +55,7 @@
 //             <div className="font-inter font-bold md:text-[50px] text-[30px] subheading-gradient md:leading-[50px] leading-[51px] text-white md:mb-6">
 //               Similar To Your Interest
 //             </div>
-//             <div className="font-normal text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
+//             <div className="font-normal text-dimWhite md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
 //               Empower your teams to build better processes, for a better
 //               workplace.
 //             </div>

@@ -18,13 +18,13 @@ const Subscription = () => {
             <span className="font-inter font-[700] md:text-[62px] text-[36px] text-gradient md:leading-[74px] leading-[48px]">
               Explore Our <br /> Premium Groups
             </span>
-            <p className="mt-2 text-center text-dimWhite md:text-xl text-sm md:block hidden">
+            <p className="mt-2 text-center text-dimWhite md:text-[18px] text-[13px] md:block hidden">
               Access premium insights from our expert team, guiding you
               <br />
               towards successful trades and informed decisions in the markets.
             </p>
 
-            <p className="mt-4 text-center text-dimWhite md:text-xl text-sm md:hidden">
+            <p className="mt-4 text-center text-dimWhite md:text-xl text-[13px] md:hidden">
               Take your team up a level with easy-to-use tools, effortless{" "}
               templates, and efficient workflows.
             </p>
@@ -36,7 +36,7 @@ const Subscription = () => {
         <h2 className="md:text-[50px] text-[30px] md:leading-[50px] text-left leading-[51px] md:mb-6 px-4 subheading-color">
           Our Expertise
         </h2>
-        <p className="font-normal text-[#A1A1AACC] md:text-[18px] text-left text-[11px] md:leading-[28px] leading-[17px] mb-8 px-4">
+        <p className="font-normal text-dimWhite md:text-[18px] text-left text-[13px] md:leading-[28px] leading-[17px] mb-8 px-4">
           Dive into the expertise of our SEBI registered research analysts,
           guiding you towards trading success with precision and insight.
         </p>
@@ -50,7 +50,7 @@ const Subscription = () => {
           <div className="flex-col-6 font-inter font-bold md:text-[50px] text-[30px] subheading-color md:leading-[50px] leading-[51px] md:mb-6">
             Continue Course
           </div>
-          <div className="flex-col-6 font-normal md:text-left text-center text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
+          <div className="flex-col-6 font-normal md:text-left text-center text-dimWhite md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
             Dive into the expertise of our{" "}
             <span className="text-white">
               Ready to resume your journey towards mastering the markets?
@@ -77,7 +77,7 @@ const Subscription = () => {
           <h2 className="font-semibold text-4xl text-center md:text-left md:text-5xl pb-4 subheading-color">
             Similar Your Interest Expertises
           </h2>
-          <p className="font-normal text-[#A1A1AACC] md:px-[2px] px-[10px] text-center md:text-left md:text-[18px] text-[14px] md:leading-[28px] leading-[17px]">
+          <p className="font-normal text-dimWhite md:px-[2px] px-[10px] text-center md:text-left md:text-[18px] text-[13px] md:leading-[28px] leading-[17px]">
             Discover related analysts with similar expertise to enhance your
             trading decisions and broaden your market insights.
           </p>
@@ -94,7 +94,7 @@ const Subscription = () => {
           <div className="flex-col-6 font-inter font-bold md:text-[50px] text-[30px] subheading-color md:leading-[50px] leading-[51px] md:mb-6">
             Course By Expertise
           </div>
-          <div className="flex-col-6 font-normal md:text-left text-center text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
+          <div className="flex-col-6 font-normal md:text-left text-center text-dimWhite md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
             Dive into the expertise of our{" "}
             <span className="text-white">
               Uncover trading secrets with courses led by <br /> SEBI Registered
@@ -122,7 +122,7 @@ const Subscription = () => {
        <div className="flex-col-6 text-left font-inter font-bold md:text-[50px] text-[30px] subheading-color md:leading-[50px] leading-[51px] md:mb-6 md:mx-[10rem]">
             Course By Expertise
           </div>
-          <span className="md:w-[508px] md:h-[84px] flex-col-6 font-normal md:text-left text-center text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
+          <span className="md:w-[508px] md:h-[84px] flex-col-6 font-normal md:text-left text-center text-dimWhite md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
             Great job completing your course! Keep an eye on your inbox for a
             detailed summary of <span className="text-lightWhite">
             your progress and valuable insights to continue

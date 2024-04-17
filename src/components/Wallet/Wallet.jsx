@@ -26,7 +26,7 @@ const Wallet = () => {
         className={`flex md:flex-col flex-col ${styles.paddingY} expertise-Bg`}
       >
         <div className="flex flex-col md:gap-[2rem] gap-[1rem]">
-          <div className="flex md:flex-row flex-col md:justify-end justify-center md:px-[8rem] px-[2rem] gap-[1rem]">
+          <div className="flex md:flex-row flex-col justify-center md:px-[8rem] px-[2rem] gap-[1rem]">
             <div
               className={`${styles.flexStart} flex-col text-center md:gap-[2rem] gap-0`}
             >
@@ -36,14 +36,14 @@ const Wallet = () => {
                   reimagined.
                 </span>
 
-                <p className="md:w-[508px] md:h-[56px] w-[341px] h-[32px] font-inter font-[500] mt-4 text-dimWhite md:text-[18px] text-[12px] md:leading-[28px] leading-[16px] flex items-center justify-center">
+                <p className="md:w-[508px] md:h-[56px] w-[341px] h-[32px] font-inter font-[500] mt-4 text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] leading-[16px] flex items-center justify-center">
                   Take your team up a level with easy-to-use tools, effortless{" "}
                   templates, and efficient workflows.
                 </p>
               </div>
             </div>
 
-            <div className="md:flex w-[325px] md:h-[301px] h-[279px] bg-[#18181B] bg-opacity-[50%] p-2">
+            {/* <div className="md:flex w-[325px] md:h-[301px] h-[279px] bg-[#18181B] bg-opacity-[50%] p-2">
               <div className="flex flex-col justify-center items-center gap-[1rem]">
                 <span className="text-center text-gradient-2 w-[245px] h-[52px] font-[700] text-[30px leading-[51px] font-inter">
                   Available Balance
@@ -63,14 +63,14 @@ const Wallet = () => {
                   </button>
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="flex md:flex-row flex-col justify-around items-center text-center">
             <div className="w-[461px] h-[52px] font-inter font-bold md:text-[50px] text-[30px] text-gradient-2 leading-[51px]">
               Transaction History
             </div>
-            <span className="md:w-[550px] md:h-[56px] w-[328px] h-[68px] font-[400] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px] text-dimWhite md:text-start text-center">
+            <span className="md:w-[550px] md:h-[56px] w-[328px] h-[68px] font-[400] md:text-[18px] text-[13px] md:leading-[28px] leading-[17px] text-dimWhite md:text-start text-center">
               With Cobalt, managing your business finances is effortless,
               empowering.{" "}
               <span className="text-lightWhite">
@@ -166,11 +166,11 @@ const Wallet = () => {
               </table>
             )}
           </div>
-          <div id="refer" className="md:mt-0  mt-[-4rem]">
+          {/* <div id="refer" className="mb-[8rem]">
             <ReferEarn />
-          </div>
+          </div> */}
 
-          <div className="flex md:flex-row flex-col justify-around items-center text-center">
+          {/* <div className="flex md:flex-row flex-col justify-around items-center text-center">
             <span className="w-[308px] h-[52px] font-inter font-bold md:text-[50px] text-[30px] text-gradient-2 md:leading-[51px] leading-[51px]">
               Refer History
             </span>
@@ -181,7 +181,7 @@ const Wallet = () => {
                 Say no to spreadsheets and tools designed in the 80s.
               </span>
             </span>
-          </div>
+          </div> */}
 
           <div className="flex justify-center items-center">
             {smallScreen ? (

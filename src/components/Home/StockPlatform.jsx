@@ -22,7 +22,7 @@ const StockPlatform = () => {
             className="md:w-[225px] w-[199px] md:h-[64px] h-[54px]"
           />
 
-          <span className="text-dimWhite md:w-[505px] w-[328px] text-center md:h-[56px] h-[34px] font-[400] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
+          <span className="text-dimWhite md:w-[505px] w-[328px] text-center md:h-[56px] h-[34px] font-[400] md:text-[18px] text-[13px] md:leading-[28px] leading-[17px]">
             Empower your teams to build better processes, for a better
             workplace.
           </span>

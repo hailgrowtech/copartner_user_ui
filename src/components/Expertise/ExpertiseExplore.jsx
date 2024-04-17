@@ -35,7 +35,7 @@ const ExpertiseExplore = () => {
             <div className="font-inter font-bold md:text-[50px] text-[30px] subheading-gradient md:leading-[50px] leading-[51px] text-white md:mb-6">
               Top Expertise
             </div>
-            <div className="font-normal text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
+            <div className="font-normal text-dimWhite md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
               Gain an edge in the market with our finest SEBI Registered experts
               for unparalleled trading guidance.
             </div>
@@ -49,7 +49,7 @@ const ExpertiseExplore = () => {
             <div className="font-inter font-bold md:text-[50px] text-[30px] subheading-gradient md:leading-[50px] leading-[51px] text-white md:mb-6">
               Similar To Your Interest
             </div>
-            <div className="font-normal text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
+            <div className="font-normal text-dimWhite md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
               Empower your teams to build better processes, for a better
               workplace.
             </div>

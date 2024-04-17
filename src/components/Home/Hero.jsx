@@ -26,7 +26,7 @@ const Hero = () => {
           >
             Invest, Learn and Earn
           </span>
-          <p className="font-inter md:w-[876px] md:h-[28px] w-[360px] h-[17px] text-dimWhite md:text-[18px] text-[12px] md:leading-[28px] leading-[16px]">
+          <p className="font-inter md:w-[876px] md:h-[28px] w-[360px] h-[17px] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] leading-[16px]">
             Get partnered with our SEBI Registered Research Analysts to start
             your profitable trading journey.
           </p>
@@ -60,7 +60,7 @@ const Hero = () => {
                   />
                 </div>
 
-                <div className="flex md:w-[212px] md:h-[26px] sm:w-[157px] sm:h-[22px] justify-between md:gap-0 gap-[2.2rem]">
+                <div className="flex md:w-[212px] md:h-[26px] w-full sm:h-[22px] justify-between md:gap-0">
                   <div className="flex flex-col gap-1">
                     <span className="text-[12px] leading-[12px] font-[500] text-white">
                       {expert.name}
@@ -124,12 +124,12 @@ const Hero = () => {
             );
           })}
 
-          <div className="md:w-[365px] md:h-[226px] w-[171px] h-[256px] md:px-[3rem] flex flex-col md:justify-between">
+          <div className="md:w-[365px] md:h-[226px] w-[171px] h-[256px] md:px-[3rem] flex flex-col md:justify-center md:gap-2">
             <span className="md:w-[365px] md:h-[36px] w-[171px] h-[36px] font-[600] md:text-[30px] text-[18px] leading-[36px] text-lightWhite">
               Experience Matters
             </span>
 
-            <span className="text-dimWhite md:w-[365px] md:h-[86px] w-[171px] h-[90px] font-[400] md:text-[16px] text-[14px] md:leading-[28px] leading-[21px]">
+            <span className="text-dimWhite md:w-[365px] md:h-[86px] w-[171px] h-[80px] font-[400] md:text-[16px] text-[14px] md:leading-[28px] md:leading-[21px] leading-[18px]">
               Connect with India’s leading SEBI registered Research Analysts,
               guiding you thoroughly to maximising profits in the dynamic world
               of stock trading.

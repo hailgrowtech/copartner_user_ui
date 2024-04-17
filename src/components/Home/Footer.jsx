@@ -50,7 +50,7 @@ const Footer = () => {
         </div>
         <div className="flex flex-row gap-[4rem]">
           <div className="flex flex-col justify-around w-full h-[220px]">
-            <span className="w-[48px] h-[15px] font-medium text-[12.6px] leading-[14.7px] mb-4 text-white">
+            <span className="w-[48px] h-[15px] font-medium md:text-[20px] text-[18px] leading-[14.7px] mb-4 text-white">
               Company
             </span>
             {ProductList.map((product) => (
@@ -65,7 +65,7 @@ const Footer = () => {
             ))}
           </div>
           <div className="flex flex-col justify-between w-[117px] h-[105px] mt-[5px]">
-            <span className="w-[89px] h-[15px] font-medium text-[12.6px] leading-[14.7px] mb-4 text-white">
+            <span className="md:w-[140px] md:h-[15px] w-[125px] h-[20px] font-medium md:text-[20px] text-[18px] leading-[14.7px] mb-4 text-white">
               What We Offer
             </span>
             {CommunityList.map((community) => (

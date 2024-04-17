@@ -138,16 +138,16 @@ const SubscriptionRA = () => {
               <button className="text-white md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px]">
                 Subscriptions Plans
               </button>
-              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-[#A1A1AACC] hover:text-white">
+              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
                 Key Highlights
               </button>
-              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-[#A1A1AACC] hover:text-white">
+              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
                 About Subscriptions
               </button>
-              {/* <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-[#A1A1AACC] hover:text-white">
+              {/* <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
                 Courses
               </button> */}
-              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] md:inline hidden text-[9.5px] text-[#A1A1AACC] hover:text-white">
+              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] md:inline hidden text-[9.5px] text-dimWhite hover:text-white">
                 Reviews
               </button>
             </div>
@@ -158,7 +158,7 @@ const SubscriptionRA = () => {
             <div className="subheading-gradient md:text-5xl text-3xl font-bold pb-4">
               Subscriptions Plans
             </div>
-            <div className="text-[#A1A1AACC] md:text-lg text-xs md:mb-0 mb-4">
+            <div className="text-dimWhite md:text-lg text-xs md:mb-0 mb-4">
               Discover our subscription plans tailored for traders like you.
               Gain access to exclusive features, expert insights and community
               support to elevate your trading journey.{" "}
@@ -260,7 +260,7 @@ const SubscriptionRA = () => {
             <div className="subheading-gradient md:text-5xl text-3xl font-bold pb-4 md:text-left text-center">
               Key highlights to join this subscription
             </div>
-            <div className="text-[#A1A1AACC] md:mb-9 mb-4 md:text-base text-xs md:text-left text-center">
+            <div className="text-dimWhite md:mb-9 mb-4 md:text-base text-xs md:text-left text-center">
               Experience the power of our subscription. Gain exclusive access to
               expert insights, advanced trading tools and personalised support.
             </div>
@@ -274,7 +274,7 @@ const SubscriptionRA = () => {
                     <p className="text-[#E4E4E7] md:text-lg text-base">
                       Expert Insights
                     </p>
-                    <p className="text-[#A1A1AACC] md:text-sm text-xs">
+                    <p className="text-dimWhite md:text-sm text-xs">
                       Gain exclusive access to expert analysis and insights from
                       SEBI Registered Research Analysts.{" "}
                     </p>
@@ -288,7 +288,7 @@ const SubscriptionRA = () => {
                     <p className="text-[#E4E4E7] md:text-lg text-base">
                       Risk Management
                     </p>
-                    <p className="text-[#A1A1AACC] md:text-sm text-xs">
+                    <p className="text-dimWhite md:text-sm text-xs">
                       Learn essential risk management techniques and gain access
                       to tools to help protect your investments.{" "}
                     </p>
@@ -304,7 +304,7 @@ const SubscriptionRA = () => {
                     <p className="text-[#E4E4E7] md:text-lg text-base">
                       Performance Tracking
                     </p>
-                    <p className="text-[#A1A1AACC] md:text-sm text-xs">
+                    <p className="text-dimWhite md:text-sm text-xs">
                       Monitor your trading performance with detailed analytics
                       and reports to identify strengths and areas for
                       improvement.{" "}
@@ -319,7 +319,7 @@ const SubscriptionRA = () => {
                     <p className="text-[#E4E4E7] md:text-lg text-base">
                       Market Alerts
                     </p>
-                    <p className="text-[#A1A1AACC] md:text-sm text-xs">
+                    <p className="text-dimWhite md:text-sm text-xs">
                       Stay informed with real-time market alerts and
                       notifications to capitalise on opportunities. {" "}
                     </p>
@@ -366,7 +366,7 @@ const SubscriptionRA = () => {
           <p className="subheading-gradient md:text-5xl text-3xl font-bold pb-8">
             Subscriptions Details
           </p>
-          <div className="text-[#A1A1AACC]">
+          <div className="text-dimWhite">
             <p>
               Welcome to our subscription plans, tailored to cater to traders of
               all levels. Our plans are designed to provide you with the tools,
@@ -444,7 +444,7 @@ const SubscriptionRA = () => {
               <p className="subheading-gradient text-3xl font-bold mb-4">
                 About Course
               </p>
-              <div className="text-[#A1A1AACC] mb-12">
+              <div className="text-dimWhite mb-12">
                 <p className="mb-5">
                   Lorem ipsum dolor sit amet consectetur. Et fames faucibus sed
                   porttitor. In amet at et sit donec. Eleifend dui rhoncus sit

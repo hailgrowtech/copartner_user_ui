@@ -108,11 +108,11 @@ const ContinueCardsCarousel = () => {
                             className="h-full w-full object-cover"
                           />
                         </div>
-                        <p className="text-sm font-medium text-[#A1A1AACC]">
+                        <p className="text-sm font-medium text-dimWhite">
                           {item.instructor}
                         </p>
                         <div className="flex-1 flex justify-end">
-                          <span className="join-Telegram flex text-[#A1A1AACC]">
+                          <span className="join-Telegram flex text-dimWhite">
                             Join <img src={telegramImage} alt="Telegram" className="w-4 h-4 ml-1" />
                           </span>
                         </div>
@@ -124,24 +124,24 @@ const ContinueCardsCarousel = () => {
                         <p>{item.experience}</p>
                       </div>
                       <div className="px-[80px] text-center">
-                        <p className="mb-1 text-[#A1A1AACC]">Followers</p>
+                        <p className="mb-1 text-dimWhite">Followers</p>
                         <p>{item.followers}</p>
                       </div>
                     </div>
                     <div className="mt-2 pt-3 flex justify-between">
                       <div className="pl-1">
-                        <p className="mb-1 text-[#A1A1AACC]">
+                        <p className="mb-1 text-dimWhite">
                           Duration: <span className="text-white">{item.duration}</span>{" "}
                         </p>
                       </div>
                       <div className="px-4">
-                        <p className="mb-1 text-[#A1A1AACC] text-right">
+                        <p className="mb-1 text-dimWhite text-right">
                           Session: <span className="text-white">{item.session}</span>
                         </p>
                       </div>
                     </div>
                     <div className="pl-1">
-                      <p className="mb-1 text-[#A1A1AACC]">
+                      <p className="mb-1 text-dimWhite">
                         Completed Session: <span className="text-white">{item.completedSession}</span>{" "}
                       </p>
                     </div>

@@ -24,7 +24,7 @@ const SubscriptionCourseDetail = () => {
           <h2 className="font-semibold text-4xl text-center md:text-left md:text-5xl pb-4 subheading-color">
           Our Expertise
           </h2>
-          <p className="font-normal text-[#A1A1AACC] md:px-[2px] px-[10px] text-center md:text-left md:text-[18px] text-[14px] md:leading-[28px] leading-[17px]">
+          <p className="font-normal text-dimWhite md:px-[2px] px-[10px] text-center md:text-left md:text-[18px] text-[14px] md:leading-[28px] leading-[17px]">
           Empower your teams to build better processes, for a better workplace.
           </p>
         </div>
@@ -38,7 +38,7 @@ const SubscriptionCourseDetail = () => {
           <div className="flex-col-6 font-bold md:text-[50px] text-[30px] subheading-color md:leading-[50px] leading-[51px] md:mb-6">
             Course By Expertise
           </div>
-          <div className="flex-col-6 font-normal md:text-left text-center text-[#A1A1AACC] md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
+          <div className="flex-col-6 font-normal md:text-left text-center text-dimWhite md:text-[18px] text-[11px] md:leading-[28px] leading-[17px]">
           Unlock the Secrets of Success:{" "}
             <span className="text-white">
             Enroll in Our Strategic Stock Market Expertise Courses.

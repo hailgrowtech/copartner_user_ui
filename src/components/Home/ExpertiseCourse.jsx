@@ -42,13 +42,13 @@ const ExpertiseCourse = ({ courseData }) => {
                   />
                 </div>
 
-                <p className="text-sm font-medium text-[#A1A1AACC]">
+                <p className="text-sm font-medium text-dimWhite">
                   {userName}
                 </p>
               </div>
 
               <div className="flex-1 flex justify-end">
-                <span className="join-Telegram flex text-[#A1A1AACC]">
+                <span className="join-Telegram flex text-dimWhite">
                   {" "}
                   Join{" "}
                   <img
@@ -73,12 +73,12 @@ const ExpertiseCourse = ({ courseData }) => {
 
             <div className="mt-2 pt-3 flex justify-between">
               <div className="pl-1">
-                <p className="mb-1 text-[#A1A1AACC]">
+                <p className="mb-1 text-dimWhite">
                   {callTime}
                 </p>
               </div>
               <div className="px-4">
-                <p className="mb-1 text-[#A1A1AACC] text-right">
+                <p className="mb-1 text-dimWhite text-right">
                   {callSession}
                 </p>
               </div>
@@ -86,7 +86,7 @@ const ExpertiseCourse = ({ courseData }) => {
 
             <div className="mt-4 pt-3 flex justify-between items-center">
               <div>
-                <p className="text-[#A1A1AACC]">
+                <p className="text-dimWhite">
                   <span className="text-white text-2xl font-bold">{price}</span>{" "}
                 </p>
               </div>

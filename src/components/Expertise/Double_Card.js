@@ -36,7 +36,7 @@ const SingleExpertCard = () => {
           <div className="experience"> <span>Experience</span> <br/>7+</div>
           <div className="followers"> <span>Followers </span><br/>3.1k</div>
         </div>
-        <div className="description text-[#A1A1AACC] md:mb-6 mb-2 text-[15px]">Have full control of your business finances on the go using our iOS</div>
+        <div className="description text-dimWhite md:mb-6 mb-2 text-[15px]">Have full control of your business finances on the go using our iOS</div>
         <div className="prize-subscription text-white">
           <button className='flex items-center mx-auto md:py-1.5 py-1 md:px-6 px-2 border-solid border-2 border-[#4e4e4ecc] rounded-3xl'>
             <img width={"24rem"} src={telegram} alt='telegram' className='rounded-[50%] text-[1.5rem] telegram me-3' />

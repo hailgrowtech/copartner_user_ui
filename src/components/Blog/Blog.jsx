@@ -29,7 +29,7 @@ const Blog = () => {
         <h2 className="md:text-[50px] text-[30px] md:leading-[50px] text-left leading-[51px] md:mb-6 px-4 subheading-color">
           Our Expertise
         </h2>
-        <p className="font-normal text-[#A1A1AACC] md:text-[18px] text-left text-[11px] md:leading-[28px] leading-[17px] mb-8 px-4">
+        <p className="font-normal text-dimWhite md:text-[18px] text-left text-[11px] md:leading-[28px] leading-[17px] mb-8 px-4">
           Dive into the expertise of our SEBI registered research analysts,
           guiding you towards trading success with precision and insight.
         </p>

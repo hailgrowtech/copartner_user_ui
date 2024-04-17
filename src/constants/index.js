@@ -36,8 +36,8 @@ export const navLinks = [
     title: "Expertise",
   },
   {
-    id: "wallet",
-    title: "Wallet",
+    id: "history",
+    title: "History",
   },
   {
     id: "contact_us",
@@ -201,7 +201,7 @@ export const expertise_data = [
     id: "1",
     icon: userBck,
     userImg: userImg,
-    name: "Arun Kumar",
+    name: "Arun Kumar Bansal",
     title: "Commodity",
     ratingIcon: stars,
     rating: "4.4",
@@ -210,7 +210,7 @@ export const expertise_data = [
     followers: "Followers",
     totalFollowers: "3.1k",
     content:
-      "Have full control of your business finances on the go using our iOS/Android mobile apps. Because, you know, it’s 2023.",
+      "Have full control of your business finances on the go using our.",
     telegram: telegram,
     greet: "Join Telegram",
     arrowIcon: arrow,
@@ -228,7 +228,7 @@ export const expertise_data = [
     followers: "Followers",
     totalFollowers: "3.1k",
     content:
-      "Have full control of your business finances on the go using our iOS/Android mobile apps. Because, you know, it’s 2023.",
+      "Have full control of your business finances on the go using our.",
     telegram: telegram,
     greet: "Join Telegram",
     arrowIcon: arrow,
@@ -246,7 +246,7 @@ export const expertise_data = [
     followers: "Followers",
     totalFollowers: "3.1k",
     content:
-      "Have full control of your business finances on the go using our iOS/Android mobile apps. Because, you know, it’s 2023.",
+      "Have full control of your business finances on the go using our.",
     telegram: telegram,
     greet: "Join Telegram",
     arrowIcon: arrow,
@@ -255,7 +255,7 @@ export const expertise_data = [
     id: "4",
     icon: userBck,
     userImg: userImg,
-    name: "Arun Kumar",
+    name: "Arun Kumar Jha",
     title: "Equity",
     ratingIcon: stars,
     rating: "4.4",
@@ -264,7 +264,7 @@ export const expertise_data = [
     followers: "Followers",
     totalFollowers: "3.1k",
     content:
-      "Have full control of your business finances on the go using our iOS/Android mobile apps. Because, you know, it’s 2023.",
+      "Have full control of your business finances on the go using our.",
     telegram: telegram,
     greet: "Join Telegram",
     arrowIcon: arrow,
@@ -282,7 +282,7 @@ export const expertise_data = [
     followers: "Followers",
     totalFollowers: "3.1k",
     content:
-      "Have full control of your business finances on the go using our iOS/Android mobile apps. Because, you know, it’s 2023.",
+      "Have full control of your business finances on the go using our.",
     telegram: telegram,
     greet: "Join Telegram",
     arrowIcon: arrow,
@@ -300,7 +300,7 @@ export const expertise_data = [
     followers: "Followers",
     totalFollowers: "3.1k",
     content:
-      "Have full control of your business finances on the go using our iOS/Android mobile apps. Because, you know, it’s 2023.",
+      "Have full control of your business finances on the go using our.",
     telegram: telegram,
     greet: "Join Telegram",
     arrowIcon: arrow,

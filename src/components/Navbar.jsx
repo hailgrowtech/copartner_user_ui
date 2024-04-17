@@ -97,13 +97,13 @@ const Navbar = () => {
               ))}
             </ul>
 
-            <Link onClick={scrollToTop} to="/refer&earn">
+            {/* <Link onClick={scrollToTop} to="/refer&earn">
               <div style={{ marginLeft: "1rem" }}>
                 <button className="text-dimWhite text-[11px] py-1 px-4 ms-8 rounded-[36px] border border-solid border-white border-opacity-60 flex  items-center">
                   Refer & Earn
                 </button>
               </div>
-            </Link>
+            </Link> */}
 
             {/* Profile icon for desktop */}
             <div className="hidden sm:flex items-center">
@@ -167,7 +167,7 @@ const Navbar = () => {
                     </li>
                   ))}
 
-                  <Link onClick={scrollToTop} to="/refer&earn">
+                  {/* <Link onClick={scrollToTop} to="/refer&earn">
                     <li className="mt-4">
                       <button
                         onClick={() => setToggle(false)}
@@ -176,7 +176,7 @@ const Navbar = () => {
                         Refer & Earn
                       </button>
                     </li>
-                  </Link>
+                  </Link> */}
 
                   {/* Logout button in mobile menu */}
                   <li className="mt-4">
