@@ -157,7 +157,7 @@ const About = () => {
                   alt="STOCK_IMAGES"
                   className="md:w-[289px] w-[288px] h-[150px]"
                 />
-                <div className="flex flex-col md:gap-[1rem]">
+                <div className="flex flex-col md:gap-[0.5rem]">
                   <span className="text-lightWhite md:w-[190px] w-[164px] font-[600] md:text-[20px] text-[18px] md:leading-[27px] md:text-left">
                     {aboutus.title}
                   </span>

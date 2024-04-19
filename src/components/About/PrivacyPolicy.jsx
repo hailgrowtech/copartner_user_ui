@@ -9,7 +9,7 @@ const PrivacyPolicy = () => {
       <div className="flex flex-col items-center">
         <div className="flex md:flex-row items-center flex-col justify-center gap-[1rem]">
           <div className={`flex-col text-center md:gap-[2rem] gap-0`}>
-            <div className="flex flex-col justify-between items-center pb-[4rem]">
+            <div className="flex flex-col justify-between items-center md:pb-[4rem] pb-[3rem]">
               <span className="font-inter font-[700] md:text-[72px] text-[44px] text-gradient md:leading-[84px] leading-[48px]">
                 Privacy Policy
               </span>
