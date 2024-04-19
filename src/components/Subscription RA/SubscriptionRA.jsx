@@ -21,10 +21,11 @@ import CourseCardsCarousel from "./CourseCardsCarousel";
 import CourseCard from "./CourseCard";
 
 const SubscriptionRA = () => {
-  
   const carouselItems = courses.slice(0, 5);
   const [backgroundColor, setBackgroundColor] = useState("#18181B80");
   const [backgroundColor2, setBackgroundColor2] = useState("#18181B80");
+  const [showBasicDialog, setShowBasicDialog] = useState(false);
+  const [showStandardDialog, setStandardDialog] = useState(false);
 
   const handleMouseOver = () => {
     setBackgroundColor("transparent");
@@ -207,9 +208,86 @@ const SubscriptionRA = () => {
                 </div>
               </div>
               <div className="text-center">
-                <button className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-gray-700 border-4">
+                <button
+                  onClick={() => setShowBasicDialog(true)}
+                  className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-gray-700 border-4"
+                >
                   Buy Now
                 </button>
+                {showBasicDialog && (
+                  <div className="fixed inset-0 z-50 grid place-items-center bg-black bg-opacity-60">
+                    <div className="md:min-w-[25%] min-w-[75%] rounded-lg bg-[#18181B] opacity-[80%] font-sans text-base font-light leading-relaxed text-blue-gray-500 antialiased shadow-2xl">
+                      <div className="flex items-center p-4 font-sans text-2xl antialiased font-semibold leading-snug shrink-0 text-blue-gray-900">
+                        Basic Subscription Details
+                      </div>
+                      <div className="flex flex-col gap-4 md:justify-center md:items-center p-4 border-t border-b">
+                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
+                          <span className="text-dimWhite md:w-[141px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-start">
+                            Subscription
+                          </span>
+                          <span className="text-white md:w-[93px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
+                            Basic
+                          </span>
+                        </div>
+                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
+                          <span className="text-dimWhite md:w-[115px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-start">
+                            Name
+                          </span>
+                          <span className="text-white md:w-[101px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
+                            Rohit Aggi
+                          </span>
+                        </div>
+                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
+                          <span className="text-dimWhite md:w-[115px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-start">
+                            Amout
+                          </span>
+                          <span className="text-white md:w-[67px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
+                            ₹1,999
+                          </span>
+                        </div>
+                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
+                          <span className="text-white md:w-[115px] md:h-[9px] font-inter font-[700] text-[14px] leading-[8.4px] text-start">
+                            Subtotal
+                          </span>
+                          <span className="text-white md:w-[67px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
+                            ₹1,999
+                          </span>
+                        </div>
+                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
+                          <span className="text-dimWhite md:w-[124px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-start">
+                            GST 18%
+                          </span>
+                          <span className="text-white md:w-[67px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
+                            ₹342
+                          </span>
+                        </div>
+                        <hr />
+                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
+                          <span className="text-dimWhite md:w-[115px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-start">
+                            Total
+                          </span>
+                          <span className="text-white md:w-[67px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
+                            ₹2,241
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex md:flex-row flex-col flex-wrap items-center justify-end p-4 shrink-0 text-blue-gray-500">
+                        <button
+                          onClick={() => setShowBasicDialog(false)}
+                          className="md:w-[100px] w-full px-6 py-3 font-inter text-xs font-bold uppercase bg-white text-black rounded-[12px]"
+                        >
+                          Pay
+                        </button>
+                        <button
+                          onClick={() => setShowBasicDialog(false)}
+                          className="px-6 py-3 mr-1 font-inter text-xs font-bold text-dimWhite uppercase transition-all rounded-lg hover:bg-red-500/10 active:bg-red-500/30"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
             <div
@@ -248,9 +326,86 @@ const SubscriptionRA = () => {
                 </div>
               </div>
               <div className="text-center">
-                <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2">
+                <button
+                  onClick={() => setStandardDialog(true)}
+                  className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2"
+                >
                   Buy Now
                 </button>
+                {showStandardDialog && (
+                  <div className="fixed inset-0 z-50 grid place-items-center bg-black bg-opacity-60">
+                    <div className="md:min-w-[25%] min-w-[75%] rounded-lg bg-[#18181B] opacity-[80%] font-inter text-base font-light leading-relaxed text-blue-gray-500 antialiased shadow-2xl">
+                      <div className="flex items-center p-4 font-sans text-2xl antialiased font-semibold leading-snug shrink-0 text-blue-gray-900">
+                        Standard Subscription Details
+                      </div>
+                      <div className="flex flex-col gap-4 md:justify-center md:items-center p-4 border-t border-b">
+                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
+                          <span className="text-dimWhite md:w-[141px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-start">
+                            Subscription
+                          </span>
+                          <span className="text-white md:w-[93px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
+                            Basic
+                          </span>
+                        </div>
+                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
+                          <span className="text-dimWhite md:w-[115px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-start">
+                            Name
+                          </span>
+                          <span className="text-white md:w-[101px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
+                            Rohit Aggi
+                          </span>
+                        </div>
+                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
+                          <span className="text-dimWhite md:w-[115px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-start">
+                            Amout
+                          </span>
+                          <span className="text-white md:w-[67px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
+                            ₹5,999
+                          </span>
+                        </div>
+                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
+                          <span className="text-white md:w-[115px] md:h-[9px] font-inter font-[700] text-[14px] leading-[8.4px] text-start">
+                            Subtotal
+                          </span>
+                          <span className="text-white md:w-[67px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
+                            ₹5,999
+                          </span>
+                        </div>
+                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
+                          <span className="text-dimWhite md:w-[124px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-start">
+                            GST 18%
+                          </span>
+                          <span className="text-white md:w-[67px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
+                            ₹702
+                          </span>
+                        </div>
+                        <hr />
+                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
+                          <span className="text-dimWhite md:w-[115px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-start">
+                            Total
+                          </span>
+                          <span className="text-white md:w-[67px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
+                            ₹6,701
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex md:flex-row flex-col flex-wrap items-center justify-end p-4 shrink-0 text-blue-gray-500">
+                        <button
+                          onClick={() => setStandardDialog(false)}
+                          className="md:w-[100px] w-full px-6 py-3 font-inter text-xs font-bold uppercase bg-white text-black rounded-[12px]"
+                        >
+                          Pay
+                        </button>
+                        <button
+                          onClick={() => setStandardDialog(false)}
+                          className="px-6 py-3 mr-1 font-inter text-xs font-bold text-dimWhite uppercase transition-all rounded-lg hover:bg-red-500/10 active:bg-red-500/30"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
