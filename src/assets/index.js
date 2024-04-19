@@ -63,6 +63,7 @@ import Blog3 from './blog3.png';
 import contact from './contact.png';
 import message from './message.png'
 import location from './location.png'
+import closeImg from './closeIcon.png'
 
 export {
     logo,
@@ -130,4 +131,5 @@ export {
     contact,
     message,
     location,
+    closeImg,
 }

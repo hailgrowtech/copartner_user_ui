@@ -32,13 +32,11 @@ const Wallet = () => {
             >
               <div className="justify-between items-center">
                 <span className="flex-1 font-inter font-[700] md:text-[72px] text-[44px] text-gradient md:leading-[74px] leading-[48px]">
-                  Your team, <br />
-                  reimagined.
+                  Earn and Prosper
                 </span>
 
-                <p className="md:w-[508px] md:h-[56px] w-[341px] h-[32px] font-inter font-[500] mt-4 text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] leading-[16px] flex items-center justify-center">
-                  Take your team up a level with easy-to-use tools, effortless{" "}
-                  templates, and efficient workflows.
+                <p className="md:w-[508px] md:h-[56px] w-[341px] h-[32px] font-inter font-[500] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] leading-[16px] flex items-center justify-center">
+                  Earn, Repeat & Collect!
                 </p>
               </div>
             </div>
@@ -66,26 +64,26 @@ const Wallet = () => {
             </div> */}
           </div>
 
-          <div className="flex md:flex-row flex-col justify-around items-center text-center">
-            <div className="w-[461px] h-[52px] font-inter font-bold md:text-[50px] text-[30px] text-gradient-2 leading-[51px]">
+          <div className="flex md:flex-row flex-col justify-around md:items-center">
+            <span className="md:w-[461px] md:h-[52px] font-inter font-bold md:text-[50px] text-[30px] text-gradient-2 leading-[51px] md:ml-0 ml-[2rem]">
               Transaction History
-            </div>
-            <span className="md:w-[550px] md:h-[56px] w-[328px] h-[68px] font-[400] md:text-[18px] text-[13px] md:leading-[28px] leading-[17px] text-dimWhite md:text-start text-center">
-              With Cobalt, managing your business finances is effortless,
-              empowering.{" "}
-              <span className="text-lightWhite">
-                Say no to spreadsheets and tools designed in the 80s.
+            </span>
+            <span className="md:w-[550px] md:h-[56px] w-[328px] h-[68px] font-[400] md:text-[18px] text-[13px] md:leading-[28px] leading-[17px] text-dimWhite md:text-start md:ml-0 ml-[2rem]">
+              Review the transaction history below to have transparency into
+              payments made to our portal. <span className="text-lightWhite">
+              Stay informed about your expenditure
+              and the services you've accessed. 
               </span>
             </span>
           </div>
 
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center md:mt-[1rem] mt-[-20px]">
             {smallScreen ? (
               <div className="flex flex-wrap justify-center items-center">
                 {walletData.slice(0, 3).map((row, index) => (
                   <div
                     key={index}
-                    className="flex flex-col justify-around w-[361px] h-[208px] bg-[#18181B] bg-opacity-[50%] rounded-[30px] m-4 p-4 w-[90%] max-w-sm"
+                    className="flex flex-col justify-around w-[361px] h-[208px] bg-[#18181B] bg-opacity-[50%] rounded-[30px] md:m-4 m-[10px] p-4 w-[90%] max-w-sm"
                   >
                     <div className="flex flex-row justify-between">
                       <p className="w-[173px] h-[26px] font-[600] text-[21px] leading-[25px] text-lightWhite">
@@ -183,7 +181,7 @@ const Wallet = () => {
             </span>
           </div> */}
 
-          <div className="flex justify-center items-center">
+          {/* <div className="flex justify-center items-center">
             {smallScreen ? (
               <div className="flex flex-wrap justify-center items-center">
                 {walletData.slice(0, 2).map((row, index) => (
@@ -242,7 +240,7 @@ const Wallet = () => {
                 </tbody>
               </table>
             )}
-          </div>
+          </div> */}
 
           <Interest />
         </div>

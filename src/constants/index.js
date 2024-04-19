@@ -66,7 +66,7 @@ export const expertise_type = [
     title: "Commodity",
     followers: "4K + More",
     describe:
-      "Our SEBI Registered experts with their expertise, help traders gain a deeper understanding of risk management, leverage, and market dynamics for profitability.",
+      "Our experts simplify trading complexities like understanding different assets and their correlations, guiding you with different strategies and market dynamics.",
     button: "Explore All",
     arrowIcon: arrow,
   },
@@ -77,7 +77,7 @@ export const expertise_type = [
     title: "Equity",
     followers: "4K + More",
     describe:
-      "Our SEBI Registered experts with their expertise, help traders gain a deeper understanding of risk management, leverage, and market dynamics for profitability.",
+      "Our experts thrive into the world of stocks, offering comprehensive guidance on analysing companies, understanding market trends and making informed investment decisions.",
     button: "Explore All",
     arrowIcon: arrow,
   },

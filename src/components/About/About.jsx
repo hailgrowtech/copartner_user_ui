@@ -73,10 +73,16 @@ const About = () => {
         </div>
 
         <div className="flex flex-col md:gap-[2rem] md:py-[2rem] md:mt-0 mt-[2rem] md:px-0 px-2">
-          <div className="flex flex-col md:flex-start items-start flex-center">
-            <span className="md:w-[385px] h-[52px] font-inter font-[700] md:text-[50px] text-[30px] text-gradient-2 leading-[51px]">
-              Mission & Vission
-            </span>
+          <div className={`{styles.flexStart} flex-col gap-2 xl:px-0`}>
+            <div className="flex flex-row md:h-[52px] h-[34px] justify-center md:justify-between items-center">
+              <span
+                className="font-inter font-[700] md:text-[50px] text-[30px]
+                    text-gradient-2 leading-[51px]"
+              >
+                Mission & Vision
+              </span>
+            </div>
+
             <span className="md:w-[1190px] md:h-[56px] w-[328px] h-[95px] font-[400] md:text-[18px] text-[14px] md:leading-[28px] leading-[20px] text-dimWhite text-start">
               We're dedicated to helping traders and analysts succeed through
               our platform, while also aiming to transform the stock market
@@ -90,7 +96,7 @@ const About = () => {
               return (
                 <div
                   key={mission.id}
-                  className={`md:w-[1280px] md:h-[500px] flex`}
+                  className={`md:w-[1180px] md:h-[500px] flex`}
                 >
                   <div
                     className={`flex items-center gap-[1rem] ${
@@ -120,16 +126,27 @@ const About = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:py-[4rem] md:px-0 px-4"> 
-          <span className="md:w-[208px] h-[52px] font-inter font-[700] md:text-[50px] text-[30px] text-gradient-2 leading-[51px] text-start">
-            Features
-          </span>
-          <span className="md:w-[615px] md:h-[28px] w-[358px] h-[34px] font-[400] md:text-[18px] text-[14px] md:leading-[28px] leading-[17px] text-dimWhite text-start">
-            Empower your teams to build better processes, for a better
-            workplace.
-          </span>
+        <div className="flex flex-col md:px-0 px-4">
+          <div className={`{styles.flexStart} flex-col gap-2 xl:px-0`}>
+            <div className="flex flex-row md:h-[52px] h-[34px] justify-center md:justify-between items-center">
+              <span
+                className="font-inter font-[700] md:text-[50px] text-[30px]
+                    text-gradient-2 leading-[51px]"
+              >
+                Features
+              </span>
+            </div>
 
-          <div className="md:w-[1076px] md:max-h-[580px] w-[337px] md:gap-[5rem] gap-[1rem] flex flex-col sm:flex-row md:mt-[6rem] md:py-0 py-[2rem] mx-auto">
+            <p
+              className="font-inter md:w-[1136px] md:h-[28px] w-[328px] h-[34px] font-[400] text-dimWhite sm:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
+                 leading-[16px] sm:text-start mt-2 text-center"
+            >
+              Empower your teams to build better processes, for a better
+              workplace.
+            </p>
+          </div>
+
+          <div className="md:w-[1076px] md:max-h-[580px] w-[337px] md:gap-[5rem] gap-[1rem] flex flex-col sm:flex-row md:mt-[3rem] md:py-0 py-[2rem] mx-auto">
             {aboutUs_data.map((aboutus) => (
               <div
                 key={aboutus.id}
@@ -153,17 +170,28 @@ const About = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:items-center justify-center">
-          <span className="md:w-[124px] h-[52px] font-inter font-[700] md:text-[50px] text-[30px] text-gradient-2 leading-[51px] text-start md:px-0 px-4">
-            FAQs
-          </span>
-          <span className="md:w-[615px] md:h-[28px] w-[398px] h-[34px] font-[400] md:text-[18px] text-[14px] md:leading-[28px] leading-[17px] text-dimWhite text-start md:px-0 px-4">
-            Empower your teams to build better processes, for a better
-            workplace.
-          </span>
+        <div className="flex md:pt-[4rem] flex-col justify-center">
+          <div className={`{styles.flexStart} flex-col gap-2 xl:px-0`}>
+            <div className="flex flex-row md:h-[52px] h-[34px] justify-center md:justify-between items-center">
+              <span
+                className="font-inter font-[700] md:text-[50px] text-[30px]
+                    text-gradient-2 leading-[51px]"
+              >
+                FAQs
+              </span>
+            </div>
+
+            <p
+              className="font-inter md:w-[615px] md:h-[28px] w-[348px] h-[34px] font-[400] text-dimWhite sm:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
+                 leading-[16px] sm:text-start mt-2 text-center"
+            >
+              Empower your teams to build better processes, for a better
+              workplace.
+            </p>
+          </div>
 
           {smallScreen ? (
-            <div className="grid grid-cols-1 mt-8 gap-4 px-[8px]">
+            <div className="grid grid-cols-1 md:mt-8 mt-4 gap-4 px-[8px]">
               {faq_data.map((faq) => (
                 <div
                   key={faq.id}
@@ -186,7 +214,7 @@ const About = () => {
             </div>
           ) : (
             <div className="w-[1204px] h-[256px] grid grid-cols-2 mt-[2rem] mb-[12rem] gap-[1rem]">
-              {faq_data.slice(0,4).map((faq) => {
+              {faq_data.slice(0, 4).map((faq) => {
                 return (
                   <div className="w-[592px] h-[256px] flex flex-col border py-[3rem] gap-[1rem] border-solid border-[rgba(255,255,255,0.3)] p-[4rem] items-center rounded-[8px]">
                     <span className="text-lightWhite w-[517px] h-[21px] font-[500] text-[17px] leading-[20px]">
@@ -202,12 +230,12 @@ const About = () => {
             </div>
           )}
 
-          <Link to='/faqs'>
-          <div className="flex items-center justify-center md:mt-[7rem] mt-[2rem]">
-            <button className="w-[123px] h-[21px] flex font-[400] text-[14px] leading-[21px] items-center justify-center h-[49px] rounded-full bg-[rgba(255,255,255,0.3)] text-lightWhite">
-              Load All FAQ's
-            </button>
-          </div>
+          <Link to="/faqs">
+            <div className="flex items-center justify-center md:mt-[4rem] mt-[2rem]">
+              <button className="md:w-[147px] md:h-[40px] w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px] md:mt-12 mt-[0rem]">
+                Load All FAQ's
+              </button>
+            </div>
           </Link>
         </div>
 

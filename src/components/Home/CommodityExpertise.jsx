@@ -39,7 +39,7 @@ const CommodityExpertise = () => {
         </Link>
       </div>
 
-      <div className="flex gap-[1rem] md:p-[4rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px]">
+      <div className="flex p-[1rem] gap-[1rem] sm:p-[4rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px] md:mt-0 mt-[-2rem]">
         {expertise_data.slice(0, 3).map((expert, id) => {
           return (
             <Link
@@ -48,7 +48,7 @@ const CommodityExpertise = () => {
               key={expert.id}
               className="md:w-[384px] md:h-[400px] w-[172px] h-[250px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
             >
-              <div className="w-[72px] h-[98px] sm:w-[384px] sm:h-[219px]  relative profile-image_1 mb-4">
+              <div className="w-[72px] h-[98px] sm:w-[384px] sm:h-[219px] relative profile-image_1 mb-4">
                 <img
                   src={expert.icon}
                   alt="background"
@@ -82,8 +82,8 @@ const CommodityExpertise = () => {
                 </div>
               </div>
 
-              <div className="sm:w-[256px] sm:h-[50px] w-[143px] h-[44px] flex items-start md:mt-2 mt-4 justify-around">
-                <div className="flex flex-col sm:w-[78px] sm:h-[50px] w-[43px] h-[22px] items-center justify-between">
+              <div className="md:w-[256px] md:h-[50px] w-[143px] h-[44px] flex items-start md:mt-2 mt-4 justify-between">
+                <div className="flex flex-col md:w-[78px] w-[43px] h-[22px] items-center justify-between">
                   <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
                     {expert.experience}
                   </span>
@@ -104,7 +104,7 @@ const CommodityExpertise = () => {
                 </div>
               </div>
 
-              <div className="md:w-[300px] md:h-[72px] w-[144px] h-[42px] mb-4 sm:block contents">
+              <div className="md:w-[300px] md:h-[72px] w-[144px] h-[42px] mb-4 sm:block contents md:ml-2 ml-4">
                 <span className="text-dimWhite md:text-[14px] text-[11px] sm:leading-[24px] md:leading-[12px] leading-[14px]">
                   {expert.content}
                 </span>

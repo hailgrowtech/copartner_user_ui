@@ -39,7 +39,7 @@ const StockPlatform = () => {
                 alt="STOCK_IMAGES"
                 className="md:w-[289px] w-[288px] h-[150px]"
               />
-              <div className="flex flex-col gap-[1rem]">
+              <div className="flex flex-col gap-[0.4rem]">
                 <span className="text-lightWhite md:w-[190px] w-[164px] font-[600] md:text-[20px] text-[18px] leading-[27px] text-left">
                   {stock.title}
                 </span>
