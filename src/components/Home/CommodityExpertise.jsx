@@ -46,7 +46,7 @@ const CommodityExpertise = () => {
               onClick={scrollToTop}
               to="/subscription/ra-detail"
               key={expert.id}
-              className="md:w-[384px] md:h-[400px] w-[172px] h-[250px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
+              className="md:w-[384px] md:h-[400px] w-[172px] h-[270px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
             >
               <div className="w-[72px] h-[98px] sm:w-[384px] sm:h-[219px] relative profile-image_1 mb-4">
                 <img
@@ -110,14 +110,14 @@ const CommodityExpertise = () => {
                 </span>
               </div>
 
-              <div className="md:w-[211px] md:h-[40px] w-[146px] h-[32px] flex items-center justify-center rounded-[21.5px] border-[1.5px] border-[#4e4e4ecc] mt-2 md:mt-0">
+              <div className="md:w-[211px] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] border-[1.5px] border-[#4e4e4ecc] mt-2 md:mt-0">
                 <div className="flex justify-center items-center gap-2">
                   <img
                     src={expert.telegram}
                     alt="Telegram"
-                    className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"
+                    className="md:w-[24px] md:h-[24px] w-[17px] h-[17px]"
                   />
-                  <button className="text-white font-[400] md:text-[15px] text-[10px] leading-[19px]">
+                  <button className="text-white font-[400] md:text-[15px] text-[11px] leading-[19px]">
                     {expert.greet}
                   </button>
                   <img
