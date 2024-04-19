@@ -34,7 +34,7 @@ const Expertise = () => {
         >
           <div className="flex flex-row md:h-[52px] h-[34px] justify-center md:justify-between items-center">
             <span
-              className="font-poppins font-[700] md:text-[50px] text-[30px]
+              className="font-inter font-[700] md:text-[50px] text-[30px]
                     text-gradient-2 leading-[51px]"
             >
               Our Expertise
@@ -42,7 +42,7 @@ const Expertise = () => {
           </div>
 
           <p
-            className="font-poppins md:w-[1136px] md:h-[28px] w-[328px] h-[34px] font-[400] text-dimWhite sm:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
+            className="font-inter md:w-[1136px] md:h-[28px] w-[328px] h-[34px] font-[400] text-dimWhite sm:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
                  leading-[16px] sm:text-start mt-2 text-center"
           >
             Dive into the expertise of our SEBI registered research analysts, guiding you towards trading success with precision and insight.
@@ -90,8 +90,8 @@ const Expertise = () => {
                   </div>
                 </div>
 
-                <div className="sm:w-[256px] sm:h-[50px] w-[143px] h-[44px] flex items-start md:mt-2 mt-4 justify-around">
-                  <div className="flex flex-col sm:w-[78px] sm:h-[50px] w-[43px] h-[22px] items-center justify-between">
+                <div className="md:w-[256px] w-[143px] h-[44px] flex items-start md:mt-2 mt-4 justify-between">
+                  <div className="flex flex-col md:w-[78px] w-[43px] h-[22px] items-center justify-between">
                     <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
                       {expert.experience}
                     </span>
@@ -112,7 +112,7 @@ const Expertise = () => {
                   </div>
                 </div>
 
-                <div className="md:w-[300px] md:h-[72px] w-[144px] h-[42px] mb-4 sm:block contents">
+                <div className="md:w-[300px] md:h-[72px] w-[144px] h-[42px] mb-4 sm:block contents md:ml-2 ml-4">
                   <span className="text-dimWhite md:text-[14px] text-[11px] sm:leading-[24px] md:leading-[12px] leading-[14px]">
                     {expert.content}
                   </span>
@@ -192,7 +192,7 @@ const Expertise = () => {
                       : "flex-col sm:flex-row"
                   } ${isSmallScreen && type.id === 3 ? 'gap-[6rem]' : 'gap-0'}`}
                 >
-                  <span className="text-lightWhite sm:w-[139px] sm:h-[16px] w-[162px] h-[18px] font-[600] sm:text-[18px] text-[16px] sm:leading-[25px] leading-[15px]">
+                  <span className="text-lightWhite sm:w-[139px] md:h-[16px] w-[162px] h-[18px] font-[600] sm:text-[18px] text-[16px] sm:leading-[25px] leading-[15px]">
                     {type.title}
                   </span>
                   <span className="text-dimWhite md:w-[120px] md:h-[18px] w-[55px] h-[16px] font-[600] sm:text-[13px] text-[10px] sm:leading-[25px] leading-[15px]">
@@ -203,7 +203,7 @@ const Expertise = () => {
                   <span
                     className={`text-dimWhite font-[400] ${
                       isSmallScreen && type.id === 3
-                        ? "w-[320px] h-[42px]"
+                        ? "w-[320px] h-[56px]"
                         : "md:w-[147px] md:h-[55px]"
                     } sm:text-[15px] text-[11px] sm:leading-[23px] leading-[13.7px]`}
                   >
