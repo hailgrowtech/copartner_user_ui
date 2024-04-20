@@ -252,7 +252,7 @@ const SubscriptionRA = () => {
               </div>
               <div className="text-center">
               <button className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2" onClick={() => handleBuyNowClick("Monthly", 2999)}>
-                Get it
+                Buy Now
                         </button>
                       </div>
                     </div>
@@ -295,7 +295,7 @@ const SubscriptionRA = () => {
               </div>
               <div className="text-center">
               <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2" onClick={() => handleBuyNowClick("Quarterly", 2999)}>
-                Get It
+                Buy Now
                 </button>
                       </div>
                         </div>
@@ -341,7 +341,7 @@ const SubscriptionRA = () => {
                       </div>
             <div className="text-center">
               <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2" onClick={() => handleBuyNowClick("Half-Yearly", 5999)}>
-               Get it
+               Buy Now
                         </button>
                       </div>
                     </div>
@@ -387,7 +387,7 @@ const SubscriptionRA = () => {
             </div>
             <div className="text-center">
               <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2" onClick={() => handleBuyNowClick("Yearly", 5999)}>
-                Get it
+                Buy Now
               </button>
             </div>
           </div>
