@@ -71,8 +71,8 @@ function App() {
           />
           <Route path="webinar" element={<Webinar />} />
           <Route path="history" element={<Wallet />} />
-          <Route path="subscription/ra-detail" element={<SubscriptionRA />} />
-          <Route path="subscription/buy" element={<SubscriptionBuy />} />
+          <Route path="/subscriptionRA/:id" element={<SubscriptionRA />} />
+          <Route path="subscription/buy/:id" element={<SubscriptionBuy />} />
           <Route path="expertise/explore-expertise" element={<ExpertiseExplore />} />
           <Route path="courses/explore-courses" element={<CoursesExplore />} />
           <Route
