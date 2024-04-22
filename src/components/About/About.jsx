@@ -38,7 +38,7 @@ const About = () => {
         <div className="flex md:flex-row items-center flex-col justify-center gap-[1rem]">
           <div className={`flex-col text-center md:gap-[2rem] gap-0`}>
             <div className="flex flex-col justify-between items-center">
-              <span className="font-poppins font-[700] md:text-[72px] text-[44px] text-gradient md:leading-[84px] leading-[48px]">
+              <span className="font-inter font-[700] md:text-[72px] text-[36px] text-gradient md:leading-[84px] leading-[48px]">
                 Invest, Learn and Earn
               </span>
 

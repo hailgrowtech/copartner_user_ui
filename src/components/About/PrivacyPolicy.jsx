@@ -10,11 +10,11 @@ const PrivacyPolicy = () => {
         <div className="flex md:flex-row items-center flex-col justify-center gap-[1rem]">
           <div className={`flex-col text-center md:gap-[2rem] gap-0`}>
             <div className="flex flex-col justify-between items-center md:pb-[4rem] pb-[3rem]">
-              <span className="font-inter font-[700] md:text-[72px] text-[44px] text-gradient md:leading-[84px] leading-[48px]">
+              <span className="font-inter font-[700] md:text-[72px] text-[40px] text-gradient md:leading-[84px] leading-[48px]">
                 Privacy Policy
               </span>
 
-              <p className="md:w-[702px] md:h-[56px] w-[341px] h-[32px] font-inter font-[500] mt-4 text-dimWhite md:text-[18px] text-[12px] md:leading-[28px] leading-[16px]">
+              <p className="md:w-[702px] md:h-[56px] w-[341px] h-[32px] font-inter font-[500] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] leading-[16px]">
                 Please read the privacy policy carefully prior to using or
                 registering on the platform or accessing any material,
                 information or availing any services through the platform.
@@ -32,7 +32,7 @@ const PrivacyPolicy = () => {
 
                 <div className="flex flex-col gap-[2rem] text-start px-[0.5rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[12px] md:leading-[28px] sm:leading-[17px]
+                    className="font-inter font-[400] text-dimWhite md:text-[18px] md:leading-[28px] leading-[20px]
                    leading-[16px] md:text-start mt-2"
                   >
                     We collect Your Personal Information (defined below) from
@@ -43,12 +43,12 @@ const PrivacyPolicy = () => {
                     Services from Us.
                   </span>
 
-                  <span className="text-dimWhite md:text-[18px] text-[12px] text-start">
+                  <span className="text-dimWhite md:text-[18px] text-start">
                     This Privacy Policy applies to the following information:
                   </span>
                 </div>
 
-                <div className="flex flex-col text-start py-4 gap-4">
+                <div className="flex flex-col text-start py-4 md:gap-4 gap-0">
                   <span className="md:w-[160px] md:h-[20px] text-lightWhite font-[500] text-[22px]">
                     (i) <span className="underline">Information:</span>
                   </span>
@@ -76,7 +76,7 @@ const PrivacyPolicy = () => {
                   </span>
                 </div>
 
-                <div className="flex flex-col text-start py-4 gap-4">
+                <div className="flex flex-col text-start py-4 md:gap-4 gap-0">
                   <span className="md:w-[300px] md:h-[20px] text-lightWhite font-[500] text-[22px]">
                     (ii){" "}
                     <span className="underline">Non-Personal Information:</span>
@@ -102,7 +102,7 @@ const PrivacyPolicy = () => {
                   </span>
                 </div>
 
-                <div className="flex flex-col text-start py-4 gap-4">
+                <div className="flex flex-col text-start py-4 md:gap-4 gap-0">
                   <span className="md:w-[300px] md:h-[20px] text-lightWhite font-[500] text-[22px]">
                     (iii){" "}
                     <span className="underline">
@@ -130,7 +130,7 @@ const PrivacyPolicy = () => {
                   </span>
                 </div>
 
-                <div className="flex flex-col text-start py-4 gap-4">
+                <div className="flex flex-col text-start py-4 md:gap-4 gap-0">
                   <span className="md:w-[230px] md:h-[20px] text-lightWhite font-[500] text-[22px]">
                     (iv) <span className="underline">Other Information:</span>
                   </span>
@@ -185,7 +185,7 @@ const PrivacyPolicy = () => {
               </div>
             </div>
 
-            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px]`}>
+            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
               <div className="flex flex-col">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px]
@@ -194,9 +194,9 @@ const PrivacyPolicy = () => {
                   2. Use of Information:
                 </span>
 
-                <div className="flex flex-col gap-[2rem] text-start px-[0.5rem]">
+                <div className="flex flex-col gap-[2rem] text-start md:px-[0.5rem] px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[14px] md:leading-[28px] sm:leading-[17px]
+                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
                    leading-[16px] text-start mt-2"
                   >
                     We use the Personal Information, Non-Personal Information,
@@ -281,7 +281,7 @@ const PrivacyPolicy = () => {
               </div>
             </div>
 
-            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px]`}>
+            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
               <div className="flex flex-col">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px]
@@ -290,9 +290,9 @@ const PrivacyPolicy = () => {
                   3. Retention of Information:
                 </span>
 
-                <div className="flex flex-col gap-[2rem] text-start px-[0.5rem]">
+                <div className="flex flex-col gap-[2rem] text-start md:px-[0.5rem] px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
+                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
                    leading-[16px] text-start mt-2"
                   >
                     All information provided by You, save and except upon
@@ -322,7 +322,7 @@ const PrivacyPolicy = () => {
               </div>
             </div>
 
-            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px]`}>
+            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
               <div className="flex flex-col">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px]
@@ -331,9 +331,9 @@ const PrivacyPolicy = () => {
                   4. Sharing of Information:
                 </span>
 
-                <div className="flex flex-col gap-[2rem] text-start px-[0.5rem]">
+                <div className="flex flex-col gap-[2rem] text-start md:px-[0.5rem] px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
+                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
                    leading-[16px] text-start mt-2"
                   >
                     We may disclose Your Personal Information to Our third party
@@ -386,7 +386,7 @@ const PrivacyPolicy = () => {
               </div>
             </div>
 
-            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px]`}>
+            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
               <div className="flex flex-col">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px]
@@ -395,9 +395,9 @@ const PrivacyPolicy = () => {
                   5. Security Precautions and Measures:
                 </span>
 
-                <div className="flex flex-col gap-[2rem] text-start px-[0.5rem]">
+                <div className="flex flex-col gap-[2rem] text-start md:px-[0.5rem] px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
+                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
                    leading-[16px] text-start mt-2"
                   >
                     Our Platform has reasonable security measures and safeguards
@@ -433,7 +433,7 @@ const PrivacyPolicy = () => {
               </div>
             </div>
 
-            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px]`}>
+            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
               <div className="flex flex-col">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px]
@@ -443,9 +443,9 @@ const PrivacyPolicy = () => {
                   information
                 </span>
 
-                <div className="flex flex-col gap-[2rem] text-start px-[0.5rem]">
+                <div className="flex flex-col gap-[2rem] text-start md:px-[0.5rem] px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
+                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
                    leading-[16px] text-start mt-2"
                   >
                     Our Platform may provide links to other third – party
@@ -473,7 +473,7 @@ const PrivacyPolicy = () => {
               </div>
             </div>
 
-            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px]`}>
+            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
               <div className="flex flex-col">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px]
@@ -482,9 +482,9 @@ const PrivacyPolicy = () => {
                   7. Your Consent and Changes to Privacy Policy
                 </span>
 
-                <div className="flex flex-col gap-[2rem] text-start px-[0.5rem]">
+                <div className="flex flex-col gap-[2rem] text-start md:px-[0.5rem] px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
+                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
                    leading-[16px] text-start mt-2"
                   >
                     <span className="underline text-lightWhite font-[700]">
@@ -506,9 +506,9 @@ const PrivacyPolicy = () => {
                   </span>
                 </div>
 
-                <div className="flex flex-col gap-[2rem] text-start px-[0.5rem]">
+                <div className="flex flex-col gap-[2rem] text-start md:px-[0.5rem] px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
+                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
                    leading-[16px] md:text-start mt-2 "
                   >
                     <span className="underline text-lightWhite font-[700]">
@@ -523,9 +523,9 @@ const PrivacyPolicy = () => {
                   </span>
                 </div>
 
-                <div className="flex flex-col gap-[2rem] text-start px-[0.5rem]">
+                <div className="flex flex-col gap-[2rem] text-start md:px-[0.5rem] px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
+                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
                    leading-[16px] text-start mt-2"
                   >
                     <span className="underline text-lightWhite font-[700]">
@@ -545,7 +545,7 @@ const PrivacyPolicy = () => {
               </div>
             </div>
 
-            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px]`}>
+            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
               <div className="flex flex-col">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px]
@@ -554,10 +554,10 @@ const PrivacyPolicy = () => {
                   8. Grievance Officer
                 </span>
 
-                <div className="flex flex-col gap-[2rem] text-start px-[0.5rem]">
+                <div className="flex flex-col gap-[10px] text-start md:px-[0.5rem] px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
-                   leading-[16px] text-start"
+                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
+                   leading-[16px] text-start mt-2"
                   >
                     If You have any grievance with respect to the Platform or
                     the Services, You may write to the grievance officer, the
@@ -566,21 +566,21 @@ const PrivacyPolicy = () => {
                   </span>
 
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[11px] md:leading-[28px] sm:leading-[17px]
+                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] sm:leading-[21px]
                    leading-[16px] text-start"
                   >
                     Name: Anshu Hooda
                   </span>
 
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[11px] md:leading-[28px] sm:leading-[17px]
+                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
                    leading-[16px] text-start"
                   >
                     Email: <span className="text-[#2F539B] cursor-pointer">info@copartner.in</span>
                   </span>
 
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
+                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
                    leading-[16px] text-start"
                   >
                     We assure You that We shall ensure implementation of the
@@ -593,7 +593,7 @@ const PrivacyPolicy = () => {
               </div>
             </div>
 
-            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px]`}>
+            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
               <div className="flex flex-col">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px]
@@ -602,16 +602,16 @@ const PrivacyPolicy = () => {
                   9. Questions ?
                 </span>
 
-                <div className="flex flex-col gap-[2rem] text-start px-[0.5rem]">
+                <div className="flex flex-col gap-[2rem] text-start md:px-[0.5rem] px-[1rem] mt-2">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[11px] md:leading-[28px] sm:leading-[17px]
-                   leading-[16px] md:text-start text-center"
+                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
+                   leading-[16px] text-start"
                   >
                     Please feel free to contact us at <span className="text-[#2F539B] cursor-pointer">info@copartner.in</span> regarding any questions on the Privacy Policy.
                   </span>
 
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
+                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
                    leading-[16px] text-start"
                   >
                     Last Updated : 10 April. 24

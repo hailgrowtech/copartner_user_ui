@@ -56,7 +56,7 @@ const Hero = () => {
               <img
                 src={closeImg}
                 alt="CloseIcon"
-                className="w-[32px] h-[32px] flex items-end"
+                className="max-w-[32px] h-[32px] flex items-end"
               />
             </button>
             <div className="flex flex-col md:w-[342px] md:h-[69px] flex flex-row items-center gap-[1rem] md:mt-[-1rem] mt-[-2rem] pb-4">
@@ -94,12 +94,12 @@ const Hero = () => {
       <div className={`${styles.flexStart} flex-col z-10 relative`}>
         <div className="flex flex-col justify-between md:w-[603px]">
           <span
-            className="font-inter md:text-[72px] text-[36px]
+            className="font-inter md:text-[72px] text-[40px]
           text-gradient md:leading-[74px] leading-[48px] font-[700]"
           >
             Invest, Learn and Earn
           </span>
-          <p className="font-inter md:w-[876px] md:h-[28px] w-[360px] h-[17px] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] leading-[16px]">
+          <p className="font-inter md:w-[876px] md:h-[28px] sm:w-[360px] h-[17px] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] leading-[16px]">
             Get partnered with our SEBI Registered Research Analysts to start
             your profitable trading journey.
           </p>
