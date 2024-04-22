@@ -12,6 +12,7 @@ import About from "./components/About/About";
 import FAQs from "./components/About/FAQs";
 import PrivacyPolicy from "./components/About/PrivacyPolicy";
 import Terms from "./components/About/Terms";
+import { UserDataProvider } from './constants/context'
 
 function App() {
 
@@ -23,9 +24,11 @@ function App() {
             path=""
             element={
               <div className={`${styles.flexStart}`}>
+                <UserDataProvider>
                 <div className={`${styles.boxWidth}`}>
                   <Hero/>
                 </div>
+                </UserDataProvider>
               </div>
             }
           />

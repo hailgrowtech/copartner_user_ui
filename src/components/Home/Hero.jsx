@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../style";
-import { arrow, closeImg } from "../../assets";
+import { arrow, closeImg, telegram, userBck, stars } from "../../assets";
 import Expertise from "./Expertise";
 import { expertise_data } from "../../constants";
 import { Link } from "react-router-dom";
+import { useUserData } from '../../constants/context'
 
 const Hero = () => {
+  const userData = useUserData();
   const [showDialog, setShowDialog] = useState(false);
 
   const scrollToTop = () => {
@@ -113,7 +115,7 @@ const Hero = () => {
         </div>
 
         <div className="md:pt-[2rem] pt-[1rem] grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:flex">
-          {expertise_data.slice(0, 3).map((expert, id) => {
+          {userData && userData.slice(0, 3).map((expert, id) => {
             return (
               <Link
                 onClick={scrollToTop}
@@ -123,12 +125,12 @@ const Hero = () => {
               >
                 <div className="w-[72px] h-[98px] md:w-[256px] md:h-[146px]  relative profile-image_1 mb-4">
                   <img
-                    src={expert.icon}
+                    src={userBck}
                     alt="background"
                     className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
                   />
                   <img
-                    src={expert.userImg}
+                    src={expert.expertImagePath}
                     alt="User"
                     className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
                   />
@@ -140,12 +142,12 @@ const Hero = () => {
                       {expert.name}
                     </span>
                     <span className="text-[12px] leading-[10px] font-[400] text-dimWhite">
-                      {expert.title}
+                      {expert.expertTypeID}
                     </span>
                   </div>
                   <div className="w-[32px] h-[15px] flex">
                     <img
-                      src={expert.ratingIcon}
+                      src={stars}
                       className="w-[11.5px] h-[11.5px]"
                       alt="rating"
                     />
@@ -158,42 +160,42 @@ const Hero = () => {
                 <div className="md:w-[171px] md:h-[33px] w-[125px] h-[23px] flex justify-between mr-[1rem] mt-2">
                   <div className="flex flex-col w-[52px] h-[33px] items-center">
                     <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">
-                      {expert.experience}
+                      Experience
                     </span>
                     <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
-                      {expert.totalExp}
+                      {expert.experience}
                     </span>
                   </div>
                   <div className="md:w-[1.4px] md:h-[25px] w-[1px] h-[22px] bg-lightWhite"></div>
                   <div className="flex">
                     <div className="flex flex-col w-[52px] h-[33px] items-center">
                       <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">
-                        {expert.followers}
+                        Followers
                       </span>
                       <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
-                        {expert.totalFollowers}
+                        {`${expert.telegramFollower / 1000}k`}
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="md:w-[140px] md:h-[26px] w-[146px] h-[32px] flex items-center justify-center rounded-[21.5px] border-[1.5px] border-[#4e4e4ecc] mt-2 md:mt-0">
-                  <div className="flex justify-center items-center gap-2">
+                <button className="md:w-[140px] md:h-[26px] w-[146px] h-[32px] flex items-center justify-center rounded-[21.5px] border-[1.5px] border-[#4e4e4ecc] mt-2 md:mt-0">
+                  <button className="flex justify-center items-center gap-2">
                     <img
-                      src={expert.telegram}
+                      src={telegram}
                       alt="Telegram"
                       className="w-[16px] h-[16px]"
                     />
                     <button className="text-white font-[400] text-[10px] leading-[19px]">
-                      {expert.greet}
+                      Join Telegram
                     </button>
                     <img
-                      src={expert.arrowIcon}
+                      src={arrow}
                       alt="arrow"
                       className="w-[11px] h-[11px]"
                     />
-                  </div>
-                </div>
+                  </button>
+                </button>
               </Link>
             );
           })}
