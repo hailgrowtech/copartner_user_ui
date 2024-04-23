@@ -12,6 +12,8 @@ import {
 } from "../../assets";
 
 const SubscriptionRA = () => {
+  const [showBasicDialog, setShowBasicDialog] = useState(false);
+  const [showStandardDialog, setStandardDialog] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState("#18181B80");
 
   const handleMouseOver = () => {
