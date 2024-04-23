@@ -32,7 +32,7 @@ const Subscription = () => {
         </div>
       </section>
 
-      <section className=" w-full text-center md:px-16 md:mb-12">
+      <section className=" w-full text-center md:px-24 md:mb-12">
         <h2 className="md:text-[50px] text-[30px] md:leading-[50px] text-left leading-[51px] md:mb-6 px-4 subheading-color">
           Our Expertise
         </h2>
@@ -40,7 +40,7 @@ const Subscription = () => {
           Dive into the expertise of our SEBI registered research analysts,
           guiding you towards trading success with precision and insight.
         </p>
-        <div className="md:px-10 flex flex-row justify-center">
+        <div className="md:px-12 flex flex-row justify-center">
           <ProfileCard />
         </div>
       </section>

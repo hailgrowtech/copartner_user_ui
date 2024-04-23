@@ -1,18 +1,38 @@
 .subscription-RA-bg {
-    background-image: url("../../assets/userBck.png");
-    background-repeat: no-repeat;
-    background-position: 28vw 1vh;
-    background-size: 55rem;
-    z-index: 50;
+  background-image: url("../../assets/userBck.png");
+  background-repeat: no-repeat;
+  background-position: 28vw 1vh;
+  background-size: 55rem;
+  z-index: 50;
 }
 
 .subscription-RA-img {
-    mask-image: linear-gradient(rgba(0, 0, 0, 1) 70%, transparent);
+  mask-image: linear-gradient(rgba(0, 0, 0, 1) 70%, transparent);
 }
 
 @media (max-width: 1060px) {
-    .subscription-RA-bg {
-        background-size: 22rem;
-        background-position: 22vw 6vh;
-    }
+  .subscription-RA-bg {
+    background-size: 22rem;
+    background-position: 22vw 6vh;
+  }
+}
+
+.basic-div:hover button {
+  background-color: white;
+  color: black;
+}
+
+.standard-div:hover button {
+  background-color: white;
+  color: black;
+}
+
+.basic-div:not(:hover) button {
+  background-color: transparent;
+  color: white;
+}
+
+.standard-div:not(:hover) button {
+  background-color: transparent;
+  color: white;
 }

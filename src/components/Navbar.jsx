@@ -107,7 +107,7 @@ const Navbar = () => {
 
             {/* Profile icon for desktop */}
             <div className="hidden sm:flex items-center">
-              <Link to="/profile">
+              <Link onClick={scrollToTop} to="/profile">
                 <img src={userImg} alt="Profile" className="w-8 h-8 mx-4 rounded-full" />
               </Link>
             </div>
@@ -124,7 +124,7 @@ const Navbar = () => {
               <div
                 className={`${
                   toggle ? "flex" : "hidden"
-                } justify-center items-center fixed top-0 left-0 z-50 w-full bg-[#06030E] h-full p-3 bg-gradient-to-tr`}
+                } justify-center items-center fixed top-0 left-0 z-50 w-full bg-[#06030E] h-screen p-3 bg-gradient-to-tr`}
                 style={{
                   backgroundImage: `url(${hamburgerBg})`,
                   backgroundRepeat: "no-repeat",

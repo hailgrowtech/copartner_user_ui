@@ -1,31 +1,18 @@
 import React, { useState } from "react";
 import styles from "../../style";
 import "./SubscriptionRA.css";
-import { courses } from "../../constants";
 import {
-  anywhereAccess,
   arrow,
   bookmark,
-  courseImg,
-  duration,
   layer,
-  level,
-  lifetimeAccess,
-  sessions,
   stars,
   telegram,
   tick,
   userImg,
 } from "../../assets";
-import CourseCardsCarousel from "./CourseCardsCarousel";
-import CourseCard from "./CourseCard";
 
 const SubscriptionRA = () => {
-  const carouselItems = courses.slice(0, 5);
   const [backgroundColor, setBackgroundColor] = useState("#18181B80");
-  const [backgroundColor2, setBackgroundColor2] = useState("#18181B80");
-  const [showBasicDialog, setShowBasicDialog] = useState(false);
-  const [showStandardDialog, setStandardDialog] = useState(false);
 
   const handleMouseOver = () => {
     setBackgroundColor("transparent");
@@ -33,14 +20,6 @@ const SubscriptionRA = () => {
 
   const handleMouseOut = () => {
     setBackgroundColor("#18181B80");
-  };
-
-  const handleMouseOver2 = () => {
-    setBackgroundColor2("transparent");
-  };
-
-  const handleMouseOut2 = () => {
-    setBackgroundColor2("#18181B80");
   };
 
   return (
@@ -80,17 +59,6 @@ const SubscriptionRA = () => {
               Take your team up a level with easy-to-use tools, effortless
               templates and efficient workflows.
             </div>
-            {/* <div className="text-white flex items-center md:w-[400px] md:justify-between md:gap-0 gap-4 md:mb-5 mb-3">
-              <div className="subheading-gradient md:text-3xl text-base font-bold">
-                Basic
-              </div>
-              <div className="flex">
-                <span className="md:text-5xl text-2xl font-bold">₹2,999/</span>
-                <span className="text-lg mt-auto opacity-60 md:inline hidden">
-                  1 Month Access
-                </span>
-              </div>
-            </div> */}
             <div className="border-[1px] border-[#f4f4f535] border-opacity-30 md:rounded-3xl rounded-2xl md:w-44 w-32 md:mb-6">
               <button className="flex mx-auto md:py-2 py-1 items-center">
                 <img
@@ -145,21 +113,18 @@ const SubscriptionRA = () => {
               <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
                 About Subscriptions
               </button>
-              {/* <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
-                Courses
-              </button> */}
-              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] md:inline hidden text-[9.5px] text-dimWhite hover:text-white">
+              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] md:inline hidden text-[9.5px] text-[#A1A1AACC] hover:text-white">
                 Reviews
               </button>
             </div>
           </div>
         </section>
-        <section className="w-full flex md:flex-row flex-col md:my-14 my-10">
-          <div className="text-white my-auto md:text-left text-center md:w-1/2 w-full">
-            <div className="subheading-gradient md:text-5xl text-3xl font-bold pb-4">
+        <section className="w-full flex flex-col md:my-14 my-10">
+          <div className="text-white md:text-left text-center md:flex md:justify-between w-full md:mb-8">
+            <div className="subheading-gradient md:text-5xl text-3xl font-bold pb-4 md:w-1/2">
               Subscriptions Plans
             </div>
-            <div className="text-dimWhite md:text-lg text-xs md:mb-0 mb-4">
+            <div className="text-[#A1A1AACC] md:text-lg text-xs md:mb-0 mb-4 md:w-1/2">
               Discover our subscription plans tailored for traders like you.
               Gain access to exclusive features, expert insights and community
               support to elevate your trading journey.{" "}
@@ -169,7 +134,7 @@ const SubscriptionRA = () => {
               </span>
             </div>
           </div>
-          <div className="text-white flex my-auto w-1/2 gap-8">
+          <div className="text-white md:flex grid grid-cols-2 my-auto gap-x-8 gap-y-4">
             <div
               style={{ backgroundColor }}
               className="flex-1 rounded-2xl bg-[#18181B80] p-5 basic-div"
@@ -208,10 +173,95 @@ const SubscriptionRA = () => {
                 </div>
               </div>
               <div className="text-center">
-                <button
-                  onClick={() => setShowBasicDialog(true)}
-                  className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-gray-700 border-4"
-                >
+                <button className="text-white border-solid md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white hover:border-gray-700 border-[1px]">
+                  Buy Now
+                </button>
+              </div>
+            </div>
+            <div
+              onMouseOver={handleMouseOver}
+              onMouseOut={handleMouseOut}
+              className="flex-1 rounded-2xl p-5 hover:bg-[#18181B80] basic-div"
+            >
+              <div className="text-right opacity-60 md:flex hidden">
+                21 Days Left
+              </div>
+              <div className="md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
+                Basic
+              </div>
+              <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex">
+                ₹2,999/<span className="md:flex hidden">-</span>
+                <span className="md:hidden flex font-normal">mo</span>
+              </div>
+              <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
+                1 Month Access
+              </div>
+              <div className="md:mb-8 mb-4">
+                <div className="flex md:mb-4 mb-2 font-medium items-center">
+                  <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
+                  <span className="md:text-base text-xs">
+                    Voice messages anywhere
+                  </span>
+                </div>
+                <div className="flex md:mb-4 mb-2 font-medium items-center">
+                  <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
+                  <span className="md:text-base text-xs">
+                    Voice messages anywhere
+                  </span>
+                </div>
+                <div className="flex md:mb-4 mb-2 font-medium items-center">
+                  <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
+                  <span className="md:text-base text-xs">
+                    Voice messages anywhere
+                  </span>
+                </div>
+              </div>
+              <div className="text-center">
+                <button className="text-white border-solid md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white hover:border-gray-700 border-[1px]">
+                  Buy Now
+                </button>
+              </div>
+            </div>
+            <div
+              onMouseOver={handleMouseOver}
+              onMouseOut={handleMouseOut}
+              className="flex-1 rounded-2xl hover:bg-[#18181B80] p-5 basic-div"
+            >
+              <div className="text-right opacity-60 md:flex hidden">
+                21 Days Left
+              </div>
+              <div className="md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
+                Basic
+              </div>
+              <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex">
+                ₹2,999/<span className="md:flex hidden">-</span>
+                <span className="md:hidden flex font-normal">mo</span>
+              </div>
+              <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
+                1 Month Access
+              </div>
+              <div className="md:mb-8 mb-4">
+                <div className="flex md:mb-4 mb-2 font-medium items-center">
+                  <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
+                  <span className="md:text-base text-xs">
+                    Voice messages anywhere
+                  </span>
+                </div>
+                <div className="flex md:mb-4 mb-2 font-medium items-center">
+                  <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
+                  <span className="md:text-base text-xs">
+                    Voice messages anywhere
+                  </span>
+                </div>
+                <div className="flex md:mb-4 mb-2 font-medium items-center">
+                  <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
+                  <span className="md:text-base text-xs">
+                    Voice messages anywhere
+                  </span>
+                </div>
+              </div>
+              <div className="text-center">
+                <button className=" text-white border-solid md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white hover:border-gray-700 border-[1px]">
                   Buy Now
                 </button>
                 {showBasicDialog && (
@@ -326,10 +376,7 @@ const SubscriptionRA = () => {
                 </div>
               </div>
               <div className="text-center">
-                <button
-                  onClick={() => setStandardDialog(true)}
-                  className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2"
-                >
+                <button className="text-white border-solid md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white hover:border-gray-700 border-[1px]">
                   Buy Now
                 </button>
                 {showStandardDialog && (
@@ -488,21 +535,14 @@ const SubscriptionRA = () => {
               <div className="text-3xl font-bold subheading-gradient mb-4">
                 Subscription Plan
               </div>
-              <div
-                style={{ backgroundColor: backgroundColor2 }}
-                className="flex rounded-2xl p-4 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]"
-              >
+              <div className="flex rounded-2xl p-4 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
                 <div className="flex-1 text-left">
                   <p className="text-lg subheading-gradient">Basic</p>
                   <p className="text-[#C6CDD5] text-sm">1 Month Access</p>
                 </div>
                 <p className="flex-1 text-3xl font-bold">₹2,999</p>
               </div>
-              <div
-                onMouseOver={handleMouseOver2}
-                onMouseOut={handleMouseOut2}
-                className="flex rounded-2xl p-4 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]"
-              >
+              <div className="flex rounded-2xl p-4 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
                 <div className="flex-1 text-left">
                   <p className="text-lg subheading-gradient">Standard</p>
                   <p className="text-[#C6CDD5] text-sm">3 Month Access</p>
@@ -510,7 +550,7 @@ const SubscriptionRA = () => {
                 <p className="flex-1 text-3xl font-bold">₹5,999</p>
               </div>
               <div className="text-center">
-                <button className="bg-white text-black px-12 py-2 rounded-lg border-gray-700 border-4">
+                <button className="bg-white text-black px-12 py-2 rounded-lg border-gray-700 border-2">
                   Buy Now
                 </button>
               </div>
@@ -545,130 +585,6 @@ const SubscriptionRA = () => {
             Explore More <img className="w-4 h-4" src={arrow} alt="" />
           </button>
         </section>
-        {/* <section className="border-2 rounded-2xl border-[#f4f4f50e] md:p-10 px-4 py-6 text-white w-full">
-          <p className="md:text-5xl text-3xl subheading-gradient font-bold md:mb-9 mb-4">
-            Courses
-          </p>
-          <div className="flex md:flex-row flex-col md:gap-20 gap-4 mb-12">
-            <div className="md:flex-1 flex border-2 rounded-2xl border-[#FFFFFF0D] bg-[#FFFFFF0D] bg-opacity-5 relative">
-              <img src={courseImg} alt="" />
-              <span className="flex items-center gap-1 absolute top-3 right-7">
-                <img className="w-3 text-xl" src={stars} alt="" />
-                4.4
-              </span>
-            </div>
-            <div className="flex-1 flex flex-col gap-6">
-              <p className="md:text-3xl text-xl font-medium">
-                Lorem ipsum dolor sit amet consectetur.
-              </p>
-              <div className="grid grid-cols-2 gap-5">
-                <div className="flex gap-2 items-center md:text-base text-xs">
-                  <img className="w-5 h-5" src={level} alt="" />
-                  <span className="text-[#e4e4e781]">Level:</span>Medium
-                </div>
-                <div className="flex gap-2 items-center md:text-base text-xs">
-                  <img className="w-5 h-5" src={duration} alt="" />
-                  <span className="text-[#e4e4e781]">Duration:</span>7hr 20m
-                </div>
-                <div className="flex gap-2 items-center md:text-base text-xs">
-                  <img className="w-5 h-4" src={sessions} alt="" />
-                  <span className="text-[#e4e4e781]">Sessions:</span>10
-                </div>
-                <div className="flex gap-2 items-center md:text-base text-xs">
-                  <img className="w-5 h-5" src={lifetimeAccess} alt="" />
-                  <span className="text-[#e4e4e781]">Access:</span>Lifetime
-                  Access
-                </div>
-                <div className="flex gap-2 items-center md:text-base text-xs col-start-1 col-end-3">
-                  <img className="w-5 h-5" src={anywhereAccess} alt="" />
-                  <span className="text-[#e4e4e781]">
-                    Access From Any Computer, Tablet or Mobile
-                  </span>
-                </div>
-              </div>
-              <div className="flex gap-16 items-center md:justify-normal justify-between">
-                <span className="md:text-5xl text-3xl font-bold">₹2,999/-</span>
-                <button className="bg-white md:text-base text-xs text-black md:px-12 px-6 py-2 md:rounded-lg rounded border-gray-700 border-4">
-                  Buy Now
-                </button>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="md:block hidden">
-              <p className="subheading-gradient text-3xl font-bold mb-4">
-                About Course
-              </p>
-              <div className="text-dimWhite mb-12">
-                <p className="mb-5">
-                  Lorem ipsum dolor sit amet consectetur. Et fames faucibus sed
-                  porttitor. In amet at et sit donec. Eleifend dui rhoncus sit
-                  non nunc vitae faucibus lectus molestie. Rhoncus mattis
-                  commodo ac lectus at egestas ipsum mi volutpat. Orci nisi
-                  vestibulum eu orci. Elit orci pellentesque ornare suscipit. Et
-                  quis placerat etiam nunc sed risus erat volutpat.
-                </p>
-                <ul className="list-outside list-disc mb-5 leading-loose ps-6">
-                  <li>
-                    Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam
-                    sagittis nisl faucibus. Sed adipiscing condimentum volutpat.
-                  </li>
-                  <li>
-                    Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam
-                    sagittis nisl faucibus.{" "}
-                  </li>
-                  <li>
-                    Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam
-                    sagittis nisl faucibus. Sed adipiscing condimentum.
-                  </li>
-                  <li>
-                    Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam
-                    sagittis nisl faucibus. Sed adipiscing condimentum volutpat,
-                    Nibh lectus aliquam sagittis nisl faucibus. Sed adipiscing
-                    condimentum volutpat.
-                  </li>
-                </ul>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur. Nibh lectus aliquam
-                  sagittis nisl faucibus. Sed adipiscing condimentum volutpat
-                  cursus in risus sed sit. Ipsum aliquam urna porttitor eu.
-                  Volutpat ac sit at semper tortor vulputate. Purus pulvinar
-                  vestibulum cras odio. Congue amet sagittis dui pellentesque
-                  consectetur pellentesque et fermentum. Arcu elementum tempor
-                  nulla quis aenean fusce ut vulputate. A quam vitae magna
-                  pellentesque. Ut volutpat adipiscing purus faucibus duis orci.
-                  Accumsan venenatis eu vitae interdum dolor. Nunc at nibh
-                  habitant condimentum vitae. Semper luctus vulputate lacinia
-                  sit diam tellus id vitae. Morbi aliquet bibendum scelerisque
-                  vestibulum aliquet venenatis eu et. Proin bibendum eget lectus
-                  consequat id vitae. Eu hendrerit lobortis turpis quam ornare
-                  egestas tincidunt donec nulla. Justo nisi ac diam mauris
-                  cursus turpis lacus. Vulputate cras sem nec id eget. Cras
-                  lectus vestibulum dictum enim. Mauris ultrices etiam ac
-                  facilisis malesuada. Odio accumsan fringilla malesuada
-                  faucibus fusce pellentesque. Non nunc cursus nisl odio.
-                  Pellentesque laoreet molestie proin tincidunt cursus. Integer
-                  non odio turpis ac sem aliquam in ante congue. Erat pharetra
-                  sed semper duis duis penatibus. Ut congue interdum cras
-                  convallis eu nibh quis. Arcu at accumsan neque ultricies
-                  tellus massa leo nulla sed.
-                </p>
-              </div>
-            </div>
-            <div className="md:hidden">
-              <CourseCardsCarousel />
-            </div>
-            <div className="overflow-x-scroll no-scrollbar">
-              <div className="md:flex hidden w-px">
-                {carouselItems.map((item, index) => (
-                  <div key={index}>
-                    <CourseCard courseData={item} />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section> */}
       </div>
     </section>
   );

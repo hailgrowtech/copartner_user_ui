@@ -15,7 +15,7 @@
     marginY: "sm:my-16 my-6",
 
     scrolledNavbar: "bg-transparent",
-    transparentNavbar: "bg-[#06030eea]"
+    transparentNavbar: "backdrop-blur-lg"
   };
   
   export const layout = {

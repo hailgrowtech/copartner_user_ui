@@ -138,7 +138,7 @@
     }
 
     .name-role h3 {
-      font-size: 14px;
+      font-size: 10px;
       line-height: 10px;
     }
 
@@ -147,19 +147,19 @@
     }
 
     .name-rating {
-      font-size: 10px;
+      font-size: 7px;
     }
 
     .experience-followers span {
-      font-size: 10px;
+      font-size: 8px;
     }
 
     .experience, .followers {
-      font-size: 10px;
+      font-size: 8px;
     }
 
     .description {
-      font-size: 10px;
+      font-size: 8px;
     }
 
     button {
