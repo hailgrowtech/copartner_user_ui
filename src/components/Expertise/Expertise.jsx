@@ -1,9 +1,8 @@
 import React from "react";
 import styles from "../../style";
 import Card from "./Profile_Component";
-import SingleCard from "./Single_Card";
-import DoubleCard from "./Double_Card";
 import { Link } from "react-router-dom";
+import { expertise_data } from "../../constants";
 
 const Expertise = () => {
   const scrollToTop = () => {
@@ -39,15 +38,93 @@ const Expertise = () => {
             </span>
           </div>
           <div className="md:flex md:flex-row grid grid-cols-2 justify-between items-center w-full md:pt-6 md:gap-x-6 gap-3">
-            <div className="md:w-1/4">
-              <SingleCard />
-            </div>
-            <div className="md:w-1/4">
-              <SingleCard />
-            </div>
-            <div className="md:w-1/4">
-              <SingleCard />
-            </div>
+            {expertise_data.slice(0, 3).map((expert, id) => {
+              return (
+                <div
+                  key={expert.id}
+                  className="md:w-[256px] md:h-[285px] w-[172px] h-[230px] gap-[3px] rounded-[11px] p-3 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
+                >
+                  <Link onClick={scrollToTop} to="/subscription/buy">
+                    <div className="w-[72px] h-[98px] md:w-[256px] md:h-[146px] relative profile-image_1 mb-4">
+                      <img
+                        src={expert.icon}
+                        alt="background"
+                        className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
+                      />
+                      <img
+                        src={expert.userImg}
+                        alt="User"
+                        className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
+                      />
+                    </div>
+
+                    <div className="flex md:w-[212px] md:h-[26px] sm:w-[157px] sm:h-[22px] justify-between md:gap-0 gap-[2.2rem]">
+                      <div className="flex flex-col gap-1">
+                        <span className="text-[12px] leading-[12px] font-[500] text-white">
+                          {expert.name}
+                        </span>
+                        <span className="text-[12px] leading-[10px] font-[400] text-dimWhite">
+                          {expert.title}
+                        </span>
+                      </div>
+                      <div className="w-[32px] h-[15px] flex">
+                        <img
+                          src={expert.ratingIcon}
+                          className="w-[11.5px] h-[11.5px]"
+                          alt="rating"
+                        />
+                        <span className="text-white font-[600] text-[11.5px] leading-[14px]">
+                          {expert.rating}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="md:w-[171px] md:h-[33px] w-[125px] h-[23px] flex justify-between mr-[1rem] mt-2">
+                      <div className="flex flex-col w-[52px] h-[33px] items-center">
+                        <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">
+                          {expert.experience}
+                        </span>
+                        <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
+                          {expert.totalExp}
+                        </span>
+                      </div>
+                      <div className="md:w-[1.4px] md:h-[25px] w-[1px] h-[22px] bg-lightWhite"></div>
+                      <div className="flex">
+                        <div className="flex flex-col w-[52px] h-[33px] items-center">
+                          <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">
+                            {expert.followers}
+                          </span>
+                          <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
+                            {expert.totalFollowers}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+
+                  <div className="md:w-[140px] md:h-[26px] w-[146px] h-[32px] flex items-center justify-center rounded-[21.5px] border-[1.5px] border-[#4e4e4ecc] mt-2 md:mt-0">
+                    <div className="flex justify-center items-center gap-2">
+                      <img
+                        src={expert.telegram}
+                        alt="Telegram"
+                        className="w-[16px] h-[16px]"
+                      />
+                      <button
+                        onClick={() => console.log("clicked")}
+                        className="text-white font-[400] text-[10px] leading-[19px]"
+                      >
+                        {expert.greet}
+                      </button>
+                      <img
+                        src={expert.arrowIcon}
+                        alt="arrow"
+                        className="w-[11px] h-[11px]"
+                      />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
             <div className="flex-col-3 mx-auto md:w-2/4">
               <div className="font-inter font-semibold md:text-[30px] text-[18px] md:leading-[36px] leading-[18px] text-white md:mb-6 mb-2">
                 Experience Matters
