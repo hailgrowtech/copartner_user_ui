@@ -14,7 +14,7 @@ const Terms = () => {
                 TERMS AND CONDITIONS
               </span>
 
-              <div className="md:w-full md:h-[206px] h-[522px] text-left md:px-0 px-[0.5rem] md-px-0 sm:px-[1rem]">
+              <div className="md:w-full md:h-[206px] h-[522px] text-left md:px-0 px-[1rem] md-px-0">
                 <span className="font-inter font-[500] mt-4 text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[16px]">
                   These terms of use (“Terms”) mandate the terms on which the
                   content creators (“You” or “Your” or “Yourself” or “User”)
@@ -43,7 +43,7 @@ const Terms = () => {
                 </span>
               </div>
 
-              <div className="font-inter md:w-full md:h-[306px] h-[500px] py-[4rem] text-left md:px-0 px-[0.5rem]">
+              <div className="font-inter md:w-full md:h-[306px] h-[500px] py-[4rem] text-left md:px-0 px-[1rem]">
                 <span className="font-[500] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] md:leading-[16px] leading-[12px]">
                   Please read the Terms and Privacy Policy ( “Privacy Policy” )
                   carefully before using or registering on the Platform or
@@ -69,19 +69,19 @@ const Terms = () => {
             </div>
 
             <div
-              className={`flex flex-col md:w-[1190px] md:py-[2rem] pt-[3rem]`}
+              className={`flex flex-col md:w-[1190px] md:pt-0 pt-[5rem]`}
             >
               <div className="flex flex-col">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                   text-gradient-2 leading-[51px] md:w-[635px] md:h-[60px] w-[365px] h-[40px] text-start"
                 >
                   1. Applicability:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
-                   leading-[21px] text-start mt-2"
+                   leading-[21px] text-start mt-2 md:px-0 px-[1rem]"
                   >
                     These Terms shall be applicable to You only if You have
                     created an account on the Platform (“Account”) by providing
@@ -92,15 +92,15 @@ const Terms = () => {
               </div>
             </div>
 
-            <div className={`flex flex-col md:w-[1190px] md:py-[2rem] py-[2rem]`}>
+            <div className={`flex flex-col md:w-[1190px] pt-[2rem]`}>
               <div className="flex flex-col">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                     text-gradient-2 leading-[51px] md:w-[635px] md:h-[60px] w-[365px] h-[40px] text-start"
                 >
                   2. Eligibility to Use:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -112,7 +112,7 @@ const Terms = () => {
                     Agreement”).
                   </span>
                 </div>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -135,7 +135,7 @@ const Terms = () => {
                     contracts under Indian Contract Act, 1872.
                   </span>
                 </div>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -155,7 +155,7 @@ const Terms = () => {
                     intimation to the Users.
                   </span>
                 </div>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -167,7 +167,7 @@ const Terms = () => {
                     creating an Account with the Platform.
                   </span>
                 </div>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -184,7 +184,7 @@ const Terms = () => {
                     Platform.
                   </span>
                 </div>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -200,14 +200,14 @@ const Terms = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col md:py-[3rem] py-[2rem]">
+              <div className="flex flex-col pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                     text-gradient-2 leading-[51px] md:w-[735px] md:h-[60px] w-[365px] h-[40px] text-start"
                 >
                   3. User Account Registration:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -309,14 +309,14 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col md:py-[1rem] py-0">
+              <div className="flex flex-col md:pt-[3rem] pt-[2rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                     text-gradient-2 leading-[51px] md:w-[735px] md:h-[60px] w-[365px] h-[40px] text-start"
                 >
                   4. Services:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -368,12 +368,12 @@ const Terms = () => {
               </div>
               <div className="flex flex-col md:py-[3rem] py-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
-                    text-gradient-2 md:leading-[51px] leading-[30px] md:w-[935px] md:h-[70px] w-[365px] h-[70px] text-start"
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
+                    text-gradient-2 md:leading-[51px] leading-[30px] md:w-[935px] md:h-[70px] w-[365px] h-[60px] text-start"
                 >
                   5. Updation of Terms and Conditions:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -408,14 +408,14 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col md:py-[2rem]">
+              <div className="flex flex-col md:pt-[1rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                     text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[285px] h-[35px] text-start"
                 >
                   6. Rules and Conduct:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -550,14 +550,14 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col md:py-[3rem] py-[3rem]">
+              <div className="flex flex-col md:pt-[4rem] pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
-                    text-gradient-2 md:leading-[51px] leading-[30px] md:w-[935px] md:h-[70px] w-[285px] h-[70px] text-start"
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
+                    text-gradient-2 md:leading-[51px] leading-[30px] md:w-[935px] md:h-[70px] w-[325px] h-[60px] text-start"
                 >
                   7. Profile Ownership and Editing Rights:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -590,15 +590,15 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col md:py-[2rem]">
+              <div className="flex flex-col md:pt-[3rem] pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                     text-gradient-2 md:leading-[51px] leading-[30px] md:w-[935px] md:h-[110px] w-[385px] h-[90px] text-start"
                 >
                   8. Rights and Obligation relating to the usage of the
                   Platform:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -663,14 +663,14 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col md:py-[2rem] py-[3rem]">
+              <div className="flex flex-col pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
-                    text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[285px] h-[35px] text-start"
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
+                    text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[305px] h-[35px] text-start"
                 >
                   9. Third Party Services:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -689,14 +689,14 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col md:py-[2rem]">
+              <div className="flex flex-col pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                     text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[285px] h-[35px] text-start"
                 >
                   10. Confidentiality:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -721,15 +721,15 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col md:py-[2rem] py-[3rem]">
+              <div className="flex flex-col md:pt-[4rem] pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                     text-gradient-2 md:leading-[51px] leading-[30px] md:w-[935px] md:h-[110px] w-[345px] h-[120px] text-start"
                 >
                   11. Use of Your information and content displayed on the
                   Platform or Third Party Platforms:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -787,17 +787,17 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col md:py-[2rem]">
+              <div className="flex flex-col pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                     text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[375px] h-[75px] text-start"
                 >
                   12. Intellectual Property Rights:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
-                   leading-[16px] text-start mt-2"
+                   leading-[21px] text-start mt-2"
                   >
                     12.1. The Platform and the processes, and their selection
                     and arrangement, including but not limited to, all text,
@@ -812,7 +812,7 @@ const Terms = () => {
                   </span>
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
-                   leading-[16px] text-start mt-2"
+                   leading-[21px] text-start mt-2"
                   >
                     12.2. The trademarks, logos and service marks displayed on
                     the Platform (“Marks”) are the property of the Company or
@@ -823,17 +823,17 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col py-[2rem]">
+              <div className="flex flex-col pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                     text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[375px] h-[35px] text-start"
                 >
                   13. Limitation of Liability:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
-                   leading-[16px] text-start mt-2"
+                   leading-[21px] text-start mt-2"
                   >
                     13.1. to the fullest extent permitted by law, in no event
                     shall company (including its directors, employees, agents,
@@ -859,14 +859,14 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col md:py-[2rem]">
+              <div className="flex flex-col pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                     text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[285px] h-[35px] text-start"
                 >
                   14. Disclaimer:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -897,14 +897,14 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col py-[2rem]">
+              <div className="flex flex-col pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                     text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[285px] h-[35px] text-start"
                 >
                   15. Indemnification:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -929,14 +929,14 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col md:py-[2rem]">
+              <div className="flex flex-col pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                     text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[285px] h-[35px] text-start"
                 >
                   16. Fees/Payments:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -947,14 +947,14 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col py-[2rem]">
+              <div className="flex flex-col md:pt-[4rem] pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                     text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[285px] h-[35px] text-start"
                 >
                   17. Violation of the Terms:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -970,14 +970,14 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col md:py-[2rem]">
+              <div className="flex flex-col md:pt-[4rem] pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                     text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[285px] h-[70px] text-start"
                 >
                   18. Suspension and Termination:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -1066,14 +1066,14 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col py-[2rem]">
+              <div className="flex flex-col pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
-                    text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[305px] h-[70px] text-start"
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
+                    text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[335px] h-[70px] text-start"
                 >
                   19. Exemptions to liability of Company:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -1093,14 +1093,14 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col md:py-[2rem]">
+              <div className="flex flex-col pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
-                    text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[265px] h-[70px] text-start"
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
+                    text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[305px] h-[70px] text-start"
                 >
                   20. Governing Law and Jurisdiction:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -1117,14 +1117,14 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col py-[2rem]">
+              <div className="flex flex-col pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
-                    text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[265px] h-[35px] text-start"
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
+                    text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[305px] h-[35px] text-start"
                 >
                   21. General Provisions:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -1179,14 +1179,14 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col md:py-[2rem]">
+              <div className="flex flex-col pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
-                    text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[265px] h-[70px] text-start"
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
+                    text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[305px] h-[70px] text-start"
                 >
                   22. Alerts Provided by The Company:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -1211,14 +1211,14 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col py-[2rem]">
+              <div className="flex flex-col pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                     text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[265px] h-[35px] text-start"
                 >
                   23. Contact You:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -1245,14 +1245,14 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col md:py-[2rem]">
+              <div className="flex flex-col pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                     text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[305px] h-[70px] text-start"
                 >
                   24. Grievance Redressal Mechanism:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -1283,14 +1283,14 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col py-[2rem]">
+              <div className="flex flex-col pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                     text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[305px] h-[70px] text-start"
                 >
                   25. Company and User Materials:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
@@ -1320,14 +1320,14 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col md:py-[2rem]">
+              <div className="flex flex-col pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                     text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[305px] h-[35px] text-start"
                 >
                   26. Modification:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[16px] text-start mt-2"
@@ -1342,14 +1342,14 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col py-[2rem]">
+              <div className="flex flex-col pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                     text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[305px] h-[35px] text-start"
                 >
                   27. Support:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[16px] text-start mt-2"
@@ -1386,14 +1386,14 @@ const Terms = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col md:py-[2rem]">
+              <div className="flex flex-col pt-[3rem]">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                     text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[305px] h-[35px] text-start"
                 >
                   28. Contact:
                 </span>
-                <div className="flex flex-col text-start px-[0.5rem]">
+                <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[16px] text-start mt-2"

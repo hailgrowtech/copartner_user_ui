@@ -4,7 +4,7 @@ import styles from "../../style";
 const PrivacyPolicy = () => {
   return (
     <div
-      className={`flex md:flex-col ${styles.paddingY} ${styles.paddingX} flex-col expertise-Bg`}
+      className={`flex md:flex-col ${styles.paddingY} md::px-28 px-6 flex-col expertise-Bg`}
     >
       <div className="flex flex-col items-center">
         <div className="flex md:flex-row items-center flex-col justify-center gap-[1rem]">
@@ -24,13 +24,13 @@ const PrivacyPolicy = () => {
             <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px]`}>
               <div className="flex flex-col">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px]
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
                     text-gradient-2 leading-[51px] md:w-[635px] md:h-[60px] w-[365px] h-[40px] text-start"
                 >
                   1. Collection of Information:
                 </span>
 
-                <div className="flex flex-col gap-[2rem] text-start px-[0.5rem]">
+                <div className="flex flex-col gap-[1rem] text-start px-[0.5rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] md:leading-[28px] leading-[20px]
                    leading-[16px] md:text-start mt-2"
@@ -49,7 +49,7 @@ const PrivacyPolicy = () => {
                 </div>
 
                 <div className="flex flex-col text-start py-4 md:gap-4 gap-0">
-                  <span className="md:w-[160px] md:h-[20px] text-lightWhite font-[500] text-[22px]">
+                  <span className="md:w-[160px] md:h-[20px] md:px-0 px-2 text-lightWhite font-[500] text-[22px]">
                     (i) <span className="underline">Information:</span>
                   </span>
                   <span className="text-dimWhite md:w-full text-start md:px-[2rem] px-[1rem]">
@@ -77,7 +77,7 @@ const PrivacyPolicy = () => {
                 </div>
 
                 <div className="flex flex-col text-start py-4 md:gap-4 gap-0">
-                  <span className="md:w-[300px] md:h-[20px] text-lightWhite font-[500] text-[22px]">
+                  <span className="md:w-[300px] md:px-0 px-2 md:h-[20px] text-lightWhite font-[500] text-[22px]">
                     (ii){" "}
                     <span className="underline">Non-Personal Information:</span>
                   </span>
@@ -103,7 +103,7 @@ const PrivacyPolicy = () => {
                 </div>
 
                 <div className="flex flex-col text-start py-4 md:gap-4 gap-0">
-                  <span className="md:w-[300px] md:h-[20px] text-lightWhite font-[500] text-[22px]">
+                  <span className="md:w-[300px] md:px-0 px-2 md:h-[20px] text-lightWhite font-[500] text-[22px]">
                     (iii){" "}
                     <span className="underline">
                       Transactional Information:
@@ -131,7 +131,7 @@ const PrivacyPolicy = () => {
                 </div>
 
                 <div className="flex flex-col text-start py-4 md:gap-4 gap-0">
-                  <span className="md:w-[230px] md:h-[20px] text-lightWhite font-[500] text-[22px]">
+                  <span className="md:w-[230px] md:px-0 px-2 md:h-[20px] text-lightWhite font-[500] text-[22px]">
                     (iv) <span className="underline">Other Information:</span>
                   </span>
                   <span className="text-dimWhite text-start md:px-[2.8rem] px-[1rem] md:w-full">
@@ -188,7 +188,7 @@ const PrivacyPolicy = () => {
             <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
               <div className="flex flex-col">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px]
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
                     text-gradient-2 leading-[51px] md:w-[635px] md:h-[60px] w-[365px] h-[40px] text-start"
                 >
                   2. Use of Information:
@@ -284,7 +284,7 @@ const PrivacyPolicy = () => {
             <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
               <div className="flex flex-col">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px]
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
                     text-gradient-2 leading-[51px] md:w-[635px] md:h-[60px] w-[365px] h-[40px] text-start"
                 >
                   3. Retention of Information:
@@ -325,7 +325,7 @@ const PrivacyPolicy = () => {
             <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
               <div className="flex flex-col">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px]
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
                     text-gradient-2 leading-[51px] md:w-[635px] md:h-[60px] w-[365px] h-[40px] text-start"
                 >
                   4. Sharing of Information:
@@ -389,8 +389,8 @@ const PrivacyPolicy = () => {
             <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
               <div className="flex flex-col">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px]
-                    text-gradient-2 leading-[51px] md:w-[935px] md:h-[60px] w-[365px] h-[40px] text-start"
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                    text-gradient-2 md:leading-[51px] leading-[35px] md:w-[935px] md:h-[60px] w-[365px] h-[70px] text-start"
                 >
                   5. Security Precautions and Measures:
                 </span>
@@ -436,11 +436,11 @@ const PrivacyPolicy = () => {
             <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
               <div className="flex flex-col">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px]
-                    text-gradient-2 leading-[51px] md:w-[1035px] md:h-[100px] w-[365px] h-[40px] text-start"
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                    text-gradient-2 md:leading-[51px] leading-[35px] md:w-[1035px] md:h-[100px] w-[365px] h-[100px] text-start"
                 >
                   6. Links to Other Third – party Sites and collection of
-                  information
+                  information:
                 </span>
 
                 <div className="flex flex-col gap-[2rem] text-start md:px-[0.5rem] px-[1rem]">
@@ -476,10 +476,10 @@ const PrivacyPolicy = () => {
             <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
               <div className="flex flex-col">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px]
-                    text-gradient-2 leading-[51px] md:w-[1035px] md:h-[100px] w-[365px] h-[40px] text-start"
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                    text-gradient-2 md:leading-[51px] leading-[35px] md:w-[1035px] md:h-[100px] w-[365px] h-[70px] text-start"
                 >
-                  7. Your Consent and Changes to Privacy Policy
+                  7. Your Consent and Changes to Privacy Policy:
                 </span>
 
                 <div className="flex flex-col gap-[2rem] text-start md:px-[0.5rem] px-[1rem]">
@@ -548,10 +548,10 @@ const PrivacyPolicy = () => {
             <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
               <div className="flex flex-col">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px]
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
                     text-gradient-2 leading-[51px] md:w-[735px] md:h-[60px] w-[365px] h-[40px] text-start"
                 >
-                  8. Grievance Officer
+                  8. Grievance Officer:
                 </span>
 
                 <div className="flex flex-col gap-[10px] text-start md:px-[0.5rem] px-[1rem]">
@@ -596,7 +596,7 @@ const PrivacyPolicy = () => {
             <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
               <div className="flex flex-col">
                 <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px]
+                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
                     text-gradient-2 leading-[51px] md:w-[735px] md:h-[60px] w-[365px] h-[40px] text-start"
                 >
                   9. Questions ?

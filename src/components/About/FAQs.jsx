@@ -31,35 +31,44 @@ const FAQs = () => {
     <div
       className={`flex md:flex-col flex-col ${styles.paddingY} md:px-[7rem] px-[16px] px-0 expertise-Bg`}
     >
-      <span className="md:w-[124px] h-[52px] font-inter font-[700] md:text-[50px] text-[30px] text-gradient-2 leading-[51px] md:text-start text-center">
-        FAQs
-      </span>
-      <span className="md:w-[615px] md:h-[28px] w-[348px] h-[34px] font-[400] md:text-[18px] text-[13px] md:leading-[28px] leading-[17px] text-dimWhite md:text-start text-center">
-        Empower your teams to build better processes, for a better workplace.
-      </span>
+      <div className={`{styles.flexStart} flex-col gap-2 xl:px-0`}>
+        <div className="flex flex-row md:h-[52px] h-[34px] justify-center md:justify-between items-center">
+          <span className="font-inter font-[700] md:text-[50px] text-[30px]
+            text-gradient-2 leading-[51px]"
+          >
+            FAQs
+          </span>
+        </div>
+
+        <p className="font-inter md:w-[1136px] md:h-[28px] w-[328px] h-[34px] font-[400] text-dimWhite sm:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
+          leading-[16px] sm:text-start mt-2 text-center"
+        >
+          Empower your teams to build better processes, for a better workplace.
+        </p>
+      </div>
 
       {smallScreen ? (
         <div className="grid grid-cols-1 md:mt-8 mt-4 gap-4 px-[8px]">
-        {faq_data.map((faq) => (
-          <div
-            key={faq.id}
-            className="flex flex-col border py-6 gap-4 border-solid border-[rgba(255,255,255,0.3)] p-4 items-center rounded-md"
-          >
-            <button
-              onClick={() => toggleAccordion(faq.id)}
-              className="text-lightWhite font-semibold text-lg outline-none focus:outline-none"
+          {faq_data.map((faq) => (
+            <div
+              key={faq.id}
+              className="flex flex-col border py-6 gap-4 border-solid border-[rgba(255,255,255,0.3)] p-4 items-center rounded-md"
             >
-              {faq.title}
-            </button>
-            {expandedId === faq.id && (
-              <>
-                <div className="w-full h-0.5 bg-[rgba(255,255,255,0.3)]"></div>
-                <p className="text-dimWhite text-base">{faq.des}</p>
-              </>
-            )}
-          </div>
-        ))}
-      </div>
+              <button
+                onClick={() => toggleAccordion(faq.id)}
+                className="text-lightWhite font-semibold text-lg outline-none focus:outline-none"
+              >
+                {faq.title}
+              </button>
+              {expandedId === faq.id && (
+                <>
+                  <div className="w-full h-0.5 bg-[rgba(255,255,255,0.3)]"></div>
+                  <p className="text-dimWhite text-base">{faq.des}</p>
+                </>
+              )}
+            </div>
+          ))}
+        </div>
       ) : (
         <div className="w-[1204px] h-[556px] grid grid-cols-2 mt-[2rem] mb-[12rem] gap-[1rem]">
           {faq_data.map((faq) => {

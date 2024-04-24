@@ -24,7 +24,7 @@ const Subscription = () => {
               towards successful trades and informed decisions in the markets.
             </p>
 
-            <p className="mt-4 text-center text-dimWhite md:text-xl text-[13px] md:hidden">
+            <p className="text-center text-dimWhite md:text-xl text-[13px] md:hidden">
               Take your team up a level with easy-to-use tools, effortless{" "}
               templates, and efficient workflows.
             </p>
@@ -32,11 +32,11 @@ const Subscription = () => {
         </div>
       </section>
 
-      <section className=" w-full text-center md:px-24 md:mb-12">
-        <h2 className="md:text-[50px] text-[30px] md:leading-[50px] text-left leading-[51px] md:mb-6 px-4 subheading-color">
+      <section className=" w-full text-center md:px-24 md:mb-12 md:mt-0 mb-[1rem]">
+        <h2 className="md:text-[50px] text-[30px] md:leading-[50px] text-left leading-[51px] md:mb-2 px-4 subheading-color">
           Our Expertise
         </h2>
-        <p className="font-normal text-dimWhite md:text-[18px] text-left text-[13px] md:leading-[28px] leading-[17px] mb-8 px-4">
+        <p className="font-normal text-dimWhite md:text-[18px] text-left text-[13px] md:leading-[28px] leading-[17px] md:mb-8 px-4">
           Dive into the expertise of our SEBI registered research analysts,
           guiding you towards trading success with precision and insight.
         </p>
@@ -74,7 +74,7 @@ const Subscription = () => {
 
       <section className={`${styles.emptySection} w-full md:px-20 text-white`}>
         <div className="mb-4 md:mb-8">
-          <h2 className="font-semibold text-4xl text-center md:text-left md:text-5xl pb-4 subheading-color">
+          <h2 className="font-semibold text-4xl text-center md:text-left md:text-5xl md:pb-4 pb-2 subheading-color">
             Similar Your Interest Expertises
           </h2>
           <p className="font-normal text-dimWhite md:px-[2px] px-[10px] text-center md:text-left md:text-[18px] text-[13px] md:leading-[28px] leading-[17px]">

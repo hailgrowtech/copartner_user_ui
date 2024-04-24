@@ -42,7 +42,7 @@ const Expertise = () => {
           </div>
 
           <p
-            className="font-inter md:w-[1136px] md:h-[28px] w-[328px] h-[34px] font-[400] text-dimWhite sm:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
+            className="font-inter md:w-[1136px] md:h-[28px] sm:w-[328px] h-[34px] font-[400] text-dimWhite sm:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
                  leading-[16px] sm:text-start mt-2 text-center"
           >
             Dive into the expertise of our SEBI registered research analysts, guiding you towards trading success with precision and insight.
@@ -112,11 +112,11 @@ const Expertise = () => {
                   </div>
                 </div>
 
-                <div className="md:w-[300px] md:h-[72px] w-[144px] h-[42px] mb-4 sm:block contents md:ml-2 ml-4">
-                  <span className="text-dimWhite md:text-[14px] text-[11px] sm:leading-[24px] md:leading-[12px] leading-[14px]">
-                    {expert.content}
-                  </span>
-                </div>
+                <div className="md:w-[300px] md:h-[72px] w-[144px] h-[42px] mb-4 sm:block contents md:pl-[5px]">
+                    <span className="text-dimWhite md:text-[14px] text-[11px] sm:leading-[24px] md:leading-[12px] leading-[14px] md:pl-0 pl-1.5">
+                      {expert.content}
+                    </span>
+                  </div>
 
                 <div className="md:w-[211px] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] border-[1.5px] border-[#4e4e4ecc] mt-2 md:mt-0">
                 <div className="flex justify-center items-center gap-2">
@@ -154,7 +154,7 @@ const Expertise = () => {
             </div>
 
             <p
-              className="font-poppins md:w-[349px] md:h-[84px] w-[328px] h-[34px] font-[400] text-dimWhite sm:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
+              className="font-poppins md:w-[349px] md:h-[84px] sm:w-[328px] h-[34px] font-[400] text-dimWhite sm:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
                    text-[10px] leading-[16px] sm:text-start text-center"
             >
               In Expert Hands, Your Wealth Thrives: Redefining Investment

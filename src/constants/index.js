@@ -212,7 +212,7 @@ export const expertise_data = [
     content:
       "Have full control of your business finances on the go using our.",
     telegram: telegram,
-    greet: "Join Telegram",
+    greet: "Get Free Calls",
     arrowIcon: arrow,
   },
   {
@@ -230,7 +230,7 @@ export const expertise_data = [
     content:
       "Have full control of your business finances on the go using our.",
     telegram: telegram,
-    greet: "Join Telegram",
+    greet: "Get Free Calls",
     arrowIcon: arrow,
   },
   {
@@ -248,7 +248,7 @@ export const expertise_data = [
     content:
       "Have full control of your business finances on the go using our.",
     telegram: telegram,
-    greet: "Join Telegram",
+    greet: "Get Free Calls",
     arrowIcon: arrow,
   },
   {
@@ -266,7 +266,7 @@ export const expertise_data = [
     content:
       "Have full control of your business finances on the go using our.",
     telegram: telegram,
-    greet: "Join Telegram",
+    greet: "Get Free Calls",
     arrowIcon: arrow,
   },
   {
@@ -284,7 +284,7 @@ export const expertise_data = [
     content:
       "Have full control of your business finances on the go using our.",
     telegram: telegram,
-    greet: "Join Telegram",
+    greet: "Get Free Calls",
     arrowIcon: arrow,
   },
   {
@@ -302,7 +302,7 @@ export const expertise_data = [
     content:
       "Have full control of your business finances on the go using our.",
     telegram: telegram,
-    greet: "Join Telegram",
+    greet: "Get Free Calls",
     arrowIcon: arrow,
   },
 ];

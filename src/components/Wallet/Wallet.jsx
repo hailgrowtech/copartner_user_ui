@@ -26,12 +26,12 @@ const Wallet = () => {
         className={`flex md:flex-col flex-col ${styles.paddingY} expertise-Bg`}
       >
         <div className="flex flex-col md:gap-[2rem] gap-[1rem]">
-          <div className="flex md:flex-row flex-col justify-center md:px-[8rem] px-[2rem] gap-[1rem]">
+          <div className="flex md:flex-row flex-col justify-center md:px-[8rem] px-[1rem] gap-[1rem]">
             <div
               className={`${styles.flexStart} flex-col text-center md:gap-[2rem] gap-0`}
             >
               <div className="justify-between items-center">
-                <span className="flex-1 font-inter font-[700] md:text-[72px] text-[44px] text-gradient md:leading-[74px] leading-[48px]">
+                <span className="font-inter font-[700] md:text-[72px] text-[44px] text-gradient md:leading-[74px] leading-[48px]">
                   Earn and Prosper
                 </span>
 
@@ -64,11 +64,11 @@ const Wallet = () => {
             </div> */}
           </div>
 
-          <div className="flex md:flex-row flex-col justify-around md:items-center">
-            <span className="md:w-[461px] md:h-[52px] font-inter font-bold md:text-[50px] text-[30px] text-gradient-2 leading-[51px] md:ml-0 ml-[2rem]">
+          <div className="flex md:flex-row flex-col justify-around items-center">
+            <span className="md:w-[461px] md:h-[52px] font-inter font-bold md:text-[50px] text-[30px] text-gradient-2 leading-[51px]">
               Transaction History
             </span>
-            <span className="md:w-[550px] md:h-[56px] w-[328px] h-[68px] font-[400] md:text-[18px] text-[13px] md:leading-[28px] leading-[17px] text-dimWhite md:text-start md:ml-0 ml-[2rem]">
+            <span className="md:w-[550px] md:h-[56px] w-[328px] h-[68px] font-[400] md:text-[18px] text-[13px] md:leading-[28px] leading-[17px] text-dimWhite md:text-start">
               Review the transaction history below to have transparency into
               payments made to our portal. <span className="text-lightWhite">
               Stay informed about your expenditure
@@ -95,17 +95,17 @@ const Wallet = () => {
                         className="w-[21px] h-[21px] text-white"
                       />
                     </div>
-                    <span className="flex items-center justify-between w-[327px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
+                    <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
                       <span className="text-dimWhite">DATE:</span> {row.date}
                     </span>
-                    <span className="flex items-center justify-between w-[327px] h-[34px] font-[500] text-[14px] leading-[12px] text-lightWhite">
+                    <span className="flex items-center justify-between sm:w-[305px] h-[34px] font-[500] text-[14px] leading-[12px] text-lightWhite">
                       <span className="text-dimWhite">SUBSCRIPTION:</span>{" "}
                       {row.subscription}
                     </span>
-                    <span className="flex items-center justify-between w-[327px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
+                    <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
                       <span className="text-dimWhite">NAME:</span> {row.name}
                     </span>
-                    <span className="flex items-center justify-between w-[327px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
+                    <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
                       <span className="text-dimWhite">AMOUNT:</span>{" "}
                       {row.amount}
                     </span>

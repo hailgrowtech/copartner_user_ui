@@ -126,7 +126,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:px-0 px-4">
+        <div className="flex flex-col md:px-0 sm:px-4">
           <div className={`{styles.flexStart} flex-col gap-2 xl:px-0`}>
             <div className="flex flex-row md:h-[52px] h-[34px] justify-center md:justify-between items-center">
               <span
@@ -146,7 +146,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="md:w-[1076px] md:max-h-[580px] w-[337px] md:gap-[5rem] gap-[1rem] flex flex-col sm:flex-row md:mt-[3rem] md:py-0 py-[2rem] mx-auto">
+          <div className="md:w-[1076px] md:max-h-[580px] sm:w-[337px] md:gap-[5rem] gap-[1rem] flex flex-col sm:flex-row md:mt-[3rem] md:py-0 py-[2rem] mx-auto">
             {aboutUs_data.map((aboutus) => (
               <div
                 key={aboutus.id}
@@ -182,7 +182,7 @@ const About = () => {
             </div>
 
             <p
-              className="font-inter md:w-[615px] md:h-[28px] w-[348px] h-[34px] font-[400] text-dimWhite sm:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
+              className="font-inter md:w-[1136px] md:h-[28px] w-[328px] h-[34px] font-[400] text-dimWhite sm:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
                  leading-[16px] sm:text-start mt-2 text-center"
             >
               Empower your teams to build better processes, for a better

@@ -21,7 +21,7 @@ const Expertise = () => {
         className={`flex-1 ${styles.flexStart} flex-col xl:px-0 md:px-28 z-10 md:bottom-[10rem]`}
       >
         <section className="w-full">
-          <div className="flex flex-col items-center w-full">
+          <div className="flex flex-col items-center w-full md:mb-0 mb-[2rem]">
             <span
               className="font-inter font-[700] md:text-[72px] text-[36px]
       text-gradient md:leading-[88px] leading-[44px] text-center md:mb-2 mb-2"
