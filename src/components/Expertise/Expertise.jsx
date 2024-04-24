@@ -38,11 +38,7 @@ const Expertise = () => {
             </span>
           </div>
           <div className="md:flex md:flex-row grid grid-cols-2 justify-between items-center w-full md:pt-6 md:gap-x-6 gap-3">
-<<<<<<< HEAD
-            {expertise_data.slice(0, 3).map((expert, id) => {
-=======
           {expertise_data.slice(0, 3).map((expert, id) => {
->>>>>>> signin_otp
               return (
                 <div
                   key={expert.id}
