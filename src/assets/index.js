@@ -64,7 +64,7 @@ import contact from "./contact.png";
 import message from "./message.png";
 import location from "./location.png";
 import closeImg from "./closeIcon.png";
-import signupBg from "./Signup-bg.png";
+import signupBg from "./signInBck.png";
 
 export {
   logo,

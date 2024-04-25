@@ -74,13 +74,14 @@ const SignUp = () => {
         className="h-screen"
         style={{
           backgroundImage: `url(${signupBg})`,
-          backgroundSize: "contain",
+          backgroundSize: "cover",
           backgroundPosition: "center",
-          filter: "blur(2px)",
+          backgroundRepeat: 'no-repeat'
+          // filter: "blur(2px)",
         }}
       ></div>
       <div
-        className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 w-screen h-screen`}
+        className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-10 z-50 w-screen h-screen`}
       >
         <div className="bg-[#18181B] border-[1px] border-[#ffffff2a] m-4 p-6 rounded-lg w-96 relative text-center">
           <div className="absolute top-3 right-0 text-right ">
