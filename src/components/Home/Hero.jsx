@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../style";
-import { arrow, closeImg, telegram, userBck, stars } from "../../assets";
+import { arrow, closeImg, telegram, userBck, stars, feeback } from "../../assets";
 import Expertise from "./Expertise";
 import { expertise_data } from "../../constants";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
   const [showDialog, setShowDialog] = useState(false);
+  const [rating, setRating] = useState(null);
+  const [ratingColor, setRatingColor] = useState(null);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -94,6 +96,69 @@ const Hero = () => {
         </div>
       )}
 
+      {/* {showDialog && (
+        <div className="fixed bg-black bg-opacity-50 inset-0 z-50 flex items-center justify-center">
+          <div className="md:w-[416px] md:h-[411px] w-[340px] h-[410px] flex flex-col gap-2 bg-[#18181B] text-center p-8 rounded-lg shadow-lg">
+            <button
+              onClick={handleClosed}
+              className="font-[700] text-[20px] flex md:ml-[20rem] ml-[15rem]"
+            >
+              <img
+                src={closeImg}
+                alt="CloseIcon"
+                className="w-[32px] h-[32px] flex items-end"
+              />
+            </button>
+            <div className="flex flex-col md:w-[342px] md:h-[69px] flex flex-row items-center gap-[0.6rem] md:mt-[-1rem] mt-[-2rem] pb-4">
+              <h2 className="text-[24px] leading-[24px] font-[500] text-white">
+                Feedback
+              </h2>
+              <p className="text-lightWhite font-[400] text-[16px] leading-[16px]">
+                Full access to in any of our products Full access to in any of
+              </p>
+            </div>
+            <div className="flex flex-row">
+              {[...Array(5)].map((star, index) => {
+                const curRating = index + 1;
+
+                return (
+                  <>
+                    <label className="w-[340px]">
+                      <input
+                        className="hidden"
+                        type="radio"
+                        name="rating"
+                        value={curRating}
+                        onClick={() => setRating(curRating)}
+                      />
+                      <img src={feeback}
+                        width={50}
+                        style={{ cursor: "pointer",
+                        filter: curRating <= rating ? "sepia(100%) contrast(10%) saturate(800%) hue-rotate(423deg)" : "grayscale(100%)"
+                        }}
+                      />
+                    </label>
+                  </>
+                );
+              })}
+            </div>
+            <div className="flex flex-col md:w-[342px] md:h-[290px] md:gap-3 gap-5">
+              <input
+                type="text"
+                placeholder="Write Something here"
+                className="border border-solid border-[#666666] rounded-[12px] md:w-[342px] h-[120px] p-1 bg-[#18181B] md:pl-[15px] pl-[10px]"
+              />
+              <button
+                type="submit"
+                className="bg-white text-black font-[500] md:w-[342px] md:h-[60px] h-[60px] text-[16px] rounded-[12px]"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      )} */}
+
       <div className={`${styles.flexStart} flex-col relative`}>
         <div className="flex flex-col justify-between md:w-[603px]">
           <span
@@ -109,10 +174,10 @@ const Hero = () => {
         </div>
 
         <div className="flex items-center gap-2 mt-[1rem]">
-          <Link to='/about'>
-          <button className="text-white font-normal text-[15px] leading-[28px]">
-            Explore More
-          </button>
+          <Link to="/about">
+            <button className="text-white font-normal text-[15px] leading-[28px]">
+              Explore More
+            </button>
           </Link>
           <img src={arrow} alt="arrow" className="w-[16px] h-[16px]" />
         </div>

@@ -65,6 +65,7 @@ import message from "./message.png";
 import location from "./location.png";
 import closeImg from "./closeIcon.png";
 import signupBg from "./signInBck.png";
+import feeback from './FeedbckStars.png';
 
 export {
   logo,
@@ -134,4 +135,5 @@ export {
   location,
   closeImg,
   signupBg,
+  feeback
 };
