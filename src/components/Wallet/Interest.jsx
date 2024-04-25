@@ -44,7 +44,7 @@ const Interest = () => {
               return (
                 <Link to="/subscription/ra-detail"
                 key={expert.id}
-                className="md:w-[384px] md:h-[400px] w-[172px] h-[270px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
+                className="md:w-[384px] md:h-[400px] sm:w-[172px] h-[270px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out md:mr-0 mr-2"
               >
                 <div className="w-[72px] h-[98px] sm:w-[384px] sm:h-[219px]  relative profile-image_1 mb-4">
                   <img
@@ -103,7 +103,7 @@ const Interest = () => {
                 </div>
 
                 <div className="md:w-[300px] md:h-[72px] w-[144px] h-[42px] mb-4 sm:block contents md:pl-[5px]">
-                    <span className="text-dimWhite md:text-[14px] text-[11px] sm:leading-[24px] md:leading-[12px] leading-[14px] md:pl-0 pl-1.5">
+                    <span className="text-dimWhite md:text-[14px] text-[11px] sm:leading-[24px] md:leading-[12px] leading-[14px] md:pl-0 pl-[2px]">
                       {expert.content}
                     </span>
                   </div>

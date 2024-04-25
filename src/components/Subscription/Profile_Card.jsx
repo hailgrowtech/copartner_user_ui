@@ -14,7 +14,6 @@ const formatFollowers = (followers) => {
 };
 
 const ExpertCardSub = ({ expert }) => {
-  
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -24,7 +23,7 @@ const ExpertCardSub = ({ expert }) => {
 
   return (
     <Link onClick={scrollToTop} to="/subscription/ra-detail">
-      <div className="profile-div rounded-2xl p-1 md:p-1">
+      <div className="md:w-[384px] md:h-[400px] sm:w-[172px] sm:h-[300px] hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-2xl p-1 md:mt-8 md:ml-0 ml-[-0.5rem]">
         <div className="background-wrapper">
           <img
             src={backgroundImage}
@@ -54,20 +53,28 @@ const ExpertCardSub = ({ expert }) => {
               {expert.rating}
             </div>
           </div>
-          <div className="experience-followers text-white mb-2">
-            <div className="experience">
-              {" "}
-              <span>Experience</span> <br />
-              {expert.experience}
+          <div className="md:w-[256px] w-[143px] h-[44px] flex items-start md:mt-2 mt-4 justify-between">
+            <div className="flex flex-col md:w-[78px] w-[43px] h-[22px] items-center justify-between">
+              <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
+                Experience
+              </span>
+              <span className="text-lightWhite font-[600] sm:text-[15px] sm:leading-[18px] text-[10px] leading-[10px]">
+                {expert.experience}
+              </span>
             </div>
-            <div className="followers">
-              {" "}
-              <span>Followers </span>
-              <br />
-              {formatFollowers(expert.followers)}
+            <div className="sm:w-[1.4px] sm:h-[40px] w-[0.4px] h-[16px] bg-lightWhite"></div>
+            <div className="flex">
+              <div className="flex flex-col sm:w-[78px] sm:h-[50px] w-[43px] h-[22px] items-center">
+                <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
+                  Followers
+                </span>
+                <span className="text-lightWhite font-[600] sm:text-[15px] sm:leading-[18px] text-[10px] leading-[10px]">
+                  {expert.followers}
+                </span>
+              </div>
             </div>
           </div>
-          <div className="description text-[#A1A1AACC] mb-2 text-[7px] md:text-base text-left leading-3">
+          <div className="text-[#A1A1AACC] mb-2 md:text-[14px] text-[11px] md:text-base text-left md:leading-[20px] leading-[14px]">
             {expert.description}
           </div>
           <div className="flex flex-col justify-center">

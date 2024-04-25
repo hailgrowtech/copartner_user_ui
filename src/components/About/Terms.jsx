@@ -203,7 +203,7 @@ const Terms = () => {
               <div className="flex flex-col pt-[3rem]">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
-                    text-gradient-2 leading-[51px] md:w-[735px] md:h-[60px] w-[365px] h-[40px] text-start"
+                    text-gradient-2 leading-[51px] md:w-[735px] md:h-[60px] w-[395px] h-[40px] text-start"
                 >
                   3. User Account Registration:
                 </span>
@@ -950,7 +950,7 @@ const Terms = () => {
               <div className="flex flex-col md:pt-[4rem] pt-[3rem]">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
-                    text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[285px] h-[35px] text-start"
+                    text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[345px] h-[35px] text-start"
                 >
                   17. Violation of the Terms:
                 </span>
@@ -1330,7 +1330,7 @@ const Terms = () => {
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
-                   leading-[16px] text-start mt-2"
+                   leading-[21px] text-start mt-2"
                   >
                     26.1. We reserve the right, at any time and with sole
                     discretion, to change, modify, or amend the Platform (in
@@ -1352,7 +1352,7 @@ const Terms = () => {
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
-                   leading-[16px] text-start mt-2"
+                   leading-[21px] text-start mt-2"
                   >
                     27.1. The Company offers a chat-based support system along
                     with an online knowledge pool of FAQs. In case You require
@@ -1362,7 +1362,7 @@ const Terms = () => {
                   </span>
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
-                   leading-[16px] text-start mt-2"
+                   leading-[21px] text-start mt-2"
                   >
                     27.2. The Company shall revert to every complaint within 24
                     hours of receipt of the complaint. Further, the Company
@@ -1373,7 +1373,7 @@ const Terms = () => {
                   </span>
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
-                   leading-[16px] text-start mt-2"
+                   leading-[21px] text-start mt-2"
                   >
                     27.3. The User agrees and acknowledges that the Company
                     shall address and attempt to resolve the complaint received
@@ -1396,7 +1396,7 @@ const Terms = () => {
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
-                   leading-[16px] text-start mt-2"
+                   leading-[21px] text-start mt-2"
                   >
                     28.1. If You have any questions regarding the Services or
                     usage of the Platform, please contact the Company at

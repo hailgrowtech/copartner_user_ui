@@ -5,7 +5,6 @@ import PrivateCall from "./PrivateCall";
 import { Link } from "react-router-dom";
 
 const Expertise = () => {
-  
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -28,10 +27,8 @@ const Expertise = () => {
 
   return (
     <>
-      <div className={`flex flex-col sm:py-[4rem] py-[30px] `}>
-        <div
-          className={`{styles.flexStart} flex-col gap-2 xl:px-0`}
-        >
+      <div className={`flex flex-col sm:py-[4rem] py-[30px]`}>
+        <div className={`{styles.flexStart} flex-col gap-2 xl:px-0`}>
           <div className="flex flex-row md:h-[52px] h-[34px] justify-center md:justify-between items-center">
             <span
               className="font-inter font-[700] md:text-[50px] text-[30px]
@@ -45,16 +42,19 @@ const Expertise = () => {
             className="font-inter md:w-[1136px] md:h-[28px] sm:w-[328px] h-[34px] font-[400] text-dimWhite sm:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
                  leading-[16px] sm:text-start mt-2 text-center"
           >
-            Dive into the expertise of our SEBI registered research analysts, guiding you towards trading success with precision and insight.
+            Dive into the expertise of our SEBI registered research analysts,
+            guiding you towards trading success with precision and insight.
           </p>
         </div>
 
         <div className="flex p-[1rem] gap-[1rem] sm:p-[4rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px] md:mt-[-2rem]">
           {expertise_data.map((expert, id) => {
             return (
-              <Link onClick={scrollToTop} to="/subscription/ra-detail"
+              <Link
+                onClick={scrollToTop}
+                to="/subscription/ra-detail"
                 key={expert.id}
-                className="md:w-[384px] md:h-[400px] w-[172px] h-[270px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
+                className="md:w-[384px] md:h-[400px] sm:w-[172px] h-[270px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
               >
                 <div className="w-[72px] h-[98px] sm:w-[384px] sm:h-[219px]  relative profile-image_1 mb-4">
                   <img
@@ -113,32 +113,32 @@ const Expertise = () => {
                 </div>
 
                 <div className="md:w-[300px] md:h-[72px] w-[144px] h-[42px] mb-4 sm:block contents md:pl-[5px]">
-                    <span className="text-dimWhite md:text-[14px] text-[11px] sm:leading-[24px] md:leading-[12px] leading-[14px] md:pl-0 pl-1.5">
-                      {expert.content}
-                    </span>
-                  </div>
+                  <span className="text-dimWhite md:text-[14px] text-[11px] sm:leading-[24px] md:leading-[12px] leading-[14px] md:pl-0 pl-[2px]">
+                    {expert.content}
+                  </span>
+                </div>
 
                 <div className="md:w-[211px] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] border-[1.5px] border-[#4e4e4ecc] mt-2 md:mt-0">
-                <div className="flex justify-center items-center gap-2">
-                  <img
-                    src={expert.telegram}
-                    alt="Telegram"
-                    className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"
-                  />
-                  <button className="text-white font-[400] md:text-[15px] text-[10px] leading-[19px]">
-                    {expert.greet}
-                  </button>
-                  <img
-                    src={expert.arrowIcon}
-                    alt="arrow"
-                    className="md:w-[16px] md:h-[16px] w-[11px] h-[11px]"
-                  />
+                  <div className="flex justify-center items-center gap-2">
+                    <img
+                      src={expert.telegram}
+                      alt="Telegram"
+                      className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"
+                    />
+                    <button className="text-white font-[400] md:text-[15px] text-[10px] leading-[19px]">
+                      {expert.greet}
+                    </button>
+                    <img
+                      src={expert.arrowIcon}
+                      alt="arrow"
+                      className="md:w-[16px] md:h-[16px] w-[11px] h-[11px]"
+                    />
+                  </div>
                 </div>
-              </div>
               </Link>
             );
           })}
-        </div> 
+        </div>
 
         <div
           className={`sm:flex grid-cols-1 sm:items-center sm:gap-6 gap-3 xl:px-0 md:py-0 py-[30px]`}
@@ -190,7 +190,7 @@ const Expertise = () => {
                     isSmallScreen && type.id === 3
                       ? "flex-row sm:flex-col"
                       : "flex-col sm:flex-row"
-                  } ${isSmallScreen && type.id === 3 ? 'gap-[6rem]' : 'gap-0'}`}
+                  } ${isSmallScreen && type.id === 3 ? "gap-[6rem]" : "gap-0"}`}
                 >
                   <span className="text-lightWhite sm:w-[139px] md:h-[16px] w-[162px] h-[18px] font-[600] sm:text-[18px] text-[16px] sm:leading-[25px] leading-[15px]">
                     {type.title}
@@ -212,14 +212,14 @@ const Expertise = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <Link onClick={scrollToTop} to="expertise/explore-expertise">
-                  <button className="text-lightWhite gap-1 flex items-center sm:h-[27px] h-[17px] font-normal sm:text-[14px] text-[12.6px] sm:leading-[26px] leading-[16px]">
-                    {type.button}
-                  <img
-                    src={type.arrowIcon}
-                    alt="arrow"
-                    className="w-[15px] h-[15px]"
-                  />
-                  </button>
+                    <button className="text-lightWhite gap-1 flex items-center sm:h-[27px] h-[17px] font-normal sm:text-[14px] text-[12.6px] sm:leading-[26px] leading-[16px]">
+                      {type.button}
+                      <img
+                        src={type.arrowIcon}
+                        alt="arrow"
+                        className="w-[15px] h-[15px]"
+                      />
+                    </button>
                   </Link>
                 </div>
               </div>

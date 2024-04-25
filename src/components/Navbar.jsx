@@ -77,7 +77,7 @@ const Navbar = () => {
       >
         <div className={`${styles.boxWidth}`}>
           <nav className="w-full flex md:py-5 py-4 justify-between items-center">
-            <Link to="/">
+            <Link onClick={scrollToTop}  to="/">
               <img src={logo} alt="LOGO" className="w-[153px] h-[39px]" />
             </Link>
 

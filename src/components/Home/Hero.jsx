@@ -94,24 +94,26 @@ const Hero = () => {
         </div>
       )}
 
-      <div className={`${styles.flexStart} flex-col z-10 relative`}>
+      <div className={`${styles.flexStart} flex-col relative`}>
         <div className="flex flex-col justify-between md:w-[603px]">
           <span
-            className="font-inter md:text-[72px] text-[36px]
+            className="font-inter md:text-[72px] text-[36px] md:w-full md:h-full w-[340px] h-[95px]
           text-gradient md:leading-[74px] leading-[48px] font-[700]"
           >
             Invest, Learn and Earn
           </span>
-          <p className="font-inter md:w-[876px] md:h-[28px] w-[360px] h-[17px] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] leading-[16px]">
+          <p className="font-inter md:w-[876px] md:h-[28px] sm:w-[360px] sm:h-[17px] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] leading-[16px]">
             Get partnered with our SEBI Registered Research Analysts to start
             your profitable trading journey.
           </p>
         </div>
 
         <div className="flex items-center gap-2 mt-[1rem]">
+          <Link to='/about'>
           <button className="text-white font-normal text-[15px] leading-[28px]">
             Explore More
           </button>
+          </Link>
           <img src={arrow} alt="arrow" className="w-[16px] h-[16px]" />
         </div>
 
@@ -123,7 +125,7 @@ const Hero = () => {
                 onClick={scrollToTop}
                 to="subscription/ra-detail"
                 key={expert.id}
-                className="md:w-[256px] md:h-[285px] w-[172px] h-[230px] gap-[3px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
+                className="md:w-[256px] md:h-[285px] sm:w-[172px] h-[230px] gap-[3px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
               >
                 <div className="w-[72px] h-[98px] md:w-[256px] md:h-[146px]  relative profile-image_1 mb-4">
                   <img
@@ -165,7 +167,7 @@ const Hero = () => {
                       Experience
                     </span>
                     <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
-                      {expert.experience}
+                      {expert.totalExp}
                     </span>
                   </div>
                   <div className="md:w-[1.4px] md:h-[25px] w-[1px] h-[22px] bg-lightWhite"></div>
@@ -175,7 +177,8 @@ const Hero = () => {
                         Followers
                       </span>
                       <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
-                        {`${expert.telegramFollower / 1000}k`}
+                        {/* {`${expert.telegramFollower / 1000}k`} */}
+                        {expert.totalFollowers}
                       </span>
                     </div>
                   </div>
