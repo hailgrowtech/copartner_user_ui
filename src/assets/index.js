@@ -67,6 +67,9 @@ import message from "./message.png";
 import location from "./location.png";
 import closeImg from "./closeIcon.png";
 import signupBg from "./signInBck.png";
+import blog6Post from './blog6.png'
+import blog7Post from "./blog7 (1).jpg";
+import blog8Post from "./blog8.jpg"
 
 export {
   logo,
@@ -133,6 +136,9 @@ export {
   Blog3,
   Blog4,
   Blog5,
+  blog6Post,
+  blog7Post,
+  blog8Post,
   contact,
   message,
   location,

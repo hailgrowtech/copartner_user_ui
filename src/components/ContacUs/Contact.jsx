@@ -62,7 +62,7 @@ const ContactUs = () => {
               </div>
               {/* Submit Button */}
               <div className="text-center md:py-3 py-3">
-                <button type="submit" className="bg-[#fff] text-black py-2 px-7 rounded-md hover:bg-blue-600 transition duration-300">Submit</button>
+                <button type="submit" className="bg-[#fff] font-[500] text-black py-2 px-8 md:text-[14px] text-[10px] rounded-md hover:bg-[#000] hover:text-[#fff] transition duration-300">Submit</button>
               </div>
             </form>
           </div>
