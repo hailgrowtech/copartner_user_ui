@@ -64,7 +64,7 @@ import contact from './contact.png';
 import message from './message.png'
 import location from './location.png'
 import closeImg from './closeIcon.png'
-
+import exclamation from './exclamation.png'
 export {
     logo,
     menu,
@@ -132,4 +132,5 @@ export {
     message,
     location,
     closeImg,
+    exclamation,
 }

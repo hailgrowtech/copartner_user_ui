@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { close } from '../../assets';
+import KYCPopup from './KYCPopup';
 
 const CoursePaymentPopup = ({ onClose, selectedPlan, planPrice, expertName }) => {
   const gstRate = 0.18;
+  const [showKYCPopup, setShowKYCPopup] = useState(false);
+  const handlePay = () => {
+    setShowKYCPopup(true); // Show KYC popup when Pay button is clicked
+  };
+
 
   // Calculate total price including GST
   const total = (planPrice || 0) * (1 + gstRate);
@@ -45,11 +51,12 @@ const CoursePaymentPopup = ({ onClose, selectedPlan, planPrice, expertName }) =>
             <label className="block text-lg text-[#c9c9c9] font-semibold">Total</label>
             <span className="text-lg font-semibold">₹{total.toFixed(2)}</span>
           </div>
-          <button className="main-button">
+          <button className="bg-[#fff] text-[#000] py-3 px-2 rounded-sm hover:bg-[#000] hover:text-[#fff] transition duration-300" onClick={handlePay}>
             Pay
           </button>
         </div>
       </div>
+      {showKYCPopup && <KYCPopup onClose={handleClose} />} {/* Render KYCPopup when showKYCPopup is true */}
     </div>
   );
 };
