@@ -38,6 +38,7 @@ const Otp = ({ onClose, mobileNumber }) => {
       } else {
         localStorage.setItem("token", data.data.token);
         navigate("/");
+        window.location.reload();
       }
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);
@@ -49,8 +50,8 @@ const Otp = ({ onClose, mobileNumber }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-[#18181B] border-[1px] border-[#ffffff2a] m-4 p-8 rounded-lg w-96 relative text-center">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-10 z-50">
+      <div className="bg-[#18181B] border-[1px] border-[#ffffff2a] m-4 p-8 rounded-lg w-[25rem] relative text-center">
         <div className="absolute top-3 right-0 text-right ">
           <div
             onClick={onClose}

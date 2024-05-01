@@ -56,7 +56,7 @@ const Hero = () => {
           <div className="md:w-[416px] md:h-[381px] w-[340px] h-[360px] flex flex-col gap-2 bg-[#18181B] text-center p-8 rounded-lg shadow-lg">
             <button
               onClick={handleClosed}
-              className="font-[700] text-[20px] flex md:ml-[20rem] ml-[15rem]"
+              className="font-[700] text-[20px] flex md:ml-[20rem] ml-[15rem] z-50"
             >
               <img
                 src={closeImg}
@@ -65,7 +65,7 @@ const Hero = () => {
               />
             </button>
             <div className="flex flex-col md:w-[342px] md:h-[69px] flex flex-row items-center gap-[1rem] md:mt-[-1rem] mt-[-2rem] pb-4">
-              <h2 className="text-[24px] leading-[24px] font-[500] text-white">
+              <h2 className="text-[24px] leading-[24px] font-[500] text-white z-10">
                 Profile Details
               </h2>
               <p className="text-lightWhite font-[400] text-[16px] leading-[16px]">
@@ -249,7 +249,7 @@ const Hero = () => {
                   </div>
                 </div>
 
-                <button className="md:w-[140px] md:h-[26px] w-[146px] h-[32px] flex items-center justify-center rounded-[21.5px] border-[1.5px] border-[#4e4e4ecc] mt-2 md:mt-0">
+                <button className="md:w-[140px] md:h-[26px] w-[146px] h-[32px] flex items-center justify-center rounded-[21.5px] border-2 border-[#4e4e4ecc] mt-2 md:mt-0">
                   <button className="flex justify-center items-center gap-2">
                     <img
                       src={telegram}
@@ -257,7 +257,7 @@ const Hero = () => {
                       className="w-[16px] h-[16px]"
                     />
                     <button className="text-white font-[400] text-[10px] leading-[19px]">
-                      Join Telegram
+                      Get Free Calls
                     </button>
                     <img
                       src={arrow}

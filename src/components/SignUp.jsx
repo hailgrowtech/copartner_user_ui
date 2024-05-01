@@ -56,7 +56,7 @@ const SignUp = () => {
   };
 
   const handleClose = () => {
-    localStorage.setItem("visitedSignUp", "true");
+    sessionStorage.setItem("visitedSignUp", "true");
     navigate("/");
     window.location.reload();
   };
@@ -99,7 +99,7 @@ const SignUp = () => {
             <h2 className="text-2xl font-semibold text-white">Sign Up</h2>
           </div>
           <p className="text-gray-300 text-center mb-4">
-            Full access to any of our products.
+            Get access to daily free calls from varieties of India's SEBI Registered Reasearch Analysts.
           </p>
           {error && <p className="text-red-500 mb-4">{error}</p>}{" "}
           {/* Display error message if exists */}
@@ -115,7 +115,7 @@ const SignUp = () => {
                 placeholder="Mobile Number"
                 value={mobile}
                 onChange={(e) => setMobile(e.target.value)}
-                className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none px-4 py-3 border border-[#ffffff34] rounded-xl focus:outline-none focus:border-white-500 bg-transparent"
+                className="text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none px-4 py-3 border border-[#ffffff34] rounded-xl focus:outline-none focus:border-white-500 bg-transparent"
               />
               <button
                 type="submit"
