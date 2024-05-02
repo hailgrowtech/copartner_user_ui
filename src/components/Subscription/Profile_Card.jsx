@@ -22,7 +22,7 @@ const ExpertCardSub = ({ expert }) => {
   };
 
   return (
-    <Link onClick={scrollToTop} to="/subscription/ra-detail">
+    <Link onClick={scrollToTop} to="/subscription/buy">
       <div className="md:w-[384px] md:h-[400px] sm:w-[172px] sm:h-[300px] hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-2xl p-1 md:mt-8 md:ml-0 ml-[-0.5rem]">
         <div className="background-wrapper">
           <img
