@@ -69,6 +69,7 @@ import closeImg from "./closeIcon.png";
 import signupBg from "./signInBck.png";
 import feeback from './FeedbckStars.png';
 import exclamation from './exclamation.png';
+import danger from './Danger Triangle.png'
 
 export {
   logo,
@@ -141,5 +142,6 @@ export {
   closeImg,
   signupBg,
   feeback,
-  exclamation
+  exclamation,
+  danger
 };

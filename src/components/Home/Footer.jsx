@@ -1,5 +1,5 @@
 import React from "react";
-import { logo, facebook, linkedin, twitter, instagram, exclamation } from "../../assets";
+import { logo, facebook, linkedin, twitter, instagram, exclamation, danger } from "../../assets";
 import { Link } from "react-router-dom";
 const ProductList = [
   { name: "About Us", link: "/about" },
@@ -99,7 +99,7 @@ carefully before investing. For further disclosures click on read more
           }} className="md:mt-[2rem] md:mb-0 mb-10 w-full justify-around flex md:flex-row flex-col items-center">
   <div className="border-[1px] p-2 md:px-[50px] rounded-md">
     <span className="flex gap-2 md:text-[16px] text-[15px] text-[##18181B] my-[10px] marquee">
-      <img src={exclamation} className="w-5 h-5" alt="" />
+      <img src={danger} className="w-5 h-5" alt="" />
       <span>
         Disclaimer: The investment advice, trading tips, strategies, courses, webinars, and other information provided by SEBI registered research analysts on the COPARTNER platform represent their individual views and opinions. COPARTNER does not endorse or validate these views, and users are encouraged to conduct their own research and exercise caution before acting upon any information provided.
       </span>
