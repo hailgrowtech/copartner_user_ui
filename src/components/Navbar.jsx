@@ -197,7 +197,7 @@ const Navbar = () => {
         </div>
       </div>
       <Outlet />
-      <div className={`sm:pb-[3rem] pb-6`}>
+      <div className={`sm:pb-[3rem]`}>
         <Footer />
       </div>
     </>
