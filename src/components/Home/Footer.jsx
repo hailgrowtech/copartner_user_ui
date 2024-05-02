@@ -1,5 +1,12 @@
 import React from "react";
-import { logo, facebook, linkedin, twitter, instagram, exclamation, danger, arrow } from "../../assets";
+import {
+  logo,
+  linkedin,
+  instagram,
+  exclamation,
+  danger,
+  arrow,
+} from "../../assets";
 import { Link } from "react-router-dom";
 const ProductList = [
   { name: "About Us", link: "/about" },
@@ -14,14 +21,14 @@ const CommunityList = [
   { name: "Subscription", link: "/subscription" },
 ];
 
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-};
-
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
       <div className="md:w-[1440px] w-full md:h-[198px] h-[506px] md:pt-[8rem] justify-around border-t border-solid border-white border-opacity-10 flex md:flex-row flex-col items-center">
@@ -49,13 +56,20 @@ const Footer = () => {
               <img src={instagram} alt="Instagram" className="w-8" />
             </a>
           </div>
-          <div className="justify-start flex-col md:block hidden items-start flex py-2 md:w-[296px] w-[296px] md:h-[80px] h-[66px] md:leading-[20px] leading-[14px]">
+          <div className="justify-start flex-col md:block hidden items-start py-2 md:w-[296px] w-[296px] md:h-[80px] h-[66px] md:leading-[20px] leading-[14px]">
             <span className="flex items-start gap-2 md:text-[12px] text-[10px] text-[#c9c9c9] mt-[10px]">
               <img src={exclamation} className="w-5 h-5" alt="" />
-              Disclaimer: Investments in securities market are subject to market risks, read all the related documents
-              carefully before investing. For further disclosures.
+              Disclaimer: Investments in securities market are subject to market
+              risks, read all the related documents carefully before investing.
+              For further disclosures.
             </span>
-            <Link className="text-white text-sm ml-7 flex items-center" to="disclaimer">Read More <img className="w-4" src={arrow} alt="" /></Link>
+            <Link
+              onClick={scrollToTop}
+              className="text-white text-sm ml-7 flex items-center"
+              to="disclaimer"
+            >
+              Read More <img className="w-4" src={arrow} alt="" />
+            </Link>
           </div>
         </div>
         <div className="flex flex-row gap-[4rem]">
@@ -90,27 +104,42 @@ const Footer = () => {
             ))}
           </div>
         </div>
-        <div className="justify-start flex-col md:hidden block items-start flex py-2 md:w-[296px] md:h-[80px] mx-8 md:leading-[20px] leading-[14px]">
-            <span className="flex items-start gap-2 md:text-[12px] text-[10px] text-[#c9c9c9] mt-[10px]">
-              <img src={exclamation} className="w-5 h-5" alt="" />
-              Disclaimer: Investments in securities market are subject to market risks, read all the related documents
-              carefully before investing. For further disclosures.
-            </span>
-            <Link className="text-white text-sm ml-7 flex items-center" to="disclaimer">Read More <img className="w-4" src={arrow} alt="" /></Link>
-          </div>
+        <div className="justify-start flex-col md:hidden block items-start py-2 md:w-[296px] md:h-[80px] mx-8 md:leading-[20px] leading-[14px]">
+          <span className="flex items-start gap-2 md:text-[12px] text-xs text-[#c9c9c9] mt-[10px]">
+            <img src={exclamation} className="w-5 h-5" alt="" />
+            Disclaimer: Investments in securities market are subject to market
+            risks, read all the related documents carefully before investing.
+            For further disclosures.
+          </span>
+          <Link
+            className="text-white text-sm ml-7 flex items-center"
+            to="disclaimer"
+          >
+            Read More <img className="w-4" src={arrow} alt="" />
+          </Link>
+        </div>
       </div>
       <span className="text-dimWhite flex justify-center md:w-full mx-auto items-center text-center font-[400] text-[12px] leading-[15px] md:mb-0 mb-4 md:mt-[11rem]">
         @Copyright 2024. All rights reserved
       </span>
-      <div style={{
-        backgroundImage:
-          "linear-gradient(94.34deg, #FFFFFF 0%, #9BD0F5 100%)",
-      }} className="md:mt-[2rem] md:mb-0 mb-10 w-full justify-around flex md:flex-row flex-col items-center">
+      <div
+        style={{
+          backgroundImage:
+            "linear-gradient(94.34deg, #FFFFFF 0%, #9BD0F5 100%)",
+        }}
+        className="md:mt-[2rem] md:mb-0 mb-10 w-full justify-around flex md:flex-row flex-col items-center"
+      >
         <div className="border-[1px] p-2 md:px-[50px] rounded-md">
           <span className="flex gap-2 md:text-[16px] text-[15px] text-[##18181B] md:my-[10px] marquee">
             <img src={danger} className="w-5 h-5" alt="" />
             <span>
-              Disclaimer: The investment advice, trading tips, strategies, courses, webinars, and other information provided by SEBI registered research analysts on the COPARTNER platform represent their individual views and opinions. COPARTNER does not endorse or validate these views, and users are encouraged to conduct their own research and exercise caution before acting upon any information provided.
+              Disclaimer: The investment advice, trading tips, strategies,
+              courses, webinars, and other information provided by SEBI
+              registered research analysts on the COPARTNER platform represent
+              their individual views and opinions. COPARTNER does not endorse or
+              validate these views, and users are encouraged to conduct their
+              own research and exercise caution before acting upon any
+              information provided.
             </span>
           </span>
         </div>

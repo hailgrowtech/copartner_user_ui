@@ -10,6 +10,7 @@ import PrivacyPolicy from "./components/About/PrivacyPolicy";
 import Terms from "./components/About/Terms";
 import SignUp from "./components/SignUp";
 import Otp from "./components/Otp";
+import Disclaimer from "./components/About/Disclaimer";
 
 function App() {
 
@@ -89,6 +90,7 @@ function App() {
           <Route path="profile" element={ token || hasVisitedSignUp ? <Profile /> : <Navigate to="/signup" replace={true}/>} />
           <Route path="blogs" element={ token || hasVisitedSignUp ? <Blog /> : <Navigate to="/signup" replace={true}/>} />
           <Route path="contact_us" element={ token || hasVisitedSignUp ? <ContactUs /> : <Navigate to="/signup" replace={true}/>} />
+          <Route path="disclaimer" element={ token || hasVisitedSignUp ? <Disclaimer /> : <Navigate to="/signup" replace={true}/>} />
           <Route path="/blogs/:blogId" element={ token || hasVisitedSignUp ? <BlogPage /> : <Navigate to="/signup" replace={true}/>} />
         <Route path="/signup" element={ <SignUp/>} />
         <Route path="/otp" element={ <Otp/>} />

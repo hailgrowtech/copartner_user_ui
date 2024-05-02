@@ -28,7 +28,7 @@ const FAQs2 = () => {
 
   return (
     <div
-      className={`flex md:flex-col flex-col px-0`}
+      className={`flex md:flex-col w-full flex-col px-0`}
     >
       <div className={`{styles.flexStart} flex-col gap-2 xl:px-0`}>
         <div className="flex flex-row md:h-[52px] h-[34px] justify-center md:justify-between items-center">
@@ -69,7 +69,7 @@ const FAQs2 = () => {
           ))}
         </div>
       ) : (
-        <div className="w-[1204px] h-[556px] grid grid-cols-2 mt-[2rem] mb-[12rem] gap-[1rem]">
+        <div className="w-full h-[556px] grid grid-cols-2 mt-[2rem] mb-[12rem] gap-[1rem]">
           {faq_data2.map((faq) => {
             return (
               <div className="w-[592px] h-[256px] flex flex-col border py-[3rem] gap-[1rem] border-solid border-[rgba(255,255,255,0.3)] p-[4rem] items-center rounded-[8px]">

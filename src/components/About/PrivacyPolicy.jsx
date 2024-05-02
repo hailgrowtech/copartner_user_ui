@@ -25,7 +25,7 @@ const PrivacyPolicy = () => {
               <div className="flex flex-col">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
-                    text-gradient-2 leading-[51px] md:w-[635px] md:h-[60px] w-[365px] h-[40px] text-start"
+                    text-gradient-2 leading-[51px] md:h-[60px] h-[40px] text-start"
                 >
                   1. Collection of Information:
                 </span>
@@ -285,7 +285,7 @@ const PrivacyPolicy = () => {
               <div className="flex flex-col">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
-                    text-gradient-2 leading-[51px] md:w-[635px] md:h-[60px] w-[365px] h-[40px] text-start"
+                    text-gradient-2 leading-[51px] md:h-[60px] h-[40px] text-start"
                 >
                   3. Retention of Information:
                 </span>

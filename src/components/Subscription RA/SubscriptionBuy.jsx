@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../style";
 import "./SubscriptionRA.css";
 import { courses } from "../../constants";
@@ -6,23 +6,91 @@ import {
   anywhereAccess,
   arrow,
   bookmark,
+  bookmarkFill,
   courseImg,
   duration,
-  layer,
   level,
   lifetimeAccess,
   sessions,
   stars,
-  telegram,
-  tick,
   userImg,
 } from "../../assets";
 import CourseCardsCarousel from "./CourseCardsCarousel";
 import CourseCard from "./CourseCard";
+import { ToastContainer, toast } from "react-toastify";
+import SubscriptionPaymentPopup from "./SubscriptionPaymentPopup";
+import FAQs2 from "../About/FAQs2";
+import CoursePaymentPopup from "./CoursePaymentPopup";
 
 const SubscriptionRA = () => {
-
+  const [isCardSaved, setIsCardSaved] = useState(false);
   const carouselItems = courses.slice(0, 5);
+  const [activeTab, setActiveTab] = useState("subscriptions");
+  const [showMonthlyPopup, setShowMonthlyPopup] = useState(false);
+  const [backgroundColor, setBackgroundColor] = useState("#18181B80");
+  const [selectedMonthlyPlan, setSelectedMonthlyPlan] = useState(null);
+  const [planMonthlyPrice, setPlanMonthlyPrice] = useState(0);
+  const [activeHoverIndex, setActiveHoverIndex] = useState(0);
+  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [planPrice, setPlanPrice] = useState(2999);
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleBuyNowClick = (plan, price) => {
+    setSelectedMonthlyPlan(plan);
+    setPlanMonthlyPrice(price);
+    setShowMonthlyPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowMonthlyPopup(false);
+  };
+
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName);
+  };
+
+  const handleMouseOver = () => {
+    setBackgroundColor("transparent");
+  };
+
+  const handleMouseOut = () => {
+    setBackgroundColor("#18181B80");
+  };
+
+  const handleMouseEnter = (index) => {
+    setActiveHoverIndex(index);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveHoverIndex(0);
+  };
+
+  const handleSaveCard = () => {
+    // Toggle the isCardSaved state
+    setIsCardSaved(!isCardSaved);
+
+    // Show toast notification based on the new state
+    if (!isCardSaved) {
+      toast.success("Your card has been saved", {
+        position: "top-right",
+      });
+    } else {
+      toast.info("Your card has been unsaved", {
+        position: "top-right",
+      });
+    }
+  };
+
+  const handleSelectPlan = (plan, price) => {
+    setSelectedPlan(plan);
+    setPlanPrice(price);
+
+    console.log(`User has chosen: ${plan} plan with price ₹${price}`);
+  };
+
+  const handleClose = () => {
+    setShowPopup(false);
+  };
 
   return (
     <section
@@ -31,7 +99,7 @@ const SubscriptionRA = () => {
       <div
         className={`flex-1 ${styles.flexStart} flex-col xl:px-0 md:px-28 z-10 md:bottom-[10rem] font-inter`}
       >
-        <section className="subscription-RA-bg flex flex-row justify-between bg-[#18181B80] relative w-full md:p-[30px] p-[16px] border-2 border-[#f4f4f50e] rounded-xl mb-8">
+        <section className="subscription-RA-bg flex flex-row justify-between bg-[#18181B80] relative w-full md:p-[30px] p-[16px] border-2 border-[#f4f4f50e] rounded-xl md:mb-8">
           <div className="text-white">
             <div className="flex flex-col md:mb-6 mb-1">
               <div className="flex justify-between items-center w-full">
@@ -74,12 +142,12 @@ const SubscriptionRA = () => {
             </div>
             <div className="border-[1px] border-[#f4f4f535] border-opacity-30 md:rounded-3xl rounded-2xl md:w-44 w-32 md:mb-6">
               <button className="flex mx-auto md:py-2 py-1 items-center">
-                <img
+                {/* <img
                   className="md:w-6 w-4 me-3"
                   src={telegram}
                   alt="telegram icon"
-                />
-                <span className="md:text-base text-xs">Telegram</span>
+                /> */}
+                <span className="md:text-base text-xs">Get Free Calls</span>
                 <img className="w-4 ms-3" src={arrow} alt="arrow icon" />
               </button>
             </div>
@@ -105,8 +173,19 @@ const SubscriptionRA = () => {
             />
             <span className="md:text-3xl text-sm">4.4</span>
           </div>
-          <div className="absolute md:bottom-6 bottom-8 md:right-8 right-3 rounded-full cursor-pointer transition duration-300 hover:scale-110 hover:bg-[#ffffff5e] hover:rounded-full p-2">
-            <img src={bookmark} alt="Save icon" className="w-6 h-6" />
+          <div
+            onClick={handleSaveCard}
+            className={`absolute md:bottom-6 bottom-12 md:right-8 right-3 rounded-full cursor-pointer transition duration-300 hover:scale-110 hover:bg-[#ffffff5e] hover:rounded-full p-2`}
+          >
+            {!isCardSaved ? (
+              <img src={bookmark} alt="Save icon" className="w-6 h-6" />
+            ) : (
+              <img
+                src={bookmarkFill}
+                alt="Save fill icon"
+                className="w-6 h-6"
+              />
+            )}
           </div>
           <div className="md:hidden block absolute bottom-3 right-4 text-white">
             <button className="flex items-center md:text-base text-xs">
@@ -114,125 +193,257 @@ const SubscriptionRA = () => {
             </button>
           </div>
         </section>
-        <section className="w-full">
+        <section className="w-full md:block hidden">
           <div className="w-full flex flex-row bg-[#18181B80] rounded-2xl md:p-3 p-2">
-            <div className="md:flex-col-6 md:text-[16px] text-[12px] flex flex-row my-3 md:mx-px mx-auto">
-              <button className="text-white md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px]">
+            <div className="md:flex-col-6 md:text-[16px] text-[12px] flex flex-row md:mx-px mx-auto">
+              <button
+                onClick={() => handleTabClick("subscriptions")}
+                className={`hover:text-white text-dimWhite md:flex-col-3 rounded-full p-2 md:px-6 md:py-5 mx-2 md:text-[1rem] text-[9.5px] ${
+                  activeTab === "subscriptions" ? "bg-[#ffffff5e]" : ""
+                }`}
+              >
                 Subscriptions Plans
               </button>
-              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
+              <button
+                onClick={() => handleTabClick("highlights")}
+                className={`md:flex-col-3 md:px-6 md:py-5 mx-2 rounded-full p-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white ${
+                  activeTab === "highlights" ? "bg-[#ffffff5e]" : ""
+                }`}
+              >
                 Key Highlights
               </button>
-              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
+              <button
+                onClick={() => handleTabClick("about")}
+                className={`md:flex-col-3 md:px-6 md:py-5 mx-2 rounded-full p-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white ${
+                  activeTab === "about" ? "bg-[#ffffff5e]" : ""
+                }`}
+              >
                 About Subscriptions
               </button>
-              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
-                Courses
-              </button>
-              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] md:inline hidden text-[9.5px] text-dimWhite hover:text-white">
+              <button
+                onClick={() => handleTabClick("reviews")}
+                className={`md:flex-col-3 md:px-6 md:py-5 mx-2 rounded-full p-2 md:text-[1rem] md:inline hidden text-[9.5px] text-dimWhite hover:text-white ${
+                  activeTab === "reviews" ? "bg-[#ffffff5e]" : ""
+                }`}
+              >
                 Reviews
               </button>
             </div>
           </div>
         </section>
-        <section className="w-full flex md:flex-row flex-col md:my-14 my-10">
-          <div className="text-white my-auto md:text-left text-center md:w-1/2 w-full">
-            <div className="subheading-gradient md:text-5xl text-3xl font-bold pb-4">
+        <section className="w-full flex flex-col md:my-14 my-10">
+          <div className="text-white md:text-left text-center md:flex md:justify-between w-full md:mb-8">
+            <div className="text-white md:text-5xl text-3xl font-bold pb-4 md:w-1/2">
               Subscriptions Plans
             </div>
-            <div className="text-dimWhite md:text-lg text-xs md:mb-0 mb-4">
-              Discover our subscription plans tailored for traders like you.
-              Gain access to exclusive features, expert insights and community
-              support to elevate your trading journey.{" "}
+            <div className="text-[#A1A1AACC] md:text-lg text-xs md:mb-0 mb-4 md:w-1/2">
               <span className="text-white">
                 Choose the plan that suits your needs and start trading with
                 confidence today.
               </span>
             </div>
           </div>
-          <div className="text-white flex my-auto w-1/2 gap-8">
-            <div className="flex-1 rounded-2xl bg-[#18181B80] p-5">
-              <div className="text-right opacity-60 md:flex hidden">
-                21 Days Left
+          <div className="text-white flex flex-wrap justify-center md:gap-8 gap-2 w-full subscription-cards">
+            <div
+              onClick={() => handleBuyNowClick("Monthly", 1999)}
+              className={`flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
+                activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
+              }`}
+              onMouseOver={handleMouseOver}
+              onMouseOut={handleMouseOut}
+            >
+              <div className="text-center opacity-60 hidden">21 Days Left</div>
+              <div className="text-center md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
+                Monthly
               </div>
-              <div className="md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
-                Basic
-              </div>
-              <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex">
-                ₹2,999/<span className="md:flex hidden">-</span>
+              <div className="text-center md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-center">
+                ₹1,999/<span className="md:flex hidden">-</span>
                 <span className="md:hidden flex font-normal">mo</span>
               </div>
-              <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
+              <div className="text-center md:text-lg text-xs mt-auto opacity-60 mb-6">
                 1 Month Access
               </div>
-              <div className="md:mb-8 mb-4">
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-              </div>
+              {/* <div className="text-center md:mb-8 mb-4">
+      <div className="flex md:mb-4 mb-2 font-medium items-center md:justify-center text-left">
+        <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
+        <span className="md:text-base text-xs">
+          Voice messages anywhere
+        </span>
+      </div>
+      <div className="flex md:mb-4 mb-2 font-medium items-center md:justify-center text-left">
+        <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
+        <span className="md:text-base text-xs">
+          Voice messages anywhere
+        </span>
+      </div>
+      <div className="flex md:mb-4 mb-2 font-medium items-center md:justify-center text-left">
+        <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
+        <span className="md:text-base text-xs">
+          Voice messages anywhere
+        </span>
+      </div>
+    </div> */}
               <div className="text-center">
-                <button className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-gray-700 border-4">
+                <button className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2">
                   Renew
                 </button>
               </div>
             </div>
-            <div className="flex-1 bg-opacity-5 p-5">
-              <div className="md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1 md:mt-6 mt-0">
-                Standard
+
+            <div
+              onClick={() => handleBuyNowClick("Quarterly", 2999)}
+              className="flex-1 rounded-2xl p-5 basic-div hover:bg-[#18181B80] relative"
+              style={{ border: "2px solid #fff", backgroundColor }} // Added border style
+            >
+              <div className="text-center opacity-60 hidden">21 Days Left</div>
+              <div className="text-center md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
+                Quarterly
               </div>
-              <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex">
-                ₹5,999/<span className="md:flex hidden">-</span>
+              <div className="text-center md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-center">
+                ₹2,999/<span className="md:flex hidden">-</span>
                 <span className="md:hidden flex font-normal">mo</span>
               </div>
-              <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
+              <div className="text-center md:text-lg text-xs mt-auto opacity-60 mb-6">
                 3 Month Access
               </div>
-              <div className="md:mb-8 mb-4">
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
+              <div className="text-center md:mb-8 mb-4">
+                {/* <div className="flex md:justify-center md:mb-4 mb-2 font-medium items-center text-left">
+      <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
+      <span className="md:text-base text-xs">
+        Voice messages anywhere
+      </span>
+    </div>
+    <div className="flex md:justify-center md:mb-4 mb-2 font-medium items-center text-left">
+      <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
+      <span className="md:text-base text-xs">
+        Voice messages anywhere
+      </span>
+    </div>
+    <div className="flex justify-center md:mb-4 mb-2 font-medium items-center text-left">
+      <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
+      <span className="md:text-base text-xs">
+        Voice messages anywhere
+      </span>
+    </div> */}
               </div>
               <div className="text-center">
                 <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2">
-                  Buy Now
+                  Renew
+                </button>
+              </div>
+              <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
+                Recommended
+              </div>
+            </div>
+
+            {/* <div
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}
+            className={`flex-1 bg-opacity-5 p-5 hover:bg-[#18181B80] rounded-2xl standard-div ${
+              activeHoverIndex === 3 ? "hover:bg-[#18181B80]" : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(3)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className="md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1 md:mt-1 mt-0">
+              Half-Yearly
+            </div>
+            <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex">
+              ₹5,999/<span className="md:flex hidden">-</span>
+              <span className="md:hidden flex font-normal">mo</span>
+            </div>
+            <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
+              6 Month Access
+            </div>
+            <div className="md:mb-8 mb-4">
+              <div className="flex md:mb-4 mb-2 font-medium items-center">
+                <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
+                <span className="md:text-base text-xs">
+                  Voice messages anywhere
+                </span>
+              </div>
+              <div className="flex md:mb-4 mb-2 font-medium items-center">
+                <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
+                <span className="md:text-base text-xs">
+                  Voice messages anywhere
+                </span>
+              </div>
+              <div className="flex md:mb-4 mb-2 font-medium items-center">
+                <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
+                <span className="md:text-base text-xs">
+                  Voice messages anywhere
+                </span>
+              </div>
+            </div>
+            <div className="text-center">
+              <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2" onClick={() => handleBuyNowClick("Half-Yearly", 5999)}>
+               Buy Now
+              </button>
+            </div>
+          </div> */}
+
+            <div
+              onClick={() => handleBuyNowClick("Yearly", 9999)}
+              onMouseOver={handleMouseOver}
+              onMouseOut={handleMouseOut}
+              className={`flex-1 bg-opacity-5 p-5 hover:bg-[#18181B80] rounded-2xl standard-div ${
+                activeHoverIndex === 4 ? "hover:bg-[#18181B80]" : ""
+              } text-center`}
+              onMouseEnter={() => handleMouseEnter(4)}
+              onMouseLeave={handleMouseLeave}
+            >
+              <div className="md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1 md:mt-1 mt-0">
+                Yearly
+              </div>
+              <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-center">
+                ₹9,999/<span className="md:flex hidden">-</span>
+                <span className="md:hidden flex font-normal">mo</span>
+              </div>
+              <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
+                12 Month Access
+              </div>
+              <div className="md:mb-8 mb-4">
+                {/* <div className="flex md:mb-4 mb-2 font-medium items-center justify-center">
+                <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
+                <span className="md:text-base text-xs">
+                  Voice messages anywhere
+                </span>
+              </div>
+              <div className="flex md:mb-4 mb-2 font-medium items-center justify-center">
+                <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
+                <span className="md:text-base text-xs">
+                  Voice messages anywhere
+                </span>
+              </div>
+              <div className="flex md:mb-4 mb-2 font-medium items-center justify-center">
+                <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
+                <span className="md:text-base text-xs">
+                  Voice messages anywhere
+                </span>
+              </div> */}
+              </div>
+              <div className="text-center">
+                <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2">
+                  Renew
                 </button>
               </div>
             </div>
+            {showMonthlyPopup && (
+              <SubscriptionPaymentPopup
+                onClose={handleClosePopup}
+                selectedMonthlyPlan={selectedMonthlyPlan}
+                planMonthlyPrice={planMonthlyPrice}
+                // expertName={expertData.name}
+              />
+            )}
           </div>
         </section>
         <section className="w-full md:my-8 my-2 flex gap-20 md:mb-24 mb-16">
+          <FAQs2 />
+        </section>
+        <section className="w-full md:my-8 my-2 flex gap-20 md:mb-24 mb-16">
           <div className="flex flex-col md:w-2/3 w-full text-white">
-            <div className="subheading-gradient md:text-5xl text-3xl font-bold pb-4 md:text-left text-center">
+            <div className="text-white md:text-5xl text-3xl font-bold pb-4 md:text-left text-center">
               Key highlights to join this subscription
             </div>
             <div className="text-dimWhite md:mb-9 mb-4 md:text-base text-xs md:text-left text-center">
@@ -243,7 +454,7 @@ const SubscriptionRA = () => {
               <div className="flex-1 flex flex-col md:gap-6 gap-3">
                 <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
                   <div className="w-28 h-14 border-2 rounded-xl border-[#F4F4F51A] flex items-center justify-center">
-                    <img className="w-6 h-6" src={layer} alt="layer icon" />
+                    1.
                   </div>
                   <div>
                     <p className="text-[#E4E4E7] md:text-lg text-base">
@@ -257,7 +468,7 @@ const SubscriptionRA = () => {
                 </div>
                 <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
                   <div className="w-28 h-14 border-2 rounded-xl border-[#F4F4F51A] flex items-center justify-center">
-                    <img className="w-6 h-6" src={layer} alt="layer icon" />
+                    2.
                   </div>
                   <div>
                     <p className="text-[#E4E4E7] md:text-lg text-base">
@@ -273,7 +484,7 @@ const SubscriptionRA = () => {
               <div className="flex-1 flex flex-col md:gap-6 gap-3">
                 <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
                   <div className="w-28 h-14 border-2 rounded-xl border-[#F4F4F51A] flex items-center justify-center">
-                    <img className="w-6 h-6" src={layer} alt="layer icon" />
+                    3.
                   </div>
                   <div>
                     <p className="text-[#E4E4E7] md:text-lg text-base">
@@ -288,7 +499,7 @@ const SubscriptionRA = () => {
                 </div>
                 <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
                   <div className="w-28 h-14 border-2 rounded-xl border-[#F4F4F51A] flex items-center justify-center">
-                    <img className="w-6 h-6" src={layer} alt="layer icon" />
+                    4.
                   </div>
                   <div>
                     <p className="text-[#E4E4E7] md:text-lg text-base">
@@ -308,24 +519,75 @@ const SubscriptionRA = () => {
               <div className="text-3xl font-bold subheading-gradient mb-4">
                 Subscription Plan
               </div>
-              <div className="flex rounded-2xl p-4 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
+              <div
+                onClick={() => handleSelectPlan("Monthly", 1999)}
+                className={`flex rounded-2xl p-4 ${
+                  selectedPlan === "Monthly"
+                    ? "bg-[#18181B80] border-2 border-[#F4F4F51A]"
+                    : "hover:bg-[#18181B80]"
+                }`}
+                onMouseEnter={() => handleMouseEnter(1)}
+                onMouseLeave={handleMouseLeave}
+              >
                 <div className="flex-1 text-left">
-                  <p className="text-lg subheading-gradient">Basic</p>
+                  <p className="text-lg subheading-gradient">Monthly</p>
                   <p className="text-[#C6CDD5] text-sm">1 Month Access</p>
+                </div>
+                <p className="flex-1 text-3xl font-bold">₹1,999</p>
+              </div>
+              <div
+                onClick={() => handleSelectPlan("Quarterly", 2999)}
+                className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
+                  selectedPlan === "Quarterly"
+                    ? "border-2 border-[#F4F4F51A]"
+                    : ""
+                }`}
+              >
+                <div className="flex-1 text-left">
+                  <p className="text-lg subheading-gradient">Quarterly</p>
+                  <p className="text-[#C6CDD5] text-sm">3 Month Access</p>
                 </div>
                 <p className="flex-1 text-3xl font-bold">₹2,999</p>
               </div>
-              <div className="flex rounded-2xl p-4 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
+              {/* <div
+            onClick={() => handleSelectPlan('Half-Yearly', 5999)}
+            className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
+              selectedPlan === 'Half-Yearly' ? 'border-2 border-[#F4F4F51A]' : ''
+            }`}
+          >
+            <div className="flex-1 text-left">
+              <p className="text-lg subheading-gradient">Half-Yearly</p>
+              <p className="text-[#C6CDD5] text-sm">6 Month Access</p>
+            </div>
+            <p className="flex-1 text-3xl font-bold">₹5,999</p>
+          </div> */}
+              <div
+                onClick={() => handleSelectPlan("Yearly", 9999)}
+                className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
+                  selectedPlan === "Yearly" ? "border-2 border-[#F4F4F51A]" : ""
+                }`}
+              >
                 <div className="flex-1 text-left">
-                  <p className="text-lg subheading-gradient">Standard</p>
-                  <p className="text-[#C6CDD5] text-sm">3 Month Access</p>
+                  <p className="text-lg subheading-gradient">Yearly</p>
+                  <p className="text-[#C6CDD5] text-sm">12 Month Access</p>
                 </div>
-                <p className="flex-1 text-3xl font-bold">₹5,999</p>
+                <p className="flex-1 text-3xl font-bold">₹9,999 </p>
               </div>
               <div className="text-center">
-                <button className="bg-white text-black px-12 py-2 rounded-lg border-gray-700 border-4">
+                <button
+                  className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2"
+                  onClick={() => setShowPopup(true)}
+                >
                   Renew
                 </button>
+                {showPopup && (
+                  <CoursePaymentPopup
+                    onClose={handleClose}
+                    selectedPlan={selectedPlan}
+                    planPrice={planPrice}
+                    // expertName={expertData.name}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -402,7 +664,7 @@ const SubscriptionRA = () => {
               <div className="flex gap-16 items-center md:justify-normal justify-between">
                 <span className="md:text-5xl text-3xl font-bold">₹2,999/-</span>
                 <button className="bg-white md:text-base text-xs text-black md:px-12 px-6 py-2 md:rounded-lg rounded border-gray-700 border-4">
-                  Buy Now
+                  Renew
                 </button>
               </div>
             </div>
@@ -483,6 +745,7 @@ const SubscriptionRA = () => {
           </div>
         </section>
       </div>
+      <ToastContainer />
     </section>
   );
 };

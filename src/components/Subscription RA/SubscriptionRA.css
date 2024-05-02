@@ -3,7 +3,6 @@
   background-repeat: no-repeat;
   background-position: 28vw 1vh;
   background-size: 55rem;
-  z-index: 50;
 }
 
 .subscription-RA-img {
@@ -29,10 +28,12 @@
 
 .basic-div:not(:hover) button {
   background-color: transparent;
+  border: 1px solid white;
   color: white;
 }
 
 .standard-div:not(:hover) button {
   background-color: transparent;
+  border: 1px solid white;
   color: white;
 }

@@ -1,24 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../style";
 import "./SubscriptionRA.css";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 import {
   arrow,
   bookmark,
-  layer,
+  bookmarkFill,
   stars,
-  telegram,
-  tick,
   userImg,
 } from "../../assets";
 import SubscriptionPaymentPopup from "./SubscriptionPaymentPopup";
 import FAQs2 from "../About/FAQs2";
+import CoursePaymentPopup from "./CoursePaymentPopup";
+import MobileCourse from "./MobileCourse";
 
 const SubscriptionRA = () => {
-  const [showBasicDialog, setShowBasicDialog] = useState(false);
-  const [showStandardDialog, setStandardDialog] = useState(false);
   const [isCardSaved, setIsCardSaved] = useState(false);
-  const [expertData, setExpertData] = useState(null);
   const [activeHoverIndex, setActiveHoverIndex] = useState(0);
   const [backgroundColor, setBackgroundColor] = useState("#18181B80");
   const [showMonthlyPopup, setShowMonthlyPopup] = useState(false);
@@ -27,6 +24,41 @@ const SubscriptionRA = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [planPrice, setPlanPrice] = useState(2999);
+  const [activeTab, setActiveTab] = useState("subscriptions");
+  const [showMobilePopup, setShowMobilePopup] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const threshold = 50;
+      if (scrollPosition > threshold) {
+        setShowMobilePopup(true);
+      } else {
+        setShowMobilePopup(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleSelectPlan = (plan, price) => {
+    setSelectedPlan(plan);
+    setPlanPrice(price);
+
+    console.log(`User has chosen: ${plan} plan with price ₹${price}`);
+  };
+
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName);
+  };
+
+  const handleClose = () => {
+    setShowPopup(false);
+  };
 
   const handleSaveCard = () => {
     // Toggle the isCardSaved state
@@ -34,12 +66,12 @@ const SubscriptionRA = () => {
 
     // Show toast notification based on the new state
     if (!isCardSaved) {
-      toast.success('Your card has been saved', {
-        position: "top-right"
+      toast.success("RA has been saved", {
+        position: "top-right",
       });
     } else {
-      toast.info('Your card has been unsaved', {
-        position: "top-right"
+      toast.info("RA has been unsaved", {
+        position: "top-right",
       });
     }
   };
@@ -106,14 +138,14 @@ const SubscriptionRA = () => {
             <div className="md:text-lg text-sm md:font-semibold md:w-[508px] md:mb-4 mb-2">
               <span className="text-dimWhite">SEBI:</span> 987987892479
             </div>
-            <div className="border-[1px] md:block hidden border-[#f4f4f535] border-opacity-30 md:rounded-3xl rounded-2xl md:w-44 w-32 md:mb-6">
+            <div className="bg-[#0081F1] md:block hidden md:rounded-3xl rounded-2xl md:w-44 w-32 md:mb-6">
               <button className="flex mx-auto md:py-2 py-1 items-center">
-                <img
+                {/* <img
                   className="md:w-6 w-4 me-3"
                   src={telegram}
                   alt="telegram icon"
-                />
-                <span className="md:text-base text-xs">Telegram</span>
+                /> */}
+                <span className="md:text-base text-xs">Get Free Calls</span>
                 <img className="w-4 ms-3" src={arrow} alt="arrow icon" />
               </button>
             </div>
@@ -139,34 +171,65 @@ const SubscriptionRA = () => {
             />
             <span className="md:text-3xl text-sm">4.4</span>
           </div>
-          <div onClick={handleSaveCard} className={`absolute md:bottom-6 bottom-12 md:right-8 right-3 rounded-full cursor-pointer transition duration-300 ${isCardSaved ? "scale-110 bg-[#ffffff5e]" : "bg-transparent"} hover:scale-110 hover:bg-[#ffffff5e] hover:rounded-full p-2`}>
-            <img src={bookmark} alt="Save icon" className="w-6 h-6" />
+          <div
+            onClick={handleSaveCard}
+            className={`absolute md:bottom-6 bottom-12 md:right-8 right-3 rounded-full cursor-pointer transition duration-300 hover:scale-110 hover:bg-[#ffffff5e] hover:rounded-full p-2`}
+          >
+            {!isCardSaved ? (
+              <img src={bookmark} alt="Save icon" className="w-6 h-6" />
+            ) : (
+              <img
+                src={bookmarkFill}
+                alt="Save fill icon"
+                className="w-6 h-6"
+              />
+            )}
           </div>
-          <div className="bg-[#0081F1] md:hidden w-[90%] block absolute bottom-3 border-opacity-30 md:rounded-3xl rounded-2xl md:w-44 w-32 md:mb-6">
-              <button className="flex mx-auto text-white md:py-2 py-2 items-center">
-                <img
-                  className="md:w-6 w-4 me-3"
-                  src={telegram}
-                  alt="telegram icon"
-                />
-                <span className="md:text-base text-xs">Get Free Calls</span>
-                <img className="w-4 ms-3" src={arrow} alt="arrow icon" />
-              </button>
-            </div>
+          <div className="bg-[#0081F1] md:hidden w-[90%] block absolute bottom-3 border-opacity-30 md:rounded-3xl rounded-2xl md:w-44 md:mb-6">
+            <button className="flex mx-auto text-white md:py-2 py-2 items-center">
+              {/* <img
+                className="md:w-6 w-4 me-3"
+                src={telegram}
+                alt="telegram icon"
+              /> */}
+              <span className="md:text-base text-xs">Get Free Calls</span>
+              <img className="w-4 ms-3" src={arrow} alt="arrow icon" />
+            </button>
+          </div>
         </section>
         <section className="w-full md:block hidden">
-          <div className="w-full flex flex-row bg-[#18181B80] rounded-2xl md:p-3 p-2">
-            <div className="md:flex-col-6 md:text-[16px] text-[12px] flex flex-row my-3 md:mx-px mx-auto">
-              <button className="text-white md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px]">
+          <div className="w-full flex flex-row bg-[#18181B80] rounded-2xl">
+            <div className="md:flex-col-6 md:text-[16px] text-[12px] flex flex-row md:mx-px mx-auto">
+              <button
+                onClick={() => handleTabClick("subscriptions")}
+                className={`hover:text-white text-dimWhite md:flex-col-3 rounded-full p-2 md:px-6 md:py-5 mx-2 md:text-[1rem] text-[9.5px] ${
+                  activeTab === "subscriptions" ? "bg-[#ffffff5e]" : ""
+                }`}
+              >
                 Subscriptions Plans
               </button>
-              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
+              <button
+                onClick={() => handleTabClick("highlights")}
+                className={`md:flex-col-3 md:px-6 md:py-5 mx-2 rounded-full p-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white ${
+                  activeTab === "highlights" ? "bg-[#ffffff5e]" : ""
+                }`}
+              >
                 Key Highlights
               </button>
-              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
+              <button
+                onClick={() => handleTabClick("about")}
+                className={`md:flex-col-3 md:px-6 md:py-5 mx-2 rounded-full p-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white ${
+                  activeTab === "about" ? "bg-[#ffffff5e]" : ""
+                }`}
+              >
                 About Subscriptions
               </button>
-              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] md:inline hidden text-[9.5px] text-[#A1A1AACC] hover:text-white">
+              <button
+                onClick={() => handleTabClick("reviews")}
+                className={`md:flex-col-3 md:px-6 md:py-5 mx-2 rounded-full p-2 md:text-[1rem] md:inline hidden text-[9.5px] text-dimWhite hover:text-white ${
+                  activeTab === "reviews" ? "bg-[#ffffff5e]" : ""
+                }`}
+              >
                 Reviews
               </button>
             </div>
@@ -187,8 +250,9 @@ const SubscriptionRA = () => {
           <div className="text-white flex flex-wrap justify-center md:gap-8 gap-2 w-full subscription-cards">
             <div
               onClick={() => handleBuyNowClick("Monthly", 1999)}
-              className={`flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
-                }`}
+              className={`flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
+                activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
+              }`}
               onMouseOver={handleMouseOver}
               onMouseOut={handleMouseOut}
             >
@@ -224,9 +288,7 @@ const SubscriptionRA = () => {
       </div>
     </div> */}
               <div className="text-center">
-                <button
-                  className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2"
-                >
+                <button className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2">
                   Buy Now
                 </button>
               </div>
@@ -269,9 +331,7 @@ const SubscriptionRA = () => {
     </div> */}
               </div>
               <div className="text-center">
-                <button
-                  className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2"
-                >
+                <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2">
                   Buy Now
                 </button>
               </div>
@@ -330,8 +390,9 @@ const SubscriptionRA = () => {
               onClick={() => handleBuyNowClick("Yearly", 9999)}
               onMouseOver={handleMouseOver}
               onMouseOut={handleMouseOut}
-              className={`flex-1 bg-opacity-5 p-5 hover:bg-[#18181B80] rounded-2xl standard-div ${activeHoverIndex === 4 ? "hover:bg-[#18181B80]" : ""
-                } text-center`}
+              className={`flex-1 bg-opacity-5 p-5 hover:bg-[#18181B80] rounded-2xl standard-div ${
+                activeHoverIndex === 4 ? "hover:bg-[#18181B80]" : ""
+              } text-center`}
               onMouseEnter={() => handleMouseEnter(4)}
               onMouseLeave={handleMouseLeave}
             >
@@ -366,9 +427,7 @@ const SubscriptionRA = () => {
               </div> */}
               </div>
               <div className="text-center">
-                <button
-                  className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2"
-                >
+                <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2">
                   Buy Now
                 </button>
               </div>
@@ -384,7 +443,7 @@ const SubscriptionRA = () => {
           </div>
         </section>
         <section className="w-full md:my-8 my-2 flex gap-20 md:mb-24 mb-16">
-        <FAQs2 />
+          <FAQs2 />
         </section>
 
         <section className="w-full md:my-8 my-2 flex gap-20 md:mb-24 mb-16">
@@ -465,24 +524,75 @@ const SubscriptionRA = () => {
               <div className="text-3xl font-bold subheading-gradient mb-4">
                 Subscription Plan
               </div>
-              <div className="flex rounded-2xl p-4 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
+              <div
+                onClick={() => handleSelectPlan("Monthly", 1999)}
+                className={`flex rounded-2xl p-4 ${
+                  selectedPlan === "Monthly"
+                    ? "bg-[#18181B80] border-2 border-[#F4F4F51A]"
+                    : "hover:bg-[#18181B80]"
+                }`}
+                onMouseEnter={() => handleMouseEnter(1)}
+                onMouseLeave={handleMouseLeave}
+              >
                 <div className="flex-1 text-left">
-                  <p className="text-lg subheading-gradient">Basic</p>
+                  <p className="text-lg subheading-gradient">Monthly</p>
                   <p className="text-[#C6CDD5] text-sm">1 Month Access</p>
+                </div>
+                <p className="flex-1 text-3xl font-bold">₹1,999</p>
+              </div>
+              <div
+                onClick={() => handleSelectPlan("Quarterly", 2999)}
+                className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
+                  selectedPlan === "Quarterly"
+                    ? "border-2 border-[#F4F4F51A]"
+                    : ""
+                }`}
+              >
+                <div className="flex-1 text-left">
+                  <p className="text-lg subheading-gradient">Quarterly</p>
+                  <p className="text-[#C6CDD5] text-sm">3 Month Access</p>
                 </div>
                 <p className="flex-1 text-3xl font-bold">₹2,999</p>
               </div>
-              <div className="flex rounded-2xl p-4 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
+              {/* <div
+            onClick={() => handleSelectPlan('Half-Yearly', 5999)}
+            className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
+              selectedPlan === 'Half-Yearly' ? 'border-2 border-[#F4F4F51A]' : ''
+            }`}
+          >
+            <div className="flex-1 text-left">
+              <p className="text-lg subheading-gradient">Half-Yearly</p>
+              <p className="text-[#C6CDD5] text-sm">6 Month Access</p>
+            </div>
+            <p className="flex-1 text-3xl font-bold">₹5,999</p>
+          </div> */}
+              <div
+                onClick={() => handleSelectPlan("Yearly", 9999)}
+                className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
+                  selectedPlan === "Yearly" ? "border-2 border-[#F4F4F51A]" : ""
+                }`}
+              >
                 <div className="flex-1 text-left">
-                  <p className="text-lg subheading-gradient">Standard</p>
-                  <p className="text-[#C6CDD5] text-sm">3 Month Access</p>
+                  <p className="text-lg subheading-gradient">Yearly</p>
+                  <p className="text-[#C6CDD5] text-sm">12 Month Access</p>
                 </div>
-                <p className="flex-1 text-3xl font-bold">₹5,999</p>
+                <p className="flex-1 text-3xl font-bold">₹9,999 </p>
               </div>
               <div className="text-center">
-                <button className="bg-white text-black px-12 py-2 rounded-lg border-gray-700 border-2">
+                <button
+                  className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2"
+                  onClick={() => setShowPopup(true)}
+                >
                   Buy Now
                 </button>
+                {showPopup && (
+                  <CoursePaymentPopup
+                    onClose={handleClose}
+                    selectedPlan={selectedPlan}
+                    planPrice={planPrice}
+                    // expertName={expertData.name}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -517,6 +627,12 @@ const SubscriptionRA = () => {
         </section>
       </div>
       <ToastContainer />
+      <div className="md:hidden block">
+        <MobileCourse
+          handleBuyNowClick={handleBuyNowClick}
+          showMobilePopup={showMobilePopup}
+        />
+      </div>
     </section>
   );
 };
