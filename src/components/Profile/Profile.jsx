@@ -16,7 +16,7 @@ const Profile = () => {
             <ShowProfile />
           </section>
         <div
-          className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6 z-10 md:bottom-[10rem]`}
+          className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-3 z-10 md:bottom-[10rem]`}
         >
           
           {/* Section 2 */}

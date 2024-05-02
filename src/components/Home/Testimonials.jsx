@@ -39,22 +39,22 @@ const Testimonials = () => {
   const testimonialsData = [
     {
       id: 1,
-      text: "Since 2019, Gravity team has been an astounding market maker for Bitkub. They have proven themselves to be one of the most consistent, committed and driven market makers on our exchange. Gravity Team has contributed high-quality volume and has proven to be very reliable and trustworthy partner. We strongly advocate Gravity Team as they have been an indispensable part of our market-making team.",
-      author: "Atthakrit Chimplapibul",
+      text: "Thanks to the Copartner platform, I got connected with knowledgeable research analysts who have truly transformed my trading approach. Their insights and guidance have been invaluable in navigating the markets more confidently. The platform's user-friendly interface and responsive support team have made the experience even better.",
+      author: "Paridhi Tripathi",
       image: testimonialProfile,
       designation: "CEO, Company A",
     },
     {
       id: 2,
-      text: "Since 2019, Gravity team has been an astounding market maker for Bitkub. They have proven themselves to be one of the most consistent, committed and driven market makers on our exchange. Gravity Team has contributed high-quality volume and has proven to be very reliable and trustworthy partner.",
-      author: "Atthakrit Chimplapibul",
+      text: "Since joining the Copartner platform, my trading experience has been transformed. Connecting with research analysts has provided invaluable insights that have significantly improved my trading strategies. The personalised guidance and expertise have helped me navigate the markets with confidence.",
+      author: "Samay Trivedi",
       image: testimonialProfile,
       designation: "CTO, Company B",
     },
     {
       id: 3,
-      text: "Since 2019, Gravity team has been an astounding market maker for Bitkub. They have proven themselves to be one of the most consistent, committed and driven market makers on our exchange. Gravity Team has contributed high-quality volume and has proven to be very reliable and trustworthy partner. We strongly advocate Gravity Team as they have been an indispensable part of our market-making team3.",
-      author: "Atthakrit Chimplapibul",
+      text: "Copartner has been a game-changer for me as a trader. It's easy to use and the expert advice has helped me make better decisions. The community is supportive and the tools are simple and effective Thanks to Copartner, my portfolio has grown and I'm excited for what's next!",
+      author: "Ritik Goswami",
       image: testimonialProfile,
       designation: "COO, Company C",
     },
@@ -81,7 +81,7 @@ const Testimonials = () => {
           <img
             src={testimonialLeft}
             alt="LeftIcon"
-            className="md:w-[58px] md:h-[58px] w-[34px] h-[34px]"
+            className="md:w-[58px] w-[100px]"
           />
         </button>
 
@@ -98,13 +98,13 @@ const Testimonials = () => {
                   alt="OUR_USERS"
                   className="md:w-[40px] w-[27px] md:h-[40px] h-[27px]"
                 />
-                <div className="flex flex-col">
+                <div className="flex flex-col justify-center">
                   <span className="md:w-[202px] w-[117px] md:h-[25px] h-[13px] font-[700] md:text-[18px] text-[10px] md:leading-[23px] leading-[12px] text-lightWhite">
                     {testimonialsData[count].author}
                   </span>
-                  <span className="md:w-[184px] w-[105px] md:h-[19px] h-[10px] font-[300] md:text-[14px] text-[8px] md:leading-[18.4px] leading-[10px] text-dimWhite">
+                  {/* <span className="md:w-[184px] w-[105px] md:h-[19px] h-[10px] font-[300] md:text-[14px] text-[8px] md:leading-[18.4px] leading-[10px] text-dimWhite">
                     {testimonialsData[count].designation}
-                  </span>
+                  </span> */}
                 </div>
               </div>
             </div>
@@ -127,7 +127,7 @@ const Testimonials = () => {
           <img
             src={testimonialRight}
             alt="RightIcon"
-            className="md:w-[58px] md:h-[58px] w-[34px] h-[34px]"
+            className="md:w-[58px] w-[100px]"
           />
         </button>
       </div>

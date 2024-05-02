@@ -53,7 +53,7 @@ const ExpertCardSub = ({ expert }) => {
               {expert.rating}
             </div>
           </div>
-          <div className="md:w-[256px] w-[143px] h-[44px] flex items-start md:mt-2 mt-4 justify-between">
+          <div className="md:w-[256px] w-[143px] md:h-[44px] h-[30px] flex items-start md:mt-2 mt-4 justify-between">
             <div className="flex flex-col md:w-[78px] w-[43px] h-[22px] items-center justify-between">
               <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
                 Experience
@@ -74,8 +74,10 @@ const ExpertCardSub = ({ expert }) => {
               </div>
             </div>
           </div>
-          <div className="text-[#A1A1AACC] mb-2 md:text-[14px] text-[11px] md:text-base text-left md:leading-[20px] leading-[14px]">
-            {expert.description}
+          <div className="md:w-[300px] md:h-[24px] md:mt-2 mb-2 w-full md:pl-[5px]">
+            <div className="text-dimWhite md:text-[14px] flex md:flex-row flex-col text-[11px] md:leading-[18px] leading-[14px] md:pl-0 pl-[2px]">
+              <span>SEBI:</span> <span className="text-white md:ml-2">{expert.description}</span>
+            </div>
           </div>
           <div className="flex flex-col justify-center">
             <div className=" w-[90%] flex md:items-center md:py-1 justify-center rounded-[21.5px] border-[0.67px] border-solid border-[rgba(255,255,255,0.3)] mx-auto bg-[#ffffff32] mb-2">

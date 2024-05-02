@@ -18,7 +18,7 @@ const Interest = () => {
   }, []);
 
   return (
-    <div className="flex flex-col md:w-[1204px] w-[393px] md:px-[7rem] px-[1rem] py-5">
+    <div className="flex flex-col md:w-[1204px] w-full md:px-[7rem] px-[1rem] py-5">
       <div className={`{styles.flexStart} flex-col gap-2 xl:px-0`}>
         <div className="flex flex-row md:h-[52px] h-[34px] md:justify-between items-center">
           <span
@@ -74,7 +74,7 @@ const Interest = () => {
                       className="sm:w-[12.3px] sm:h-[12.3px] w-[8px] h-[8px]"
                       alt="rating"
                     />
-                    <span className="text-lightWhite font-[600] sm:text-[11.5px] sm:leading-[14px] text-[8px] leading-[10px]">
+                    <span className="text-lightWhite font-[600] sm:text-[11.5px] sm:leading-[14px] text-[10px] leading-[10px]">
                       {expert.rating}
                     </span>
                   </div>
@@ -102,20 +102,20 @@ const Interest = () => {
                   </div>
                 </div>
 
-                <div className="md:w-[300px] md:h-[72px] w-[144px] h-[42px] mb-4 sm:block contents md:pl-[5px]">
-                    <span className="text-dimWhite md:text-[14px] text-[11px] sm:leading-[24px] md:leading-[12px] leading-[14px] md:pl-0 pl-[2px]">
-                      {expert.content}
-                    </span>
+                <div className="md:w-[300px] md:h-[32px] md:mt-2 w-full md:pl-[5px]">
+                    <div className="text-dimWhite md:text-[14px] flex md:flex-row flex-col text-[11px] md:leading-[18px] leading-[14px] md:pl-0 pl-[2px]">
+                      <span>SEBI:</span> <span className="text-white md:ml-2">{expert.content}</span>
+                    </div>
                   </div>
 
-                <div className="md:w-[211px] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] border-[1.5px] border-[#4e4e4ecc] mt-2 md:mt-0">
+                <div className="md:w-[211px] md:h-[40px] bg-[#0081F1] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
                 <div className="flex justify-center items-center gap-2">
                   <img
                     src={expert.telegram}
                     alt="Telegram"
                     className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"
                   />
-                  <button className="text-white font-[400] md:text-[15px] text-[10px] leading-[19px]">
+                  <button className="text-white font-[400] md:text-[15px] text-[12px] leading-[19px]">
                     {expert.greet}
                   </button>
                   <img
@@ -163,7 +163,7 @@ const Interest = () => {
                         className="sm:w-[12.3px] sm:h-[12.3px] w-[8px] h-[8px]"
                         alt="rating"
                       />
-                      <span className="text-lightWhite font-[600] sm:text-[11.5px] sm:leading-[14px] text-[8px] leading-[10px]">
+                      <span className="text-lightWhite font-[600] sm:text-[11.5px] sm:leading-[14px] text-[10px] leading-[10px]">
                         {expert.rating}
                       </span>
                     </div>
@@ -191,20 +191,20 @@ const Interest = () => {
                     </div>
                   </div>
 
-                  <div className="md:w-[300px] md:h-[72px] w-[144px] h-[42px] mb-4 sm:block contents md:pl-[5px]">
-                    <span className="text-dimWhite md:text-[14px] text-[11px] sm:leading-[24px] md:leading-[12px] leading-[14px] md:pl-0 pl-1.5">
-                      {expert.content}
-                    </span>
+                  <div className="md:w-[300px] md:h-[32px] md:mt-2 w-full md:pl-[5px]">
+                    <div className="text-dimWhite md:text-[14px] flex md:flex-row flex-col text-[11px] md:leading-[18px] leading-[14px] md:pl-0 pl-[2px]">
+                      <span>SEBI:</span> <span className="text-white md:ml-2">{expert.content}</span>
+                    </div>
                   </div>
 
-                  <div className="md:w-[211px] md:h-[40px] w-[146px] h-[32px] flex items-center justify-center rounded-[21.5px] border-[1.5px] border-[#4e4e4ecc] mt-2 md:mt-0">
+                  <div className="md:w-[211px] md:h-[40px] bg-[#0081F1] w-[146px] h-[32px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
                     <div className="flex justify-center items-center gap-2">
                       <img
                         src={expert.telegram}
                         alt="Telegram"
                         className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"
                       />
-                      <button className="text-white font-[400] md:text-[15px] text-[10px] leading-[19px]">
+                      <button className="text-white font-[400] md:text-[15px] text-[12px] leading-[19px]">
                         {expert.greet}
                       </button>
                       <img

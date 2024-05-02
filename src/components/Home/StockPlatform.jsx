@@ -10,7 +10,7 @@ const StockPlatform = () => {
         <div className="flex flex-col justify-between items-center md:w-[557px] md:h-[103px] w-[340px] h-[197px] md:mb-16 mb-2">
           <span
             className="font-[700] md:text-[50px] text-[30px] md:w-[1114px] md:h-[120px] w-full h-full
-          text-gradient-2 md:leading-[60px] leading-[30px] text-center"
+          text-gradient-2 md:leading-[60px] leading-[30px] text-center mb-3"
           >
             Bridge the Gap between Traders & Analysts with Copartner and Unite
             for Success!
@@ -19,7 +19,7 @@ const StockPlatform = () => {
           <img
             src={logo}
             alt="LOGO"
-            className="md:w-[225px] w-[199px] md:h-[64px] h-[54px]"
+            className="md:w-[225px] w-[199px] md:h-[64px] h-[54px] mb-3"
           />
 
           <span className="text-dimWhite md:w-[505px] w-[328px] text-center md:h-[56px] h-[34px] font-[400] md:text-[18px] text-[13px] md:leading-[28px] leading-[17px]">

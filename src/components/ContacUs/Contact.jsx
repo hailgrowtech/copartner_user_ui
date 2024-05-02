@@ -10,7 +10,7 @@ const ContactUs = () => {
       >
         <div className="flex md:flex-row flex-col gap-4 text-white rounded-xl relative md:w-[1200px]">
           {/* Left Column */}
-          <h2 className="text-4xl md:text-5xl font-bold subheading-color md:hidden text-left px-3 pt-3">Contact Us</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gradient md:hidden text-left px-3 pt-3">Contact Us</h2>
           <p className="text-base text-left px-3 md:text-lg mb-4 text-[#c9c9c9] md:hidden z-20">
             We'd love to hear from you. Please fill out the form below and we'll get back to you as soon as possible.
           </p>
@@ -36,7 +36,7 @@ const ContactUs = () => {
           {/* Right Column */}
           <div className="flex flex-col w-full md:w-2/3 md:p-10 px-5 rounded-lg text-left border-[1px] border-[#ffffff24] md:h-[600px] h-[520px]">
             {/* Heading */}
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 subheading-color md:block hidden">Contact Us</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gradient md:block hidden">Contact Us</h2>
             {/* Description */}
             <p className="text-base md:text-lg mb-4 text-[#ffffff5a] md:block hidden">
               We'd love to hear from you. Please fill out the form below and we'll get back to you as soon as possible.
@@ -62,7 +62,7 @@ const ContactUs = () => {
               </div>
               {/* Submit Button */}
               <div className="text-center md:py-3 py-3">
-                <button type="submit" className="bg-[#fff] text-black py-2 px-7 rounded-md hover:bg-blue-600 transition duration-300">Submit</button>
+                <button type="submit" className="bg-[#fff] md:text-[16px] text-[12px] text-black py-2 px-7 rounded-md hover:bg-blue-600 transition duration-300">Submit</button>
               </div>
             </form>
           </div>

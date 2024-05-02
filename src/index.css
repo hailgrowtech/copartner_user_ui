@@ -31,10 +31,11 @@
 }
 
 .subheading-gradient {
-  background: linear-gradient(to bottom right, #ffffff 0%, #757575 100%);
+  /* background: linear-gradient(to bottom right, #ffffff 0%, #757575 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
+  color: white;
 }
 
 .footer {
@@ -52,12 +53,13 @@
 }
 
 .text-gradient-2 {
-  background: linear-gradient(135deg, #FFFFFF 0%, #71717A 100%),
+  /* background: linear-gradient(135deg, #FFFFFF 0%, #71717A 100%),
   linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
+  text-fill-color: transparent; */
+  color: white;
 }
 
 .bg-hover-gradient {
@@ -152,12 +154,13 @@
 }
 
 .text-gradient-2 {
-  background: linear-gradient(135deg, #FFFFFF 0%, #71717A 100%),
+  /* background: linear-gradient(135deg, #FFFFFF 0%, #71717A 100%),
   linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-weight: 700;
+  font-weight: 700; */
+  color: white;
 }
 
 
@@ -504,7 +507,7 @@
   background-repeat: no-repeat;
   background-position: 32vw 1vh;
   background-size: 55rem;
-  z-index: 50;
+  z-index: 10;
 }
 
 .subscription-RA-img {
@@ -561,3 +564,18 @@
 } */
 /* Subscription RA-detail END */
 
+.marquee {
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

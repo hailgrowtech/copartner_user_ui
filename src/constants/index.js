@@ -212,8 +212,9 @@ export const expertise_data = [
     followers: "Followers",
     totalFollowers: "3.1k",
     content:
-      "Have full control of your business finances on the go using our.",
+      "8979879234",
     telegram: telegram,
+    price: "1,999/month",
     greet: "Get Free Calls",
     arrowIcon: arrow,
   },
@@ -230,8 +231,9 @@ export const expertise_data = [
     followers: "Followers",
     totalFollowers: "3.1k",
     content:
-      "Have full control of your business finances on the go using our.",
+      "8979879234",
     telegram: telegram,
+    price: "1,999/month",
     greet: "Get Free Calls",
     arrowIcon: arrow,
   },
@@ -248,8 +250,9 @@ export const expertise_data = [
     followers: "Followers",
     totalFollowers: "3.1k",
     content:
-      "Have full control of your business finances on the go using our.",
+      "8979879234",
     telegram: telegram,
+    price: "1,999/month",
     greet: "Get Free Calls",
     arrowIcon: arrow,
   },
@@ -266,8 +269,9 @@ export const expertise_data = [
     followers: "Followers",
     totalFollowers: "3.1k",
     content:
-      "Have full control of your business finances on the go using our.",
+      "8979879234",
     telegram: telegram,
+    price: "1,999/month",
     greet: "Get Free Calls",
     arrowIcon: arrow,
   },
@@ -284,8 +288,9 @@ export const expertise_data = [
     followers: "Followers",
     totalFollowers: "3.1k",
     content:
-      "Have full control of your business finances on the go using our.",
+      "8979879234",
     telegram: telegram,
+    price: "1,999/month",
     greet: "Get Free Calls",
     arrowIcon: arrow,
   },
@@ -302,8 +307,9 @@ export const expertise_data = [
     followers: "Followers",
     totalFollowers: "3.1k",
     content:
-      "Have full control of your business finances on the go using our.",
+      "8979879234",
     telegram: telegram,
+    price: "1,999/month",
     greet: "Get Free Calls",
     arrowIcon: arrow,
   },
@@ -462,7 +468,7 @@ export const expertsData = [
     experience: "10+",
     followers: 5289,
     description:
-      "Have full control of your business finances on the go using our iOS",
+      "8979879234",
     prize: "5000",
   },
 
@@ -476,7 +482,7 @@ export const expertsData = [
     experience: "10+",
     followers: 5289,
     description:
-      "Have full control of your business finances on the go using our iOS",
+      "8979879234",
     prize: "5000",
   },
 
@@ -490,7 +496,7 @@ export const expertsData = [
     experience: "10+",
     followers: 5289,
     description:
-      "Have full control of your business finances on the go using our iOS",
+      "8979879234",
     prize: "5000",
   },
 
@@ -504,7 +510,7 @@ export const expertsData = [
     experience: "10+",
     followers: 5289,
     description:
-      "Have full control of your business finances on the go using our iOS",
+      "8979879234",
     prize: "5000",
   },
 
@@ -518,7 +524,7 @@ export const expertsData = [
     experience: "10+",
     followers: 5289,
     description:
-      "Have full control of your business finances on the go using our iOS",
+      "8979879234",
     prize: "5000",
   },
 
@@ -532,7 +538,7 @@ export const expertsData = [
     experience: "10+",
     followers: 5289,
     description:
-      "Have full control of your business finances on the go using our iOS",
+      "8979879234",
     prize: "5000",
   },
 ];
@@ -839,6 +845,34 @@ export const faq_data = [
     id: 6,
     title: 'How can I access your research reports and analysis?',
     des: "Our research reports and analysis are available to subscribers through our online platform. Once you subscribe to our services, you'll gain access to our library of research content, which you can view and download at your convenience."
+  },
+]
+
+export const faq_data2 = [
+  {
+    id: 1,
+    title: 'How do I access the premium group subscription after making the payment?',
+    des: 'After completing the payment process, you will receive a confirmation sms containing a unique link to join the premium group. You can also access the premium group directly from the Copartner platform after payment.'
+  },
+  {
+    id: 2,
+    title: 'What benefits do I get with the premium group subscription?',
+    des: "With the premium group subscription, you will gain exclusive access to advanced trading tips, in-depth market analysis, and real-time insights provided by the Research Analyst."
+  },
+  {
+    id: 3,
+    title: 'Is the payment for the premium group subscription a one-time fee or recurring?',
+    des: "The payment for the premium group subscription is a one-time fee, granting you access to the premium group for a specified duration."
+  },
+  {
+    id: 4,
+    title: 'What if I encounter any issues or have questions regarding the premium group subscription?',
+    des: "If you encounter any issues or have questions regarding your premium group subscription, please don't hesitate to contact our customer support team for assistance. You can reach out to us via support@copartner.in"
+  },
+  {
+    id: 5,
+    title: 'Where i can see when my subscription will expire?',
+    des: 'Go to subscription > check subscription duration of purchased service'
   },
 ]
 

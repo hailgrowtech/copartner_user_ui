@@ -1,5 +1,5 @@
 import React from "react";
-import { logo, facebook, linkedin, twitter, instagram } from "../../assets";
+import { logo, facebook, linkedin, twitter, instagram, exclamation } from "../../assets";
 import { Link } from "react-router-dom";
 const ProductList = [
   { name: "About Us", link: "/about" },
@@ -24,7 +24,7 @@ const scrollToTop = () => {
 const Footer = () => {
   return (
     <>
-      <div className="md:w-[1440px] w-full md:h-[198px] h-[506px] md:pt-[6rem] justify-around border-t border-solid border-white border-opacity-10 flex md:flex-row flex-col items-center">
+      <div className="md:w-[1440px] w-full md:h-[198px] h-[506px] md:pt-[8rem] justify-around border-t border-solid border-white border-opacity-10 flex md:flex-row flex-col items-center">
         <div className="flex flex-col gap-[1rem]">
         <Link onClick={scrollToTop}  to="/">
           <img src={logo} alt="" className="md:w-56 w-40" />
@@ -48,6 +48,13 @@ const Footer = () => {
             >
               <img src={instagram} alt="Instagram" className="w-8" />
             </a>
+          </div>
+          <div className="justify-start items-center flex py-2 md:w-[296px] w-[296px] md:h-[80px] h-[66px] md:leading-[20px] leading-[14px]">
+            <span className="flex items-start gap-2 md:text-[12px] text-[10px] text-[#c9c9c9] my-[10px]">
+              <img src={exclamation} className="w-5 h-5" alt="" />
+              Disclaimer: Investments in securities market are subject to market risks, read all the related documents
+carefully before investing. For further disclosures click on read more
+            </span>
           </div>
         </div>
         <div className="flex flex-row gap-[4rem]">
@@ -83,9 +90,23 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <span className="text-dimWhite flex justify-center md:w-full mx-auto w-[170px] items-center text-center font-[400] text-[13px] leading-[15px] md:mt-[6rem]">
-        @copyright 2019. All rights reserved
+      <span className="text-dimWhite flex justify-center md:w-full mx-auto w-[170px] items-center text-center font-[400] text-[13px] leading-[15px] md:mt-[8rem]">
+        @Copyright 2024. All rights reserved
       </span>
+      <div style={{
+            backgroundImage:
+              "linear-gradient(94.34deg, #FFFFFF 0%, #9BD0F5 100%)",
+          }} className="md:mt-[2rem] md:mb-0 mb-10 w-full justify-around flex md:flex-row flex-col items-center">
+  <div className="border-[1px] p-2 md:px-[50px] rounded-md">
+    <span className="flex gap-2 md:text-[16px] text-[15px] text-[##18181B] my-[10px] marquee">
+      <img src={exclamation} className="w-5 h-5" alt="" />
+      <span>
+        Disclaimer: The investment advice, trading tips, strategies, courses, webinars, and other information provided by SEBI registered research analysts on the COPARTNER platform represent their individual views and opinions. COPARTNER does not endorse or validate these views, and users are encouraged to conduct their own research and exercise caution before acting upon any information provided.
+      </span>
+    </span>
+  </div>
+</div>
+
     </>
   );
 };

@@ -249,23 +249,24 @@ const Hero = () => {
                   </div>
                 </div>
 
-                <button className="md:w-[140px] md:h-[26px] w-[146px] h-[32px] flex items-center justify-center rounded-[21.5px] border-2 border-[#4e4e4ecc] mt-2 md:mt-0">
-                  <button className="flex justify-center items-center gap-2">
+                <div className="md:w-[211px] bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
+                  <div className="flex justify-center items-center gap-2">
                     <img
-                      src={telegram}
+                      src={expert.telegram}
                       alt="Telegram"
-                      className="w-[16px] h-[16px]"
+                      className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"
                     />
-                    <button className="text-white font-[400] text-[10px] leading-[19px]">
-                      Get Free Calls
+                    <button className="text-white font-[400] md:text-[15px] text-[12px] leading-[19px]">
+                      {expert.greet}
                     </button>
                     <img
-                      src={arrow}
+                      src={expert.arrowIcon}
                       alt="arrow"
-                      className="w-[11px] h-[11px]"
+                      className="md:w-[16px] md:h-[16px] w-[11px] h-[11px]"
                     />
-                  </button>
-                </button>
+                  </div>
+                </div>
+
               </Link>
             );
           })}

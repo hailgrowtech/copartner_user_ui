@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../style";
 import "./SubscriptionRA.css";
+import { ToastContainer, toast } from 'react-toastify';
 import {
   arrow,
   bookmark,
@@ -10,11 +11,38 @@ import {
   tick,
   userImg,
 } from "../../assets";
+import SubscriptionPaymentPopup from "./SubscriptionPaymentPopup";
+import FAQs2 from "../About/FAQs2";
 
 const SubscriptionRA = () => {
   const [showBasicDialog, setShowBasicDialog] = useState(false);
   const [showStandardDialog, setStandardDialog] = useState(false);
+  const [isCardSaved, setIsCardSaved] = useState(false);
+  const [expertData, setExpertData] = useState(null);
+  const [activeHoverIndex, setActiveHoverIndex] = useState(0);
   const [backgroundColor, setBackgroundColor] = useState("#18181B80");
+  const [showMonthlyPopup, setShowMonthlyPopup] = useState(false);
+  const [selectedMonthlyPlan, setSelectedMonthlyPlan] = useState(null);
+  const [planMonthlyPrice, setPlanMonthlyPrice] = useState(0);
+  const [showPopup, setShowPopup] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [planPrice, setPlanPrice] = useState(2999);
+
+  const handleSaveCard = () => {
+    // Toggle the isCardSaved state
+    setIsCardSaved(!isCardSaved);
+
+    // Show toast notification based on the new state
+    if (!isCardSaved) {
+      toast.success('Your card has been saved', {
+        position: "top-right"
+      });
+    } else {
+      toast.info('Your card has been unsaved', {
+        position: "top-right"
+      });
+    }
+  };
 
   const handleMouseOver = () => {
     setBackgroundColor("transparent");
@@ -24,14 +52,32 @@ const SubscriptionRA = () => {
     setBackgroundColor("#18181B80");
   };
 
+  const handleBuyNowClick = (plan, price) => {
+    setSelectedMonthlyPlan(plan);
+    setPlanMonthlyPrice(price);
+    setShowMonthlyPopup(true);
+  };
+
+  const handleMouseEnter = (index) => {
+    setActiveHoverIndex(index);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveHoverIndex(0);
+  };
+
+  const handleClosePopup = () => {
+    setShowMonthlyPopup(false);
+  };
+
   return (
     <section
       className={`flex md:flex-row flex-col md:px-0 px-3 ${styles.paddingY} expertise-Bg`}
     >
       <div
-        className={`flex-1 ${styles.flexStart} flex-col xl:px-0 md:px-28 z-10 md:bottom-[10rem] font-inter`}
+        className={`flex-1 ${styles.flexStart} flex-col xl:px-0 md:px-28 md:bottom-[10rem] font-inter`}
       >
-        <section className="subscription-RA-bg flex flex-row justify-between bg-[#18181B80] relative w-full md:p-[30px] p-[16px] border-2 border-[#f4f4f50e] rounded-xl mb-8">
+        <section className="subscription-RA-bg flex flex-row justify-between bg-[#18181B80] relative w-full md:p-[30px] p-[16px] md:pb-0 pb-[3rem] border-2 border-[#f4f4f50e] rounded-xl md:mb-8">
           <div className="text-white">
             <div className="flex flex-col md:mb-6 mb-1">
               <div className="flex justify-between items-center w-full">
@@ -58,10 +104,9 @@ const SubscriptionRA = () => {
               </div>
             </div>
             <div className="md:text-lg text-sm md:font-semibold md:w-[508px] md:mb-4 mb-2">
-              Take your team up a level with easy-to-use tools, effortless
-              templates and efficient workflows.
+              <span className="text-dimWhite">SEBI:</span> 987987892479
             </div>
-            <div className="border-[1px] border-[#f4f4f535] border-opacity-30 md:rounded-3xl rounded-2xl md:w-44 w-32 md:mb-6">
+            <div className="border-[1px] md:block hidden border-[#f4f4f535] border-opacity-30 md:rounded-3xl rounded-2xl md:w-44 w-32 md:mb-6">
               <button className="flex mx-auto md:py-2 py-1 items-center">
                 <img
                   className="md:w-6 w-4 me-3"
@@ -94,16 +139,22 @@ const SubscriptionRA = () => {
             />
             <span className="md:text-3xl text-sm">4.4</span>
           </div>
-          <div className="absolute md:bottom-6 bottom-8 md:right-8 right-3 rounded-full cursor-pointer transition duration-300 hover:scale-110 hover:bg-[#ffffff5e] hover:rounded-full p-2">
+          <div onClick={handleSaveCard} className={`absolute md:bottom-6 bottom-12 md:right-8 right-3 rounded-full cursor-pointer transition duration-300 ${isCardSaved ? "scale-110 bg-[#ffffff5e]" : "bg-transparent"} hover:scale-110 hover:bg-[#ffffff5e] hover:rounded-full p-2`}>
             <img src={bookmark} alt="Save icon" className="w-6 h-6" />
           </div>
-          <div className="md:hidden block absolute bottom-3 right-4 text-white">
-            <button className="flex items-center md:text-base text-xs">
-              Explore More <img className="w-4 ms-3" src={arrow} alt="arrow" />
-            </button>
-          </div>
+          <div className="bg-[#0081F1] md:hidden w-[90%] block absolute bottom-3 border-opacity-30 md:rounded-3xl rounded-2xl md:w-44 w-32 md:mb-6">
+              <button className="flex mx-auto text-white md:py-2 py-2 items-center">
+                <img
+                  className="md:w-6 w-4 me-3"
+                  src={telegram}
+                  alt="telegram icon"
+                />
+                <span className="md:text-base text-xs">Get Free Calls</span>
+                <img className="w-4 ms-3" src={arrow} alt="arrow icon" />
+              </button>
+            </div>
         </section>
-        <section className="w-full">
+        <section className="w-full md:block hidden">
           <div className="w-full flex flex-row bg-[#18181B80] rounded-2xl md:p-3 p-2">
             <div className="md:flex-col-6 md:text-[16px] text-[12px] flex flex-row my-3 md:mx-px mx-auto">
               <button className="text-white md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px]">
@@ -123,345 +174,222 @@ const SubscriptionRA = () => {
         </section>
         <section className="w-full flex flex-col md:my-14 my-10">
           <div className="text-white md:text-left text-center md:flex md:justify-between w-full md:mb-8">
-            <div className="subheading-gradient md:text-5xl text-3xl font-bold pb-4 md:w-1/2">
+            <div className="text-white md:text-5xl text-3xl font-bold pb-4 md:w-1/2">
               Subscriptions Plans
             </div>
             <div className="text-[#A1A1AACC] md:text-lg text-xs md:mb-0 mb-4 md:w-1/2">
-              Discover our subscription plans tailored for traders like you.
-              Gain access to exclusive features, expert insights and community
-              support to elevate your trading journey.{" "}
               <span className="text-white">
                 Choose the plan that suits your needs and start trading with
                 confidence today.
               </span>
             </div>
           </div>
-          <div className="text-white md:flex grid grid-cols-2 my-auto gap-x-8 gap-y-4">
+          <div className="text-white flex flex-wrap justify-center md:gap-8 gap-2 w-full subscription-cards">
             <div
-              style={{ backgroundColor }}
-              className="flex-1 rounded-2xl bg-[#18181B80] p-5 basic-div"
+              onClick={() => handleBuyNowClick("Monthly", 1999)}
+              className={`flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
+                }`}
+              onMouseOver={handleMouseOver}
+              onMouseOut={handleMouseOut}
             >
-              <div className="text-right opacity-60 md:flex hidden">
-                21 Days Left
+              <div className="text-center opacity-60 hidden">21 Days Left</div>
+              <div className="text-center md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
+                Monthly
               </div>
-              <div className="md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
-                Basic
-              </div>
-              <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex">
-                ₹2,999/<span className="md:flex hidden">-</span>
+              <div className="text-center md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-center">
+                ₹1,999/<span className="md:flex hidden">-</span>
                 <span className="md:hidden flex font-normal">mo</span>
               </div>
-              <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
+              <div className="text-center md:text-lg text-xs mt-auto opacity-60 mb-6">
                 1 Month Access
               </div>
-              <div className="md:mb-8 mb-4">
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-              </div>
+              {/* <div className="text-center md:mb-8 mb-4">
+      <div className="flex md:mb-4 mb-2 font-medium items-center md:justify-center text-left">
+        <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
+        <span className="md:text-base text-xs">
+          Voice messages anywhere
+        </span>
+      </div>
+      <div className="flex md:mb-4 mb-2 font-medium items-center md:justify-center text-left">
+        <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
+        <span className="md:text-base text-xs">
+          Voice messages anywhere
+        </span>
+      </div>
+      <div className="flex md:mb-4 mb-2 font-medium items-center md:justify-center text-left">
+        <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
+        <span className="md:text-base text-xs">
+          Voice messages anywhere
+        </span>
+      </div>
+    </div> */}
               <div className="text-center">
-                <button className="text-white border-solid md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white hover:border-gray-700 border-[1px]">
+                <button
+                  className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2"
+                >
                   Buy Now
                 </button>
               </div>
             </div>
+
             <div
-              onMouseOver={handleMouseOver}
-              onMouseOut={handleMouseOut}
-              className="flex-1 rounded-2xl p-5 hover:bg-[#18181B80] basic-div"
+              onClick={() => handleBuyNowClick("Quarterly", 2999)}
+              className="flex-1 rounded-2xl p-5 basic-div hover:bg-[#18181B80] relative"
+              style={{ border: "2px solid #fff", backgroundColor }} // Added border style
             >
-              <div className="text-right opacity-60 md:flex hidden">
-                21 Days Left
+              <div className="text-center opacity-60 hidden">21 Days Left</div>
+              <div className="text-center md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
+                Quarterly
               </div>
-              <div className="md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
-                Basic
-              </div>
-              <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex">
+              <div className="text-center md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-center">
                 ₹2,999/<span className="md:flex hidden">-</span>
                 <span className="md:hidden flex font-normal">mo</span>
               </div>
-              <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
-                1 Month Access
-              </div>
-              <div className="md:mb-8 mb-4">
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-              </div>
-              <div className="text-center">
-                <button className="text-white border-solid md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white hover:border-gray-700 border-[1px]">
-                  Buy Now
-                </button>
-              </div>
-            </div>
-            <div
-              onMouseOver={handleMouseOver}
-              onMouseOut={handleMouseOut}
-              className="flex-1 rounded-2xl hover:bg-[#18181B80] p-5 basic-div"
-            >
-              <div className="text-right opacity-60 md:flex hidden">
-                21 Days Left
-              </div>
-              <div className="md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
-                Basic
-              </div>
-              <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex">
-                ₹2,999/<span className="md:flex hidden">-</span>
-                <span className="md:hidden flex font-normal">mo</span>
-              </div>
-              <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
-                1 Month Access
-              </div>
-              <div className="md:mb-8 mb-4">
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-              </div>
-              <div className="text-center">
-                <button className=" text-white border-solid md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white hover:border-gray-700 border-[1px]">
-                  Buy Now
-                </button>
-                {showBasicDialog && (
-                  <div className="fixed inset-0 z-50 grid place-items-center bg-black bg-opacity-60">
-                    <div className="md:min-w-[25%] min-w-[75%] rounded-lg bg-[#18181B] opacity-[80%] font-sans text-base font-light leading-relaxed text-blue-gray-500 antialiased shadow-2xl">
-                      <div className="flex items-center p-4 font-sans text-2xl antialiased font-semibold leading-snug shrink-0 text-blue-gray-900">
-                        Basic Subscription Details
-                      </div>
-                      <div className="flex flex-col gap-4 md:justify-center md:items-center p-4 border-t border-b">
-                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
-                          <span className="text-dimWhite md:w-[141px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-start">
-                            Subscription
-                          </span>
-                          <span className="text-white md:w-[93px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
-                            Basic
-                          </span>
-                        </div>
-                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
-                          <span className="text-dimWhite md:w-[115px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-start">
-                            Name
-                          </span>
-                          <span className="text-white md:w-[101px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
-                            Rohit Aggi
-                          </span>
-                        </div>
-                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
-                          <span className="text-dimWhite md:w-[115px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-start">
-                            Amout
-                          </span>
-                          <span className="text-white md:w-[67px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
-                            ₹1,999
-                          </span>
-                        </div>
-                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
-                          <span className="text-white md:w-[115px] md:h-[9px] font-inter font-[700] text-[14px] leading-[8.4px] text-start">
-                            Subtotal
-                          </span>
-                          <span className="text-white md:w-[67px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
-                            ₹1,999
-                          </span>
-                        </div>
-                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
-                          <span className="text-dimWhite md:w-[124px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-start">
-                            GST 18%
-                          </span>
-                          <span className="text-white md:w-[67px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
-                            ₹342
-                          </span>
-                        </div>
-                        <hr />
-                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
-                          <span className="text-dimWhite md:w-[115px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-start">
-                            Total
-                          </span>
-                          <span className="text-white md:w-[67px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
-                            ₹2,241
-                          </span>
-                        </div>
-                      </div>
-                      <div className="flex md:flex-row flex-col flex-wrap items-center justify-end p-4 shrink-0 text-blue-gray-500">
-                        <button
-                          onClick={() => setShowBasicDialog(false)}
-                          className="md:w-[100px] w-full px-6 py-3 font-inter text-xs font-bold uppercase bg-white text-black rounded-[12px]"
-                        >
-                          Pay
-                        </button>
-                        <button
-                          onClick={() => setShowBasicDialog(false)}
-                          className="px-6 py-3 mr-1 font-inter text-xs font-bold text-dimWhite uppercase transition-all rounded-lg hover:bg-red-500/10 active:bg-red-500/30"
-                        >
-                          Cancel
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-            <div
-              className="flex-1 bg-opacity-5 p-5 hover:bg-[#18181B80] rounded-2xl standard-div"
-              onMouseOver={handleMouseOver}
-              onMouseOut={handleMouseOut}
-            >
-              <div className="md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1 md:mt-6 mt-0">
-                Standard
-              </div>
-              <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex">
-                ₹5,999/<span className="md:flex hidden">-</span>
-                <span className="md:hidden flex font-normal">mo</span>
-              </div>
-              <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
+              <div className="text-center md:text-lg text-xs mt-auto opacity-60 mb-6">
                 3 Month Access
               </div>
-              <div className="md:mb-8 mb-4">
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
+              <div className="text-center md:mb-8 mb-4">
+                {/* <div className="flex md:justify-center md:mb-4 mb-2 font-medium items-center text-left">
+      <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
+      <span className="md:text-base text-xs">
+        Voice messages anywhere
+      </span>
+    </div>
+    <div className="flex md:justify-center md:mb-4 mb-2 font-medium items-center text-left">
+      <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
+      <span className="md:text-base text-xs">
+        Voice messages anywhere
+      </span>
+    </div>
+    <div className="flex justify-center md:mb-4 mb-2 font-medium items-center text-left">
+      <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
+      <span className="md:text-base text-xs">
+        Voice messages anywhere
+      </span>
+    </div> */}
               </div>
               <div className="text-center">
-                <button className="text-white border-solid md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white hover:border-gray-700 border-[1px]">
+                <button
+                  className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2"
+                >
                   Buy Now
                 </button>
-                {showStandardDialog && (
-                  <div className="fixed inset-0 z-50 grid place-items-center bg-black bg-opacity-60">
-                    <div className="md:min-w-[25%] min-w-[75%] rounded-lg bg-[#18181B] opacity-[80%] font-inter text-base font-light leading-relaxed text-blue-gray-500 antialiased shadow-2xl">
-                      <div className="flex items-center p-4 font-sans text-2xl antialiased font-semibold leading-snug shrink-0 text-blue-gray-900">
-                        Standard Subscription Details
-                      </div>
-                      <div className="flex flex-col gap-4 md:justify-center md:items-center p-4 border-t border-b">
-                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
-                          <span className="text-dimWhite md:w-[141px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-start">
-                            Subscription
-                          </span>
-                          <span className="text-white md:w-[93px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
-                            Basic
-                          </span>
-                        </div>
-                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
-                          <span className="text-dimWhite md:w-[115px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-start">
-                            Name
-                          </span>
-                          <span className="text-white md:w-[101px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
-                            Rohit Aggi
-                          </span>
-                        </div>
-                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
-                          <span className="text-dimWhite md:w-[115px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-start">
-                            Amout
-                          </span>
-                          <span className="text-white md:w-[67px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
-                            ₹5,999
-                          </span>
-                        </div>
-                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
-                          <span className="text-white md:w-[115px] md:h-[9px] font-inter font-[700] text-[14px] leading-[8.4px] text-start">
-                            Subtotal
-                          </span>
-                          <span className="text-white md:w-[67px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
-                            ₹5,999
-                          </span>
-                        </div>
-                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
-                          <span className="text-dimWhite md:w-[124px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-start">
-                            GST 18%
-                          </span>
-                          <span className="text-white md:w-[67px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
-                            ₹702
-                          </span>
-                        </div>
-                        <hr />
-                        <div className="flex flex-rows justify-between md:w-[316px] md:h-[9px]">
-                          <span className="text-dimWhite md:w-[115px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-start">
-                            Total
-                          </span>
-                          <span className="text-white md:w-[67px] md:h-[9px] font-inter font-[500] text-[14px] leading-[8.4px] text-end">
-                            ₹6,701
-                          </span>
-                        </div>
-                      </div>
-                      <div className="flex md:flex-row flex-col flex-wrap items-center justify-end p-4 shrink-0 text-blue-gray-500">
-                        <button
-                          onClick={() => setStandardDialog(false)}
-                          className="md:w-[100px] w-full px-6 py-3 font-inter text-xs font-bold uppercase bg-white text-black rounded-[12px]"
-                        >
-                          Pay
-                        </button>
-                        <button
-                          onClick={() => setStandardDialog(false)}
-                          className="px-6 py-3 mr-1 font-inter text-xs font-bold text-dimWhite uppercase transition-all rounded-lg hover:bg-red-500/10 active:bg-red-500/30"
-                        >
-                          Cancel
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                )}
+              </div>
+              <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
+                Recommended
               </div>
             </div>
+
+            {/* <div
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}
+            className={`flex-1 bg-opacity-5 p-5 hover:bg-[#18181B80] rounded-2xl standard-div ${
+              activeHoverIndex === 3 ? "hover:bg-[#18181B80]" : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(3)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className="md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1 md:mt-1 mt-0">
+              Half-Yearly
+            </div>
+            <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex">
+              ₹5,999/<span className="md:flex hidden">-</span>
+              <span className="md:hidden flex font-normal">mo</span>
+            </div>
+            <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
+              6 Month Access
+            </div>
+            <div className="md:mb-8 mb-4">
+              <div className="flex md:mb-4 mb-2 font-medium items-center">
+                <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
+                <span className="md:text-base text-xs">
+                  Voice messages anywhere
+                </span>
+              </div>
+              <div className="flex md:mb-4 mb-2 font-medium items-center">
+                <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
+                <span className="md:text-base text-xs">
+                  Voice messages anywhere
+                </span>
+              </div>
+              <div className="flex md:mb-4 mb-2 font-medium items-center">
+                <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
+                <span className="md:text-base text-xs">
+                  Voice messages anywhere
+                </span>
+              </div>
+            </div>
+            <div className="text-center">
+              <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2" onClick={() => handleBuyNowClick("Half-Yearly", 5999)}>
+               Buy Now
+              </button>
+            </div>
+          </div> */}
+
+            <div
+              onClick={() => handleBuyNowClick("Yearly", 9999)}
+              onMouseOver={handleMouseOver}
+              onMouseOut={handleMouseOut}
+              className={`flex-1 bg-opacity-5 p-5 hover:bg-[#18181B80] rounded-2xl standard-div ${activeHoverIndex === 4 ? "hover:bg-[#18181B80]" : ""
+                } text-center`}
+              onMouseEnter={() => handleMouseEnter(4)}
+              onMouseLeave={handleMouseLeave}
+            >
+              <div className="md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1 md:mt-1 mt-0">
+                Yearly
+              </div>
+              <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-center">
+                ₹9,999/<span className="md:flex hidden">-</span>
+                <span className="md:hidden flex font-normal">mo</span>
+              </div>
+              <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
+                12 Month Access
+              </div>
+              <div className="md:mb-8 mb-4">
+                {/* <div className="flex md:mb-4 mb-2 font-medium items-center justify-center">
+                <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
+                <span className="md:text-base text-xs">
+                  Voice messages anywhere
+                </span>
+              </div>
+              <div className="flex md:mb-4 mb-2 font-medium items-center justify-center">
+                <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
+                <span className="md:text-base text-xs">
+                  Voice messages anywhere
+                </span>
+              </div>
+              <div className="flex md:mb-4 mb-2 font-medium items-center justify-center">
+                <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
+                <span className="md:text-base text-xs">
+                  Voice messages anywhere
+                </span>
+              </div> */}
+              </div>
+              <div className="text-center">
+                <button
+                  className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2"
+                >
+                  Buy Now
+                </button>
+              </div>
+            </div>
+            {showMonthlyPopup && (
+              <SubscriptionPaymentPopup
+                onClose={handleClosePopup}
+                selectedMonthlyPlan={selectedMonthlyPlan}
+                planMonthlyPrice={planMonthlyPrice}
+                // expertName={expertData.name}
+              />
+            )}
           </div>
         </section>
         <section className="w-full md:my-8 my-2 flex gap-20 md:mb-24 mb-16">
+        <FAQs2 />
+        </section>
+
+        <section className="w-full md:my-8 my-2 flex gap-20 md:mb-24 mb-16">
           <div className="flex flex-col md:w-2/3 w-full text-white">
-            <div className="subheading-gradient md:text-5xl text-3xl font-bold pb-4 md:text-left text-center">
+            <div className="text-white md:text-5xl text-3xl font-bold pb-4 md:text-left text-center">
               Key highlights to join this subscription
             </div>
             <div className="text-dimWhite md:mb-9 mb-4 md:text-base text-xs md:text-left text-center">
@@ -472,7 +400,7 @@ const SubscriptionRA = () => {
               <div className="flex-1 flex flex-col md:gap-6 gap-3">
                 <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
                   <div className="w-28 h-14 border-2 rounded-xl border-[#F4F4F51A] flex items-center justify-center">
-                    <img className="w-6 h-6" src={layer} alt="layer icon" />
+                    1.
                   </div>
                   <div>
                     <p className="text-[#E4E4E7] md:text-lg text-base">
@@ -486,7 +414,7 @@ const SubscriptionRA = () => {
                 </div>
                 <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
                   <div className="w-28 h-14 border-2 rounded-xl border-[#F4F4F51A] flex items-center justify-center">
-                    <img className="w-6 h-6" src={layer} alt="layer icon" />
+                    2.
                   </div>
                   <div>
                     <p className="text-[#E4E4E7] md:text-lg text-base">
@@ -502,7 +430,7 @@ const SubscriptionRA = () => {
               <div className="flex-1 flex flex-col md:gap-6 gap-3">
                 <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
                   <div className="w-28 h-14 border-2 rounded-xl border-[#F4F4F51A] flex items-center justify-center">
-                    <img className="w-6 h-6" src={layer} alt="layer icon" />
+                    3.
                   </div>
                   <div>
                     <p className="text-[#E4E4E7] md:text-lg text-base">
@@ -517,7 +445,7 @@ const SubscriptionRA = () => {
                 </div>
                 <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
                   <div className="w-28 h-14 border-2 rounded-xl border-[#F4F4F51A] flex items-center justify-center">
-                    <img className="w-6 h-6" src={layer} alt="layer icon" />
+                    4.
                   </div>
                   <div>
                     <p className="text-[#E4E4E7] md:text-lg text-base">
@@ -560,7 +488,7 @@ const SubscriptionRA = () => {
           </div>
         </section>
         <section className="border-2 rounded-2xl border-[#f4f4f50e] md:p-8 px-4 py-6 md:mb-24 mb-12">
-          <p className="subheading-gradient md:text-5xl text-3xl font-bold pb-8">
+          <p className="text-white md:text-5xl text-3xl font-bold pb-8">
             Subscriptions Details
           </p>
           <div className="text-dimWhite">
@@ -588,6 +516,7 @@ const SubscriptionRA = () => {
           </button>
         </section>
       </div>
+      <ToastContainer />
     </section>
   );
 };

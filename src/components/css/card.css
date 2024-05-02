@@ -134,7 +134,7 @@
     } */
 
     .info {
-      padding: 10px 1rem;
+      padding: 10px 0.5rem;
     }
 
     .name-role h3 {
@@ -147,7 +147,7 @@
     }
 
     .name-rating {
-      font-size: 7px;
+      font-size: 10px;
     }
 
     .experience-followers span {

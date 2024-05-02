@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Expertise, Navbar, Subscription, SubscriptionCourseDetail, SubscriptionRA, Wallet, Webinar, ErrorPage, ExpertiseExplore, CoursesExplore, SubscriptionBuy, ReferEarn, Blog, BlogPage, ContactUs, Profile  } from "./components";
 import styles from "./style";
+import 'react-toastify/dist/ReactToastify.css';
 import Hero from "./components/Home/Hero";
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements, Navigate } from "react-router-dom";
 import About from "./components/About/About";
@@ -9,7 +10,6 @@ import PrivacyPolicy from "./components/About/PrivacyPolicy";
 import Terms from "./components/About/Terms";
 import SignUp from "./components/SignUp";
 import Otp from "./components/Otp";
-
 
 function App() {
 
