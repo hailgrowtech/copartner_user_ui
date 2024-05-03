@@ -112,6 +112,7 @@ const Footer = () => {
             For further disclosures.
           </span>
           <Link
+            onClick={scrollToTop}
             className="text-white text-sm ml-7 flex items-center"
             to="disclaimer"
           >

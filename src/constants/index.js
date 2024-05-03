@@ -335,7 +335,7 @@ export const stock_data = [
     content:
       "A one stop solution platform that provides a transparent access to comprehensive analysis and a vibrant network of traders and experts and resources needed for informed decision-making and profitable trading journeys.",
     name: "Kenn Gallagher",
-    title: "",
+    title: "For Customers",
     img: stock_3,
   },
 ];
