@@ -153,11 +153,11 @@ const Navbar = () => {
                         setActive(nav.title);
                         setToggle(false);
                       }}
-                      className={`font-poppins font-normal cursor-pointer text-[16px]
+                      className={`font-poppins font-normal cursor-pointer
                            ${
                              active === nav.title
-                               ? "text-white font-medium"
-                               : "text-[#393F48]"
+                               ? "text-gradient font-semibold text-xl"
+                               : "text-white"
                            }
                            ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
                     >

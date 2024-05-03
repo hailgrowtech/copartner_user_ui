@@ -162,7 +162,7 @@ const Expertise = () => {
             </p>
           </div>
 
-          <div className="sm:flex sm:space-x-4 sm:space-y-4 grid grid-cols-2">
+          <div className="sm:flex gap-3 grid grid-cols-2">
             {expertise_type.map((type) => (
               <div
                 key={type.id}

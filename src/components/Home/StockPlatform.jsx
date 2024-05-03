@@ -28,22 +28,23 @@ const StockPlatform = () => {
           </span>
         </div>
 
-        <div className="md:w-[1076px] md:max-h-[580px] w-[337px] md:gap-[5rem] gap-[1rem] flex flex-col sm:flex-row md:mt-[6rem] md:py-0 py-[2rem] mx-auto">
+        <div className="md:gap-[5rem] gap-[1rem] md:flex grid grid-cols-2 md:mt-[6rem] md:py-0 py-[2rem] mx-auto">
           {stock_data.map((stock) => (
             <div
               key={stock.id}
-              className="flex flex-col gap-[1rem] py-[8px] items-center md:w-[337px] max-h-full rounded-[11px] hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
+              className={`mx-auto md:p-4 p-3 gap-[1rem] ${
+                stock.id === "3" ? 'col-span-2' : ''
+              } py-[8px] items-center md:w-[337px] max-h-full rounded-[11px] hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out`}
             >
               <img
                 src={stock.img}
                 alt="STOCK_IMAGES"
-                className="md:w-[289px] w-[288px] h-[150px]"
               />
               <div className="flex flex-col gap-[0.4rem]">
-                <span className="text-lightWhite md:w-[190px] w-[164px] font-[600] md:text-[20px] text-[18px] leading-[27px] text-left">
+                <span className="text-lightWhite md:px-4 md:w-[190px] font-[600] md:text-[20px] text-[18px] leading-[27px] text-left">
                   {stock.title}
                 </span>
-                <span className="text-dimWhite w-[257px] max-h-full text-[16px] font-[400] leading-[24px] text-left">
+                <span className="text-dimWhite md:px-4 max-h-full md:text-base text-sm text-left">
                   {stock.content}
                 </span>
               </div>
