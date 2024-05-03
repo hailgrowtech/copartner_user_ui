@@ -1,56 +1,58 @@
-// SignUp.jsx
 import React, { useState } from "react";
-import Otp from "./Otp"; // Import the Otp component
+import Otp from "./Otp";
 import { closeImg, signupBg } from "../assets";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [mobile, setMobile] = useState("");
-  const [showOtp, setShowOtp] = useState(false); // State to manage the visibility of the OTP popup
-  const [error, setError] = useState(""); // State to manage the error message
+  const [showOtp, setShowOtp] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false); // Added loading state
   const navigate = useNavigate();
-  // Function to handle form submission
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (mobile.length !== 10 || !/^[6-9]\d{9}$/.test(mobile)) {
       setError("Mobile number should have exactly 10 digits.");
-    } else {
-      setError("");
+      return;
+    }
+    setError("");
+    setLoading(true); // Start loading before the request
 
-      const postData = {
-        countryCode: "IN",
-        mobileNumber: mobile,
-        otp: "",
-      };
+    const postData = {
+      countryCode: "IN",
+      mobileNumber: mobile,
+      otp: "",
+    };
 
-      try {
-        const response = await fetch(
-          "https://copartners.in:5181/api/SignIn/GenerateOTP",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(postData),
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
+    try {
+      const response = await fetch(
+        "https://copartners.in:5181/api/SignIn/GenerateOTP",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(postData),
         }
-        setShowOtp(true);
-      } catch (error) {
-        console.error("There was a problem with your fetch operation:", error);
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
+      setShowOtp(true);
+    } catch (error) {
+      console.error("There was a problem with your fetch operation:", error);
+      setError("Failed to send OTP, please try again.");
+    } finally {
+      setLoading(false); // Stop loading regardless of the result
     }
   };
 
-  // Function to check if the form fields are empty
   const isFormEmpty = () => {
     return !mobile;
   };
 
-  // Function to close both the OTP and sign-up popups
   const handleClosePopups = () => {
     setShowOtp(false);
   };
@@ -83,7 +85,7 @@ const SignUp = () => {
         className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-10 z-50 w-screen h-screen`}
       >
         <div className="bg-[#18181B] border-[1px] border-[#ffffff2a] m-4 p-6 rounded-lg w-96 relative text-center">
-          <div className="absolute top-3 right-0 text-right ">
+          <div className="absolute top-3 right-0 text-right">
             <button
               onClick={() => {
                 handleClose();
@@ -98,11 +100,10 @@ const SignUp = () => {
             <h2 className="text-2xl font-semibold text-white">Sign Up</h2>
           </div>
           <p className="text-gray-300 text-center mb-4">
-            Get access to daily free calls from varieties of India's SEBI Registered Reasearch Analysts.
+            Get access to daily free calls from varieties of India's SEBI Registered Research Analysts.
           </p>
-          {error && <p className="text-red-500 mb-4">{error}</p>}{" "}
-          {/* Display error message if exists */}
-          {showOtp ? ( // Render OTP component if showOtp is true
+          {error && <p className="text-red-500 mb-4">{error}</p>}
+          {showOtp ? (
             <Otp mobileNumber={mobile} onClose={handleClosePopups} />
           ) : (
             <form
@@ -119,11 +120,11 @@ const SignUp = () => {
               <button
                 type="submit"
                 className={`bg-white hover:bg-black hover:text-white text-black transition duration-300 font-semibold text-[20px] py-3 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  isFormEmpty() ? "opacity-50 cursor-not-allowed" : ""
+                  isFormEmpty() || loading ? "opacity-50 cursor-not-allowed" : ""
                 }`}
-                disabled={isFormEmpty()}
+                disabled={isFormEmpty() || loading}
               >
-                Continue
+                {loading ? "Sending..." : "Continue"}
               </button>
             </form>
           )}

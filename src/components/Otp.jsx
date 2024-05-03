@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Otp = ({ onClose, mobileNumber }) => {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("")
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -45,6 +46,36 @@ const Otp = ({ onClose, mobileNumber }) => {
     }
   };
 
+  const handleResendOTP = async () => {
+    setError("");
+    const postData = {
+      countryCode: "IN",
+      mobileNumber: mobileNumber,
+      otp: "",
+    };
+    try {
+      const response = await fetch(
+        "https://copartners.in:5181/api/SignIn/GenerateOTP",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(postData),
+        }
+      );
+
+      const data = await response.json();
+      if (!data.isSuccess) {
+        setError("Failed to resend OTP. Please try again.");
+      } else {
+        setSuccess("OTP has been resent. Please check your mobile.");
+      }
+    } catch (error) {
+      console.error("There was a problem with the resend OTP operation:", error);
+    }
+  };
+
   const isFormEmpty = () => {
     return otp.trim() === "";
   };
@@ -52,11 +83,8 @@ const Otp = ({ onClose, mobileNumber }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-10 z-50">
       <div className="bg-[#18181B] border-[1px] border-[#ffffff2a] m-4 p-8 rounded-lg w-[25rem] relative text-center">
-        <div className="absolute top-3 right-0 text-right ">
-          <div
-            onClick={onClose}
-            className="text-gray-400 w-8 text-[20px] cursor-pointer hover:text-white"
-          >
+        <div className="absolute top-3 right-0 text-right">
+          <div onClick={onClose} className="text-gray-400 w-8 text-[20px] cursor-pointer hover:text-white">
             <img src={closeImg} alt="close" />
           </div>
         </div>
@@ -69,10 +97,8 @@ const Otp = ({ onClose, mobileNumber }) => {
           Enter the verification code we just sent to your mobile number
         </p>
         {error && <p className="text-red-500 mb-4">{error}</p>}
-        <form
-          className="flex flex-col gap-4 text-white"
-          onSubmit={handleSubmit}
-        >
+        {success && <p className="text-green-500 mb-4">{success}</p>}
+        <form className="flex flex-col gap-4 text-white" onSubmit={handleSubmit}>
           <input
             type="text"
             value={otp}
@@ -88,6 +114,13 @@ const Otp = ({ onClose, mobileNumber }) => {
             disabled={isFormEmpty()}
           >
             Verify
+          </button>
+          <button
+            type="button"
+            className="mt-2 text-white md:text-base text-sm underline"
+            onClick={handleResendOTP}
+          >
+            Resend OTP
           </button>
         </form>
       </div>
