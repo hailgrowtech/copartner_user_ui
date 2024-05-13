@@ -8,11 +8,13 @@ import {
   bookmarkFill,
   stars,
   userImg,
+  layer,
 } from "../../assets";
 import SubscriptionPaymentPopup from "./SubscriptionPaymentPopup";
 import FAQs2 from "../About/FAQs2";
 import CoursePaymentPopup from "./CoursePaymentPopup";
 import MobileCourse from "./MobileCourse";
+import { expertData } from "../../constants";
 
 const SubscriptionRA = () => {
   const [isCardSaved, setIsCardSaved] = useState(false);
@@ -117,22 +119,30 @@ const SubscriptionRA = () => {
                   className="flex-1 font-bold md:text-[72px] text-[26px]
       text-gradient md:leading-[88px] leading-[30px] md:pb-3"
                 >
-                  Arun Kumar
+                  {expertData.name}
                 </span>
               </div>
               <span className="font-normal opacity-60 md:leading-[28px] md:text-[22px] text-[12px]">
-                Futures & Options.
+                {expertData.title}
               </span>
             </div>
             <div className="flex justify-between md:w-[350px] w-[176px] md:h-16 h-10 md:mb-6 mb-3">
               <div className="flex flex-col items-center justify-around">
-                <div className="text-[12px] text-[#C6CDD5]">Experience</div>
-                <div className="md:text-xl text-xs font-semibold">7+</div>
+                <div className="text-[15px] text-[#C6CDD5]">
+                  {expertData.experience}
+                </div>
+                <div className="md:text-xl text-xs font-semibold">
+                  {expertData.totalExp}
+                </div>
               </div>
               <div className="w-[1px] md:h-16 h-10 bg-white"></div>
               <div className="flex flex-col items-center justify-around">
-                <div className="text-[12px] text-[#C6CDD5]">Followers</div>
-                <div className="md:text-xl text-xs font-semibold">3.1k</div>
+                <div className="text-[15px] text-[#C6CDD5]">
+                  {expertData.followers}
+                </div>
+                <div className="md:text-xl text-xs font-semibold">
+                  {expertData.totalFollowers}
+                </div>
               </div>
             </div>
             <div className="md:text-lg text-sm md:font-semibold md:w-[508px] md:mb-4 mb-2">
@@ -142,7 +152,7 @@ const SubscriptionRA = () => {
               <button className="flex mx-auto md:py-2 py-1 items-center">
                 {/* <img
                   className="md:w-6 w-4 me-3"
-                  src={telegram}
+                  src={expertData.telegram}
                   alt="telegram icon"
                 /> */}
                 <span className="md:text-base text-xs">Get Free Calls</span>
@@ -160,6 +170,9 @@ const SubscriptionRA = () => {
             <img
               className="subscription-RA-img md:w-[400px] w-[470px] my-auto"
               src={userImg}
+              style={{
+                maskImage: "linear-gradient(rgba(0, 0, 0, 1) 70%, transparent)",
+              }}
               alt=""
             />
           </div>
@@ -169,7 +182,7 @@ const SubscriptionRA = () => {
               src={stars}
               alt="star icon"
             />
-            <span className="md:text-3xl text-sm">4.4</span>
+            <span className="md:text-3xl text-sm">{expertData.rating}</span>
           </div>
           <div
             onClick={handleSaveCard}
@@ -267,26 +280,6 @@ const SubscriptionRA = () => {
               <div className="text-center md:text-lg text-xs mt-auto opacity-60 mb-6">
                 1 Month Access
               </div>
-              {/* <div className="text-center md:mb-8 mb-4">
-      <div className="flex md:mb-4 mb-2 font-medium items-center md:justify-center text-left">
-        <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
-        <span className="md:text-base text-xs">
-          Voice messages anywhere
-        </span>
-      </div>
-      <div className="flex md:mb-4 mb-2 font-medium items-center md:justify-center text-left">
-        <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
-        <span className="md:text-base text-xs">
-          Voice messages anywhere
-        </span>
-      </div>
-      <div className="flex md:mb-4 mb-2 font-medium items-center md:justify-center text-left">
-        <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
-        <span className="md:text-base text-xs">
-          Voice messages anywhere
-        </span>
-      </div>
-    </div> */}
               <div className="text-center">
                 <button className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2">
                   Buy Now
@@ -310,26 +303,7 @@ const SubscriptionRA = () => {
               <div className="text-center md:text-lg text-xs mt-auto opacity-60 mb-6">
                 3 Month Access
               </div>
-              <div className="text-center md:mb-8 mb-4">
-                {/* <div className="flex md:justify-center md:mb-4 mb-2 font-medium items-center text-left">
-      <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
-      <span className="md:text-base text-xs">
-        Voice messages anywhere
-      </span>
-    </div>
-    <div className="flex md:justify-center md:mb-4 mb-2 font-medium items-center text-left">
-      <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
-      <span className="md:text-base text-xs">
-        Voice messages anywhere
-      </span>
-    </div>
-    <div className="flex justify-center md:mb-4 mb-2 font-medium items-center text-left">
-      <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
-      <span className="md:text-base text-xs">
-        Voice messages anywhere
-      </span>
-    </div> */}
-              </div>
+              <div className="text-center md:mb-8 mb-4"></div>
               <div className="text-center">
                 <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2">
                   Buy Now
@@ -339,53 +313,6 @@ const SubscriptionRA = () => {
                 Recommended
               </div>
             </div>
-
-            {/* <div
-            onMouseOver={handleMouseOver}
-            onMouseOut={handleMouseOut}
-            className={`flex-1 bg-opacity-5 p-5 hover:bg-[#18181B80] rounded-2xl standard-div ${
-              activeHoverIndex === 3 ? "hover:bg-[#18181B80]" : ""
-            }`}
-            onMouseEnter={() => handleMouseEnter(3)}
-            onMouseLeave={handleMouseLeave}
-          >
-            <div className="md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1 md:mt-1 mt-0">
-              Half-Yearly
-            </div>
-            <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex">
-              ₹5,999/<span className="md:flex hidden">-</span>
-              <span className="md:hidden flex font-normal">mo</span>
-            </div>
-            <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
-              6 Month Access
-            </div>
-            <div className="md:mb-8 mb-4">
-              <div className="flex md:mb-4 mb-2 font-medium items-center">
-                <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
-                <span className="md:text-base text-xs">
-                  Voice messages anywhere
-                </span>
-              </div>
-              <div className="flex md:mb-4 mb-2 font-medium items-center">
-                <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
-                <span className="md:text-base text-xs">
-                  Voice messages anywhere
-                </span>
-              </div>
-              <div className="flex md:mb-4 mb-2 font-medium items-center">
-                <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
-                <span className="md:text-base text-xs">
-                  Voice messages anywhere
-                </span>
-              </div>
-            </div>
-            <div className="text-center">
-              <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2" onClick={() => handleBuyNowClick("Half-Yearly", 5999)}>
-               Buy Now
-              </button>
-            </div>
-          </div> */}
-
             <div
               onClick={() => handleBuyNowClick("Yearly", 9999)}
               onMouseOver={handleMouseOver}
@@ -406,26 +333,7 @@ const SubscriptionRA = () => {
               <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
                 12 Month Access
               </div>
-              <div className="md:mb-8 mb-4">
-                {/* <div className="flex md:mb-4 mb-2 font-medium items-center justify-center">
-                <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
-                <span className="md:text-base text-xs">
-                  Voice messages anywhere
-                </span>
-              </div>
-              <div className="flex md:mb-4 mb-2 font-medium items-center justify-center">
-                <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
-                <span className="md:text-base text-xs">
-                  Voice messages anywhere
-                </span>
-              </div>
-              <div className="flex md:mb-4 mb-2 font-medium items-center justify-center">
-                <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
-                <span className="md:text-base text-xs">
-                  Voice messages anywhere
-                </span>
-              </div> */}
-              </div>
+              <div className="md:mb-8 mb-4"></div>
               <div className="text-center">
                 <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2">
                   Buy Now
@@ -451,7 +359,7 @@ const SubscriptionRA = () => {
             <div className="text-white md:text-5xl text-3xl font-bold pb-4 md:text-left text-center">
               Key highlights to join this subscription
             </div>
-            <div className="text-dimWhite md:mb-9 mb-4 md:text-base text-xs md:text-left text-center">
+            <div className="text-[#A1A1AACC] md:mb-9 mb-4 md:text-base text-xs md:text-left text-center">
               Experience the power of our subscription. Gain exclusive access to
               expert insights, advanced trading tools and personalised support.
             </div>
@@ -465,7 +373,7 @@ const SubscriptionRA = () => {
                     <p className="text-[#E4E4E7] md:text-lg text-base">
                       Expert Insights
                     </p>
-                    <p className="text-dimWhite md:text-sm text-xs">
+                    <p className="text-[#A1A1AACC] md:text-sm text-xs">
                       Gain exclusive access to expert analysis and insights from
                       SEBI Registered Research Analysts.{" "}
                     </p>
@@ -479,7 +387,7 @@ const SubscriptionRA = () => {
                     <p className="text-[#E4E4E7] md:text-lg text-base">
                       Risk Management
                     </p>
-                    <p className="text-dimWhite md:text-sm text-xs">
+                    <p className="text-[#A1A1AACC] md:text-sm text-xs">
                       Learn essential risk management techniques and gain access
                       to tools to help protect your investments.{" "}
                     </p>
@@ -495,7 +403,7 @@ const SubscriptionRA = () => {
                     <p className="text-[#E4E4E7] md:text-lg text-base">
                       Performance Tracking
                     </p>
-                    <p className="text-dimWhite md:text-sm text-xs">
+                    <p className="text-[#A1A1AACC] md:text-sm text-xs">
                       Monitor your trading performance with detailed analytics
                       and reports to identify strengths and areas for
                       improvement.{" "}
@@ -510,7 +418,7 @@ const SubscriptionRA = () => {
                     <p className="text-[#E4E4E7] md:text-lg text-base">
                       Market Alerts
                     </p>
-                    <p className="text-dimWhite md:text-sm text-xs">
+                    <p className="text-[#A1A1AACC] md:text-sm text-xs">
                       Stay informed with real-time market alerts and
                       notifications to capitalise on opportunities. {" "}
                     </p>
@@ -601,7 +509,7 @@ const SubscriptionRA = () => {
           <p className="text-white md:text-5xl text-3xl font-bold pb-8">
             Subscriptions Details
           </p>
-          <div className="text-dimWhite">
+          <div className="text-[#A1A1AACC]">
             <p>
               Welcome to our subscription plans, tailored to cater to traders of
               all levels. Our plans are designed to provide you with the tools,
@@ -621,17 +529,17 @@ const SubscriptionRA = () => {
               inspiration and collaboration.
             </p>
           </div>
-          <button className="text-white md:text-base text-xs flex items-center gap-4 md:py-6 pt-6">
-            Explore More <img className="w-4 h-4" src={arrow} alt="" />
+          <button className="text-white md:text-base text-xs flex items-center gap-1 md:py-6 pt-6">
+            Explore More <img className="w-5 h-5" src={arrow} alt="" />
           </button>
         </section>
-      </div>
-      <ToastContainer />
-      <div className="md:hidden block">
-        <MobileCourse
-          handleBuyNowClick={handleBuyNowClick}
-          showMobilePopup={showMobilePopup}
-        />
+        <ToastContainer />
+        <div className="md:hidden block">
+          <MobileCourse
+            handleBuyNowClick={handleBuyNowClick}
+            showMobilePopup={showMobilePopup}
+          />
+        </div>
       </div>
     </section>
   );

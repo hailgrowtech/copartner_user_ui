@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../style";
 import "./SubscriptionRA.css";
-import { courses } from "../../constants";
+import { expertise_data } from "../../constants";
+import { useParams } from "react-router-dom";
 import {
-  anywhereAccess,
   arrow,
   bookmark,
   bookmarkFill,
@@ -13,59 +13,36 @@ import {
   lifetimeAccess,
   sessions,
   stars,
+  tick,
   userImg,
+  layer,
 } from "../../assets";
-import CourseCardsCarousel from "./CourseCardsCarousel";
-import CourseCard from "./CourseCard";
-import { ToastContainer, toast } from "react-toastify";
-import SubscriptionPaymentPopup from "./SubscriptionPaymentPopup";
-import FAQs2 from "../About/FAQs2";
+import Testimonials from "../Home/Testimonials";
 import CoursePaymentPopup from "./CoursePaymentPopup";
+import  SubscriptionPaymentPopup  from './SubscriptionPaymentPopup';
+import { ToastContainer, toast } from "react-toastify";
+import FAQs2 from "../About/FAQs2";
 
 const SubscriptionRA = () => {
-  const [isCardSaved, setIsCardSaved] = useState(false);
-  const carouselItems = courses.slice(0, 5);
-  const [activeTab, setActiveTab] = useState("subscriptions");
-  const [showMonthlyPopup, setShowMonthlyPopup] = useState(false);
+  const { id } = useParams();
+  const [expertData, setExpertData] = useState(null);
+  const [activeHoverIndex, setActiveHoverIndex] = useState(0);
   const [backgroundColor, setBackgroundColor] = useState("#18181B80");
+  const [backgroundColor2, setBackgroundColor2] = useState("#18181B80");
+  const [showMonthlyPopup, setShowMonthlyPopup] = useState(false);
   const [selectedMonthlyPlan, setSelectedMonthlyPlan] = useState(null);
   const [planMonthlyPrice, setPlanMonthlyPrice] = useState(0);
-  const [activeHoverIndex, setActiveHoverIndex] = useState(0);
+  const [showPopup, setShowPopup] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [planPrice, setPlanPrice] = useState(2999);
-  const [showPopup, setShowPopup] = useState(false);
-
-  const handleBuyNowClick = (plan, price) => {
-    setSelectedMonthlyPlan(plan);
-    setPlanMonthlyPrice(price);
-    setShowMonthlyPopup(true);
-  };
-
-  const handleClosePopup = () => {
-    setShowMonthlyPopup(false);
-  };
+  const [isCardSaved, setIsCardSaved] = useState(false);
+  const [activeTab, setActiveTab] = useState("subscriptions");
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
-  };
+};
 
-  const handleMouseOver = () => {
-    setBackgroundColor("transparent");
-  };
-
-  const handleMouseOut = () => {
-    setBackgroundColor("#18181B80");
-  };
-
-  const handleMouseEnter = (index) => {
-    setActiveHoverIndex(index);
-  };
-
-  const handleMouseLeave = () => {
-    setActiveHoverIndex(0);
-  };
-
-  const handleSaveCard = () => {
+const handleSaveCard = () => {
     // Toggle the isCardSaved state
     setIsCardSaved(!isCardSaved);
 
@@ -84,22 +61,56 @@ const SubscriptionRA = () => {
   const handleSelectPlan = (plan, price) => {
     setSelectedPlan(plan);
     setPlanPrice(price);
-
+    
     console.log(`User has chosen: ${plan} plan with price ₹${price}`);
   };
-
+  
   const handleClose = () => {
     setShowPopup(false);
   };
 
+  const handleClosePopup = () => {
+    setShowMonthlyPopup(false);
+  };
+
+  const handleBuyNowClick = (plan, price) => {
+    setSelectedMonthlyPlan(plan);
+    setPlanMonthlyPrice(price);
+    setShowMonthlyPopup(true);
+  };
+
+
+  const handleMouseOver = () => {
+    setBackgroundColor("transparent");
+  };
+
+  const handleMouseOut = () => {
+    setBackgroundColor("#18181B80");
+  };
+
+
+  useEffect(() => {
+    // Filter the expertise_data array to find the object with the matching id
+    const filteredData = expertise_data.find((expert) => expert.id === id);
+    setExpertData(filteredData);
+  }, [id]);
+
+  if (!expertData) {
+    return <div className="text-white">Loading...</div>;
+  }
+
+  const handleMouseEnter = (index) => {
+    setActiveHoverIndex(index);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveHoverIndex(0);
+  };
+
   return (
-    <section
-      className={`flex md:flex-row flex-col md:px-0 px-3 ${styles.paddingY} expertise-Bg`}
-    >
-      <div
-        className={`flex-1 ${styles.flexStart} flex-col xl:px-0 md:px-28 z-10 md:bottom-[10rem] font-inter`}
-      >
-        <section className="subscription-RA-bg flex flex-row justify-between bg-[#18181B80] relative w-full md:p-[30px] p-[16px] border-2 border-[#f4f4f50e] rounded-xl md:mb-8">
+    <section className={`flex md:flex-col flex-col md:px-0 px-3 ${styles.paddingY} expertise-Bg`}>
+    <div key={expertData.id} className={`flex-1 ${styles.flexStart} flex-col xl:px-0 md:px-28 z-10 md:bottom-[10rem] font-inter`}>
+        <section className="subscription-RA-bg flex flex-row justify-between bg-[#18181B80] relative w-full md:p-[30px] p-[16px] border-2 border-[#f4f4f50e] rounded-xl mb-8">
           <div className="text-white">
             <div className="flex flex-col md:mb-6 mb-1">
               <div className="flex justify-between items-center w-full">
@@ -107,27 +118,34 @@ const SubscriptionRA = () => {
                   className="flex-1 font-bold md:text-[72px] text-[26px]
       text-gradient md:leading-[88px] leading-[30px] md:pb-3"
                 >
-                  Arun Kumar
+                  {expertData.name}
                 </span>
               </div>
               <span className="font-normal opacity-60 md:leading-[28px] md:text-[22px] text-[12px]">
-                Futures & Options.
+                {expertData.title}
               </span>
             </div>
             <div className="flex justify-between md:w-[350px] w-[176px] md:h-16 h-10 md:mb-6 mb-3">
               <div className="flex flex-col items-center justify-around">
-                <div className="text-[12px] text-[#C6CDD5]">Experience</div>
-                <div className="md:text-xl text-xs font-semibold">7+</div>
+                <div className="text-[15px] text-[#C6CDD5]">
+                  {expertData.experience}
+                </div>
+                <div className="md:text-xl text-xs font-semibold">
+                  {expertData.totalExp}
+                </div>
               </div>
               <div className="w-[1px] md:h-16 h-10 bg-white"></div>
               <div className="flex flex-col items-center justify-around">
-                <div className="text-[12px] text-[#C6CDD5]">Followers</div>
-                <div className="md:text-xl text-xs font-semibold">3.1k</div>
+                <div className="text-[15px] text-[#C6CDD5]">
+                  {expertData.followers}
+                </div>
+                <div className="md:text-xl text-xs font-semibold">
+                  {expertData.totalFollowers}
+                </div>
               </div>
             </div>
             <div className="md:text-lg text-sm md:font-semibold md:w-[508px] md:mb-4 mb-2">
-              Take your team up a level with easy-to-use tools, effortless
-              templates and efficient workflows.
+              {expertData.content}
             </div>
             <div className="text-white flex items-center md:w-[400px] md:justify-between md:gap-2 gap-4 md:mb-5 mb-3">
               <div className="subheading-gradient md:text-3xl text-base font-bold">
@@ -144,7 +162,7 @@ const SubscriptionRA = () => {
               <button className="flex mx-auto md:py-2 py-1 items-center">
                 {/* <img
                   className="md:w-6 w-4 me-3"
-                  src={telegram}
+                  src={expertData.telegram}
                   alt="telegram icon"
                 /> */}
                 <span className="md:text-base text-xs">Get Free Calls</span>
@@ -162,6 +180,9 @@ const SubscriptionRA = () => {
             <img
               className="subscription-RA-img md:w-[400px] w-[470px] my-auto"
               src={userImg}
+              style={{
+                maskImage: "linear-gradient(rgba(0, 0, 0, 1) 70%, transparent)",
+              }}
               alt=""
             />
           </div>
@@ -171,7 +192,7 @@ const SubscriptionRA = () => {
               src={stars}
               alt="star icon"
             />
-            <span className="md:text-3xl text-sm">4.4</span>
+            <span className="md:text-3xl text-sm">{expertData.rating}</span>
           </div>
           <div
             onClick={handleSaveCard}
@@ -263,26 +284,6 @@ const SubscriptionRA = () => {
               <div className="text-center md:text-lg text-xs mt-auto opacity-60 mb-6">
                 1 Month Access
               </div>
-              {/* <div className="text-center md:mb-8 mb-4">
-      <div className="flex md:mb-4 mb-2 font-medium items-center md:justify-center text-left">
-        <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
-        <span className="md:text-base text-xs">
-          Voice messages anywhere
-        </span>
-      </div>
-      <div className="flex md:mb-4 mb-2 font-medium items-center md:justify-center text-left">
-        <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
-        <span className="md:text-base text-xs">
-          Voice messages anywhere
-        </span>
-      </div>
-      <div className="flex md:mb-4 mb-2 font-medium items-center md:justify-center text-left">
-        <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
-        <span className="md:text-base text-xs">
-          Voice messages anywhere
-        </span>
-      </div>
-    </div> */}
               <div className="text-center">
                 <button className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2">
                   Buy
@@ -307,24 +308,6 @@ const SubscriptionRA = () => {
                 3 Month Access
               </div>
               <div className="text-center md:mb-8 mb-4">
-                {/* <div className="flex md:justify-center md:mb-4 mb-2 font-medium items-center text-left">
-      <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
-      <span className="md:text-base text-xs">
-        Voice messages anywhere
-      </span>
-    </div>
-    <div className="flex md:justify-center md:mb-4 mb-2 font-medium items-center text-left">
-      <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
-      <span className="md:text-base text-xs">
-        Voice messages anywhere
-      </span>
-    </div>
-    <div className="flex justify-center md:mb-4 mb-2 font-medium items-center text-left">
-      <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
-      <span className="md:text-base text-xs">
-        Voice messages anywhere
-      </span>
-    </div> */}
               </div>
               <div className="text-center">
                 <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2">
@@ -335,53 +318,6 @@ const SubscriptionRA = () => {
                 Recommended
               </div>
             </div>
-
-            {/* <div
-            onMouseOver={handleMouseOver}
-            onMouseOut={handleMouseOut}
-            className={`flex-1 bg-opacity-5 p-5 hover:bg-[#18181B80] rounded-2xl standard-div ${
-              activeHoverIndex === 3 ? "hover:bg-[#18181B80]" : ""
-            }`}
-            onMouseEnter={() => handleMouseEnter(3)}
-            onMouseLeave={handleMouseLeave}
-          >
-            <div className="md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1 md:mt-1 mt-0">
-              Half-Yearly
-            </div>
-            <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex">
-              ₹5,999/<span className="md:flex hidden">-</span>
-              <span className="md:hidden flex font-normal">mo</span>
-            </div>
-            <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
-              6 Month Access
-            </div>
-            <div className="md:mb-8 mb-4">
-              <div className="flex md:mb-4 mb-2 font-medium items-center">
-                <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
-                <span className="md:text-base text-xs">
-                  Voice messages anywhere
-                </span>
-              </div>
-              <div className="flex md:mb-4 mb-2 font-medium items-center">
-                <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
-                <span className="md:text-base text-xs">
-                  Voice messages anywhere
-                </span>
-              </div>
-              <div className="flex md:mb-4 mb-2 font-medium items-center">
-                <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
-                <span className="md:text-base text-xs">
-                  Voice messages anywhere
-                </span>
-              </div>
-            </div>
-            <div className="text-center">
-              <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2" onClick={() => handleBuyNowClick("Half-Yearly", 5999)}>
-               Buy Now
-              </button>
-            </div>
-          </div> */}
-
             <div
               onClick={() => handleBuyNowClick("Yearly", 9999)}
               onMouseOver={handleMouseOver}
@@ -403,29 +339,97 @@ const SubscriptionRA = () => {
                 12 Month Access
               </div>
               <div className="md:mb-8 mb-4">
-                {/* <div className="flex md:mb-4 mb-2 font-medium items-center justify-center">
-                <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
-                <span className="md:text-base text-xs">
-                  Voice messages anywhere
-                </span>
-              </div>
-              <div className="flex md:mb-4 mb-2 font-medium items-center justify-center">
-                <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
-                <span className="md:text-base text-xs">
-                  Voice messages anywhere
-                </span>
-              </div>
-              <div className="flex md:mb-4 mb-2 font-medium items-center justify-center">
-                <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
-                <span className="md:text-base text-xs">
-                  Voice messages anywhere
-                </span>
-              </div> */}
               </div>
               <div className="text-center">
                 <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2">
                   Buy
                 </button>
+                      </div>
+                        </div>
+
+          <div
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}
+            className={`flex-1 bg-opacity-5 p-5 hover:bg-[#18181B80] rounded-2xl standard-div ${
+              activeHoverIndex === 3 ? "hover:bg-[#18181B80]" : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(3)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className="md:text-3xl text-lg font-bold md:mb-4 mb-1 md:mt-1 mt-0">
+              Half-Yearly
+                        </div>
+            <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex">
+              ₹5,999/<span className="md:flex hidden">-</span>
+              <span className="md:hidden flex font-normal">mo</span>
+                        </div>
+            <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
+              6 Month Access
+            </div>
+            <div className="md:mb-8 mb-4">
+              <div className="flex md:mb-4 mb-2 font-medium items-center">
+                <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
+                <span className="md:text-base text-xs">
+                  Voice messages anywhere
+                          </span>
+                        </div>
+              <div className="flex md:mb-4 mb-2 font-medium items-center">
+                <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
+                <span className="md:text-base text-xs">
+                  Voice messages anywhere
+                          </span>
+                        </div>
+              <div className="flex md:mb-4 mb-2 font-medium items-center">
+                <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
+                <span className="md:text-base text-xs">
+                  Voice messages anywhere
+                          </span>
+                        </div>
+                      </div>
+            <div className="text-center">
+              <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2" onClick={() => handleBuyNowClick("Half-Yearly", 5999)}>
+               Buy Now
+                        </button>
+                      </div>
+                    </div>
+
+          <div
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}
+            className={`flex-1 bg-opacity-5 p-5 hover:bg-[#18181B80] rounded-2xl standard-div ${
+              activeHoverIndex === 4 ? "hover:bg-[#18181B80]" : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(4)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className="md:text-3xl text-lg font-bold md:mb-4 mb-1 md:mt-1 mt-0">
+              Yearly
+                  </div>
+            <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex">
+              ₹5,999/<span className="md:flex hidden">-</span>
+              <span className="md:hidden flex font-normal">mo</span>
+            </div>
+            <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
+              12 Month Access
+            </div>
+            <div className="md:mb-8 mb-4">
+              <div className="flex md:mb-4 mb-2 font-medium items-center">
+                <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
+                <span className="md:text-base text-xs">
+                  Voice messages anywhere
+                </span>
+              </div>
+              <div className="flex md:mb-4 mb-2 font-medium items-center">
+                <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
+                <span className="md:text-base text-xs">
+                  Voice messages anywhere
+                </span>
+              </div>
+              <div className="flex md:mb-4 mb-2 font-medium items-center">
+                <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
+                <span className="md:text-base text-xs">
+                  Voice messages anywhere
+                </span>
               </div>
             </div>
             {showMonthlyPopup && (
@@ -437,7 +441,12 @@ const SubscriptionRA = () => {
               />
             )}
           </div>
-        </section>
+        {showMonthlyPopup && <SubscriptionPaymentPopup onClose={handleClosePopup}  selectedMonthlyPlan={selectedMonthlyPlan}
+          planMonthlyPrice={planMonthlyPrice}   expertName={expertData.name}
+          />}
+        </div>
+
+
         <section className="w-full md:my-8 my-2 flex gap-20 md:mb-24 mb-16">
           <FAQs2 />
         </section>
@@ -446,7 +455,7 @@ const SubscriptionRA = () => {
             <div className="text-white md:text-5xl text-3xl font-bold pb-4 md:text-left text-center">
               Key highlights to join this subscription
             </div>
-            <div className="text-dimWhite md:mb-9 mb-4 md:text-base text-xs md:text-left text-center">
+            <div className="text-[#A1A1AACC] md:mb-9 mb-4 md:text-base text-xs md:text-left text-center">
               Experience the power of our subscription. Gain exclusive access to
               expert insights, advanced trading tools and personalised support.
             </div>
@@ -460,7 +469,7 @@ const SubscriptionRA = () => {
                     <p className="text-[#E4E4E7] md:text-lg text-base">
                       Expert Insights
                     </p>
-                    <p className="text-dimWhite md:text-sm text-xs">
+                    <p className="text-[#A1A1AACC] md:text-sm text-xs">
                       Gain exclusive access to expert analysis and insights from
                       SEBI Registered Research Analysts.{" "}
                     </p>
@@ -474,7 +483,7 @@ const SubscriptionRA = () => {
                     <p className="text-[#E4E4E7] md:text-lg text-base">
                       Risk Management
                     </p>
-                    <p className="text-dimWhite md:text-sm text-xs">
+                    <p className="text-[#A1A1AACC] md:text-sm text-xs">
                       Learn essential risk management techniques and gain access
                       to tools to help protect your investments.{" "}
                     </p>
@@ -490,7 +499,7 @@ const SubscriptionRA = () => {
                     <p className="text-[#E4E4E7] md:text-lg text-base">
                       Performance Tracking
                     </p>
-                    <p className="text-dimWhite md:text-sm text-xs">
+                    <p className="text-[#A1A1AACC] md:text-sm text-xs">
                       Monitor your trading performance with detailed analytics
                       and reports to identify strengths and areas for
                       improvement.{" "}
@@ -505,7 +514,7 @@ const SubscriptionRA = () => {
                     <p className="text-[#E4E4E7] md:text-lg text-base">
                       Market Alerts
                     </p>
-                    <p className="text-dimWhite md:text-sm text-xs">
+                    <p className="text-[#A1A1AACC] md:text-sm text-xs">
                       Stay informed with real-time market alerts and
                       notifications to capitalise on opportunities. {" "}
                     </p>
@@ -573,6 +582,30 @@ const SubscriptionRA = () => {
                 </div>
                 <p className="flex-1 text-3xl font-bold">₹9,999 </p>
               </div>
+          <div
+            onClick={() => handleSelectPlan('Half-Yearly', 5999)}
+            className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
+              selectedPlan === 'Half-Yearly' ? 'border-2 border-[#F4F4F51A]' : ''
+            }`}
+          >
+            <div className="flex-1 text-left">
+              <p className="text-lg">Half-Yearly</p>
+              <p className="text-[#C6CDD5] text-sm">6 Month Access</p>
+            </div>
+            <p className="flex-1 text-3xl font-bold">₹5,999</p>
+          </div>
+          <div
+            onClick={() => handleSelectPlan('Yearly', 5999)}
+            className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
+              selectedPlan === 'Yearly' ? 'border-2 border-[#F4F4F51A]' : ''
+            }`}
+          >
+            <div className="flex-1 text-left">
+              <p className="text-lg">Yearly</p>
+              <p className="text-[#C6CDD5] text-sm">12 Month Access</p>
+            </div>
+            <p className="flex-1 text-3xl font-bold">₹5,999</p>
+          </div>
               <div className="text-center">
                 <button
                   className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2"
@@ -596,7 +629,7 @@ const SubscriptionRA = () => {
           <p className="subheading-gradient md:text-5xl text-3xl font-bold pb-8">
             Subscriptions Details
           </p>
-          <div className="text-dimWhite">
+          <div className="text-[#A1A1AACC]">
             <p>
               Welcome to our subscription plans, tailored to cater to traders of
               all levels. Our plans are designed to provide you with the tools,
@@ -616,10 +649,11 @@ const SubscriptionRA = () => {
               inspiration and collaboration.
             </p>
           </div>
-          <button className="text-white md:text-base text-xs flex items-center gap-4 md:py-6 pt-6">
-            Explore More <img className="w-4 h-4" src={arrow} alt="" />
+          <button className="text-white md:text-base text-xs flex items-center gap-1 md:py-6 pt-6">
+            Explore More <img className="w-5 h-5" src={arrow} alt="" />
           </button>
         </section>
+      </section>
       </div>
       <ToastContainer />
     </section>

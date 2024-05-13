@@ -559,6 +559,31 @@
   margin-left: 10px;
 }
 
+.basic-div:hover button {
+  background-color: white;
+  transition-duration: 300ms;
+  color: black;
+}
+
+.standard-div:hover button {
+  background-color: white;
+  transition-duration: 300ms;
+  color: black;
+}
+
+.basic-div:not(:hover) button {
+  background-color: transparent;
+  transition-duration: 300ms;
+  color: white;
+}
+
+.standard-div:not(:hover) button {
+  background-color: transparent;
+  color: white;
+  transition-duration: 300ms;
+
+}
+
   /* width: 100%;
   display: inline-block;
 } */

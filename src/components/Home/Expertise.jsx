@@ -50,9 +50,8 @@ const Expertise = () => {
         <div className="flex p-[1rem] gap-[1rem] sm:p-[4rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px] md:mt-[-2rem]">
           {expertise_data.map((expert, id) => {
             return (
-              <Link
+              <Link to={`/subscriptionRA/${expert.id}`}
                 onClick={scrollToTop}
-                to="/subscription/ra-detail"
                 key={expert.id}
                 className="md:w-[384px] md:h-[400px] sm:w-[172px] h-[270px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
               >

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Expertise, Navbar, Subscription, SubscriptionCourseDetail, SubscriptionRA, Wallet, Webinar, ErrorPage, ExpertiseExplore, CoursesExplore, SubscriptionBuy, ReferEarn, Blog, BlogPage, ContactUs, Profile  } from "./components";
+import React from "react";
+import { Expertise, Navbar, Subscription, SubscriptionRA, Wallet, Webinar, ErrorPage, ExpertiseExplore, CoursesExplore, SubscriptionBuy, ReferEarn, Blog, BlogPage, ContactUs, Profile  } from "./components";
 import styles from "./style";
 import 'react-toastify/dist/ReactToastify.css';
 import Hero from "./components/Home/Hero";
@@ -16,12 +16,6 @@ function App() {
 
   const token = sessionStorage.getItem("token");
   const hasVisitedSignUp = sessionStorage.getItem("visitedSignUp");
-
-  // useEffect(() => {
-    // if (!hasVisitedSignUp) {
-    //   window.location.reload();
-    // }
-  // }, [hasVisitedSignUp])
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -75,6 +69,8 @@ function App() {
           <Route path="subscription/buy" element={ token || hasVisitedSignUp ? <SubscriptionBuy /> : <Navigate to="/signup" replace={true}/>} />
           <Route path="expertise/explore-expertise" element={ token || hasVisitedSignUp ? <ExpertiseExplore /> : <Navigate to="/signup" replace={true}/>} />
           <Route path="courses/explore-courses" element={ token || hasVisitedSignUp ? <CoursesExplore /> : <Navigate to="/signup" replace={true}/>} />
+          <Route path="/subscriptionRA/:id" element={<SubscriptionRA />} />
+          <Route path="subscription/buy/:id" element={<SubscriptionBuy />} />
           <Route path="refer&earn" element={ token || hasVisitedSignUp ? 
               <div className={`${styles.flexStart}`}>
                 <div className={`${styles.boxWidth}`}>
