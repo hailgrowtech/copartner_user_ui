@@ -14,10 +14,13 @@ import SubscriptionPaymentPopup from "./SubscriptionPaymentPopup";
 import FAQs2 from "../About/FAQs2";
 import CoursePaymentPopup from "./CoursePaymentPopup";
 import MobileCourse from "./MobileCourse";
-import { expertData } from "../../constants";
+import { expertData, expertise_data } from "../../constants";
+import { useParams } from "react-router-dom";
 
 const SubscriptionRA = () => {
+  const { id } = useParams();
   const [isCardSaved, setIsCardSaved] = useState(false);
+  const [expertData, setExpertData] = useState(null);
   const [activeHoverIndex, setActiveHoverIndex] = useState(0);
   const [backgroundColor, setBackgroundColor] = useState("#18181B80");
   const [showMonthlyPopup, setShowMonthlyPopup] = useState(false);
@@ -104,11 +107,22 @@ const SubscriptionRA = () => {
     setShowMonthlyPopup(false);
   };
 
+  useEffect(() => {
+    // Filter the expertise_data array to find the object with the matching id
+    const filteredData = expertise_data.find((expert) => expert.id === id);
+    setExpertData(filteredData);
+  }, [id]);
+  
+  if (!expertData) {
+    return <div className="text-white">Loading...</div>;
+  }
+
   return (
     <section
       className={`flex md:flex-row flex-col md:px-0 px-3 ${styles.paddingY} expertise-Bg`}
     >
       <div
+        key={expertData.id}
         className={`flex-1 ${styles.flexStart} flex-col xl:px-0 md:px-28 md:bottom-[10rem] font-inter`}
       >
         <section className="subscription-RA-bg flex flex-row justify-between bg-[#18181B80] relative w-full md:p-[30px] p-[16px] md:pb-0 pb-[3rem] border-2 border-[#f4f4f50e] rounded-xl md:mb-8">

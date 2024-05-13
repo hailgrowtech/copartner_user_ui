@@ -17,9 +17,8 @@ import {
   userImg,
   layer,
 } from "../../assets";
-import Testimonials from "../Home/Testimonials";
 import CoursePaymentPopup from "./CoursePaymentPopup";
-import  SubscriptionPaymentPopup  from './SubscriptionPaymentPopup';
+import SubscriptionPaymentPopup from "./SubscriptionPaymentPopup";
 import { ToastContainer, toast } from "react-toastify";
 import FAQs2 from "../About/FAQs2";
 
@@ -28,7 +27,6 @@ const SubscriptionRA = () => {
   const [expertData, setExpertData] = useState(null);
   const [activeHoverIndex, setActiveHoverIndex] = useState(0);
   const [backgroundColor, setBackgroundColor] = useState("#18181B80");
-  const [backgroundColor2, setBackgroundColor2] = useState("#18181B80");
   const [showMonthlyPopup, setShowMonthlyPopup] = useState(false);
   const [selectedMonthlyPlan, setSelectedMonthlyPlan] = useState(null);
   const [planMonthlyPrice, setPlanMonthlyPrice] = useState(0);
@@ -40,9 +38,9 @@ const SubscriptionRA = () => {
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
-};
+  };
 
-const handleSaveCard = () => {
+  const handleSaveCard = () => {
     // Toggle the isCardSaved state
     setIsCardSaved(!isCardSaved);
 
@@ -61,10 +59,10 @@ const handleSaveCard = () => {
   const handleSelectPlan = (plan, price) => {
     setSelectedPlan(plan);
     setPlanPrice(price);
-    
+
     console.log(`User has chosen: ${plan} plan with price ₹${price}`);
   };
-  
+
   const handleClose = () => {
     setShowPopup(false);
   };
@@ -79,7 +77,6 @@ const handleSaveCard = () => {
     setShowMonthlyPopup(true);
   };
 
-
   const handleMouseOver = () => {
     setBackgroundColor("transparent");
   };
@@ -87,7 +84,6 @@ const handleSaveCard = () => {
   const handleMouseOut = () => {
     setBackgroundColor("#18181B80");
   };
-
 
   useEffect(() => {
     // Filter the expertise_data array to find the object with the matching id
@@ -108,8 +104,13 @@ const handleSaveCard = () => {
   };
 
   return (
-    <section className={`flex md:flex-col flex-col md:px-0 px-3 ${styles.paddingY} expertise-Bg`}>
-    <div key={expertData.id} className={`flex-1 ${styles.flexStart} flex-col xl:px-0 md:px-28 z-10 md:bottom-[10rem] font-inter`}>
+    <section
+      className={`flex md:flex-col flex-col md:px-0 px-3 ${styles.paddingY} expertise-Bg`}
+    >
+      <div
+        key={expertData.id}
+        className={`flex-1 ${styles.flexStart} flex-col xl:px-0 md:px-28 z-10 md:bottom-[10rem] font-inter`}
+      >
         <section className="subscription-RA-bg flex flex-row justify-between bg-[#18181B80] relative w-full md:p-[30px] p-[16px] border-2 border-[#f4f4f50e] rounded-xl mb-8">
           <div className="text-white">
             <div className="flex flex-col md:mb-6 mb-1">
@@ -307,8 +308,7 @@ const handleSaveCard = () => {
               <div className="text-center md:text-lg text-xs mt-auto opacity-60 mb-6">
                 3 Month Access
               </div>
-              <div className="text-center md:mb-8 mb-4">
-              </div>
+              <div className="text-center md:mb-8 mb-4"></div>
               <div className="text-center">
                 <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2">
                   Renew
@@ -338,227 +338,234 @@ const handleSaveCard = () => {
               <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
                 12 Month Access
               </div>
-              <div className="md:mb-8 mb-4">
-              </div>
+              <div className="md:mb-8 mb-4"></div>
               <div className="text-center">
                 <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2">
                   Buy
                 </button>
-                      </div>
-                        </div>
+              </div>
+            </div>
 
-          <div
-            onMouseOver={handleMouseOver}
-            onMouseOut={handleMouseOut}
-            className={`flex-1 bg-opacity-5 p-5 hover:bg-[#18181B80] rounded-2xl standard-div ${
-              activeHoverIndex === 3 ? "hover:bg-[#18181B80]" : ""
-            }`}
-            onMouseEnter={() => handleMouseEnter(3)}
-            onMouseLeave={handleMouseLeave}
-          >
-            <div className="md:text-3xl text-lg font-bold md:mb-4 mb-1 md:mt-1 mt-0">
-              Half-Yearly
-                        </div>
-            <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex">
-              ₹5,999/<span className="md:flex hidden">-</span>
-              <span className="md:hidden flex font-normal">mo</span>
-                        </div>
-            <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
-              6 Month Access
+            <div
+              onMouseOver={handleMouseOver}
+              onMouseOut={handleMouseOut}
+              className={`flex-1 bg-opacity-5 p-5 hover:bg-[#18181B80] rounded-2xl standard-div ${
+                activeHoverIndex === 3 ? "hover:bg-[#18181B80]" : ""
+              }`}
+              onMouseEnter={() => handleMouseEnter(3)}
+              onMouseLeave={handleMouseLeave}
+            >
+              <div className="md:text-3xl text-lg font-bold md:mb-4 mb-1 md:mt-1 mt-0">
+                Half-Yearly
+              </div>
+              <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex">
+                ₹5,999/<span className="md:flex hidden">-</span>
+                <span className="md:hidden flex font-normal">mo</span>
+              </div>
+              <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
+                6 Month Access
+              </div>
+              <div className="md:mb-8 mb-4">
+                <div className="flex md:mb-4 mb-2 font-medium items-center">
+                  <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
+                  <span className="md:text-base text-xs">
+                    Voice messages anywhere
+                  </span>
+                </div>
+                <div className="flex md:mb-4 mb-2 font-medium items-center">
+                  <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
+                  <span className="md:text-base text-xs">
+                    Voice messages anywhere
+                  </span>
+                </div>
+                <div className="flex md:mb-4 mb-2 font-medium items-center">
+                  <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
+                  <span className="md:text-base text-xs">
+                    Voice messages anywhere
+                  </span>
+                </div>
+              </div>
+              <div className="text-center">
+                <button
+                  className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2"
+                  onClick={() => handleBuyNowClick("Half-Yearly", 5999)}
+                >
+                  Buy Now
+                </button>
+              </div>
             </div>
-            <div className="md:mb-8 mb-4">
-              <div className="flex md:mb-4 mb-2 font-medium items-center">
-                <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
-                <span className="md:text-base text-xs">
-                  Voice messages anywhere
-                          </span>
-                        </div>
-              <div className="flex md:mb-4 mb-2 font-medium items-center">
-                <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
-                <span className="md:text-base text-xs">
-                  Voice messages anywhere
-                          </span>
-                        </div>
-              <div className="flex md:mb-4 mb-2 font-medium items-center">
-                <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
-                <span className="md:text-base text-xs">
-                  Voice messages anywhere
-                          </span>
-                        </div>
-                      </div>
-            <div className="text-center">
-              <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2" onClick={() => handleBuyNowClick("Half-Yearly", 5999)}>
-               Buy Now
-                        </button>
-                      </div>
-                    </div>
 
-          <div
-            onMouseOver={handleMouseOver}
-            onMouseOut={handleMouseOut}
-            className={`flex-1 bg-opacity-5 p-5 hover:bg-[#18181B80] rounded-2xl standard-div ${
-              activeHoverIndex === 4 ? "hover:bg-[#18181B80]" : ""
-            }`}
-            onMouseEnter={() => handleMouseEnter(4)}
-            onMouseLeave={handleMouseLeave}
-          >
-            <div className="md:text-3xl text-lg font-bold md:mb-4 mb-1 md:mt-1 mt-0">
-              Yearly
-                  </div>
-            <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex">
-              ₹5,999/<span className="md:flex hidden">-</span>
-              <span className="md:hidden flex font-normal">mo</span>
-            </div>
-            <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
-              12 Month Access
-            </div>
-            <div className="md:mb-8 mb-4">
-              <div className="flex md:mb-4 mb-2 font-medium items-center">
-                <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
-                <span className="md:text-base text-xs">
-                  Voice messages anywhere
-                </span>
+            <div
+              onMouseOver={handleMouseOver}
+              onMouseOut={handleMouseOut}
+              className={`flex-1 bg-opacity-5 p-5 hover:bg-[#18181B80] rounded-2xl standard-div ${
+                activeHoverIndex === 4 ? "hover:bg-[#18181B80]" : ""
+              }`}
+              onMouseEnter={() => handleMouseEnter(4)}
+              onMouseLeave={handleMouseLeave}
+            >
+              <div className="md:text-3xl text-lg font-bold md:mb-4 mb-1 md:mt-1 mt-0">
+                Yearly
               </div>
-              <div className="flex md:mb-4 mb-2 font-medium items-center">
-                <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
-                <span className="md:text-base text-xs">
-                  Voice messages anywhere
-                </span>
+              <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex">
+                ₹5,999/<span className="md:flex hidden">-</span>
+                <span className="md:hidden flex font-normal">mo</span>
               </div>
-              <div className="flex md:mb-4 mb-2 font-medium items-center">
-                <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
-                <span className="md:text-base text-xs">
-                  Voice messages anywhere
-                </span>
+              <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
+                12 Month Access
               </div>
+              <div className="md:mb-8 mb-4">
+                <div className="flex md:mb-4 mb-2 font-medium items-center">
+                  <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
+                  <span className="md:text-base text-xs">
+                    Voice messages anywhere
+                  </span>
+                </div>
+                <div className="flex md:mb-4 mb-2 font-medium items-center">
+                  <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
+                  <span className="md:text-base text-xs">
+                    Voice messages anywhere
+                  </span>
+                </div>
+                <div className="flex md:mb-4 mb-2 font-medium items-center">
+                  <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
+                  <span className="md:text-base text-xs">
+                    Voice messages anywhere
+                  </span>
+                </div>
+              </div>
+              {showMonthlyPopup && (
+                <SubscriptionPaymentPopup
+                  onClose={handleClosePopup}
+                  selectedMonthlyPlan={selectedMonthlyPlan}
+                  planMonthlyPrice={planMonthlyPrice}
+                  // expertName={expertData.name}
+                />
+              )}
             </div>
             {showMonthlyPopup && (
               <SubscriptionPaymentPopup
                 onClose={handleClosePopup}
                 selectedMonthlyPlan={selectedMonthlyPlan}
                 planMonthlyPrice={planMonthlyPrice}
-                // expertName={expertData.name}
+                expertName={expertData.name}
               />
             )}
           </div>
-        {showMonthlyPopup && <SubscriptionPaymentPopup onClose={handleClosePopup}  selectedMonthlyPlan={selectedMonthlyPlan}
-          planMonthlyPrice={planMonthlyPrice}   expertName={expertData.name}
-          />}
-        </div>
 
-
-        <section className="w-full md:my-8 my-2 flex gap-20 md:mb-24 mb-16">
-          <FAQs2 />
-        </section>
-        <section className="w-full md:my-8 my-2 flex gap-20 md:mb-24 mb-16">
-          <div className="flex flex-col md:w-2/3 w-full text-white">
-            <div className="text-white md:text-5xl text-3xl font-bold pb-4 md:text-left text-center">
-              Key highlights to join this subscription
+          <section className="w-full md:my-8 my-2 flex gap-20 md:mb-24 mb-16">
+            <FAQs2 />
+          </section>
+          <section className="w-full md:my-8 my-2 flex gap-20 md:mb-24 mb-16">
+            <div className="flex flex-col md:w-2/3 w-full text-white">
+              <div className="text-white md:text-5xl text-3xl font-bold pb-4 md:text-left text-center">
+                Key highlights to join this subscription
+              </div>
+              <div className="text-[#A1A1AACC] md:mb-9 mb-4 md:text-base text-xs md:text-left text-center">
+                Experience the power of our subscription. Gain exclusive access
+                to expert insights, advanced trading tools and personalised
+                support.
+              </div>
+              <div className="flex md:flex-row flex-col md:gap-8 gap-3">
+                <div className="flex-1 flex flex-col md:gap-6 gap-3">
+                  <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
+                    <div className="w-28 h-14 border-2 rounded-xl border-[#F4F4F51A] flex items-center justify-center">
+                      1.
+                    </div>
+                    <div>
+                      <p className="text-[#E4E4E7] md:text-lg text-base">
+                        Expert Insights
+                      </p>
+                      <p className="text-[#A1A1AACC] md:text-sm text-xs">
+                        Gain exclusive access to expert analysis and insights
+                        from SEBI Registered Research Analysts.{" "}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
+                    <div className="w-28 h-14 border-2 rounded-xl border-[#F4F4F51A] flex items-center justify-center">
+                      2.
+                    </div>
+                    <div>
+                      <p className="text-[#E4E4E7] md:text-lg text-base">
+                        Risk Management
+                      </p>
+                      <p className="text-[#A1A1AACC] md:text-sm text-xs">
+                        Learn essential risk management techniques and gain
+                        access to tools to help protect your investments.{" "}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-1 flex flex-col md:gap-6 gap-3">
+                  <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
+                    <div className="w-28 h-14 border-2 rounded-xl border-[#F4F4F51A] flex items-center justify-center">
+                      3.
+                    </div>
+                    <div>
+                      <p className="text-[#E4E4E7] md:text-lg text-base">
+                        Performance Tracking
+                      </p>
+                      <p className="text-[#A1A1AACC] md:text-sm text-xs">
+                        Monitor your trading performance with detailed analytics
+                        and reports to identify strengths and areas for
+                        improvement.{" "}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
+                    <div className="w-28 h-14 border-2 rounded-xl border-[#F4F4F51A] flex items-center justify-center">
+                      4.
+                    </div>
+                    <div>
+                      <p className="text-[#E4E4E7] md:text-lg text-base">
+                        Market Alerts
+                      </p>
+                      <p className="text-[#A1A1AACC] md:text-sm text-xs">
+                        Stay informed with real-time market alerts and
+                        notifications to capitalise on opportunities. {" "}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="text-[#A1A1AACC] md:mb-9 mb-4 md:text-base text-xs md:text-left text-center">
-              Experience the power of our subscription. Gain exclusive access to
-              expert insights, advanced trading tools and personalised support.
-            </div>
-            <div className="flex md:flex-row flex-col md:gap-8 gap-3">
-              <div className="flex-1 flex flex-col md:gap-6 gap-3">
-                <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
-                  <div className="w-28 h-14 border-2 rounded-xl border-[#F4F4F51A] flex items-center justify-center">
-                    1.
-                  </div>
-                  <div>
-                    <p className="text-[#E4E4E7] md:text-lg text-base">
-                      Expert Insights
-                    </p>
-                    <p className="text-[#A1A1AACC] md:text-sm text-xs">
-                      Gain exclusive access to expert analysis and insights from
-                      SEBI Registered Research Analysts.{" "}
-                    </p>
-                  </div>
+            <div className="w-1/3 text-white md:block hidden">
+              <div className="rounded-2xl flex flex-col gap-4 bg-[#18181B80] p-8 text-center">
+                <div className="text-3xl font-bold subheading-gradient mb-4">
+                  Subscription Plan
                 </div>
-                <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
-                  <div className="w-28 h-14 border-2 rounded-xl border-[#F4F4F51A] flex items-center justify-center">
-                    2.
+                <div
+                  onClick={() => handleSelectPlan("Monthly", 1999)}
+                  className={`flex rounded-2xl p-4 ${
+                    selectedPlan === "Monthly"
+                      ? "bg-[#18181B80] border-2 border-[#F4F4F51A]"
+                      : "hover:bg-[#18181B80]"
+                  }`}
+                  onMouseEnter={() => handleMouseEnter(1)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <div className="flex-1 text-left">
+                    <p className="text-lg subheading-gradient">Monthly</p>
+                    <p className="text-[#C6CDD5] text-sm">1 Month Access</p>
                   </div>
-                  <div>
-                    <p className="text-[#E4E4E7] md:text-lg text-base">
-                      Risk Management
-                    </p>
-                    <p className="text-[#A1A1AACC] md:text-sm text-xs">
-                      Learn essential risk management techniques and gain access
-                      to tools to help protect your investments.{" "}
-                    </p>
-                  </div>
+                  <p className="flex-1 text-3xl font-bold">₹1,999</p>
                 </div>
-              </div>
-              <div className="flex-1 flex flex-col md:gap-6 gap-3">
-                <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
-                  <div className="w-28 h-14 border-2 rounded-xl border-[#F4F4F51A] flex items-center justify-center">
-                    3.
+                <div
+                  onClick={() => handleSelectPlan("Quarterly", 2999)}
+                  className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
+                    selectedPlan === "Quarterly"
+                      ? "border-2 border-[#F4F4F51A]"
+                      : ""
+                  }`}
+                >
+                  <div className="flex-1 text-left">
+                    <p className="text-lg subheading-gradient">Quarterly</p>
+                    <p className="text-[#C6CDD5] text-sm">3 Month Access</p>
                   </div>
-                  <div>
-                    <p className="text-[#E4E4E7] md:text-lg text-base">
-                      Performance Tracking
-                    </p>
-                    <p className="text-[#A1A1AACC] md:text-sm text-xs">
-                      Monitor your trading performance with detailed analytics
-                      and reports to identify strengths and areas for
-                      improvement.{" "}
-                    </p>
-                  </div>
+                  <p className="flex-1 text-3xl font-bold">₹2,999</p>
                 </div>
-                <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
-                  <div className="w-28 h-14 border-2 rounded-xl border-[#F4F4F51A] flex items-center justify-center">
-                    4.
-                  </div>
-                  <div>
-                    <p className="text-[#E4E4E7] md:text-lg text-base">
-                      Market Alerts
-                    </p>
-                    <p className="text-[#A1A1AACC] md:text-sm text-xs">
-                      Stay informed with real-time market alerts and
-                      notifications to capitalise on opportunities. {" "}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="w-1/3 text-white md:block hidden">
-            <div className="rounded-2xl flex flex-col gap-4 bg-[#18181B80] p-8 text-center">
-              <div className="text-3xl font-bold subheading-gradient mb-4">
-                Subscription Plan
-              </div>
-              <div
-                onClick={() => handleSelectPlan("Monthly", 1999)}
-                className={`flex rounded-2xl p-4 ${
-                  selectedPlan === "Monthly"
-                    ? "bg-[#18181B80] border-2 border-[#F4F4F51A]"
-                    : "hover:bg-[#18181B80]"
-                }`}
-                onMouseEnter={() => handleMouseEnter(1)}
-                onMouseLeave={handleMouseLeave}
-              >
-                <div className="flex-1 text-left">
-                  <p className="text-lg subheading-gradient">Monthly</p>
-                  <p className="text-[#C6CDD5] text-sm">1 Month Access</p>
-                </div>
-                <p className="flex-1 text-3xl font-bold">₹1,999</p>
-              </div>
-              <div
-                onClick={() => handleSelectPlan("Quarterly", 2999)}
-                className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
-                  selectedPlan === "Quarterly"
-                    ? "border-2 border-[#F4F4F51A]"
-                    : ""
-                }`}
-              >
-                <div className="flex-1 text-left">
-                  <p className="text-lg subheading-gradient">Quarterly</p>
-                  <p className="text-[#C6CDD5] text-sm">3 Month Access</p>
-                </div>
-                <p className="flex-1 text-3xl font-bold">₹2,999</p>
-              </div>
-              {/* <div
+                {/* <div
             onClick={() => handleSelectPlan('Half-Yearly', 5999)}
             className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
               selectedPlan === 'Half-Yearly' ? 'border-2 border-[#F4F4F51A]' : ''
@@ -570,90 +577,96 @@ const handleSaveCard = () => {
             </div>
             <p className="flex-1 text-3xl font-bold">₹5,999</p>
           </div> */}
-              <div
-                onClick={() => handleSelectPlan("Yearly", 9999)}
-                className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
-                  selectedPlan === "Yearly" ? "border-2 border-[#F4F4F51A]" : ""
-                }`}
-              >
-                <div className="flex-1 text-left">
-                  <p className="text-lg subheading-gradient">Yearly</p>
-                  <p className="text-[#C6CDD5] text-sm">12 Month Access</p>
-                </div>
-                <p className="flex-1 text-3xl font-bold">₹9,999 </p>
-              </div>
-          <div
-            onClick={() => handleSelectPlan('Half-Yearly', 5999)}
-            className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
-              selectedPlan === 'Half-Yearly' ? 'border-2 border-[#F4F4F51A]' : ''
-            }`}
-          >
-            <div className="flex-1 text-left">
-              <p className="text-lg">Half-Yearly</p>
-              <p className="text-[#C6CDD5] text-sm">6 Month Access</p>
-            </div>
-            <p className="flex-1 text-3xl font-bold">₹5,999</p>
-          </div>
-          <div
-            onClick={() => handleSelectPlan('Yearly', 5999)}
-            className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
-              selectedPlan === 'Yearly' ? 'border-2 border-[#F4F4F51A]' : ''
-            }`}
-          >
-            <div className="flex-1 text-left">
-              <p className="text-lg">Yearly</p>
-              <p className="text-[#C6CDD5] text-sm">12 Month Access</p>
-            </div>
-            <p className="flex-1 text-3xl font-bold">₹5,999</p>
-          </div>
-              <div className="text-center">
-                <button
-                  className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2"
-                  onClick={() => setShowPopup(true)}
+                <div
+                  onClick={() => handleSelectPlan("Yearly", 9999)}
+                  className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
+                    selectedPlan === "Yearly"
+                      ? "border-2 border-[#F4F4F51A]"
+                      : ""
+                  }`}
                 >
-                  Renew
-                </button>
-                {showPopup && (
-                  <CoursePaymentPopup
-                    onClose={handleClose}
-                    selectedPlan={selectedPlan}
-                    planPrice={planPrice}
-                    // expertName={expertData.name}
-                  />
-                )}
+                  <div className="flex-1 text-left">
+                    <p className="text-lg subheading-gradient">Yearly</p>
+                    <p className="text-[#C6CDD5] text-sm">12 Month Access</p>
+                  </div>
+                  <p className="flex-1 text-3xl font-bold">₹9,999 </p>
+                </div>
+                <div
+                  onClick={() => handleSelectPlan("Half-Yearly", 5999)}
+                  className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
+                    selectedPlan === "Half-Yearly"
+                      ? "border-2 border-[#F4F4F51A]"
+                      : ""
+                  }`}
+                >
+                  <div className="flex-1 text-left">
+                    <p className="text-lg">Half-Yearly</p>
+                    <p className="text-[#C6CDD5] text-sm">6 Month Access</p>
+                  </div>
+                  <p className="flex-1 text-3xl font-bold">₹5,999</p>
+                </div>
+                <div
+                  onClick={() => handleSelectPlan("Yearly", 5999)}
+                  className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
+                    selectedPlan === "Yearly"
+                      ? "border-2 border-[#F4F4F51A]"
+                      : ""
+                  }`}
+                >
+                  <div className="flex-1 text-left">
+                    <p className="text-lg">Yearly</p>
+                    <p className="text-[#C6CDD5] text-sm">12 Month Access</p>
+                  </div>
+                  <p className="flex-1 text-3xl font-bold">₹5,999</p>
+                </div>
+                <div className="text-center">
+                  <button
+                    className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2"
+                    onClick={() => setShowPopup(true)}
+                  >
+                    Renew
+                  </button>
+                  {showPopup && (
+                    <CoursePaymentPopup
+                      onClose={handleClose}
+                      selectedPlan={selectedPlan}
+                      planPrice={planPrice}
+                      // expertName={expertData.name}
+                    />
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-        <section className="border-2 rounded-2xl border-[#f4f4f50e] md:p-8 px-4 py-6 md:mb-12 mb-12">
-          <p className="subheading-gradient md:text-5xl text-3xl font-bold pb-8">
-            Subscriptions Details
-          </p>
-          <div className="text-[#A1A1AACC]">
-            <p>
-              Welcome to our subscription plans, tailored to cater to traders of
-              all levels. Our plans are designed to provide you with the tools,
-              resources and support you need to thrive in this dynamic world of
-              trading. Whether you're a new trader, looking to learn the basics
-              or an experienced trader seeking advanced analytics, there's a
-              plan that's right for you. Each of our subscription plans offers a
-              unique set of benefits. With our basic plan, you'll gain access to
-              essential features such as market news updates and basic analytics
-              tools. Our intermediate plan takes it a step further, offering
-              access to expert insights and more advanced trading tools and
-              exclusive access to in-depth market analysis and priority customer
-              support. No matter which plan you choose, you'll also become part
-              of our vibrant community of traders. Here, you can connect with
-              fellow traders, share ideas and learn from each other's
-              experiences. Our community is a valuable resource for support,
-              inspiration and collaboration.
+          </section>
+          <section className="border-2 rounded-2xl border-[#f4f4f50e] md:p-8 px-4 py-6 md:mb-12 mb-12">
+            <p className="subheading-gradient md:text-5xl text-3xl font-bold pb-8">
+              Subscriptions Details
             </p>
-          </div>
-          <button className="text-white md:text-base text-xs flex items-center gap-1 md:py-6 pt-6">
-            Explore More <img className="w-5 h-5" src={arrow} alt="" />
-          </button>
+            <div className="text-[#A1A1AACC]">
+              <p>
+                Welcome to our subscription plans, tailored to cater to traders
+                of all levels. Our plans are designed to provide you with the
+                tools, resources and support you need to thrive in this dynamic
+                world of trading. Whether you're a new trader, looking to learn
+                the basics or an experienced trader seeking advanced analytics,
+                there's a plan that's right for you. Each of our subscription
+                plans offers a unique set of benefits. With our basic plan,
+                you'll gain access to essential features such as market news
+                updates and basic analytics tools. Our intermediate plan takes
+                it a step further, offering access to expert insights and more
+                advanced trading tools and exclusive access to in-depth market
+                analysis and priority customer support. No matter which plan you
+                choose, you'll also become part of our vibrant community of
+                traders. Here, you can connect with fellow traders, share ideas
+                and learn from each other's experiences. Our community is a
+                valuable resource for support, inspiration and collaboration.
+              </p>
+            </div>
+            <button className="text-white md:text-base text-xs flex items-center gap-1 md:py-6 pt-6">
+              Explore More <img className="w-5 h-5" src={arrow} alt="" />
+            </button>
+          </section>
         </section>
-      </section>
       </div>
       <ToastContainer />
     </section>
