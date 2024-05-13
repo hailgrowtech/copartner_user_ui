@@ -14,7 +14,7 @@ import Disclaimer from "./components/About/Disclaimer";
 
 function App() {
 
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   const hasVisitedSignUp = sessionStorage.getItem("visitedSignUp");
 
   // useEffect(() => {

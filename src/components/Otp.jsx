@@ -37,7 +37,7 @@ const Otp = ({ onClose, mobileNumber }) => {
       if (!data.isSuccess) {
         setError(data.errorMessages);
       } else {
-        localStorage.setItem("token", data.data.token);
+        sessionStorage.setItem("token", data.data.token);
         navigate("/");
         window.location.reload();
       }
