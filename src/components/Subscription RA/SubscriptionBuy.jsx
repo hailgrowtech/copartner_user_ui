@@ -170,12 +170,6 @@ const SubscriptionRA = () => {
                 <img className="w-4 ms-3" src={arrow} alt="arrow icon" />
               </button>
             </div>
-            <div className="md:block hidden">
-              <button className="flex items-center md:text-base text-xs">
-                Explore More{" "}
-                <img className="w-4 ms-3" src={arrow} alt="arrow" />
-              </button>
-            </div>
           </div>
           <div className="flex mx-auto">
             <img
@@ -536,9 +530,6 @@ const SubscriptionRA = () => {
                 valuable resource for support, inspiration and collaboration.
               </p>
             </div>
-            <button className="text-white md:text-base text-xs flex items-center gap-1 md:py-6 pt-6">
-              Explore More <img className="w-5 h-5" src={arrow} alt="" />
-            </button>
           </section>
         </section>
       </div>
