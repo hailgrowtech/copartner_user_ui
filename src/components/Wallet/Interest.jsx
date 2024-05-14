@@ -38,11 +38,11 @@ const Interest = () => {
         </p>
       </div>
 
-      <div className="md:gap-[12rem] md:gap-6 md:p-0 md:p-[1.5rem] p-[0.5rem] grid sm:grid-cols-3 grid-cols-2 md:px-6 px-0">
+      <div className="md:gap-[18rem] md:gap-6 md:p-0 md:p-[1.5rem] p-[0.5rem] grid sm:grid-cols-3 grid-cols-2 md:px-6 px-0">
         {smallScreen
           ? expertise_data.slice(0, 4).map((expert, id) => {
               return (
-                <Link to="/subscription/ra-detail"
+                <Link to={`/ra-detail/${expert.id}`}
                 key={expert.id}
                 className="md:w-[384px] md:h-[400px] sm:w-[172px] h-[270px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out md:mr-0 mr-2"
               >
@@ -131,7 +131,7 @@ const Interest = () => {
           : expertise_data.slice(0, 3).map((expert, id) => {
               return (
                 <Link
-                  to="/subscription/ra-detail"
+                  to={`/ra-detail/${expert.id}`}
                   key={expert.id}
                   className="md:w-[384px] md:h-[400px] w-[172px] h-[250px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
                 >

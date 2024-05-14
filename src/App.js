@@ -11,6 +11,7 @@ import Terms from "./components/About/Terms";
 import SignUp from "./components/SignUp";
 import Otp from "./components/Otp";
 import Disclaimer from "./components/About/Disclaimer";
+import RefundPolicy from "./components/About/RefundPolicy";
 
 function App() {
 
@@ -65,7 +66,7 @@ function App() {
           />
           <Route path="webinar" element={ token || hasVisitedSignUp ? <Webinar /> : <Navigate to="/signup" replace={true}/>} />
           <Route path="history" element={ token || hasVisitedSignUp ? <Wallet /> : <Navigate to="/signup" replace={true}/>} />
-          <Route path="subscription/ra-detail" element={ token || hasVisitedSignUp ? <SubscriptionRA /> : <Navigate to="/signup" replace={true}/>} />
+          <Route path="ra-detail/:id" element={ token || hasVisitedSignUp ? <SubscriptionRA /> : <Navigate to="/signup" replace={true}/>} />
           <Route path="subscription/buy" element={ token || hasVisitedSignUp ? <SubscriptionBuy /> : <Navigate to="/signup" replace={true}/>} />
           <Route path="expertise/explore-expertise" element={ token || hasVisitedSignUp ? <ExpertiseExplore /> : <Navigate to="/signup" replace={true}/>} />
           <Route path="courses/explore-courses" element={ token || hasVisitedSignUp ? <CoursesExplore /> : <Navigate to="/signup" replace={true}/>} />
@@ -79,6 +80,7 @@ function App() {
               </div> : <Navigate to="/signup" replace={true}/>
             }
           />
+          <Route path="refund-policy" element={ token || hasVisitedSignUp ? <RefundPolicy /> : <Navigate to="/signup" replace={true}/>} />
           <Route path="about" element={ token || hasVisitedSignUp ? <About /> : <Navigate to="/signup" replace={true}/>} />
           <Route path="faqs" element={ token || hasVisitedSignUp ? <FAQs /> : <Navigate to="/signup" replace={true}/>} />
           <Route path='privacy' element={ token || hasVisitedSignUp ? <PrivacyPolicy /> : <Navigate to="/signup" replace={true}/>} />

@@ -184,11 +184,10 @@ const Hero = () => {
 
         <div className="md:pt-[2rem] pt-[1rem] grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:flex">
           {expertise_data.slice(0, 3).map((expert, id) => {
-            console.log(expert.expertImagePath, "Getting Image");
             return (
               <Link
                 onClick={scrollToTop}
-                to={`/subscriptionRA/${expert.id}`}
+                to={`/ra-detail/${expert.id}`}
                 key={expert.id}
                 className="md:w-[256px] md:h-[285px] sm:w-[172px] h-[230px] gap-[3px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
               >

@@ -12,7 +12,7 @@ const SingleExpertCard = () => {
   };
 
   return (
-    <Link onClick={scrollToTop} to="/subscription/ra-detail">
+    <Link onClick={scrollToTop} to="/ra-detail">
     <div className='profile-div rounded-xl'>
       <div className="background-wrapper">
         <img src={userBck} alt="Background" className="background-image" />

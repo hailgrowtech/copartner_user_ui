@@ -14,6 +14,7 @@ const ProductList = [
   { name: "Features", link: "/about" },
   { name: "Blog", link: "/blogs" },
   { name: "Privacy Policy", link: "/privacy" },
+  { name: "Refund Policy", link: "/refund-policy" },
   { name: "Terms of Service", link: "/terms_of_service" },
 ];
 const CommunityList = [
@@ -73,7 +74,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex flex-row gap-[4rem]">
-          <div className="flex flex-col justify-around w-full h-[220px]">
+          <div className="flex flex-col justify-around w-full h-[240px]">
             <span className="w-[48px] h-[15px] font-medium md:text-[20px] text-[18px] leading-[14.7px] mb-4 text-white">
               Company
             </span>

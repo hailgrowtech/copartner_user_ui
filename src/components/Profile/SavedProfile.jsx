@@ -27,7 +27,7 @@ const SavedProfile = () => {
             return (
               <Link
                 onClick={scrollToTop}
-                to="/subscription/ra-detail"
+                to={`/ra-detail/${expert.id}`}
                 key={expert.id}
                 className="md:w-[384px] md:h-[400px] w-full h-[270px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
                 >
@@ -65,7 +65,7 @@ const SavedProfile = () => {
                     </div>
                   </div>
 
-                  <div className="md:w-[256px] w-[143px] h-[44px] flex items-start md:mt-2 mt-4 justify-between">
+                  <div className="md:w-[256px] w-[143px] h-[34px] flex items-start md:mt-2 mt-4 justify-between">
                     <div className="flex flex-col md:w-[78px] w-[43px] h-[22px] items-center justify-between">
                       <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
                         {expert.experience}

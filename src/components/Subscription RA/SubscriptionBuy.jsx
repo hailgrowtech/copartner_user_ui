@@ -122,7 +122,7 @@ const SubscriptionRA = () => {
                   {expertData.name}
                 </span>
               </div>
-              <span className="font-normal opacity-60 md:leading-[28px] md:text-[22px] text-[12px]">
+              <span className="font-normal md:leading-[28px] md:text-[22px] text-[12px]">
                 {expertData.title}
               </span>
             </div>
@@ -345,104 +345,6 @@ const SubscriptionRA = () => {
                 </button>
               </div>
             </div>
-
-            <div
-              onMouseOver={handleMouseOver}
-              onMouseOut={handleMouseOut}
-              className={`flex-1 bg-opacity-5 p-5 hover:bg-[#18181B80] rounded-2xl standard-div ${
-                activeHoverIndex === 3 ? "hover:bg-[#18181B80]" : ""
-              }`}
-              onMouseEnter={() => handleMouseEnter(3)}
-              onMouseLeave={handleMouseLeave}
-            >
-              <div className="md:text-3xl text-lg font-bold md:mb-4 mb-1 md:mt-1 mt-0">
-                Half-Yearly
-              </div>
-              <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex">
-                ₹5,999/<span className="md:flex hidden">-</span>
-                <span className="md:hidden flex font-normal">mo</span>
-              </div>
-              <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
-                6 Month Access
-              </div>
-              <div className="md:mb-8 mb-4">
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-              </div>
-              <div className="text-center">
-                <button
-                  className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2"
-                  onClick={() => handleBuyNowClick("Half-Yearly", 5999)}
-                >
-                  Buy Now
-                </button>
-              </div>
-            </div>
-
-            <div
-              onMouseOver={handleMouseOver}
-              onMouseOut={handleMouseOut}
-              className={`flex-1 bg-opacity-5 p-5 hover:bg-[#18181B80] rounded-2xl standard-div ${
-                activeHoverIndex === 4 ? "hover:bg-[#18181B80]" : ""
-              }`}
-              onMouseEnter={() => handleMouseEnter(4)}
-              onMouseLeave={handleMouseLeave}
-            >
-              <div className="md:text-3xl text-lg font-bold md:mb-4 mb-1 md:mt-1 mt-0">
-                Yearly
-              </div>
-              <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex">
-                ₹5,999/<span className="md:flex hidden">-</span>
-                <span className="md:hidden flex font-normal">mo</span>
-              </div>
-              <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
-                12 Month Access
-              </div>
-              <div className="md:mb-8 mb-4">
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 1" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 2" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-                <div className="flex md:mb-4 mb-2 font-medium items-center">
-                  <img className="w-4 h-4 me-2" src={tick} alt="tick 3" />
-                  <span className="md:text-base text-xs">
-                    Voice messages anywhere
-                  </span>
-                </div>
-              </div>
-              {showMonthlyPopup && (
-                <SubscriptionPaymentPopup
-                  onClose={handleClosePopup}
-                  selectedMonthlyPlan={selectedMonthlyPlan}
-                  planMonthlyPrice={planMonthlyPrice}
-                  // expertName={expertData.name}
-                />
-              )}
-            </div>
             {showMonthlyPopup && (
               <SubscriptionPaymentPopup
                 onClose={handleClosePopup}
@@ -591,34 +493,6 @@ const SubscriptionRA = () => {
                   </div>
                   <p className="flex-1 text-3xl font-bold">₹9,999 </p>
                 </div>
-                <div
-                  onClick={() => handleSelectPlan("Half-Yearly", 5999)}
-                  className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
-                    selectedPlan === "Half-Yearly"
-                      ? "border-2 border-[#F4F4F51A]"
-                      : ""
-                  }`}
-                >
-                  <div className="flex-1 text-left">
-                    <p className="text-lg">Half-Yearly</p>
-                    <p className="text-[#C6CDD5] text-sm">6 Month Access</p>
-                  </div>
-                  <p className="flex-1 text-3xl font-bold">₹5,999</p>
-                </div>
-                <div
-                  onClick={() => handleSelectPlan("Yearly", 5999)}
-                  className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
-                    selectedPlan === "Yearly"
-                      ? "border-2 border-[#F4F4F51A]"
-                      : ""
-                  }`}
-                >
-                  <div className="flex-1 text-left">
-                    <p className="text-lg">Yearly</p>
-                    <p className="text-[#C6CDD5] text-sm">12 Month Access</p>
-                  </div>
-                  <p className="flex-1 text-3xl font-bold">₹5,999</p>
-                </div>
                 <div className="text-center">
                   <button
                     className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2"
@@ -631,7 +505,7 @@ const SubscriptionRA = () => {
                       onClose={handleClose}
                       selectedPlan={selectedPlan}
                       planPrice={planPrice}
-                      // expertName={expertData.name}
+                      expertName={expertData.name}
                     />
                   )}
                 </div>

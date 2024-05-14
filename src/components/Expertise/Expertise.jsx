@@ -44,7 +44,7 @@ const Expertise = () => {
               return (
                 <Link
                   onClick={scrollToTop}
-                  to="/subscription/buy"
+                  to={`/ra-detail/${expert.id}`}
                   key={expert.id}
                   className="md:w-[256px] md:h-[285px] sm:w-[172px] h-[230px] gap-[3px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
                 >
@@ -98,7 +98,6 @@ const Expertise = () => {
                           Followers
                         </span>
                         <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
-                          {/* {`${expert.telegramFollower / 1000}k`} */}
                           {expert.totalFollowers}
                         </span>
                       </div>
@@ -136,7 +135,7 @@ const Expertise = () => {
                 guiding you thoroughly to maximising profits in the dynamic
                 world of stock trading.
               </span>
-              <Link onClick={scrollToTop} to="expertise">
+              <Link onClick={scrollToTop} to="explore-expertise">
                 <button className="md:w-[147px] md:h-[40px] w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px] md:mt-12 mt-[4rem]">
                   Explore More
                 </button>
@@ -197,7 +196,7 @@ const Expertise = () => {
               return (
                 <Link
                   onClick={scrollToTop}
-                  to="/subscription/ra-detail"
+                  to={`/ra-detail/${expert.id}`}
                   key={expert.id}
                   className="md:w-[384px] md:h-[400px] sm:w-[172px] h-[270px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
                 >
@@ -313,7 +312,7 @@ const Expertise = () => {
               return (
                 <Link
                   onClick={scrollToTop}
-                  to="/subscription/ra-detail"
+                  to={`/ra-detail/${expert.id}`}
                   key={expert.id}
                   className="md:w-[384px] md:h-[400px] sm:w-[172px] h-[270px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
                 >
@@ -351,7 +350,7 @@ const Expertise = () => {
                     </div>
                   </div>
 
-                  <div className="md:w-[256px] w-[143px] h-[44px] flex items-start md:mt-2 mt-4 justify-between">
+                  <div className="md:w-[256px] w-[143px] h-[34px] flex items-start md:mt-2 mt-4 justify-between">
                     <div className="flex flex-col md:w-[78px] w-[43px] h-[22px] items-center justify-between">
                       <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
                         {expert.experience}
@@ -419,7 +418,7 @@ const Expertise = () => {
               return (
                 <Link
                   onClick={scrollToTop}
-                  to="/subscription/ra-detail"
+                  to={`/ra-detail/${expert.id}`}
                   key={expert.id}
                   className="md:w-[384px] md:h-[400px] sm:w-[172px] h-[270px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
                 >
@@ -457,7 +456,7 @@ const Expertise = () => {
                     </div>
                   </div>
 
-                  <div className="md:w-[256px] w-[143px] h-[44px] flex items-start md:mt-2 mt-4 justify-between">
+                  <div className="md:w-[256px] w-[143px] h-[34px] flex items-start md:mt-2 mt-4 justify-between">
                     <div className="flex flex-col md:w-[78px] w-[43px] h-[22px] items-center justify-between">
                       <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
                         {expert.experience}

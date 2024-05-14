@@ -114,7 +114,7 @@ const Subscription = () => {
             return (
               <Link
                 onClick={scrollToTop}
-                to={`/subscriptionRA/${expert.id}`}
+                to={`/ra-detail/${expert.id}`}
                 key={expert.id}
                 className="md:w-[384px] md:h-[400px] sm:w-[172px] h-[270px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
               >

@@ -27,11 +27,11 @@ const Expertise = () => {
   return (
     <>
       <div className={`flex flex-col sm:py-[4rem] `}>
-
         <div className="flex p-[1rem] gap-[1rem] sm:p-[4rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px] md:mt-[-8rem]">
           {expertise_data.map((expert, id) => {
             return (
-              <Link to={`/subscriptionRA/${expert.id}`}
+              <Link
+                to={`/ra-detail/${expert.id}`}
                 onClick={scrollToTop}
                 key={expert.id}
                 className="md:w-[384px] md:h-[400px] w-[172px] h-[270px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
@@ -70,7 +70,7 @@ const Expertise = () => {
                   </div>
                 </div>
 
-                <div className="md:w-[256px] w-[143px] h-[44px] flex items-start md:mt-2 mt-4 justify-between">
+                <div className="md:w-[256px] w-[143px] h-[34px] flex items-start md:mt-2 mt-4 justify-between">
                   <div className="flex flex-col md:w-[78px] w-[43px] h-[22px] items-center justify-between">
                     <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
                       {expert.experience}
@@ -92,37 +92,35 @@ const Expertise = () => {
                   </div>
                 </div>
 
-                <div className="md:w-[300px] md:h-[72px] w-[144px] h-[42px] mb-4 sm:block contents md:ml-2 ml-4">
-                  <span className="text-dimWhite md:text-[14px] text-[11px] sm:leading-[24px] md:leading-[12px] leading-[14px]">
-                    {expert.content}
-                  </span>
+                <div className="md:w-[300px] md:h-[32px] md:mt-2 w-full md:pl-[5px]">
+                  <div className="text-dimWhite md:text-[14px] flex md:flex-row flex-col text-[11px] md:leading-[18px] leading-[14px] md:pl-0 pl-[2px]">
+                    <span>SEBI:</span>{" "}
+                    <span className="text-white md:ml-2">{expert.content}</span>
+                  </div>
                 </div>
 
-                <div className="md:w-[211px] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] border-[1.5px] border-[#4e4e4ecc] mt-2 md:mt-0">
-                <div className="flex justify-center items-center gap-2">
-                  <img
-                    src={expert.telegram}
-                    alt="Telegram"
-                    className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"
-                  />
-                  <button className="text-white font-[400] md:text-[15px] text-[10px] leading-[19px]">
-                    {expert.greet}
-                  </button>
-                  <img
-                    src={expert.arrowIcon}
-                    alt="arrow"
-                    className="md:w-[16px] md:h-[16px] w-[11px] h-[11px]"
-                  />
+                <div className="md:w-[211px] bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
+                  <div className="flex justify-center items-center gap-2">
+                    <img
+                      src={expert.telegram}
+                      alt="Telegram"
+                      className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"
+                    />
+                    <button className="text-white font-[400] md:text-[15px] text-[12px] leading-[19px]">
+                      {expert.greet}
+                    </button>
+                    <img
+                      src={expert.arrowIcon}
+                      alt="arrow"
+                      className="md:w-[16px] md:h-[16px] w-[11px] h-[11px]"
+                    />
+                  </div>
                 </div>
-              </div>
               </Link>
             );
           })}
-        </div> 
-
-       
+        </div>
       </div>
-      
     </>
   );
 };

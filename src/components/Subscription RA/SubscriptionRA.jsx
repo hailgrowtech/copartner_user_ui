@@ -136,7 +136,7 @@ const SubscriptionRA = () => {
                   {expertData.name}
                 </span>
               </div>
-              <span className="font-normal opacity-60 md:leading-[28px] md:text-[22px] text-[12px]">
+              <span className="font-normal md:leading-[28px] md:text-[22px] text-[12px]">
                 {expertData.title}
               </span>
             </div>
