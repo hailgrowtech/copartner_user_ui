@@ -57,6 +57,42 @@ const SubscriptionRA = () => {
     console.log(`User has chosen: ${plan} plan with price ₹${price}`);
   };
 
+  const getExpertType = (typeId) => {
+    switch (typeId) {
+      case 1:
+        return "Commodity";
+      case 2:
+        return "Equity";
+      case 3:
+        return "Options";
+      default:
+        return "Unknown";
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `https://copartners.in:5132/api/Experts/${id}`
+        );
+        if (!response.ok) {
+          throw new Error("Error in fetching API");
+        }
+        const data = await response.json();
+        console.log(data.data);
+        setExpertData(data.data);
+      } catch (error) {
+        console.error("Error fetching expert data:", error);
+        toast.error("Failed to fetch expert data", {
+          position: "top-right",
+        });
+      }
+    };
+
+    fetchData();
+  }, [id]);
+
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
   };
@@ -107,12 +143,10 @@ const SubscriptionRA = () => {
     setShowMonthlyPopup(false);
   };
 
-  useEffect(() => {
-    // Filter the expertise_data array to find the object with the matching id
-    const filteredData = expertise_data.find((expert) => expert.id === id);
-    setExpertData(filteredData);
-  }, [id]);
-  
+  const handleTelegram = (link) => {
+    window.open(link);
+  };
+
   if (!expertData) {
     return <div className="text-white">Loading...</div>;
   }
@@ -131,38 +165,41 @@ const SubscriptionRA = () => {
               <div className="flex justify-between items-center w-full">
                 <span
                   className="flex-1 font-bold md:text-[72px] text-[26px]
-      text-gradient md:leading-[88px] leading-[30px] md:pb-3"
+                  text-gradient md:leading-[88px] leading-[30px] md:pb-3"
                 >
-                  {expertData.name}
+                  {expertData.channelName}
                 </span>
               </div>
-              <span className="font-normal md:leading-[28px] md:text-[22px] text-[12px]">
-                {expertData.title}
+              <span className="font-normal md:text-[22px] text-[12px]">
+                {expertData.name} - {getExpertType(expertData.expertTypeId)}
               </span>
+              {/* <span className="font-normal md:leading-[28px] md:text-[22px] text-[12px]">
+                {getExpertType(expertData.expertTypeId)}
+              </span> */}
             </div>
             <div className="flex justify-between md:w-[350px] w-[176px] md:h-16 h-10 md:mb-6 mb-3">
               <div className="flex flex-col items-center justify-around">
-                <div className="text-[15px] text-[#C6CDD5]">
-                  {expertData.experience}
-                </div>
+                <div className="text-[15px] text-[#C6CDD5]">Experience</div>
                 <div className="md:text-xl text-xs font-semibold">
-                  {expertData.totalExp}
+                  {expertData.experience}
                 </div>
               </div>
               <div className="w-[1px] md:h-16 h-10 bg-white"></div>
               <div className="flex flex-col items-center justify-around">
-                <div className="text-[15px] text-[#C6CDD5]">
-                  {expertData.followers}
-                </div>
+                <div className="text-[15px] text-[#C6CDD5]">Followers</div>
                 <div className="md:text-xl text-xs font-semibold">
-                  {expertData.totalFollowers}
+                  {expertData.telegramFollower}
                 </div>
               </div>
             </div>
             <div className="md:text-lg text-sm md:font-semibold md:w-[508px] md:mb-4 mb-2">
-              <span className="text-dimWhite">SEBI:</span> 987987892479
+              <span className="text-dimWhite">SEBI:</span>{" "}
+              {expertData.sebiRegNo}
             </div>
-            <div className="bg-[#0081F1] md:block hidden md:rounded-3xl rounded-2xl md:w-44 w-32 md:mb-6">
+            <div
+              onClick={() => handleTelegram(expertData.telegramChannel)}
+              className="bg-[#0081F1] md:block hidden md:rounded-3xl rounded-2xl md:w-44 w-32 md:mb-6"
+            >
               <button className="flex mx-auto md:py-2 py-1 items-center">
                 {/* <img
                   className="md:w-6 w-4 me-3"
@@ -177,7 +214,7 @@ const SubscriptionRA = () => {
           <div className="flex mx-auto">
             <img
               className="subscription-RA-img md:w-[400px] w-[470px] my-auto"
-              src={userImg}
+              src={expertData.expertImagePath}
               style={{
                 maskImage: "linear-gradient(rgba(0, 0, 0, 1) 70%, transparent)",
               }}
@@ -206,7 +243,10 @@ const SubscriptionRA = () => {
               />
             )}
           </div>
-          <div className="bg-[#0081F1] md:hidden w-[90%] block absolute bottom-3 border-opacity-30 md:rounded-3xl rounded-2xl md:w-44 md:mb-6">
+          <div
+            onClick={() => handleTelegram(expertData.telegramChannel)}
+            className="bg-[#0081F1] md:hidden w-[90%] block absolute bottom-3 border-opacity-30 md:rounded-3xl rounded-2xl md:w-44 md:mb-6"
+          >
             <button className="flex mx-auto text-white md:py-2 py-2 items-center">
               {/* <img
                 className="md:w-6 w-4 me-3"

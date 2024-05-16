@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Otp = ({ onClose, mobileNumber }) => {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("")
+  const [success, setSuccess] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -36,11 +36,34 @@ const Otp = ({ onClose, mobileNumber }) => {
       const data = await response.json();
       if (!data.isSuccess) {
         setError(data.errorMessages);
-      } else {
-        sessionStorage.setItem("token", data.data.token);
-        navigate("/");
-        window.location.reload();
+        return;
       }
+      
+      console.log('SuccessFully Login...')
+      sessionStorage.setItem("token", data.data.token);
+      responseUser();
+
+    } catch (error) {
+      console.error("There was a problem with your fetch operation:", error);
+    }
+  };
+
+  const responseUser = async () => {
+    try {
+      const resUser = await fetch("https://copartners.in:5131/api/User", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({referralMode: 'CP', mobileNumber}),
+      });
+      const data = await resUser.json();
+      if (!data.isSuccess) {
+        setError(data.errorMessages);
+      }
+      navigate("/");
+      window.location.reload();
+      console.log("Success Get Are getting");
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);
     }
@@ -72,7 +95,10 @@ const Otp = ({ onClose, mobileNumber }) => {
         setSuccess("OTP has been resent. Please check your mobile.");
       }
     } catch (error) {
-      console.error("There was a problem with the resend OTP operation:", error);
+      console.error(
+        "There was a problem with the resend OTP operation:",
+        error
+      );
     }
   };
 
@@ -84,7 +110,10 @@ const Otp = ({ onClose, mobileNumber }) => {
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-10 z-50">
       <div className="bg-[#18181B] border-[1px] border-[#ffffff2a] m-4 p-8 rounded-lg w-[25rem] relative text-center">
         <div className="absolute top-3 right-0 text-right">
-          <div onClick={onClose} className="text-gray-400 w-8 text-[20px] cursor-pointer hover:text-white">
+          <div
+            onClick={onClose}
+            className="text-gray-400 w-8 text-[20px] cursor-pointer hover:text-white"
+          >
             <img src={closeImg} alt="close" />
           </div>
         </div>
@@ -98,7 +127,10 @@ const Otp = ({ onClose, mobileNumber }) => {
         </p>
         {error && <p className="text-red-500 mb-4">{error}</p>}
         {success && <p className="text-green-500 mb-4">{success}</p>}
-        <form className="flex flex-col gap-4 text-white" onSubmit={handleSubmit}>
+        <form
+          className="flex flex-col gap-4 text-white"
+          onSubmit={handleSubmit}
+        >
           <input
             type="text"
             value={otp}

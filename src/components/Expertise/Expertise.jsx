@@ -40,7 +40,6 @@ const Expertise = () => {
           </div>
           <div className="md:pt-[2rem] pt-[1rem] grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:flex">
             {expertise_data.slice(0, 3).map((expert, id) => {
-              console.log(expert.expertImagePath, "Getting Image");
               return (
                 <Link
                   onClick={scrollToTop}

@@ -1,20 +1,78 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../style";
-import { arrow, closeImg, telegram, userBck, stars, feeback } from "../../assets";
+import {
+  arrow,
+  closeImg,
+  telegram,
+  userBck,
+  stars,
+  feeback,
+} from "../../assets";
 import Expertise from "./Expertise";
 import { expertise_data } from "../../constants";
 import { Link } from "react-router-dom";
+import { useUserData } from "../../constants/context";
 
 const Hero = () => {
   const [showDialog, setShowDialog] = useState(false);
   const [rating, setRating] = useState(null);
   const [ratingColor, setRatingColor] = useState(null);
+  const userData = useUserData();
+  const [nameData, setNameData] = useState("");
+  const [emailData, setEmailData] = useState("");
+
+  const getExpertType = (typeId) => {
+    switch (typeId) {
+      case 1:
+        return "Commodity";
+      case 2:
+        return "Equity";
+      case 3:
+        return "Options";
+      default:
+        return "Unknown";
+    }
+  };
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
+  };
+
+  const handleUserSave = async (e) => {
+    e.preventDefault();
+
+    const postData = {
+      name: nameData,
+      email: emailData,
+      // mobileNumber: mobileNumber,
+    };
+
+    try {
+      const resUser = await fetch("https://copartners.in:5131/api/User", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(postData),
+      });
+
+      if (!resUser.ok) {
+        throw new Error(`HTTP error! status: ${resUser.status}`);
+      }
+
+      const data = await resUser.json();
+
+      if (!data.isSuccess) {
+        console.log("Error messages:", data.errorMessages);
+      } else {
+        console.log("Success! User saved successfully");
+      }
+    } catch (error) {
+      console.error("There was a problem with your fetch operation:", error);
+    }
   };
 
   // useEffect(() => {
@@ -47,6 +105,10 @@ const Hero = () => {
     setShowDialog(false);
   };
 
+  const handleTelegram = (link) => {
+    window.open(link);
+  };
+
   return (
     <div
       className={`flex md:flex-col ${styles.paddingX} flex-col ${styles.paddingY} background-img-div`}
@@ -74,18 +136,23 @@ const Hero = () => {
             </div>
             <div className="flex flex-col md:w-[342px] md:h-[290px] md:gap-3 gap-5">
               <input
+                onChange={(e) => setNameData(e.target.value)}
+                value={nameData}
                 type="text"
                 placeholder="Enter Your Name"
                 className="border border-solid border-[#666666] rounded-[12px] md:w-[342px] h-[60px] text-center p-1 bg-[#18181B] text-start md:pl-[15px] pl-[10px]"
                 style={{ color: "white" }}
               />
               <input
+                onChange={(e) => setEmailData(e.target.value)}
                 type="email"
+                value={emailData}
                 placeholder="Enter Your Email ID"
                 className="border border-solid border-[#666666] rounded-[12px] md:w-[342px] h-[60px] text-center p-1 bg-[#18181B] text-start md:pl-[15px] px-[15px]"
                 style={{ color: "white" }}
               />
               <button
+                onClick={handleUserSave}
                 type="submit"
                 className="bg-white text-black font-[500] md:w-[342px] md:h-[60px] h-[60px] text-[16px] rounded-[12px]"
               >
@@ -183,92 +250,95 @@ const Hero = () => {
         </div>
 
         <div className="md:pt-[2rem] pt-[1rem] grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:flex">
-          {expertise_data.slice(0, 3).map((expert, id) => {
-            return (
-              <Link
-                onClick={scrollToTop}
-                to={`/ra-detail/${expert.id}`}
-                key={expert.id}
-                className="md:w-[256px] md:h-[285px] sm:w-[172px] h-[230px] gap-[3px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
-              >
-                <div className="w-[72px] h-[98px] md:w-[256px] md:h-[146px]  relative profile-image_1 mb-4">
-                  <img
-                    src={expert.icon}
-                    alt="background"
-                    className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
-                  />
-                  <img
-                    src={expert.userImg}
-                    alt="User"
-                    className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
-                  />
-                </div>
-
-                <div className="flex md:w-[212px] md:h-[26px] w-full sm:h-[22px] justify-between md:gap-0">
-                  <div className="flex flex-col gap-1">
-                    <span className="text-[12px] leading-[12px] font-[500] text-white">
-                      {expert.name}
-                    </span>
-                    <span className="text-[12px] leading-[10px] font-[400] text-dimWhite">
-                      {expert.title}
-                    </span>
-                  </div>
-                  <div className="w-[32px] h-[15px] flex">
+          {userData &&
+            userData.slice(0, 3).map((expert, id) => {
+              return (
+                <Link
+                  onClick={scrollToTop}
+                  to={`/ra-detail/${expert.id}`}
+                  key={expert.id}
+                  className="md:w-[256px] md:h-[285px] sm:w-[172px] h-[230px] gap-[3px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
+                >
+                  <div className="w-[72px] h-[98px] md:w-[256px] md:h-[146px]  relative profile-image_1 mb-4">
                     <img
-                      src={stars}
-                      className="w-[11.5px] h-[11.5px]"
-                      alt="rating"
+                      src={userBck}
+                      alt="background"
+                      className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
                     />
-                    <span className="text-white font-[600] text-[11.5px] leading-[14px]">
-                      {expert.rating}
-                    </span>
+                    <img
+                      src={expert.expertImagePath}
+                      alt="User"
+                      className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
+                    />
                   </div>
-                </div>
 
-                <div className="md:w-[171px] md:h-[33px] w-[125px] h-[23px] flex justify-between mr-[1rem] mt-2">
-                  <div className="flex flex-col w-[52px] h-[33px] items-center">
-                    <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">
-                      Experience
-                    </span>
-                    <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
-                      {expert.totalExp}
-                    </span>
-                  </div>
-                  <div className="md:w-[1.4px] md:h-[25px] w-[1px] h-[22px] bg-lightWhite"></div>
-                  <div className="flex">
-                    <div className="flex flex-col w-[52px] h-[33px] items-center">
-                      <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">
-                        Followers
+                  <div className="flex md:w-[212px] md:h-[26px] w-full sm:h-[22px] justify-between md:gap-0">
+                    <div className="flex flex-col gap-1">
+                      <span className="text-[12px] leading-[12px] font-[500] text-white">
+                        {expert.channelName}
                       </span>
-                      <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
-                        {/* {`${expert.telegramFollower / 1000}k`} */}
-                        {expert.totalFollowers}
+                      <span className="text-[12px] leading-[10px] font-[400] text-dimWhite">
+                      {expert.name} - {getExpertType(expert.expertTypeId)}
+                      </span>
+                    </div>
+                    <div className="w-[32px] h-[15px] flex">
+                      <img
+                        src={stars}
+                        className="w-[11.5px] h-[11.5px]"
+                        alt="rating"
+                      />
+                      <span className="text-white font-[600] text-[11.5px] leading-[14px]">
+                        {expert.rating}
                       </span>
                     </div>
                   </div>
-                </div>
 
-                <div className="md:w-[211px] bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
-                  <div className="flex justify-center items-center gap-2">
-                    <img
-                      src={expert.telegram}
-                      alt="Telegram"
-                      className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"
-                    />
-                    <button className="text-white font-[400] md:text-[15px] text-[12px] leading-[19px]">
-                      {expert.greet}
-                    </button>
-                    <img
-                      src={expert.arrowIcon}
-                      alt="arrow"
-                      className="md:w-[16px] md:h-[16px] w-[11px] h-[11px]"
-                    />
+                  <div className="md:w-[171px] md:h-[33px] w-[125px] h-[23px] flex justify-between mr-[1rem] mt-2">
+                    <div className="flex flex-col w-[52px] h-[33px] items-center">
+                      <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">
+                        Experience
+                      </span>
+                      <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
+                        {expert.experience}
+                      </span>
+                    </div>
+                    <div className="md:w-[1.4px] md:h-[25px] w-[1px] h-[22px] bg-lightWhite"></div>
+                    <div className="flex">
+                      <div className="flex flex-col w-[52px] h-[33px] items-center">
+                        <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">
+                          Followers
+                        </span>
+                        <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
+                          {`${expert.telegramFollower / 1000}k`}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                </div>
 
-              </Link>
-            );
-          })}
+                  <div
+                    onClick={() => handleTelegram(expert.telegramChannel)}
+                    className="md:w-[211px] bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0"
+                  >
+                    <div className="flex justify-center items-center gap-2">
+                      <img
+                        src={telegram}
+                        alt="Telegram"
+                        className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"
+                      />
+                      <button className="text-white font-[400] md:text-[15px] text-[12px] leading-[19px]">
+                        {/* {expert.greet} */}
+                        Get Free Calls
+                      </button>
+                      <img
+                        src={arrow}
+                        alt="arrow"
+                        className="md:w-[16px] md:h-[16px] w-[11px] h-[11px]"
+                      />
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
 
           <div className="md:w-[365px] md:h-[226px] w-[171px] h-[256px] md:px-[3rem] flex flex-col md:gap-2">
             <span className="md:w-[365px] md:h-[36px] w-[171px] h-[36px] font-[600] md:text-[30px] text-[18px] leading-[36px] text-lightWhite">
