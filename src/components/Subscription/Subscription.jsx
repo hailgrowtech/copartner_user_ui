@@ -5,7 +5,7 @@ import "../Hero.css";
 import { expertise_data } from "../../constants";
 import { Link } from "react-router-dom";
 import { useUserData } from "../../constants/context";
-import { arrow, stars, telegram, userBck } from "../../assets";
+import { arrow, stars, telegram, userBck, logout } from "../../assets";
 
 const Subscription = () => {
   const userData = useUserData();
@@ -30,6 +30,8 @@ const Subscription = () => {
     });
   };
 
+  const token = sessionStorage.getItem("token");
+  
   return (
     <div className="expertise-Bg">
       <section
@@ -75,7 +77,7 @@ const Subscription = () => {
           guiding you towards trading success with precision and insight.
         </p>
         <div className="md:px-12 flex flex-row justify-center">
-          <ProfileCard />
+          { token ? <ProfileCard /> : <div className="text-center flex flex-col gap-8 mt-12 text-dimWhite md:text-5xl text-lg"><img className="md:w-96 w-60 mx-auto" src={logout} alt="" />Login to see your Subscriptions!</div>}
         </div>
       </div>
 

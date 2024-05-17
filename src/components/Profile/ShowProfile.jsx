@@ -25,6 +25,11 @@ const ShowProfile = () => {
     });
   };
 
+  const handleLogOut = () => {
+    sessionStorage.removeItem("token")
+    window.location.reload();
+  }
+
   return (
     <div className="container bg-[#18181B80] md:p-8 p-5  md:flex flex md:justify-between justify-between md:pb-0 pb:5 relative rounded-lg border-2 border-[#ffffff2b] mb-10">
       <EditProfilePopup isOpen={isPopupOpen} onClose={togglePopup} onUpdateProfile={updateProfile} />
@@ -51,7 +56,7 @@ const ShowProfile = () => {
       >
         <img src={edit} alt="Edit Icon" className="w-4 h-4 mr-2" /> Edit
       </button>
-      <button className="md:flex hidden items-center absolute bottom-4 border-2 border-[#ffffff96] right-4 bg-[#fff] text-black py-2 px-8 rounded-lg transition duration-300 hover:bg-[#ffffff96] hover:text-gray-900">
+      <button onClick={handleLogOut} className="md:flex hidden items-center absolute bottom-4 border-2 border-[#ffffff96] right-4 bg-[#fff] text-black py-2 px-8 rounded-lg transition duration-300 hover:bg-[#ffffff96] hover:text-gray-900">
         Logout <img src={LogOut} alt="" className="w-4 h-4 ml-2" />
       </button>
       <div className="right-col md:pr-40 pr-3">

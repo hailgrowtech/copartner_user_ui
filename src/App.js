@@ -66,9 +66,9 @@ function App() {
               token || hasVisitedSignUp ? (
                 <div className={`${styles.flexStart}`}>
                   <UserDataProvider>
-                  <div className={`${styles.boxWidth}`}>
-                    <Expertise />
-                  </div>
+                    <div className={`${styles.boxWidth}`}>
+                      <Expertise />
+                    </div>
                   </UserDataProvider>
                 </div>
               ) : (
@@ -82,9 +82,9 @@ function App() {
               token || hasVisitedSignUp ? (
                 <div className={`${styles.flexStart}`}>
                   <UserDataProvider>
-                  <div className={`${styles.boxWidth}`}>
-                    <Subscription />
-                  </div>
+                    <div className={`${styles.boxWidth}`}>
+                      <Subscription />
+                    </div>
                   </UserDataProvider>
                 </div>
               ) : (
@@ -245,7 +245,7 @@ function App() {
           <Route
             path="profile"
             element={
-              token || hasVisitedSignUp ? (
+              token ? (
                 <Profile />
               ) : (
                 <Navigate to="/signup" replace={true} />

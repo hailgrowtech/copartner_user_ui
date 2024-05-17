@@ -4,7 +4,7 @@ import ReferEarn from "../ReferEarn/ReferEarn";
 import { Link } from "react-router-dom";
 import Interest from "./Interest";
 import axios from "axios";
-import { invoiceImg } from "../../assets";
+import { invoiceImg, logout } from "../../assets";
 import SubscriptionType from "./SubscriptionType";
 import NameType from "./NameType";
 
@@ -111,6 +111,7 @@ const Wallet = () => {
     return "Name Type"; // Placeholder value
   };
   
+  const token = sessionStorage.getItem("token")
 
   return (
     <>
@@ -170,7 +171,7 @@ const Wallet = () => {
             </span>
           </div>
 
-          <div className="flex justify-center items-center md:mt-[1rem] mt-[-20px]">
+          { token ? <div className="flex justify-center items-center md:mt-[1rem] mt-[-20px]">
             {smallScreen ? (
               <div className="flex flex-wrap justify-center items-center">
                 {transactionTable.slice(0, 3).map((row, index) => (
@@ -264,7 +265,7 @@ const Wallet = () => {
                 </tbody>
               </table>
             )}
-          </div>
+          </div> : <div className="text-center flex flex-col gap-8 mt-12 text-dimWhite md:text-5xl text-lg"><img className="md:w-96 w-60 mx-auto" src={logout} alt="" />Login to see your transactions!</div>}
           {/* <div id="refer" className="mb-[8rem]">
             <ReferEarn />
           </div> */}

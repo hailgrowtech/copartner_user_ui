@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { logo, menu, hamburgerBg, LogOut, close, userImg } from "../assets";
 import { navLinks } from "../constants";
 import styles from "../style";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import Footer from "./Home/Footer";
 
 const Navbar = () => {
@@ -10,6 +10,8 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const token = sessionStorage.getItem("token");
+  const navigate = useNavigate();
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -58,13 +60,17 @@ const Navbar = () => {
     if (activeNav) {
       setActive(activeNav.title);
     } else {
-      setActive(null)
+      setActive(null);
     }
   }, [location]);
 
   const handleClick = (title) => {
     setActive(title);
   };
+
+  const handleLoginPopup = () => {
+    navigate("/signup");
+  }
 
   return (
     <>
@@ -77,12 +83,12 @@ const Navbar = () => {
       >
         <div className={`${styles.boxWidth}`}>
           <nav className="w-full flex md:py-5 py-4 justify-between items-center">
-            <Link onClick={scrollToTop}  to="/">
+            <Link onClick={scrollToTop} to="/">
               <img src={logo} alt="LOGO" className="w-[153px] h-[39px]" />
             </Link>
 
             <ul className="list-none sm:flex hidden justify-center items-center flex-1">
-              {navLinks.slice(0,5).map((nav, index) => (
+              {navLinks.slice(0, 5).map((nav, index) => (
                 <li
                   key={nav.id}
                   onClick={() => handleClick(nav.title)}
@@ -90,7 +96,10 @@ const Navbar = () => {
                     ${active === nav.title ? "text-white" : "text-dimWhite"}
                     ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
                 >
-                  <Link onClick={scrollToTop} to={`${nav.id === "home" ? "/" : `/${nav.id}`}`}>
+                  <Link
+                    onClick={scrollToTop}
+                    to={`${nav.id === "home" ? "/" : `/${nav.id}`}`}
+                  >
                     {nav.title}
                   </Link>
                 </li>
@@ -106,11 +115,23 @@ const Navbar = () => {
             </Link> */}
 
             {/* Profile icon for desktop */}
-            <div className="hidden sm:flex items-center">
-              <Link onClick={scrollToTop} to="/profile">
-                <img src={userImg} alt="Profile" className="w-8 h-8 mx-4 rounded-full" />
-              </Link>
-            </div>
+            {token ? (
+              <div className="hidden sm:flex items-center">
+                <Link onClick={scrollToTop} to="/profile">
+                  <img
+                    src={userImg}
+                    alt="Profile"
+                    className="w-8 h-8 mx-4 rounded-full"
+                  />
+                </Link>
+              </div>
+            ) : (
+              <div className="hidden sm:flex items-center">
+                <button className="border-2 px-4 py-1 rounded-[6px] bg-lightWhite md:text-sm text-xs font-[500]" onClick={handleLoginPopup}>
+                  Login
+                </button>
+              </div>
+            )}
 
             <div className="sm:hidden flex flex-1 justify-end items-center">
               <img
@@ -161,7 +182,10 @@ const Navbar = () => {
                            }
                            ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
                     >
-                      <Link onClick={scrollToTop} to={`${nav.id === "home" ? "/" : nav.id}`}>
+                      <Link
+                        onClick={scrollToTop}
+                        to={`${nav.id === "home" ? "/" : nav.id}`}
+                      >
                         {nav.title}
                       </Link>
                     </li>
