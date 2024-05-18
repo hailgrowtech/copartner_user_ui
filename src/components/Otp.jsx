@@ -38,8 +38,6 @@ const Otp = ({ onClose, mobileNumber }) => {
         setError(data.errorMessages);
         return;
       }
-      
-      console.log('SuccessFully Login...')
       sessionStorage.setItem("token", data.data.token);
       responseUser();
 
@@ -61,9 +59,9 @@ const Otp = ({ onClose, mobileNumber }) => {
       if (!data.isSuccess) {
         setError(data.errorMessages);
       }
+      sessionStorage.setItem("userId", data.data.id);
       navigate("/");
       window.location.reload();
-      console.log("Success Get Are getting");
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);
     }

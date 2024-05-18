@@ -221,7 +221,7 @@ const Navbar = () => {
         </div>
       </div>
       <Outlet />
-      <div className={`sm:pb-[3rem]`}>
+      <div>
         <Footer />
       </div>
     </>

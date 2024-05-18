@@ -23,7 +23,7 @@ const SavedProfile = () => {
       </div>
       
       <div className="flex p-[1rem] gap-[1rem] sm:p-[4rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px] md:mt-[-2rem]">
-          {expertise_data.map((expert, id) => {
+          {/* {expertise_data.map((expert, id) => {
             return (
               <Link
                 onClick={scrollToTop}
@@ -112,7 +112,8 @@ const SavedProfile = () => {
                   </div>
               </Link>
             );
-          })}
+          })} */}
+          
         </div>
     </div>
   );

@@ -1,30 +1,31 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../style";
-import ReferEarn from "../ReferEarn/ReferEarn";
-import { Link } from "react-router-dom";
 import Interest from "./Interest";
 import axios from "axios";
 import { invoiceImg, logout } from "../../assets";
 import SubscriptionType from "./SubscriptionType";
 import NameType from "./NameType";
+import { Link } from "react-router-dom";
+import { useUserData } from "../../constants/context";
 
 const Wallet = () => {
+  const userData = useUserData();
   const [smallScreen, setSmallScreen] = useState(false);
   const [transactionTable, setTransactionTable] = useState([]);
-  const [serviceType, setServiceType] = useState("");
 
   useEffect(() => {
     axios
       .get("https://copartners.in:5009/api/Subscriber")
       .then((res) => {
-        console.log("Getting Table Transaction Table", res.data);
         setTransactionTable(res.data.data);
       })
       .catch((error) => {
         console.log("Error Getting In Transaction API.", error);
-        setTransactionTable([]); // Ensure it's an array on error
+        setTransactionTable([]);
       });
   }, []);
+
+  console.log(transactionTable)
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -213,7 +214,7 @@ const Wallet = () => {
                 </button>
               </div>
             ) : (
-              <table className="w-[1234px] h-[397px] px-[1rem] bg-[#18181B] bg-opacity-[50%] rounded-[30px]">
+              <table className="w-[1234px] px-[1rem] bg-[#18181B] bg-opacity-[50%] rounded-[30px]">
                 <thead className="text-dimWhite w-[1234px] h-[51px]">
                   <tr>
                     <th className="py-2 px-4">Transaction ID</th>
@@ -233,7 +234,7 @@ const Wallet = () => {
                           className={index % 2 === 0 ? "bg-[#1E1E22]" : ""}
                         >
                           <td className="py-2 px-20 w-[152px] h-[18px] font-[500] text-[16px] leading-[18px]">
-                            {row.transactionId}
+                            {row.id}
                           </td>
                           <td className="py-2 px-20 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
                             {formatDate(row.transactionDate)}
@@ -265,7 +266,7 @@ const Wallet = () => {
                 </tbody>
               </table>
             )}
-          </div> : <div className="text-center flex flex-col gap-8 mt-12 text-dimWhite md:text-5xl text-lg"><img className="md:w-96 w-60 mx-auto" src={logout} alt="" />Login to see your transactions!</div>}
+          </div> : <div className="text-center flex flex-col gap-8 mt-12 text-dimWhite md:text-4xl text-lg"><img className="md:w-96 w-60 mx-auto" src={logout} alt="" /><Link to={"/signup"}>Login to see your transactions!</Link></div>}
           {/* <div id="refer" className="mb-[8rem]">
             <ReferEarn />
           </div> */}
@@ -344,7 +345,7 @@ const Wallet = () => {
             )}
           </div> */}
 
-          <Interest />
+          <Interest userData={userData} />
         </div>
       </div>
     </>

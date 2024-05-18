@@ -20,8 +20,15 @@ import Profile from "./Profile/Profile.jsx"
 import Blog from './Blog/Blog.jsx'
 import BlogPage from './Blog/BlogPage.jsx'
 import ContactUs from "./ContacUs/Contact.jsx";
-
-
+import About from "./About/About.jsx";
+import FAQs from "./About/FAQs.jsx";
+import PrivacyPolicy from "./About/PrivacyPolicy.jsx";
+import Terms from "./About/Terms.jsx";
+import SignUp from "./SignUp.jsx";
+import Disclaimer from "./About/Disclaimer.jsx";
+import RefundPolicy from "./About/RefundPolicy.jsx";
+import Otp from "./Otp.jsx";
+import Hero from "./Home/Hero";
 
 export {
     Navbar,
@@ -46,4 +53,13 @@ export {
     Blog,
     BlogPage,
     ContactUs,
+    About,
+    FAQs,
+    PrivacyPolicy,
+    Terms,
+    SignUp,
+    Disclaimer,
+    RefundPolicy,
+    Otp,
+    Hero
 }

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useUserData } from "../../constants/context";
 import { arrow, stars, telegram, userBck, logout } from "../../assets";
 
-const Subscription = () => {
+const Subscription = ({userId}) => {
   const userData = useUserData();
 
   const getExpertType = (typeId) => {
@@ -76,8 +76,8 @@ const Subscription = () => {
           Dive into the expertise of our SEBI registered research analysts,
           guiding you towards trading success with precision and insight.
         </p>
-        <div className="md:px-12 flex flex-row justify-center">
-          { token ? <ProfileCard /> : <div className="text-center flex flex-col gap-8 mt-12 text-dimWhite md:text-5xl text-lg"><img className="md:w-96 w-60 mx-auto" src={logout} alt="" />Login to see your Subscriptions!</div>}
+        <div className="flex flex-row justify-center">
+          { token ? <ProfileCard userId={userId} /> : <div className="text-center flex flex-col gap-8 mt-12 text-dimWhite md:text-4xl text-lg"><img className="md:w-96 w-60 mx-auto" src={logout} alt="" /><Link to={"/signup"}>Login to see your Subscriptions!</Link></div>}
         </div>
       </div>
 
@@ -125,8 +125,7 @@ const Subscription = () => {
             className="font-inter md:w-[1136px] md:h-[28px] sm:w-[328px] h-[34px] font-[400] text-dimWhite sm:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
                  leading-[16px] sm:text-start mt-2 text-center"
           >
-            Dive into the expertise of our SEBI registered research analysts,
-            guiding you towards trading success with precision and insight.
+            Discover related analysts with similar expertise to enhance your trading decisions and broaden your market insights.
           </p>
         </div>
 

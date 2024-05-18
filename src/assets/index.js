@@ -71,7 +71,7 @@ import feeback from './FeedbckStars.png';
 import exclamation from './exclamation.png';
 import danger from './Danger Triangle.png';
 import bookmarkFill from './Bookmark-fill.png';
-import logout from './login-to-see.svg';
+import logout from './login-to-see.png';
 
 export {
   logo,

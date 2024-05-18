@@ -378,21 +378,21 @@ export const stock_data = [
 
 export const aboutUs_data = [
   {
-    id: "1",
+    id: 1,
     content:
       "Gain access to insights and strategies curated by SEBI-registered analysts, ensuring informed decisions in your trading journey.",
     title: "Expert Guidance",
     img: aboutFeature,
   },
   {
-    id: "2",
+    id: 2,
     content:
       "Join a vibrant community of experts and analysts, where you can interact, exchange ideas and stay updated on market trends. Engage in discussions, attend webinars and network with like-minded individuals.",
     title: "Active Community",
     img: aboutFeature2,
   },
   {
-    id: "3",
+    id: 3,
     content:
       "Navigate the complexities of the stock market with ease using our intuitive tools and resources. From advanced analytics to real-time market data and educational materials, our platform provides everything you need.",
     title: "User-Friendly Tools",

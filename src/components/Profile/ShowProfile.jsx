@@ -1,23 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import userImg from '../../assets/userImg.png';
 import { LogOut, edit, mail, call } from '../../assets';
 import EditProfilePopup from './EditProfilePopup';
 
-const ShowProfile = () => {
+const ShowProfile = ({ userData }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [profileData, setProfileData] = useState({
-    firstName: 'Arun',
-    lastName: 'Kumar',
-    email: 'john.doe@gmail.com',
-    phone: '123-456-7890',
+    name: '',
+    email: '',
+    phone: '',
     profileImage: null,
   });
+
+  useEffect(() => {
+    if (userData) {
+      setProfileData({
+        name: userData.name,
+        email: userData.email,
+        phone: userData.mobileNumber,
+        profileImage: userData.userImagePath,
+      });
+    }
+  }, []);
 
   const togglePopup = () => {
     setIsPopupOpen(!isPopupOpen);
   };
 
-  // Inside updateProfile function
   const updateProfile = (data) => {
     setProfileData({
       ...profileData,
@@ -26,27 +35,27 @@ const ShowProfile = () => {
   };
 
   const handleLogOut = () => {
-    sessionStorage.removeItem("token")
+    sessionStorage.removeItem("token");
     window.location.reload();
-  }
+  };
 
   return (
-    <div className="container bg-[#18181B80] md:p-8 p-5  md:flex flex md:justify-between justify-between md:pb-0 pb:5 relative rounded-lg border-2 border-[#ffffff2b] mb-10">
+    <div className="container bg-[#18181B80] md:p-8 p-5 md:flex flex md:justify-between justify-between md:pb-0 pb-5 relative rounded-lg border-2 border-[#ffffff2b] mb-10">
       <EditProfilePopup isOpen={isPopupOpen} onClose={togglePopup} onUpdateProfile={updateProfile} />
       <div className="left-col text-white">
         <div className="mb-2">
-          <h1 className="text-gradient font-poppins font-semibold md:text-[62px] text-[25px] md:leading-[84px] ">
-            {profileData.firstName} {profileData.lastName}
+          <h1 className="text-gradient font-poppins font-semibold md:text-[62px] text-[25px] md:leading-[84px]">
+            {profileData.name || "---"}
           </h1>
         </div>
         <div className="md:flex flex-row gap-10">
           <div className="flex items-center mb-2">
             <img src={mail} alt="Message Icon" className="w-4 h-4 mr-2" />
-            <h1 className="text-white text-base">{profileData.email}</h1>
+            <h1 className="text-white text-base">{profileData.email || "---"}</h1>
           </div>
           <div className="flex items-center">
             <img src={call} alt="Call Icon" className="w-3 h-3 mr-2" />
-            <h1 className="text-white text-base">{profileData.phone}</h1>
+            <h1 className="text-white text-base">{profileData.phone || "---"}</h1>
           </div>
         </div>
       </div>
@@ -56,8 +65,11 @@ const ShowProfile = () => {
       >
         <img src={edit} alt="Edit Icon" className="w-4 h-4 mr-2" /> Edit
       </button>
-      <button onClick={handleLogOut} className="md:flex hidden items-center absolute bottom-4 border-2 border-[#ffffff96] right-4 bg-[#fff] text-black py-2 px-8 rounded-lg transition duration-300 hover:bg-[#ffffff96] hover:text-gray-900">
-        Logout <img src={LogOut} alt="" className="w-4 h-4 ml-2" />
+      <button
+        onClick={handleLogOut}
+        className="md:flex hidden items-center absolute bottom-4 border-2 border-[#ffffff96] right-4 bg-[#fff] text-black py-2 px-8 rounded-lg transition duration-300 hover:bg-[#ffffff96] hover:text-gray-900"
+      >
+        Logout <img src={LogOut} alt="Logout Icon" className="w-4 h-4 ml-2" />
       </button>
       <div className="right-col md:pr-40 pr-3">
         <img

@@ -9,13 +9,13 @@ import {
 } from "../../assets";
 import { Link } from "react-router-dom";
 const ProductList = [
-  { name: "About Us", link: "/about" },
-  { name: "FAQ's", link: "/faqs" },
-  { name: "Features", link: "/about" },
-  { name: "Blog", link: "/blogs" },
-  { name: "Privacy Policy", link: "/privacy" },
-  { name: "Refund Policy", link: "/refund-policy" },
-  { name: "Terms of Service", link: "/terms_of_service" },
+  { name: "About Us", link: "/about", id: 'about' },
+  { name: "FAQ's", link: "/faqs", id: 'faqs' },
+  { name: "Features", link: "/about", id: 'features' },
+  { name: "Blog", link: "/blogs", id: 'blog' },
+  { name: "Privacy Policy", link: "/privacy", id: 'privacy' },
+  { name: "Refund Policy", link: "/refund-policy", id: 'refund' },
+  { name: "Terms of Service", link: "/terms_of_service", id: 'terms' },
 ];
 const CommunityList = [
   { name: "Expertises", link: "/expertise" },
@@ -32,8 +32,8 @@ const Footer = () => {
 
   return (
     <>
-      <div className="md:w-[1440px] w-full md:h-[198px] h-[506px] md:pt-[8rem] justify-around border-t border-solid border-white border-opacity-10 flex md:flex-row flex-col items-center">
-        <div className="flex flex-col gap-[1rem]">
+      <div className="md:w-[1440px] w-full md:h-[198px] md:gap-0 h-[506px] md:pt-[8rem] pt-4 justify-around border-t border-solid border-white border-opacity-10 flex md:flex-row flex-col items-center">
+        <div className="flex flex-col gap-[0.5rem]">
           <Link onClick={scrollToTop} to="/">
             <img src={logo} alt="" className="md:w-56 w-40" />
           </Link>
@@ -74,7 +74,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex flex-row gap-[4rem]">
-          <div className="flex flex-col justify-around w-full h-[240px]">
+          <div className="flex flex-col justify-around w-full h-[210px]">
             <span className="w-[48px] h-[15px] font-medium md:text-[20px] text-[18px] leading-[14.7px] mb-4 text-white">
               Company
             </span>
@@ -82,15 +82,15 @@ const Footer = () => {
               <Link
                 onClick={scrollToTop}
                 to={product.link}
-                key={product.link}
+                key={product.id}
                 className="font-normal text-[0.9rem] text-left leading-[14.7px] text-dimWhite hover:text-white"
               >
                 {product.name}
               </Link>
             ))}
           </div>
-          <div className="flex flex-col justify-between w-[117px] md:h-[89px] h-[88px] mt-[7px]">
-            <span className="md:w-[140px] md:h-[15px] w-[125px] h-[16px] font-medium md:text-[20px] text-[18px] leading-[14.7px] mb-4 text-white">
+          <div className="flex flex-col justify-between w-[117px] md:h-[89px] h-[79px] mt-[4px]">
+            <span className="md:w-[140px] md:h-[15px] w-[125px] font-medium md:text-[20px] text-[18px] leading-[14.7px] mb-4 text-white">
               What We Offer
             </span>
             {CommunityList.map((community) => (
@@ -129,7 +129,7 @@ const Footer = () => {
           backgroundImage:
             "linear-gradient(94.34deg, #FFFFFF 0%, #9BD0F5 100%)",
         }}
-        className="md:mt-[2rem] md:mb-0 mb-10 w-full justify-around flex md:flex-row flex-col items-center"
+        className="md:mt-[2rem] w-full justify-around flex md:flex-row flex-col items-center"
       >
         <div className="border-[1px] p-2 md:px-[50px] rounded-md">
           <span className="flex gap-2 md:text-[16px] text-[15px] text-[##18181B] md:my-[10px] marquee">

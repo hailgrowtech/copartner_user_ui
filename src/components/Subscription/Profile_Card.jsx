@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { expertise_data, expertise_type } from "../../constants";
-import { telegram } from "../../assets";
+import { arrow, logout, telegram, userBck } from "../../assets";
 import { Link } from "react-router-dom";
 
-const Expertise = () => {
+const Expertise = ({ userId }) => {
+  console.log(userId);
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -12,6 +12,7 @@ const Expertise = () => {
   };
 
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 640);
+  const [subscriberData, setSubscriberData] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -24,11 +25,29 @@ const Expertise = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const fetchSubscriberData = async () => {
+      try {
+        const response = await fetch(
+          `https://copartners.in:5009/api/Subscriber/${userId}`
+        );
+        const data = await response.json();
+        setSubscriberData(data.data);
+      } catch (error) {
+        console.error("Error fetching subscriber data:", error);
+      }
+    };
+
+    if (userId) {
+      fetchSubscriberData();
+    }
+  }, []);
+
   return (
     <>
       <div className={`flex flex-col`}>
-        <div className="flex p-[1rem] gap-[1rem] sm:p-[4rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px] md:mt-[-2rem]">
-          {expertise_data.map((expert, id) => {
+        <div className="flex p-[1rem] gap-[1rem] sm:pt-[2rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px] md:mt-[-2rem]">
+          {subscriberData ? subscriberData.map((expert, id) => {
             return (
               <Link
                 to={`/subscription/buy/${expert.id}`}
@@ -38,12 +57,12 @@ const Expertise = () => {
               >
                 <div className="w-[72px] h-[98px] sm:w-[384px] sm:h-[219px]  relative profile-image_1 mb-4">
                   <img
-                    src={expert.icon}
+                    src={userBck}
                     alt="background"
                     className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
                   />
                   <img
-                    src={expert.userImg}
+                    src={expert.expertImagePath}
                     alt="User"
                     className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
                   />
@@ -52,7 +71,7 @@ const Expertise = () => {
                 <div className="w-[154px] h-[22px] sm:w-[319px] sm:h-[40px] flex justify-between px-[5px] sm:px-[1rem]">
                   <div className="flex flex-col h-[22px] w-full md:h-[40px] gap-2">
                     <span className="sm:text-[18px] text-[12px] sm:leading-[18px] leading-[8px] font-[500] text-lightWhite">
-                      {expert.name}
+                      {expert.channelName}
                     </span>
                     <span className="sm:text-[13px] text-[10px] sm:leading-[16px] leading-[9.6px] font-[400] text-dimWhite">
                       {expert.title}
@@ -73,20 +92,20 @@ const Expertise = () => {
                 <div className="md:w-[256px] w-[143px] h-[44px] flex items-start md:mt-2 mt-4 justify-between">
                   <div className="flex flex-col md:w-[78px] w-[43px] h-[22px] items-center justify-between">
                     <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
-                      {expert.experience}
+                      Experience
                     </span>
                     <span className="text-lightWhite font-[600] sm:text-[15px] sm:leading-[18px] text-[10px] leading-[10px]">
-                      {expert.totalExp}
+                      {expert.experience}
                     </span>
                   </div>
                   <div className="sm:w-[1.4px] sm:h-[40px] w-[0.4px] h-[16px] bg-lightWhite"></div>
                   <div className="flex">
                     <div className="flex flex-col sm:w-[78px] sm:h-[50px] w-[43px] h-[22px] items-center">
                       <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
-                        {expert.followers}
+                        Followers
                       </span>
                       <span className="text-lightWhite font-[600] sm:text-[15px] sm:leading-[18px] text-[10px] leading-[10px]">
-                        {expert.totalFollowers}
+                        {/* {`${subscriberData.telegramFollower / 1000}k`} */}
                       </span>
                     </div>
                   </div>
@@ -104,7 +123,7 @@ const Expertise = () => {
                       1 month subscription
                     </button>
                     <img
-                      src={expert.arrowIcon}
+                      src={arrow}
                       alt="arrow"
                       className="md:w-[16px] md:h-[16px] w-[11px] h-[11px]"
                     />
@@ -115,7 +134,7 @@ const Expertise = () => {
                 </span>
               </Link>
             );
-          })}
+          }) : <div className="text-center flex flex-col gap-8 mt-12 col-span-3 text-dimWhite md:text-4xl text-lg"><img className="md:w-96 w-60 mx-auto" src={logout} alt="" />No Subscriptions Found!</div>}
         </div>
       </div>
     </>

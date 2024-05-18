@@ -8,17 +8,24 @@ import {
   Webinar,
   ErrorPage,
   ExpertiseExplore,
-  CoursesExplore,
+  // CoursesExplore,
   SubscriptionBuy,
   ReferEarn,
   Blog,
   BlogPage,
   ContactUs,
   Profile,
+  About,
+  FAQs,
+  PrivacyPolicy,
+  Terms,
+  SignUp,
+  Disclaimer,
+  RefundPolicy,
+  Hero,
 } from "./components";
 import styles from "./style";
 import "react-toastify/dist/ReactToastify.css";
-import Hero from "./components/Home/Hero";
 import {
   Route,
   RouterProvider,
@@ -26,19 +33,12 @@ import {
   createRoutesFromElements,
   Navigate,
 } from "react-router-dom";
-import About from "./components/About/About";
-import FAQs from "./components/About/FAQs";
-import PrivacyPolicy from "./components/About/PrivacyPolicy";
-import Terms from "./components/About/Terms";
-import SignUp from "./components/SignUp";
-import Otp from "./components/Otp";
-import Disclaimer from "./components/About/Disclaimer";
-import RefundPolicy from "./components/About/RefundPolicy";
 import { UserDataProvider } from "./constants/context";
 
 function App() {
   const token = sessionStorage.getItem("token");
   const hasVisitedSignUp = sessionStorage.getItem("visitedSignUp");
+  const userId = sessionStorage.getItem("userId");
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -83,7 +83,7 @@ function App() {
                 <div className={`${styles.flexStart}`}>
                   <UserDataProvider>
                     <div className={`${styles.boxWidth}`}>
-                      <Subscription />
+                      <Subscription userId={userId} />
                     </div>
                   </UserDataProvider>
                 </div>
@@ -130,7 +130,9 @@ function App() {
             path="history"
             element={
               token || hasVisitedSignUp ? (
-                <Wallet />
+                <UserDataProvider>
+                  <Wallet />
+                </UserDataProvider>
               ) : (
                 <Navigate to="/signup" replace={true} />
               )
@@ -139,7 +141,7 @@ function App() {
           <Route
             path="ra-detail/:id"
             element={
-              token || hasVisitedSignUp ? (
+              token ? (
                 <SubscriptionRA />
               ) : (
                 <Navigate to="/signup" replace={true} />
@@ -166,7 +168,7 @@ function App() {
               )
             }
           />
-          <Route
+          {/* <Route
             path="courses/explore-courses"
             element={
               token || hasVisitedSignUp ? (
@@ -175,7 +177,7 @@ function App() {
                 <Navigate to="/signup" replace={true} />
               )
             }
-          />
+          /> */}
           <Route path="/subscriptionRA/:id" element={<SubscriptionRA />} />
           <Route path="subscription/buy/:id" element={<SubscriptionBuy />} />
           <Route
@@ -246,7 +248,7 @@ function App() {
             path="profile"
             element={
               token ? (
-                <Profile />
+                <Profile userId={userId} />
               ) : (
                 <Navigate to="/signup" replace={true} />
               )
@@ -293,7 +295,6 @@ function App() {
             }
           />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/otp" element={<Otp />} />
         </Route>
       </>
     )

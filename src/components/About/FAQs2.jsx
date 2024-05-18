@@ -72,7 +72,7 @@ const FAQs2 = () => {
         <div className="w-full h-[556px] grid grid-cols-2 mt-[2rem] mb-[12rem] gap-[1rem]">
           {faq_data2.map((faq) => {
             return (
-              <div className="w-[592px] h-[256px] flex flex-col border py-[3rem] gap-[1rem] border-solid border-[rgba(255,255,255,0.3)] p-[4rem] items-center rounded-[8px]">
+              <div key={faq.id} className="w-[592px] h-[256px] flex flex-col border py-[3rem] gap-[1rem] border-solid border-[rgba(255,255,255,0.3)] p-[4rem] items-center rounded-[8px]">
                 <span className="text-lightWhite w-[517px] font-[500] text-[17px] leading-[20px]">
                   {faq.title}
                 </span>
