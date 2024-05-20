@@ -51,7 +51,7 @@ function App() {
                 <div className={`${styles.flexStart}`}>
                   <UserDataProvider>
                     <div className={`${styles.boxWidth}`}>
-                      <Hero />
+                      <Hero hasVisitedSignUp={hasVisitedSignUp} token={token} />
                     </div>
                   </UserDataProvider>
                 </div>
@@ -63,7 +63,7 @@ function App() {
           <Route
             path="expertise"
             element={
-              token || hasVisitedSignUp ? (
+              token ? (
                 <div className={`${styles.flexStart}`}>
                   <UserDataProvider>
                     <div className={`${styles.boxWidth}`}>
@@ -79,7 +79,7 @@ function App() {
           <Route
             path="subscription"
             element={
-              token || hasVisitedSignUp ? (
+              token ? (
                 <div className={`${styles.flexStart}`}>
                   <UserDataProvider>
                     <div className={`${styles.boxWidth}`}>
@@ -129,7 +129,7 @@ function App() {
           <Route
             path="history"
             element={
-              token || hasVisitedSignUp ? (
+              token ? (
                 <UserDataProvider>
                   <Wallet />
                 </UserDataProvider>

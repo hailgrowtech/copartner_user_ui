@@ -1,5 +1,4 @@
 import React from "react";
-import { expertise_data } from "../../constants";
 import Testimonials from "./Testimonials";
 import { Link } from "react-router-dom";
 import { useUserData } from "../../constants/context";
@@ -20,6 +19,18 @@ const EquityExpertise = () => {
         return "Unknown";
     }
   };
+
+  const filterAndMapUserData = (data, expertTypeId) => {
+    return data
+      .filter(user => user.expertTypeId === expertTypeId)
+      .map(user => ({
+        ...user,
+        expertType: getExpertType(user.expertTypeId)
+      }));
+  };
+  
+  const filteredData = filterAndMapUserData(userData, 2);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -57,7 +68,7 @@ const EquityExpertise = () => {
       </div>
 
       <div className="flex p-[1rem] gap-[1rem] sm:p-[4rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px] md:mt-0 mt-[-1.5rem]">
-        {userData && userData.slice(0, 3).map((expert, id) => {
+        {filteredData && filteredData.slice(0, 3).map((expert, id) => {
           return (
             <Link onClick={scrollToTop} to={`/ra-detail/${expert.id}`}
                 key={expert.id}

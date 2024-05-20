@@ -5,7 +5,7 @@ import PrivateCall from "./PrivateCall";
 import { Link } from "react-router-dom";
 import { useUserData } from "../../constants/context";
 
-const Expertise = () => {
+const Expertise = ({token}) => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -39,6 +39,10 @@ const Expertise = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const handleTelegram = (link) => {
+    token && window.open(link);
+  };
 
   return (
     <>
@@ -132,7 +136,7 @@ const Expertise = () => {
                     </div>
                   </div>
 
-                <div className="md:w-[211px] md:h-[40px] w-[146px] h-[38px] bg-[#0081F1] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
+                <div onClick={handleTelegram} className="md:w-[211px] md:h-[40px] w-[146px] h-[38px] bg-[#0081F1] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
                   <div className="flex justify-center items-center gap-2">
                     <img
                       src={telegram}

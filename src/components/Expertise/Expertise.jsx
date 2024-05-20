@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import styles from "../../style";
 import Card from "./Profile_Component";
 import { Link } from "react-router-dom";
@@ -8,6 +8,7 @@ import { useUserData } from "../../constants/context";
 
 const Expertise = () => {
   const userData = useUserData();
+  const [filter, setFilter] = useState(null)
 
   const getExpertType = (typeId) => {
     switch (typeId) {
@@ -28,6 +29,26 @@ const Expertise = () => {
       behavior: "smooth",
     });
   };
+
+  const filterAndMapUserData = (data, expertTypeId) => {
+    if (expertTypeId === null) return data.map(user => ({
+      ...user,
+      expertType: getExpertType(user.expertTypeId)
+    }));
+
+    return data
+      .filter(user => user.expertTypeId === expertTypeId)
+      .map(user => ({
+        ...user,
+        expertType: getExpertType(user.expertTypeId)
+      }));
+  };
+
+  const handleFilter = (id) => {
+    setFilter(id);
+  };
+
+  const filteredData = useMemo(() => filterAndMapUserData(userData, filter), [userData, filter]);
 
   return (
     <section
@@ -178,17 +199,17 @@ const Expertise = () => {
           </div>
           <div className="w-full flex flex-row bg-[#18181B80] rounded-2xl p-3 mt-6">
             <div className="md:flex-col-6 md:text-[16px] text-[10px] flex flex-row my-auto">
-              <button className="text-white md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px]">
+              <button onClick={() =>handleFilter(null)} className="text-white md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px]">
                 All
               </button>
-              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
+              <button onClick={() =>handleFilter(3)} className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
                 Futures & Options
               </button>
-              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
+              <button onClick={() =>handleFilter(1)} className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
                 Commodity
               </button>
-              <button className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
-                Investor
+              <button onClick={() =>handleFilter(2)} className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
+                Equity
               </button>
             </div>
             <div className="md:flex-col-6 ms-auto flex flex-row">
@@ -197,16 +218,16 @@ const Expertise = () => {
                 id="cars"
                 className="text-white bg-gray-800 bg-opacity-50 rounded-lg md:text-[16px] text-[10px] md:ps-1 ps-2 md:pe-20 md:py-2 py-1 border-2 border-[#4e4e4ecc]"
               >
-                <option disabled>Price</option>
+                <option disabled>Filter</option>
                 <option value="volvo">High-to-Low</option>
                 <option value="saab">Low-to-High</option>
-                <option value="saab">Top Rated</option>
+                {/* <option value="saab">Top Rated</option> */}
               </select>
             </div>
           </div>
 
           <div className="flex p-[1rem] gap-[1rem] sm:p-[4rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px] md:mt-[-2rem]">
-            {userData?.map((expert, id) => {
+            {filteredData?.map((expert, id) => {
               return (
                 <Link
                   onClick={scrollToTop}
