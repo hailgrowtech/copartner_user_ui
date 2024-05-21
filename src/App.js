@@ -76,7 +76,7 @@ function App() {
                 <div className={`${styles.flexStart}`}>
                   <UserDataProvider>
                     <div className={`${styles.boxWidth}`}>
-                      <Expertise />
+                      <Expertise token={token} />
                     </div>
                   </UserDataProvider>
                 </div>
@@ -172,7 +172,7 @@ function App() {
             element={
               token || hasVisitedSignUp ? (
                 <UserDataProvider>
-                  <ExpertiseExplore />
+                  <ExpertiseExplore token={token} />
                 </UserDataProvider>
               ) : (
                 <Navigate to="/signup" replace={true} />

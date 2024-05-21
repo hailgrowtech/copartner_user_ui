@@ -84,9 +84,10 @@ const ShowProfile = ({ userData }) => {
         <img
           src={userData?.userImagePath || login}
           alt="User"
-          className="w-full h-full"
+          className={`${!userData?.userImagePath ? "w-20" : ""}`}
           style={{
-            WebkitMaskImage: "linear-gradient(rgba(0, 0, 0, 1) 70%, transparent)",
+            WebkitMaskImage:
+              "linear-gradient(rgba(0, 0, 0, 1) 70%, transparent)",
             maskImage: "linear-gradient(rgba(0, 0, 0, 1) 70%, transparent)",
           }}
         />

@@ -6,7 +6,7 @@ import { expertise_data } from "../../constants";
 import { arrow, closeImg, telegram, userBck, stars } from "../../assets";
 import { useUserData } from "../../constants/context";
 
-const Expertise = () => {
+const Expertise = ({token}) => {
   const userData = useUserData();
   const [filter, setFilter] = useState(null)
 
@@ -46,6 +46,10 @@ const Expertise = () => {
 
   const handleFilter = (id) => {
     setFilter(id);
+  };
+
+  const handleTelegram = (link) => {
+    token && window.open(link);
   };
 
   const filteredData = useMemo(() => filterAndMapUserData(userData, filter), [userData, filter]);
@@ -139,7 +143,7 @@ const Expertise = () => {
                   </div>
 
                   <div className="md:w-[211px] bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
-                    <div className="flex justify-center items-center gap-2">
+                    <div onClick={handleTelegram} className="flex justify-center items-center gap-2">
                       <img
                         src={telegram}
                         alt="Telegram"
@@ -300,7 +304,7 @@ const Expertise = () => {
                   </div>
 
                   <div className="md:w-[211px] bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
-                    <div className="flex justify-center items-center gap-2">
+                    <div onClick={handleTelegram} className="flex justify-center items-center gap-2">
                       <img
                         src={telegram}
                         alt="Telegram"
@@ -416,7 +420,7 @@ const Expertise = () => {
                   </div>
 
                   <div className="md:w-[211px] bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
-                    <div className="flex justify-center items-center gap-2">
+                    <div onClick={handleTelegram} className="flex justify-center items-center gap-2">
                       <img
                         src={telegram}
                         alt="Telegram"
@@ -522,7 +526,7 @@ const Expertise = () => {
                   </div>
 
                   <div className="md:w-[211px] md:h-[40px] bg-[#0081F1] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
-                    <div className="flex justify-center items-center gap-2">
+                    <div onClick={handleTelegram} className="flex justify-center items-center gap-2">
                       <img
                         src={telegram}
                         alt="Telegram"

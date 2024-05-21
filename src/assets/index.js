@@ -72,7 +72,7 @@ import exclamation from './exclamation.png';
 import danger from './Danger Triangle.png';
 import bookmarkFill from './Bookmark-fill.png';
 import logout from './login-to-see.png';
-import login from "./userProfile.jpg";
+import login from "./userProfile.png";
 
 export {
   logo,

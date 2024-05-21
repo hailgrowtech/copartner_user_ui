@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { logo, menu, hamburgerBg, LogOut, close, userImg } from "../assets";
+import { logo, menu, hamburgerBg, LogOut, close, userImg, login } from "../assets";
 import { navLinks } from "../constants";
 import styles from "../style";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
@@ -127,7 +127,7 @@ const Navbar = () => {
               <div className="hidden sm:flex items-center">
                 <Link onClick={scrollToTop} to="/profile">
                   <img
-                    src={userData?.userImagePath}
+                    src={userData?.userImagePath || login}
                     alt="Profile"
                     className="w-8 h-8 mx-4 rounded-full"
                   />

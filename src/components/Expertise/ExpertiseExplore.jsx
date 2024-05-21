@@ -3,7 +3,8 @@ import styles from "../../style";
 import Card from "./Profile_Component";
 import { useUserData } from "../../constants/context";
 
-const ExpertiseExplore = () => {
+const ExpertiseExplore = ({token}) => {
+  
   const userData = useUserData();
   return (
     <section
@@ -43,7 +44,7 @@ const ExpertiseExplore = () => {
             </div>
           </div>
           <div>
-            <Card userData={userData} />
+            <Card token={token} userData={userData} />
           </div>
         </section>
         <section className="similar-interest w-full">
@@ -57,7 +58,7 @@ const ExpertiseExplore = () => {
             </div>
           </div>
           <div>
-            <Card userData={userData} />
+            <Card token={token} userData={userData} />
           </div>
         </section>
       </div>
