@@ -175,8 +175,7 @@ const OptionExpertise = () => {
             className="font-inter md:w-[737px] md:h-[28px] w-[171px] h-[66px] font-[400] text-dimWhite md:text-[18px] text-[14px] md:leading-[28px]
             leading-[22px] md:text-start text-center md:hidden flex items-start text-start"
           >
-            Empower your teams to build better processes, for a better
-            workplace.
+            Dive into the expertise of our SEBI registered research analysts.
           </p>
           <Link onClick={scrollToTop} to="expertise/explore-expertise">
             <button className="md:flex items-center justify-center md:hidden flex w-[110px] h-[30px] rounded-[4.5px] bg-lightWhite text-[10px] font-[500] leading-[12px] md:ml-0">

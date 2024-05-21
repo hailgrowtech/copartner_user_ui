@@ -9,17 +9,16 @@ import {
   feeback,
 } from "../../assets";
 import Expertise from "./Expertise";
-import { expertise_data } from "../../constants";
 import { Link } from "react-router-dom";
 import { useUserData } from "../../constants/context";
+import { UserContext } from "../../constants/userContext";
 
-const Hero = ({hasVisitedSignUp, token}) => {
+const Hero = ({ hasVisitedSignUp, token }) => {
   const [showDialog, setShowDialog] = useState(false);
-  const [rating, setRating] = useState(null);
-  const [ratingColor, setRatingColor] = useState(null);
   const userData = useUserData();
   const [nameData, setNameData] = useState("");
   const [emailData, setEmailData] = useState("");
+  const userId = sessionStorage.getItem("userId");
 
   const getExpertType = (typeId) => {
     switch (typeId) {
@@ -44,20 +43,30 @@ const Hero = ({hasVisitedSignUp, token}) => {
   const handleUserSave = async (e) => {
     e.preventDefault();
 
-    const postData = {
-      name: nameData,
-      email: emailData,
-      // mobileNumber: mobileNumber,
-    };
+    const patchData = [
+      {
+        path: "/name",
+        op: "replace",
+        value: nameData,
+      },
+      {
+        path: "/email",
+        op: "replace",
+        value: emailData,
+      },
+    ];
 
     try {
-      const resUser = await fetch("https://copartners.in:5131/api/User", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(postData),
-      });
+      const resUser = await fetch(
+        `https://copartners.in:5131/api/User/${userId}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(patchData),
+        }
+      );
 
       if (!resUser.ok) {
         throw new Error(`HTTP error! status: ${resUser.status}`);
@@ -69,6 +78,7 @@ const Hero = ({hasVisitedSignUp, token}) => {
         console.log("Error messages:", data.errorMessages);
       } else {
         console.log("Success! User saved successfully");
+        setShowDialog(false);
       }
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);
@@ -76,14 +86,17 @@ const Hero = ({hasVisitedSignUp, token}) => {
   };
 
   useEffect(() => {
+    const fetchUserData = async () => {
+        if (!UserContext().data.name || !UserContext().data.email) {
+          setShowDialog(true);
+        } else {
+          setShowDialog(false);
+        }
+    };
+
     const isDialogClosed = sessionStorage.getItem("isDialogClosed");
-    if (hasVisitedSignUp || isDialogClosed === "true") {
-      setShowDialog(false);
-    } else {
-      const activate = setTimeout(() => {
-        setShowDialog(true);
-      }, 4000);
-      return () => clearTimeout(activate);
+    if (!hasVisitedSignUp && isDialogClosed !== "true") {
+      fetchUserData();
     }
   }, []);
 
@@ -203,7 +216,7 @@ const Hero = ({hasVisitedSignUp, token}) => {
                         {expert.channelName}
                       </span>
                       <span className="text-[12px] leading-[10px] font-[400] text-dimWhite">
-                      {expert.name} - {getExpertType(expert.expertTypeId)}
+                        {expert.name} - {getExpertType(expert.expertTypeId)}
                       </span>
                     </div>
                     <div className="w-[32px] h-[15px] flex">
@@ -242,7 +255,10 @@ const Hero = ({hasVisitedSignUp, token}) => {
 
                   <div className="md:mb-1 ml-0 mr-auto md:pl-3">
                     <div className="text-dimWhite md:text-xs text-xs flex md:flex-row flex-col md:pl-0 pl-[2px]">
-                      <span>SEBI:</span> <span className="text-white md:ml-2">{expert.sebiRegNo}</span>
+                      <span>SEBI:</span>{" "}
+                      <span className="text-white md:ml-2">
+                        {expert.sebiRegNo}
+                      </span>
                     </div>
                   </div>
 
@@ -277,7 +293,7 @@ const Hero = ({hasVisitedSignUp, token}) => {
             </span>
 
             <span className="text-dimWhite md:w-[365px] md:h-[86px] w-[171px] h-[80px] font-[400] md:text-[16px] text-[14px] md:leading-[28px] md:leading-[21px] leading-[18px]">
-              Connect with India’s leading SEBI registered Research Analysts,
+              Connect with India’s SEBI registered Research Analysts,
               guiding you thoroughly to maximising profits in the dynamic world
               of stock trading.
             </span>

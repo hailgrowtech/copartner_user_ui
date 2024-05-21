@@ -1,18 +1,44 @@
-import React, { useState } from 'react';
-import { close } from '../../assets';
+import React, { useState, useEffect } from "react";
+import { close } from "../../assets";
+import axios from "axios";
 
-const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile }) => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [profileImage, setProfileImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
 
-  const handleSave = () => {
-    // Call the onUpdateProfile function with the updated values and profileImage
-    onUpdateProfile({ firstName, lastName, email, phone, profileImage });
-    onClose();
+  useEffect(() => {
+    if (userData) {
+      setName(userData.name || '');
+      setEmail(userData.email || '');
+      setPhone(userData.phone || '');
+      setImagePreview(userData.profileImage || null);
+    }
+  }, [userData]);
+
+  const handleSave = async () => {
+    try {
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('phone', phone);
+      if (profileImage) {
+        formData.append('profileImage', profileImage);
+      }
+
+      const response = await axios.put(`https://copartners.in:5131/api/User/${userData.id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      onUpdateProfile(response.data);
+      onClose();
+    } catch (error) {
+      console.error("Failed to update profile:", error);
+    }
   };
 
   const handleImageChange = (e) => {
@@ -57,45 +83,30 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile }) => {
                     </button>
                   </>
                 ) : (
-                  <button className="bg-[transparent text-white mx-auto text-3xl pl-9" onClick={() => document.getElementById('profileImage').click()}>
+                  <button className="bg-[transparent] text-white mx-auto text-3xl pl-9" onClick={() => document.getElementById('profileImage').click()}>
                     Select
                   </button>
                 )}
               </div>
             </div>
-            {/* First Name Input */}
-            <div className="mb-4 flex">
-              <div className="w-1/2 mr-2">
-                <div class="relative">
-                  <input
-                    type="text"
-                    id="firstName"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    placeholder=" "
-                    className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
-                  />
-                  <label for="firstName" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-[#18181B] px-2 peer-focus:px-2 peer-focus:text-white-600 peer-focus:dark:text-white peer-focus:border-2 peer-focus:border-[#ffffff47] peer-focus:rounded-md peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">First Name</label>
-                </div>
-              </div>
-              <div className="w-1/2 ml-2">
-                <div class="relative">
-                  <input
-                    type="text"
-                    id="lastName"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    placeholder=" "
-                    className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
-                  />
-                  <label for="lastName" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-[#18181B] px-2 peer-focus:px-2 peer-focus:text-white-600 peer-focus:dark:text-white peer-focus:border-2 peer-focus:border-[#ffffff47] peer-focus:rounded-md peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Last Name</label>
-                </div>
+            {/* Name Input */}
+            <div className="mb-4">
+              <div className="relative">
+                <input
+                  type="text"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder=" "
+                  className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
+                />
+                <label htmlFor="name" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-[#18181B] px-2 peer-focus:px-2 peer-focus:text-white-600 peer-focus:dark:text-white peer-focus:border-2 peer-focus:border-[#ffffff47] peer-focus:rounded-md peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Name</label>
               </div>
             </div>
             {/* Email and Phone Inputs */}
             <div className="mb-4 flex">
               <div className="w-1/2 mr-2">
-                <div class="relative">
+                <div className="relative">
                   <input
                     type="email"
                     id="email"
@@ -104,11 +115,11 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile }) => {
                     placeholder=" "
                     className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
                   />
-                  <label for="email" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-[#18181B] px-2 peer-focus:px-2 peer-focus:text-white-600 peer-focus:dark:text-white peer-focus:border-2 peer-focus:border-[#ffffff47] peer-focus:rounded-md peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Email</label>
+                  <label htmlFor="email" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-[#18181B] px-2 peer-focus:px-2 peer-focus:text-white-600 peer-focus:dark:text-white peer-focus:border-2 peer-focus:border-[#ffffff47] peer-focus:rounded-md peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Email</label>
                 </div>
               </div>
               <div className="w-1/2 ml-2">
-                <div class="relative">
+                <div className="relative">
                   <input
                     type="text"
                     id="phone"
@@ -117,7 +128,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile }) => {
                     placeholder=" "
                     className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
                   />
-                  <label for="phone" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-[#18181B] px-2 peer-focus:px-2 peer-focus:text-white-600 peer-focus:dark:text-white peer-focus:border-2 peer-focus:border-[#ffffff47] peer-focus:rounded-md peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Phone Number</label>
+                  <label htmlFor="phone" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-[#18181B] px-2 peer-focus:px-2 peer-focus:text-white-600 peer-focus:dark:text-white peer-focus:border-2 peer-focus:border-[#ffffff47] peer-focus:rounded-md peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Phone Number</label>
                 </div>
               </div>
             </div>

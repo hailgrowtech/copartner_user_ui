@@ -25,7 +25,7 @@ const SubscriptionCourseDetail = () => {
           Our Expertise
           </h2>
           <p className="font-normal text-dimWhite md:px-[2px] px-[10px] text-center md:text-left md:text-[18px] text-[14px] md:leading-[28px] leading-[17px]">
-          Empower your teams to build better processes, for a better workplace.
+          Dive into the expertise of our SEBI registered research analysts.
           </p>
         </div>
         <div className="flex justify-center">

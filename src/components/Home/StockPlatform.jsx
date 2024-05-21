@@ -23,8 +23,7 @@ const StockPlatform = () => {
           />
 
           <span className="text-dimWhite md:w-[505px] w-[328px] text-center md:h-[56px] h-[34px] font-[400] md:text-[18px] text-[13px] md:leading-[28px] leading-[17px]">
-            Empower your teams to build better processes, for a better
-            workplace.
+          Dive into the expertise of our SEBI registered research analysts.
           </span>
         </div>
 

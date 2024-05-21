@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import userImg from '../../assets/userImg.png';
-import { LogOut, edit, mail, call } from '../../assets';
-import EditProfilePopup from './EditProfilePopup';
+import React, { useState, useEffect } from "react";
+import { LogOut, edit, mail, call, login } from "../../assets";
+import EditProfilePopup from "./EditProfilePopup";
 
 const ShowProfile = ({ userData }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [profileData, setProfileData] = useState({
-    name: '',
-    email: '',
-    phone: '',
+    name: "",
+    email: "",
+    phone: "",
     profileImage: null,
   });
 
@@ -21,7 +20,7 @@ const ShowProfile = ({ userData }) => {
         profileImage: userData.userImagePath,
       });
     }
-  }, []);
+  }, [userData]);
 
   const togglePopup = () => {
     setIsPopupOpen(!isPopupOpen);
@@ -36,12 +35,18 @@ const ShowProfile = ({ userData }) => {
 
   const handleLogOut = () => {
     sessionStorage.removeItem("token");
+    sessionStorage.removeItem("userId");
     window.location.reload();
   };
 
   return (
-    <div className="container bg-[#18181B80] md:p-8 p-5 md:flex flex md:justify-between justify-between md:pb-0 pb-5 relative rounded-lg border-2 border-[#ffffff2b] mb-10">
-      <EditProfilePopup isOpen={isPopupOpen} onClose={togglePopup} onUpdateProfile={updateProfile} />
+    <div className="container items-center bg-[#18181B80] md:px-8 md:pt-0 p-5 md:flex flex md:justify-between justify-between md:pb-0 pb-5 relative rounded-lg border-2 border-[#ffffff2b] mb-10">
+      <EditProfilePopup
+        isOpen={isPopupOpen}
+        onClose={togglePopup}
+        onUpdateProfile={updateProfile}
+        userData={profileData} // Pass profileData to EditProfilePopup
+      />
       <div className="left-col text-white">
         <div className="mb-2">
           <h1 className="text-gradient font-poppins font-semibold md:text-[62px] text-[25px] md:leading-[84px]">
@@ -51,11 +56,15 @@ const ShowProfile = ({ userData }) => {
         <div className="md:flex flex-row gap-10">
           <div className="flex items-center mb-2">
             <img src={mail} alt="Message Icon" className="w-4 h-4 mr-2" />
-            <h1 className="text-white text-base">{profileData.email || "---"}</h1>
+            <h1 className="text-white text-base">
+              {profileData.email || "---"}
+            </h1>
           </div>
           <div className="flex items-center">
             <img src={call} alt="Call Icon" className="w-3 h-3 mr-2" />
-            <h1 className="text-white text-base">{profileData.phone || "---"}</h1>
+            <h1 className="text-white text-base">
+              {profileData.phone || "---"}
+            </h1>
           </div>
         </div>
       </div>
@@ -73,11 +82,12 @@ const ShowProfile = ({ userData }) => {
       </button>
       <div className="right-col md:pr-40 pr-3">
         <img
-          src={profileData.profileImage || userImg} // Display saved image or default user image
+          src={userData?.userImagePath || login}
           alt="User"
-          className="w-full h-auto"
+          className="w-full h-full"
           style={{
-            maskImage: 'linear-gradient(rgba(0, 0, 0, 1) 70%, transparent)',
+            WebkitMaskImage: "linear-gradient(rgba(0, 0, 0, 1) 70%, transparent)",
+            maskImage: "linear-gradient(rgba(0, 0, 0, 1) 70%, transparent)",
           }}
         />
       </div>

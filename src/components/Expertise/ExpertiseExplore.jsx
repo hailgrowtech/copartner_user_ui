@@ -1,8 +1,10 @@
 import React from "react";
 import styles from "../../style";
 import Card from "./Profile_Component";
+import { useUserData } from "../../constants/context";
 
 const ExpertiseExplore = () => {
+  const userData = useUserData();
   return (
     <section
       className={`flex md:flex-row flex-col md:px-0 px-3 ${styles.paddingY} expertise-Bg`}
@@ -41,7 +43,7 @@ const ExpertiseExplore = () => {
             </div>
           </div>
           <div>
-            <Card />
+            <Card userData={userData} />
           </div>
         </section>
         <section className="similar-interest w-full">
@@ -55,7 +57,7 @@ const ExpertiseExplore = () => {
             </div>
           </div>
           <div>
-            <Card />
+            <Card userData={userData} />
           </div>
         </section>
       </div>

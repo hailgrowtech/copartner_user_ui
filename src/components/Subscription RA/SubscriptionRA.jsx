@@ -7,14 +7,11 @@ import {
   bookmark,
   bookmarkFill,
   stars,
-  userImg,
-  layer,
 } from "../../assets";
 import SubscriptionPaymentPopup from "./SubscriptionPaymentPopup";
 import FAQs2 from "../About/FAQs2";
 import CoursePaymentPopup from "./CoursePaymentPopup";
 import MobileCourse from "./MobileCourse";
-import { expertData, expertise_data } from "../../constants";
 import { useParams } from "react-router-dom";
 
 const SubscriptionRA = () => {

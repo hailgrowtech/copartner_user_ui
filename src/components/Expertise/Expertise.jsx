@@ -166,7 +166,7 @@ const Expertise = () => {
               </span>
 
               <span className="text-dimWhite md:w-[365px] md:h-[86px] w-[171px] h-[80px] font-[400] md:text-[16px] text-[14px] md:leading-[28px] md:leading-[21px] leading-[18px]">
-                Connect with India’s leading SEBI registered Research Analysts,
+                Connect with India’s SEBI registered Research Analysts,
                 guiding you thoroughly to maximising profits in the dynamic
                 world of stock trading.
               </span>
@@ -212,7 +212,7 @@ const Expertise = () => {
                 Equity
               </button>
             </div>
-            <div className="md:flex-col-6 ms-auto flex flex-row">
+            {/* <div className="md:flex-col-6 ms-auto flex flex-row">
               <select
                 name="cars"
                 id="cars"
@@ -221,9 +221,8 @@ const Expertise = () => {
                 <option disabled>Filter</option>
                 <option value="volvo">High-to-Low</option>
                 <option value="saab">Low-to-High</option>
-                {/* <option value="saab">Top Rated</option> */}
               </select>
-            </div>
+            </div> */}
           </div>
 
           <div className="flex p-[1rem] gap-[1rem] sm:p-[4rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px] md:mt-[-2rem]">

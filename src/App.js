@@ -34,6 +34,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { UserDataProvider } from "./constants/context";
+import { UserProvider } from "./constants/userContext";
 
 function App() {
   const token = sessionStorage.getItem("token");
@@ -43,7 +44,15 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route path="/" element={<Navbar />} errorElement={<ErrorPage />}>
+        <Route
+          path="/"
+          element={
+            <UserProvider>
+              <Navbar />
+            </UserProvider>
+          }
+          errorElement={<ErrorPage />}
+        >
           <Route
             path=""
             element={
@@ -162,7 +171,9 @@ function App() {
             path="expertise/explore-expertise"
             element={
               token || hasVisitedSignUp ? (
-                <ExpertiseExplore />
+                <UserDataProvider>
+                  <ExpertiseExplore />
+                </UserDataProvider>
               ) : (
                 <Navigate to="/signup" replace={true} />
               )
@@ -248,7 +259,9 @@ function App() {
             path="profile"
             element={
               token ? (
-                <Profile userId={userId} />
+                <UserProvider>
+                  <Profile userId={userId} />
+                </UserProvider>
               ) : (
                 <Navigate to="/signup" replace={true} />
               )

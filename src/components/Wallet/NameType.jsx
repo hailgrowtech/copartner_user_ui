@@ -8,7 +8,6 @@ const NameType = ({ subscriptionId }) => {
     const fetchServiceType = async () => {
       try {
         const response = await axios.get(`https://copartners.in:5009/api/Subscription/${subscriptionId}`);
-        console.log(response.data.data.experts, 'Getting User Name..')
         response ? setExperts(response.data.data.experts) : setExperts('')
       } catch (error) {
         console.error("Error fetching subscription data:", error);

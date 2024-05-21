@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { format, differenceInDays, addMonths } from "date-fns";
 
 const Expertise = ({ userId }) => {
-  console.log(userId);
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -40,7 +39,6 @@ const Expertise = ({ userId }) => {
 
         const subscriptionDetails = getSubscriptionDetails(data);
         setSubscriberData(subscriptionDetails);
-        console.log(subscriptionDetails); // Log subscription details instead of state to avoid timing issues
       } catch (error) {
         console.error("Error fetching subscriber data:", error);
       }
@@ -56,7 +54,7 @@ const Expertise = ({ userId }) => {
     const endDate = addMonths(createdDate, durationMonth);
     const currentDate = new Date();
     const daysLeft = differenceInDays(endDate, currentDate);
-    return daysLeft > 0 ? daysLeft : 0; // Return 0 if subscription has expired
+    return daysLeft > 0 ? daysLeft : 0;
   };
 
   return (
@@ -132,9 +130,9 @@ const Expertise = ({ userId }) => {
                     </div>
                   </div>
 
-                  <div className="md:w-[300px] md:h-[72px] w-[144px] h-[42px] mb-4 sm:block contents md:ml-2 ml-4">
+                  <div className="md:w-[300px] md:h-[30px] w-[144px] h-[42px] mb-4 sm:block contents md:ml-2 ml-4">
                     <span className="text-dimWhite md:text-[14px] text-[11px] sm:leading-[24px] md:leading-[12px] leading-[14px]">
-                      {expert.description}
+                      SEBI: {expert.experts.sebiRegNo}
                     </span>
                   </div>
 
@@ -158,7 +156,6 @@ const Expertise = ({ userId }) => {
             })
           ) : (
             <div className="text-center flex flex-col gap-8 mt-12 col-span-3 text-dimWhite md:text-4xl text-lg">
-              <img className="md:w-96 w-60 mx-auto" src={logout} alt="" />
               No Subscriptions Found!
             </div>
           )}

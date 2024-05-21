@@ -4,6 +4,7 @@ import { navLinks } from "../constants";
 import styles from "../style";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import Footer from "./Home/Footer";
+import { useUserSession } from "../constants/userContext";
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
@@ -12,6 +13,7 @@ const Navbar = () => {
   const location = useLocation();
   const token = sessionStorage.getItem("token");
   const navigate = useNavigate();
+  const { userData } = useUserSession();
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -70,7 +72,13 @@ const Navbar = () => {
 
   const handleLoginPopup = () => {
     navigate("/signup");
-  }
+  };
+
+  const handleLogOut = () => {
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("userId");
+    window.location.reload();
+  };
 
   return (
     <>
@@ -119,7 +127,7 @@ const Navbar = () => {
               <div className="hidden sm:flex items-center">
                 <Link onClick={scrollToTop} to="/profile">
                   <img
-                    src={userImg}
+                    src={userData?.userImagePath}
                     alt="Profile"
                     className="w-8 h-8 mx-4 rounded-full"
                   />
@@ -127,7 +135,10 @@ const Navbar = () => {
               </div>
             ) : (
               <div className="hidden sm:flex items-center">
-                <button className="border-2 px-4 py-1 rounded-[6px] bg-lightWhite md:text-sm text-xs font-[500]" onClick={handleLoginPopup}>
+                <button
+                  className="border-2 px-4 py-1 rounded-[6px] bg-lightWhite md:text-sm text-xs font-[500]"
+                  onClick={handleLoginPopup}
+                >
                   Login
                 </button>
               </div>
@@ -204,15 +215,33 @@ const Navbar = () => {
 
                   {/* Logout button in mobile menu */}
                   <li className="mt-4">
-                    <button className="text-black font-semibold text-[11px] py-1 px-4 rounded-[4px] border-2 border-solid bg-white border-dimWhite border-opacity-60 flex items-center">
-                      Logout{" "}
-                      <img
-                        className="ms-2"
-                        width={"15rem"}
-                        src={LogOut}
-                        alt=""
-                      />
-                    </button>
+                    {token ? (
+                      <button
+                        onClick={handleLogOut}
+                        className="text-black font-semibold text-[11px] py-1 px-4 rounded-[4px] border-2 border-solid bg-white border-dimWhite border-opacity-60 flex items-center"
+                      >
+                        Logout{" "}
+                        <img
+                          className="ms-2"
+                          width={"15rem"}
+                          src={LogOut}
+                          alt=""
+                        />
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => navigate("/signup")}
+                        className="text-black font-semibold text-[11px] py-1 px-4 rounded-[4px] border-2 border-solid bg-white border-dimWhite border-opacity-60 flex items-center"
+                      >
+                        Login{" "}
+                        <img
+                          className="ms-2"
+                          width={"15rem"}
+                          src={LogOut}
+                          alt=""
+                        />
+                      </button>
+                    )}
                   </li>
                 </ul>
               </div>

@@ -12,10 +12,11 @@ const Wallet = () => {
   const userData = useUserData();
   const [smallScreen, setSmallScreen] = useState(false);
   const [transactionTable, setTransactionTable] = useState([]);
+  const userId = sessionStorage.getItem("userId");
 
   useEffect(() => {
     axios
-      .get("https://copartners.in:5009/api/Subscriber")
+      .get(`https://copartners.in:5009/api/Subscriber/GetByUserId/${userId}`)
       .then((res) => {
         setTransactionTable(res.data.data);
       })
@@ -24,8 +25,6 @@ const Wallet = () => {
         setTransactionTable([]);
       });
   }, []);
-
-  console.log(transactionTable)
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -47,72 +46,18 @@ const Wallet = () => {
     return `${day}-${month}-${year}`;
   };
 
-  const handleSubscriptionId = async (id) => {
-    try {
-      const response = await axios.get(
-        `https://copartners.in:5009/api/Subscription/${id}`
-      );
-      const service = response.data.find((service) => service.id === id);
-      return service ? service.serviceType : ""; // Return serviceType if found, or an empty string if not found
-    } catch (error) {
-      console.error("Error fetching subscription data:", error);
-      throw error;
-    }
-  };
-
   const downloadTransactionData = (transactionId) => {
-    // Create a blob with the transactionId data
-    const data = new Blob([transactionId], { type: 'text/plain' });
-  
-    // Create a link element to facilitate the download
-    const link = document.createElement('a');
+    const data = new Blob([transactionId], { type: "text/plain" });
+
+    const link = document.createElement("a");
     link.href = window.URL.createObjectURL(data);
     link.download = `transaction_${transactionId}.txt`;
     link.click();
-  
-    // Clean up the URL object
+
     window.URL.revokeObjectURL(link.href);
   };
 
-  // const downloadTransactionData = (row) => {
-  //   const headers = ['Transaction ID', 'Date', 'Subscription', 'Name', 'Amount'];
-  //   const data = [
-  //     row.transactionId,
-  //     formatDate(row.transactionDate),
-  //     // Assuming SubscriptionType and NameType return appropriate string values
-  //     getSubscriptionType(row.subscriptionId),
-  //     getNameType(row.subscriptionId),
-  //     `₹ ${row.totalAmount}`
-  //   ];
-  
-  //   const csvContent = [headers, data].map(e => e.join(",")).join("\n");
-  
-  //   // Create a blob with the CSV content
-  //   const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-  
-  //   // Create a link element to facilitate the download
-  //   const link = document.createElement('a');
-  //   link.href = URL.createObjectURL(blob);
-  //   link.download = `transaction_${row.transactionId}.text`;
-  //   link.click();
-  
-  //   // Clean up the URL object
-  //   URL.revokeObjectURL(link.href);
-  // };
-  
-  const getSubscriptionType = (subscriptionId) => {
-    // Assuming SubscriptionType is a component, replace this with actual logic
-    // to get the subscription type as a string based on subscriptionId
-    return "Subscription Type"; // Placeholder value
-  };
-  
-  const getNameType = (subscriptionId) => {
-    // Assuming NameType is a component, replace this with actual logic
-    // to get the name type as a string based on subscriptionId
-    return "Name Type"; // Placeholder value
-  };
-  
-  const token = sessionStorage.getItem("token")
+  const token = sessionStorage.getItem("token");
 
   return (
     <>
@@ -172,101 +117,106 @@ const Wallet = () => {
             </span>
           </div>
 
-          { token ? <div className="flex justify-center items-center md:mt-[1rem] mt-[-20px]">
-            {smallScreen ? (
-              <div className="flex flex-wrap justify-center items-center">
-                {transactionTable.slice(0, 3).map((row, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col justify-around w-[361px] h-[208px] bg-[#18181B] bg-opacity-[50%] rounded-[30px] md:m-4 m-[10px] p-4 w-[90%] max-w-sm"
-                  >
-                    <div className="flex flex-row justify-between">
-                      <p className="w-[173px] h-[26px] font-[600] text-[21px] leading-[25px] text-lightWhite">
-                        {row.transactionId}
-                      </p>
-                      <img
-                        src={invoiceImg}
-                        alt=""
-                        className="w-[21px] h-[21px] text-white"
-                      />
+          {token ? (
+            <div className="flex justify-center items-center md:mt-[1rem] mt-[-20px]">
+              {smallScreen ? (
+                <div className="flex flex-wrap justify-center items-center">
+                  {transactionTable.slice(0, 3).map((row, index) => (
+                    <div
+                      key={index}
+                      className="flex flex-col justify-around w-[361px] h-[208px] bg-[#18181B] bg-opacity-[50%] rounded-[30px] md:m-4 m-[10px] p-4 w-[90%] max-w-sm"
+                    >
+                      <div className="flex flex-row justify-between">
+                        <p className="w-[173px] h-[26px] font-[600] text-[21px] leading-[25px] text-lightWhite">
+                          {row.transactionId}
+                        </p>
+                        <img
+                          src={invoiceImg}
+                          alt=""
+                          className="w-[21px] h-[21px] text-white"
+                        />
+                      </div>
+                      <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
+                        <span className="text-dimWhite">DATE:</span>{" "}
+                        {formatDate(row.transactionDate)}
+                      </span>
+                      <span className="flex items-center justify-between sm:w-[305px] h-[34px] font-[500] text-[14px] leading-[12px] text-lightWhite">
+                        <span className="text-dimWhite">SUBSCRIPTION:</span>{" "}
+                        {row.subscription.serviceType}
+                      </span>
+                      <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
+                        <span className="text-dimWhite">NAME:</span>
+                        {row.subscription.experts.name}
+                      </span>
+                      <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
+                        <span className="text-dimWhite">AMOUNT:</span> ₹{" "}
+                        {row.totalAmount}
+                      </span>
                     </div>
-                    <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
-                      <span className="text-dimWhite">DATE:</span>{" "}
-                      {formatDate(row.transactionDate)}
-                    </span>
-                    <span className="flex items-center justify-between sm:w-[305px] h-[34px] font-[500] text-[14px] leading-[12px] text-lightWhite">
-                      <span className="text-dimWhite">SUBSCRIPTION:</span>{" "}
-                      <SubscriptionType subscriptionId={row.subscriptionId} />
-                    </span>
-                    <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
-                      <span className="text-dimWhite">NAME:</span>
-                      <NameType subscriptionId={row.subscriptionId} />
-                    </span>
-                    <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
-                      <span className="text-dimWhite">AMOUNT:</span> ₹{" "}
-                      {row.totalAmount}
-                    </span>
-                  </div>
-                ))}
+                  ))}
 
-                <button className="md:w-[147px] md:h-[40px] md:flex items-center justify-center flex w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px]">
-                  Show More
-                </button>
-              </div>
-            ) : (
-              <table className="w-[1234px] px-[1rem] bg-[#18181B] bg-opacity-[50%] rounded-[30px]">
-                <thead className="text-dimWhite w-[1234px] h-[51px]">
-                  <tr>
-                    <th className="py-2 px-4">Transaction ID</th>
-                    <th className="py-2 px-4">Date</th>
-                    <th className="py-2 px-4">Subscription</th>
-                    <th className="py-2 px-4">Name</th>
-                    <th className="py-2 px-4">Amount</th>
-                    <th className="py-2 px-4">Invoice</th>
-                  </tr>
-                </thead>
-                <tbody className="text-lightWhite w-[1234px] h-[81px]">
-                  {transactionTable &&
-                    transactionTable.map((row, index) => {
-                      return (
-                        <tr
-                          key={index}
-                          className={index % 2 === 0 ? "bg-[#1E1E22]" : ""}
-                        >
-                          <td className="py-2 px-20 w-[152px] h-[18px] font-[500] text-[16px] leading-[18px]">
-                            {row.id}
-                          </td>
-                          <td className="py-2 px-20 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
-                            {formatDate(row.transactionDate)}
-                          </td>
-                          <td className="py-2 px-20 text-center h-[36px] font-[500] text-[16px] text-white leading-[18px]">
-                            <SubscriptionType
-                              subscriptionId={row.subscriptionId}
-                            />
-                          </td>
-                          <td className="py-2 text-center w-[105px] h-[18px] font-[500] text-[16px] leading-[18px]">
-                            <NameType subscriptionId={row.subscriptionId} />
-                          </td>
-                          <td className="py-2 px-20 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
-                            ₹ {row.totalAmount}
-                          </td>
-                          <td className="py-2">
-                            <img
-                              src={invoiceImg}
-                              alt=""
-                              className="w-[21px] h-[21px] text-white mx-auto"
-                              // onClick={() => downloadInvoice(row.transactionId)}
-                              // onClick={() => downloadTransactionData(row.transactionId)}
-                              onClick={() => downloadTransactionData(row)}
-                            />
-                          </td>
-                        </tr>
-                      );
-                    })}
-                </tbody>
-              </table>
-            )}
-          </div> : <div className="text-center flex flex-col gap-8 mt-12 text-dimWhite md:text-4xl text-lg"><img className="md:w-96 w-60 mx-auto" src={logout} alt="" /><Link to={"/signup"}>Login to see your transactions!</Link></div>}
+                  <button className="md:w-[147px] md:h-[40px] md:flex items-center justify-center flex w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px]">
+                    Show More
+                  </button>
+                </div>
+              ) : (
+                <table className="w-[1234px] px-[1rem] bg-[#18181B] bg-opacity-[50%] rounded-[30px]">
+                  <thead className="text-dimWhite w-[1234px] h-[51px]">
+                    <tr>
+                      <th className="py-2 px-4">Transaction ID</th>
+                      <th className="py-2 px-4">Date</th>
+                      <th className="py-2 px-4">Subscription</th>
+                      <th className="py-2 px-4">Name</th>
+                      <th className="py-2 px-4">Amount</th>
+                      <th className="py-2 px-4">Invoice</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-lightWhite w-[1234px] h-[81px]">
+                    {transactionTable &&
+                      transactionTable.map((row, index) => {
+                        return (
+                          <tr
+                            key={index}
+                            className={index % 2 === 0 ? "bg-[#1E1E22]" : ""}
+                          >
+                            <td className="py-2 px-20 w-[152px] h-[18px] font-[500] text-[16px] leading-[18px]">
+                              {row.id}
+                            </td>
+                            <td className="py-2 px-20 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
+                              {formatDate(row.transactionDate)}
+                            </td>
+                            <td className="py-2 px-20 text-center h-[36px] font-[500] text-[16px] text-white leading-[18px]">
+                              {row.subscription.serviceType}
+                            </td>
+                            <td className="py-2 text-center w-[105px] h-[18px] font-[500] text-[16px] leading-[18px]">
+                              {row.subscription.experts.name}
+                            </td>
+                            <td className="py-2 px-20 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
+                              ₹ {row.totalAmount}
+                            </td>
+                            <td className="py-2">
+                              <img
+                                src={invoiceImg}
+                                alt=""
+                                className="w-[21px] h-[21px] text-white mx-auto"
+                                // onClick={() => downloadInvoice(row.transactionId)}
+                                // onClick={() => downloadTransactionData(row.transactionId)}
+                                onClick={() => downloadTransactionData(row)}
+                              />
+                            </td>
+                          </tr>
+                        );
+                      })}
+                  </tbody>
+                </table>
+              )}
+            </div>
+          ) : (
+            <div className="text-center flex flex-col gap-8 mt-12 text-dimWhite md:text-4xl text-lg">
+              <img className="md:w-96 w-60 mx-auto" src={logout} alt="" />
+              <Link to={"/signup"}>Login to see your transactions!</Link>
+            </div>
+          )}
           {/* <div id="refer" className="mb-[8rem]">
             <ReferEarn />
           </div> */}

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { expertise_data, expertise_type } from "../../constants";
-import { telegram } from "../../assets";
 import { Link } from "react-router-dom";
 
-const Expertise = () => {
+const Expertise = ({userData}) => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   };
+
+  console.log(userData)
 
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 640);
 
@@ -28,7 +28,7 @@ const Expertise = () => {
     <>
       <div className={`flex flex-col sm:py-[4rem] `}>
         <div className="flex p-[1rem] gap-[1rem] sm:p-[4rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px] md:mt-[-8rem]">
-          {expertise_data.map((expert, id) => {
+          {userData?.map((expert, id) => {
             return (
               <Link
                 to={`/ra-detail/${expert.id}`}

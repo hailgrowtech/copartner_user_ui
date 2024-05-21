@@ -7,8 +7,21 @@ const SignUp = () => {
   const [mobile, setMobile] = useState("");
   const [showOtp, setShowOtp] = useState(false);
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false); // Added loading state
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [validationMessage, setValidationMessage] = useState("");
+
+  const handleMobileChange = (e) => {
+    const value = e.target.value;
+    setMobile(value);
+
+    // Ensure the mobile number has more than 10 digits
+    if (value.length > 10) {
+      setValidationMessage("Mobile number must have more than 10 digits");
+    } else {
+      setValidationMessage("");
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,7 +30,7 @@ const SignUp = () => {
       return;
     }
     setError("");
-    setLoading(true); // Start loading before the request
+    setLoading(true);
 
     const postData = {
       countryCode: "IN",
@@ -45,7 +58,7 @@ const SignUp = () => {
       console.error("There was a problem with your fetch operation:", error);
       setError("Failed to send OTP, please try again.");
     } finally {
-      setLoading(false); // Stop loading regardless of the result
+      setLoading(false);
     }
   };
 
@@ -78,7 +91,7 @@ const SignUp = () => {
           backgroundImage: `url(${signupBg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundRepeat: 'no-repeat'
+          backgroundRepeat: "no-repeat",
         }}
       ></div>
       <div
@@ -100,7 +113,8 @@ const SignUp = () => {
             <h2 className="text-2xl font-semibold text-white">Sign Up</h2>
           </div>
           <p className="text-gray-300 text-center mb-4">
-            Get access to daily free calls from varieties of India's SEBI Registered Research Analysts.
+            Get access to daily free calls from varieties of India's SEBI
+            Registered Research Analysts.
           </p>
           {error && <p className="text-red-500 mb-4">{error}</p>}
           {showOtp ? (
@@ -114,13 +128,19 @@ const SignUp = () => {
                 type="number"
                 placeholder="Mobile Number"
                 value={mobile}
-                onChange={(e) => setMobile(e.target.value)}
+                onChange={handleMobileChange}
                 className="text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none px-4 py-3 border border-[#ffffff34] rounded-xl focus:outline-none focus:border-white-500 bg-transparent"
+                maxLength={10}
               />
+              {validationMessage && (
+                <p className="text-red-500 mt-2">{validationMessage}</p>
+              )}
               <button
                 type="submit"
                 className={`bg-white hover:bg-black hover:text-white text-black transition duration-300 font-semibold text-[20px] py-3 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  isFormEmpty() || loading ? "opacity-50 cursor-not-allowed" : ""
+                  isFormEmpty() || loading
+                    ? "opacity-50 cursor-not-allowed"
+                    : ""
                 }`}
                 disabled={isFormEmpty() || loading}
               >

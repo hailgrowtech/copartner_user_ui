@@ -37,9 +37,8 @@ const Footer = () => {
           <Link onClick={scrollToTop} to="/">
             <img src={logo} alt="" className="md:w-56 w-40" />
           </Link>
-          <span className="md:w-[296px] w-[296px] md:h-[84px] h-[66px] font-normal md:text-[16px] text-[14px] md:leading-[28px] leading-[22px] text-dimWhite">
-            Our partnerships have delivered great value to our projects and
-            we're happy to share some of their feedback below
+          <span className="md:w-[296px] w-[296px] md:h-[84px] h-[66px] font-normal md:text-[16px] text-[14px] md:leading-[20px] leading-[22px] text-dimWhite">
+          Connecting India’s SEBI registered Research Analysts, guiding you thoroughly to maximising profits in the dynamic world of stock trading.
           </span>
           <div className="flex gap-7 rounded-full">
             <a

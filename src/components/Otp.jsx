@@ -6,6 +6,7 @@ const Otp = ({ onClose, mobileNumber }) => {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -14,6 +15,7 @@ const Otp = ({ onClose, mobileNumber }) => {
       setError("Please enter a 6-digit OTP.");
       return;
     }
+    setLoading(true);
 
     const postData = {
       countryCode: "IN",
@@ -43,6 +45,8 @@ const Otp = ({ onClose, mobileNumber }) => {
 
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -139,11 +143,11 @@ const Otp = ({ onClose, mobileNumber }) => {
           <button
             type="submit"
             className={`bg-white hover:bg-black hover:text-white text-black transition duration-300 font-semibold text-[20px] py-3 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-              isFormEmpty() ? "opacity-50 cursor-not-allowed" : ""
+              isFormEmpty() || loading ? "opacity-50 cursor-not-allowed" : ""
             }`}
-            disabled={isFormEmpty()}
+            disabled={isFormEmpty() || loading}
           >
-            Verify
+            {loading ? "Verifying" : "Verify"}
           </button>
           <button
             type="button"

@@ -3,24 +3,18 @@ import { close, exclamation } from '../../assets';
 import KYCPopup from './KYCPopup';
 
 const SubscriptionPaymentPopup = ({ onClose, selectedMonthlyPlan, planMonthlyPrice, expertName }) => {
-  const gstRate = 0.18;
   const [showKYCPopup, setShowKYCPopup] = useState(false);
   const handlePay = () => {
-    setShowKYCPopup(true); // Show KYC popup when Pay button is clicked
+    setShowKYCPopup(true);
   };
-
-  // Calculate total price including GST
-  const total = (planMonthlyPrice || 0) * (1 + gstRate);
 
   const handleClose = () => {
     onClose();
   };
 
   useEffect(() => {
-    // Disable scrolling on the body element when the popup is mounted
     document.body.style.overflow = 'hidden';
     
-    // Re-enable scrolling on the body element when the popup is unmounted
     return () => {
       document.body.style.overflow = 'auto';
     };
@@ -38,7 +32,7 @@ const SubscriptionPaymentPopup = ({ onClose, selectedMonthlyPlan, planMonthlyPri
         <div className="flex flex-col px-6 py-3">
           <div className="flex justify-between mb-2">
             <label className="block text-sm text-[#c9c9c9] font-normal">Subscription</label>
-            <span className="text-sm">{selectedMonthlyPlan || "Monthly"}</span> {/* Show default "Monthly" if no plan selected */}
+            <span className="text-sm">{selectedMonthlyPlan || "Monthly"}</span>
           </div>
           <div className="flex justify-between mb-2">
             <label className="block text-sm text-[#c9c9c9] font-normal">Name</label>
