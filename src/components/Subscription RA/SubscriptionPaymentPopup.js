@@ -1,20 +1,44 @@
 import React, { useEffect, useState } from 'react';
 import { close, exclamation } from '../../assets';
+import axios from 'axios';
 import KYCPopup from './KYCPopup';
 
 const SubscriptionPaymentPopup = ({ onClose, selectedMonthlyPlan, planMonthlyPrice, expertName }) => {
+  // const gstRate = 0.18;
   const [showKYCPopup, setShowKYCPopup] = useState(false);
-  const handlePay = () => {
-    setShowKYCPopup(true);
-  };
+  // const total = (planMonthlyPrice || 0) * (1 + gstRate);
+  const total = (planMonthlyPrice || 0);
+
 
   const handleClose = () => {
     onClose();
   };
 
+  const handlePay = async () => {
+    const data = {
+      name: expertName,
+      amount: total,
+      number: '9999999999', // Replace with dynamic phone number if available
+      transactionId: 'T' + Date.now()
+    };
+
+    try {
+      const res = await axios.post('http://localhost:8000/pay', data);
+      console.log("API Response:", res.data);
+      if (res.data.success) {
+        window.location.href = res.data.data.instrumentResponse.redirectInfo.url;
+      } else {
+        console.error("Payment initiation failed:", res.data);
+        // Handle error appropriately
+      }
+    } catch (error) {
+      console.error("Error in handlePay:", error);
+      // Handle error appropriately
+    }
+  };
+
   useEffect(() => {
     document.body.style.overflow = 'hidden';
-    
     return () => {
       document.body.style.overflow = 'auto';
     };
@@ -44,9 +68,7 @@ const SubscriptionPaymentPopup = ({ onClose, selectedMonthlyPlan, planMonthlyPri
           </div>
           <div className="flex justify-between py-2 mb-4 border-b-[1px] border-t-[1px] border-[#c9c9c962]">
             <label className="block text-lg text-[#c9c9c9] font-semibold">Total</label>
-            {/* <span className="text-lg font-semibold">₹{total.toFixed(2)}</span> */}
-            <span className="text-lg font-semibold">₹{planMonthlyPrice}</span>
-
+            <span className="text-lg font-semibold">₹{total.toFixed(2)}</span>
           </div>
           <button className="bg-[#fff] text-[#000] py-3 px-2 rounded-sm hover:bg-[#000] hover:text-[#fff] transition duration-300 md:text-[1rem] text-[12px] font-semibold" onClick={handlePay}>
             Pay
@@ -60,9 +82,7 @@ const SubscriptionPaymentPopup = ({ onClose, selectedMonthlyPlan, planMonthlyPri
         </div>
       </div>
       {showKYCPopup && <KYCPopup onClose={handleClose} />} {/* Render KYCPopup when showKYCPopup is true */}
-
     </div>
-    
   );
 };
 
