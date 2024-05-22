@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { closeImg } from "../assets";
 import { useNavigate } from "react-router-dom";
 
@@ -7,7 +7,18 @@ const Otp = ({ onClose, mobileNumber }) => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
+  const [timer, setTimer] = useState(0);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    let interval;
+    if (timer > 0) {
+      interval = setInterval(() => {
+        setTimer((prevTimer) => prevTimer - 1);
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [timer]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +53,6 @@ const Otp = ({ onClose, mobileNumber }) => {
       }
       sessionStorage.setItem("token", data.data.token);
       responseUser();
-
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);
     } finally {
@@ -57,7 +67,7 @@ const Otp = ({ onClose, mobileNumber }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({referralMode: 'CP', mobileNumber}),
+        body: JSON.stringify({ referralMode: "CP", mobileNumber }),
       });
       const data = await resUser.json();
       if (!data.isSuccess) {
@@ -95,6 +105,7 @@ const Otp = ({ onClose, mobileNumber }) => {
         setError("Failed to resend OTP. Please try again.");
       } else {
         setSuccess("OTP has been resent. Please check your mobile.");
+        setTimer(25);
       }
     } catch (error) {
       console.error(
@@ -151,10 +162,11 @@ const Otp = ({ onClose, mobileNumber }) => {
           </button>
           <button
             type="button"
-            className="mt-2 text-white md:text-base text-sm underline"
+            className={`mt-2 text-white ${timer > 0 ? "opacity-50" : ""} md:text-base text-sm underline`}
             onClick={handleResendOTP}
+            disabled={timer > 0}
           >
-            Resend OTP
+            {timer > 0 ? `Resend OTP in ${timer}s` : "Resend OTP"}
           </button>
         </form>
       </div>

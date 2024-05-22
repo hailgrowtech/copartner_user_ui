@@ -56,6 +56,29 @@ const SubscriptionRA = () => {
     }
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `https://copartners.in:5132/api/Experts/${id}`
+        );
+        if (!response.ok) {
+          throw new Error("Error in fetching API");
+        }
+        const data = await response.json();
+        console.log(data.data)
+        setExpertData(data.data);
+      } catch (error) {
+        console.error("Error fetching expert data:", error);
+        toast.error("Failed to fetch expert data", {
+          position: "top-right",
+        });
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const handleSelectPlan = (plan, price) => {
     setSelectedPlan(plan);
     setPlanPrice(price);
@@ -84,25 +107,19 @@ const SubscriptionRA = () => {
   const handleMouseOut = () => {
     setBackgroundColor("#18181B80");
   };
-
-  useEffect(() => {
-    // Filter the expertise_data array to find the object with the matching id
-    const filteredData = expertise_data.find((expert) => expert.id === id);
-    setExpertData(filteredData);
-  }, [id]);
-
-  if (!expertData) {
-    return <div className="text-white">Loading...</div>;
-  }
-
+  
   const handleMouseEnter = (index) => {
     setActiveHoverIndex(index);
   };
-
+  
   const handleMouseLeave = () => {
     setActiveHoverIndex(0);
   };
-
+  
+    if (!expertData) {
+      return <div className="text-white">Loading...</div>;
+    }
+  
   return (
     <section
       className={`flex md:flex-col flex-col md:px-0 px-3 ${styles.paddingY} expertise-Bg`}

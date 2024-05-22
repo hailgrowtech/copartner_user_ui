@@ -7,12 +7,14 @@ import SubscriptionType from "./SubscriptionType";
 import NameType from "./NameType";
 import { Link } from "react-router-dom";
 import { useUserData } from "../../constants/context";
+import Receipt from "../Receipt/Receipt";
 
 const Wallet = () => {
   const userData = useUserData();
   const [smallScreen, setSmallScreen] = useState(false);
   const [transactionTable, setTransactionTable] = useState([]);
   const userId = sessionStorage.getItem("userId");
+  const [selectedTransaction, setSelectedTransaction] = useState(null);
 
   useEffect(() => {
     axios
@@ -46,18 +48,15 @@ const Wallet = () => {
     return `${day}-${month}-${year}`;
   };
 
-  const downloadTransactionData = (transactionId) => {
-    const data = new Blob([transactionId], { type: "text/plain" });
-
-    const link = document.createElement("a");
-    link.href = window.URL.createObjectURL(data);
-    link.download = `transaction_${transactionId}.txt`;
-    link.click();
-
-    window.URL.revokeObjectURL(link.href);
+  const downloadTransactionData = (transaction) => {
+    setSelectedTransaction(transaction);
   };
 
   const token = sessionStorage.getItem("token");
+
+  const closePopup = () => {
+    setSelectedTransaction(null);
+  };
 
   return (
     <>
@@ -179,29 +178,30 @@ const Wallet = () => {
                             key={index}
                             className={index % 2 === 0 ? "bg-[#1E1E22]" : ""}
                           >
-                            <td className="py-2 px-20 w-[152px] h-[18px] font-[500] text-[16px] leading-[18px]">
+                            <td className="py-8 pl-20 h-[18px] font-[500] text-[16px] leading-[18px]">
                               {row.id}
                             </td>
-                            <td className="py-2 px-20 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
+                            <td className="py-8 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
                               {formatDate(row.transactionDate)}
                             </td>
-                            <td className="py-2 px-20 text-center h-[36px] font-[500] text-[16px] text-white leading-[18px]">
+                            <td className="py-8 px-20 text-center h-[36px] font-[500] text-[16px] text-white leading-[18px]">
                               {row.subscription.serviceType}
                             </td>
-                            <td className="py-2 text-center w-[105px] h-[18px] font-[500] text-[16px] leading-[18px]">
+                            <td className="py-8 text-center w-[105px] h-[18px] font-[500] text-[16px] leading-[18px]">
                               {row.subscription.experts.name}
                             </td>
-                            <td className="py-2 px-20 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
+                            <td className="py-8 px-20 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
                               ₹ {row.totalAmount}
                             </td>
-                            <td className="py-2">
+                            <td className="py-8">
                               <img
                                 src={invoiceImg}
                                 alt=""
                                 className="w-[21px] h-[21px] text-white mx-auto"
-                                // onClick={() => downloadInvoice(row.transactionId)}
-                                // onClick={() => downloadTransactionData(row.transactionId)}
-                                onClick={() => downloadTransactionData(row)}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  downloadTransactionData(row);
+                                }}
                               />
                             </td>
                           </tr>
@@ -209,6 +209,9 @@ const Wallet = () => {
                       })}
                   </tbody>
                 </table>
+              )}
+              {selectedTransaction && (
+                <Receipt closePopup={closePopup} transaction={selectedTransaction} />
               )}
             </div>
           ) : (

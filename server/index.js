@@ -7,20 +7,15 @@ const uniqid = require("uniqid");
 
 const app = express();
 
-const MERCHANT_ID = "COPARTNERONLINE";
-// const PHONE_PE_HOST_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox";
-const PHONE_PE_HOST_URL = "https://api.phonepe.com/apis/hermes"
+const MERCHANT_ID = "PGTESTPAYUAT";
+const PHONE_PE_HOST_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox";
+// const PHONE_PE_HOST_URL = "https://api.phonepe.com/apis/hermes"
 const SALT_INDEX = 1;
-const SALT_KEY = "897e2f96-0c37-4396-848f-f8d98d5c4975";
-const APP_BE_URL = "http://localhost:8000"; // your application backend URL
+// const SALT_KEY = "897e2f96-0c37-4396-848f-f8d98d5c4975";
+const SALT_KEY = "099eb0cd-02cf-4e2a-8aca-3e6c6aff0399"
+const APP_BE_URL = "http://localhost:8000";
 
 app.use(cors());
-app.use(bodyParser.json());
-app.use(
-  bodyParser.urlencoded({
-    extended: false,
-  })
-);
 
 app.get("/", (req, res) => {
   res.send("PhonePe Integration APIs!");
@@ -29,7 +24,7 @@ app.get("/", (req, res) => {
 app.post("/pay", async function (req, res, next) {
   try {
     const merchantTransactionId = req.body.transactionId || uniqid();
-    const amountWithGST = req.body.amount * 100; // Total amount in paisa
+    const amountWithGST = req.body.amount * 100;
 
     const data = {
       merchantId: MERCHANT_ID,

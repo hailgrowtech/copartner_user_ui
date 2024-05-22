@@ -35,6 +35,8 @@ import {
 } from "react-router-dom";
 import { UserDataProvider } from "./constants/context";
 import { UserProvider } from "./constants/userContext";
+import ParentComponent from "./components/InviteLink/ParentComponent";
+import Receipt from "./components/Receipt/Receipt";
 
 function App() {
   const token = sessionStorage.getItem("token");
@@ -151,7 +153,9 @@ function App() {
             path="ra-detail/:id"
             element={
               token ? (
-                <SubscriptionRA />
+                <UserProvider>
+                  <SubscriptionRA />
+                </UserProvider>
               ) : (
                 <Navigate to="/signup" replace={true} />
               )
@@ -189,7 +193,6 @@ function App() {
               )
             }
           /> */}
-          <Route path="/subscriptionRA/:id" element={<SubscriptionRA />} />
           <Route path="subscription/buy/:id" element={<SubscriptionBuy />} />
           <Route
             path="refer&earn"
@@ -308,6 +311,7 @@ function App() {
             }
           />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/link" element={<ParentComponent />} />
         </Route>
       </>
     )

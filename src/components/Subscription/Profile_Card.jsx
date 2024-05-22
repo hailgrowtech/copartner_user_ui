@@ -28,6 +28,7 @@ const Expertise = ({ userId }) => {
   useEffect(() => {
     const fetchSubscriberData = async () => {
       try {
+        console.log(userId)
         const response = await fetch(
           `https://copartners.in:5009/api/Subscriber/GetByUserId/${userId}`
         );

@@ -2,17 +2,13 @@ import React, { useEffect, useState } from "react";
 import styles from "../../style";
 import "./SubscriptionRA.css";
 import { ToastContainer, toast } from "react-toastify";
-import {
-  arrow,
-  bookmark,
-  bookmarkFill,
-  stars,
-} from "../../assets";
+import { arrow, bookmark, bookmarkFill, stars } from "../../assets";
 import SubscriptionPaymentPopup from "./SubscriptionPaymentPopup";
 import FAQs2 from "../About/FAQs2";
 import CoursePaymentPopup from "./CoursePaymentPopup";
 import MobileCourse from "./MobileCourse";
 import { useParams } from "react-router-dom";
+import { useUserSession } from "../../constants/userContext";
 
 const SubscriptionRA = () => {
   const { id } = useParams();
@@ -28,8 +24,12 @@ const SubscriptionRA = () => {
   const [planPrice, setPlanPrice] = useState(2999);
   const [activeTab, setActiveTab] = useState("subscriptions");
   const [showMobilePopup, setShowMobilePopup] = useState(false);
+  const [subscriptions, setSubscriptions] = useState([]);
+  const [mobileNum, setMobileNum] = useState("");
+  const { userData } = useUserSession();
 
   useEffect(() => {
+    userData && setMobileNum(userData.mobileNumber);
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const threshold = 50;
@@ -45,13 +45,11 @@ const SubscriptionRA = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [userData]);
 
   const handleSelectPlan = (plan, price) => {
     setSelectedPlan(plan);
     setPlanPrice(price);
-
-    console.log(`User has chosen: ${plan} plan with price ₹${price}`);
   };
 
   const getExpertType = (typeId) => {
@@ -67,6 +65,21 @@ const SubscriptionRA = () => {
     }
   };
 
+  const fetchSubscriptions = async (expertId) => {
+    try {
+      const response = await fetch(
+        `https://copartners.in:5009/api/Subscription/GetByExpertsId/${expertId}`
+      );
+      if (!response.ok) {
+        throw new Error("Error in fetching subscriptions");
+      }
+      const data = await response.json();
+      setSubscriptions(data.data);
+    } catch (error) {
+      console.error("Failed to fetch subscription plans:", error);
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -77,7 +90,7 @@ const SubscriptionRA = () => {
           throw new Error("Error in fetching API");
         }
         const data = await response.json();
-        console.log(data.data);
+        fetchSubscriptions(data.data.id);
         setExpertData(data.data);
       } catch (error) {
         console.error("Error fetching expert data:", error);
@@ -88,10 +101,11 @@ const SubscriptionRA = () => {
     };
 
     fetchData();
-  }, [id]);
+  }, []);
 
-  const handleTabClick = (tabName) => {
-    setActiveTab(tabName);
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+    document.getElementById(tab).scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleClose = () => {
@@ -282,18 +296,10 @@ const SubscriptionRA = () => {
               >
                 About Subscriptions
               </button>
-              <button
-                onClick={() => handleTabClick("reviews")}
-                className={`md:flex-col-3 md:px-6 md:py-5 mx-2 rounded-full p-2 md:text-[1rem] md:inline hidden text-[9.5px] text-dimWhite hover:text-white ${
-                  activeTab === "reviews" ? "bg-[#ffffff5e]" : ""
-                }`}
-              >
-                Reviews
-              </button>
             </div>
           </div>
         </section>
-        <section className="w-full flex flex-col md:my-14 my-10">
+        <section id="subscriptions" className="w-full flex flex-col md:my-14 my-10">
           <div className="text-white md:text-left text-center md:flex md:justify-between w-full md:mb-8">
             <div className="text-white md:text-5xl text-3xl font-bold pb-4 md:w-1/2">
               Subscriptions Plans
@@ -306,91 +312,51 @@ const SubscriptionRA = () => {
             </div>
           </div>
           <div className="text-white flex flex-wrap justify-center md:gap-8 gap-2 w-full subscription-cards">
-            <div
-              onClick={() => handleBuyNowClick("Monthly", 1999)}
-              className={`flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
-                activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
-              }`}
-              onMouseOver={handleMouseOver}
-              onMouseOut={handleMouseOut}
-            >
-              <div className="text-center opacity-60 hidden">21 Days Left</div>
-              <div className="text-center md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
-                Monthly
+            {subscriptions.map((subscription, index) => (
+              <div
+                key={subscription.id}
+                onClick={() =>
+                  handleBuyNowClick(subscription.planType, subscription.amount)
+                }
+                className={`flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
+                  activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
+                }`}
+                onMouseOver={handleMouseOver}
+                onMouseOut={handleMouseOut}
+              >
+                <div className="text-center opacity-60 hidden">
+                  21 Days Left
+                </div>
+                <div className="text-center md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
+                  {subscription.planType}
+                </div>
+                <div className="text-center md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-center">
+                  ₹{subscription.amount}/
+                  <span className="md:flex hidden">-</span>
+                  <span className="md:hidden flex font-normal">mo</span>
+                </div>
+                <div className="text-center md:text-lg text-xs mt-auto opacity-60 mb-6">
+                  {subscription.durationMonth} Month Access
+                </div>
+                <div className="text-center">
+                  <button className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2">
+                    Buy Now
+                  </button>
+                </div>
+                {index === 1 && (
+                  <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
+                    Recommended
+                  </div>
+                )}
               </div>
-              <div className="text-center md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-center">
-                ₹1,999/<span className="md:flex hidden">-</span>
-                <span className="md:hidden flex font-normal">mo</span>
-              </div>
-              <div className="text-center md:text-lg text-xs mt-auto opacity-60 mb-6">
-                1 Month Access
-              </div>
-              <div className="text-center">
-                <button className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2">
-                  Buy Now
-                </button>
-              </div>
-            </div>
-
-            <div
-              onClick={() => handleBuyNowClick("Quarterly", 2999)}
-              className="flex-1 rounded-2xl p-5 basic-div hover:bg-[#18181B80] relative"
-              style={{ border: "2px solid #fff", backgroundColor }} // Added border style
-            >
-              <div className="text-center opacity-60 hidden">21 Days Left</div>
-              <div className="text-center md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
-                Quarterly
-              </div>
-              <div className="text-center md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-center">
-                ₹2,999/<span className="md:flex hidden">-</span>
-                <span className="md:hidden flex font-normal">mo</span>
-              </div>
-              <div className="text-center md:text-lg text-xs mt-auto opacity-60 mb-6">
-                3 Month Access
-              </div>
-              <div className="text-center md:mb-8 mb-4"></div>
-              <div className="text-center">
-                <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2">
-                  Buy Now
-                </button>
-              </div>
-              <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
-                Recommended
-              </div>
-            </div>
-            <div
-              onClick={() => handleBuyNowClick("Yearly", 9999)}
-              onMouseOver={handleMouseOver}
-              onMouseOut={handleMouseOut}
-              className={`flex-1 bg-opacity-5 p-5 hover:bg-[#18181B80] rounded-2xl standard-div ${
-                activeHoverIndex === 4 ? "hover:bg-[#18181B80]" : ""
-              } text-center`}
-              onMouseEnter={() => handleMouseEnter(4)}
-              onMouseLeave={handleMouseLeave}
-            >
-              <div className="md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1 md:mt-1 mt-0">
-                Yearly
-              </div>
-              <div className="md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-center">
-                ₹9,999/<span className="md:flex hidden">-</span>
-                <span className="md:hidden flex font-normal">mo</span>
-              </div>
-              <div className="md:text-lg text-xs mt-auto opacity-60 mb-6">
-                12 Month Access
-              </div>
-              <div className="md:mb-8 mb-4"></div>
-              <div className="text-center">
-                <button className="text-white md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-white border-2">
-                  Buy Now
-                </button>
-              </div>
-            </div>
+            ))}
             {showMonthlyPopup && (
               <SubscriptionPaymentPopup
                 onClose={handleClosePopup}
                 selectedMonthlyPlan={selectedMonthlyPlan}
                 planMonthlyPrice={planMonthlyPrice}
-                // expertName={expertData.name}
+                expertName={expertData.channelName}
+                mobileNumber={mobileNum}
               />
             )}
           </div>
@@ -399,7 +365,7 @@ const SubscriptionRA = () => {
           <FAQs2 />
         </section>
 
-        <section className="w-full md:my-8 my-2 flex gap-20 md:mb-24 mb-16">
+        <section id="highlights" className="w-full md:my-8 my-2 flex gap-20 md:mb-24 mb-16">
           <div className="flex flex-col md:w-2/3 w-full text-white">
             <div className="text-white md:text-5xl text-3xl font-bold pb-4 md:text-left text-center">
               Key highlights to join this subscription
@@ -477,60 +443,33 @@ const SubscriptionRA = () => {
               <div className="text-3xl font-bold subheading-gradient mb-4">
                 Subscription Plan
               </div>
-              <div
-                onClick={() => handleSelectPlan("Monthly", 1999)}
-                className={`flex rounded-2xl p-4 ${
-                  selectedPlan === "Monthly"
-                    ? "bg-[#18181B80] border-2 border-[#F4F4F51A]"
-                    : "hover:bg-[#18181B80]"
-                }`}
-                onMouseEnter={() => handleMouseEnter(1)}
-                onMouseLeave={handleMouseLeave}
-              >
-                <div className="flex-1 text-left">
-                  <p className="text-lg subheading-gradient">Monthly</p>
-                  <p className="text-[#C6CDD5] text-sm">1 Month Access</p>
+              {subscriptions.map((subscription, index) => (
+                <div
+                  key={subscription.id}
+                  onClick={() =>
+                    handleSelectPlan(subscription.planType, subscription.amount)
+                  }
+                  className={`flex rounded-2xl p-4 ${
+                    selectedPlan === subscription.planType
+                      ? "bg-[#18181B80] border-2 border-[#F4F4F51A]"
+                      : "hover:bg-[#18181B80]"
+                  }`}
+                  onMouseEnter={() => handleMouseEnter(1)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <div className="flex-1 text-left">
+                    <p className="text-lg subheading-gradient">
+                      {subscription.planType}
+                    </p>
+                    <p className="text-[#C6CDD5] text-sm">
+                      {subscription.durationMonth} Month Access
+                    </p>
+                  </div>
+                  <p className="flex-1 text-3xl font-bold">
+                    ₹{subscription.amount}
+                  </p>
                 </div>
-                <p className="flex-1 text-3xl font-bold">₹1,999</p>
-              </div>
-              <div
-                onClick={() => handleSelectPlan("Quarterly", 2999)}
-                className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
-                  selectedPlan === "Quarterly"
-                    ? "border-2 border-[#F4F4F51A]"
-                    : ""
-                }`}
-              >
-                <div className="flex-1 text-left">
-                  <p className="text-lg subheading-gradient">Quarterly</p>
-                  <p className="text-[#C6CDD5] text-sm">3 Month Access</p>
-                </div>
-                <p className="flex-1 text-3xl font-bold">₹2,999</p>
-              </div>
-              {/* <div
-            onClick={() => handleSelectPlan('Half-Yearly', 5999)}
-            className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
-              selectedPlan === 'Half-Yearly' ? 'border-2 border-[#F4F4F51A]' : ''
-            }`}
-          >
-            <div className="flex-1 text-left">
-              <p className="text-lg subheading-gradient">Half-Yearly</p>
-              <p className="text-[#C6CDD5] text-sm">6 Month Access</p>
-            </div>
-            <p className="flex-1 text-3xl font-bold">₹5,999</p>
-          </div> */}
-              <div
-                onClick={() => handleSelectPlan("Yearly", 9999)}
-                className={`flex rounded-2xl p-4 hover:bg-[#18181B80] ${
-                  selectedPlan === "Yearly" ? "border-2 border-[#F4F4F51A]" : ""
-                }`}
-              >
-                <div className="flex-1 text-left">
-                  <p className="text-lg subheading-gradient">Yearly</p>
-                  <p className="text-[#C6CDD5] text-sm">12 Month Access</p>
-                </div>
-                <p className="flex-1 text-3xl font-bold">₹9,999 </p>
-              </div>
+              ))}
               <div className="text-center">
                 <button
                   className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2"
@@ -543,14 +482,14 @@ const SubscriptionRA = () => {
                     onClose={handleClose}
                     selectedPlan={selectedPlan}
                     planPrice={planPrice}
-                    // expertName={expertData.name}
+                    expertName={expertData.channelName}
                   />
                 )}
               </div>
             </div>
           </div>
         </section>
-        <section className="border-2 rounded-2xl border-[#f4f4f50e] md:p-8 px-4 py-6 md:mb-24 mb-12">
+        <section id="about" className="border-2 rounded-2xl border-[#f4f4f50e] md:p-8 px-4 py-6 md:mb-24 mb-12">
           <p className="text-white md:text-5xl text-3xl font-bold pb-8">
             Subscriptions Details
           </p>
@@ -580,6 +519,7 @@ const SubscriptionRA = () => {
           <MobileCourse
             handleBuyNowClick={handleBuyNowClick}
             showMobilePopup={showMobilePopup}
+            subscriptions={subscriptions}
           />
         </div>
       </div>

@@ -9,6 +9,9 @@ const ShowProfile = ({ userData }) => {
     email: "",
     phone: "",
     profileImage: null,
+    panCard: "",
+    address: "",
+    state: "",
   });
 
   useEffect(() => {
@@ -18,6 +21,9 @@ const ShowProfile = ({ userData }) => {
         email: userData.email,
         phone: userData.mobileNumber,
         profileImage: userData.userImagePath,
+        panCard: userData.panCard,
+        address: userData.address,
+        state: userData.state,
       });
     }
   }, [userData]);
@@ -64,6 +70,23 @@ const ShowProfile = ({ userData }) => {
             <img src={call} alt="Call Icon" className="w-3 h-3 mr-2" />
             <h1 className="text-white text-base">
               {profileData.phone || "---"}
+            </h1>
+          </div>
+        </div>
+        <div className="md:flex flex-row gap-10 mt-4">
+          <div className="flex items-center mb-2">
+            <h1 className="text-white text-base">
+              PAN Card: {profileData.panCard || "---"}
+            </h1>
+          </div>
+          <div className="flex items-center mb-2">
+            <h1 className="text-white text-base">
+              Address: {profileData.address || "---"}
+            </h1>
+          </div>
+          <div className="flex items-center mb-2">
+            <h1 className="text-white text-base">
+              State: {profileData.state || "---"}
             </h1>
           </div>
         </div>
