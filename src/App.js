@@ -311,6 +311,7 @@ function App() {
             }
           />
           <Route path="/signup" element={<SignUp />} />
+          
           <Route path="/link" element={<ParentComponent />} />
         </Route>
       </>

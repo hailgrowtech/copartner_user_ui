@@ -4,9 +4,7 @@ import axios from 'axios'; // Import Axios
 import KYCPopup from './KYCPopup';
 
 const CoursePaymentPopup = ({ onClose, selectedPlan, planPrice, expertName }) => {
-  // const gstRate = 0.18;
   const [showKYCPopup, setShowKYCPopup] = useState(false);
-  // const total = (planPrice || 0) * (1 + gstRate);
   const total = (planPrice || 0);
 
   const handleClose = () => {
@@ -17,7 +15,8 @@ const CoursePaymentPopup = ({ onClose, selectedPlan, planPrice, expertName }) =>
     const data = {
       name: expertName,
       amount: total,
-      number: '9999999999', // Replace with dynamic phone number if available
+      number: '9999999999',
+      MID: 'MID' + Date.now(),
       transactionId: 'T' + Date.now()
     };
 
@@ -28,11 +27,14 @@ const CoursePaymentPopup = ({ onClose, selectedPlan, planPrice, expertName }) =>
         window.location.href = res.data.data.instrumentResponse.redirectInfo.url;
       } else {
         console.error("Payment initiation failed:", res.data);
-        // Handle error appropriately
       }
     } catch (error) {
       console.error("Error in handlePay:", error);
-      // Handle error appropriately
+      if (error.response) {
+        console.error("Error Response Data:", error.response.data);
+        console.error("Error Response Status:", error.response.status);
+        console.error("Error Response Headers:", error.response.headers);
+      }
     }
   };
 
@@ -55,7 +57,7 @@ const CoursePaymentPopup = ({ onClose, selectedPlan, planPrice, expertName }) =>
         <div className="flex flex-col p-6">
           <div className="flex justify-between mb-2">
             <label className="block text-sm text-[#c9c9c9] font-normal">Subscription</label>
-            <span className="text-sm">{selectedPlan || "Monthly"}</span> {/* Show default "Monthly" if no plan selected */}
+            <span className="text-sm">{selectedPlan || "Monthly"}</span>
           </div>
           <div className="flex justify-between mb-2">
             <label className="block text-sm text-[#c9c9c9] font-normal">Name</label>
@@ -80,7 +82,7 @@ const CoursePaymentPopup = ({ onClose, selectedPlan, planPrice, expertName }) =>
           </div>
         </div>
       </div>
-      {showKYCPopup && <KYCPopup onClose={handleClose} />} {/* Render KYCPopup when showKYCPopup is true */}
+      {showKYCPopup && <KYCPopup onClose={handleClose} />}
     </div>
   );
 };
