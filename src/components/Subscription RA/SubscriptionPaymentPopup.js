@@ -20,29 +20,30 @@ const SubscriptionPaymentPopup = ({
   };
 
   const handlePay = async () => {
-    setShowKYCPopup(true)
-    // const data = {
-    //   name: expertName,
-    //   amount: total,
-    //   number: mobileNumber,
-    //   transactionId: "T" + Date.now(),
-    // };
-    // console.log(data);
+    // setShowKYCPopup(true)
+    const data = {
+      name: expertName,
+      amount: total,
+      number: mobileNumber,
+      transactionId: "T" + Date.now(),
+    };
+    
+    console.log(data);
 
-    // try {
-    //   const res = await axios.post("http://localhost:8000/pay", data);
-    //   console.log("API Response:", res.data);
-    //   if (res.data.success) {
-    //     window.location.href =
-    //       res.data.data.instrumentResponse.redirectInfo.url;
-    //   } else {
-    //     console.error("Payment initiation failed:", res.data);
-    //     // Handle error appropriately
-    //   }
-    // } catch (error) {
-    //   console.error("Error in handlePay:", error);
-    //   // Handle error appropriately
-    // }
+    try {
+      const res = await axios.post("http://localhost:8000/pay", data);
+      console.log("API Response:", res.data);
+      if (res.data.success) {
+        window.location.href =
+          res.data.data.instrumentResponse.redirectInfo.url;
+      } else {
+        console.error("Payment initiation failed:", res.data);
+        // Handle error appropriately
+      }
+    } catch (error) {
+      console.error("Error in handlePay:", error);
+      // Handle error appropriately
+    }
   };
 
   useEffect(() => {

@@ -21,9 +21,9 @@ app.get("/", (req, res) => {
   res.send("PhonePe Integration APIs!");
 });
 
-app.post("/pay", async function (req, res, next) {
+app.post("/pay", async function (req, res) {
   try {
-    const merchantTransactionId = req.body.transactionId || uniqid();
+    const merchantTransactionId = req.body.transactionId;
     const amountWithGST = req.body.amount * 100;
 
     const data = {
@@ -32,7 +32,7 @@ app.post("/pay", async function (req, res, next) {
       name: req.body.name,
       amount: amountWithGST,
       redirectURL: `${APP_BE_URL}/payment/validate/${merchantTransactionId}`,
-      redirectMode: "REDIRECT",
+      redirectMode: "POST",
       mobileNumber: req.body.number,
       paymentInstrument: {
         type: "PAY_PAGE",
