@@ -19,7 +19,7 @@ const CoursePaymentPopup = ({ onClose, selectedPlan, planPrice, expertName }) =>
       MID: 'MID' + Date.now(),
       transactionId: 'T' + Date.now()
     };
-
+  
     try {
       const res = await axios.post('http://localhost:8000/pay', data);
       console.log("API Response:", res.data);
@@ -37,6 +37,7 @@ const CoursePaymentPopup = ({ onClose, selectedPlan, planPrice, expertName }) =>
       }
     }
   };
+  
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';

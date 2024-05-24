@@ -37,6 +37,8 @@ import { UserDataProvider } from "./constants/context";
 import { UserProvider } from "./constants/userContext";
 import ParentComponent from "./components/InviteLink/ParentComponent";
 import Receipt from "./components/Receipt/Receipt";
+import SuccessPage from "./components/SuccessPage";
+import CallBack from "./components/CallBack";
 
 function App() {
   const token = sessionStorage.getItem("token");
@@ -311,7 +313,8 @@ function App() {
             }
           />
           <Route path="/signup" element={<SignUp />} />
-          
+          <Route path="/success" component={<SuccessPage />} />
+        <Route path="/callback" component={<CallBack />} />
           <Route path="/link" element={<ParentComponent />} />
         </Route>
       </>

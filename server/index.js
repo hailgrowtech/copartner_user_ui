@@ -4,6 +4,7 @@ const cors = require("cors");
 const axios = require("axios");
 const sha256 = require("sha256");
 const uniqid = require("uniqid");
+const path = require("path");
 
 const app = express();
 
@@ -15,14 +16,13 @@ const APP_BE_URL = "http://localhost:8000"; // your application backend URL
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(
-  bodyParser.urlencoded({
-    extended: false,
-  })
-);
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.get("/", (req, res) => {
-  res.send("PhonePe Integration APIs!");
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.post("/pay", async function (req, res, next) {
@@ -33,13 +33,13 @@ app.post("/pay", async function (req, res, next) {
       merchantTransactionId: merchantTransactionId,
       name: req.body.name,
       amount: req.body.amount * 100, // Convert amount to paisa
-      redirectURL: `${APP_BE_URL}/payment/validate/${merchantTransactionId}`,
+      redirectURL: `${APP_BE_URL}/payment/success/${merchantTransactionId}`,
       redirectMode: "REDIRECT",
-      callbackUrl: `${APP_BE_URL}/payment/callback`,
       mobileNumber: req.body.number,
       paymentInstrument: {
         type: "PAY_PAGE",
       },
+      callBackUrl: `${APP_BE_URL}/payment/callback/${merchantTransactionId}`
     };
     const bufferObj = Buffer.from(JSON.stringify(data), "utf8");
     const base64EncodedPayload = bufferObj.toString("base64");
@@ -67,23 +67,7 @@ app.post("/pay", async function (req, res, next) {
   }
 });
 
-app.post("/payment/callback", async function (req, res) {
-  try {
-    const { merchantTransactionId } = req.body;
-    if (!merchantTransactionId) {
-      throw new Error("Merchant transaction ID is required.");
-    }
-
-    // Validate the response (Add your validation logic here)
-
-    // Redirect to the success page after validation
-    res.redirect("/success");
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
-});
-
-app.get("/payment/validate/:merchantTransactionId", async function (req, res) {
+app.get("/payment/callback/:merchantTransactionId", async function (req, res) {
   try {
     const { merchantTransactionId } = req.params;
     if (!merchantTransactionId) {
@@ -106,14 +90,20 @@ app.get("/payment/validate/:merchantTransactionId", async function (req, res) {
       },
     });
 
-    res.send(response.data);
+    const paymentStatus = response.data.data;
+    res.redirect(`/callback?status=${paymentStatus}`);
   } catch (error) {
     res.status(500).send(error.message);
   }
 });
 
-app.get("/success", (req, res) => {
-  res.sendFile(path.join(__dirname, 'path_to_success_page.html')); // Ensure to replace 'path_to_success_page.html' with the actual path to your success page.
+app.get("/payment/success/:merchantTransactionId", (req, res) => {
+  res.redirect("/success");
+});
+
+// Serve the React app for all other routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 const port = 8000;
