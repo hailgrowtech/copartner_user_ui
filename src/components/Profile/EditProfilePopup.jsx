@@ -14,6 +14,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
   const [state, setState] = useState("");
   const [profileImageUrl, setProfileImageUrl] = useState("");
   const userId = sessionStorage.getItem("userId");
+  const [loading, setLoading] = useState(false);
 
   console.log(userData);
 
@@ -42,6 +43,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
 
     if (file) {
       try {
+        setLoading(true)
         const formData = new FormData();
         formData.append("file", file);
 
@@ -66,6 +68,8 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
         toast.success("Image uploaded");
       } catch (error) {
         console.error("Error uploading image:", error);
+      } finally {
+        setLoading(false)
       }
     }
   };
@@ -268,10 +272,11 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
             {/* Change Button */}
             <div className="flex justify-center">
               <button
-                className="bg-white text-black py-2 px-4 rounded-md"
+                className={`${loading ? "bg-gray-500" : "bg-white"} text-black py-2 px-4 rounded-md`}
                 onClick={handleSave}
+                disabled={loading}
               >
-                Change
+                {loading ? "Uploading..." : "Change"}
               </button>
             </div>
           </div>
