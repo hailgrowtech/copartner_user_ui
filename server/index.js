@@ -4,41 +4,43 @@ const cors = require("cors");
 const axios = require("axios");
 const sha256 = require("sha256");
 const uniqid = require("uniqid");
+const path = require("path");
 
 const app = express();
 
-const MERCHANT_ID = "PGTESTPAYUAT";
+const MERCHANT_ID = "PGTESTPAYUAT69";
 const PHONE_PE_HOST_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox";
-// const PHONE_PE_HOST_URL = "https://api.phonepe.com/apis/hermes"
 const SALT_INDEX = 1;
-// const SALT_KEY = "897e2f96-0c37-4396-848f-f8d98d5c4975";
-const SALT_KEY = "099eb0cd-02cf-4e2a-8aca-3e6c6aff0399"
-const APP_BE_URL = "http://localhost:8000";
+const SALT_KEY = "f23f3fc9-f7ca-455f-9fb3-8bd124642fdf";
+const APP_BE_URL = "http://localhost:8000"; // your application backend URL
 
 app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.get("/", (req, res) => {
-  res.send("PhonePe Integration APIs!");
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.post("/pay", async function (req, res) {
+app.post("/pay", async function (req, res, next) {
   try {
-    const merchantTransactionId = req.body.transactionId;
-    const amountWithGST = req.body.amount * 100;
-
+    const merchantTransactionId = req.body.transactionId || uniqid();
     const data = {
       merchantId: MERCHANT_ID,
       merchantTransactionId: merchantTransactionId,
       name: req.body.name,
-      amount: amountWithGST,
-      redirectURL: `${APP_BE_URL}/payment/validate/${merchantTransactionId}`,
-      redirectMode: "POST",
+      amount: req.body.amount * 100, // Convert amount to paisa
+      redirectURL: `${APP_BE_URL}/payment/success/${merchantTransactionId}`,
+      redirectMode: "REDIRECT",
       mobileNumber: req.body.number,
       paymentInstrument: {
         type: "PAY_PAGE",
       },
+      callBackUrl: `${APP_BE_URL}/payment/callback/${merchantTransactionId}`
     };
-
     const bufferObj = Buffer.from(JSON.stringify(data), "utf8");
     const base64EncodedPayload = bufferObj.toString("base64");
     const string = base64EncodedPayload + "/pg/v1/pay" + SALT_KEY;
@@ -59,15 +61,13 @@ app.post("/pay", async function (req, res) {
       }
     );
 
-    console.log("PhonePe Response:", response.data);
     res.json(response.data);
   } catch (error) {
-    console.error("Error in /pay API:", error);
     res.status(500).send(error.message);
   }
 });
 
-app.get("/payment/validate/:merchantTransactionId", async function (req, res) {
+app.get("/payment/callback/:merchantTransactionId", async function (req, res) {
   try {
     const { merchantTransactionId } = req.params;
     if (!merchantTransactionId) {
@@ -86,17 +86,24 @@ app.get("/payment/validate/:merchantTransactionId", async function (req, res) {
       headers: {
         "Content-Type": "application/json",
         "X-VERIFY": xVerifyChecksum,
-        "X-MERCHANT-ID": merchantTransactionId,
         accept: "application/json",
       },
     });
 
-    console.log("Payment Validation Response:", response.data);
-    res.send(response.data);
+    const paymentStatus = response.data.data;
+    res.redirect(`/callback?status=${paymentStatus}`);
   } catch (error) {
-    console.error("Error in /payment/validate API:", error);
     res.status(500).send(error.message);
   }
+});
+
+app.get("/payment/success/:merchantTransactionId", (req, res) => {
+  res.redirect("/success");
+});
+
+// Serve the React app for all other routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 const port = 8000;
