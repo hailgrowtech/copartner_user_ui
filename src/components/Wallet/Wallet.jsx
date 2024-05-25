@@ -52,7 +52,7 @@ const Wallet = () => {
     setSelectedTransaction(transaction);
   };
 
-  const token = sessionStorage.getItem("token");
+  const token = sessionStorage.getItem("userId");
 
   const closePopup = () => {
     setSelectedTransaction(null);

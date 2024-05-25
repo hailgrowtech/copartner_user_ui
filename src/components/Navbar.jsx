@@ -11,7 +11,7 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
-  const token = sessionStorage.getItem("token");
+  const token = sessionStorage.getItem("userId");
   const navigate = useNavigate();
   const { userData } = useUserSession();
 
@@ -75,7 +75,6 @@ const Navbar = () => {
   };
 
   const handleLogOut = () => {
-    sessionStorage.removeItem("token");
     sessionStorage.removeItem("userId");
     window.location.reload();
   };

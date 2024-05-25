@@ -51,7 +51,7 @@ const Otp = ({ onClose, mobileNumber }) => {
         setError(data.errorMessages);
         return;
       }
-      sessionStorage.setItem("token", data.data.token);
+      // sessionStorage.setItem("token", data.data.token);
       responseUser();
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);

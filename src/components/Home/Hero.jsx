@@ -95,6 +95,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
       if (!data?.name || !data?.email) {
         setShowDialog(true);
       } else {
+        sessionStorage.setItem("isDialogClosed", "true");
         setShowDialog(false);
       }
     };
@@ -103,7 +104,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
     if (!hasVisitedSignUp && isDialogClosed !== "true") {
       fetchUserData();
     }
-  }, []);
+  }, [data, hasVisitedSignUp]);
 
   const handleClosed = (e) => {
     e.stopPropagation();
