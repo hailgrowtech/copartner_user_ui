@@ -11,11 +11,12 @@ import {
 import Expertise from "./Expertise";
 import { Link } from "react-router-dom";
 import { useUserData } from "../../constants/context";
-import { UserContext } from "../../constants/userContext";
+import { useUserSession } from "../../constants/userContext";
 
 const Hero = ({ hasVisitedSignUp, token }) => {
   const [showDialog, setShowDialog] = useState(false);
   const userData = useUserData();
+  const data = useUserSession().userData;
   const [nameData, setNameData] = useState("");
   const [emailData, setEmailData] = useState("");
   const userId = sessionStorage.getItem("userId");
@@ -58,7 +59,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
 
     try {
       const resUser = await fetch(
-        `https://copartners.in:5131/api/User/${userId}`,
+        `https://copartners.in:5131/api/User?Id=${userId}`,
         {
           method: "PATCH",
           headers: {
@@ -86,12 +87,16 @@ const Hero = ({ hasVisitedSignUp, token }) => {
   };
 
   useEffect(() => {
+    if (data) {
+      setNameData(data?.name || "");
+      setEmailData(data?.email || "");
+    }
     const fetchUserData = async () => {
-        if (!UserContext().data.name || !UserContext().data.email) {
-          setShowDialog(true);
-        } else {
-          setShowDialog(false);
-        }
+      if (!data?.name || !data?.email) {
+        setShowDialog(true);
+      } else {
+        setShowDialog(false);
+      }
     };
 
     const isDialogClosed = sessionStorage.getItem("isDialogClosed");
@@ -293,9 +298,9 @@ const Hero = ({ hasVisitedSignUp, token }) => {
             </span>
 
             <span className="text-dimWhite md:w-[365px] md:h-[86px] w-[171px] h-[80px] font-[400] md:text-[16px] text-[14px] md:leading-[28px] md:leading-[21px] leading-[18px]">
-              Connect with India’s SEBI registered Research Analysts,
-              guiding you thoroughly to maximising profits in the dynamic world
-              of stock trading.
+              Connect with India’s SEBI registered Research Analysts, guiding
+              you thoroughly to maximising profits in the dynamic world of stock
+              trading.
             </span>
             <Link onClick={scrollToTop} to="expertise">
               <button className="md:w-[147px] md:h-[40px] w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px] md:mt-12 mt-[4rem]">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { close } from "../../assets";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
   const [name, setName] = useState("");
@@ -11,6 +12,10 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
   const [panCard, setPanCard] = useState("");
   const [address, setAddress] = useState("");
   const [state, setState] = useState("");
+  const [profileImageUrl, setProfileImageUrl] = useState("");
+  const userId = sessionStorage.getItem("userId");
+
+  console.log(userData);
 
   useEffect(() => {
     if (userData) {
@@ -18,43 +23,14 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
       setEmail(userData.email || "");
       setPhone(userData.phone || "");
       setImagePreview(userData.profileImage || null);
-      setPanCard(userData.panCard || "");
+      setProfileImageUrl(userData.profileImage || null);
+      setPanCard(userData.pan || "");
       setAddress(userData.address || "");
       setState(userData.state || "");
     }
   }, [userData]);
 
-  const handleSave = async () => {
-    try {
-      const formData = new FormData();
-      formData.append("name", name);
-      formData.append("email", email);
-      formData.append("phone", phone);
-      formData.append("panCard", panCard);
-      formData.append("address", address);
-      formData.append("state", state);
-      if (profileImage) {
-        formData.append("profileImage", profileImage);
-      }
-
-      const response = await axios.put(
-        `https://copartners.in:5131/api/User/${userData.id}`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-
-      onUpdateProfile(response.data);
-      onClose();
-    } catch (error) {
-      console.error("Failed to update profile:", error);
-    }
-  };
-
-  const handleImageChange = (e) => {
+  const handleImageChange = async (e) => {
     const file = e.target.files[0];
     setProfileImage(file);
 
@@ -63,6 +39,64 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
       setImagePreview(reader.result);
     };
     reader.readAsDataURL(file);
+
+    if (file) {
+      try {
+        const formData = new FormData();
+        formData.append("file", file);
+
+        // Fetch presigned URL
+        const presignedResponse = await axios.post(
+          "https://copartners.in:5134/api/AWSStorage?prefix=Images",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        if (!presignedResponse.data.isSuccess) {
+          throw new Error("Unable to fetch presigned URL");
+        }
+
+        const { presignedUrl } = presignedResponse.data.data;
+
+        setProfileImageUrl(presignedUrl);
+        toast.success("Image uploaded");
+      } catch (error) {
+        console.error("Error uploading image:", error);
+      }
+    }
+  };
+
+  const handleSave = async () => {
+    try {
+      const patchData = [
+        { path: "name", op: "replace", value: name },
+        { path: "email", op: "replace", value: email },
+        { path: "mobileNumber", op: "replace", value: phone },
+        { path: "pan", op: "replace", value: panCard },
+        { path: "address", op: "replace", value: address },
+        { path: "state", op: "replace", value: state },
+        { path: "userImagePath", op: "replace", value: profileImageUrl },
+      ];
+
+      const response = await axios.patch(
+        `https://copartners.in:5131/api/User?Id=${userId}`,
+        patchData,
+        {
+          headers: {
+            "Content-Type": "application/json-patch+json",
+          },
+        }
+      );
+
+      onUpdateProfile();
+      onClose();
+    } catch (error) {
+      console.error("Failed to update profile:", error);
+    }
   };
 
   return (
@@ -212,7 +246,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                 </label>
               </div>
             </div>
-            {/* State Input */}
+            {/* Address Input */}
             <div className="mb-4">
               <div className="relative">
                 <input
@@ -241,6 +275,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
               </button>
             </div>
           </div>
+          <ToastContainer />
         </div>
       )}
     </>

@@ -9,7 +9,7 @@ const ShowProfile = ({ userData }) => {
     email: "",
     phone: "",
     profileImage: null,
-    panCard: "",
+    pan: "",
     address: "",
     state: "",
   });
@@ -21,7 +21,7 @@ const ShowProfile = ({ userData }) => {
         email: userData.email,
         phone: userData.mobileNumber,
         profileImage: userData.userImagePath,
-        panCard: userData.panCard,
+        pan: userData.pan,
         address: userData.address,
         state: userData.state,
       });
@@ -32,11 +32,8 @@ const ShowProfile = ({ userData }) => {
     setIsPopupOpen(!isPopupOpen);
   };
 
-  const updateProfile = (data) => {
-    setProfileData({
-      ...profileData,
-      ...data,
-    });
+  const updateProfile = () => {
+    window.location.reload();
   };
 
   const handleLogOut = () => {
@@ -76,7 +73,7 @@ const ShowProfile = ({ userData }) => {
         <div className="md:flex flex-row gap-10 mt-4">
           <div className="flex items-center mb-2">
             <h1 className="text-white text-base">
-              PAN Card: {profileData.panCard || "---"}
+              PAN Card: {profileData.pan || "---"}
             </h1>
           </div>
           <div className="flex items-center mb-2">
@@ -107,7 +104,7 @@ const ShowProfile = ({ userData }) => {
         <img
           src={userData?.userImagePath || login}
           alt="User"
-          className={`${!userData?.userImagePath ? "w-20" : ""}`}
+          className={`${!userData?.userImagePath ? "w-20" : "w-28"}`}
           style={{
             WebkitMaskImage:
               "linear-gradient(rgba(0, 0, 0, 1) 70%, transparent)",
