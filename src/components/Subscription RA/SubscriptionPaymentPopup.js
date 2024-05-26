@@ -2,47 +2,56 @@ import React, { useEffect, useState } from "react";
 import { close, exclamation } from "../../assets";
 import axios from "axios";
 import KYCPopup from "./KYCPopup";
+import { useUserSession } from "../../constants/userContext";
 
 const SubscriptionPaymentPopup = ({
   onClose,
   selectedMonthlyPlan,
   planMonthlyPrice,
   expertName,
-  mobileNumber,
 }) => {
-  // const gstRate = 0.18;
   const [showKYCPopup, setShowKYCPopup] = useState(false);
-  // const total = (planMonthlyPrice || 0) * (1 + gstRate);
   const total = planMonthlyPrice || 0;
+  const { userData } = useUserSession();
+  const mobileNumber = userData.mobileNumber;
+
+  const handleDurationPlans = () => {
+    if (selectedMonthlyPlan === "Monthly") {
+      return 1;
+    } else if (selectedMonthlyPlan === "Quarterly") {
+      return 3;
+    } else if (selectedMonthlyPlan === "Half-Yearly") {
+      return 6;
+    } else {
+      return 12;
+    }
+  };
 
   const handleClose = () => {
     onClose();
   };
 
   const handlePay = async () => {
-    // setShowKYCPopup(true)
     const data = {
       name: expertName,
       amount: total,
       number: mobileNumber,
+      returnUrl: window.location.href,
+      MID: "MID" + Date.now(),
       transactionId: "T" + Date.now(),
+      plan: handleDurationPlans(),
     };
-    
-    console.log(data);
 
     try {
-      const res = await axios.post("http://localhost:8000/pay", data);
-      console.log("API Response:", res.data);
+      const res = await axios.post("http://localhost:3101/api/pay", data);
       if (res.data.success) {
         window.location.href =
           res.data.data.instrumentResponse.redirectInfo.url;
       } else {
         console.error("Payment initiation failed:", res.data);
-        // Handle error appropriately
       }
     } catch (error) {
       console.error("Error in handlePay:", error);
-      // Handle error appropriately
     }
   };
 

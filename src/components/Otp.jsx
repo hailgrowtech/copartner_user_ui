@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { closeImg } from "../assets";
 import { useNavigate } from "react-router-dom";
 
-const Otp = ({ onClose, mobileNumber }) => {
+const Otp = ({ onClose, mobileNumber, apid, raid }) => {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -51,7 +51,8 @@ const Otp = ({ onClose, mobileNumber }) => {
         setError(data.errorMessages);
         return;
       }
-      // sessionStorage.setItem("token", data.data.token);
+      // const userId = data.data.id;
+      // responseUser(userId);
       responseUser();
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);
@@ -60,19 +61,79 @@ const Otp = ({ onClose, mobileNumber }) => {
     }
   };
 
+  // const responseUser = async (id) => {
+  //   try {
+  //     let referralMode = "CP";
+  //     let updates = [
+  //       { path: "/referralMode", op: "replace", value: referralMode },
+  //     ];
+
+  //     if (apid) {
+  //       updates.push({ path: "/referralMode", op: "replace", value: "AP" });
+  //       updates.push({
+  //         path: "/affiliatePartnerId",
+  //         op: "replace",
+  //         value: apid,
+  //       });
+  //     } else if (raid) {
+  //       updates.push({ path: "/referralMode", op: "replace", value: "RA" });
+  //       updates.push({ path: "/expertsID", op: "replace", value: raid });
+  //     }
+
+  //     const resUser = await fetch(
+  //       `https://copartners.in:5131/api/User?Id=${id}`,
+  //       {
+  //         method: "PATCH",
+  //         headers: {
+  //           "Content-Type": "application/json-patch+json",
+  //         },
+  //         body: JSON.stringify(updates),
+  //       }
+  //     );
+
+  //     const data = await resUser.json();
+  //     if (!data.isSuccess) {
+  //       setError(data.errorMessages);
+  //     } else {
+  //       sessionStorage.setItem("userId", data.data.id);
+  //       navigate("/");
+  //       window.location.reload();
+  //     }
+  //   } catch (error) {
+  //     console.error("There was a problem with your fetch operation:", error);
+  //   }
+  // };
+
   const responseUser = async () => {
     try {
-      const resUser = await fetch("https://copartners.in:5131/api/User", {
+      const userData = {
+        mobileNumber: mobileNumber,
+        referralMode: "CP",
+        affiliatePartnerId: "",
+        expertsID: "",
+      };
+
+      if (apid) {
+        userData.referralMode = "AP";
+        userData.affiliatePartnerId = apid;
+      } else if (raid) {
+        userData.referralMode = "RA";
+        userData.expertsID = raid;
+      }
+
+      const resUser = await fetch(`https://copartners.in:5131/api/User`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ referralMode: "CP", mobileNumber }),
+        body: JSON.stringify(userData),
       });
+
       const data = await resUser.json();
-      if (!data.isSuccess) {
-        setError(data.errorMessages);
-      }
+      // if (!data.ok) {
+      //   // setError(data.errorMessages);
+      //   console.log("Something");
+      // }
       sessionStorage.setItem("userId", data.data.id);
       navigate("/");
       window.location.reload();
@@ -162,7 +223,9 @@ const Otp = ({ onClose, mobileNumber }) => {
           </button>
           <button
             type="button"
-            className={`mt-2 text-white ${timer > 0 ? "opacity-50" : ""} md:text-base text-sm underline`}
+            className={`mt-2 text-white ${
+              timer > 0 ? "opacity-50" : ""
+            } md:text-base text-sm underline`}
             onClick={handleResendOTP}
             disabled={timer > 0}
           >

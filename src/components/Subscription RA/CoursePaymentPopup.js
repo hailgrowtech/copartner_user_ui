@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { close, exclamation } from '../../assets';
 import axios from 'axios'; // Import Axios
 import KYCPopup from './KYCPopup';
+import { useUserSession } from '../../constants/userContext';
 
 const CoursePaymentPopup = ({ onClose, selectedPlan, planPrice, expertName }) => {
   const [showKYCPopup, setShowKYCPopup] = useState(false);
   const total = (planPrice || 0);
+  const {userData} = useUserSession();
+  const mobileNumber = (userData.mobileNumber);
 
   const handleClose = () => {
     onClose();
@@ -15,16 +18,16 @@ const CoursePaymentPopup = ({ onClose, selectedPlan, planPrice, expertName }) =>
     const data = {
       name: expertName,
       amount: total,
-      number: '9999999999',
+      number: mobileNumber,
       MID: 'MID' + Date.now(),
       transactionId: 'T' + Date.now()
     };
   
     try {
-      const res = await axios.post('http://localhost:8000/pay', data);
-      console.log("API Response:", res.data);
+      const res = await axios.post('http://localhost:3101/api/pay', data);
       if (res.data.success) {
         window.location.href = res.data.data.instrumentResponse.redirectInfo.url;
+        setShowKYCPopup(true)
       } else {
         console.error("Payment initiation failed:", res.data);
       }

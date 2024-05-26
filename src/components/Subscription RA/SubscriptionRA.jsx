@@ -9,6 +9,8 @@ import CoursePaymentPopup from "./CoursePaymentPopup";
 import MobileCourse from "./MobileCourse";
 import { useParams } from "react-router-dom";
 import { useUserSession } from "../../constants/userContext";
+import KYCPopup from "./KYCPopup";
+import LinkPopup from "../InviteLink/LinkPopup";
 
 const SubscriptionRA = () => {
   const { id } = useParams();
@@ -26,25 +28,32 @@ const SubscriptionRA = () => {
   const [showMobilePopup, setShowMobilePopup] = useState(false);
   const [subscriptions, setSubscriptions] = useState([]);
   const [mobileNum, setMobileNum] = useState("");
-  const { userData } = useUserSession();
+  const [showKYCPopup, setShowKYCPopup] = useState(false);
+  const [showLinkPopup, setShowLinkPopup] = useState(false);
+  const [chatID, setChatID] = useState("");
+  const { userData, loading } = useUserSession();
+  const [kycComplete, setKycComplete] = useState(false);
+  const [linkPlanType, setLinkPlanType] = useState("");
 
   useEffect(() => {
-    userData && setMobileNum(userData.mobileNumber);
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const threshold = 50;
-      if (scrollPosition > threshold) {
-        setShowMobilePopup(true);
-      } else {
-        setShowMobilePopup(false);
-      }
-    };
+    if (userData) {
+      setMobileNum(userData.mobileNumber);
+      const handleScroll = () => {
+        const scrollPosition = window.scrollY;
+        const threshold = 50;
+        if (scrollPosition > threshold) {
+          setShowMobilePopup(true);
+        } else {
+          setShowMobilePopup(false);
+        }
+      };
 
-    window.addEventListener("scroll", handleScroll);
+      window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
   }, [userData]);
 
   const handleSelectPlan = (plan, price) => {
@@ -90,6 +99,7 @@ const SubscriptionRA = () => {
           throw new Error("Error in fetching API");
         }
         const data = await response.json();
+        setChatID(data.data.chatId);
         fetchSubscriptions(data.data.id);
         setExpertData(data.data);
       } catch (error) {
@@ -105,11 +115,13 @@ const SubscriptionRA = () => {
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
-    document.getElementById(tab).scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(tab).scrollIntoView({ behavior: "smooth" });
   };
 
   const handleClose = () => {
     setShowPopup(false);
+    setShowKYCPopup(false);
+    setShowLinkPopup(false);
   };
 
   const handleSaveCard = () => {
@@ -158,6 +170,77 @@ const SubscriptionRA = () => {
     window.open(link);
   };
 
+  const checkPaymentStatus = () => {
+    const params = new URLSearchParams(window.location.search);
+    const status = params.get("status");
+    const transactionId = params.get("transactionId");
+    const planType = params.get("planType");
+    setLinkPlanType(planType);
+
+    if (status === "success") {
+      toast.success(`Payment Success: ${transactionId}`);
+      return true;
+    } else if (status === "failure") {
+      toast.error(`Payment Failed: ${transactionId}`);
+      return false;
+    }
+
+    return null;
+  };
+
+  useEffect(() => {
+    if (!loading && userData) {
+      const detailsComplete = checkKYCDetails(userData);
+      setKycComplete(detailsComplete);
+    }
+  }, [userData, loading]);
+
+  const checkKYCDetails = (data) => {
+    if (!data) {
+      console.log("User data is not loaded yet or is null.");
+      return false;
+    }
+
+    const detailsComplete = data.name && data.email && data.pan && data.address && data.state;
+    if (detailsComplete) {
+      return true;  // All details are complete
+    } else {
+      return false;  // Some details are missing, return false
+    }
+  };
+
+  const handlePaymentSuccess = () => {
+    if (!kycComplete) {
+      console.log("not kyc");
+      setShowKYCPopup(true);
+    } else {
+      console.log("kyc done");
+      setShowLinkPopup(true);
+    }
+  };
+
+  const clearURLParams = () => {
+    window.history.replaceState(null, null, window.location.pathname);
+  };
+
+  useEffect(() => {
+    const statusResult = checkPaymentStatus();
+    if (statusResult !== null) {
+      clearURLParams();
+    }
+
+    if (statusResult === true) {
+      console.log("handlepayment");
+      handlePaymentSuccess();
+    } else if (statusResult === false) {
+      toast.error("Payment Failed");
+    }
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   if (!expertData) {
     return <div className="text-white">Loading...</div>;
   }
@@ -184,9 +267,6 @@ const SubscriptionRA = () => {
               <span className="font-normal md:text-[22px] text-[12px]">
                 {expertData.name} - {getExpertType(expertData.expertTypeId)}
               </span>
-              {/* <span className="font-normal md:leading-[28px] md:text-[22px] text-[12px]">
-                {getExpertType(expertData.expertTypeId)}
-              </span> */}
             </div>
             <div className="flex justify-between md:w-[350px] w-[176px] md:h-16 h-10 md:mb-6 mb-3">
               <div className="flex flex-col items-center justify-around">
@@ -212,11 +292,6 @@ const SubscriptionRA = () => {
               className="bg-[#0081F1] md:block hidden md:rounded-3xl rounded-2xl md:w-44 w-32 md:mb-6"
             >
               <button className="flex mx-auto md:py-2 py-1 items-center">
-                {/* <img
-                  className="md:w-6 w-4 me-3"
-                  src={expertData.telegram}
-                  alt="telegram icon"
-                /> */}
                 <span className="md:text-base text-xs">Get Free Calls</span>
                 <img className="w-4 ms-3" src={arrow} alt="arrow icon" />
               </button>
@@ -259,11 +334,6 @@ const SubscriptionRA = () => {
             className="bg-[#0081F1] md:hidden w-[90%] block absolute bottom-3 border-opacity-30 md:rounded-3xl rounded-2xl md:w-44 md:mb-6"
           >
             <button className="flex mx-auto text-white md:py-2 py-2 items-center">
-              {/* <img
-                className="md:w-6 w-4 me-3"
-                src={telegram}
-                alt="telegram icon"
-              /> */}
               <span className="md:text-base text-xs">Get Free Calls</span>
               <img className="w-4 ms-3" src={arrow} alt="arrow icon" />
             </button>
@@ -299,7 +369,10 @@ const SubscriptionRA = () => {
             </div>
           </div>
         </section>
-        <section id="subscriptions" className="w-full flex flex-col md:my-14 my-10">
+        <section
+          id="subscriptions"
+          className="w-full flex flex-col md:my-14 my-10"
+        >
           <div className="text-white md:text-left text-center md:flex md:justify-between w-full md:mb-8">
             <div className="text-white md:text-5xl text-3xl font-bold pb-4 md:w-1/2">
               Subscriptions Plans
@@ -320,7 +393,7 @@ const SubscriptionRA = () => {
                 }
                 className={`flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
                   activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
-                }`}
+                } relative`}
                 onMouseOver={handleMouseOver}
                 onMouseOut={handleMouseOut}
               >
@@ -343,7 +416,7 @@ const SubscriptionRA = () => {
                     Buy Now
                   </button>
                 </div>
-                {index === 1 && (
+                {subscription.planType === "Monthly" && (
                   <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
                     Recommended
                   </div>
@@ -365,7 +438,10 @@ const SubscriptionRA = () => {
           <FAQs2 />
         </section>
 
-        <section id="highlights" className="w-full md:my-8 my-2 flex gap-20 md:mb-24 mb-16">
+        <section
+          id="highlights"
+          className="w-full md:my-8 my-2 flex gap-20 md:mb-24 mb-16"
+        >
           <div className="flex flex-col md:w-2/3 w-full text-white">
             <div className="text-white md:text-5xl text-3xl font-bold pb-4 md:text-left text-center">
               Key highlights to join this subscription
@@ -489,7 +565,10 @@ const SubscriptionRA = () => {
             </div>
           </div>
         </section>
-        <section id="about" className="border-2 rounded-2xl border-[#f4f4f50e] md:p-8 px-4 py-6 md:mb-24 mb-12">
+        <section
+          id="about"
+          className="border-2 rounded-2xl border-[#f4f4f50e] md:p-8 px-4 py-6 md:mb-24 mb-12"
+        >
           <p className="text-white md:text-5xl text-3xl font-bold pb-8">
             Subscriptions Details
           </p>
@@ -522,6 +601,14 @@ const SubscriptionRA = () => {
             subscriptions={subscriptions}
           />
         </div>
+        {showKYCPopup && <KYCPopup onClose={handleClose} />}
+        {showLinkPopup && (
+          <LinkPopup
+            chatID={chatID}
+            durationMonths={linkPlanType}
+            onClose={handleClose}
+          />
+        )}
       </div>
     </section>
   );

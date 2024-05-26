@@ -2,7 +2,6 @@ import React from "react";
 import styles from "../../style";
 import ProfileCard from "./Profile_Card";
 import "../Hero.css";
-import { expertise_data } from "../../constants";
 import { Link } from "react-router-dom";
 import { useUserData } from "../../constants/context";
 import { arrow, stars, telegram, userBck, logout } from "../../assets";

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Otp from "./Otp";
 import { closeImg, signupBg } from "../assets";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const SignUp = () => {
   const [mobile, setMobile] = useState("");
@@ -10,12 +10,15 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [validationMessage, setValidationMessage] = useState("");
+  const [searchParams] = useSearchParams();
+
+  const apid = searchParams.get("apid");
+  const raid = searchParams.get("raid");
 
   const handleMobileChange = (e) => {
     const value = e.target.value;
     setMobile(value);
 
-    // Ensure the mobile number has more than 10 digits
     if (value.length > 10) {
       setValidationMessage("Mobile number must have more than 10 digits");
     } else {
@@ -110,7 +113,7 @@ const SignUp = () => {
             </button>
           </div>
           <div className="mb-4">
-            <h2 className="text-2xl font-semibold text-white">Sign Up</h2>
+            <h2 className="text-2xl font-semibold text-white">Sign-In</h2>
           </div>
           <p className="text-gray-300 text-center mb-4">
             Get access to daily free calls from varieties of India's SEBI
@@ -118,7 +121,12 @@ const SignUp = () => {
           </p>
           {error && <p className="text-red-500 mb-4">{error}</p>}
           {showOtp ? (
-            <Otp mobileNumber={mobile} onClose={handleClosePopups} />
+            <Otp
+              apid={apid}
+              raid={raid}
+              mobileNumber={mobile}
+              onClose={handleClosePopups}
+            />
           ) : (
             <form
               className="flex flex-col gap-4 text-white"

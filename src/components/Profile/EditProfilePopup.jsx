@@ -16,8 +16,6 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
   const userId = sessionStorage.getItem("userId");
   const [loading, setLoading] = useState(false);
 
-  console.log(userData);
-
   useEffect(() => {
     if (userData) {
       setName(userData.name || "");
