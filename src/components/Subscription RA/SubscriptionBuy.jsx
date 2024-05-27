@@ -341,44 +341,52 @@ const SubscriptionRA = () => {
             </div>
           </div>
           <div className="text-white flex flex-wrap justify-center md:gap-8 gap-2 w-full subscription-cards">
-            {subscriptions.map((subscription, index) => (
-              <div
-                key={subscription.id}
-                onClick={() =>
-                  handleBuyNowClick(subscription.planType, subscription.amount)
-                }
-                className={`flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
-                  activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
-                } relative`}
-              >
-                <div className="text-center opacity-60 hidden">
-                  21 Days Left
-                </div>
-                <div className="text-center md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
-                  {subscription.planType}
-                </div>
-                <div className="text-center md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-center">
-                  ₹{subscription.amount}/
-                  <span className="md:flex hidden">-</span>
-                  <span className="md:hidden flex font-normal">mo</span>
-                </div>
-                <div className="text-center md:text-lg text-xs mt-auto opacity-60 mb-6">
-                  {subscription.durationMonth} Month Access
-                </div>
-                <div className="text-center">
-                  <button className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2">
-                    {subscription.planType === matchingSubscription.planType
-                      ? "Renew"
-                      : "Buy"}
-                  </button>
-                </div>
-                {subscription.planType === "Monthly" && (
-                  <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
-                    Recommended
+            {subscriptions
+              .slice()
+              .sort((a, b) => a.amount - b.amount)
+              .map((subscription, index) => (
+                <div
+                  key={subscription.id}
+                  onClick={() =>
+                    handleBuyNowClick(
+                      subscription.planType,
+                      subscription.amount
+                    )
+                  }
+                  className={`flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
+                    activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
+                  } relative`}
+                >
+                  <div className="text-center opacity-60 hidden">
+                    21 Days Left
                   </div>
-                )}
-              </div>
-            ))}
+                  <div className="text-center md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
+                    {subscription.planType}
+                  </div>
+                  <div className="text-center md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-center">
+                    ₹{subscription.amount}/
+                    <span className="md:flex hidden">-</span>
+                    <span className="md:hidden flex font-normal">mo</span>
+                  </div>
+                  <div className="text-center md:text-lg text-xs mt-auto opacity-60 mb-6">
+                    {subscription.durationMonth} Month Access
+                  </div>
+                  <div className="text-center">
+                    <button className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2">
+                      {subscription.planType === matchingSubscription.planType
+                        ? "Renew"
+                        : "Buy"}
+                    </button>
+                  </div>
+                  {
+                    index === Math.floor(subscriptions.length / 2) && (
+                      <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
+                        Recommended
+                      </div>
+                    )
+                  }
+                </div>
+              ))}
             {showMonthlyPopup && (
               <SubscriptionPaymentPopup
                 onClose={handleClosePopup}
@@ -474,34 +482,37 @@ const SubscriptionRA = () => {
                 <div className="text-3xl font-bold subheading-gradient mb-4">
                   Subscription Plan
                 </div>
-                {subscriptions.map((subscription) => (
-                  <div
-                    key={subscription.id}
-                    onClick={() =>
-                      handleSelectPlan(
-                        subscription.planType,
-                        subscription.amount
-                      )
-                    }
-                    className={`flex rounded-2xl p-4 ${
-                      selectedPlan === subscription.planType
-                        ? "bg-[#18181B80] border-2 border-[#F4F4F51A]"
-                        : "hover:bg-[#18181B80]"
-                    }`}
-                  >
-                    <div className="flex-1 text-left">
-                      <p className="text-lg subheading-gradient">
-                        {subscription.planType}
-                      </p>
-                      <p className="text-[#C6CDD5] text-sm">
-                        {subscription.durationMonth} Month Access
+                {subscriptions
+                  .slice()
+                  .sort((a, b) => a.amount - b.amount)
+                  .map((subscription) => (
+                    <div
+                      key={subscription.id}
+                      onClick={() =>
+                        handleSelectPlan(
+                          subscription.planType,
+                          subscription.amount
+                        )
+                      }
+                      className={`flex rounded-2xl p-4 ${
+                        selectedPlan === subscription.planType
+                          ? "bg-[#18181B80] border-2 border-[#F4F4F51A]"
+                          : "hover:bg-[#18181B80]"
+                      }`}
+                    >
+                      <div className="flex-1 text-left">
+                        <p className="text-lg subheading-gradient">
+                          {subscription.planType}
+                        </p>
+                        <p className="text-[#C6CDD5] text-sm">
+                          {subscription.durationMonth} Month Access
+                        </p>
+                      </div>
+                      <p className="flex-1 text-3xl font-bold">
+                        ₹{subscription.amount}
                       </p>
                     </div>
-                    <p className="flex-1 text-3xl font-bold">
-                      ₹{subscription.amount}
-                    </p>
-                  </div>
-                ))}
+                  ))}
                 <div className="text-center">
                   <button
                     className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2"

@@ -113,7 +113,7 @@ const SignUp = () => {
             </button>
           </div>
           <div className="mb-4">
-            <h2 className="text-2xl font-semibold text-white">Sign-In</h2>
+            <h2 className="text-2xl font-semibold text-white">Login/Signup</h2>
           </div>
           <p className="text-gray-300 text-center mb-4">
             Get access to daily free calls from varieties of India's SEBI
@@ -126,6 +126,7 @@ const SignUp = () => {
               raid={raid}
               mobileNumber={mobile}
               onClose={handleClosePopups}
+              onCloseAll={handleClose}
             />
           ) : (
             <form

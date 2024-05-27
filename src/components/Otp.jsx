@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { closeImg } from "../assets";
+import { back, closeImg } from "../assets";
 import { useNavigate } from "react-router-dom";
 
-const Otp = ({ onClose, mobileNumber, apid, raid }) => {
+const Otp = ({ onClose, onCloseAll, mobileNumber, apid, raid }) => {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
-  const [timer, setTimer] = useState(0);
+  const [timer, setTimer] = useState(25);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -130,10 +130,10 @@ const Otp = ({ onClose, mobileNumber, apid, raid }) => {
       });
 
       const data = await resUser.json();
-      // if (!data.ok) {
-      //   // setError(data.errorMessages);
-      //   console.log("Something");
-      // }
+      if (!data.ok) {
+        setError(data.errorMessages);
+        console.log("Something");
+      }
       sessionStorage.setItem("userId", data.data.id);
       navigate("/");
       window.location.reload();
@@ -183,9 +183,17 @@ const Otp = ({ onClose, mobileNumber, apid, raid }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-10 z-50">
       <div className="bg-[#18181B] border-[1px] border-[#ffffff2a] m-4 p-8 rounded-lg w-[25rem] relative text-center">
-        <div className="absolute top-3 right-0 text-right">
+        <div className="absolute top-3 left-2 text-right">
           <div
             onClick={onClose}
+            className="text-gray-400 w-8 text-[20px] cursor-pointer hover:text-white"
+          >
+            <img src={back} alt="" />
+          </div>
+        </div>
+        <div className="absolute top-3 right-0 text-right">
+          <div
+            onClick={onCloseAll}
             className="text-gray-400 w-8 text-[20px] cursor-pointer hover:text-white"
           >
             <img src={closeImg} alt="close" />

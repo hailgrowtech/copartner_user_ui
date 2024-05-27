@@ -3,6 +3,9 @@ import {
   testimonialLeft,
   testimonialRight,
   testimonialProfile,
+  paridhi,
+  samay,
+  ritik,
 } from "../../assets";
 
 const Testimonials = () => {
@@ -41,22 +44,19 @@ const Testimonials = () => {
       id: 1,
       text: "Thanks to the Copartner platform, I got connected with knowledgeable research analysts who have truly transformed my trading approach. Their insights and guidance have been invaluable in navigating the markets more confidently. The platform's user-friendly interface and responsive support team have made the experience even better.",
       author: "Paridhi Tripathi",
-      image: testimonialProfile,
-      designation: "CEO, Company A",
+      image: paridhi,
     },
     {
       id: 2,
       text: "Since joining the Copartner platform, my trading experience has been transformed. Connecting with research analysts has provided invaluable insights that have significantly improved my trading strategies. The personalised guidance and expertise have helped me navigate the markets with confidence.",
       author: "Samay Trivedi",
-      image: testimonialProfile,
-      designation: "CTO, Company B",
+      image: samay,
     },
     {
       id: 3,
       text: "Copartner has been a game-changer for me as a trader. It's easy to use and the expert advice has helped me make better decisions. The community is supportive and the tools are simple and effective Thanks to Copartner, my portfolio has grown and I'm excited for what's next!",
       author: "Ritik Goswami",
-      image: testimonialProfile,
-      designation: "COO, Company C",
+      image: ritik,
     },
   ];
 
