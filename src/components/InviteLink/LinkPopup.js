@@ -1,33 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { close } from "../../assets";
-import axios from "axios";
+// import axios from "axios";
 
-const LinkPopup = ({ onClose, chatID, durationMonths }) => {
-  console.log(durationMonths);
-  const [telegramLink, setTelegramLink] = useState(null);
+const LinkPopup = ({ onClose, inviteLink }) => {
+  // const [telegramLink, setTelegramLink] = useState(null);
   const [error, setError] = useState("");
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    fetchInviteLink();
+    // fetchInviteLink();
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [chatID]);
+  }, []);
 
-  const fetchInviteLink = async () => {
-    try {
-      const response = await axios.post(`http://localhost:3001/api/createInviteLink?chatId=${chatID}&durationMonths=${durationMonths}`);
-      if (response.ok) {
-        setTelegramLink(response.data.inviteLink.inviteLink);
-      } else {
-        throw new Error(response.error || "Failed to fetch invite link");
-      }
-    } catch (error) {
-      setError(error.message);
-      console.error("Error fetching invite link:", error);
-    }
-  };
+  // const fetchInviteLink = async () => {
+  //   try {
+  //     const response = await axios.post(`http://localhost:3001/api/createInviteLink?chatId=${chatID}&durationMonths=${durationMonths}`);
+  //     if (response.ok) {
+  //       setTelegramLink(response.data.inviteLink.inviteLink);
+  //     } else {
+  //       throw new Error(response.error || "Failed to fetch invite link");
+  //     }
+  //   } catch (error) {
+  //     setError(error.message);
+  //     console.error("Error fetching invite link:", error);
+  //   }
+  // };
 
   const handleClose = () => {
     onClose();
@@ -48,9 +47,9 @@ const LinkPopup = ({ onClose, chatID, durationMonths }) => {
           <div className="text-sm mb-4 text-white">
             Click the button below to join the Telegram channel:
           </div>
-          {telegramLink ? (
+          {inviteLink ? (
             <a
-              href={telegramLink}
+              href={inviteLink}
               target="_blank"
               rel="noopener noreferrer"
               className="justify-center items-center flex mb-4 md:mb-2 md:text-lg text-sm rounded-lg py-4 text-white bg-[#0081F1] hover:bg-[#006bbd] transition-colors duration-300"

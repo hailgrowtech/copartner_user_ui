@@ -15,7 +15,6 @@ const SubscriptionRA = () => {
   const { id } = useParams();
   const [expertData, setExpertData] = useState(null);
   const [activeHoverIndex, setActiveHoverIndex] = useState(0);
-  const [backgroundColor, setBackgroundColor] = useState("#18181B80");
   const [showMonthlyPopup, setShowMonthlyPopup] = useState(false);
   const [selectedMonthlyPlan, setSelectedMonthlyPlan] = useState(null);
   const [planMonthlyPrice, setPlanMonthlyPrice] = useState(0);
@@ -25,6 +24,12 @@ const SubscriptionRA = () => {
   const [isCardSaved, setIsCardSaved] = useState(false);
   const [activeTab, setActiveTab] = useState("subscriptions");
   const [subscriptions, setSubscriptions] = useState([]);
+  const [mobileNum, setMobileNum] = useState("");
+  const [showKYCPopup, setShowKYCPopup] = useState(false);
+  const [showLinkPopup, setShowLinkPopup] = useState(false);
+  const [chatID, setChatID] = useState("");
+  const { userData, loading } = useUserSession();
+  const [inviteLink, setInviteLink] = useState("");
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -70,8 +75,9 @@ const SubscriptionRA = () => {
           throw new Error("Error in fetching API");
         }
         const data = await response.json();
-        fetchSubscriptions(data.data.expertsId);
         setExpertData(data.data);
+        fetchSubscriptions(data.data.expertsId);
+        setChatID(data.data.chatId);
       } catch (error) {
         console.error("Error fetching expert data:", error);
         toast.error("Failed to fetch expert data", {
@@ -102,12 +108,12 @@ const SubscriptionRA = () => {
     setShowMonthlyPopup(true);
   };
 
-  const handleMouseOver = () => {
-    setBackgroundColor("transparent");
+  const handleMouseEnter = (index) => {
+    setActiveHoverIndex(index);
   };
 
-  const handleMouseOut = () => {
-    setBackgroundColor("#18181B80");
+  const handleMouseLeave = () => {
+    setActiveHoverIndex(0);
   };
 
   const getExpertType = (typeId) => {
@@ -121,6 +127,59 @@ const SubscriptionRA = () => {
       default:
         return "Unknown";
     }
+  };
+
+  useEffect(() => {
+    if (!loading && userData) {
+      setMobileNum(userData.mobileNumber);
+      const paymentSuccess = checkPaymentStatus();
+      handlePaymentSuccess(paymentSuccess);
+    }
+  }, [loading, userData]);
+
+  const handlePaymentSuccess = (paymentSuccess) => {
+    if (paymentSuccess) {
+      const detailsComplete = checkKYCDetails(userData);
+      if (detailsComplete) {
+        console.log("KYC complete.");
+        if (inviteLink) {
+          setShowLinkPopup(true);
+          clearURLParams();
+        }
+      } else {
+        console.log("KYC not complete, showing KYC popup.");
+        setShowKYCPopup(true);
+      }
+    }
+  };
+
+  const checkKYCDetails = (data) => {
+    const isComplete = data?.isKYC;
+    console.log("KYC Details Complete:", isComplete);
+    return isComplete;
+  };
+
+  const checkPaymentStatus = () => {
+    const params = new URLSearchParams(window.location.search);
+    const status = params.get("status");
+    const transactionId = params.get("transactionId");
+    const inviteLink = params.get("inviteLink");
+
+    setInviteLink(inviteLink);
+
+    if (status === "success") {
+      toast.success(`Payment Success: ${transactionId}`);
+      return true;
+    } else if (status === "failure") {
+      toast.error(`Payment Failed: ${transactionId}`);
+      return false;
+    }
+
+    return null;
+  };
+
+  const clearURLParams = () => {
+    window.history.replaceState({}, document.title, window.location.pathname);
   };
 
   const matchingSubscription = subscriptions.find((sub) => sub.id === id);
@@ -291,8 +350,6 @@ const SubscriptionRA = () => {
                 className={`flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
                   activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
                 } relative`}
-                onMouseOver={handleMouseOver}
-                onMouseOut={handleMouseOut}
               >
                 <div className="text-center opacity-60 hidden">
                   21 Days Left
@@ -459,7 +516,9 @@ const SubscriptionRA = () => {
                       onClose={handleClose}
                       selectedPlan={selectedPlan}
                       planPrice={planPrice}
-                      expertName={matchingSubscription.experts?.channelName}
+                      expertName={expertData.channelName}
+                      mobileNumber={mobileNum}
+                      chatId={chatID}
                     />
                   )}
                 </div>
@@ -495,8 +554,16 @@ const SubscriptionRA = () => {
             </div>
           </section>
         </section>
+        <ToastContainer />
+        {showKYCPopup && <KYCPopup onClose={handleClose} />}
+        {showLinkPopup && (
+          <LinkPopup
+            chatID={chatID}
+            onClose={handleClose}
+            inviteLink={inviteLink}
+          />
+        )}
       </div>
-      <ToastContainer />
     </section>
   );
 };

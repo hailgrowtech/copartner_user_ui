@@ -17,7 +17,6 @@ const SubscriptionRA = () => {
   const [isCardSaved, setIsCardSaved] = useState(false);
   const [expertData, setExpertData] = useState(null);
   const [activeHoverIndex, setActiveHoverIndex] = useState(0);
-  const [backgroundColor, setBackgroundColor] = useState("#18181B80");
   const [showMonthlyPopup, setShowMonthlyPopup] = useState(false);
   const [selectedMonthlyPlan, setSelectedMonthlyPlan] = useState(null);
   const [planMonthlyPrice, setPlanMonthlyPrice] = useState(0);
@@ -32,12 +31,10 @@ const SubscriptionRA = () => {
   const [showLinkPopup, setShowLinkPopup] = useState(false);
   const [chatID, setChatID] = useState("");
   const { userData, loading } = useUserSession();
-  const [kycComplete, setKycComplete] = useState(false);
-  const [linkPlanType, setLinkPlanType] = useState("");
+  const [inviteLink, setInviteLink] = useState("");
 
   useEffect(() => {
     if (userData) {
-      setMobileNum(userData.mobileNumber);
       const handleScroll = () => {
         const scrollPosition = window.scrollY;
         const threshold = 50;
@@ -111,7 +108,7 @@ const SubscriptionRA = () => {
     };
 
     fetchData();
-  }, []);
+  }, [id]);
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -140,14 +137,6 @@ const SubscriptionRA = () => {
     }
   };
 
-  const handleMouseOver = () => {
-    setBackgroundColor("transparent");
-  };
-
-  const handleMouseOut = () => {
-    setBackgroundColor("#18181B80");
-  };
-
   const handleBuyNowClick = (plan, price) => {
     setSelectedMonthlyPlan(plan);
     setPlanMonthlyPrice(price);
@@ -170,12 +159,43 @@ const SubscriptionRA = () => {
     window.open(link);
   };
 
+  useEffect(() => {
+    if (!loading && userData) {
+      setMobileNum(userData.mobileNumber);
+      const paymentSuccess = checkPaymentStatus();
+      handlePaymentSuccess(paymentSuccess);
+    }
+  }, [loading, userData]);
+
+  const handlePaymentSuccess = (paymentSuccess) => {
+    if (paymentSuccess) {
+      const detailsComplete = checkKYCDetails(userData);
+      if (detailsComplete) {
+        console.log("KYC complete.");
+        if (inviteLink) {
+          setShowLinkPopup(true);
+          clearURLParams();
+        }
+      } else {
+        console.log("KYC not complete, showing KYC popup.");
+        setShowKYCPopup(true);
+      }
+    }
+  };
+
+  const checkKYCDetails = (data) => {
+    const isComplete = data?.isKYC;
+    console.log("KYC Details Complete:", isComplete);
+    return isComplete;
+  };
+
   const checkPaymentStatus = () => {
     const params = new URLSearchParams(window.location.search);
     const status = params.get("status");
     const transactionId = params.get("transactionId");
-    const planType = params.get("planType");
-    setLinkPlanType(planType);
+    const inviteLink = params.get("inviteLink");
+
+    setInviteLink(inviteLink);
 
     if (status === "success") {
       toast.success(`Payment Success: ${transactionId}`);
@@ -188,54 +208,9 @@ const SubscriptionRA = () => {
     return null;
   };
 
-  useEffect(() => {
-    if (!loading && userData) {
-      const detailsComplete = checkKYCDetails(userData);
-      setKycComplete(detailsComplete);
-    }
-  }, [userData, loading]);
-
-  const checkKYCDetails = (data) => {
-    if (!data) {
-      console.log("User data is not loaded yet or is null.");
-      return false;
-    }
-
-    const detailsComplete = data.name && data.email && data.pan && data.address && data.state;
-    if (detailsComplete) {
-      return true;  // All details are complete
-    } else {
-      return false;  // Some details are missing, return false
-    }
-  };
-
-  const handlePaymentSuccess = () => {
-    if (!kycComplete) {
-      console.log("not kyc");
-      setShowKYCPopup(true);
-    } else {
-      console.log("kyc done");
-      setShowLinkPopup(true);
-    }
-  };
-
   const clearURLParams = () => {
-    window.history.replaceState(null, null, window.location.pathname);
+    window.history.replaceState({}, document.title, window.location.pathname);
   };
-
-  useEffect(() => {
-    const statusResult = checkPaymentStatus();
-    if (statusResult !== null) {
-      clearURLParams();
-    }
-
-    if (statusResult === true) {
-      console.log("handlepayment");
-      handlePaymentSuccess();
-    } else if (statusResult === false) {
-      toast.error("Payment Failed");
-    }
-  }, []);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -394,8 +369,6 @@ const SubscriptionRA = () => {
                 className={`flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
                   activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
                 } relative`}
-                onMouseOver={handleMouseOver}
-                onMouseOut={handleMouseOut}
               >
                 <div className="text-center opacity-60 hidden">
                   21 Days Left
@@ -430,6 +403,7 @@ const SubscriptionRA = () => {
                 planMonthlyPrice={planMonthlyPrice}
                 expertName={expertData.channelName}
                 mobileNumber={mobileNum}
+                chatId={chatID}
               />
             )}
           </div>
@@ -559,6 +533,8 @@ const SubscriptionRA = () => {
                     selectedPlan={selectedPlan}
                     planPrice={planPrice}
                     expertName={expertData.channelName}
+                    mobileNumber={mobileNum}
+                    chatId={chatID}
                   />
                 )}
               </div>
@@ -605,8 +581,8 @@ const SubscriptionRA = () => {
         {showLinkPopup && (
           <LinkPopup
             chatID={chatID}
-            durationMonths={linkPlanType}
             onClose={handleClose}
+            inviteLink={inviteLink}
           />
         )}
       </div>

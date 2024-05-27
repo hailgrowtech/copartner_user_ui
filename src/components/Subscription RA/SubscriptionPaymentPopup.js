@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { close, exclamation } from "../../assets";
 import axios from "axios";
-import KYCPopup from "./KYCPopup";
-import { useUserSession } from "../../constants/userContext";
 
 const SubscriptionPaymentPopup = ({
   onClose,
   selectedMonthlyPlan,
   planMonthlyPrice,
   expertName,
+  chatId,
+  mobileNumber,
 }) => {
-  const [showKYCPopup, setShowKYCPopup] = useState(false);
   const total = planMonthlyPrice || 0;
-  const { userData } = useUserSession();
-  const mobileNumber = userData.mobileNumber;
 
   const handleDurationPlans = () => {
     if (selectedMonthlyPlan === "Monthly") {
@@ -40,6 +37,7 @@ const SubscriptionPaymentPopup = ({
       MID: "MID" + Date.now(),
       transactionId: "T" + Date.now(),
       plan: handleDurationPlans(),
+      chatId,
     };
 
     try {
@@ -114,8 +112,6 @@ const SubscriptionPaymentPopup = ({
           </div>
         </div>
       </div>
-      {showKYCPopup && <KYCPopup onClose={handleClose} />}{" "}
-      {/* Render KYCPopup when showKYCPopup is true */}
     </div>
   );
 };
