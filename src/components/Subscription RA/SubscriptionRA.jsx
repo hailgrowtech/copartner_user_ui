@@ -32,6 +32,7 @@ const SubscriptionRA = () => {
   const [chatID, setChatID] = useState("");
   const { userData, loading } = useUserSession();
   const [inviteLink, setInviteLink] = useState("");
+  const [subscriptionId, setSubscriptionId] = useState("")
 
   useEffect(() => {
     if (userData) {
@@ -53,9 +54,10 @@ const SubscriptionRA = () => {
     }
   }, [userData]);
 
-  const handleSelectPlan = (plan, price) => {
+  const handleSelectPlan = (subscriptionId, plan, price ) => {
     setSelectedPlan(plan);
     setPlanPrice(price);
+    setSubscriptionId(subscriptionId);
   };
 
   const getExpertType = (typeId) => {
@@ -80,6 +82,7 @@ const SubscriptionRA = () => {
         throw new Error("Error in fetching subscriptions");
       }
       const data = await response.json();
+      console.log("subscription array", data.data);
       setSubscriptions(data.data);
     } catch (error) {
       console.error("Failed to fetch subscription plans:", error);
@@ -137,10 +140,11 @@ const SubscriptionRA = () => {
     }
   };
 
-  const handleBuyNowClick = (plan, price) => {
+  const handleBuyNowClick = (subscriptionId, plan, price ) => {
     setSelectedMonthlyPlan(plan);
     setPlanMonthlyPrice(price);
     setShowMonthlyPopup(true);
+    setSubscriptionId(subscriptionId);
   };
 
   const handleMouseEnter = (index) => {
@@ -274,7 +278,7 @@ const SubscriptionRA = () => {
           </div>
           <div className="flex mx-auto">
             <img
-              className="subscription-RA-img md:w-[400px] w-[470px] my-auto"
+              className="subscription-RA-img md:w-[400px] md:h-[350px] h-[132] w-[470px] my-auto"
               src={expertData.expertImagePath}
               style={{
                 maskImage: "linear-gradient(rgba(0, 0, 0, 1) 70%, transparent)",
@@ -368,6 +372,7 @@ const SubscriptionRA = () => {
                   key={subscription.id}
                   onClick={() =>
                     handleBuyNowClick(
+                      subscription.id,
                       subscription.planType,
                       subscription.amount
                     )
@@ -412,6 +417,8 @@ const SubscriptionRA = () => {
                 expertName={expertData.channelName}
                 mobileNumber={mobileNum}
                 chatId={chatID}
+                subscriptionId={subscriptionId}
+                userId={userData.id}
               />
             )}
           </div>
@@ -509,6 +516,7 @@ const SubscriptionRA = () => {
                     key={subscription.id}
                     onClick={() =>
                       handleSelectPlan(
+                        subscription.id,
                         subscription.planType,
                         subscription.amount
                       )
@@ -549,6 +557,8 @@ const SubscriptionRA = () => {
                     expertName={expertData.channelName}
                     mobileNumber={mobileNum}
                     chatId={chatID}
+                    subscriptionId={subscriptionId}
+                    userId={userData.id}
                   />
                 )}
               </div>

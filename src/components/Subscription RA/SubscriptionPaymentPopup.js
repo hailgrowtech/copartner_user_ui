@@ -8,7 +8,8 @@ const SubscriptionPaymentPopup = ({
   planMonthlyPrice,
   expertName,
   chatId,
-  mobileNumber,
+  subscriptionId,
+  userId
 }) => {
   const total = planMonthlyPrice || 0;
 
@@ -30,15 +31,16 @@ const SubscriptionPaymentPopup = ({
 
   const handlePay = async () => {
     const data = {
-      name: expertName,
-      amount: total,
-      number: mobileNumber,
+      totalAmount: total,
       returnUrl: window.location.href,
-      MID: "MID" + Date.now(),
       transactionId: "T" + Date.now(),
       plan: handleDurationPlans(),
       chatId,
+      subscriptionId,
+      userId
     };
+
+    console.log("subscription Popup", data);
 
     try {
       const res = await axios.post("http://localhost:3101/api/pay", data);

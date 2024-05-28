@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../../style";
 import "./SubscriptionRA.css";
 import { useParams } from "react-router-dom";
-import { arrow, bookmark, bookmarkFill, userImg, stars } from "../../assets";
+import { arrow, bookmark, bookmarkFill, stars } from "../../assets";
 import CoursePaymentPopup from "./CoursePaymentPopup";
 import SubscriptionPaymentPopup from "./SubscriptionPaymentPopup";
 import { ToastContainer, toast } from "react-toastify";
@@ -14,7 +14,6 @@ import { useUserSession } from "../../constants/userContext";
 const SubscriptionRA = () => {
   const { id } = useParams();
   const [expertData, setExpertData] = useState(null);
-  const [activeHoverIndex, setActiveHoverIndex] = useState(0);
   const [showMonthlyPopup, setShowMonthlyPopup] = useState(false);
   const [selectedMonthlyPlan, setSelectedMonthlyPlan] = useState(null);
   const [planMonthlyPrice, setPlanMonthlyPrice] = useState(0);
@@ -106,14 +105,6 @@ const SubscriptionRA = () => {
     setSelectedMonthlyPlan(plan);
     setPlanMonthlyPrice(price);
     setShowMonthlyPopup(true);
-  };
-
-  const handleMouseEnter = (index) => {
-    setActiveHoverIndex(index);
-  };
-
-  const handleMouseLeave = () => {
-    setActiveHoverIndex(0);
   };
 
   const getExpertType = (typeId) => {
@@ -354,7 +345,7 @@ const SubscriptionRA = () => {
                     )
                   }
                   className={`flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
-                    activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
+                    0 ? "hover:bg-[#18181B80]" : ""
                   } relative`}
                 >
                   <div className="text-center opacity-60 hidden">

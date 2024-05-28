@@ -107,9 +107,11 @@ const Receipt = ({ transaction, closePopup }) => {
             <p>
               <strong>PAN No:</strong> {experts?.pan}
             </p>
-            <p>
-              <strong>Creator GSTIN:</strong> {experts?.gst}
-            </p>
+            {experts?.gst && (
+              <p>
+                <strong>Creator GSTIN:</strong> {experts?.gst}
+              </p>
+            )}
             <p>
               <strong>Transaction ID:</strong> {transactionId}
             </p>
@@ -150,10 +152,10 @@ const Receipt = ({ transaction, closePopup }) => {
           <thead>
             <tr>
               <th className="border px-2 py-1">Description</th>
-              <th className="border px-2 py-1">Price</th>
-              <th className="border px-2 py-1">IGST%</th>
-              <th className="border px-2 py-1">IGST Amt</th>
-              <th className="border px-2 py-1">Total Tax</th>
+              {experts?.gst && <th className="border px-2 py-1">Price</th>}
+              {experts?.gst && <th className="border px-2 py-1">IGST%</th>}
+              {experts?.gst && <th className="border px-2 py-1">IGST Amt</th>}
+              {experts?.gst && <th className="border px-2 py-1">Total Tax</th>}
               <th className="border px-2 py-1">Amount</th>
             </tr>
           </thead>
@@ -162,16 +164,21 @@ const Receipt = ({ transaction, closePopup }) => {
               <td className="border px-2 py-1 text-center">
                 {subscription.description}
               </td>
-              <td className="border px-2 py-1 text-center">
-                ₹ {amountWithoutGst.toFixed(2)}
-              </td>
-              <td className="border px-2 py-1 text-center">18%</td>
-              <td className="border px-2 py-1 text-center">
-                ₹ {gstAmount.toFixed(2)}
-              </td>
-              <td className="border px-2 py-1 text-center">
-                ₹ {gstAmount.toFixed(2)}
-              </td>
+
+              {experts?.gst && (
+                <>
+                  <td className="border px-2 py-1 text-center">
+                    ₹ {amountWithoutGst.toFixed(2)}
+                  </td>
+                  <td className="border px-2 py-1 text-center">18%</td>
+                  <td className="border px-2 py-1 text-center">
+                    ₹ {gstAmount.toFixed(2)}
+                  </td>
+                  <td className="border px-2 py-1 text-center">
+                    ₹ {gstAmount.toFixed(2)}
+                  </td>
+                </>
+              )}
               <td className="border px-2 py-1 text-center">
                 ₹ {totalAmount.toFixed(2)}
               </td>

@@ -179,7 +179,7 @@ const Wallet = () => {
                             className={index % 2 === 0 ? "bg-[#1E1E22]" : ""}
                           >
                             <td className="py-8 pl-20 h-[18px] font-[500] text-[16px] leading-[18px]">
-                              {row.id}
+                              {row.transactionId}
                             </td>
                             <td className="py-8 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
                               {formatDate(row.transactionDate)}
