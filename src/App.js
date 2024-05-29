@@ -39,6 +39,7 @@ import ParentComponent from "./components/InviteLink/ParentComponent";
 import Receipt from "./components/Receipt/Receipt";
 import SuccessPage from "./components/SuccessPage";
 import CallBack from "./components/CallBack";
+import KYCPopup from "./components/Subscription RA/KYCPopup";
 
 function App() {
   // const token = sessionStorage.getItem("token");
@@ -210,7 +211,7 @@ function App() {
               )
             }
           />
-          <Route
+          {/* <Route
             path="refund-policy"
             element={
               userId || hasVisitedSignUp ? (
@@ -219,7 +220,7 @@ function App() {
                 <Navigate to="/signup" replace={true} />
               )
             }
-          />
+          /> */}
           <Route
             path="about"
             element={
@@ -313,10 +314,6 @@ function App() {
             }
           />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/success" component={<SuccessPage />} />
-        <Route path="/callback" component={<CallBack />} />
-          <Route path="/link" element={<ParentComponent />} />
-          <Route path="/receipt" element={<Receipt />} />
         </Route>
       </>
     )

@@ -32,6 +32,10 @@ const LinkPopup = ({ onClose, inviteLink }) => {
     onClose();
   };
 
+  const handleInviteLink = () => {
+    localStorage.removeItem("inviteLink");
+  }
+
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div className="bg-[#18181b] border-[1px] border-[#ffffff24] rounded shadow-md w-[90%] md:w-[400px] relative">
@@ -49,6 +53,7 @@ const LinkPopup = ({ onClose, inviteLink }) => {
           </div>
           {inviteLink ? (
             <a
+              onClick={handleInviteLink}
               href={inviteLink}
               target="_blank"
               rel="noopener noreferrer"

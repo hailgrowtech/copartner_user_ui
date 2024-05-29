@@ -14,7 +14,7 @@ const ProductList = [
   { name: "Features", link: "/about", id: 'features' },
   { name: "Blog", link: "/blogs", id: 'blog' },
   { name: "Privacy Policy", link: "/privacy", id: 'privacy' },
-  { name: "Refund Policy", link: "/refund-policy", id: 'refund' },
+  // { name: "Refund Policy", link: "/refund-policy", id: 'refund' },
   { name: "Terms of Service", link: "/terms_of_service", id: 'terms' },
 ];
 const CommunityList = [
@@ -38,7 +38,7 @@ const Footer = () => {
             <img src={logo} alt="" className="md:w-56 w-40" />
           </Link>
           <span className="md:w-[296px] w-[296px] md:h-[84px] h-[66px] font-normal md:text-[16px] text-[14px] md:leading-[20px] leading-[22px] text-dimWhite">
-          Connecting India’s SEBI registered Research Analysts, guiding you thoroughly to maximising profits in the dynamic world of stock trading.
+            Connecting India’s SEBI registered Research Analysts, guiding you thoroughly to maximising profits in the dynamic world of stock trading.
           </span>
           <div className="flex gap-7 rounded-full">
             <a

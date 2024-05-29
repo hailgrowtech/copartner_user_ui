@@ -54,7 +54,7 @@ const SubscriptionRA = () => {
     }
   }, [userData]);
 
-  const handleSelectPlan = (subscriptionId, plan, price ) => {
+  const handleSelectPlan = (subscriptionId, plan, price) => {
     setSelectedPlan(plan);
     setPlanPrice(price);
     setSubscriptionId(subscriptionId);
@@ -139,7 +139,7 @@ const SubscriptionRA = () => {
     }
   };
 
-  const handleBuyNowClick = (subscriptionId, plan, price ) => {
+  const handleBuyNowClick = (subscriptionId, plan, price) => {
     setSelectedMonthlyPlan(plan);
     setPlanMonthlyPrice(price);
     setShowMonthlyPopup(true);
@@ -257,7 +257,7 @@ const SubscriptionRA = () => {
               <div className="flex flex-col items-center justify-around">
                 <div className="text-[15px] text-[#C6CDD5]">Followers</div>
                 <div className="md:text-xl text-xs font-semibold">
-                  {expertData.telegramFollower}
+                  {`${expertData.telegramFollower / 1000}k`}
                 </div>
               </div>
             </div>
@@ -293,7 +293,7 @@ const SubscriptionRA = () => {
             />
             <span className="md:text-3xl text-sm">{expertData.rating}</span>
           </div>
-          <div
+          {/* <div
             onClick={handleSaveCard}
             className={`absolute md:bottom-6 bottom-12 md:right-8 right-3 rounded-full cursor-pointer transition duration-300 hover:scale-110 hover:bg-[#ffffff5e] hover:rounded-full p-2`}
           >
@@ -306,7 +306,7 @@ const SubscriptionRA = () => {
                 className="w-6 h-6"
               />
             )}
-          </div>
+          </div> */}
           <div
             onClick={() => handleTelegram(expertData.telegramChannel)}
             className="bg-[#0081F1] md:hidden w-[90%] block absolute bottom-3 border-opacity-30 md:rounded-3xl rounded-2xl md:w-44 md:mb-6"
@@ -322,25 +322,22 @@ const SubscriptionRA = () => {
             <div className="md:flex-col-6 md:text-[16px] text-[12px] flex flex-row md:mx-px mx-auto">
               <button
                 onClick={() => handleTabClick("subscriptions")}
-                className={`hover:text-white text-dimWhite md:flex-col-3 rounded-full p-2 md:px-6 md:py-5 mx-2 md:text-[1rem] text-[9.5px] ${
-                  activeTab === "subscriptions" ? "bg-[#ffffff5e]" : ""
-                }`}
+                className={`hover:text-white text-dimWhite md:flex-col-3 rounded-full p-2 md:px-6 md:py-5 mx-2 md:text-[1rem] text-[9.5px] ${activeTab === "subscriptions" ? "bg-[#ffffff5e]" : ""
+                  }`}
               >
                 Subscriptions Plans
               </button>
               <button
                 onClick={() => handleTabClick("highlights")}
-                className={`md:flex-col-3 md:px-6 md:py-5 mx-2 rounded-full p-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white ${
-                  activeTab === "highlights" ? "bg-[#ffffff5e]" : ""
-                }`}
+                className={`md:flex-col-3 md:px-6 md:py-5 mx-2 rounded-full p-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white ${activeTab === "highlights" ? "bg-[#ffffff5e]" : ""
+                  }`}
               >
                 Key Highlights
               </button>
               <button
                 onClick={() => handleTabClick("about")}
-                className={`md:flex-col-3 md:px-6 md:py-5 mx-2 rounded-full p-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white ${
-                  activeTab === "about" ? "bg-[#ffffff5e]" : ""
-                }`}
+                className={`md:flex-col-3 md:px-6 md:py-5 mx-2 rounded-full p-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white ${activeTab === "about" ? "bg-[#ffffff5e]" : ""
+                  }`}
               >
                 About Subscriptions
               </button>
@@ -376,9 +373,8 @@ const SubscriptionRA = () => {
                       subscription.amount
                     )
                   }
-                  className={`flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
-                    activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
-                  } relative`}
+                  className={`flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
+                    } relative`}
                 >
                   <div className="text-center opacity-60 hidden">
                     21 Days Left
@@ -520,11 +516,10 @@ const SubscriptionRA = () => {
                         subscription.amount
                       )
                     }
-                    className={`flex rounded-2xl p-4 ${
-                      selectedPlan === subscription.planType
-                        ? "bg-[#18181B80] border-2 border-[#F4F4F51A]"
-                        : "hover:bg-[#18181B80]"
-                    }`}
+                    className={`flex rounded-2xl p-4 ${selectedPlan === subscription.planType
+                      ? "bg-[#18181B80] border-2 border-[#F4F4F51A]"
+                      : "hover:bg-[#18181B80]"
+                      }`}
                     onMouseEnter={() => handleMouseEnter(1)}
                     onMouseLeave={handleMouseLeave}
                   >
