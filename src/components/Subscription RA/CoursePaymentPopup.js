@@ -9,7 +9,8 @@ const CoursePaymentPopup = ({
   expertName,
   chatId,
   subscriptionId,
-  userId
+  userId,
+  mobileNumber
 }) => {
   const total = planPrice || 0;
 
@@ -37,7 +38,8 @@ const CoursePaymentPopup = ({
       plan: handleDurationPlans(),
       chatId,
       subscriptionId,
-      userId
+      userId,
+      mobileNumber
     };
 
     console.log(data);

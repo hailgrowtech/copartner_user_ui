@@ -9,7 +9,8 @@ const SubscriptionPaymentPopup = ({
   expertName,
   chatId,
   subscriptionId,
-  userId
+  userId,
+  mobileNumber
 }) => {
   const total = planMonthlyPrice || 0;
 
@@ -37,7 +38,8 @@ const SubscriptionPaymentPopup = ({
       plan: handleDurationPlans(),
       chatId,
       subscriptionId,
-      userId
+      userId,
+      mobileNumber
     };
 
     console.log("subscription Popup", data);

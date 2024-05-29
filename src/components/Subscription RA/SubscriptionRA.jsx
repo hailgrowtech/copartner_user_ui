@@ -169,7 +169,7 @@ const SubscriptionRA = () => {
       const paymentSuccess = checkPaymentStatus();
       handlePaymentSuccess(paymentSuccess);
     }
-  }, [loading, userData]);
+  }, [loading, userData?.isKYC, inviteLink]);
 
   const handlePaymentSuccess = (paymentSuccess) => {
     if (paymentSuccess) {
