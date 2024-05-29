@@ -63,7 +63,6 @@ const KYCPopup = ({ onClose }) => {
       if (response.status === 200) {
         toast.success("Details updated successfully!");
         setError(null);
-        window.location.reload()
         onClose();
       } else {
         toast.error("Failed to update details!");

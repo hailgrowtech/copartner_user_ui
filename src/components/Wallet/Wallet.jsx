@@ -130,6 +130,10 @@ const Wallet = () => {
                           {row.transactionId}
                         </p>
                         <img
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          downloadTransactionData(row);
+                        }}
                           src={invoiceImg}
                           alt=""
                           className="w-[21px] h-[21px] text-white"

@@ -43,7 +43,7 @@ const SubscriptionPaymentPopup = ({
     console.log("subscription Popup", data);
 
     try {
-      const res = await axios.post("http://localhost:3101/api/pay", data);
+      const res = await axios.post("https://phonepe.copartner.in/api/pay", data);
       if (res.data.success) {
         window.location.href =
           res.data.data.instrumentResponse.redirectInfo.url;
