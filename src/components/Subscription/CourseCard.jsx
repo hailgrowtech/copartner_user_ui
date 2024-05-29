@@ -48,7 +48,7 @@ const CourseCard = ({ courseData }) => {
           <div className="border-white mt-2 pt-1 flex justify-center">
             <div className="border-r border-white px-[60px] text-center">
               <p className="mb-1">Experience</p>
-              <p>{experience}</p>
+              <p>{experience}+</p>
             </div>
             <div className="px-[60px] text-center">
               <p className="mb-1">Followers</p>

@@ -82,7 +82,6 @@ const SubscriptionRA = () => {
         throw new Error("Error in fetching subscriptions");
       }
       const data = await response.json();
-      console.log("subscription array", data.data);
       setSubscriptions(data.data);
     } catch (error) {
       console.error("Failed to fetch subscription plans:", error);
@@ -251,7 +250,7 @@ const SubscriptionRA = () => {
               <div className="flex flex-col items-center justify-around">
                 <div className="text-[15px] text-[#C6CDD5]">Experience</div>
                 <div className="md:text-xl text-xs font-semibold">
-                  {expertData.experience}
+                  {expertData.experience}+
                 </div>
               </div>
               <div className="w-[1px] md:h-16 h-10 bg-white"></div>

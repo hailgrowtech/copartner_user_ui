@@ -243,7 +243,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
                         Experience
                       </span>
                       <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
-                        {expert.experience}
+                        {expert.experience}+
                       </span>
                     </div>
                     <div className="md:w-[1.4px] md:h-[25px] w-[1px] h-[22px] bg-lightWhite"></div>

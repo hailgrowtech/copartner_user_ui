@@ -126,7 +126,7 @@ const SubscriptionRA = () => {
       const paymentSuccess = checkPaymentStatus();
       handlePaymentSuccess(paymentSuccess);
     }
-  }, [loading, userData]);
+  }, [loading, userData?.isKYC, inviteLink]);
 
   const handlePaymentSuccess = (paymentSuccess) => {
     if (paymentSuccess) {
@@ -369,13 +369,11 @@ const SubscriptionRA = () => {
                         : "Buy"}
                     </button>
                   </div>
-                  {
-                    index === Math.floor(subscriptions.length / 2) && (
-                      <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
-                        Recommended
-                      </div>
-                    )
-                  }
+                  {index === Math.floor(subscriptions.length / 2) && (
+                    <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
+                      Recommended
+                    </div>
+                  )}
                 </div>
               ))}
             {showMonthlyPopup && (

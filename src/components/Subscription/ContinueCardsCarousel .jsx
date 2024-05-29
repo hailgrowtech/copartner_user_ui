@@ -121,7 +121,7 @@ const ContinueCardsCarousel = () => {
                     <div className="border-white mt-2 pt-1 flex justify-center">
                       <div className="border-r border-white px-[80px] text-center">
                         <p className="mb-1 text-[#eeeef8cc]">Experience</p>
-                        <p>{item.experience}</p>
+                        <p>{item.experience}+</p>
                       </div>
                       <div className="px-[80px] text-center">
                         <p className="mb-1 text-dimWhite">Followers</p>

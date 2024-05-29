@@ -72,7 +72,7 @@ const Expertise = () => {
                 <div className="md:w-[256px] w-[143px] h-[44px] flex items-start md:mt-2 mt-4 justify-between">
                   <div className="flex flex-col md:w-[78px] w-[43px] h-[22px] items-center justify-between">
                     <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
-                      {expert.experience}
+                      {expert.experience}+
                     </span>
                     <span className="text-lightWhite font-[600] sm:text-[15px] sm:leading-[18px] text-[10px] leading-[10px]">
                       {expert.totalExp}

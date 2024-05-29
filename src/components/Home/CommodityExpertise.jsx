@@ -114,7 +114,7 @@ const CommodityExpertise = () => {
                       Experience
                     </span>
                     <span className="text-lightWhite font-[600] sm:text-[15px] sm:leading-[18px] text-[10px] leading-[10px]">
-                      {expert.experience}
+                      {expert.experience}+
                     </span>
                   </div>
                   <div className="sm:w-[1.4px] sm:h-[40px] w-[0.4px] h-[16px] bg-lightWhite"></div>

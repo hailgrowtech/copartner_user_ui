@@ -26,7 +26,7 @@ const ExpertCard = () => {
             <div className="flex justify-between md:w-[350px] w-[176px] md:h-16 h-10 md:mb-6 mb-4">
               <div className="flex flex-col items-center justify-around">
                 <div className="md:text-xl text-[12px] text-[#C6CDD5]">Experience</div>
-                <div className="md:text-xl text-xs font-semibold">{expert.experience}</div>
+                <div className="md:text-xl text-xs font-semibold">{expert.experience}+</div>
               </div>
               <div className="w-[1px] md:h-16 h-10 bg-white"></div>
               <div className="flex flex-col items-center justify-around">
