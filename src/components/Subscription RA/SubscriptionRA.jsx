@@ -11,8 +11,9 @@ import { useParams } from "react-router-dom";
 import { useUserSession } from "../../constants/userContext";
 import KYCPopup from "./KYCPopup";
 import LinkPopup from "../InviteLink/LinkPopup";
+import SignUp2 from "../Signup2";
 
-const SubscriptionRA = () => {
+const SubscriptionRA = ({ userId }) => {
   const { id } = useParams();
   const [isCardSaved, setIsCardSaved] = useState(false);
   const [expertData, setExpertData] = useState(null);
@@ -32,7 +33,7 @@ const SubscriptionRA = () => {
   const [chatID, setChatID] = useState("");
   const { userData, loading } = useUserSession();
   const [inviteLink, setInviteLink] = useState("");
-  const [subscriptionId, setSubscriptionId] = useState("")
+  const [subscriptionId, setSubscriptionId] = useState("");
 
   useEffect(() => {
     if (userData) {
@@ -322,22 +323,25 @@ const SubscriptionRA = () => {
             <div className="md:flex-col-6 md:text-[16px] text-[12px] flex flex-row md:mx-px mx-auto">
               <button
                 onClick={() => handleTabClick("subscriptions")}
-                className={`hover:text-white text-dimWhite md:flex-col-3 rounded-full p-2 md:px-6 md:py-5 mx-2 md:text-[1rem] text-[9.5px] ${activeTab === "subscriptions" ? "bg-[#ffffff5e]" : ""
-                  }`}
+                className={`hover:text-white text-dimWhite md:flex-col-3 rounded-full p-2 md:px-6 md:py-5 mx-2 md:text-[1rem] text-[9.5px] ${
+                  activeTab === "subscriptions" ? "bg-[#ffffff5e]" : ""
+                }`}
               >
                 Subscriptions Plans
               </button>
               <button
                 onClick={() => handleTabClick("highlights")}
-                className={`md:flex-col-3 md:px-6 md:py-5 mx-2 rounded-full p-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white ${activeTab === "highlights" ? "bg-[#ffffff5e]" : ""
-                  }`}
+                className={`md:flex-col-3 md:px-6 md:py-5 mx-2 rounded-full p-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white ${
+                  activeTab === "highlights" ? "bg-[#ffffff5e]" : ""
+                }`}
               >
                 Key Highlights
               </button>
               <button
                 onClick={() => handleTabClick("about")}
-                className={`md:flex-col-3 md:px-6 md:py-5 mx-2 rounded-full p-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white ${activeTab === "about" ? "bg-[#ffffff5e]" : ""
-                  }`}
+                className={`md:flex-col-3 md:px-6 md:py-5 mx-2 rounded-full p-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white ${
+                  activeTab === "about" ? "bg-[#ffffff5e]" : ""
+                }`}
               >
                 About Subscriptions
               </button>
@@ -373,8 +377,9 @@ const SubscriptionRA = () => {
                       subscription.amount
                     )
                   }
-                  className={`flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
-                    } relative`}
+                  className={`flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
+                    activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
+                  } relative ${index === Math.floor(subscriptions.length / 2) ? "border-2" : ""}`}
                 >
                   <div className="text-center opacity-60 hidden">
                     21 Days Left
@@ -395,13 +400,11 @@ const SubscriptionRA = () => {
                       Buy Now
                     </button>
                   </div>
-                  {
-                    index === Math.floor(subscriptions.length / 2) && (
-                      <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
-                        Recommended
-                      </div>
-                    )
-                  }
+                  {index === Math.floor(subscriptions.length / 2) && (
+                    <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
+                      Recommended
+                    </div>
+                  )}
                 </div>
               ))}
             {showMonthlyPopup && (
@@ -516,10 +519,11 @@ const SubscriptionRA = () => {
                         subscription.amount
                       )
                     }
-                    className={`flex rounded-2xl p-4 ${selectedPlan === subscription.planType
-                      ? "bg-[#18181B80] border-2 border-[#F4F4F51A]"
-                      : "hover:bg-[#18181B80]"
-                      }`}
+                    className={`flex rounded-2xl p-4 ${
+                      selectedPlan === subscription.planType
+                        ? "bg-[#18181B80] border-2 border-[#F4F4F51A]"
+                        : "hover:bg-[#18181B80]"
+                    }`}
                     onMouseEnter={() => handleMouseEnter(1)}
                     onMouseLeave={handleMouseLeave}
                   >
@@ -604,6 +608,7 @@ const SubscriptionRA = () => {
           />
         )}
       </div>
+      {!userId && <SignUp2 />}
     </section>
   );
 };

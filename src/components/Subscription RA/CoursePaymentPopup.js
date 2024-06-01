@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { close, exclamation } from "../../assets";
 import axios from "axios";
 
@@ -10,9 +10,10 @@ const CoursePaymentPopup = ({
   chatId,
   subscriptionId,
   userId,
-  mobileNumber
+  mobileNumber,
 }) => {
   const total = planPrice || 0;
+  const [loading, setLoading] = useState(false);
 
   const handleClose = () => {
     onClose();
@@ -31,6 +32,16 @@ const CoursePaymentPopup = ({
   };
 
   const handlePay = async () => {
+    
+    function formatDate(date) {
+      const day = String(date.getDate()).padStart(2, '0');
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const year = date.getFullYear();
+      return `${day}-${month}-${year}`;
+    }
+
+    const transactionDate = formatDate(new Date());
+
     const data = {
       totalAmount: total,
       returnUrl: window.location.href,
@@ -39,13 +50,18 @@ const CoursePaymentPopup = ({
       chatId,
       subscriptionId,
       userId,
-      mobileNumber
+      mobileNumber,
+      transactionDate
     };
 
     console.log(data);
 
     try {
-      const res = await axios.post("https://phonepe.copartner.in/api/pay", data);
+      setLoading(true);
+      const res = await axios.post(
+        "https://phonepe.copartner.in/api/pay",
+        data
+      );
       if (res.data.success) {
         window.location.href =
           res.data.data.instrumentResponse.redirectInfo.url;
@@ -59,6 +75,8 @@ const CoursePaymentPopup = ({
         console.error("Error Response Status:", error.response.status);
         console.error("Error Response Headers:", error.response.headers);
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -106,10 +124,13 @@ const CoursePaymentPopup = ({
             <span className="text-lg font-semibold">₹{total.toFixed(2)}</span>
           </div>
           <button
-            className="bg-[#fff] text-[#000] py-3 px-2 rounded-sm hover:bg-[#000] hover:text-[#fff] transition duration-300 md:text-[1rem] text-[12px] font-semibold"
+            className={`${
+              loading ? "bg-dimWhite" : "bg-[#fff]"
+            } text-[#000] py-3 px-2 rounded-sm hover:bg-[#000] hover:text-[#fff] transition duration-300 md:text-[1rem] text-[12px] font-semibold`}
             onClick={handlePay}
+            disabled={loading}
           >
-            Pay
+            {loading ? "Paying" : "Pay"}
           </button>
           <div className="justify-start items-center flex py-2 mt-2">
             <span className="flex items-start gap-2 md:text-[12px] text-[10px]">

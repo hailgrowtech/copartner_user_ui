@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Otp from "./Otp";
 import { closeImg, signupBg } from "../assets";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import Otp2 from "./Otp2";
 
-const SignUp = () => {
+const SignUp2 = () => {
   const [mobile, setMobile] = useState("");
   const [showOtp, setShowOtp] = useState(false);
   const [error, setError] = useState("");
@@ -111,20 +111,9 @@ const SignUp = () => {
         }}
       ></div>
       <div
-        className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-10 z-50 w-screen h-screen`}
+        className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50 w-screen h-screen`}
       >
         <div className="bg-[#18181B] border-[1px] border-[#ffffff2a] m-4 p-6 rounded-lg w-96 relative text-center">
-          <div className="absolute top-3 right-0 text-right">
-            <button
-              onClick={() => {
-                handleClose();
-                scrollToTop();
-              }}
-              className="text-gray-400 w-8 text-[20px] cursor-pointer hover:text-white"
-            >
-              <img src={closeImg} alt="close" />
-            </button>
-          </div>
           <div className="mb-4">
             <h2 className="text-2xl font-semibold text-white">Login/Signup</h2>
           </div>
@@ -134,7 +123,7 @@ const SignUp = () => {
           </p>
           {error && <p className="text-red-500 mb-4">{error}</p>}
           {showOtp ? (
-            <Otp
+            <Otp2
               apid={apid}
               raid={raid}
               mobileNumber={mobile}
@@ -176,4 +165,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignUp2;

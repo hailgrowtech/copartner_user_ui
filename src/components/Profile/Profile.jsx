@@ -19,22 +19,19 @@ const Profile = () => {
   return (
     <>
       <section className={`flex-col ${styles.paddingY}`}>
-        {/* Section 1 */}
         <section className="w-full flex md:flex-row md:p-1 p-5 flex-col items-center justify-center">
           <ShowProfile userData={userData} />
         </section>
-        <div
+        {/* <div
           className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-3 z-10 md:bottom-[10rem]`}
         >
-          {/* Section 2 */}
           <section className="w-full flex md:flex-row flex-col items-center justify-center">
             <Alert />
           </section>
-          {/* Section 3 */}
           <section className="w-full flex md:flex-row flex-col items-center justify-center">
             <SavedProfile />
           </section>
-        </div>
+        </div> */}
       </section>
     </>
   );

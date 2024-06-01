@@ -1,32 +1,40 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "../../style";
 import Interest from "./Interest";
 import axios from "axios";
 import { invoiceImg, logout } from "../../assets";
-import SubscriptionType from "./SubscriptionType";
-import NameType from "./NameType";
 import { Link } from "react-router-dom";
 import { useUserData } from "../../constants/context";
 import Receipt from "../Receipt/Receipt";
+import KYCWarning from "./KYCWarning";
+import { useUserSession } from "../../constants/userContext";
+import { SubscriptionContext } from "../../constants/subscriptionContext";
 
-const Wallet = () => {
+const Wallet = ({ userId }) => {
   const userData = useUserData();
+  const { transactionTable } = useContext(SubscriptionContext);
   const [smallScreen, setSmallScreen] = useState(false);
-  const [transactionTable, setTransactionTable] = useState([]);
-  const userId = sessionStorage.getItem("userId");
   const [selectedTransaction, setSelectedTransaction] = useState(null);
+  const [visibleTransactions, setVisibleTransactions] = useState(3);
+  const [KYCWaring, setKYCWaring] = useState(false);
+  const { userData: loginData } = useUserSession();
 
-  useEffect(() => {
-    axios
-      .get(`https://copartners.in:5009/api/Subscriber/GetByUserId/${userId}`)
-      .then((res) => {
-        setTransactionTable(res.data.data);
-      })
-      .catch((error) => {
-        console.log("Error Getting In Transaction API.", error);
-        setTransactionTable([]);
-      });
-  }, []);
+  const showMoreTransactions = () => {
+    setVisibleTransactions(visibleTransactions + 3);
+  };
+
+  const getExpertType = (typeId) => {
+    switch (parseInt(typeId)) {
+      case 1:
+        return "Commodity";
+      case 2:
+        return "Equity";
+      case 3:
+        return "Options";
+      default:
+        return "Unknown";
+    }
+  };
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -49,13 +57,17 @@ const Wallet = () => {
   };
 
   const downloadTransactionData = (transaction) => {
+    if (!loginData?.isKYC) {
+      setKYCWaring(true);
+      return;
+    }
+    setSelectedTransaction(transaction);
     setSelectedTransaction(transaction);
   };
 
-  const token = sessionStorage.getItem("userId");
-
   const closePopup = () => {
     setSelectedTransaction(null);
+    setKYCWaring(false);
   };
 
   return (
@@ -68,13 +80,17 @@ const Wallet = () => {
             <div
               className={`${styles.flexStart} flex-col text-center md:gap-[2rem] gap-0`}
             >
-              <div className="justify-between items-center">
+              <div className="flex flex-col justify-center items-center text-center">
                 <span className="font-inter font-[700] md:text-[72px] text-[44px] text-gradient md:leading-[74px] leading-[48px]">
-                  Earn and Prosper
+                  Transaction History
                 </span>
-
-                <p className="md:w-[508px] md:h-[56px] w-[341px] h-[32px] font-inter font-[500] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] leading-[16px] flex items-center justify-center">
-                  Earn, Repeat & Collect!
+                <p className="md:w-[508px] md:h-[56px] w-[341px] h-[32px] font-inter font-[500] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] leading-[16px] mt-4">
+                  Review the transaction history below to have transparency into
+                  payments made to our portal.{" "}
+                  <span className="text-lightWhite">
+                    Stay informed about your expenditure and the services you've
+                    accessed. 
+                  </span>
                 </p>
               </div>
             </div>
@@ -103,64 +119,61 @@ const Wallet = () => {
           </div>
 
           <div className="flex md:flex-row flex-col justify-around items-center">
-            <span className="md:w-[461px] md:h-[52px] font-inter font-bold md:text-[50px] text-[30px] text-gradient-2 leading-[51px]">
-              Transaction History
-            </span>
-            <span className="md:w-[550px] md:h-[56px] w-[328px] h-[68px] font-[400] md:text-[18px] text-[13px] md:leading-[28px] leading-[17px] text-dimWhite md:text-start">
-              Review the transaction history below to have transparency into
-              payments made to our portal.{" "}
-              <span className="text-lightWhite">
-                Stay informed about your expenditure and the services you've
-                accessed. 
-              </span>
-            </span>
+            <span className="md:w-[461px] md:h-[52px] font-inter font-bold md:text-[50px] text-[30px] text-gradient-2 leading-[51px]"></span>
           </div>
 
-          {token ? (
+          {userId ? (
             <div className="flex justify-center items-center md:mt-[1rem] mt-[-20px]">
               {smallScreen ? (
                 <div className="flex flex-wrap justify-center items-center">
-                  {transactionTable.slice(0, 3).map((row, index) => (
-                    <div
-                      key={index}
-                      className="flex flex-col justify-around w-[361px] h-[208px] bg-[#18181B] bg-opacity-[50%] rounded-[30px] md:m-4 m-[10px] p-4 w-[90%] max-w-sm"
-                    >
-                      <div className="flex flex-row justify-between">
-                        <p className="w-[173px] h-[26px] font-[600] text-[21px] leading-[25px] text-lightWhite">
-                          {row.transactionId}
-                        </p>
-                        <img
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          downloadTransactionData(row);
-                        }}
-                          src={invoiceImg}
-                          alt=""
-                          className="w-[21px] h-[21px] text-white"
-                        />
+                  {transactionTable
+                    .slice(0, visibleTransactions)
+                    .map((row, index) => (
+                      <div
+                        key={index}
+                        className="flex flex-col justify-around w-[361px] h-[208px] bg-[#18181B] bg-opacity-[50%] rounded-[30px] md:m-4 m-[10px] p-4 max-w-sm"
+                      >
+                        <div className="flex flex-row justify-between">
+                          <p className="w-[173px] h-[26px] font-[600] text-[21px] leading-[25px] text-lightWhite">
+                            {row.transactionId}
+                          </p>
+                          <img
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              downloadTransactionData(row);
+                            }}
+                            src={invoiceImg}
+                            alt=""
+                            className="w-[21px] h-[21px] text-white"
+                          />
+                        </div>
+                        <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
+                          <span className="text-dimWhite">DATE:</span>{" "}
+                          {formatDate(row.transactionDate)}
+                        </span>
+                        <span className="flex items-center justify-between sm:w-[305px] h-[34px] font-[500] text-[14px] leading-[12px] text-lightWhite">
+                          <span className="text-dimWhite">SUBSCRIPTION:</span>{" "}
+                          {getExpertType(row.subscription.serviceType)}
+                        </span>
+                        <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
+                          <span className="text-dimWhite">NAME:</span>
+                          {row.subscription.experts.name}
+                        </span>
+                        <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
+                          <span className="text-dimWhite">AMOUNT:</span> ₹{" "}
+                          {row.totalAmount}
+                        </span>
                       </div>
-                      <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
-                        <span className="text-dimWhite">DATE:</span>{" "}
-                        {formatDate(row.transactionDate)}
-                      </span>
-                      <span className="flex items-center justify-between sm:w-[305px] h-[34px] font-[500] text-[14px] leading-[12px] text-lightWhite">
-                        <span className="text-dimWhite">SUBSCRIPTION:</span>{" "}
-                        {row.subscription.serviceType}
-                      </span>
-                      <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
-                        <span className="text-dimWhite">NAME:</span>
-                        {row.subscription.experts.name}
-                      </span>
-                      <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
-                        <span className="text-dimWhite">AMOUNT:</span> ₹{" "}
-                        {row.totalAmount}
-                      </span>
-                    </div>
-                  ))}
+                    ))}
 
-                  <button className="md:w-[147px] md:h-[40px] md:flex items-center justify-center flex w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px]">
-                    Show More
-                  </button>
+                  {visibleTransactions < transactionTable.length && (
+                    <button
+                      onClick={showMoreTransactions}
+                      className="md:w-[147px] md:h-[40px] md:flex items-center justify-center flex w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px] mt-4"
+                    >
+                      Show More
+                    </button>
+                  )}
                 </div>
               ) : (
                 <table className="w-[1234px] px-[1rem] bg-[#18181B] bg-opacity-[50%] rounded-[30px]">
@@ -189,7 +202,7 @@ const Wallet = () => {
                               {formatDate(row.transactionDate)}
                             </td>
                             <td className="py-8 px-20 text-center h-[36px] font-[500] text-[16px] text-white leading-[18px]">
-                              {row.subscription.serviceType}
+                              {getExpertType(row.subscription.serviceType)}
                             </td>
                             <td className="py-8 text-center w-[105px] h-[18px] font-[500] text-[16px] leading-[18px]">
                               {row.subscription.experts.name}
@@ -214,8 +227,17 @@ const Wallet = () => {
                   </tbody>
                 </table>
               )}
+              {KYCWaring && (
+                <KYCWarning
+                  message="Please complete KYC to download this transaction."
+                  onClose={closePopup}
+                />
+              )}
               {selectedTransaction && (
-                <Receipt closePopup={closePopup} transaction={selectedTransaction} />
+                <Receipt
+                  closePopup={closePopup}
+                  transaction={selectedTransaction}
+                />
               )}
             </div>
           ) : (

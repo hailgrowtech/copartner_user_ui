@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { back, closeImg } from "../assets";
-import { useNavigate } from "react-router-dom";
+import { back } from "../assets";
 
-const Otp = ({ onClose, onCloseAll, mobileNumber, apid, raid }) => {
+const Otp2 = ({ onClose, onCloseAll, mobileNumber, apid, raid }) => {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
   const [timer, setTimer] = useState(25);
-  const navigate = useNavigate();
 
   useEffect(() => {
     let interval;
@@ -135,7 +133,6 @@ const Otp = ({ onClose, onCloseAll, mobileNumber, apid, raid }) => {
         console.log("Something");
       }
       localStorage.setItem("userId", data.data.id);
-      navigate("/");
       window.location.reload();
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);
@@ -191,14 +188,6 @@ const Otp = ({ onClose, onCloseAll, mobileNumber, apid, raid }) => {
             <img src={back} alt="" />
           </div>
         </div>
-        <div className="absolute top-3 right-0 text-right">
-          <div
-            onClick={onCloseAll}
-            className="text-gray-400 w-8 text-[20px] cursor-pointer hover:text-white"
-          >
-            <img src={closeImg} alt="close" />
-          </div>
-        </div>
         <div className="mb-1">
           <h2 className="text-2xl font-semibold text-white">
             OTP Verification
@@ -245,4 +234,4 @@ const Otp = ({ onClose, onCloseAll, mobileNumber, apid, raid }) => {
   );
 };
 
-export default Otp;
+export default Otp2;

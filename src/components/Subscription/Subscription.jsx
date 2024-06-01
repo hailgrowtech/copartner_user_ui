@@ -29,8 +29,6 @@ const Subscription = ({userId}) => {
     });
   };
 
-  const token = sessionStorage.getItem("userId");
-  
   return (
     <div className="expertise-Bg">
       <section
@@ -76,7 +74,7 @@ const Subscription = ({userId}) => {
           guiding you towards trading success with precision and insight.
         </p>
         <div className="flex flex-row justify-center">
-          { token ? <ProfileCard userId={userId} /> : <div className="text-center flex flex-col gap-8 mt-12 text-dimWhite md:text-4xl text-lg"><img className="md:w-96 w-60 mx-auto" src={logout} alt="" /><Link to={"/signup"}>Login to see your Subscriptions!</Link></div>}
+          { userId ? <ProfileCard userId={userId} /> : <div className="text-center flex flex-col gap-8 mt-12 text-dimWhite md:text-4xl text-lg"><img className="md:w-96 w-60 mx-auto" src={logout} alt="" /><Link to={"/signup"}>Login to see your Subscriptions!</Link></div>}
         </div>
       </div>
 

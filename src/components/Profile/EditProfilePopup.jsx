@@ -13,7 +13,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
   const [address, setAddress] = useState("");
   const [state, setState] = useState("");
   const [profileImageUrl, setProfileImageUrl] = useState("");
-  const userId = sessionStorage.getItem("userId");
+  const userId = localStorage.getItem("userId");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {

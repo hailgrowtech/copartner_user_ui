@@ -21,7 +21,7 @@ import {
   Terms,
   SignUp,
   Disclaimer,
-  RefundPolicy,
+  // RefundPolicy,
   Hero,
 } from "./components";
 import styles from "./style";
@@ -35,16 +35,12 @@ import {
 } from "react-router-dom";
 import { UserDataProvider } from "./constants/context";
 import { UserProvider } from "./constants/userContext";
-import ParentComponent from "./components/InviteLink/ParentComponent";
-import Receipt from "./components/Receipt/Receipt";
-import SuccessPage from "./components/SuccessPage";
-import CallBack from "./components/CallBack";
-import KYCPopup from "./components/Subscription RA/KYCPopup";
+import { SubscriptionProvider } from "./constants/subscriptionContext";
 
 function App() {
   // const token = sessionStorage.getItem("token");
   const hasVisitedSignUp = sessionStorage.getItem("visitedSignUp");
-  const userId = sessionStorage.getItem("userId");
+  const userId = localStorage.getItem("userId");
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -53,7 +49,7 @@ function App() {
           path="/"
           element={
             <UserProvider>
-              <Navbar />
+              <Navbar token={userId} />
             </UserProvider>
           }
           errorElement={<ErrorPage />}
@@ -65,7 +61,12 @@ function App() {
                 <div className={`${styles.flexStart}`}>
                   <UserDataProvider>
                     <div className={`${styles.boxWidth}`}>
-                      <Hero hasVisitedSignUp={hasVisitedSignUp} token={userId} />
+                      <SubscriptionProvider>
+                        <Hero
+                          hasVisitedSignUp={hasVisitedSignUp}
+                          token={userId}
+                        />
+                      </SubscriptionProvider>
                     </div>
                   </UserDataProvider>
                 </div>
@@ -145,7 +146,9 @@ function App() {
             element={
               userId ? (
                 <UserDataProvider>
-                  <Wallet />
+                  <SubscriptionProvider>
+                    <Wallet userId={userId} />
+                  </SubscriptionProvider>
                 </UserDataProvider>
               ) : (
                 <Navigate to="/signup" replace={true} />
@@ -155,13 +158,9 @@ function App() {
           <Route
             path="ra-detail/:id"
             element={
-              userId ? (
-                <UserProvider>
-                  <SubscriptionRA />
-                </UserProvider>
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
+              <UserProvider>
+                <SubscriptionRA userId={userId} />
+              </UserProvider>
             }
           />
           <Route

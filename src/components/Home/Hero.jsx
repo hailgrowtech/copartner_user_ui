@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "../../style";
 import {
   arrow,
@@ -12,15 +12,17 @@ import Expertise from "./Expertise";
 import { Link } from "react-router-dom";
 import { useUserData } from "../../constants/context";
 import { useUserSession } from "../../constants/userContext";
+import KYCPopup from "../Subscription RA/KYCPopup";
+import { SubscriptionContext } from "../../constants/subscriptionContext";
 
 const Hero = ({ hasVisitedSignUp, token }) => {
   const [showDialog, setShowDialog] = useState(false);
   const userData = useUserData();
-  const data = useUserSession().userData;
+  const dataUser = useUserSession().userData;
   const [nameData, setNameData] = useState("");
   const [emailData, setEmailData] = useState("");
-  const userId = sessionStorage.getItem("userId");
-
+  const [showKYCDialog, setShowKYCDialog] = useState(false);
+  const { transactionTable } = useContext(SubscriptionContext);
   const getExpertType = (typeId) => {
     switch (typeId) {
       case 1:
@@ -59,7 +61,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
 
     try {
       const resUser = await fetch(
-        `https://copartners.in:5131/api/User?Id=${userId}`,
+        `https://copartners.in:5131/api/User?Id=${token}`,
         {
           method: "PATCH",
           headers: {
@@ -87,12 +89,8 @@ const Hero = ({ hasVisitedSignUp, token }) => {
   };
 
   useEffect(() => {
-    if (data) {
-      setNameData(data?.name || "");
-      setEmailData(data?.email || "");
-    }
     const fetchUserData = async () => {
-      if (!data?.name || !data?.email) {
+      if (!dataUser?.name || !dataUser?.email) {
         setShowDialog(true);
       } else {
         sessionStorage.setItem("isDialogClosed", "true");
@@ -100,11 +98,32 @@ const Hero = ({ hasVisitedSignUp, token }) => {
       }
     };
 
+    const KYCCheck = () => {
+      if (
+        (dataUser?.isKYC === null || dataUser?.isKYC === false) &&
+        transactionTable.length > 0
+      ) {
+        setShowKYCDialog(true);
+      } else {
+        setShowKYCDialog(false);
+      }
+    };
+
     const isDialogClosed = sessionStorage.getItem("isDialogClosed");
+
+    if (dataUser) {
+      setNameData(dataUser.name || "");
+      setEmailData(dataUser.email || "");
+    }
+
     if (!hasVisitedSignUp && isDialogClosed !== "true") {
       fetchUserData();
     }
-  }, [data, hasVisitedSignUp]);
+
+    if (dataUser && transactionTable && dataUser?.name && dataUser?.email) {
+      KYCCheck();
+    }
+  }, [dataUser, hasVisitedSignUp, transactionTable]);
 
   const handleClosed = (e) => {
     e.stopPropagation();
@@ -169,6 +188,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
           </div>
         </div>
       )}
+      {showKYCDialog && <KYCPopup />}
 
       <div className={`${styles.flexStart} flex-col relative`}>
         <div className="flex flex-col justify-between md:w-[603px]">

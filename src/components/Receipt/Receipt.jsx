@@ -20,19 +20,23 @@ const Receipt = ({ transaction, closePopup }) => {
     );
 
     Promise.all(loaded).then(() => {
+      const isMobile = window.innerWidth <= 768; // Define what is considered a mobile device
+      const windowHeight = document.documentElement.scrollHeight;
+
       html2canvas(capture, {
         scale: 2,
         useCORS: true,
         logging: true,
-        windowHeight: document.documentElement.offsetHeight,
+        windowHeight: windowHeight,
         windowWidth: document.documentElement.offsetWidth,
       }).then((canvas) => {
         const imgData = canvas.toDataURL("image/png");
-        const pdf = new jsPDF("p", "mm", "a4");
+        const pdf = new jsPDF("p", "mm", "a3");
         const imgProps = pdf.getImageProperties(imgData);
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-        pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+        const adjustedPdfHeight = pdfHeight; // Increase height by 30% for mobile
+        pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, adjustedPdfHeight);
         pdf.save(`${transaction.transactionId}.pdf`);
         closePopup();
       });
@@ -77,24 +81,26 @@ const Receipt = ({ transaction, closePopup }) => {
 
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
-      <div className="receipt-container bg-white p-6 rounded-lg shadow-md max-w-4xl mx-auto my-10 border border-gray-300 relative overflow-y-auto max-h-screen">
+      <div className="receipt-container object-contain bg-white p-4 md:p-6 rounded-lg shadow-md w-full md:max-w-4xl mx-auto my-10 border border-gray-300 relative overflow-y-auto max-h-screen">
         <button
           className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
           onClick={() => window.location.reload()}
         >
           ✕
         </button>
-        <h1 className="text-3xl font-bold text-center mb-6">
+        <h1 className="text-2xl md:text-3xl font-bold text-center mb-4 md:mb-6">
           Tax Invoice/Bill of Service
         </h1>
-        <div className="text-center mb-4">
+        <div className="text-center mb-2 md:mb-4">
           <p>Invoice No: {transactionId}</p>
           <p>Original for Recipient</p>
         </div>
 
-        <div className="grid grid-cols-2 gap-12 mb-4">
-          <div className="flex flex-col gap-4">
-            <h2 className="text-xl font-semibold mb-2">Service offered by</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 mb-4">
+          <div className="flex flex-col gap-2 md:gap-4">
+            <h2 className="text-lg md:text-xl font-semibold mb-2">
+              Service offered by
+            </h2>
             <p>
               <strong>Creator Name:</strong> {experts?.name}
             </p>
@@ -122,17 +128,14 @@ const Receipt = ({ transaction, closePopup }) => {
               <strong>State Code:</strong> {(experts?.gst).slice(0, 2)}
             </p>
           </div>
-          <div className="flex flex-col gap-4">
-            <h2 className="text-xl font-semibold mb-1">Billed To</h2>
+          <div className="flex flex-col gap-2 md:gap-4">
+            <h2 className="text-lg md:text-xl font-semibold mb-2">Billed To</h2>
             <p>{user?.name}</p>
             <p>{user?.mobileNumber}</p>
             <p>{user?.email}</p>
             <p>
               <strong>Billing Address:</strong> {user?.address}
             </p>
-            {/* <p>
-              <strong>User GSTIN:</strong>
-            </p> */}
             <p>
               <strong>State:</strong> {user?.state}
             </p>
@@ -148,7 +151,7 @@ const Receipt = ({ transaction, closePopup }) => {
           </div>
         </div>
 
-        <table className="w-full mb-4">
+        <table className="w-full mb-4 text-sm md:text-base">
           <thead>
             <tr>
               <th className="border px-2 py-1">Description</th>
@@ -187,8 +190,8 @@ const Receipt = ({ transaction, closePopup }) => {
         </table>
 
         <div className="flex justify-between mb-4">
-          <h2 className="text-xl font-semibold">Total</h2>
-          <p className="text-xl font-bold">₹ {totalAmount}</p>
+          <h2 className="text-lg md:text-xl font-semibold">Total</h2>
+          <p className="text-lg md:text-xl font-bold">₹ {totalAmount}</p>
         </div>
 
         <div className="text-center mb-4">
@@ -199,13 +202,15 @@ const Receipt = ({ transaction, closePopup }) => {
                 : ""
             }
             alt="Signature"
-            className=" w-96 mx-auto"
+            className="w-48 md:w-96 mx-auto"
             crossOrigin="anonymous"
           />
         </div>
 
-        <div className="text-left mb-4">
-          <h2 className="text-xl font-semibold mb-2">TERMS & CONDITIONS</h2>
+        <div className="text-left mb-4 text-sm md:text-base">
+          <h2 className="text-lg md:text-xl font-semibold mb-2">
+            TERMS & CONDITIONS
+          </h2>
           <p>
             No refund policy. Please read terms & conditions and disclaimer on
             our website.
@@ -213,7 +218,7 @@ const Receipt = ({ transaction, closePopup }) => {
           <p>All jurisdiction under {experts?.state}.</p>
         </div>
 
-        <div className="text-left text-sm text-gray-700 mb-4">
+        <div className="text-left text-xs md:text-sm text-gray-700 mb-4">
           <p>
             This is a computer-generated receipt and does not require a
             signature.
@@ -221,8 +226,8 @@ const Receipt = ({ transaction, closePopup }) => {
           <p>Contact support@copartner.in for technical support.</p>
         </div>
 
-        <div className="grid grid-cols-2">
-          <div className="text-left text-sm text-gray-700">
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className="text-left text-xs md:text-sm text-gray-700">
             <p>
               <a
                 href="https://copartner.in/terms_of_service"

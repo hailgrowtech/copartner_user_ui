@@ -10,7 +10,7 @@ export const UserProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const userId = sessionStorage.getItem("userId");
+    const userId = localStorage.getItem("userId");
     if (userId) {
       const fetchUserData = async () => {
         try {

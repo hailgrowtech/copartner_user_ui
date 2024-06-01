@@ -64,6 +64,7 @@ const KYCPopup = ({ onClose }) => {
       if (response.status === 200) {
         toast.success("Details updated successfully!");
         setError(null);
+        window.location.reload();
         onClose();
       } else {
         toast.error("Failed to update details!");
@@ -92,7 +93,7 @@ const KYCPopup = ({ onClose }) => {
           <div className="px-6 py-3">
             <div className="text-white mb-4">
               <p>
-                <strong>Precaution:</strong> Closing this popup will lose the Telegram Channel Link!!!
+                <strong>Precaution:</strong> Closing this popup will lose the Telegram Channel Link!!! (if any)
               </p>
             </div>
             <div className="grid grid-cols-2 gap-2">

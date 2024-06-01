@@ -38,7 +38,7 @@ const ShowProfile = ({ userData }) => {
 
   const handleLogOut = () => {
     sessionStorage.removeItem("token");
-    sessionStorage.removeItem("userId");
+    localStorage.removeItem("userId");
     window.location.reload();
   };
 
