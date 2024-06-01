@@ -32,7 +32,7 @@ const Footer = () => {
 
   return (
     <>
-      <div className="md:w-[1440px] w-full md:h-[198px] md:gap-0 h-[506px] md:pt-[8rem] pt-4 justify-around border-t border-solid border-white border-opacity-10 flex md:flex-row flex-col items-center">
+      <div className="md:w-[1440px] w-full md:h-[198px] md:gap-0 h-[540px] md:pt-[8rem] pt-4 justify-around border-t border-solid border-white border-opacity-10 flex md:flex-row flex-col items-center">
         <div className="flex flex-col gap-[0.5rem]">
           <Link onClick={scrollToTop} to="/">
             <img src={logo} alt="" className="md:w-56 w-40" />

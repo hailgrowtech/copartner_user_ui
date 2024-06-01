@@ -28,7 +28,7 @@ const Receipt = ({ transaction, closePopup }) => {
         useCORS: true,
         logging: true,
         windowHeight: windowHeight,
-        windowWidth: document.documentElement.offsetWidth,
+        windowWidth: isMobile ? document.documentElement.offsetWidth * 2.2 : document.documentElement.offsetWidth,
       }).then((canvas) => {
         const imgData = canvas.toDataURL("image/png");
         const pdf = new jsPDF("p", "mm", "a3");
