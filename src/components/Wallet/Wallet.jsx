@@ -165,7 +165,13 @@ const Wallet = ({ userId }) => {
                         </span>
                         <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
                           <span className="text-dimWhite">INVITE LINK:</span>{" "}
-                          {row.premiumTelegramChannel}
+                          <a
+                            target="_blank"
+                            rel="noreferrer"
+                            href={row.premiumTelegramChannel}
+                          >
+                            {row.premiumTelegramChannel}
+                          </a>
                         </span>
                       </div>
                     ))}
@@ -200,7 +206,7 @@ const Wallet = ({ userId }) => {
                             key={index}
                             className={index % 2 === 0 ? "bg-[#1E1E22]" : ""}
                           >
-                            <td className="py-8 pl-20 h-[18px] font-[500] text-[16px] leading-[18px]">
+                            <td className="py-8 px-12 h-[18px] font-[500] text-[16px] leading-[18px]">
                               {row.transactionId}
                             </td>
                             <td className="py-8 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
@@ -216,7 +222,13 @@ const Wallet = ({ userId }) => {
                               ₹ {row.totalAmount}
                             </td>
                             <td className="py-8 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
-                              {row.premiumTelegramChannel}
+                              <a
+                                target="_blank"
+                                rel="noreferrer"
+                                href={row.premiumTelegramChannel}
+                              >
+                                {row.premiumTelegramChannel}
+                              </a>
                             </td>
                             <td className="py-8">
                               <img

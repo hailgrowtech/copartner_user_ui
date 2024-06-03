@@ -2,7 +2,6 @@ import React, { useMemo, useState } from "react";
 import styles from "../../style";
 import Stock from '../Stock';
 import { Link } from "react-router-dom";
-import { expertise_data } from "../../constants";
 import { arrow, closeImg, telegram, userBck, stars } from "../../assets";
 import { useUserData } from "../../constants/context";
 
