@@ -1,14 +1,14 @@
 import React, { useMemo, useState } from "react";
 import styles from "../../style";
-import Card from "./Profile_Component";
+import Stock from '../Stock';
 import { Link } from "react-router-dom";
 import { expertise_data } from "../../constants";
 import { arrow, closeImg, telegram, userBck, stars } from "../../assets";
 import { useUserData } from "../../constants/context";
 
-const Expertise = ({token}) => {
+const Expertise = ({ token }) => {
   const userData = useUserData();
-  const [filter, setFilter] = useState(null)
+  const [filter, setFilter] = useState(null);
 
   const getExpertType = (typeId) => {
     switch (typeId) {
@@ -17,7 +17,7 @@ const Expertise = ({token}) => {
       case 2:
         return "Equity";
       case 3:
-        return "Options";
+        return "Futures & Options";
       default:
         return "Unknown";
     }
@@ -31,16 +31,17 @@ const Expertise = ({token}) => {
   };
 
   const filterAndMapUserData = (data, expertTypeId) => {
-    if (expertTypeId === null) return data.map(user => ({
-      ...user,
-      expertType: getExpertType(user.expertTypeId)
-    }));
+    if (expertTypeId === null)
+      return data.map((user) => ({
+        ...user,
+        expertType: getExpertType(user.expertTypeId),
+      }));
 
     return data
-      .filter(user => user.expertTypeId === expertTypeId)
-      .map(user => ({
+      .filter((user) => user.expertTypeId === expertTypeId)
+      .map((user) => ({
         ...user,
-        expertType: getExpertType(user.expertTypeId)
+        expertType: getExpertType(user.expertTypeId),
       }));
   };
 
@@ -52,7 +53,10 @@ const Expertise = ({token}) => {
     token && window.open(link);
   };
 
-  const filteredData = useMemo(() => filterAndMapUserData(userData, filter), [userData, filter]);
+  const filteredData = useMemo(
+    () => filterAndMapUserData(userData, filter),
+    [userData, filter]
+  );
 
   return (
     <section
@@ -74,95 +78,102 @@ const Expertise = ({token}) => {
               className="font-inter md:text-xl text-[13px]
               text-dimWhite md:leading-[28px] leading-[16px] text-center"
             >
-              Meet our team of SEBI Registered experts, dedicated to providing you with valuable <br /> insights and strategies to navigate the markets with confidence and success.
+              Meet our team of SEBI Registered experts, dedicated to providing
+              you with valuable <br /> insights and strategies to navigate the
+              markets with confidence and success.
             </span>
           </div>
           <div className="md:pt-[2rem] pt-[1rem] grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:flex">
-          {userData && userData.slice(0, 3).map((expert, id) => {
-              return (
-                <Link
-                  onClick={scrollToTop}
-                  to={`/ra-detail/${expert.id}`}
-                  key={expert.id}
-                  className="md:w-[256px] md:h-[285px] sm:w-[172px] h-[230px] gap-[3px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
-                >
-                  <div className="w-[72px] h-[98px] md:w-[256px] md:h-[146px]  relative profile-image_1 mb-4">
-                    <img
-                      src={userBck}
-                      alt="background"
-                      className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
-                    />
-                    <img
-                      src={expert.expertImagePath}
-                      alt="User"
-                      className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
-                    />
-                  </div>
-
-                  <div className="flex md:w-[212px] md:h-[26px] w-full sm:h-[22px] justify-between md:gap-0">
-                    <div className="flex flex-col gap-1">
-                      <span className="text-[12px] leading-[12px] font-[500] text-white">
-                        {expert.channelName}
-                      </span>
-                      <span className="text-[12px] leading-[10px] font-[400] text-dimWhite">
-                        {expert.channelName} - {getExpertType(expert.expertTypeId)}
-                      </span>
-                    </div>
-                    <div className="w-[32px] h-[15px] flex">
+            {userData &&
+              userData.slice(0, 3).map((expert, id) => {
+                return (
+                  <Link
+                    onClick={scrollToTop}
+                    to={`/ra-detail/${expert.id}`}
+                    key={expert.id}
+                    className="md:w-[256px] md:h-[285px] sm:w-[172px] h-[230px] gap-[3px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
+                  >
+                    <div className="w-[72px] h-[98px] md:w-[256px] md:h-[146px]  relative profile-image_1 mb-4">
                       <img
-                        src={stars}
-                        className="w-[11.5px] h-[11.5px]"
-                        alt="rating"
+                        src={userBck}
+                        alt="background"
+                        className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
                       />
-                      <span className="text-white font-[600] text-[11.5px] leading-[14px]">
-                        {expert.rating}
-                      </span>
+                      <img
+                        src={expert.expertImagePath}
+                        alt="User"
+                        className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
+                      />
                     </div>
-                  </div>
 
-                  <div className="md:w-[171px] md:h-[33px] w-[125px] h-[23px] flex justify-between mr-[1rem] mt-2">
-                    <div className="flex flex-col w-[52px] h-[33px] items-center">
-                      <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">
-                        Experience
-                      </span>
-                      <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
-                        {expert.experience}+
-                      </span>
-                    </div>
-                    <div className="md:w-[1.4px] md:h-[25px] w-[1px] h-[22px] bg-lightWhite"></div>
-                    <div className="flex">
-                      <div className="flex flex-col w-[52px] h-[33px] items-center">
-                        <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">
-                          Followers
+                    <div className="flex md:w-[212px] md:h-[26px] w-full sm:h-[22px] justify-between md:gap-0">
+                      <div className="flex flex-col gap-1">
+                        <span className="text-[12px] leading-[12px] font-[500] text-white">
+                          {expert.channelName}
                         </span>
-                        <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
-                          {`${expert.telegramFollower / 1000}k`}
+                        <span className="text-[12px] leading-[10px] font-[400] text-dimWhite">
+                          {expert.channelName} -{" "}
+                          {getExpertType(expert.expertTypeId)}
+                        </span>
+                      </div>
+                      <div className="w-[32px] h-[15px] flex">
+                        <img
+                          src={stars}
+                          className="w-[11.5px] h-[11.5px]"
+                          alt="rating"
+                        />
+                        <span className="text-white font-[600] text-[11.5px] leading-[14px]">
+                          {expert.rating}
                         </span>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="md:w-[211px] bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
-                    <div onClick={handleTelegram} className="flex justify-center items-center gap-2">
-                      <img
-                        src={telegram}
-                        alt="Telegram"
-                        className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"
-                      />
-                      <button className="text-white font-[400] md:text-[15px] text-[12px] leading-[19px]">
-                        {/* Get Free Calls */}
-                        Get Free Calls
-                      </button>
-                      <img
-                        src={arrow}
-                        alt="arrow"
-                        className="md:w-[16px] md:h-[16px] w-[11px] h-[11px]"
-                      />
+                    <div className="md:w-[171px] md:h-[33px] w-[125px] h-[23px] flex justify-between mr-[1rem] mt-2">
+                      <div className="flex flex-col w-[52px] h-[33px] items-center">
+                        <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">
+                          Experience
+                        </span>
+                        <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
+                          {expert.experience}+
+                        </span>
+                      </div>
+                      <div className="md:w-[1.4px] md:h-[25px] w-[1px] h-[22px] bg-lightWhite"></div>
+                      <div className="flex">
+                        <div className="flex flex-col w-[52px] h-[33px] items-center">
+                          <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">
+                            Followers
+                          </span>
+                          <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
+                            {`${expert.telegramFollower / 1000}k`}
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              );
-            })}
+
+                    <div className="md:w-[211px] bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
+                      <div
+                        onClick={() => handleTelegram(expert.telegramChannel)}
+                        className="flex justify-center items-center gap-2"
+                      >
+                        <img
+                          src={telegram}
+                          alt="Telegram"
+                          className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"
+                        />
+                        <button className="text-white font-[400] md:text-[15px] text-[12px] leading-[19px]">
+                          {/* Get Free Calls */}
+                          Get Free Calls
+                        </button>
+                        <img
+                          src={arrow}
+                          alt="arrow"
+                          className="md:w-[16px] md:h-[16px] w-[11px] h-[11px]"
+                        />
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
 
             <div className="md:w-[365px] md:h-[226px] w-[171px] h-[256px] md:px-[3rem] flex flex-col md:gap-2">
               <span className="md:w-[365px] md:h-[36px] w-[171px] h-[36px] font-[600] md:text-[30px] text-[18px] leading-[36px] text-lightWhite">
@@ -170,9 +181,9 @@ const Expertise = ({token}) => {
               </span>
 
               <span className="text-dimWhite md:w-[365px] md:h-[86px] w-[171px] h-[80px] font-[400] md:text-[16px] text-[14px] md:leading-[28px] md:leading-[21px] leading-[18px]">
-                Connect with India’s SEBI registered Research Analysts,
-                guiding you thoroughly to maximising profits in the dynamic
-                world of stock trading.
+                Connect with India’s SEBI registered Research Analysts, guiding
+                you thoroughly to maximising profits in the dynamic world of
+                stock trading.
               </span>
               <Link onClick={scrollToTop} to="explore-expertise">
                 <button className="md:w-[147px] md:h-[40px] w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px] md:mt-12 mt-[4rem]">
@@ -203,16 +214,28 @@ const Expertise = ({token}) => {
           </div>
           <div className="w-full flex flex-row bg-[#18181B80] rounded-2xl p-3 mt-6">
             <div className="md:flex-col-6 md:text-[16px] text-[10px] flex flex-row my-auto">
-              <button onClick={() =>handleFilter(null)} className="text-white md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px]">
+              <button
+                onClick={() => handleFilter(null)}
+                className="text-white md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px]"
+              >
                 All
               </button>
-              <button onClick={() =>handleFilter(3)} className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
+              <button
+                onClick={() => handleFilter(3)}
+                className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white"
+              >
                 Futures & Options
               </button>
-              <button onClick={() =>handleFilter(1)} className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
+              <button
+                onClick={() => handleFilter(1)}
+                className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white"
+              >
                 Commodity
               </button>
-              <button onClick={() =>handleFilter(2)} className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white">
+              <button
+                onClick={() => handleFilter(2)}
+                className="md:flex-col-3 md:mx-6 mx-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white"
+              >
                 Equity
               </button>
             </div>
@@ -304,7 +327,10 @@ const Expertise = ({token}) => {
                   </div>
 
                   <div className="md:w-[211px] bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
-                    <div onClick={handleTelegram} className="flex justify-center items-center gap-2">
+                    <div
+                      onClick={() => handleTelegram(expert.telegramChannel)}
+                      className="flex justify-center items-center gap-2"
+                    >
                       <img
                         src={telegram}
                         alt="Telegram"
@@ -420,7 +446,10 @@ const Expertise = ({token}) => {
                   </div>
 
                   <div className="md:w-[211px] bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
-                    <div onClick={handleTelegram} className="flex justify-center items-center gap-2">
+                    <div
+                      onClick={() => handleTelegram(expert.telegramChannel)}
+                      className="flex justify-center items-center gap-2"
+                    >
                       <img
                         src={telegram}
                         alt="Telegram"
@@ -526,7 +555,10 @@ const Expertise = ({token}) => {
                   </div>
 
                   <div className="md:w-[211px] md:h-[40px] bg-[#0081F1] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
-                    <div onClick={handleTelegram} className="flex justify-center items-center gap-2">
+                    <div
+                      onClick={() => handleTelegram(expert.telegramChannel)}
+                      className="flex justify-center items-center gap-2"
+                    >
                       <img
                         src={telegram}
                         alt="Telegram"
@@ -547,6 +579,9 @@ const Expertise = ({token}) => {
             })}
           </div>
         </section>
+        <div className={`md:mt-[5rem] mt-[1.9rem] ${styles.boxWidth}`}>
+          <Stock />
+        </div>
       </div>
     </section>
   );

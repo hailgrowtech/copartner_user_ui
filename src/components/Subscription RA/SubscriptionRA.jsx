@@ -68,7 +68,7 @@ const SubscriptionRA = ({ userId }) => {
       case 2:
         return "Equity";
       case 3:
-        return "Options";
+        return "Futures & Options";
       default:
         return "Unknown";
     }

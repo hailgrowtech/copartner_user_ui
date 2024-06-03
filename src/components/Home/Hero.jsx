@@ -14,6 +14,7 @@ import { useUserData } from "../../constants/context";
 import { useUserSession } from "../../constants/userContext";
 import KYCPopup from "../Subscription RA/KYCPopup";
 import { SubscriptionContext } from "../../constants/subscriptionContext";
+import SignUp from "../SignUp";
 
 const Hero = ({ hasVisitedSignUp, token }) => {
   const [showDialog, setShowDialog] = useState(false);
@@ -23,6 +24,8 @@ const Hero = ({ hasVisitedSignUp, token }) => {
   const [emailData, setEmailData] = useState("");
   const [showKYCDialog, setShowKYCDialog] = useState(false);
   const { transactionTable } = useContext(SubscriptionContext);
+  const [showSignUp, setShowSignUp] = useState(false);
+
   const getExpertType = (typeId) => {
     switch (typeId) {
       case 1:
@@ -30,7 +33,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
       case 2:
         return "Equity";
       case 3:
-        return "Options";
+        return "Futures & Options";
       default:
         return "Unknown";
     }
@@ -132,7 +135,16 @@ const Hero = ({ hasVisitedSignUp, token }) => {
   };
 
   const handleTelegram = (link) => {
-    token && window.open(link);
+    if (token) {
+      window.open(link);
+    } else {
+      setShowSignUp(true);
+    }
+  };
+
+  const handleAuthSuccess = (link) => {
+    setShowSignUp(false);
+    window.open(link);
   };
 
   return (
@@ -217,80 +229,81 @@ const Hero = ({ hasVisitedSignUp, token }) => {
           {userData &&
             userData.slice(0, 3).map((expert, id) => {
               return (
-                <Link
-                  onClick={scrollToTop}
-                  to={`/ra-detail/${expert.id}`}
-                  key={expert.id}
-                  className="md:w-[256px] md:h-[285px] sm:w-[172px] h-[230px] gap-[3px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
-                >
-                  <div className="w-[72px] h-[98px] md:w-[256px] md:h-[146px]  relative profile-image_1 mb-4">
-                    <img
-                      src={userBck}
-                      alt="background"
-                      className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
-                    />
-                    <img
-                      src={expert.expertImagePath}
-                      alt="User"
-                      className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
-                    />
-                  </div>
-
-                  <div className="flex md:w-[212px] md:h-[26px] w-full sm:h-[22px] justify-between md:gap-0">
-                    <div className="flex flex-col gap-1">
-                      <span className="text-[12px] leading-[12px] font-[500] text-white">
-                        {expert.channelName}
-                      </span>
-                      <span className="text-[12px] leading-[10px] font-[400] text-dimWhite">
-                        {expert.name} - {getExpertType(expert.expertTypeId)}
-                      </span>
-                    </div>
-                    <div className="w-[32px] h-[15px] flex">
+                <div className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-[11px] p-2">
+                  <Link
+                    onClick={scrollToTop}
+                    to={`/ra-detail/${expert.id}`}
+                    key={expert.id}
+                    className="md:w-[256px] md:h-[265px] sm:w-[172px] h-[230px] gap-[3px] relative flex flex-col items-center"
+                  >
+                    <div className="w-[72px] h-[98px] md:w-[256px] md:h-[146px]  relative profile-image_1 mb-4">
                       <img
-                        src={stars}
-                        className="w-[11.5px] h-[11.5px]"
-                        alt="rating"
+                        src={userBck}
+                        alt="background"
+                        className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
                       />
-                      <span className="text-white font-[600] text-[11.5px] leading-[14px]">
-                        {expert.rating}
-                      </span>
+                      <img
+                        src={expert.expertImagePath}
+                        alt="User"
+                        className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
+                      />
                     </div>
-                  </div>
 
-                  <div className="md:w-[171px] md:h-[33px] w-[125px] h-[23px] flex justify-between mr-[1rem] mt-2">
-                    <div className="flex flex-col w-[52px] h-[33px] items-center">
-                      <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">
-                        Experience
-                      </span>
-                      <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
-                        {expert.experience}+
-                      </span>
-                    </div>
-                    <div className="md:w-[1.4px] md:h-[25px] w-[1px] h-[22px] bg-lightWhite"></div>
-                    <div className="flex">
-                      <div className="flex flex-col w-[52px] h-[33px] items-center">
-                        <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">
-                          Followers
+                    <div className="flex md:w-[212px] md:h-[26px] w-full sm:h-[22px] justify-between md:gap-0">
+                      <div className="flex flex-col gap-1">
+                        <span className="text-[12px] leading-[12px] font-[500] text-white">
+                          {expert.channelName}
                         </span>
-                        <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
-                          {`${expert.telegramFollower / 1000}k`}
+                        <span className="text-[12px] leading-[10px] font-[400] text-dimWhite">
+                          {expert.name} - {getExpertType(expert.expertTypeId)}
+                        </span>
+                      </div>
+                      <div className="w-[32px] h-[15px] flex">
+                        <img
+                          src={stars}
+                          className="w-[11.5px] h-[11.5px]"
+                          alt="rating"
+                        />
+                        <span className="text-white font-[600] text-[11.5px] leading-[14px]">
+                          {expert.rating}
                         </span>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="md:mb-1 ml-0 mr-auto md:pl-3">
-                    <div className="text-dimWhite md:text-xs text-xs flex md:flex-row flex-col md:pl-0 pl-[2px]">
-                      <span>SEBI:</span>{" "}
-                      <span className="text-white md:ml-2">
-                        {expert.sebiRegNo}
-                      </span>
+                    <div className="md:w-[171px] md:h-[33px] w-[125px] h-[23px] flex justify-between mr-[1rem] mt-2">
+                      <div className="flex flex-col w-[52px] h-[33px] items-center">
+                        <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">
+                          Experience
+                        </span>
+                        <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
+                          {expert.experience}+
+                        </span>
+                      </div>
+                      <div className="md:w-[1.4px] md:h-[25px] w-[1px] h-[22px] bg-lightWhite"></div>
+                      <div className="flex">
+                        <div className="flex flex-col w-[52px] h-[33px] items-center">
+                          <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">
+                            Followers
+                          </span>
+                          <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
+                            {`${expert.telegramFollower / 1000}k`}
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
 
+                    <div className="md:mb-1 ml-0 mr-auto md:pl-3">
+                      <div className="text-dimWhite md:text-xs text-xs flex md:flex-row flex-col md:pl-0 pl-[2px]">
+                        <span>SEBI:</span>{" "}
+                        <span className="text-white md:ml-2">
+                          {expert.sebiRegNo}
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
                   <div
                     onClick={() => handleTelegram(expert.telegramChannel)}
-                    className="md:w-[211px] bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0"
+                    className="md:w-[211px] mx-auto bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0"
                   >
                     <div className="flex justify-center items-center gap-2">
                       <img
@@ -308,8 +321,9 @@ const Hero = ({ hasVisitedSignUp, token }) => {
                         className="md:w-[16px] md:h-[16px] w-[11px] h-[11px]"
                       />
                     </div>
+                  {showSignUp && <SignUp onAuthSuccess={() => handleAuthSuccess(expert.telegramChannel)} />}
                   </div>
-                </Link>
+                </div>
               );
             })}
 

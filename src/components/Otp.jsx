@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { back, closeImg } from "../assets";
 import { useNavigate } from "react-router-dom";
 
-const Otp = ({ onClose, onCloseAll, mobileNumber, apid, raid }) => {
+const Otp = ({ onClose, onCloseAll, mobileNumber, apid, raid, onAuthSuccess }) => {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -135,7 +135,12 @@ const Otp = ({ onClose, onCloseAll, mobileNumber, apid, raid }) => {
         console.log("Something");
       }
       localStorage.setItem("userId", data.data.id);
-      navigate("/");
+      onAuthSuccess();
+      if (apid) {
+        navigate("/expertise");
+      } else {
+        navigate("/");
+      }
       window.location.reload();
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);

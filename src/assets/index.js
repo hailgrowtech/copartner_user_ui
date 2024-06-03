@@ -77,6 +77,7 @@ import back from "./back.png";
 import ritik from "./Ritik.png";
 import paridhi from "./paridhi.png";
 import samay from "./Samayavif.png";
+import Group from "./stocGroup.png";
 
 export {
   logo,
@@ -157,5 +158,6 @@ export {
   back,
   ritik,
   paridhi,
-  samay
+  samay,
+  Group
 };
