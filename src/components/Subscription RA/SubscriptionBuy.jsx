@@ -351,9 +351,7 @@ const SubscriptionRA = () => {
                     {subscription.planType}
                   </div>
                   <div className="text-center md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-center">
-                    ₹{subscription.amount}/
-                    <span className="md:flex hidden">-</span>
-                    <span className="md:hidden flex font-normal">mo</span>
+                    ₹{subscription.amount}
                   </div>
                   <div className="text-center md:text-lg text-xs mt-auto opacity-60 mb-6">
                     {subscription.durationMonth} Month Access
