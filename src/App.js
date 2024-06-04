@@ -36,6 +36,7 @@ import {
 import { UserDataProvider } from "./constants/context";
 import { UserProvider } from "./constants/userContext";
 import { SubscriptionProvider } from "./constants/subscriptionContext";
+import Ad1 from "./components/LandingPages/Ad1";
 
 function App() {
   // const token = sessionStorage.getItem("token");
@@ -82,7 +83,7 @@ function App() {
               <div className={`${styles.flexStart}`}>
                 <UserDataProvider>
                   <div className={`${styles.boxWidth}`}>
-                    <Hero hasVisitedSignUp={hasVisitedSignUp} token={userId} />
+                    <Ad1 hasVisitedSignUp={hasVisitedSignUp} token={userId} />
                   </div>
                 </UserDataProvider>
               </div>

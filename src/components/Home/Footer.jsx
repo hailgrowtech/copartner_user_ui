@@ -9,13 +9,13 @@ import {
 } from "../../assets";
 import { Link } from "react-router-dom";
 const ProductList = [
-  { name: "About Us", link: "/about", id: 'about' },
-  { name: "FAQ's", link: "/faqs", id: 'faqs' },
-  { name: "Features", link: "/about", id: 'features' },
-  { name: "Blog", link: "/blogs", id: 'blog' },
-  { name: "Privacy Policy", link: "/privacy", id: 'privacy' },
+  { name: "About Us", link: "/about", id: "about" },
+  { name: "FAQ's", link: "/faqs", id: "faqs" },
+  { name: "Features", link: "/about", id: "features" },
+  { name: "Blog", link: "/blogs", id: "blog" },
+  { name: "Privacy Policy", link: "/privacy", id: "privacy" },
   // { name: "Refund Policy", link: "/refund-policy", id: 'refund' },
-  { name: "Terms of Service", link: "/terms_of_service", id: 'terms' },
+  { name: "Terms of Service", link: "/terms_of_service", id: "terms" },
 ];
 const CommunityList = [
   { name: "Expertises", link: "/expertise" },
@@ -33,20 +33,38 @@ const Footer = () => {
   return (
     <>
       <div className="md:w-[1440px] w-full md:h-[198px] md:gap-0 h-[540px] md:pt-[8rem] pt-4 justify-around border-t border-solid border-white border-opacity-10 flex md:flex-row flex-col items-center">
-        <div className="flex flex-col gap-[0.5rem]">
-          <Link onClick={scrollToTop} to="/">
+        <div className="flex flex-col gap-[0.5rem] relative">
+          <Link onClick={scrollToTop} to="/" className="relative">
             <img src={logo} alt="" className="md:w-56 w-40" />
+            <div className="absolute top-1 right-0 transform -translate-x-1/2 flex gap-2 md:hidden">
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.linkedin.com/company/copartnerindia/"
+              >
+                <img src={linkedin} alt="LinkedIn" className="w-8" />
+              </a>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.instagram.com/copartner.in"
+              >
+                <img src={instagram} alt="Instagram" className="w-8" />
+              </a>
+            </div>
           </Link>
           <span className="md:w-[296px] w-[296px] md:h-[84px] h-[66px] font-normal md:text-[16px] text-[14px] md:leading-[20px] leading-[22px] text-dimWhite">
-            Connecting India’s SEBI registered Research Analysts, guiding you thoroughly to maximising profits in the dynamic world of stock trading.
+            Connecting India’s SEBI registered Research Analysts, guiding you
+            thoroughly to maximising profits in the dynamic world
+            of stock trading.
           </span>
-          <div className="flex gap-7 rounded-full">
+          <div className="flex gap-7 rounded-full md:flex hidden">
             <a
               target="_blank"
               rel="noreferrer"
               href="https://www.linkedin.com/company/copartnerindia/"
             >
-              <img src={linkedin} alt="LinkeDin" className="w-8" />
+              <img src={linkedin} alt="LinkedIn" className="w-8" />
             </a>
             <a
               target="_blank"

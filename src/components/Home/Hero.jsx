@@ -93,11 +93,13 @@ const Hero = ({ hasVisitedSignUp, token }) => {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      if (!dataUser?.name || !dataUser?.email) {
-        setShowDialog(true);
-      } else {
-        sessionStorage.setItem("isDialogClosed", "true");
-        setShowDialog(false);
+      if (dataUser) {
+        if (!dataUser?.name || !dataUser?.email) {
+          setShowDialog(true);
+        } else {
+          sessionStorage.setItem("isDialogClosed", "true");
+          setShowDialog(false);
+        }
       }
     };
 
@@ -321,7 +323,13 @@ const Hero = ({ hasVisitedSignUp, token }) => {
                         className="md:w-[16px] md:h-[16px] w-[11px] h-[11px]"
                       />
                     </div>
-                  {showSignUp && <SignUp onAuthSuccess={() => handleAuthSuccess(expert.telegramChannel)} />}
+                    {showSignUp && (
+                      <SignUp
+                        onAuthSuccess={() =>
+                          handleAuthSuccess(expert.telegramChannel)
+                        }
+                      />
+                    )}
                   </div>
                 </div>
               );

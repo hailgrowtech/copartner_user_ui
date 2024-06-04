@@ -36,7 +36,7 @@ const SubscriptionRA = ({ userId }) => {
   const [subscriptionId, setSubscriptionId] = useState("");
 
   useEffect(() => {
-    if (userData) {
+    if (expertData) {
       const handleScroll = () => {
         const scrollPosition = window.scrollY;
         const threshold = 50;
@@ -53,7 +53,7 @@ const SubscriptionRA = ({ userId }) => {
         window.removeEventListener("scroll", handleScroll);
       };
     }
-  }, [userData]);
+  }, [expertData]);
 
   const handleSelectPlan = (subscriptionId, plan, price) => {
     setSelectedPlan(plan);
@@ -379,11 +379,7 @@ const SubscriptionRA = ({ userId }) => {
                   }
                   className={`flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
                     activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
-                  } relative ${
-                    index === 1
-                      ? "border-2"
-                      : ""
-                  }`}
+                  } relative ${index === 1 ? "border-2" : ""}`}
                 >
                   <div className="text-center opacity-60 hidden">
                     21 Days Left
@@ -595,11 +591,13 @@ const SubscriptionRA = ({ userId }) => {
         </section>
         <ToastContainer />
         <div className="md:hidden block">
-          <MobileCourse
-            handleBuyNowClick={handleBuyNowClick}
-            showMobilePopup={showMobilePopup}
-            subscriptions={subscriptions}
-          />
+          {subscriptions.length !== 0 && (
+            <MobileCourse
+              handleBuyNowClick={handleBuyNowClick}
+              showMobilePopup={showMobilePopup}
+              subscriptions={subscriptions}
+            />
+          )}
         </div>
         {showKYCPopup && <KYCPopup onClose={handleClose} />}
         {showLinkPopup && (
