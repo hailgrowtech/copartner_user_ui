@@ -143,11 +143,11 @@ const Otp = ({
       }
       localStorage.setItem("userId", data.data.id);
       if (apid) {
-        navigate("/expertise");
+        navigate("expertise");
       }
       navigate("/");
-      onAuthSuccess();
       window.location.reload();
+      onAuthSuccess();
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);
     }
