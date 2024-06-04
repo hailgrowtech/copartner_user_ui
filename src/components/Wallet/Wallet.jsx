@@ -9,6 +9,7 @@ import Receipt from "../Receipt/Receipt";
 import KYCWarning from "./KYCWarning";
 import { useUserSession } from "../../constants/userContext";
 import { SubscriptionContext } from "../../constants/subscriptionContext";
+import KYCPopup from "../Subscription RA/KYCPopup";
 
 const Wallet = ({ userId }) => {
   const userData = useUserData();
@@ -200,59 +201,60 @@ const Wallet = ({ userId }) => {
                   </thead>
                   <tbody className="text-lightWhite w-[1234px] h-[81px]">
                     {transactionTable &&
-                      transactionTable.map((row, index) => {
-                        return (
-                          <tr
-                            key={index}
-                            className={index % 2 === 0 ? "bg-[#1E1E22]" : ""}
-                          >
-                            <td className="py-8 px-12 h-[18px] font-[500] text-[16px] leading-[18px]">
-                              {row.transactionId}
-                            </td>
-                            <td className="py-8 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
-                              {formatDate(row.transactionDate)}
-                            </td>
-                            <td className="py-8 px-20 text-center h-[36px] font-[500] text-[16px] text-white leading-[18px]">
-                              {getExpertType(row.subscription.serviceType)}
-                            </td>
-                            <td className="py-8 text-center w-[105px] h-[18px] font-[500] text-[16px] leading-[18px]">
-                              {row.subscription.experts.name}
-                            </td>
-                            <td className="py-8 px-16 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
-                              ₹ {row.totalAmount}
-                            </td>
-                            <td className="py-8 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
-                              <a
-                                target="_blank"
-                                rel="noreferrer"
-                                href={row.premiumTelegramChannel}
-                              >
-                                {row.premiumTelegramChannel}
-                              </a>
-                            </td>
-                            <td className="py-8">
-                              <img
-                                src={invoiceImg}
-                                alt=""
-                                className="w-[21px] h-[21px] text-white mx-auto"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  downloadTransactionData(row);
-                                }}
-                              />
-                            </td>
-                          </tr>
-                        );
-                      })}
+                      transactionTable
+                        .sort((a, b) => {
+                          const dateA = new Date(a.transactionId.substring(1));
+                          const dateB = new Date(b.transactionId.substring(1));
+                          return dateB - dateA;
+                        })
+                        .map((row, index) => {
+                          return (
+                            <tr
+                              key={index}
+                              className={index % 2 === 0 ? "bg-[#1E1E22]" : ""}
+                            >
+                              <td className="py-8 px-12 h-[18px] font-[500] text-[16px] leading-[18px]">
+                                {row.transactionId}
+                              </td>
+                              <td className="py-8 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
+                                {formatDate(row.transactionDate)}
+                              </td>
+                              <td className="py-8 px-20 text-center h-[36px] font-[500] text-[16px] text-white leading-[18px]">
+                                {getExpertType(row.subscription.serviceType)}
+                              </td>
+                              <td className="py-8 text-center w-[105px] h-[18px] font-[500] text-[16px] leading-[18px]">
+                                {row.subscription.experts.name}
+                              </td>
+                              <td className="py-8 px-16 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
+                                ₹ {row.totalAmount}
+                              </td>
+                              <td className="py-8 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
+                                <a
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  href={row.premiumTelegramChannel}
+                                >
+                                  {row.premiumTelegramChannel}
+                                </a>
+                              </td>
+                              <td className="py-8">
+                                <img
+                                  src={invoiceImg}
+                                  alt=""
+                                  className="w-[21px] h-[21px] text-white mx-auto"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    downloadTransactionData(row);
+                                  }}
+                                />
+                              </td>
+                            </tr>
+                          );
+                        })}
                   </tbody>
                 </table>
               )}
-              {KYCWaring && (
-                <KYCWarning
-                  message="Please complete KYC to download this transaction."
-                  onClose={closePopup}
-                />
-              )}
+              {KYCWaring && <KYCPopup />}
               {selectedTransaction && (
                 <Receipt
                   closePopup={closePopup}

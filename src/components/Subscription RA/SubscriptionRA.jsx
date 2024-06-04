@@ -379,7 +379,11 @@ const SubscriptionRA = ({ userId }) => {
                   }
                   className={`flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
                     activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
-                  } relative ${index === Math.floor(subscriptions.length / 2) ? "border-2" : ""}`}
+                  } relative ${
+                    index === 1
+                      ? "border-2"
+                      : ""
+                  }`}
                 >
                   <div className="text-center opacity-60 hidden">
                     21 Days Left
@@ -400,7 +404,7 @@ const SubscriptionRA = ({ userId }) => {
                       Buy Now
                     </button>
                   </div>
-                  {index === Math.floor(subscriptions.length / 2) && (
+                  {index === 1 && (
                     <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
                       Recommended
                     </div>
