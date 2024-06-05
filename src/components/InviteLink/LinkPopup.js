@@ -1,40 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { close } from "../../assets";
-// import axios from "axios";
 
 const LinkPopup = ({ onClose, inviteLink }) => {
-  // const [telegramLink, setTelegramLink] = useState(null);
   const [error, setError] = useState("");
 
   useEffect(() => {
+    // Disable scroll on the body when the popup is open
     document.body.style.overflow = "hidden";
-    // fetchInviteLink();
+
+    // Re-enable scroll when the component is unmounted
     return () => {
       document.body.style.overflow = "auto";
     };
   }, []);
 
-  // const fetchInviteLink = async () => {
-  //   try {
-  //     const response = await axios.post(`http://localhost:3001/api/createInviteLink?chatId=${chatID}&durationMonths=${durationMonths}`);
-  //     if (response.ok) {
-  //       setTelegramLink(response.data.inviteLink.inviteLink);
-  //     } else {
-  //       throw new Error(response.error || "Failed to fetch invite link");
-  //     }
-  //   } catch (error) {
-  //     setError(error.message);
-  //     console.error("Error fetching invite link:", error);
-  //   }
-  // };
-
   const handleClose = () => {
     onClose();
   };
 
-  const handleInviteLink = () => {
+  const handleInviteLink = (link) => {
+    window.location.reload();
     localStorage.removeItem("inviteLink");
-  }
+    window.open(link, "_blank");
+  };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
@@ -52,15 +40,12 @@ const LinkPopup = ({ onClose, inviteLink }) => {
             Click the button below to join the Telegram channel:
           </div>
           {inviteLink ? (
-            <a
-              onClick={handleInviteLink}
-              href={inviteLink}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => handleInviteLink(inviteLink)}
               className="justify-center items-center flex mb-4 md:mb-2 md:text-lg text-sm rounded-lg py-4 text-white bg-[#0081F1] hover:bg-[#006bbd] transition-colors duration-300"
             >
               Join Now
-            </a>
+            </button>
           ) : error ? (
             <p className="text-red-500">{error}</p>
           ) : (

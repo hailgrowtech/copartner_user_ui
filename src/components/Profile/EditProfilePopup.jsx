@@ -164,7 +164,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder=" "
-                  className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
+                  className="block px-2.5 pb-2.5 pt-4 w-full text-sm bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
                 />
                 <label
                   htmlFor="name"
@@ -184,7 +184,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder=" "
-                    className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
+                    className="block px-2.5 pb-2.5 pt-4 w-full text-sm bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
                   />
                   <label
                     htmlFor="email"
@@ -202,7 +202,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder=" "
-                    className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
+                    className="block px-2.5 pb-2.5 pt-4 w-full text-sm bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
                   />
                   <label
                     htmlFor="phone"
@@ -222,7 +222,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                   value={panCard}
                   onChange={(e) => setPanCard(e.target.value)}
                   placeholder=" "
-                  className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
+                  className="block px-2.5 pb-2.5 pt-4 w-full text-sm bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
                 />
                 <label
                   htmlFor="panCard"
@@ -238,7 +238,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                   value={state}
                   onChange={(e) => setState(e.target.value)}
                   placeholder=" "
-                  className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
+                  className="block px-2.5 pb-2.5 pt-4 w-full text-sm bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
                 />
                 <label
                   htmlFor="state"
@@ -257,7 +257,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                   placeholder=" "
-                  className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
+                  className="block px-2.5 pb-2.5 pt-4 w-full text-sm bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
                 />
                 <label
                   htmlFor="address"

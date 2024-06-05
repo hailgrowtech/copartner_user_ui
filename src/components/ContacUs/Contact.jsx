@@ -76,7 +76,7 @@ const ContactUs = () => {
             {/* Call */}
             <div className="flex items-center mb-4">
               <img src={call} alt="Call" className="w-3 h-3 mr-2" />
-              <p className="text-left">+91-7906854790</p>
+              <p className="text-left">+91-9205440790</p>
             </div>
             {/* Mail */}
             <div className="flex items-center mb-4">

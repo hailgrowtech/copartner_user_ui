@@ -124,7 +124,7 @@ const Wallet = ({ userId }) => {
           </div>
 
           {userId ? (
-            <div className="flex justify-center items-center md:mt-[1rem] mt-[-20px]">
+            <div className="flex justify-center items-center md:mt-[1rem] mt-[1.5rem]">
               {smallScreen ? (
                 <div className="flex flex-wrap justify-center items-center">
                   {transactionTable

@@ -58,7 +58,7 @@ const Expertise = ({ token }) => {
   return (
     <>
       <div className={`flex flex-col sm:py-[4rem] py-[30px]`}>
-        <div className={`{styles.flexStart} flex-col gap-2 xl:px-0`}>
+        {/* <div className={`{styles.flexStart} flex-col gap-2 xl:px-0`}>
           <div className="flex flex-row md:h-[52px] h-[34px] justify-center md:justify-between items-center">
             <span
               className="font-inter font-[700] md:text-[50px] text-[30px]
@@ -75,9 +75,9 @@ const Expertise = ({ token }) => {
             Dive into the expertise of our SEBI registered research analysts,
             guiding you towards trading success with precision and insight.
           </p>
-        </div>
+        </div> */}
 
-        <div className="p-[1rem] gap-[1rem] sm:p-[4rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px] md:mt-[-2rem]">
+        {/* <div className="p-[1rem] gap-[1rem] sm:p-[4rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px] md:mt-[-2rem]">
           {userData &&
             userData.slice(0, 6).map((expert, id) => {
               return (
@@ -164,7 +164,6 @@ const Expertise = ({ token }) => {
                         className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"
                       />
                       <button className="text-white font-[400] md:text-[15px] text-[12px] leading-[19px]">
-                        {/* {expert.greet} */}
                         Get Free Calls
                       </button>
                       <img
@@ -178,7 +177,7 @@ const Expertise = ({ token }) => {
                 </div>
               );
             })}
-        </div>
+        </div> */}
 
         <div
           className={`sm:flex grid-cols-1 sm:items-center sm:gap-6 gap-3 xl:px-0 md:py-0 py-[30px]`}
