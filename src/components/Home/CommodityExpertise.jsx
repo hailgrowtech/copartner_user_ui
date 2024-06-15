@@ -169,7 +169,6 @@ const CommodityExpertise = ({ token }) => {
                         className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"
                       />
                       <button className="text-white font-[400] md:text-[15px] text-[12px] leading-[19px]">
-                        {/* {expert.greet} */}
                         Get Free Calls
                       </button>
                       <img

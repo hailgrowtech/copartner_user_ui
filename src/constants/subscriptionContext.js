@@ -16,7 +16,6 @@ export const SubscriptionProvider = ({ children }) => {
         const res = await axios.get(`https://copartners.in:5009/api/Subscriber/GetByUserId/${userId}`);
         setTransactionTable(res.data.data);
       } catch (error) {
-        console.log("Error Getting In Transaction API.", error);
         setTransactionTable([]);
       }
     };

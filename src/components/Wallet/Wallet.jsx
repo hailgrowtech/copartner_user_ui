@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useContext } from "react";
 import styles from "../../style";
 import Interest from "./Interest";
-import axios from "axios";
+import { addDays, format } from "date-fns";
+import { DateRange } from "react-date-range";
 import { invoiceImg, logout } from "../../assets";
 import { Link } from "react-router-dom";
 import { useUserData } from "../../constants/context";
 import Receipt from "../Receipt/Receipt";
-import KYCWarning from "./KYCWarning";
 import { useUserSession } from "../../constants/userContext";
 import { SubscriptionContext } from "../../constants/subscriptionContext";
 import KYCPopup from "../Subscription RA/KYCPopup";
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
 
 const Wallet = ({ userId }) => {
   const userData = useUserData();
@@ -19,6 +21,16 @@ const Wallet = ({ userId }) => {
   const [visibleTransactions, setVisibleTransactions] = useState(3);
   const [KYCWaring, setKYCWaring] = useState(false);
   const { userData: loginData } = useUserSession();
+  const [filteredData, setFilteredData] = useState([]);
+  const [isKYCDone, setIsKYCDone] = useState(false);
+  const [dateRange, setDateRange] = useState([
+    {
+      startDate: null,
+      endDate: addDays(new Date(), 7),
+      key: "selection",
+    },
+  ]);
+  const [showDatePicker, setShowDatePicker] = useState(false);
 
   const showMoreTransactions = () => {
     setVisibleTransactions(visibleTransactions + 3);
@@ -36,6 +48,16 @@ const Wallet = ({ userId }) => {
         return "Unknown";
     }
   };
+
+  useEffect(() => {
+    if (loginData) {
+      if (!loginData?.isKYC) {
+        setIsKYCDone(true);
+      } else {
+        setIsKYCDone(false);
+      }
+    }
+  }, [loginData]);
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -71,6 +93,24 @@ const Wallet = ({ userId }) => {
     setKYCWaring(false);
   };
 
+  useEffect(() => {
+    const start = dateRange[0].startDate;
+    const end = dateRange[0].endDate;
+
+    const filteredAndSortedData = transactionTable
+      .filter(
+        (user) =>
+          !start ||
+          !end ||
+          (new Date(user.transactionDate) >= start &&
+            new Date(user.transactionDate) <= end)
+      )
+      .sort(
+        (a, b) => new Date(b.transactionDate) - new Date(a.transactionDate)
+      );
+    setFilteredData(filteredAndSortedData);
+  }, [transactionTable, dateRange]);
+
   return (
     <>
       <div
@@ -85,7 +125,7 @@ const Wallet = ({ userId }) => {
                 <span className="font-inter font-[700] md:text-[72px] text-[44px] text-gradient md:leading-[74px] leading-[48px]">
                   Transaction History
                 </span>
-                <p className="md:w-[508px] md:h-[56px] w-[341px] h-[32px] font-inter font-[500] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] leading-[16px] mt-4">
+                <p className="md:w-[508px] w-[341px] font-inter font-[500] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] leading-[16px] mt-4">
                   Review the transaction history below to have transparency into
                   payments made to our portal.{" "}
                   <span className="text-lightWhite">
@@ -119,15 +159,41 @@ const Wallet = ({ userId }) => {
             </div> */}
           </div>
 
-          <div className="flex md:flex-row flex-col justify-around items-center">
-            <span className="md:w-[461px] md:h-[52px] font-inter font-bold md:text-[50px] text-[30px] text-gradient-2 leading-[51px]"></span>
-          </div>
+          {/* <div className="md:w-1/5 flex mr-4 ml-auto text-white">
+            <button
+              onClick={() => setShowDatePicker(true)}
+              className="border-2 text-base border-white rounded-lg px-4 py-1"
+            >
+              Select Date Range
+            </button>
+          </div> */}
+          {showDatePicker && (
+            <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+              <div className="bg-white rounded-lg p-4 w-11/12 md:w-1/2 lg:w-1/3">
+                <h2 className="text-xl font-bold mb-4">Select Date Range</h2>
+                <DateRange
+                  editableDateInputs={true}
+                  onChange={(item) => setDateRange([item.selection])}
+                  moveRangeOnFirstSelection={false}
+                  ranges={dateRange}
+                />
+                <div className="flex justify-end mt-4">
+                  <button
+                    onClick={() => setShowDatePicker(false)}
+                    className="border-2 rounded-lg px-4 py-1"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
 
           {userId ? (
             <div className="flex justify-center items-center md:mt-[1rem] mt-[1.5rem]">
               {smallScreen ? (
                 <div className="flex flex-wrap justify-center items-center">
-                  {transactionTable
+                  {filteredData
                     .slice(0, visibleTransactions)
                     .map((row, index) => (
                       <div
@@ -177,7 +243,7 @@ const Wallet = ({ userId }) => {
                       </div>
                     ))}
 
-                  {visibleTransactions < transactionTable.length && (
+                  {visibleTransactions < filteredData.length && (
                     <button
                       onClick={showMoreTransactions}
                       className="md:w-[147px] md:h-[40px] md:flex items-center justify-center flex w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px] mt-4"
@@ -200,8 +266,8 @@ const Wallet = ({ userId }) => {
                     </tr>
                   </thead>
                   <tbody className="text-lightWhite w-[1234px] h-[81px]">
-                    {transactionTable &&
-                      transactionTable
+                    {filteredData &&
+                      filteredData
                         .sort((a, b) => {
                           const dateA = new Date(a.transactionId.substring(1));
                           const dateB = new Date(b.transactionId.substring(1));
@@ -348,6 +414,7 @@ const Wallet = ({ userId }) => {
 
           <Interest userData={userData} />
         </div>
+        {isKYCDone && <KYCPopup />}
       </div>
     </>
   );

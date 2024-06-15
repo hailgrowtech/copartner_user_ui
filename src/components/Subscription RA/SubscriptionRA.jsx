@@ -12,6 +12,7 @@ import { useUserSession } from "../../constants/userContext";
 import KYCPopup from "./KYCPopup";
 import LinkPopup from "../InviteLink/LinkPopup";
 import SignUp2 from "../Signup2";
+import Stock from "../Stock";
 
 const SubscriptionRA = ({ userId }) => {
   const { id } = useParams();
@@ -589,6 +590,9 @@ const SubscriptionRA = ({ userId }) => {
             </p>
           </div>
         </section>
+        <div className={`md:mt-[5rem] mt-[1.9rem] ${styles.boxWidth}`}>
+          <Stock />
+        </div>
         <ToastContainer />
         <div className="md:hidden block">
           {subscriptions.length !== 0 && (
@@ -599,7 +603,7 @@ const SubscriptionRA = ({ userId }) => {
             />
           )}
         </div>
-        {showKYCPopup && <KYCPopup onClose={handleClose} />}
+        {showKYCPopup && <KYCPopup inviteLink={inviteLink} onClose={handleClose} />}
         {showLinkPopup && (
           <LinkPopup
             chatID={chatID}

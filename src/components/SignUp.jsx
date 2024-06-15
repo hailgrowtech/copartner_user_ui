@@ -3,7 +3,7 @@ import Otp from "./Otp";
 import { closeImg, signupBg } from "../assets";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-const SignUp = ({onAuthSuccess}) => {
+const SignUp = ({onComplete}) => {
   const [mobile, setMobile] = useState("");
   const [showOtp, setShowOtp] = useState(false);
   const [error, setError] = useState("");
@@ -15,6 +15,7 @@ const SignUp = ({onAuthSuccess}) => {
   useEffect(() => {
     const apid = searchParams.get("apid");
     const raid = searchParams.get("raid");
+    const landingPageUrl = searchParams.get("apurl");
 
     if (apid) {
       sessionStorage.setItem("apid", apid);
@@ -22,6 +23,10 @@ const SignUp = ({onAuthSuccess}) => {
 
     if (raid) {
       sessionStorage.setItem("raid", raid);
+    }
+
+    if (landingPageUrl) {
+      sessionStorage.setItem("landingPageUrl", landingPageUrl);
     }
   }, [searchParams]);
 
@@ -132,7 +137,6 @@ const SignUp = ({onAuthSuccess}) => {
             Get access to daily free calls from varieties of India's SEBI
             Registered Research Analysts.
           </p>
-          {error && <p className="text-red-500 mb-4">{error}</p>}
           {showOtp ? (
             <Otp
               apid={apid}
@@ -140,7 +144,7 @@ const SignUp = ({onAuthSuccess}) => {
               mobileNumber={mobile}
               onClose={handleClosePopups}
               onCloseAll={handleClose}
-              onAuthSuccess={onAuthSuccess}
+              onComplete={onComplete}
             />
           ) : (
             <form

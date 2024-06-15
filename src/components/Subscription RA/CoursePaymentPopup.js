@@ -40,7 +40,7 @@ const CoursePaymentPopup = ({
       return `${day}-${month}-${year}`;
     }
 
-    const transactionDate = formatDate(new Date());
+    const transactionDate = new Date().toISOString();
 
     const data = {
       totalAmount: total,

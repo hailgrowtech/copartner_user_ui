@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { close } from "../../assets";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
   const [name, setName] = useState("");
@@ -41,7 +42,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
 
     if (file) {
       try {
-        setLoading(true)
+        setLoading(true);
         const formData = new FormData();
         formData.append("file", file);
 
@@ -67,12 +68,17 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
       } catch (error) {
         console.error("Error uploading image:", error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     }
   };
 
   const handleSave = async () => {
+    if (!name || !email || !phone || !panCard || !address || !state) {
+      toast.error("Please fill out all fields");
+      return;
+    }
+
     try {
       const patchData = [
         { path: "name", op: "replace", value: name },
@@ -168,7 +174,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                 />
                 <label
                   htmlFor="name"
-                  className="absolute text-sm text-white duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-transparent px-2 peer-focus:px-2 peer-focus:text-white peer-focus:border-2 peer-focus:border-[#ffffff47] peer-focus:rounded-md peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+                  className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-white peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
                 >
                   Name
                 </label>
@@ -188,7 +194,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                   />
                   <label
                     htmlFor="email"
-                    className="absolute text-sm text-white duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-transparent px-2 peer-focus:px-2 peer-focus:text-white peer-focus:border-2 peer-focus:border-[#ffffff47] peer-focus:rounded-md peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+                    className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-white peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
                   >
                     Email
                   </label>
@@ -206,7 +212,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                   />
                   <label
                     htmlFor="phone"
-                    className="absolute text-sm text-white duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-transparent px-2 peer-focus:px-2 peer-focus:text-white peer-focus:border-2 peer-focus:border-[#ffffff47] peer-focus:rounded-md peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+                    className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-white peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
                   >
                     Phone Number
                   </label>
@@ -226,7 +232,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                 />
                 <label
                   htmlFor="panCard"
-                  className="absolute text-sm text-white duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-transparent px-2 peer-focus:px-2 peer-focus:text-white peer-focus:border-2 peer-focus:border-[#ffffff47] peer-focus:rounded-md peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+                  className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-white peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
                 >
                   PAN Card
                 </label>
@@ -242,7 +248,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                 />
                 <label
                   htmlFor="state"
-                  className="absolute text-sm text-white duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-transparent px-2 peer-focus:px-2 peer-focus:text-white peer-focus:border-2 peer-focus:border-[#ffffff47] peer-focus:rounded-md peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+                  className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-white peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
                 >
                   State
                 </label>
@@ -261,7 +267,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                 />
                 <label
                   htmlFor="address"
-                  className="absolute text-sm text-white duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-transparent px-2 peer-focus:px-2 peer-focus:text-white peer-focus:border-2 peer-focus:border-[#ffffff47] peer-focus:rounded-md peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+                  className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-white peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
                 >
                   Address
                 </label>
@@ -270,7 +276,9 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
             {/* Change Button */}
             <div className="flex justify-center">
               <button
-                className={`${loading ? "bg-gray-500" : "bg-white"} text-black py-2 px-4 rounded-md`}
+                className={`${
+                  loading ? "bg-gray-500" : "bg-white"
+                } text-black py-2 px-4 rounded-md`}
                 onClick={handleSave}
                 disabled={loading}
               >

@@ -71,6 +71,7 @@ const Receipt = ({ transaction, closePopup }) => {
     paymentMode,
     transactionId,
     transactionDate,
+    invoiceId,
   } = transaction;
   const { experts } = transaction.subscription;
   const invoiceDate = new Date(transactionDate).toLocaleDateString();
@@ -92,7 +93,7 @@ const Receipt = ({ transaction, closePopup }) => {
           Tax Invoice/Bill of Service
         </h1>
         <div className="text-center mb-2 md:mb-4">
-          <p>Invoice No: {transactionId}</p>
+          <p>Invoice No: {invoiceId}</p>
           <p>Original for Recipient</p>
         </div>
 

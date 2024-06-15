@@ -34,7 +34,7 @@ const Footer = () => {
     <>
       <div className="md:w-[1440px] w-full md:h-[198px] md:gap-0 h-[540px] md:pt-[8rem] pt-4 justify-around border-t border-solid border-white border-opacity-10 flex md:flex-row flex-col items-center">
         <div className="flex flex-col gap-[0.5rem] relative">
-          <Link onClick={scrollToTop} to="/" className="relative">
+          <div className="relative">
             <img src={logo} alt="" className="md:w-56 w-40" />
             <div className="absolute top-1 right-0 transform -translate-x-1/2 flex gap-2 md:hidden">
               <a
@@ -52,7 +52,7 @@ const Footer = () => {
                 <img src={instagram} alt="Instagram" className="w-8" />
               </a>
             </div>
-          </Link>
+          </div>
           <span className="md:w-[296px] w-[296px] md:h-[84px] h-[66px] font-normal md:text-[16px] text-[14px] md:leading-[20px] leading-[22px] text-dimWhite">
             Connecting India’s SEBI registered Research Analysts, guiding you
             thoroughly to maximising profits in the dynamic world

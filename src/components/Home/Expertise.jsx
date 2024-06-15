@@ -179,7 +179,7 @@ const Expertise = ({ token }) => {
             })}
         </div> */}
 
-        <div
+        {/* <div
           className={`sm:flex grid-cols-1 sm:items-center sm:gap-6 gap-3 xl:px-0 md:py-0 py-[30px]`}
         >
           <div className="flex flex-col md:gap-[2rem] gap-[5px] md:py-0 mb-4">
@@ -264,7 +264,7 @@ const Expertise = ({ token }) => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
       <PrivateCall userData={userData} />
     </>

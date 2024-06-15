@@ -8,6 +8,8 @@ const Otp2 = ({ onClose, onCloseAll, mobileNumber, apid, raid }) => {
   const [loading, setLoading] = useState(false);
   const [timer, setTimer] = useState(25);
 
+  const landingPageUrl = sessionStorage.getItem("landingPageUrl");
+
   useEffect(() => {
     let interval;
     if (timer > 0) {
@@ -109,11 +111,13 @@ const Otp2 = ({ onClose, onCloseAll, mobileNumber, apid, raid }) => {
         referralMode: "CP",
         affiliatePartnerId: "",
         expertsID: "",
+        landingPageUrl: "",
       };
 
       if (apid) {
         userData.referralMode = "AP";
         userData.affiliatePartnerId = apid;
+        userData.landingPageUrl = landingPageUrl;
       } else if (raid) {
         userData.referralMode = "RA";
         userData.expertsID = raid;
@@ -128,11 +132,18 @@ const Otp2 = ({ onClose, onCloseAll, mobileNumber, apid, raid }) => {
       });
 
       const data = await resUser.json();
-      if (!data.ok) {
+      if (!data.isSuccess) {
         setError(data.errorMessages);
         console.log("Something");
       }
       localStorage.setItem("userId", data.data.id);
+      const userId = data.data.id;
+      const scriptContent = `
+      window.TrackierWebSDK.trackConv('copartner.gotrackier.com', '662b93eaeae1a03b602b9163', {"txn_id":"${userId}","is_iframe":true});
+    `;
+      const scriptElement = document.createElement("script");
+      scriptElement.textContent = scriptContent;
+      document.body.appendChild(scriptElement);
       window.location.reload();
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);

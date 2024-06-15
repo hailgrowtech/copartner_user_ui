@@ -4,7 +4,7 @@ import { useUserSession } from "../../constants/userContext";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const KYCPopup = ({ onClose }) => {
+const KYCPopup = ({ onClose, inviteLink }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [pan, setPan] = useState("");
@@ -64,6 +64,9 @@ const KYCPopup = ({ onClose }) => {
       if (response.status === 200) {
         toast.success("Details updated successfully!");
         setError(null);
+        if (inviteLink) {
+          await sendSMS(userData?.mobileNumber, inviteLink)
+        }
         window.location.reload();
         onClose();
       } else {
@@ -72,8 +75,31 @@ const KYCPopup = ({ onClose }) => {
       }
     } catch (error) {
       console.error("Error updating details:", error);
-      setError("Error updating details.");
-      toast.error("Error updating details.");
+    }
+  };
+
+  const sendSMS = async (mobileNumber, inviteLink) => {
+    try {
+      const inviteCode = encodeURIComponent(
+        inviteLink.split("https://t.me/")[1]
+      );
+
+      if (!inviteCode) {
+        throw new Error("Invalid invite link format");
+      }
+
+      const response = await fetch(
+        `https://www.fast2sms.com/dev/bulkV2?authorization=1UGuIy5W4D3vA2wZfB90ibrcsOCeYS7nptj8EVhLodKJqxXNMHLIermYdE6vHzpBRaXOl274SfAbsw5Z&route=dlt&sender_id=COPTNR&message=169464&variables_values=${inviteCode}&flash=0&numbers=${mobileNumber}`
+      );
+      if (response.ok) {
+        console.log(
+          `SMS sent to mobile ${mobileNumber} with invite link ${inviteCode}`
+        );
+      } else {
+        console.log(response.error);
+      }
+    } catch (error) {
+      throw new Error(`Failed to send SMS: ${error.message}`);
     }
   };
 
@@ -93,7 +119,8 @@ const KYCPopup = ({ onClose }) => {
           <div className="px-6 py-3">
             <div className="text-white mb-4">
               <p>
-                <strong>Precaution:</strong> Closing this popup will lose the Telegram Channel Link!!! (if any)
+                <strong>Precaution:</strong> Closing this popup will lose the
+                Telegram Channel Link!!! (if any)
               </p>
             </div>
             <div className="grid grid-cols-2 gap-2">
@@ -106,11 +133,14 @@ const KYCPopup = ({ onClose }) => {
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="block px-2.5 py-2 w-full text-sm rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
+                  className="block px-2.5 py-2 w-full text-sm rounded-lg border-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
                 />
               </div>
               <div className="mb-4 md:col-span-1">
-                <label htmlFor="email" className="block mb-1 text-sm text-white">
+                <label
+                  htmlFor="email"
+                  className="block mb-1 text-sm text-white"
+                >
                   Email
                 </label>
                 <input
@@ -118,7 +148,7 @@ const KYCPopup = ({ onClose }) => {
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="block px-2.5 py-2 w-full text-sm rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
+                  className="block px-2.5 py-2 w-full text-sm rounded-lg border-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
                 />
               </div>
               <div className="mb-4 md:col-span-1">
@@ -130,11 +160,14 @@ const KYCPopup = ({ onClose }) => {
                   id="pan"
                   value={pan}
                   onChange={(e) => setPan(e.target.value)}
-                  className="block px-2.5 py-2 w-full text-sm rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
+                  className="block px-2.5 py-2 w-full text-sm rounded-lg border-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
                 />
               </div>
               <div className="mb-4 md:col-span-1">
-                <label htmlFor="state" className="block mb-1 text-sm text-white">
+                <label
+                  htmlFor="state"
+                  className="block mb-1 text-sm text-white"
+                >
                   State
                 </label>
                 <input
@@ -142,11 +175,14 @@ const KYCPopup = ({ onClose }) => {
                   id="state"
                   value={state}
                   onChange={(e) => setState(e.target.value)}
-                  className="block px-2.5 py-2 w-full text-sm rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
+                  className="block px-2.5 py-2 w-full text-sm rounded-lg border-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
                 />
               </div>
               <div className="mb-4 col-span-2">
-                <label htmlFor="address" className="block mb-1 text-sm text-white">
+                <label
+                  htmlFor="address"
+                  className="block mb-1 text-sm text-white"
+                >
                   Address
                 </label>
                 <input
@@ -154,11 +190,13 @@ const KYCPopup = ({ onClose }) => {
                   id="address"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  className="block px-2.5 py-2 w-full text-sm rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
+                  className="block px-2.5 py-2 w-full text-sm rounded-lg border-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
                 />
               </div>
               {error && (
-                <div className="text-red-500 text-sm mb-2 col-span-2">{error}</div>
+                <div className="text-red-500 text-sm mb-2 col-span-2">
+                  {error}
+                </div>
               )}
               <button
                 className="bg-white col-span-2 text-black py-3 px-2 rounded-sm hover:bg-black hover:text-white transition duration-300 md:text-[1rem] text-[12px]"
@@ -169,7 +207,11 @@ const KYCPopup = ({ onClose }) => {
               <div className="flex col-span-2 items-start gap-2 text-white py-2 md:text-[12px] text-[10px]">
                 <img src={exclamation} className="w-5 h-5" alt="Exclamation" />
                 <span className="flex items-start">
-                  Users are solely responsible for the accuracy and authenticity of any documents or information submitted for Know Your Customer (KYC) verification. Copartner assumes no liability for any issues or consequences arising from the submission of inaccurate or falsified documents.
+                  Users are solely responsible for the accuracy and authenticity
+                  of any documents or information submitted for Know Your
+                  Customer (KYC) verification. Copartner assumes no liability
+                  for any issues or consequences arising from the submission of
+                  inaccurate or falsified documents.
                 </span>
               </div>
             </div>
@@ -187,7 +229,8 @@ const KYCPopup = ({ onClose }) => {
             </button>
             <h2 className="text-2xl font-bold mb-4">Precaution</h2>
             <p className="mb-4">
-              Please make sure all the information provided is accurate. Going back may cause loss of unsaved changes. Do you want to continue?
+              Please make sure all the information provided is accurate. Going
+              back may cause loss of unsaved changes. Do you want to continue?
             </p>
             <div className="flex justify-end gap-4">
               <button

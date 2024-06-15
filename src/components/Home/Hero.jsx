@@ -9,7 +9,7 @@ import {
   feeback,
 } from "../../assets";
 import Expertise from "./Expertise";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useUserData } from "../../constants/context";
 import { useUserSession } from "../../constants/userContext";
 import KYCPopup from "../Subscription RA/KYCPopup";
@@ -25,6 +25,25 @@ const Hero = ({ hasVisitedSignUp, token }) => {
   const [showKYCDialog, setShowKYCDialog] = useState(false);
   const { transactionTable } = useContext(SubscriptionContext);
   const [showSignUp, setShowSignUp] = useState(false);
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const apid = searchParams.get("apid");
+    const raid = searchParams.get("raid");
+    const landingPageUrl = searchParams.get("apurl");
+
+    if (apid) {
+      sessionStorage.setItem("apid", apid);
+    }
+
+    if (raid) {
+      sessionStorage.setItem("raid", raid);
+    }
+
+    if (landingPageUrl) {
+      sessionStorage.setItem("landingPageUrl", landingPageUrl);
+    }
+  }, [searchParams]);
 
   const getExpertType = (typeId) => {
     switch (typeId) {
@@ -136,7 +155,8 @@ const Hero = ({ hasVisitedSignUp, token }) => {
     setShowDialog(false);
   };
 
-  const handleTelegram = (link) => {
+  const handleTelegram = (e, link) => {
+    e.stopPropagation();
     if (token) {
       window.open(link);
     } else {
@@ -144,10 +164,25 @@ const Hero = ({ hasVisitedSignUp, token }) => {
     }
   };
 
-  const handleAuthSuccess = (link) => {
+  const handleSignUpComplete = (e, link) => {
+    e.stopPropagation();
     setShowSignUp(false);
-    window.open(link);
+    window.open(link, "_blank");
+    window.location.reload();
   };
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const slicedData = isMobile ? userData.slice(0, 5) : userData.slice(0, 3);
 
   return (
     <div
@@ -227,11 +262,14 @@ const Hero = ({ hasVisitedSignUp, token }) => {
           <img src={arrow} alt="arrow" className="w-[16px] h-[16px]" />
         </div>
 
-        <div className="md:pt-[2rem] pt-[1rem] grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:flex">
+        <div className="md:pt-[2rem] pt-[1rem] grid grid-cols-2 gap-4 md:flex">
           {userData &&
-            userData.slice(0, 3).map((expert, id) => {
+            slicedData.map((expert, id) => {
               return (
-                <div className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-[11px] p-2">
+                <div
+                  key={expert.id}
+                  className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-[11px] p-2"
+                >
                   <Link
                     onClick={scrollToTop}
                     to={`/ra-detail/${expert.id}`}
@@ -303,18 +341,17 @@ const Hero = ({ hasVisitedSignUp, token }) => {
                       </div>
                     </div>
                   </Link>
-                  <div
-                    onClick={() => handleTelegram(expert.telegramChannel)}
-                    className="md:w-[211px] mx-auto bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0"
-                  >
-                    <div className="flex justify-center items-center gap-2">
+                  <div className="md:w-[211px] mx-auto bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
+                    <div
+                      onClick={(e) => handleTelegram(e, expert.telegramChannel)}
+                      className="flex justify-center items-center gap-2"
+                    >
                       <img
                         src={telegram}
                         alt="Telegram"
                         className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"
                       />
                       <button className="text-white font-[400] md:text-[15px] text-[12px] leading-[19px]">
-                        {/* {expert.greet} */}
                         Get Free Calls
                       </button>
                       <img
@@ -325,8 +362,8 @@ const Hero = ({ hasVisitedSignUp, token }) => {
                     </div>
                     {showSignUp && (
                       <SignUp
-                        onAuthSuccess={() =>
-                          handleAuthSuccess(expert.telegramChannel)
+                        onComplete={(e) =>
+                          handleSignUpComplete(e, expert.telegramChannel)
                         }
                       />
                     )}
@@ -335,18 +372,18 @@ const Hero = ({ hasVisitedSignUp, token }) => {
               );
             })}
 
-          <div className="md:w-[365px] md:h-[226px] w-[171px] h-[256px] md:px-[3rem] flex flex-col md:gap-2">
-            <span className="md:w-[365px] md:h-[36px] w-[171px] h-[36px] font-[600] md:text-[30px] text-[18px] leading-[36px] text-lightWhite">
+          <div className="md:px-[3rem] flex flex-col md:gap-4 gap-3 md:p-4 p-2">
+            <span className="font-[600] md:text-[30px] text-lg leading-5 text-lightWhite">
               Experience Matters
             </span>
 
-            <span className="text-dimWhite md:w-[365px] md:h-[86px] w-[171px] h-[80px] font-[400] md:text-[16px] text-[14px] md:leading-[28px] md:leading-[21px] leading-[18px]">
+            <span className="text-dimWhite font-[400] md:text-[16px] text-[14px] md:leading-[21px] leading-[18px]">
               Connect with India’s SEBI registered Research Analysts, guiding
               you thoroughly to maximising profits in the dynamic world of stock
               trading.
             </span>
             <Link onClick={scrollToTop} to="expertise">
-              <button className="md:w-[147px] md:h-[40px] w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px] md:mt-12 mt-[4rem]">
+              <button className="md:px-6 md:py-3 px-4 py-2 rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px]">
                 Explore More
               </button>
             </Link>

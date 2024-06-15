@@ -351,7 +351,7 @@ const Expertise = ({ token }) => {
           </div>
         </section>
 
-        <section className="md:mt-[-3rem]">
+        {/* <section className="md:mt-[-3rem]">
           <div className={`{styles.flexStart} flex-col gap-2 xl:px-0`}>
             <div className="flex flex-row md:h-[52px] h-[34px] justify-center md:justify-between items-center">
               <span
@@ -468,8 +468,8 @@ const Expertise = ({ token }) => {
               );
             })}
           </div>
-        </section>
-        <section>
+        </section> */}
+        {/* <section>
           <div className="mt-6 md:text-left text-center">
             <div className="font-inter font-bold md:text-[50px] text-[30px] subheading-gradient md:leading-[50px] leading-[51px] text-white md:mb-2">
               Similar To Your Interest
@@ -577,7 +577,7 @@ const Expertise = ({ token }) => {
               );
             })}
           </div>
-        </section>
+        </section> */}
         <div className={`md:mt-[5rem] mt-[1.9rem] ${styles.boxWidth}`}>
           <Stock />
         </div>

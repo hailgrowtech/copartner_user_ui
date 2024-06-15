@@ -23,7 +23,7 @@ const Stock = () => {
             market landscape.
           </p>
           <div className="ml-1 md:block hidden">
-            <a href="https://forms.gle/kx5TwUbSUwHFEGZcA" target="_blank" rel="noreferrer" className="bg-white cursor-pointer text-black text-base font-medium px-5 py-2.5 rounded-md relative overflow-hidden transition-all duration-400 transform hover:bg-black hover:text-white hover:scale-110 hover:z-10">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfvXlECAFh4J984zNsSwdKC7o0MSf2GKJndd7S1Lrfb4Eu9ew/viewform?vc=0&c=0&w=1&flr=0" target="_blank" rel="noreferrer" className="bg-white cursor-pointer text-black text-base font-medium px-5 py-2.5 rounded-md relative overflow-hidden transition-all duration-400 transform hover:bg-black hover:text-white hover:scale-110 hover:z-10">
               Join Expert Team
             </a>
           </div>
@@ -39,7 +39,7 @@ const Stock = () => {
             }}
           />
           <div className="md:hidden">
-            <a href="https://forms.gle/kx5TwUbSUwHFEGZcA" target="_blank" rel="noreferrer" className="bg-white cursor-pointer text-black text-base font-medium px-5 py-2.5 rounded-md relative overflow-hidden transition-all duration-400 transform hover:bg-black hover:text-white hover:scale-110 hover:z-10">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfvXlECAFh4J984zNsSwdKC7o0MSf2GKJndd7S1Lrfb4Eu9ew/viewform?vc=0&c=0&w=1&flr=0" target="_blank" rel="noreferrer" className="bg-white cursor-pointer text-black text-base font-medium px-5 py-2.5 rounded-md relative overflow-hidden transition-all duration-400 transform hover:bg-black hover:text-white hover:scale-110 hover:z-10">
               Join Expert Team
             </a>
           </div>

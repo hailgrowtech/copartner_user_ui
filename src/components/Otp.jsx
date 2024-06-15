@@ -2,20 +2,15 @@ import React, { useEffect, useState } from "react";
 import { back, closeImg } from "../assets";
 import { useNavigate } from "react-router-dom";
 
-const Otp = ({
-  onClose,
-  onCloseAll,
-  mobileNumber,
-  apid,
-  raid,
-  onAuthSuccess,
-}) => {
+const Otp = ({ onClose, onCloseAll, mobileNumber, apid, raid, onComplete }) => {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
   const [timer, setTimer] = useState(25);
   const navigate = useNavigate();
+
+  const landingPageUrl = sessionStorage.getItem("landingPageUrl");
 
   useEffect(() => {
     let interval;
@@ -118,11 +113,13 @@ const Otp = ({
         referralMode: "CP",
         affiliatePartnerId: "",
         expertsID: "",
+        landingPageUrl: "",
       };
 
       if (apid) {
         userData.referralMode = "AP";
         userData.affiliatePartnerId = apid;
+        userData.landingPageUrl = landingPageUrl;
       } else if (raid) {
         userData.referralMode = "RA";
         userData.expertsID = raid;
@@ -137,17 +134,25 @@ const Otp = ({
       });
 
       const data = await resUser.json();
-      if (!data.ok) {
+      if (!data.isSuccess) {
         setError(data.errorMessages);
         console.log("Something");
       }
       localStorage.setItem("userId", data.data.id);
+      const userId = data.data.id;
+      const scriptContent = `
+      window.TrackierWebSDK.trackConv('copartner.gotrackier.com', '662b93eaeae1a03b602b9163', {"txn_id":"${userId}","is_iframe":true});
+    `;
+      const scriptElement = document.createElement("script");
+      scriptElement.textContent = scriptContent;
+      document.body.appendChild(scriptElement);
       if (apid) {
-        navigate("expertise");
+        navigate("/expertise");
+      } else {
+        navigate("/");
       }
-      navigate("/");
       window.location.reload();
-      onAuthSuccess();
+      onComplete();
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);
     }

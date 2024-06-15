@@ -90,7 +90,7 @@ const EquityExpertise = ({ token }) => {
           {filteredData &&
             filteredData.slice(0, 3).map((expert, id) => {
               return (
-                <div className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-[11px] p-2">
+                <div key={expert.id} className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-[11px] p-2">
                   <Link
                     onClick={scrollToTop}
                     to={`/ra-detail/${expert.id}`}
@@ -173,7 +173,6 @@ const EquityExpertise = ({ token }) => {
                         className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"
                       />
                       <button className="text-white font-[400] md:text-[15px] text-[12px] leading-[19px]">
-                        {/* {expert.greet} */}
                         Get Free Calls
                       </button>
                       <img

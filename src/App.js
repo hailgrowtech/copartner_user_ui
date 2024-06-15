@@ -77,22 +77,6 @@ function App() {
             }
           />
           <Route
-            path="ad1"
-            element={
-              // userId || hasVisitedSignUp ? (
-              <div className={`${styles.flexStart}`}>
-                <UserDataProvider>
-                  <div className={`${styles.boxWidth}`}>
-                    <Ad1 hasVisitedSignUp={hasVisitedSignUp} token={userId} />
-                  </div>
-                </UserDataProvider>
-              </div>
-              // ) : (
-              //   <Navigate to="/signup" replace={true} />
-              // )
-            }
-          />
-          <Route
             path="expertise"
             element={
               userId ? (
