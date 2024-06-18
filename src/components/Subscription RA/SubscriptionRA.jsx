@@ -13,6 +13,9 @@ import KYCPopup from "./KYCPopup";
 import LinkPopup from "../InviteLink/LinkPopup";
 import SignUp2 from "../Signup2";
 import Stock from "../Stock";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
 
 const SubscriptionRA = ({ userId }) => {
   const { id } = useParams();
@@ -368,44 +371,75 @@ const SubscriptionRA = ({ userId }) => {
             {subscriptions
               .slice()
               .sort((a, b) => a.amount - b.amount)
-              .map((subscription, index) => (
-                <div
-                  key={subscription.id}
-                  onClick={() =>
-                    handleBuyNowClick(
-                      subscription.id,
-                      subscription.planType,
-                      subscription.amount
-                    )
-                  }
-                  className={`flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
-                    activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
-                  } relative ${index === 1 ? "border-2" : ""}`}
-                >
-                  <div className="text-center opacity-60 hidden">
-                    21 Days Left
-                  </div>
-                  <div className="text-center md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
-                    {subscription.planType}
-                  </div>
-                  <div className="text-center md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-center">
-                    ₹{subscription.amount}
-                  </div>
-                  <div className="text-center md:text-lg text-xs mt-auto opacity-60 mb-6">
-                    {subscription.durationMonth} Month Access
-                  </div>
-                  <div className="text-center">
-                    <button className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2">
-                      Buy Now
-                    </button>
-                  </div>
-                  {index === 1 && (
-                    <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
-                      Recommended
+              .map((subscription, index) => {
+                const isDiscounted =
+                  subscription.discountedAmount < subscription.amount;
+                const isRecommended =
+                  subscriptions.every(
+                    (sub) => sub.discountedAmount >= sub.amount
+                  ) && index === 1;
+                const showBorder = isDiscounted || isRecommended;
+
+                const remainingTime = subscription.discountValidTo
+                  ? dayjs(subscription.discountValidTo).fromNow()
+                  : null;
+
+                return (
+                  <div
+                    key={subscription.id}
+                    onClick={() =>
+                      handleBuyNowClick(
+                        subscription.id,
+                        subscription.planType,
+                        subscription.discountedAmount
+                      )
+                    }
+                    className={`my-auto flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
+                      activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
+                    } relative ${showBorder ? "border-2" : ""}`}
+                  >
+                    <div className="text-center md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
+                      {subscription.planType}
                     </div>
-                  )}
-                </div>
-              ))}
+                    <div className="text-center md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-center">
+                      {isDiscounted ? (
+                        <div className="flex flex-col text-center">
+                          <span className="line-through text-gray-500 md:text-xl text-sm">
+                            ₹{subscription.amount}
+                          </span>
+                          <span>₹{subscription.discountedAmount}</span>
+                        </div>
+                      ) : (
+                        <span>₹{subscription.amount}</span>
+                      )}
+                    </div>
+                    <div className="text-center md:text-lg text-xs mt-auto opacity-60 mb-6">
+                      {subscription.durationMonth} Month Access
+                    </div>
+                    <div className="text-center">
+                      <button className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2">
+                        Buy Now
+                      </button>
+                    </div>
+                    <div className="text-center opacity-60">
+                      {remainingTime && isDiscounted
+                        ? `${remainingTime} Left`
+                        : ""}
+                    </div>
+                    {isDiscounted ? (
+                      <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
+                        Discounted
+                      </div>
+                    ) : (
+                      isRecommended && (
+                        <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
+                          Recommended
+                        </div>
+                      )
+                    )}
+                  </div>
+                );
+              })}
             {showMonthlyPopup && (
               <SubscriptionPaymentPopup
                 onClose={handleClosePopup}
@@ -515,7 +549,7 @@ const SubscriptionRA = ({ userId }) => {
                       handleSelectPlan(
                         subscription.id,
                         subscription.planType,
-                        subscription.amount
+                        subscription.discountedAmount
                       )
                     }
                     className={`flex rounded-2xl p-4 ${
@@ -603,7 +637,9 @@ const SubscriptionRA = ({ userId }) => {
             />
           )}
         </div>
-        {showKYCPopup && <KYCPopup inviteLink={inviteLink} onClose={handleClose} />}
+        {showKYCPopup && (
+          <KYCPopup inviteLink={inviteLink} onClose={handleClose} />
+        )}
         {showLinkPopup && (
           <LinkPopup
             chatID={chatID}

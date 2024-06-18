@@ -11,16 +11,20 @@ export const SubscriptionProvider = ({ children }) => {
   const userId = localStorage.getItem("userId");
 
   useEffect(() => {
-    const fetchTransactionData = async () => {
-      try {
-        const res = await axios.get(`https://copartners.in:5009/api/Subscriber/GetByUserId/${userId}`);
-        setTransactionTable(res.data.data);
-      } catch (error) {
-        setTransactionTable([]);
-      }
-    };
+    if (userId) {
+      const fetchTransactionData = async () => {
+        try {
+          const res = await axios.get(
+            `https://copartners.in:5009/api/Subscriber/GetByUserId/${userId}`
+          );
+          setTransactionTable(res.data.data);
+        } catch (error) {
+          setTransactionTable([]);
+        }
+      };
 
-    fetchTransactionData();
+      fetchTransactionData();
+    }
   }, [userId]);
 
   return (
