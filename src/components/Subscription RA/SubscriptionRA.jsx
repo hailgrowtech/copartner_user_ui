@@ -9,13 +9,10 @@ import CoursePaymentPopup from "./CoursePaymentPopup";
 import MobileCourse from "./MobileCourse";
 import { useParams } from "react-router-dom";
 import { useUserSession } from "../../constants/userContext";
-import KYCPopup from "./KYCPopup";
-import LinkPopup from "../InviteLink/LinkPopup";
+// import KYCPopup from "./KYCPopup";
+// import LinkPopup from "../InviteLink/LinkPopup";
 import SignUp2 from "../Signup2";
 import Stock from "../Stock";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
-dayjs.extend(relativeTime);
 
 const SubscriptionRA = ({ userId }) => {
   const { id } = useParams();
@@ -32,14 +29,17 @@ const SubscriptionRA = ({ userId }) => {
   const [showMobilePopup, setShowMobilePopup] = useState(false);
   const [subscriptions, setSubscriptions] = useState([]);
   const [mobileNum, setMobileNum] = useState("");
-  const [showKYCPopup, setShowKYCPopup] = useState(false);
-  const [showLinkPopup, setShowLinkPopup] = useState(false);
+  // const [showKYCPopup, setShowKYCPopup] = useState(false);
+  // const [showLinkPopup, setShowLinkPopup] = useState(false);
   const [chatID, setChatID] = useState("");
   const { userData, loading } = useUserSession();
-  const [inviteLink, setInviteLink] = useState("");
+  // const [inviteLink, setInviteLink] = useState("");
   const [subscriptionId, setSubscriptionId] = useState("");
 
   useEffect(() => {
+    if (!loading && userData) {
+      setMobileNum(userData.mobileNumber);
+    }
     if (expertData) {
       const handleScroll = () => {
         const scrollPosition = window.scrollY;
@@ -57,7 +57,7 @@ const SubscriptionRA = ({ userId }) => {
         window.removeEventListener("scroll", handleScroll);
       };
     }
-  }, [expertData]);
+  }, [expertData, loading, userData]);
 
   const handleSelectPlan = (subscriptionId, plan, price) => {
     setSelectedPlan(plan);
@@ -124,8 +124,8 @@ const SubscriptionRA = ({ userId }) => {
 
   const handleClose = () => {
     setShowPopup(false);
-    setShowKYCPopup(false);
-    setShowLinkPopup(false);
+    // setShowKYCPopup(false);
+    // setShowLinkPopup(false);
   };
 
   const handleSaveCard = () => {
@@ -167,57 +167,86 @@ const SubscriptionRA = ({ userId }) => {
     window.open(link);
   };
 
-  useEffect(() => {
-    if (!loading && userData) {
-      setMobileNum(userData.mobileNumber);
-      const paymentSuccess = checkPaymentStatus();
-      handlePaymentSuccess(paymentSuccess);
+  // useEffect(() => {
+  //   if (!loading && userData) {
+  //     setMobileNum(userData.mobileNumber);
+  //     const paymentSuccess = checkPaymentStatus();
+  //     handlePaymentSuccess(paymentSuccess);
+  //   }
+  // }, [loading, userData?.isKYC, inviteLink]);
+
+  // const handlePaymentSuccess = (paymentSuccess) => {
+  //   if (paymentSuccess) {
+  //     const detailsComplete = checkKYCDetails(userData);
+  //     if (detailsComplete) {
+  //       console.log("KYC complete.");
+  //       if (inviteLink) {
+  //         setShowLinkPopup(true);
+  //         clearURLParams();
+  //       }
+  //     } else {
+  //       console.log("KYC not complete, showing KYC popup.");
+  //       setShowKYCPopup(true);
+  //     }
+  //   }
+  // };
+
+  // const checkKYCDetails = (data) => {
+  //   const isComplete = data?.isKYC;
+  //   console.log("KYC Details Complete:", isComplete);
+  //   return isComplete;
+  // };
+
+  // const checkPaymentStatus = () => {
+  //   const params = new URLSearchParams(window.location.search);
+  //   const status = params.get("status");
+  //   const transactionId = params.get("transactionId");
+  //   const inviteLink = params.get("inviteLink");
+
+  //   setInviteLink(inviteLink);
+
+  //   if (status === "success") {
+  //     toast.success(`Payment Success: ${transactionId}`);
+  //     return true;
+  //   } else if (status === "failure") {
+  //     toast.error(`Payment Failed: ${transactionId}`);
+  //     return false;
+  //   }
+
+  //   return null;
+  // };
+
+  // const clearURLParams = () => {
+  //   window.history.replaceState({}, document.title, window.location.pathname);
+  // };
+
+  const calculateRemainingTime = (discountValidTo) => {
+    const now = new Date();
+    const validTo = new Date(discountValidTo);
+
+    const timeDifference = validTo - now;
+
+    if (timeDifference <= 0) {
+      return "Expired";
     }
-  }, [loading, userData?.isKYC, inviteLink]);
 
-  const handlePaymentSuccess = (paymentSuccess) => {
-    if (paymentSuccess) {
-      const detailsComplete = checkKYCDetails(userData);
-      if (detailsComplete) {
-        console.log("KYC complete.");
-        if (inviteLink) {
-          setShowLinkPopup(true);
-          clearURLParams();
-        }
-      } else {
-        console.log("KYC not complete, showing KYC popup.");
-        setShowKYCPopup(true);
-      }
+    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor(
+      (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+    );
+
+    if (days > 0) {
+      return `${days} days ${hours} hours left`;
+    } else if (hours > 0) {
+      return `${hours} hours ${minutes} minutes left`;
+    } else if (minutes > 0) {
+      return `${minutes} minutes left`;
+    } else {
+      return "Less than a minute left";
     }
-  };
-
-  const checkKYCDetails = (data) => {
-    const isComplete = data?.isKYC;
-    console.log("KYC Details Complete:", isComplete);
-    return isComplete;
-  };
-
-  const checkPaymentStatus = () => {
-    const params = new URLSearchParams(window.location.search);
-    const status = params.get("status");
-    const transactionId = params.get("transactionId");
-    const inviteLink = params.get("inviteLink");
-
-    setInviteLink(inviteLink);
-
-    if (status === "success") {
-      toast.success(`Payment Success: ${transactionId}`);
-      return true;
-    } else if (status === "failure") {
-      toast.error(`Payment Failed: ${transactionId}`);
-      return false;
-    }
-
-    return null;
-  };
-
-  const clearURLParams = () => {
-    window.history.replaceState({}, document.title, window.location.pathname);
   };
 
   if (loading) {
@@ -381,7 +410,7 @@ const SubscriptionRA = ({ userId }) => {
                 const showBorder = isDiscounted || isRecommended;
 
                 const remainingTime = subscription.discountValidTo
-                  ? dayjs(subscription.discountValidTo).fromNow()
+                  ? calculateRemainingTime(subscription.discountValidTo)
                   : null;
 
                 return (
@@ -391,7 +420,9 @@ const SubscriptionRA = ({ userId }) => {
                       handleBuyNowClick(
                         subscription.id,
                         subscription.planType,
-                        subscription.discountedAmount
+                        isDiscounted
+                          ? subscription.discountedAmount
+                          : subscription.amount
                       )
                     }
                     className={`my-auto flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
@@ -422,9 +453,7 @@ const SubscriptionRA = ({ userId }) => {
                       </button>
                     </div>
                     <div className="text-center opacity-60">
-                      {remainingTime && isDiscounted
-                        ? `${remainingTime} Left`
-                        : ""}
+                      {remainingTime && isDiscounted ? `${remainingTime}` : ""}
                     </div>
                     {isDiscounted ? (
                       <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
@@ -637,7 +666,7 @@ const SubscriptionRA = ({ userId }) => {
             />
           )}
         </div>
-        {showKYCPopup && (
+        {/* {showKYCPopup && (
           <KYCPopup inviteLink={inviteLink} onClose={handleClose} />
         )}
         {showLinkPopup && (
@@ -646,7 +675,7 @@ const SubscriptionRA = ({ userId }) => {
             onClose={handleClose}
             inviteLink={inviteLink}
           />
-        )}
+        )} */}
       </div>
       {!userId && <SignUp2 />}
     </section>

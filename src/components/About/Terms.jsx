@@ -377,21 +377,16 @@ const Terms = () => {
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
                     text-gradient-2 md:w-[935px] w-[325px] text-start"
                 >
-                  7. Profile Ownership and Editing Rights:
+                  7. Refund Policy:
                 </span>
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
-                    For a limited period after You purchase (the “Return
-                    Period”), (i) if You object to any of the terms set forth in
-                    these Terms, or (ii) if You object to the Hailgro Tech
-                    Solutions terms of purchase or auto-renewal (if any)
-                    applicable to the purchase or renewal of the subscription,
-                    or (iii) if You are dissatisfied (for any reason) with the
-                    Offering to which You purchased, You may return the Offering
-                    and may qualify for a refund.
+                    We are not party to the agreement between creators and
+                    users. If a user requests a refund from us we will not
+                    refund in any case.
                   </span>
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]

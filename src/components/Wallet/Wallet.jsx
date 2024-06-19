@@ -194,6 +194,11 @@ const Wallet = ({ userId }) => {
               {smallScreen ? (
                 <div className="flex flex-wrap justify-center items-center">
                   {filteredData
+                    .sort((a, b) => {
+                      const dateA = new Date(a.transactionId.substring(1));
+                      const dateB = new Date(b.transactionId.substring(1));
+                      return dateB - dateA;
+                    })
                     .slice(0, visibleTransactions)
                     .map((row, index) => (
                       <div

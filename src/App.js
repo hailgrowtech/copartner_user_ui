@@ -37,6 +37,7 @@ import { UserDataProvider } from "./constants/context";
 import { UserProvider } from "./constants/userContext";
 import { SubscriptionProvider } from "./constants/subscriptionContext";
 import Ad1 from "./components/LandingPages/Ad1";
+import KYCPopup from "./components/KYCPage";
 
 function App() {
   // const token = sessionStorage.getItem("token");
@@ -84,6 +85,22 @@ function App() {
                   <UserDataProvider>
                     <div className={`${styles.boxWidth}`}>
                       <Expertise token={userId} />
+                    </div>
+                  </UserDataProvider>
+                </div>
+              ) : (
+                <Navigate to="/signup" replace={true} />
+              )
+            }
+          />
+          <Route
+            path="kycpage"
+            element={
+              userId ? (
+                <div className={`${styles.flexStart}`}>
+                  <UserDataProvider>
+                    <div className={`${styles.boxWidth}`}>
+                      <KYCPopup token={userId} />
                     </div>
                   </UserDataProvider>
                 </div>
