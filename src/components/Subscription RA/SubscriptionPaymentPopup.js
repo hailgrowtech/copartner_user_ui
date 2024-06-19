@@ -11,21 +11,11 @@ const SubscriptionPaymentPopup = ({
   subscriptionId,
   userId,
   mobileNumber,
+  isCustom,
+  durationMonth
 }) => {
   const total = planMonthlyPrice || 0;
   const [loading, setLoading] = useState(false);
-
-  const handleDurationPlans = () => {
-    if (selectedMonthlyPlan === "Monthly") {
-      return 1;
-    } else if (selectedMonthlyPlan === "Quarterly") {
-      return 3;
-    } else if (selectedMonthlyPlan === "Half-Yearly") {
-      return 6;
-    } else {
-      return 12;
-    }
-  };
 
   const handleClose = () => {
     onClose();
@@ -46,12 +36,13 @@ const SubscriptionPaymentPopup = ({
       totalAmount: total,
       returnUrl: window.location.href,
       transactionId: "T" + Date.now(),
-      plan: handleDurationPlans(),
+      plan: durationMonth,
       chatId,
       subscriptionId,
       userId,
       mobileNumber,
-      transactionDate
+      transactionDate,
+      isCustom
     };
 
     console.log("subscription Popup", data);

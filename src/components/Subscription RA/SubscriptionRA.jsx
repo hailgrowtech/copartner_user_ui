@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../../style";
 import "./SubscriptionRA.css";
 import { ToastContainer, toast } from "react-toastify";
-import { arrow, bookmark, bookmarkFill, stars } from "../../assets";
+import { arrow, bookmark, bookmarkFill, duration, stars } from "../../assets";
 import SubscriptionPaymentPopup from "./SubscriptionPaymentPopup";
 import FAQs2 from "../About/FAQs2";
 import CoursePaymentPopup from "./CoursePaymentPopup";
@@ -35,6 +35,8 @@ const SubscriptionRA = ({ userId }) => {
   const { userData, loading } = useUserSession();
   // const [inviteLink, setInviteLink] = useState("");
   const [subscriptionId, setSubscriptionId] = useState("");
+  const [isCustom, setIsCustom] = useState("");
+  const [durationMonth, setDurationMonth] = useState("");
 
   useEffect(() => {
     if (!loading && userData) {
@@ -59,10 +61,18 @@ const SubscriptionRA = ({ userId }) => {
     }
   }, [expertData, loading, userData]);
 
-  const handleSelectPlan = (subscriptionId, plan, price) => {
+  const handleSelectPlan = (
+    subscriptionId,
+    plan,
+    price,
+    isCustom,
+    durationMonth
+  ) => {
     setSelectedPlan(plan);
     setPlanPrice(price);
     setSubscriptionId(subscriptionId);
+    setIsCustom(isCustom);
+    setDurationMonth(durationMonth);
   };
 
   const getExpertType = (typeId) => {
@@ -144,11 +154,19 @@ const SubscriptionRA = ({ userId }) => {
     }
   };
 
-  const handleBuyNowClick = (subscriptionId, plan, price) => {
+  const handleBuyNowClick = (
+    subscriptionId,
+    plan,
+    price,
+    isCustom,
+    durationMonth
+  ) => {
     setSelectedMonthlyPlan(plan);
     setPlanMonthlyPrice(price);
     setShowMonthlyPopup(true);
     setSubscriptionId(subscriptionId);
+    setIsCustom(isCustom);
+    setDurationMonth(durationMonth);
   };
 
   const handleMouseEnter = (index) => {
@@ -422,7 +440,9 @@ const SubscriptionRA = ({ userId }) => {
                         subscription.planType,
                         isDiscounted
                           ? subscription.discountedAmount
-                          : subscription.amount
+                          : subscription.amount,
+                        subscription.isCustom,
+                        subscription.durationMonth
                       )
                     }
                     className={`my-auto flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
@@ -479,6 +499,8 @@ const SubscriptionRA = ({ userId }) => {
                 chatId={chatID}
                 subscriptionId={subscriptionId}
                 userId={userData.id}
+                isCustom={isCustom}
+                durationMonth={durationMonth}
               />
             )}
           </div>
@@ -578,7 +600,9 @@ const SubscriptionRA = ({ userId }) => {
                       handleSelectPlan(
                         subscription.id,
                         subscription.planType,
-                        subscription.discountedAmount
+                        subscription.discountedAmount,
+                        subscription.isCustom,
+                        subscription.durationMonth
                       )
                     }
                     className={`flex rounded-2xl p-4 ${
@@ -619,6 +643,8 @@ const SubscriptionRA = ({ userId }) => {
                     chatId={chatID}
                     subscriptionId={subscriptionId}
                     userId={userData.id}
+                    isCustom={isCustom}
+                    durationMonth={durationMonth}
                   />
                 )}
               </div>

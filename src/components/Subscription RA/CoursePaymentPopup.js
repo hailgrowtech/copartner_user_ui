@@ -11,24 +11,14 @@ const CoursePaymentPopup = ({
   subscriptionId,
   userId,
   mobileNumber,
+  isCustom,
+  durationMonth
 }) => {
   const total = planPrice || 0;
   const [loading, setLoading] = useState(false);
 
   const handleClose = () => {
     onClose();
-  };
-
-  const handleDurationPlans = () => {
-    if (selectedPlan === "Monthly") {
-      return 1;
-    } else if (selectedPlan === "Quarterly") {
-      return 3;
-    } else if (selectedPlan === "Half-Yearly") {
-      return 6;
-    } else {
-      return 12;
-    }
   };
 
   const handlePay = async () => {
@@ -46,12 +36,13 @@ const CoursePaymentPopup = ({
       totalAmount: total,
       returnUrl: window.location.href,
       transactionId: "T" + Date.now(),
-      plan: handleDurationPlans(),
+      plan: durationMonth,
       chatId,
       subscriptionId,
       userId,
       mobileNumber,
-      transactionDate
+      transactionDate,
+      isCustom
     };
 
     console.log(data);
