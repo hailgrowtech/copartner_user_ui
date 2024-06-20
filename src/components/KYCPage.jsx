@@ -49,7 +49,8 @@ const KYCPage = () => {
     const inviteLink = params.get("inviteLink");
 
     if (inviteLink) {
-      sessionStorage.setItem("inviteLink", inviteLink);
+      const decodeLink = decodeURIComponent(inviteLink);
+      sessionStorage.setItem("inviteLink", decodeLink);
     }
 
     if (status === "success") {
@@ -127,7 +128,6 @@ const KYCPage = () => {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(telegramLink);
-    sessionStorage.removeItem("inviteLink");
     toast.success("Link copied to clipboard!");
   };
 

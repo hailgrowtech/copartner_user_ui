@@ -137,22 +137,32 @@ const Otp = ({ onClose, onCloseAll, mobileNumber, apid, raid, onComplete }) => {
       if (!data.isSuccess) {
         setError(data.errorMessages);
         console.log("Something");
-      }
-      localStorage.setItem("userId", data.data.id);
-      const userId = data.data.id;
-      const scriptContent = `
+        localStorage.setItem("userId", data.data.id);
+        if (apid) {
+          navigate("/expertise");
+        } else {
+          navigate("/");
+        }
+        window.location.reload();
+        onComplete();
+      } else {
+        localStorage.setItem("userId", data.data.id);
+        const userId = data.data.id;
+        const scriptContent = `
       window.TrackierWebSDK.trackConv('copartner.gotrackier.com', '662b93eaeae1a03b602b9163', {"txn_id":"${userId}","is_iframe":true});
     `;
-      const scriptElement = document.createElement("script");
-      scriptElement.textContent = scriptContent;
-      document.body.appendChild(scriptElement);
-      if (apid) {
-        navigate("/expertise");
-      } else {
-        navigate("/");
+        const scriptElement = document.createElement("script");
+        scriptElement.textContent = scriptContent;
+        document.body.appendChild(scriptElement);
+        console.log("Trackier");
+        if (apid) {
+          navigate("/expertise");
+        } else {
+          navigate("/");
+        }
+        window.location.reload();
+        onComplete();
       }
-      window.location.reload();
-      onComplete();
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);
     }

@@ -354,7 +354,7 @@ const SubscriptionRA = () => {
                     ₹{subscription.amount}
                   </div>
                   <div className="text-center md:text-lg text-xs mt-auto opacity-60 mb-6">
-                    {subscription.durationMonth} Month Access
+                    {subscription.durationMonth} {subscription.isCustom ? "Days" : "Month"} Access
                   </div>
                   <div className="text-center">
                     <button className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2">
@@ -487,7 +487,7 @@ const SubscriptionRA = () => {
                           {subscription.planType}
                         </p>
                         <p className="text-[#C6CDD5] text-sm">
-                          {subscription.durationMonth} Month Access
+                          {subscription.durationMonth} {subscription.isCustom ? "Days" : "Month"} Access
                         </p>
                       </div>
                       <p className="flex-1 text-3xl font-bold">
