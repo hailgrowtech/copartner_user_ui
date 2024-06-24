@@ -468,7 +468,7 @@ const SubscriptionRA = ({ userId }) => {
                       {subscription.durationMonth} {subscription.isCustom ? "Days" : "Month"} Access
                     </div>
                     <div className="text-center">
-                      <button className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2">
+                      <button className="md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2">
                         Buy Now
                       </button>
                     </div>

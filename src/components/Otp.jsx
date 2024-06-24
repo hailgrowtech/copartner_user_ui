@@ -149,7 +149,7 @@ const Otp = ({ onClose, onCloseAll, mobileNumber, apid, raid, onComplete }) => {
         localStorage.setItem("userId", data.data.id);
         const userId = data.data.id;
         const scriptContent = `
-      window.TrackierWebSDK.trackConv('copartner.gotrackier.com', '662b93eaeae1a03b602b9163', {"txn_id":"${userId}","is_iframe":true});
+      window.TrackierWebSDK.trackConv('copartner.gotrackier.com', '662b93eaeae1a03b602b9163', {"goal_value":"Registration","txn_id":"${userId}","is_iframe":true});
     `;
         const scriptElement = document.createElement("script");
         scriptElement.textContent = scriptContent;

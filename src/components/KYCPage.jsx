@@ -42,6 +42,31 @@ const KYCPage = () => {
     }
   }, [loading, userData]);
 
+  const sendSMS = async (mobileNumber, inviteLink) => {
+    try {
+      const inviteCode = encodeURIComponent(
+        inviteLink.split("https://t.me/")[1]
+      );
+
+      if (!inviteCode) {
+        throw new Error("Invalid invite link format");
+      }
+
+      const response = await fetch(
+        `https://www.fast2sms.com/dev/bulkV2?authorization=1UGuIy5W4D3vA2wZfB90ibrcsOCeYS7nptj8EVhLodKJqxXNMHLIermYdE6vHzpBRaXOl274SfAbsw5Z&route=dlt&sender_id=COPTNR&message=169464&variables_values=${inviteCode}&flash=0&numbers=${mobileNumber}`
+      );
+      if (response.ok) {
+        console.log(
+          `SMS sent to mobile ${mobileNumber} with invite link ${inviteCode}`
+        );
+      } else {
+        console.log(response.error);
+      }
+    } catch (error) {
+      throw new Error(`Failed to send SMS: ${error.message}`);
+    }
+  };
+
   const checkPaymentStatus = () => {
     const params = new URLSearchParams(window.location.search);
     const status = params.get("status");
@@ -104,6 +129,7 @@ const KYCPage = () => {
       if (response.status === 200) {
         toast.success("Details updated successfully!");
         setError(null);
+        sendSMS(mobileNum, telegramLink);
         window.location.reload();
       } else {
         toast.error("Failed to update details!");

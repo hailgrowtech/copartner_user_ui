@@ -1,9 +1,35 @@
 import React from "react";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
-dayjs.extend(relativeTime);
 
 function MobileCourse({ showMobilePopup, handleBuyNowClick, subscriptions }) {
+  const calculateRemainingTime = (discountValidTo) => {
+    const now = new Date();
+    const validTo = new Date(discountValidTo);
+
+    const timeDifference = validTo - now;
+
+    if (timeDifference <= 0) {
+      return "Expired";
+    }
+
+    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor(
+      (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+    );
+
+    if (days > 0) {
+      return `${days} days ${hours} hours left`;
+    } else if (hours > 0) {
+      return `${hours} hours ${minutes} minutes left`;
+    } else if (minutes > 0) {
+      return `${minutes} minutes left`;
+    } else {
+      return "Less than a minute left";
+    }
+  };
+
   const discountedSubscription = subscriptions.find(
     (sub) => sub.discountedAmount < sub.amount
   );
@@ -13,7 +39,7 @@ function MobileCourse({ showMobilePopup, handleBuyNowClick, subscriptions }) {
 
   const isDiscounted = subscription.discountedAmount < subscription.amount;
   const remainingTime = subscription.discountValidTo
-    ? dayjs(subscription.discountValidTo).fromNow()
+    ? calculateRemainingTime(subscription.discountValidTo)
     : null;
 
   return (
@@ -44,7 +70,7 @@ function MobileCourse({ showMobilePopup, handleBuyNowClick, subscriptions }) {
                 </div>
                 {remainingTime && isDiscounted && (
                   <span className="text-sm text-[#C6CDD5]">
-                    {remainingTime} Left
+                    {remainingTime}
                   </span>
                 )}
               </div>
@@ -60,7 +86,7 @@ function MobileCourse({ showMobilePopup, handleBuyNowClick, subscriptions }) {
                   subscription.discountedAmount
                 )
               }
-              className="text-lg px-5 rounded-lg font-semibold flex items-center py-3 bg-[#fff] text-[#000] hover:bg-[#000] hover:text-[#fff]"
+              className="text-lg px-5 rounded-lg font-semibold flex items-center py-3 bg-[#0081F1] text-white hover:bg-white hover:text-black"
             >
               Buy Now
             </button>
