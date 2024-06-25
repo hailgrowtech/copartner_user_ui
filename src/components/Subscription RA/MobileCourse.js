@@ -37,9 +37,9 @@ function MobileCourse({ showMobilePopup, handleBuyNowClick, subscriptions }) {
     discountedSubscription ||
     subscriptions.slice().sort((a, b) => a.amount - b.amount)[1];
 
-  const isDiscounted = subscription.discountedAmount < subscription.amount;
-  const remainingTime = subscription.discountValidTo
-    ? calculateRemainingTime(subscription.discountValidTo)
+  const isDiscounted = subscription?.discountedAmount < subscription?.amount;
+  const remainingTime = subscription?.discountValidTo
+    ? calculateRemainingTime(subscription?.discountValidTo)
     : null;
 
   return (
@@ -69,9 +69,10 @@ function MobileCourse({ showMobilePopup, handleBuyNowClick, subscriptions }) {
                   )}
                 </div>
                 {remainingTime && isDiscounted && (
-                  <span className="text-sm text-[#C6CDD5]">
-                    {remainingTime}
-                  </span>
+                  <div className="inline-block bg-gradient-to-r w-[70%] from-[#00c394] to-[#00a143] text-white py-1 px-3 rounded-lg font-bold text-sm animate-pulse">
+                    <i className="fas fa-clock"></i>
+                    Limited Time Offer
+                  </div>
                 )}
               </div>
               <p className="text-[#C6CDD5] text-sm">

@@ -257,13 +257,13 @@ const SubscriptionRA = ({ userId }) => {
     );
 
     if (days > 0) {
-      return `${days} days ${hours} hours left`;
+      return `${days} days ${hours} hours`;
     } else if (hours > 0) {
-      return `${hours} hours ${minutes} minutes left`;
+      return `${hours} hours ${minutes} minutes`;
     } else if (minutes > 0) {
-      return `${minutes} minutes left`;
+      return `${minutes} minutes`;
     } else {
-      return "Less than a minute left";
+      return "Less than a minute";
     }
   };
 
@@ -451,6 +451,11 @@ const SubscriptionRA = ({ userId }) => {
                   >
                     <div className="text-center md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
                       {subscription.planType}
+                      {isDiscounted && (
+                        <span className="bg-gradient-to-r from-[#00c394] to-[#00a143] inline-block text-transparent bg-clip-text text-xs md:text-lg ml-2">
+                          ({subscription.discountPercentage}% OFF)
+                        </span>
+                      )}
                     </div>
                     <div className="text-center md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-center">
                       {isDiscounted ? (
@@ -465,15 +470,21 @@ const SubscriptionRA = ({ userId }) => {
                       )}
                     </div>
                     <div className="text-center md:text-lg text-xs mt-auto opacity-60 mb-6">
-                      {subscription.durationMonth} {subscription.isCustom ? "Days" : "Month"} Access
+                      {subscription.durationMonth}{" "}
+                      {subscription.isCustom ? "Days" : "Month"} Access
                     </div>
                     <div className="text-center">
                       <button className="md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2">
                         Buy Now
                       </button>
                     </div>
-                    <div className="text-center opacity-60">
-                      {remainingTime && isDiscounted ? `${remainingTime}` : ""}
+                    <div className="text-center mt-4">
+                      {remainingTime && isDiscounted ? (
+                        <div className="inline-block bg-gradient-to-r from-[#00c394] to-[#00a143] text-white py-1 px-3 rounded-lg font-bold text-sm animate-pulse">
+                          <i className="fas fa-clock"></i>
+                          Limited Time Offer
+                        </div>
+                      ) : null}
                     </div>
                     {isDiscounted ? (
                       <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
@@ -618,7 +629,8 @@ const SubscriptionRA = ({ userId }) => {
                         {subscription.planType}
                       </p>
                       <p className="text-[#C6CDD5] text-sm">
-                        {subscription.durationMonth} {subscription.isCustom ? "Days" : "Month"} Access
+                        {subscription.durationMonth}{" "}
+                        {subscription.isCustom ? "Days" : "Month"} Access
                       </p>
                     </div>
                     <p className="flex-1 text-3xl font-bold">
