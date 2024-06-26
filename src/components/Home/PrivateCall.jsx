@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { Ads, mobBanner, webBanner } from "../../assets";
-import ExpertiseCourse from "./ExpertiseCourse";
-import CourseList from "./CourseList";
+import React, { useState, useEffect, useRef } from "react";
+import { mobBanner, webBanner } from "../../assets";
 import StockPlatform from "./StockPlatform";
+import { motion, useInView } from "framer-motion";
 
 const PrivateCall = () => {
   const [smallScreen, setSmallScreen] = useState(false);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -19,9 +20,24 @@ const PrivateCall = () => {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
+  const bannerVariants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 },
+    },
+  };
+
   return (
     <>
-      <div className="{`flex flex-col items-center md:py-0`}">
+      <motion.div
+        ref={ref}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={bannerVariants}
+        className="flex flex-col items-center md:py-0"
+      >
         {/* <div className="flex sm:justify-between justify-center items-center flex-col sm:flex-row gap-2">
         <span className="font-poppins h-[52px] font-[700] md:text-[50px] text-[30px] sm:text-start text-center text-gradient-2 leading-[51px]">
           Private Calls Availability
@@ -31,7 +47,6 @@ const PrivateCall = () => {
           empowering.
         </span>
       </div> */}
-
         {smallScreen ? (
           <div className="flex justify-center items-center w-full md:mb-[4rem] mb-[0]">
             <img
@@ -49,8 +64,7 @@ const PrivateCall = () => {
             />
           </div>
         )}
-      </div>
-      {/* <CourseList /> */}
+      </motion.div>
       <StockPlatform />
     </>
   );

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import {
   testimonialLeft,
   testimonialRight,
@@ -12,7 +13,7 @@ const Testimonials = () => {
   const [count, setCount] = useState(0);
   const [activeDot, setActiveDot] = useState(0);
 
-  const handdlePrevious = () => {
+  const handlePrevious = () => {
     if (count === 0) {
       setCount(testimonialsData.length - 1);
     } else {
@@ -32,7 +33,7 @@ const Testimonials = () => {
     const timer = setTimeout(() => {
       handleNext();
     }, 5000);
-    return () => clearInterval(timer);
+    return () => clearTimeout(timer);
   }, [count]);
 
   useEffect(() => {
@@ -60,8 +61,13 @@ const Testimonials = () => {
     },
   ];
 
+  const fadeInOut = {
+    hidden: { opacity: 0, x: 20 },
+    visible: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: -20 },
+  };
+
   return (
-    <>
     <div className="flex flex-col items-center justify-center sm:mt-[2rem] mt-12">
       <div className="flex flex-col justify-between items-center md:w-[557px] md:h-[103px] w-[330px] h-[110px] gap-[4px] md:mb-16 mb-2">
         <span
@@ -72,12 +78,13 @@ const Testimonials = () => {
         </span>
 
         <span className="text-dimWhite md:w-[596px] w-[328px] text-center md:h-[56px] h-[34px] font-[400] md:text-[18px] text-[13px] md:leading-[28px] leading-[17px]">
-        Our users love our platform for its easy-to-use features, helpful insights, and friendly community.
+          Our users love our platform for its easy-to-use features, helpful
+          insights, and friendly community.
         </span>
       </div>
 
       <div className="flex justify-between md:gap-[6rem] gap-0 items-center">
-        <button onClick={handdlePrevious}>
+        <button onClick={handlePrevious}>
           <img
             src={testimonialLeft}
             alt="LeftIcon"
@@ -86,7 +93,15 @@ const Testimonials = () => {
         </button>
 
         <div className="flex-grow flex flex-col justify-center gap-[4rem] items-center">
-          <div className="flex flex-col justify-center items-center">
+          <motion.div
+            key={count}
+            className="flex flex-col justify-center items-center"
+            variants={fadeInOut}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            transition={{ duration: 0.6 }}
+          >
             <span className="md:w-[678px] md:h-[343px] w-[283px] h-[262px] font-[400] md:text-[26px] text-[14px] md:leading-[44px] leading-[23px] text-lightWhite text-center flex items-center">
               {testimonialsData[count].text}
             </span>
@@ -113,14 +128,12 @@ const Testimonials = () => {
                 <button
                   key={index}
                   className={`w-[8px] h-[8px] rounded-[4px] ${
-                    index === activeDot
-                      ? "bg_three-dots_active"
-                      : "bg_three-dots"
+                    index === activeDot ? "bg_three-dots_active" : "bg_three-dots"
                   }`}
                 ></button>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
 
         <button onClick={handleNext}>
@@ -132,7 +145,6 @@ const Testimonials = () => {
         </button>
       </div>
     </div>
-    </>
   );
 };
 
