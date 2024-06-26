@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import Testimonials from "./Testimonials";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useUserData } from "../../constants/context";
 import { arrow, stars, telegram, userBck } from "../../assets";
 import SignUp from "../SignUp";
+import Testimonials from "./Testimonials";
 
 const EquityExpertise = ({ token }) => {
   const userData = useUserData();
@@ -53,32 +54,32 @@ const EquityExpertise = ({ token }) => {
     window.open(link);
   };
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <>
-      <div
-        className={`flex ${
-          filteredData.length === 0 ? "hidden" : ""
-        } flex-col md:py-[2rem] py-12`}
+      <motion.div
+        className={`flex ${filteredData.length === 0 ? "hidden" : ""} flex-col md:py-[2rem] py-12`}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        variants={fadeInUp}
       >
         <div className="flex flex-row justify-between xl:px-0">
           <div className="flex flex-col md:h-[52px] h-[34px] justify-center md:justify-between pb-[2rem] md:items-start">
             <div className="md:flex md:flex-row block md:h-[52px] h-[34px] justify-center md:justify-between text-center md:items-center">
-              <span
-                className="font-inter font-[700] md:text-[50px] text-[30px]
-            text-gradient-2 leading-[51px] text-center"
-              >
+              <span className="font-inter font-[700] md:text-[50px] text-[30px] text-gradient-2 leading-[51px] text-center">
                 Equity Expertise
               </span>
             </div>
-
-            <p
-              className="font-inter md:w-[737px] md:h-[28px] w-[328px] h-[34px] font-[400] text-dimWhite md:text-[18px] text-[11px] md:leading-[28px] md:leading-[17px]
-          text-[10px] leading-[16px] md:text-start mt-2 text-center md:flex hidden"
-            >
+            <p className="font-inter md:w-[737px] md:h-[28px] w-[328px] h-[34px] font-[400] text-dimWhite md:text-[18px] text-[11px] md:leading-[28px] md:leading-[17px] text-[10px] leading-[16px] md:text-start mt-2 text-center md:flex hidden">
               Dive into the expertise of our SEBI registered research analysts.
             </p>
           </div>
-
           <Link onClick={scrollToTop} to="expertise/explore-expertise">
             <button className="md:w-[147px] md:h-[40px] md:flex items-center justify-center hidden flex w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px]">
               Explore More
@@ -90,7 +91,15 @@ const EquityExpertise = ({ token }) => {
           {filteredData &&
             filteredData.slice(0, 3).map((expert, id) => {
               return (
-                <div key={expert.id} className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-[11px] p-2">
+                <motion.div
+                  key={expert.id}
+                  className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-[11px] p-2"
+                  variants={fadeInUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: id * 0.2 }}
+                >
                   <Link
                     onClick={scrollToTop}
                     to={`/ra-detail/${expert.id}`}
@@ -109,7 +118,6 @@ const EquityExpertise = ({ token }) => {
                         className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
                       />
                     </div>
-
                     <div className="w-[154px] h-[22px] sm:w-[319px] sm:h-[40px] flex justify-between px-[5px] sm:px-[1rem]">
                       <div className="flex flex-col h-[22px] w-full md:h-[40px] gap-2">
                         <span className="sm:text-[18px] text-[12px] sm:leading-[18px] leading-[8px] font-[500] text-lightWhite">
@@ -130,7 +138,6 @@ const EquityExpertise = ({ token }) => {
                         </span>
                       </div>
                     </div>
-
                     <div className="md:w-[256px] w-[143px] h-[34px] flex items-start md:mt-2 mt-4 justify-between">
                       <div className="flex flex-col md:w-[78px] w-[43px] h-[22px] items-center justify-between">
                         <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
@@ -152,7 +159,6 @@ const EquityExpertise = ({ token }) => {
                         </div>
                       </div>
                     </div>
-
                     <div className="md:w-[300px] md:h-[32px] md:mt-2 w-full md:pl-[5px]">
                       <div className="text-dimWhite md:text-[14px] flex md:flex-row flex-col text-[11px] md:leading-[18px] leading-[14px] md:pl-0 pl-[2px]">
                         <span>SEBI:</span>{" "}
@@ -189,14 +195,11 @@ const EquityExpertise = ({ token }) => {
                       />
                     )}
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           <div className="md:hidden flex flex-col w-[171px] h-[150px] mt-[4rem] justify-evenly px-[0.5rem]">
-            <p
-              className="font-inter md:w-[737px] md:h-[28px] w-[171px] h-[66px] font-[400] text-dimWhite md:text-[18px] text-[14px] md:leading-[28px]
-            leading-[22px] md:text-start text-center md:hidden flex items-start text-start"
-            >
+            <p className="font-inter md:w-[737px] md:h-[28px] w-[171px] h-[66px] font-[400] text-dimWhite md:text-[18px] text-[14px] md:leading-[28px] leading-[22px] md:text-start text-center md:hidden flex items-start text-start">
               Dive into the expertise of our SEBI registered research analysts.
             </p>
             <Link onClick={scrollToTop} to="expertise/explore-expertise">
@@ -206,7 +209,7 @@ const EquityExpertise = ({ token }) => {
             </Link>
           </div>
         </div>
-      </div>
+      </motion.div>
       <Testimonials />
     </>
   );

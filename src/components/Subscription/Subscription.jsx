@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import styles from "../../style";
 import ProfileCard from "./Profile_Card";
 import "../Hero.css";
@@ -31,7 +32,10 @@ const Subscription = ({userId}) => {
 
   return (
     <div className="expertise-Bg">
-      <section
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
         id="subscription"
         className={`flex md:flex-row flex-col ${styles.paddingY}`}
       >
@@ -54,7 +58,7 @@ const Subscription = ({userId}) => {
             </p>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       <div className={`{styles.flexStart} flex-col gap-2 ${styles.paddingX}`}>
         <div className="flex flex-row md:h-[52px] h-[34px] justify-center md:justify-between items-center">
@@ -192,7 +196,7 @@ const Subscription = ({userId}) => {
                     </div>
                   </div>
 
-                  <div className="md:w-[300px] md:h-[32px] md:mt-2 w-full md:pl-[5px]">
+                  <div className="md:w-[300px] w-[143px] md:h-[32px] md:mt-2 w-full md:pl-[5px]">
                     <div className="text-dimWhite md:text-[14px] flex md:flex-row flex-col text-[11px] md:leading-[18px] leading-[14px] md:pl-0 pl-[2px]">
                       <span>SEBI:</span>{" "}
                       <span className="text-white md:ml-2">
@@ -280,7 +284,6 @@ const Subscription = ({userId}) => {
         </div>
       </section> */}
 
-      {/* New section */}
       <section className="w-full text-center md:px-16 md:mb-12"></section>
     </div>
   );
