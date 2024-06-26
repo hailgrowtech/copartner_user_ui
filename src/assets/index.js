@@ -73,6 +73,11 @@ import danger from './Danger Triangle.png';
 import bookmarkFill from './Bookmark-fill.png';
 import logout from './login-to-see.png';
 import login from "./userProfile.png";
+import back from "./back.png";
+import ritik from "./Ritik.png";
+import paridhi from "./paridhi.png";
+import samay from "./Samayavif.png";
+import Group from "./stocGroup.png";
 
 export {
   logo,
@@ -149,5 +154,10 @@ export {
   danger,
   bookmarkFill,
   logout,
-  login
+  login,
+  back,
+  ritik,
+  paridhi,
+  samay,
+  Group
 };

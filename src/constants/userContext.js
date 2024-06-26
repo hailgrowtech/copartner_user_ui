@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import React, { createContext, useState, useEffect, useContext } from "react";
 
 export const UserContext = createContext();
 
@@ -8,18 +8,17 @@ export const UserProvider = ({ children }) => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [tokenPresent, setTokenPresent] = useState(false);
 
   useEffect(() => {
-    const checkTokenAndFetchUserData = async () => {
-      const userId = sessionStorage.getItem('userId');
-
-      if (userId) {
-        setTokenPresent(true);
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+      const fetchUserData = async () => {
         try {
-          const response = await fetch(`https://copartners.in:5131/api/User/${userId}`);
+          const response = await fetch(
+            `https://copartners.in:5131/api/User/${userId}`
+          );
           if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error("Failed to fetch user data");
           }
           const data = await response.json();
           setUserData(data.data);
@@ -28,19 +27,13 @@ export const UserProvider = ({ children }) => {
         } finally {
           setLoading(false);
         }
-      }
-    };
+      };
 
-    const intervalId = setInterval(() => {
-      const userId = sessionStorage.getItem('userId');
-      if (userId && !tokenPresent) {
-        clearInterval(intervalId);
-        checkTokenAndFetchUserData();
-      }
-    }, 1000);
-
-    return () => clearInterval(intervalId);
-  }, [tokenPresent]);
+      fetchUserData();
+    } else {
+      setLoading(false);
+    }
+  }, []);
 
   return (
     <UserContext.Provider value={{ userData, loading, error }}>

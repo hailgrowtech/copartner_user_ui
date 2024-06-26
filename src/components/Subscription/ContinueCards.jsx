@@ -57,7 +57,7 @@ const ContinueCards = () => {
                 <div className="border-white mt-2 pt-1 flex justify-center">
                   <div className="border-r border-white px-[60px] text-center">
                     <p className="mb-1 text-dimWhite">Experience</p>
-                    <p>{course.experience}</p>
+                    <p>{course.experience}+</p>
                   </div>
                   <div className="px-[60px] text-center">
                     <p className="mb-1 text-dimWhite">Followers</p>

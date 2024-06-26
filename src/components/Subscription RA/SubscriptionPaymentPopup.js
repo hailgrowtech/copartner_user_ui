@@ -1,48 +1,68 @@
 import React, { useEffect, useState } from "react";
 import { close, exclamation } from "../../assets";
 import axios from "axios";
-import KYCPopup from "./KYCPopup";
 
 const SubscriptionPaymentPopup = ({
   onClose,
   selectedMonthlyPlan,
   planMonthlyPrice,
   expertName,
+  chatId,
+  subscriptionId,
+  userId,
   mobileNumber,
+  isCustom,
+  durationMonth
 }) => {
-  // const gstRate = 0.18;
-  const [showKYCPopup, setShowKYCPopup] = useState(false);
-  // const total = (planMonthlyPrice || 0) * (1 + gstRate);
   const total = planMonthlyPrice || 0;
+  const [loading, setLoading] = useState(false);
 
   const handleClose = () => {
     onClose();
   };
 
   const handlePay = async () => {
-    // setShowKYCPopup(true)
+
+    function formatDate(date) {
+      const day = String(date.getDate()).padStart(2, '0');
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const year = date.getFullYear();
+      return `${day}-${month}-${year}`;
+    }
+
+    const transactionDate = new Date().toISOString();
+
     const data = {
-      name: expertName,
-      amount: total,
-      number: mobileNumber,
+      totalAmount: total,
+      returnUrl: window.location.href,
       transactionId: "T" + Date.now(),
+      plan: durationMonth,
+      chatId,
+      subscriptionId,
+      userId,
+      mobileNumber,
+      transactionDate,
+      isCustom
     };
-    
-    console.log(data);
+
+    console.log("subscription Popup", data);
 
     try {
-      const res = await axios.post("http://localhost:8000/pay", data);
-      console.log("API Response:", res.data);
+      setLoading(true);
+      const res = await axios.post(
+        "https://phonepe.copartner.in/api/pay",
+        data
+      );
       if (res.data.success) {
         window.location.href =
           res.data.data.instrumentResponse.redirectInfo.url;
       } else {
         console.error("Payment initiation failed:", res.data);
-        // Handle error appropriately
       }
     } catch (error) {
       console.error("Error in handlePay:", error);
-      // Handle error appropriately
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -90,10 +110,13 @@ const SubscriptionPaymentPopup = ({
             <span className="text-lg font-semibold">₹{total.toFixed(2)}</span>
           </div>
           <button
-            className="bg-[#fff] text-[#000] py-3 px-2 rounded-sm hover:bg-[#000] hover:text-[#fff] transition duration-300 md:text-[1rem] text-[12px] font-semibold"
+            className={`${
+              loading ? "bg-dimWhite" : "bg-[#fff]"
+            } text-[#000] py-3 px-2 rounded-sm hover:bg-[#000] hover:text-[#fff] transition duration-300 md:text-[1rem] text-[12px] font-semibold`}
             onClick={handlePay}
+            disabled={loading}
           >
-            Pay
+            {loading ? "Paying" : "Pay"}
           </button>
           <div className="justify-start items-center flex py-2 mt-2">
             <span className="flex items-start gap-2 md:text-[12px] text-[10px]">
@@ -105,8 +128,6 @@ const SubscriptionPaymentPopup = ({
           </div>
         </div>
       </div>
-      {showKYCPopup && <KYCPopup onClose={handleClose} />}{" "}
-      {/* Render KYCPopup when showKYCPopup is true */}
     </div>
   );
 };

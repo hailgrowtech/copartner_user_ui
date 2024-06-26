@@ -1,10 +1,8 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const cors = require("cors");
 const axios = require("axios");
 const sha256 = require("sha256");
 const uniqid = require("uniqid");
-const path = require("path");
 
 const app = express();
 
@@ -12,34 +10,25 @@ const MERCHANT_ID = "PGTESTPAYUAT69";
 const PHONE_PE_HOST_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox";
 const SALT_INDEX = 1;
 const SALT_KEY = "f23f3fc9-f7ca-455f-9fb3-8bd124642fdf";
-const APP_BE_URL = "http://localhost:8000"; // your application backend URL
+const APP_BE_URL = "http://localhost:8000";
 
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+app.use(express.json());
 
 app.post("/pay", async function (req, res, next) {
   try {
-    const merchantTransactionId = req.body.transactionId || uniqid();
+    const merchantTransactionId = req.body.transactionId;
     const data = {
       merchantId: MERCHANT_ID,
       merchantTransactionId: merchantTransactionId,
       name: req.body.name,
-      amount: req.body.amount * 100, // Convert amount to paisa
-      redirectURL: `${APP_BE_URL}/payment/success/${merchantTransactionId}`,
-      redirectMode: "REDIRECT",
+      amount: req.body.amount * 100,
+      redirectMode: "POST",
       mobileNumber: req.body.number,
       paymentInstrument: {
         type: "PAY_PAGE",
       },
-      callBackUrl: `${APP_BE_URL}/payment/callback/${merchantTransactionId}`
+      callBackUrl: `${APP_BE_URL}/payment/callback/${merchantTransactionId}`,
     };
     const bufferObj = Buffer.from(JSON.stringify(data), "utf8");
     const base64EncodedPayload = bufferObj.toString("base64");
@@ -89,21 +78,29 @@ app.get("/payment/callback/:merchantTransactionId", async function (req, res) {
         accept: "application/json",
       },
     });
+    console.log(response)
+    const paymentStatus = response.data.data.status;
 
-    const paymentStatus = response.data.data;
-    res.redirect(`/callback?status=${paymentStatus}`);
+    if (paymentStatus === "SUCCESS") {
+      // Redirect or respond for a successful payment
+      res.json({
+        success: true,
+        message: "Payment successful",
+        transactionId: merchantTransactionId,
+        details: response.data.data,
+      });
+    } else {
+      // Handle different statuses appropriately
+      res.json({
+        success: false,
+        message: "Payment failed",
+        status: paymentStatus,
+        transactionId: merchantTransactionId,
+      });
+    }
   } catch (error) {
-    res.status(500).send(error.message);
+    res.status(500).json({ error: error.message });
   }
-});
-
-app.get("/payment/success/:merchantTransactionId", (req, res) => {
-  res.redirect("/success");
-});
-
-// Serve the React app for all other routes
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 const port = 8000;

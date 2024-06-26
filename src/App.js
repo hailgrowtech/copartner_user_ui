@@ -21,7 +21,7 @@ import {
   Terms,
   SignUp,
   Disclaimer,
-  RefundPolicy,
+  // RefundPolicy,
   Hero,
 } from "./components";
 import styles from "./style";
@@ -35,15 +35,14 @@ import {
 } from "react-router-dom";
 import { UserDataProvider } from "./constants/context";
 import { UserProvider } from "./constants/userContext";
-import ParentComponent from "./components/InviteLink/ParentComponent";
-import Receipt from "./components/Receipt/Receipt";
-import SuccessPage from "./components/SuccessPage";
-import CallBack from "./components/CallBack";
+import { SubscriptionProvider } from "./constants/subscriptionContext";
+import Ad1 from "./components/LandingPages/Ad1";
+import KYCPopup from "./components/KYCPage";
 
 function App() {
-  const token = sessionStorage.getItem("token");
+  // const token = sessionStorage.getItem("token");
   const hasVisitedSignUp = sessionStorage.getItem("visitedSignUp");
-  const userId = sessionStorage.getItem("userId");
+  const userId = localStorage.getItem("userId");
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -52,7 +51,7 @@ function App() {
           path="/"
           element={
             <UserProvider>
-              <Navbar />
+              <Navbar token={userId} />
             </UserProvider>
           }
           errorElement={<ErrorPage />}
@@ -60,11 +59,32 @@ function App() {
           <Route
             path=""
             element={
-              token || hasVisitedSignUp ? (
+              // userId || hasVisitedSignUp ? (
+              <div className={`${styles.flexStart}`}>
+                <UserDataProvider>
+                  <div className={`${styles.boxWidth}`}>
+                    <SubscriptionProvider>
+                      <Hero
+                        hasVisitedSignUp={hasVisitedSignUp}
+                        token={userId}
+                      />
+                    </SubscriptionProvider>
+                  </div>
+                </UserDataProvider>
+              </div>
+              // ) : (
+              //   <Navigate to="/signup" replace={true} />
+              // )
+            }
+          />
+          <Route
+            path="expertise"
+            element={
+              userId ? (
                 <div className={`${styles.flexStart}`}>
                   <UserDataProvider>
                     <div className={`${styles.boxWidth}`}>
-                      <Hero hasVisitedSignUp={hasVisitedSignUp} token={token} />
+                      <Expertise token={userId} />
                     </div>
                   </UserDataProvider>
                 </div>
@@ -74,13 +94,13 @@ function App() {
             }
           />
           <Route
-            path="expertise"
+            path="kycpage"
             element={
-              token ? (
+              userId ? (
                 <div className={`${styles.flexStart}`}>
                   <UserDataProvider>
                     <div className={`${styles.boxWidth}`}>
-                      <Expertise token={token} />
+                      <KYCPopup token={userId} />
                     </div>
                   </UserDataProvider>
                 </div>
@@ -92,7 +112,7 @@ function App() {
           <Route
             path="subscription"
             element={
-              token ? (
+              userId ? (
                 <div className={`${styles.flexStart}`}>
                   <UserDataProvider>
                     <div className={`${styles.boxWidth}`}>
@@ -118,7 +138,7 @@ function App() {
           <Route
             path="blogs"
             element={
-              token || hasVisitedSignUp ? (
+              userId || hasVisitedSignUp ? (
                 <div className={`${styles.flexStart}`}>
                   <div className={`${styles.boxWidth}`}>
                     <Blog />
@@ -132,7 +152,7 @@ function App() {
           <Route
             path="webinar"
             element={
-              token || hasVisitedSignUp ? (
+              userId || hasVisitedSignUp ? (
                 <Webinar />
               ) : (
                 <Navigate to="/signup" replace={true} />
@@ -142,9 +162,11 @@ function App() {
           <Route
             path="history"
             element={
-              token ? (
+              userId ? (
                 <UserDataProvider>
-                  <Wallet />
+                  <SubscriptionProvider>
+                    <Wallet userId={userId} />
+                  </SubscriptionProvider>
                 </UserDataProvider>
               ) : (
                 <Navigate to="/signup" replace={true} />
@@ -154,19 +176,15 @@ function App() {
           <Route
             path="ra-detail/:id"
             element={
-              token ? (
-                <UserProvider>
-                  <SubscriptionRA />
-                </UserProvider>
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
+              <UserProvider>
+                <SubscriptionRA userId={userId} />
+              </UserProvider>
             }
           />
           <Route
             path="subscription/buy"
             element={
-              token || hasVisitedSignUp ? (
+              userId || hasVisitedSignUp ? (
                 <SubscriptionBuy />
               ) : (
                 <Navigate to="/signup" replace={true} />
@@ -176,9 +194,9 @@ function App() {
           <Route
             path="expertise/explore-expertise"
             element={
-              token || hasVisitedSignUp ? (
+              userId || hasVisitedSignUp ? (
                 <UserDataProvider>
-                  <ExpertiseExplore token={token} />
+                  <ExpertiseExplore token={userId} />
                 </UserDataProvider>
               ) : (
                 <Navigate to="/signup" replace={true} />
@@ -188,7 +206,7 @@ function App() {
           {/* <Route
             path="courses/explore-courses"
             element={
-              token || hasVisitedSignUp ? (
+              userId || hasVisitedSignUp ? (
                 <CoursesExplore />
               ) : (
                 <Navigate to="/signup" replace={true} />
@@ -199,7 +217,7 @@ function App() {
           <Route
             path="refer&earn"
             element={
-              token || hasVisitedSignUp ? (
+              userId || hasVisitedSignUp ? (
                 <div className={`${styles.flexStart}`}>
                   <div className={`${styles.boxWidth}`}>
                     <ReferEarn />
@@ -210,20 +228,20 @@ function App() {
               )
             }
           />
-          <Route
+          {/* <Route
             path="refund-policy"
             element={
-              token || hasVisitedSignUp ? (
+              userId || hasVisitedSignUp ? (
                 <RefundPolicy />
               ) : (
                 <Navigate to="/signup" replace={true} />
               )
             }
-          />
+          /> */}
           <Route
             path="about"
             element={
-              token || hasVisitedSignUp ? (
+              userId || hasVisitedSignUp ? (
                 <About />
               ) : (
                 <Navigate to="/signup" replace={true} />
@@ -233,7 +251,7 @@ function App() {
           <Route
             path="faqs"
             element={
-              token || hasVisitedSignUp ? (
+              userId || hasVisitedSignUp ? (
                 <FAQs />
               ) : (
                 <Navigate to="/signup" replace={true} />
@@ -243,7 +261,7 @@ function App() {
           <Route
             path="privacy"
             element={
-              token || hasVisitedSignUp ? (
+              userId || hasVisitedSignUp ? (
                 <PrivacyPolicy />
               ) : (
                 <Navigate to="/signup" replace={true} />
@@ -253,7 +271,7 @@ function App() {
           <Route
             path="terms_of_service"
             element={
-              token || hasVisitedSignUp ? (
+              userId || hasVisitedSignUp ? (
                 <Terms />
               ) : (
                 <Navigate to="/signup" replace={true} />
@@ -263,7 +281,7 @@ function App() {
           <Route
             path="profile"
             element={
-              token ? (
+              userId ? (
                 <UserProvider>
                   <Profile userId={userId} />
                 </UserProvider>
@@ -275,7 +293,7 @@ function App() {
           <Route
             path="blogs"
             element={
-              token || hasVisitedSignUp ? (
+              userId || hasVisitedSignUp ? (
                 <Blog />
               ) : (
                 <Navigate to="/signup" replace={true} />
@@ -285,7 +303,7 @@ function App() {
           <Route
             path="contact_us"
             element={
-              token || hasVisitedSignUp ? (
+              userId || hasVisitedSignUp ? (
                 <ContactUs />
               ) : (
                 <Navigate to="/signup" replace={true} />
@@ -295,7 +313,7 @@ function App() {
           <Route
             path="disclaimer"
             element={
-              token || hasVisitedSignUp ? (
+              userId || hasVisitedSignUp ? (
                 <Disclaimer />
               ) : (
                 <Navigate to="/signup" replace={true} />
@@ -305,7 +323,7 @@ function App() {
           <Route
             path="/blogs/:blogId"
             element={
-              token || hasVisitedSignUp ? (
+              userId || hasVisitedSignUp ? (
                 <BlogPage />
               ) : (
                 <Navigate to="/signup" replace={true} />
@@ -313,9 +331,6 @@ function App() {
             }
           />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/success" component={<SuccessPage />} />
-        <Route path="/callback" component={<CallBack />} />
-          <Route path="/link" element={<ParentComponent />} />
         </Route>
       </>
     )

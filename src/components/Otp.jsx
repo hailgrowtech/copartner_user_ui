@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { closeImg } from "../assets";
+import { back, closeImg } from "../assets";
 import { useNavigate } from "react-router-dom";
 
-const Otp = ({ onClose, mobileNumber }) => {
+const Otp = ({ onClose, onCloseAll, mobileNumber, apid, raid, onComplete }) => {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
-  const [timer, setTimer] = useState(0);
+  const [timer, setTimer] = useState(25);
   const navigate = useNavigate();
+
+  const landingPageUrl = sessionStorage.getItem("landingPageUrl");
 
   useEffect(() => {
     let interval;
@@ -51,7 +53,8 @@ const Otp = ({ onClose, mobileNumber }) => {
         setError(data.errorMessages);
         return;
       }
-      sessionStorage.setItem("token", data.data.token);
+      // const userId = data.data.id;
+      // responseUser(userId);
       responseUser();
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);
@@ -60,22 +63,106 @@ const Otp = ({ onClose, mobileNumber }) => {
     }
   };
 
+  // const responseUser = async (id) => {
+  //   try {
+  //     let referralMode = "CP";
+  //     let updates = [
+  //       { path: "/referralMode", op: "replace", value: referralMode },
+  //     ];
+
+  //     if (apid) {
+  //       updates.push({ path: "/referralMode", op: "replace", value: "AP" });
+  //       updates.push({
+  //         path: "/affiliatePartnerId",
+  //         op: "replace",
+  //         value: apid,
+  //       });
+  //     } else if (raid) {
+  //       updates.push({ path: "/referralMode", op: "replace", value: "RA" });
+  //       updates.push({ path: "/expertsID", op: "replace", value: raid });
+  //     }
+
+  //     const resUser = await fetch(
+  //       `https://copartners.in:5131/api/User?Id=${id}`,
+  //       {
+  //         method: "PATCH",
+  //         headers: {
+  //           "Content-Type": "application/json-patch+json",
+  //         },
+  //         body: JSON.stringify(updates),
+  //       }
+  //     );
+
+  //     const data = await resUser.json();
+  //     if (!data.isSuccess) {
+  //       setError(data.errorMessages);
+  //     } else {
+  //       sessionStorage.setItem("userId", data.data.id);
+  //       navigate("/");
+  //       window.location.reload();
+  //     }
+  //   } catch (error) {
+  //     console.error("There was a problem with your fetch operation:", error);
+  //   }
+  // };
+
   const responseUser = async () => {
     try {
-      const resUser = await fetch("https://copartners.in:5131/api/User", {
+      const userData = {
+        mobileNumber: mobileNumber,
+        referralMode: "CP",
+        affiliatePartnerId: "",
+        expertsID: "",
+        landingPageUrl: "",
+      };
+
+      if (apid) {
+        userData.referralMode = "AP";
+        userData.affiliatePartnerId = apid;
+        userData.landingPageUrl = landingPageUrl;
+      } else if (raid) {
+        userData.referralMode = "RA";
+        userData.expertsID = raid;
+      }
+
+      const resUser = await fetch(`https://copartners.in:5131/api/User`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ referralMode: "CP", mobileNumber }),
+        body: JSON.stringify(userData),
       });
+
       const data = await resUser.json();
       if (!data.isSuccess) {
         setError(data.errorMessages);
+        console.log("Something");
+        localStorage.setItem("userId", data.data.id);
+        if (apid) {
+          navigate("/expertise");
+        } else {
+          navigate("/");
+        }
+        window.location.reload();
+        onComplete();
+      } else {
+        localStorage.setItem("userId", data.data.id);
+        const userId = data.data.id;
+        const scriptContent = `
+      window.TrackierWebSDK.trackConv('copartner.gotrackier.com', '662b93eaeae1a03b602b9163', {"goal_value":"Registration","txn_id":"${userId}","is_iframe":true});
+    `;
+        const scriptElement = document.createElement("script");
+        scriptElement.textContent = scriptContent;
+        document.body.appendChild(scriptElement);
+        console.log("Trackier");
+        if (apid) {
+          navigate("/expertise");
+        } else {
+          navigate("/");
+        }
+        window.location.reload();
+        onComplete();
       }
-      sessionStorage.setItem("userId", data.data.id);
-      navigate("/");
-      window.location.reload();
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);
     }
@@ -122,9 +209,17 @@ const Otp = ({ onClose, mobileNumber }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-10 z-50">
       <div className="bg-[#18181B] border-[1px] border-[#ffffff2a] m-4 p-8 rounded-lg w-[25rem] relative text-center">
-        <div className="absolute top-3 right-0 text-right">
+        <div className="absolute top-3 left-2 text-right">
           <div
             onClick={onClose}
+            className="text-gray-400 w-8 text-[20px] cursor-pointer hover:text-white"
+          >
+            <img src={back} alt="" />
+          </div>
+        </div>
+        <div className="absolute top-3 right-0 text-right">
+          <div
+            onClick={onCloseAll}
             className="text-gray-400 w-8 text-[20px] cursor-pointer hover:text-white"
           >
             <img src={closeImg} alt="close" />
@@ -162,7 +257,9 @@ const Otp = ({ onClose, mobileNumber }) => {
           </button>
           <button
             type="button"
-            className={`mt-2 text-white ${timer > 0 ? "opacity-50" : ""} md:text-base text-sm underline`}
+            className={`mt-2 text-white ${
+              timer > 0 ? "opacity-50" : ""
+            } md:text-base text-sm underline`}
             onClick={handleResendOTP}
             disabled={timer > 0}
           >

@@ -2,7 +2,6 @@ import React from "react";
 import styles from "../../style";
 import ProfileCard from "./Profile_Card";
 import "../Hero.css";
-import { expertise_data } from "../../constants";
 import { Link } from "react-router-dom";
 import { useUserData } from "../../constants/context";
 import { arrow, stars, telegram, userBck, logout } from "../../assets";
@@ -17,7 +16,7 @@ const Subscription = ({userId}) => {
       case 2:
         return "Equity";
       case 3:
-        return "Options";
+        return "Futures & Options";
       default:
         return "Unknown";
     }
@@ -30,8 +29,6 @@ const Subscription = ({userId}) => {
     });
   };
 
-  const token = sessionStorage.getItem("token");
-  
   return (
     <div className="expertise-Bg">
       <section
@@ -77,7 +74,7 @@ const Subscription = ({userId}) => {
           guiding you towards trading success with precision and insight.
         </p>
         <div className="flex flex-row justify-center">
-          { token ? <ProfileCard userId={userId} /> : <div className="text-center flex flex-col gap-8 mt-12 text-dimWhite md:text-4xl text-lg"><img className="md:w-96 w-60 mx-auto" src={logout} alt="" /><Link to={"/signup"}>Login to see your Subscriptions!</Link></div>}
+          { userId ? <ProfileCard userId={userId} /> : <div className="text-center flex flex-col gap-8 mt-12 text-dimWhite md:text-4xl text-lg"><img className="md:w-96 w-60 mx-auto" src={logout} alt="" /><Link to={"/signup"}>Login to see your Subscriptions!</Link></div>}
         </div>
       </div>
 
@@ -179,7 +176,7 @@ const Subscription = ({userId}) => {
                         Experience
                       </span>
                       <span className="text-lightWhite font-[600] sm:text-[15px] sm:leading-[18px] text-[10px] leading-[10px]">
-                        {expert.experience}
+                        {expert.experience}+
                       </span>
                     </div>
                     <div className="sm:w-[1.4px] sm:h-[40px] w-[0.4px] h-[16px] bg-lightWhite"></div>

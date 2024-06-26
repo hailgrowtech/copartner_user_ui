@@ -28,6 +28,21 @@ const Expertise = ({userData, token}) => {
     };
   }, []);
 
+  const getExpertType = (typeId) => {
+    switch (typeId) {
+      case 1:
+        return "Commodity";
+      case 2:
+        return "Equity";
+      case 3:
+        return "Futures & Options";
+      default:
+        return "Unknown";
+    }
+  };
+
+  console.log(userData);
+
   return (
     <>
       <div className={`flex flex-col sm:py-[4rem] `}>
@@ -59,7 +74,7 @@ const Expertise = ({userData, token}) => {
                       {expert.channelName}
                     </span>
                     <span className="sm:text-[13px] text-[10px] sm:leading-[16px] leading-[9.6px] font-[400] text-dimWhite">
-                      {expert.name}
+                      {expert.name} - {getExpertType(expert.expertTypeId)}
                     </span>
                   </div>
                   <div className="sm:w-[48px] sm:h-[22px] w-[21px] h-[10px] flex">
@@ -80,7 +95,7 @@ const Expertise = ({userData, token}) => {
                       Experience
                     </span>
                     <span className="text-lightWhite font-[600] sm:text-[15px] sm:leading-[18px] text-[10px] leading-[10px]">
-                      {expert.experience}
+                      {expert.experience}+
                     </span>
                   </div>
                   <div className="sm:w-[1.4px] sm:h-[40px] w-[0.4px] h-[16px] bg-lightWhite"></div>

@@ -17,7 +17,8 @@ export const UserDataProvider = ({ children }) => {
     axios
       .get(USER_API)
       .then((res) => {
-        setUserData(res.data.data);
+        const filteredData = res.data.data.filter(item => item.isCoPartner);
+        setUserData(filteredData);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);

@@ -117,7 +117,7 @@ const CompletedCardsCarousel = () => {
                     <div className="border-white mt-2 pt-1 flex justify-center">
                       <div className="border-r border-white px-[80px] text-center">
                         <p className="mb-1 text-[#ffffffa0]">Experience</p>
-                        <p>{item.experience}</p>
+                        <p>{item.experience}+</p>
                       </div>
                       <div className="px-[80px] text-center">
                         <p className="mb-1 text-[#ffffffa0]">Followers</p>

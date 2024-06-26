@@ -13,185 +13,181 @@ const PrivacyPolicy = () => {
               <span className="font-inter font-[700] md:text-[72px] text-[40px] text-gradient md:leading-[84px] leading-[48px]">
                 Privacy Policy
               </span>
-
-              <p className="md:w-[702px] md:h-[56px] w-[341px] h-[32px] font-inter font-[500] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] leading-[16px]">
-                Please read the privacy policy carefully prior to using or
-                registering on the platform or accessing any material,
-                information or availing any services through the platform.
-              </p>
             </div>
 
             <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px]`}>
               <div className="flex flex-col">
-                <span
-                  className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
-                    text-gradient-2 leading-[51px] md:h-[60px] h-[40px] text-start"
-                >
-                  1. Collection of Information:
-                </span>
-
                 <div className="flex flex-col gap-[1rem] text-start px-[0.5rem]">
-                  <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] md:leading-[28px] leading-[20px]
-                   leading-[16px] md:text-start mt-2"
-                  >
-                    We collect Your Personal Information (defined below) from
-                    You when You register or set up an Account with Us on the
-                    Platform. You shall be required to set up an Account on the
-                    Platform as per the Terms and provide all information as
-                    provided in this Privacy Policy if You wish to avail
-                    Services from Us.
+                  <span className="font-inter font-[400] text-dimWhite md:text-[18px] md:text-start mt-2">
+                    This PRIVACY POLICY ("policy") will help you understand how
+                    HAILGRO TECH SOLUTIONS PRIVATE LIMITED ("us", "we", "our")
+                    uses and protects the data you provide to us when you visit,
+                    use, or register yourself to (copartner.in) ("other
+                    copartner subdomains & links and it’s services").
                   </span>
 
                   <span className="text-dimWhite md:text-[18px] text-start">
-                    This Privacy Policy applies to the following information:
+                    We reserve the right to change this policy at any given
+                    time, of which you will be promptly updated. If you want to
+                    make sure that you are up to date with the latest changes,
+                    we advise you to frequently visit this page.
+                  </span>
+                  <span className="text-dimWhite md:text-[18px] text-start">
+                    (copartner.in) recognizes the importance of maintaining your
+                    privacy. We value your privacy and appreciate your trust in
+                    us. This Policy describes how we treat user information we
+                    collect on (copartner.in). This Privacy Policy applies to
+                    current and former visitors to our website/app and to our
+                    online users. By visiting and/or using our website/app, you
+                    agree to this Privacy Policy
+                  </span>
+                  <span className="text-dimWhite md:text-[18px] text-start">
+                    (copartner.in) is a property of HAILGRO TECH SOLUTIONS
+                    PRIVATE LIMITED, an Indian Company registered under the
+                    Companies Act, 2013 having its registered office at #685/21,
+                    1st Floor, Meham Road, Bus Stand Gohana, Sonipat, Gohana,
+                    Haryana, India, 131301.
                   </span>
                 </div>
 
                 <div className="flex flex-col text-start py-4 md:gap-4 gap-0">
-                  <span className="md:w-[160px] md:h-[20px] md:px-0 px-2 text-lightWhite font-[500] text-[22px]">
-                    (i) <span className="underline">Information:</span>
-                  </span>
-                  <span className="text-dimWhite md:w-full text-start md:px-[2rem] px-[1rem]">
-                    You give Us: You may provide certain information to Us
-                    voluntarily while registering on Our Platform for availing
-                    Our Services, such as mobile number, Permanent Account
-                    Number (“PAN”), name, identification document, images and
-                    videos etc.
-                  </span>
-                  <span className="text-dimWhite text-start md:px-[2rem] px-[1rem] md:w-full">
-                    We may also ask You for certain financial information,
-                    including details of Your bank account, Indian financial
-                    system code (IFSC) of bank, and/or other payment related
-                    details or other payment method data, and debit instructions
-                    to process the Services and access to your contacts list. We
-                    may ask You to provide certain additional information about
-                    Yourself on a case-to-case basis. All information disclosed
-                    by You shall be deemed to be disclosed willingly and without
-                    any coercion. No liability pertaining to the authenticity /
-                    genuineness / misrepresentation / fraud / negligence of the
-                    information disclosed shall lie on the Company nor will the
-                    Company be in any way responsible to verify any information
-                    obtained from You.
-                  </span>
-                </div>
-
-                <div className="flex flex-col text-start py-4 md:gap-4 gap-0">
-                  <span className="md:w-[300px] md:px-0 px-2 md:h-[20px] text-lightWhite font-[500] text-[22px]">
-                    (ii){" "}
-                    <span className="underline">Non-Personal Information:</span>
+                  <span
+                    className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                    text-gradient-2 text-start"
+                  >
+                    1.{" "}
+                    <span className="underline">
+                      What User Information We Collect:
+                    </span>
                   </span>
                   <span className="text-dimWhite text-start md:px-[2.3rem] px-[1rem] md:w-full">
-                    We may also collect non – personal information such as Your
-                    internet protocol address, geographic location, operating
-                    system, browser type and version, length of visit, page
-                    views, website navigation etc. which will not identify with
-                    You specifically{" "}
-                    <span className="text-lightWhite">
-                      (“Non – Personal Information”)
-                    </span>
-                    , while You browse, access, or use the Platform. We receive
-                    and store Non – Personal Information by the use of data
-                    collection devices such as “cookies” on certain pages of the
-                    Platform in order to help and analyse Our web – page flow,
-                    track user trends, measure promotional effectiveness, and
-                    promote trust and safety. We offer certain additional
-                    features on the Platform that are only available through the
-                    use of a “cookie”. We place both permanent and temporary
-                    cookies in Your computer/mobile device’s storage drive.
+                    a) Contact Information: We might collect your name, email,
+                    sex, age, date of birth, mobile number, street, city, state,
+                    pin-code, country, IP address, PAN, Aadhar card,
+                    registration license certificates, KYC documentation,
+                    relevant documents for administrators and moderators, and
+                    any other relevant records if needed.
+                  </span>
+                  <span className="text-dimWhite text-start md:px-[2.3rem] px-[1rem] md:w-full">
+                    b) Demographic Information: We may collect demographic
+                    information about you, or any other information provided by
+                    you during the use of our website/app. We might collect this
+                    as a part of a survey also.
+                  </span>
+                  <span className="text-dimWhite text-start md:px-[2.3rem] px-[1rem] md:w-full">
+                    c) Other Information: If you use our website/app, we may
+                    collect information about your IP address and the browser
+                    you're using. We might look at what site you came from, the
+                    duration of time spent on our website/app, pages accessed,
+                    or what site you visit when you leave us. We might also
+                    collect the type of mobile device you are using, or the
+                    version of the operating system your computer or device is
+                    running.
                   </span>
                 </div>
 
                 <div className="flex flex-col text-start py-4 md:gap-4 gap-0">
-                  <span className="md:w-[300px] md:px-0 px-2 md:h-[20px] text-lightWhite font-[500] text-[22px]">
-                    (iii){" "}
+                  <span
+                    className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                    text-gradient-2 text-start"
+                  >
+                    2.{" "}
                     <span className="underline">
-                      Transactional Information:
+                      We Collect Information in Different Ways:
                     </span>
                   </span>
                   <span className="text-dimWhite text-start md:px-[2.4rem] px-[1rem] md:w-full">
-                    When You choose to avail Services on the Platform, or when
-                    You make any payments to Us or when You receive any payments
-                    from Us for any reason whatsoever, We may collect Your bank
-                    account details and the details of the transaction
-                    undertaken by You on the Platform{" "}
-                    <span className="text-lightWhite">
-                      (“Transactional Information”)
-                    </span>
-                    . We shall track Your transactions on the Platform for the
-                    purposes including but not limited to point out any
-                    suspicious Transactions/activity on the Platform. All
-                    Transactional Information gathered by Us shall be stored on
-                    servers, log files and any other storage system owned by Us
-                    or by third parties such as payment aggregators/payment
-                    gateways in India. Our primary goal in doing so is to
-                    provide You a safe, efficient, smooth and customised
-                    experience on the Platform.
+                    a) We Collect Information Directly from You: We collect
+                    information directly from you when you register on our
+                    website/app. We also collect information if you post a
+                    comment on our website/app or ask us a question through
+                    phone or email
+                  </span>
+                  <span className="text-dimWhite text-start md:px-[2.4rem] px-[1rem] md:w-full">
+                    b) We Collect Information from You Passively: We use
+                    tracking tools like Google Analytics, Google Webmaster,
+                    browser cookies, web beacons, etc. for collecting
+                    information about your usage of our website/app.
+                  </span>
+                  <span className="text-dimWhite text-start md:px-[2.4rem] px-[1rem] md:w-full">
+                    c) We Get Information About You from Third Parties: For
+                    example, if you use an integrated social media feature on
+                    our website/apps. The third-party social media site will
+                    give us certain information about you. This could include
+                    your name and email address.
                   </span>
                 </div>
 
                 <div className="flex flex-col text-start py-4 md:gap-4 gap-0">
-                  <span className="md:w-[230px] md:px-0 px-2 md:h-[20px] text-lightWhite font-[500] text-[22px]">
-                    (iv) <span className="underline">Other Information:</span>
-                  </span>
-                  <span className="text-dimWhite text-start md:px-[2.8rem] px-[1rem] md:w-full">
-                    In addition to the Personal Information, Non-Personal
-                    Information and Transactional Information, We may also
-                    request You to provide other information as and when
-                    necessary{" "}
-                    <span className="text-lightWhite">
-                      (“Other Information”)
+                  <span
+                    className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
+                    text-gradient-2 text-start"
+                  >
+                    3.{" "}
+                    <span className="underline">
+                      Use of Your Personal Information:
                     </span>
-                    . We also seek specific permissions from You such as
-                    permissions to use the camera or microphone of Your device
-                    which enables Us to provide Services to You in a smooth and
-                    efficient manner. The Other Information collected by us may
-                    include inter alia <br /> <span className="text-white">(a)</span> Data either created by You or by a
-                    third party and which You wish to store on Our Platform
-                    and/or servers such as image files, documents etc.; <br /> <span className="text-white">(b)</span> Data
-                    available in public domain or received from any third party
-                    including social media channels, including but not limited
-                    to Personal or Non-Personal Information from Your linked
-                    email address etc. as a part of Your Account information;
-                    <br /> <span className="text-white">(c)</span> copies of government identification like driving
-                    licence, election card etc. (as and when required); and <br /> <span className="text-white">(d)</span>
-                    such other information as may be reasonably required for the
-                    purpose of providing Services to You or as required under
-                    any law for the time being in force.
+                  </span>
+                  <span className="text-dimWhite text-start md:px-[2.8rem] px-[1rem] md:w-full">
+                    a) We Use Information to Contact You: We might use the
+                    information you provide to contact you for providing our
+                    services to you, to know your purpose for visiting our
+                    website/app
                   </span>
 
                   <span className="text-dimWhite text-start md:px-[2.8rem] px-[1rem] md:w-full">
-                    Once You give us your Personal Information, You are not
-                    anonymous to Us. Wherever possible, while providing the
-                    information to Us, We indicate which fields are mandatory
-                    and which fields are optional for You. You always have the
-                    option to not provide the Personal Information to Us through
-                    the Platform by choosing to not use a particular Service or
-                    feature being provided by Us on the Platform, which requires
-                    You to provide such information.
+                    b) We Use Information to Respond to Your Requests or
+                    Questions: We might use your information to confirm your
+                    registration for any of our services including online
+                    activity, webinars, or workshops
                   </span>
 
                   <span className="text-dimWhite text-start md:px-[2.8rem] px-[1rem] md:w-full">
-                    We shall be entitled to retain Your Personal Information and
-                    other information for such duration as may be required for
-                    the purposes specified hereunder and will be used by Us only
-                    in accordance with this Privacy Policy. You acknowledge that
-                    if We determine that any information You have provided or
-                    uploaded violates the terms of this Privacy Policy, We have
-                    the right, in our absolute discretion, to delete or destroy
-                    such information without incurring any liability to You.
+                    c) We Use Information to Improve Our Products and Services:
+                    We might use your information to customize your experience
+                    with us. This could include displaying content based upon
+                    your preferences and data analysis.
+                  </span>
+                  <span className="text-dimWhite text-start md:px-[2.8rem] px-[1rem] md:w-full">
+                    d) We Use Information to Look at Site Trends and Customer
+                    Interests: We may use your information to make our
+                    website/app and services better. We may combine information
+                    we get from you with information about you we get from third
+                    parties.
+                  </span>
+                  <span className="text-dimWhite text-start md:px-[2.8rem] px-[1rem] md:w-full">
+                    e) We Use Information for Security Purposes: We may use
+                    information to protect our company, our customers, or our
+                    website/app.
+                  </span>
+                  <span className="text-dimWhite text-start md:px-[2.8rem] px-[1rem] md:w-full">
+                    f) We Use Information for Marketing Purposes: We might send
+                    you information about special promotions or offers. We might
+                    also tell you about new features or services. These might be
+                    our own offers or services, or third-party offers or
+                    services we think you might find interesting.
+                  </span>
+                  <span className="text-dimWhite text-start md:px-[2.8rem] px-[1rem] md:w-full">
+                    g) We Use Information to Send You Communications: We might
+                    send you emails or SMS about our latest updates.
+                  </span>
+                  <span className="text-dimWhite text-start md:px-[2.8rem] px-[1rem] md:w-full">
+                    h) We Use Information as Otherwise Permitted by Law.
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
+            <div
+              className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}
+            >
               <div className="flex flex-col">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
-                    text-gradient-2 leading-[51px] md:w-[635px] md:h-[60px] w-[365px] h-[40px] text-start"
+                    text-gradient-2 text-start"
                 >
-                  2. Use of Information:
+                  4.{" "}
+                  <span className="underline">Security and Data Storing:</span>
                 </span>
 
                 <div className="flex flex-col gap-[2rem] text-start md:px-[0.5rem] px-[1rem]">
@@ -199,95 +195,62 @@ const PrivacyPolicy = () => {
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
                    leading-[16px] text-start mt-2"
                   >
-                    We use the Personal Information, Non-Personal Information,
-                    Transactional Information and Other information provided by
-                    You for the following:
-                    <br /> <span className="text-lightWhite">(i)</span> to provide and
-                    improve the Services and features on the Platform;{" "}
-                    <span className="text-lightWhite"><br /> (ii)</span> to resolve
-                    disputes and troubleshoot problems;{" "}
-                    <span className="text-lightWhite"><br /> (iii)</span> to promote
-                    Your safety and the safety of other individuals using the
-                    Platform; <span className="text-lightWhite"><br /> (iv)</span> to
-                    protect the security and integrity of the Platform and the
-                    Services;<br />  <span className="text-lightWhite">(v)</span> to
-                    inform You about online and offline offers, products,
-                    services, and updates;{" "}
-                    <br /> <span className="text-lightWhite">(vi)</span> to customise
-                    Your experience on the Platform;{" "}
-                    <br /> <span className="text-lightWhite">(vii)</span> to detect,
-                    prevent and protect Us from any errors, fraud and other
-                    criminal or prohibited activity on the Platform;{" "}
-                    <br /> <span className="text-lightWhite">(viii)</span> to enforce
-                    and inform about Our Terms;{" "}
-                    <br /> <span className="text-lightWhite">(ix)</span> to process
-                    and fulfil Your request for Services or respond to Your
-                    comments, and queries on the Platform;{" "}
-                    <br /> <span className="text-lightWhite">(x)</span> to contact
-                    You;
-                    <br /> <span className="text-lightWhite">(xi)</span> to communicate
-                    important notices or changes in the Services provided by Us
-                    or in the use of the Platform and the terms which govern the
-                    relationship between You and Us;
-                    <br /> <span className="text-lightWhite"> (xii)</span> to analyse
-                    usage patterns; and{" "}
-                    <br /> <span className="text-lightWhite">(xii)</span> for any other
-                    any reason incidental to the reasons listed above; and for
-                    any other purpose with your consent.
+                    a) Security is Very Important to Us: All security procedures
+                    are in place to protect the confidentiality, integrity, and
+                    availability of your user information. We maintain strict
+                    physical, electronic, and administrative safeguards to
+                    protect your user information including your personal
+                    information from unauthorized or inappropriate access.
                   </span>
 
                   <span className="text-dimWhite">
-                    You also specifically agree and consent to Us collecting,
-                    storing, processing, transferring, and sharing information
-                    (including Personal Information) related to You with third
-                    parties such as with entities registered under applicable
-                    laws solely for providing Services to You including
-                    processing Your Transactions on the Platform.
+                    b) We Follow Generally Accepted Standards: We follow
+                    generally accepted standards to collect, store, and protect
+                    personal data. We retain personal data for as long as it is
+                    needed to provide the services you have requested, and
+                    thereafter for legal and service purposes. These may include
+                    retention periods mandated by legal, contractual, or similar
+                    obligations; for resolving, preserving, enforcing, or
+                    defending our legal and contractual rights; needed to
+                    maintain adequate and accurate business and financial
+                    records or how you access, update, or delete your data, etc.
                   </span>
 
                   <span className="text-dimWhite">
-                    Provided that, the third party entities shall be bound by
-                    contractual obligations to keep such information
-                    confidential and use it only for the purposes for which We
-                    disclose it to them.
-                  </span>
-
-                  <span className="text-dimWhite">
-                    We may automatically track certain information about You
-                    based upon Your behaviour on the Platform. We use this
-                    information to do internal research on Your demographics,
-                    interests, and behaviour to better understand, protect and
-                    serve You. This information is compiled and analysed by the
-                    Company on an aggregated and anonymized basis and not
-                    individually, and in a manner that does not specifically
-                    identify You.
-                  </span>
-
-                  <span className="text-dimWhite">
-                    We may occasionally ask You to complete optional online
-                    surveys. These surveys may ask You for Your contact
-                    information and demographic information (like zip code, age,
-                    or income level). We use this information to tailor Your
-                    experience on the Platform, providing You with content that
-                    We think You might be interested in and to display content
-                    according to Your preferences. We use Your Personal
-                    Information to send You promotional emails, however, We will
-                    provide You the ability to opt-out of receiving such emails
-                    from Us. If You opt out, We may still send You
-                    non-promotional emails, such as emails about the Services
-                    and Your Account on the Platform.
+                    c) Confidentiality of Personal Data: This website/app will
+                    take all reasonable efforts to ensure the confidentiality of
+                    personal data, uploaded information, etc., and will take
+                    reasonable efforts to ensure that the information received
+                    from you is not misused. This website/app also reveals
+                    personal data/information uploaded by you in connection with
+                    any lawful process. While this website/app will take the
+                    above reasonable measures to guard against misuse of
+                    personal data/information submitted to it by you, this
+                    website/app cannot guarantee that someone will not overcome
+                    our security measures, including, without limitation, the
+                    security measures implemented on this website. Therefore,
+                    your posting of personal data/information on this website
+                    constitutes your acceptance of this risk, and by posting of
+                    personal data/information, you waive any right to seek legal
+                    relief from this website/app due to any misuse of your
+                    information.
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
+            <div
+              className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}
+            >
               <div className="flex flex-col">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
                     text-gradient-2 leading-[51px] md:h-[60px] h-[40px] text-start"
                 >
-                  3. Retention of Information:
+                  5.{" "}
+                  <span className="underline">
+                    Sharing of Information with Third-Parties:
+                  </span>
                 </span>
 
                 <div className="flex flex-col gap-[2rem] text-start md:px-[0.5rem] px-[1rem]">
@@ -295,40 +258,58 @@ const PrivacyPolicy = () => {
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
                    leading-[16px] text-start mt-2"
                   >
-                    All information provided by You, save and except upon
-                    withdrawal or termination, shall be retained in locations
-                    outside the direct control of the Company (for instance, on
-                    servers or databases co-locates with hosting providers). We
-                    will delete information based on a request received from you
-                    within a reasonable period and latest within 90 (ninety)
-                    days of receiving a deletion request. However, we may retain
-                    such portion of information and for such periods as may be
-                    required under applicable law. Notwithstanding anything
-                    contained herein, We may retain data after account deletion
-                    for reasons including but limited to the following purposes:
-                    <br /> <span className="text-lightWhite">(i)</span> if there is an
-                    unresolved issue relating to your Account, or an unresolved
-                    claim or dispute;{" "}
-                    <br /> <span className="text-lightWhite">(ii)</span> if We are
-                    required to by applicable law; and/or in aggregated and/or
-                    anonymized form; or{" "}
-                    <br /> <span className="text-lightWhite">(iii)</span> Company may
-                    also retain certain information if necessary for its
-                    legitimate business interests, such as fraud prevention and
-                    enhancing safety and security of individuals using the
-                    Platform.
+                    a) We Will Share Information with Third Parties Who Perform
+                    Services on Our Behalf: We share information with vendors,
+                    third-party affiliates, SMS service providers, third-party
+                    payment processing gateways, freelance professionals,
+                    marketing services, Microsoft SQL, and Firebase who help us
+                    manage our website/app, online processes, and our services.
+                  </span>
+
+                  <span
+                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
+                   leading-[16px] text-start mt-2"
+                  >
+                    b) We Will Share Information with Our Business Partners:
+                    This includes third-party sellers and tie-up aggregators.
+                    Our partners use the information we give them as described
+                    in their privacy policies.
+                  </span>
+
+                  <span
+                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
+                   leading-[16px] text-start mt-2"
+                  >
+                    c) We May Share Information to Comply with the Law or
+                    Protect Ourselves: We will share information to respond to a
+                    court order or subpoena. We may also share it if a
+                    government agency or investigatory body requests it. We
+                    might also share information when we are investigating
+                    potential fraud.
+                  </span>
+
+                  <span
+                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
+                   leading-[16px] text-start mt-2"
+                  >
+                    d) We May Share Information with Any Successor to All or
+                    Part of Our Business: For example, if part of our business
+                    is sold, we may give our customer list as part of that
+                    transaction.
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
+            <div
+              className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}
+            >
               <div className="flex flex-col">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
                     text-gradient-2 leading-[51px] md:w-[635px] md:h-[60px] w-[365px] h-[40px] text-start"
                 >
-                  4. Sharing of Information:
+                  6. <span className="underline">Email Opt-Out:</span>
                 </span>
 
                 <div className="flex flex-col gap-[2rem] text-start md:px-[0.5rem] px-[1rem]">
@@ -336,63 +317,27 @@ const PrivacyPolicy = () => {
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
                    leading-[16px] text-start mt-2"
                   >
-                    We may disclose Your Personal Information to Our third party
-                    vendors, partnered institutions, consultants, and such other
-                    individuals bound by contractual obligations to keep such
-                    Personal Information confidential and use it only for the
-                    purposes for which We disclose it to them. This disclosure
-                    may be required for Us, for instance, to provide You access
-                    to Our Services, or processing payments made by You, or to
-                    validate Your bank accounts and Account information, to
-                    facilitate and assist Our marketing and advertising
-                    activities/initiatives, for undertaking auditing or data
-                    analysis, or to prevent, detect, mitigate, and investigate
-                    fraudulent or illegal activities related to Our Services.
-                    <br />
-                    Additionally, We may disclose Your information, to the
-                    extent necessary:{" "}
-                    <br /> <span className="text-lightWhite">(i)</span> to comply with
-                    applicable laws and to respond to lawful requests and legal
-                    process,<br />  <span className="text-lightWhite">(ii)</span> to
-                    protect the rights and property of the Company, individuals
-                    using the Platform, and others, including to enforce the
-                    Terms, and <br />  <span className="text-lightWhite">(iii)</span> in
-                    an emergency to protect the personal safety and assets of
-                    the Company, individuals using the Platform, or any person.
-                    <br />
-                    We may, in compliance with applicable laws,
-                    share/transfer/assign all of Your Personal Information and
-                    other information with any other business entity(ies), in
-                    the event of a merger, sale, re-organization, amalgamation,
-                    joint ventures, assignment, restructuring of business or
-                    transfer or disposition of all or any portion of Our
-                    business. <br />
-                    You hereby grant Us consent to share Your information with
-                    third parties, as mentioned hereinabove and We shall in no
-                    manner be responsible or be under any obligation to inform
-                    You or seek additional consent from You for such sharing of
-                    information.
-                    <br />
-                    Further, You agree and acknowledge that You shall strictly
-                    keep all information of other individuals confidential and
-                    shall not disclose such information to any third party
-                    unless expressly consented to by the individual whose
-                    information is being disclosed. In no circumstance
-                    whatsoever will We be responsible or liable for any breach
-                    of confidentiality by You or other individuals on the
-                    Platform.
+                    You can opt-out of receiving our marketing emails: To stop
+                    receiving our promotional emails, please email
+                    [privacy@copartner.in]. It may take about ten days to
+                    process your request. Even if you opt out of getting
+                    marketing messages, we will still be sending you
+                    transactional messages through email and SMS about your
+                    purchases.
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
+            <div
+              className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}
+            >
               <div className="flex flex-col">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
                     text-gradient-2 md:leading-[51px] leading-[35px] md:w-[935px] md:h-[60px] w-[365px] h-[70px] text-start"
                 >
-                  5. Security Precautions and Measures:
+                  7. <span className="underline">Third Party Sites</span>:
                 </span>
 
                 <div className="flex flex-col gap-[2rem] text-start md:px-[0.5rem] px-[1rem]">
@@ -400,47 +345,26 @@ const PrivacyPolicy = () => {
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
                    leading-[16px] text-start mt-2"
                   >
-                    Our Platform has reasonable security measures and safeguards
-                    in place to protect Your privacy and Personal Information
-                    from loss, misuse, unauthorised access, disclosure,
-                    destruction, and alteration of the information in compliance
-                    with applicable laws. Further, whenever You change or access
-                    Your Account on the Platform or any information relating to
-                    it, We offer the use of a secure server. We cannot however
-                    ensure or warrant the security of any information You
-                    transmit to the Company or guarantee that Your Personal
-                    Information and/or other Non-Personal Information provided
-                    for availing the Services or Platform may not be accessed,
-                    disclosed, altered, or destroyed by a breach of any of Our
-                    security measures and safeguards. It is further clarified
-                    that You have, for so long as You access and/or use the
-                    Platform{" "}
-                    <span className="text-lightWhite">
-                      (directly or indirectly)
-                    </span>{" "}
-                    the obligation to ensure that You shall at all times take
-                    adequate physical, managerial, and technical safeguards, at
-                    Your end, to preserve the integrity and security of Your
-                    data which shall include and not be limited to Your Personal
-                    Information.
-                    <br />
-                    This Privacy Policy and the security controls and practices
-                    implemented by Us to Protect Your Personal Information shall
-                    be the reasonable security practices and procedures under
-                    section 43A of the Information Technology Act, 2000
+                    If you click on one of the links to third-party
+                    websites/apps, you may be taken to a website/app we do not
+                    control. This policy does not apply to the privacy practices
+                    of those websites/apps. Read the privacy policy of other
+                    websites/apps carefully. We are not responsible for these
+                    third-party sites
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
+            <div
+              className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}
+            >
               <div className="flex flex-col">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
                     text-gradient-2 md:leading-[51px] leading-[35px] md:w-[1035px] md:h-[100px] w-[365px] h-[100px] text-start"
                 >
-                  6. Links to Other Third – party Sites and collection of
-                  information:
+                  8. <span className="underline">Grievance Officer:</span>
                 </span>
 
                 <div className="flex flex-col gap-[2rem] text-start md:px-[0.5rem] px-[1rem]">
@@ -448,38 +372,29 @@ const PrivacyPolicy = () => {
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
                    leading-[16px] text-start mt-2"
                   >
-                    Our Platform may provide links to other third – party
-                    Platforms (“Third – Party Sites”) that may collect Your
-                    Personal Information including Your IP Address, browser
-                    specification, or operating system. We are not in any manner
-                    responsible for the security of such information or their
-                    privacy practices or content of those Third – Party Sites.
-                    Additionally, You may also encounter “cookies” or other
-                    similar devices on certain pages of the Third – Party Sites
-                    and it is hereby clarified that We do not control the use of
-                    cookies by these Third – Party Sites. These third-party
-                    service providers and Third-Party Sites may have their own
-                    privacy policies governing the storage and retention of Your
-                    information that You may be subject to. This Privacy Policy
-                    does not govern any information provided to, stored on, or
-                    used by these third-party providers and Third-Party Sites.
-                    We recommend that when You enter a Third-Party Site, You
-                    review the Third-Party Site’s privacy policy as it relates
-                    to safeguarding of Your information. You agree and
-                    acknowledge that We are not liable for the information
-                    published in search results or by any Third-Party Sites.
+                    Mr. Saksham Agrawal [Director] Address: #546, JMD Megapolis,
+                    Sector 48, Sohna Road, Gurugram, 122018 Email:
+                    privacy@copartner.in In accordance with the Information
+                    Technology Act 2000 and rules made thereunder, the name and
+                    contact details of the Grievance Officer are provided below:
+                    Mr. Saksham Agrawal, #546, JMD Megapolis, Sector 48, Sohna
+                    Road, Gurugram, 122018, Email: saksham@copartner.in If you
+                    have any questions about this Policy or other privacy
+                    concerns, you can also email us at [privacy@copartner.in].
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
+            <div
+              className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}
+            >
               <div className="flex flex-col">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
                     text-gradient-2 md:leading-[51px] leading-[35px] md:w-[1035px] md:h-[100px] w-[365px] h-[70px] text-start"
                 >
-                  7. Your Consent and Changes to Privacy Policy:
+                  9. <span className="underline">Updates to This Policy:</span>
                 </span>
 
                 <div className="flex flex-col gap-[2rem] text-start md:px-[0.5rem] px-[1rem]">
@@ -487,71 +402,25 @@ const PrivacyPolicy = () => {
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
                    leading-[16px] text-start mt-2"
                   >
-                    <span className="underline text-lightWhite font-[700]">
-                      Withdrawal of consent:
-                    </span>{" "}
-                    You may choose to withdraw Your consent provided hereunder
-                    at any point in time. Such withdrawal of the consent must be
-                    sent in writing to info@copartner.in. In case You do not
-                    provide Your consent or later withdraw Your consent, We
-                    request you not to access the Platform and use the Services.
-                    We reserve the right to not provide You any Services on the
-                    Platform upon the withdrawal of Your consent. In such a
-                    scenario, We may delete Your information or de-identify it
-                    so that it is anonymous and not attributable to You. In the
-                    event, We retain Your information post the withdrawal or
-                    cancellation of Your consent, it shall only be for the
-                    period permitted under applicable laws. We may continue to
-                    retain Your information, if required under Applicable Law.
-                  </span>
-                </div>
-
-                <div className="flex flex-col gap-[2rem] text-start md:px-[0.5rem] px-[1rem]">
-                  <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
-                   leading-[16px] md:text-start mt-2 "
-                  >
-                    <span className="underline text-lightWhite font-[700]">
-                      Correcting inaccuracies in the information:
-                    </span>{" "}
-                    You may correct or update any information online. In the
-                    event of loss of access details, You may retrieve the same
-                    or receive new access details by sending an e-mail to:
-                    <span className="text-[#2F539B] cursor-pointer">
-                      info@copartner.in
-                    </span>
-                  </span>
-                </div>
-
-                <div className="flex flex-col gap-[2rem] text-start md:px-[0.5rem] px-[1rem]">
-                  <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
-                   leading-[16px] text-start mt-2"
-                  >
-                    <span className="underline text-lightWhite font-[700]">
-                      Changes To Our Privacy Policy:
-                    </span>{" "}
-                    We reserve the unconditional right to change, modify, add,
-                    or remove portions of this Privacy Policy at any time, by
-                    notifying You of such changes. Any changes or updates will
-                    be effective immediately. Your continued usage of the
-                    Platform post such changes or updates, will serve as your
-                    unqualified acceptance of such changes or updates. You
-                    should review this Privacy Policy regularly for changes. You
-                    can determine if changes have been made by checking the
-                    “Last Updated” legend above.
+                    This Privacy Policy was last updated on 19.04.2024. From
+                    time to time, we may change our privacy practices. We will
+                    notify you of any changes to this policy as required by law.
+                    We will also post an updated copy on our website/app. Please
+                    check our site periodically for updates.
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
+            <div
+              className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}
+            >
               <div className="flex flex-col">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
                     text-gradient-2 leading-[51px] md:w-[735px] md:h-[60px] w-[365px] h-[40px] text-start"
                 >
-                  8. Grievance Officer:
+                  10. <span className="underline">Jurisdiction</span>:
                 </span>
 
                 <div className="flex flex-col gap-[10px] text-start md:px-[0.5rem] px-[1rem]">
@@ -559,47 +428,26 @@ const PrivacyPolicy = () => {
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
                    leading-[16px] text-start mt-2"
                   >
-                    If You have any grievance with respect to the Platform or
-                    the Services, You may write to the grievance officer, the
-                    name and contact details have been provided below published
-                    in search results or by any Third-Party Sites.
-                  </span>
-
-                  <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] sm:leading-[21px]
-                   leading-[16px] text-start"
-                  >
-                    Name: Anshu Hooda
-                  </span>
-
-                  <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
-                   leading-[16px] text-start"
-                  >
-                    Email: <span className="text-[#2F539B] cursor-pointer">info@copartner.in</span>
-                  </span>
-
-                  <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
-                   leading-[16px] text-start"
-                  >
-                    We assure You that We shall ensure implementation of the
-                    Privacy Policy, make the Privacy Policy available to
-                    individuals and put our best efforts to redress Your
-                    grievances expeditiously within 15 (fifteen) days from the
-                    date of receipt of the grievance.
+                    If you choose to visit the website/app, your visit and any
+                    dispute over privacy are subject to this Policy and the
+                    website/app's terms of use. In addition to the foregoing,
+                    any disputes arising under this Policy shall be governed by
+                    the laws of India and the courts at Haryana shall have
+                    exclusive jurisdiction.
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}>
+            <div
+              className={`flex flex-col gap-2 md:pb-[4rem] md:w-[1190px] md:py-0 py-[1rem]`}
+            >
               <div className="flex flex-col">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-2
                     text-gradient-2 leading-[51px] md:w-[735px] md:h-[60px] w-[365px] h-[40px] text-start"
                 >
-                  9. Questions ?
+                  11. <span className="underline">Miscellaneous</span>
                 </span>
 
                 <div className="flex flex-col gap-[2rem] text-start md:px-[0.5rem] px-[1rem] mt-2">
@@ -607,14 +455,45 @@ const PrivacyPolicy = () => {
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
                    leading-[16px] text-start"
                   >
-                    Please feel free to contact us at <span className="text-[#2F539B] cursor-pointer">info@copartner.in</span> regarding any questions on the Privacy Policy.
+                    a) Entire Agreement: This Agreement constitutes the entire
+                    agreement between the Parties with respect to the subject
+                    matter hereof and supersedes all prior agreements and
+                    understandings, both written and oral, between the Parties
+                    with respect to such subject matter.
                   </span>
 
                   <span
                     className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
                    leading-[16px] text-start"
                   >
-                    Last Updated : 10 April. 24
+                    b) Amendments: Any amendments or modifications to this
+                    Agreement must be in writing and signed by both Parties.
+                  </span>
+                  <span
+                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
+                   leading-[16px] text-start"
+                  >
+                    c) Severability: If any provision of this Agreement is held
+                    to be invalid or unenforceable, the remaining provisions
+                    will continue in full force and effect.
+                  </span>
+                  <span
+                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
+                   leading-[16px] text-start"
+                  >
+                    d) Governing Law: This Agreement shall be governed by and
+                    construed in accordance with the laws of India.
+                  </span>
+                  <span
+                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[21px]
+                   leading-[16px] text-start"
+                  >
+                    e) Dispute Resolution: Any disputes arising out of or in
+                    connection with this Agreement shall be resolved through
+                    good faith negotiations between the Parties. If the dispute
+                    cannot be resolved through negotiations, it shall be subject
+                    to the exclusive jurisdiction of the courts of Haryana,
+                    India.
                   </span>
                 </div>
               </div>

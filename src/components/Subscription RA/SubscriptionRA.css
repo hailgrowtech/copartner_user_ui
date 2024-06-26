@@ -27,13 +27,13 @@
 }
 
 .basic-div:not(:hover) button {
-  background-color: transparent;
-  border: 1px solid white;
+  background-color: #0081F1;
+  border: 1px white;
   color: white;
 }
 
 .standard-div:not(:hover) button {
-  background-color: transparent;
-  border: 1px solid white;
+  background-color: #0081F1;
+  border: 1px white;
   color: white;
 }

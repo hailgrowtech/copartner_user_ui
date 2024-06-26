@@ -1,32 +1,63 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "../../style";
 import Interest from "./Interest";
-import axios from "axios";
+import { addDays, format } from "date-fns";
+import { DateRange } from "react-date-range";
 import { invoiceImg, logout } from "../../assets";
-import SubscriptionType from "./SubscriptionType";
-import NameType from "./NameType";
 import { Link } from "react-router-dom";
 import { useUserData } from "../../constants/context";
 import Receipt from "../Receipt/Receipt";
+import { useUserSession } from "../../constants/userContext";
+import { SubscriptionContext } from "../../constants/subscriptionContext";
+import KYCPopup from "../Subscription RA/KYCPopup";
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
 
-const Wallet = () => {
+const Wallet = ({ userId }) => {
   const userData = useUserData();
+  const { transactionTable } = useContext(SubscriptionContext);
   const [smallScreen, setSmallScreen] = useState(false);
-  const [transactionTable, setTransactionTable] = useState([]);
-  const userId = sessionStorage.getItem("userId");
   const [selectedTransaction, setSelectedTransaction] = useState(null);
+  const [visibleTransactions, setVisibleTransactions] = useState(3);
+  const [KYCWaring, setKYCWaring] = useState(false);
+  const { userData: loginData } = useUserSession();
+  const [filteredData, setFilteredData] = useState([]);
+  const [isKYCDone, setIsKYCDone] = useState(false);
+  const [dateRange, setDateRange] = useState([
+    {
+      startDate: null,
+      endDate: addDays(new Date(), 7),
+      key: "selection",
+    },
+  ]);
+  const [showDatePicker, setShowDatePicker] = useState(false);
+
+  const showMoreTransactions = () => {
+    setVisibleTransactions(visibleTransactions + 3);
+  };
+
+  const getExpertType = (typeId) => {
+    switch (parseInt(typeId)) {
+      case 1:
+        return "Commodity";
+      case 2:
+        return "Equity";
+      case 3:
+        return "Futures & Options";
+      default:
+        return "Unknown";
+    }
+  };
 
   useEffect(() => {
-    axios
-      .get(`https://copartners.in:5009/api/Subscriber/GetByUserId/${userId}`)
-      .then((res) => {
-        setTransactionTable(res.data.data);
-      })
-      .catch((error) => {
-        console.log("Error Getting In Transaction API.", error);
-        setTransactionTable([]);
-      });
-  }, []);
+    if (loginData) {
+      if (!loginData?.isKYC) {
+        setIsKYCDone(true);
+      } else {
+        setIsKYCDone(false);
+      }
+    }
+  }, [loginData]);
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -49,14 +80,36 @@ const Wallet = () => {
   };
 
   const downloadTransactionData = (transaction) => {
+    if (!loginData?.isKYC) {
+      setKYCWaring(true);
+      return;
+    }
+    setSelectedTransaction(transaction);
     setSelectedTransaction(transaction);
   };
 
-  const token = sessionStorage.getItem("token");
-
   const closePopup = () => {
     setSelectedTransaction(null);
+    setKYCWaring(false);
   };
+
+  useEffect(() => {
+    const start = dateRange[0].startDate;
+    const end = dateRange[0].endDate;
+
+    const filteredAndSortedData = transactionTable
+      .filter(
+        (user) =>
+          !start ||
+          !end ||
+          (new Date(user.transactionDate) >= start &&
+            new Date(user.transactionDate) <= end)
+      )
+      .sort(
+        (a, b) => new Date(b.transactionDate) - new Date(a.transactionDate)
+      );
+    setFilteredData(filteredAndSortedData);
+  }, [transactionTable, dateRange]);
 
   return (
     <>
@@ -68,13 +121,17 @@ const Wallet = () => {
             <div
               className={`${styles.flexStart} flex-col text-center md:gap-[2rem] gap-0`}
             >
-              <div className="justify-between items-center">
+              <div className="flex flex-col justify-center items-center text-center">
                 <span className="font-inter font-[700] md:text-[72px] text-[44px] text-gradient md:leading-[74px] leading-[48px]">
-                  Earn and Prosper
+                  Transaction History
                 </span>
-
-                <p className="md:w-[508px] md:h-[56px] w-[341px] h-[32px] font-inter font-[500] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] leading-[16px] flex items-center justify-center">
-                  Earn, Repeat & Collect!
+                <p className="md:w-[508px] w-[341px] font-inter font-[500] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] leading-[16px] mt-4">
+                  Review the transaction history below to have transparency into
+                  payments made to our portal.{" "}
+                  <span className="text-lightWhite">
+                    Stay informed about your expenditure and the services you've
+                    accessed. 
+                  </span>
                 </p>
               </div>
             </div>
@@ -102,61 +159,103 @@ const Wallet = () => {
             </div> */}
           </div>
 
-          <div className="flex md:flex-row flex-col justify-around items-center">
-            <span className="md:w-[461px] md:h-[52px] font-inter font-bold md:text-[50px] text-[30px] text-gradient-2 leading-[51px]">
-              Transaction History
-            </span>
-            <span className="md:w-[550px] md:h-[56px] w-[328px] h-[68px] font-[400] md:text-[18px] text-[13px] md:leading-[28px] leading-[17px] text-dimWhite md:text-start">
-              Review the transaction history below to have transparency into
-              payments made to our portal.{" "}
-              <span className="text-lightWhite">
-                Stay informed about your expenditure and the services you've
-                accessed. 
-              </span>
-            </span>
-          </div>
+          {/* <div className="md:w-1/5 flex mr-4 ml-auto text-white">
+            <button
+              onClick={() => setShowDatePicker(true)}
+              className="border-2 text-base border-white rounded-lg px-4 py-1"
+            >
+              Select Date Range
+            </button>
+          </div> */}
+          {showDatePicker && (
+            <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+              <div className="bg-white rounded-lg p-4 w-11/12 md:w-1/2 lg:w-1/3">
+                <h2 className="text-xl font-bold mb-4">Select Date Range</h2>
+                <DateRange
+                  editableDateInputs={true}
+                  onChange={(item) => setDateRange([item.selection])}
+                  moveRangeOnFirstSelection={false}
+                  ranges={dateRange}
+                />
+                <div className="flex justify-end mt-4">
+                  <button
+                    onClick={() => setShowDatePicker(false)}
+                    className="border-2 rounded-lg px-4 py-1"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
 
-          {token ? (
-            <div className="flex justify-center items-center md:mt-[1rem] mt-[-20px]">
+          {userId ? (
+            <div className="flex justify-center items-center md:mt-[1rem] mt-[1.5rem]">
               {smallScreen ? (
                 <div className="flex flex-wrap justify-center items-center">
-                  {transactionTable.slice(0, 3).map((row, index) => (
-                    <div
-                      key={index}
-                      className="flex flex-col justify-around w-[361px] h-[208px] bg-[#18181B] bg-opacity-[50%] rounded-[30px] md:m-4 m-[10px] p-4 w-[90%] max-w-sm"
-                    >
-                      <div className="flex flex-row justify-between">
-                        <p className="w-[173px] h-[26px] font-[600] text-[21px] leading-[25px] text-lightWhite">
-                          {row.transactionId}
-                        </p>
-                        <img
-                          src={invoiceImg}
-                          alt=""
-                          className="w-[21px] h-[21px] text-white"
-                        />
+                  {filteredData
+                    .sort((a, b) => {
+                      const dateA = new Date(a.transactionId.substring(1));
+                      const dateB = new Date(b.transactionId.substring(1));
+                      return dateB - dateA;
+                    })
+                    .slice(0, visibleTransactions)
+                    .map((row, index) => (
+                      <div
+                        key={index}
+                        className="flex flex-col justify-around w-[361px] h-[208px] bg-[#18181B] bg-opacity-[50%] rounded-[30px] md:m-4 m-[10px] p-4 max-w-sm"
+                      >
+                        <div className="flex flex-row justify-between">
+                          <p className="w-[173px] h-[26px] font-[600] text-[21px] leading-[25px] text-lightWhite">
+                            {row.transactionId}
+                          </p>
+                          <img
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              downloadTransactionData(row);
+                            }}
+                            src={invoiceImg}
+                            alt=""
+                            className="w-[21px] h-[21px] text-white"
+                          />
+                        </div>
+                        <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
+                          <span className="text-dimWhite">DATE:</span>{" "}
+                          {formatDate(row.transactionDate)}
+                        </span>
+                        <span className="flex items-center justify-between sm:w-[305px] h-[34px] font-[500] text-[14px] leading-[12px] text-lightWhite">
+                          <span className="text-dimWhite">SUBSCRIPTION:</span>{" "}
+                          {getExpertType(row.subscription.serviceType)}
+                        </span>
+                        <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
+                          <span className="text-dimWhite">NAME:</span>
+                          {row.subscription.experts.name}
+                        </span>
+                        <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
+                          <span className="text-dimWhite">AMOUNT:</span> ₹{" "}
+                          {row.totalAmount}
+                        </span>
+                        <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
+                          <span className="text-dimWhite">INVITE LINK:</span>{" "}
+                          <a
+                            target="_blank"
+                            rel="noreferrer"
+                            href={row.premiumTelegramChannel}
+                          >
+                            {row.premiumTelegramChannel}
+                          </a>
+                        </span>
                       </div>
-                      <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
-                        <span className="text-dimWhite">DATE:</span>{" "}
-                        {formatDate(row.transactionDate)}
-                      </span>
-                      <span className="flex items-center justify-between sm:w-[305px] h-[34px] font-[500] text-[14px] leading-[12px] text-lightWhite">
-                        <span className="text-dimWhite">SUBSCRIPTION:</span>{" "}
-                        {row.subscription.serviceType}
-                      </span>
-                      <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
-                        <span className="text-dimWhite">NAME:</span>
-                        {row.subscription.experts.name}
-                      </span>
-                      <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
-                        <span className="text-dimWhite">AMOUNT:</span> ₹{" "}
-                        {row.totalAmount}
-                      </span>
-                    </div>
-                  ))}
+                    ))}
 
-                  <button className="md:w-[147px] md:h-[40px] md:flex items-center justify-center flex w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px]">
-                    Show More
-                  </button>
+                  {visibleTransactions < filteredData.length && (
+                    <button
+                      onClick={showMoreTransactions}
+                      className="md:w-[147px] md:h-[40px] md:flex items-center justify-center flex w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px] mt-4"
+                    >
+                      Show More
+                    </button>
+                  )}
                 </div>
               ) : (
                 <table className="w-[1234px] px-[1rem] bg-[#18181B] bg-opacity-[50%] rounded-[30px]">
@@ -167,51 +266,71 @@ const Wallet = () => {
                       <th className="py-2 px-4">Subscription</th>
                       <th className="py-2 px-4">Name</th>
                       <th className="py-2 px-4">Amount</th>
+                      <th className="py-2 px-4">Invite Link</th>
                       <th className="py-2 px-4">Invoice</th>
                     </tr>
                   </thead>
                   <tbody className="text-lightWhite w-[1234px] h-[81px]">
-                    {transactionTable &&
-                      transactionTable.map((row, index) => {
-                        return (
-                          <tr
-                            key={index}
-                            className={index % 2 === 0 ? "bg-[#1E1E22]" : ""}
-                          >
-                            <td className="py-8 pl-20 h-[18px] font-[500] text-[16px] leading-[18px]">
-                              {row.id}
-                            </td>
-                            <td className="py-8 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
-                              {formatDate(row.transactionDate)}
-                            </td>
-                            <td className="py-8 px-20 text-center h-[36px] font-[500] text-[16px] text-white leading-[18px]">
-                              {row.subscription.serviceType}
-                            </td>
-                            <td className="py-8 text-center w-[105px] h-[18px] font-[500] text-[16px] leading-[18px]">
-                              {row.subscription.experts.name}
-                            </td>
-                            <td className="py-8 px-20 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
-                              ₹ {row.totalAmount}
-                            </td>
-                            <td className="py-8">
-                              <img
-                                src={invoiceImg}
-                                alt=""
-                                className="w-[21px] h-[21px] text-white mx-auto"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  downloadTransactionData(row);
-                                }}
-                              />
-                            </td>
-                          </tr>
-                        );
-                      })}
+                    {filteredData &&
+                      filteredData
+                        .sort((a, b) => {
+                          const dateA = new Date(a.transactionId.substring(1));
+                          const dateB = new Date(b.transactionId.substring(1));
+                          return dateB - dateA;
+                        })
+                        .map((row, index) => {
+                          return (
+                            <tr
+                              key={index}
+                              className={index % 2 === 0 ? "bg-[#1E1E22]" : ""}
+                            >
+                              <td className="py-8 px-12 h-[18px] font-[500] text-[16px] leading-[18px]">
+                                {row.transactionId}
+                              </td>
+                              <td className="py-8 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
+                                {formatDate(row.transactionDate)}
+                              </td>
+                              <td className="py-8 px-20 text-center h-[36px] font-[500] text-[16px] text-white leading-[18px]">
+                                {getExpertType(row.subscription.serviceType)}
+                              </td>
+                              <td className="py-8 text-center w-[105px] h-[18px] font-[500] text-[16px] leading-[18px]">
+                                {row.subscription.experts.name}
+                              </td>
+                              <td className="py-8 px-16 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
+                                ₹ {row.totalAmount}
+                              </td>
+                              <td className="py-8 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
+                                <a
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  href={row.premiumTelegramChannel}
+                                >
+                                  {row.premiumTelegramChannel}
+                                </a>
+                              </td>
+                              <td className="py-8">
+                                <img
+                                  src={invoiceImg}
+                                  alt=""
+                                  className="w-[21px] h-[21px] text-white mx-auto"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    downloadTransactionData(row);
+                                  }}
+                                />
+                              </td>
+                            </tr>
+                          );
+                        })}
                   </tbody>
                 </table>
               )}
+              {KYCWaring && <KYCPopup />}
               {selectedTransaction && (
-                <Receipt closePopup={closePopup} transaction={selectedTransaction} />
+                <Receipt
+                  closePopup={closePopup}
+                  transaction={selectedTransaction}
+                />
               )}
             </div>
           ) : (
@@ -300,6 +419,7 @@ const Wallet = () => {
 
           <Interest userData={userData} />
         </div>
+        {isKYCDone && <KYCPopup />}
       </div>
     </>
   );

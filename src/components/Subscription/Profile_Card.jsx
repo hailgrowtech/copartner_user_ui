@@ -28,7 +28,6 @@ const Expertise = ({ userId }) => {
   useEffect(() => {
     const fetchSubscriberData = async () => {
       try {
-        console.log(userId)
         const response = await fetch(
           `https://copartners.in:5009/api/Subscriber/GetByUserId/${userId}`
         );
@@ -115,7 +114,7 @@ const Expertise = ({ userId }) => {
                         Experience
                       </span>
                       <span className="text-lightWhite font-[600] sm:text-[15px] sm:leading-[18px] text-[10px] leading-[10px]">
-                        {expert.experts.experience}
+                        {expert.experts.experience}+
                       </span>
                     </div>
                     <div className="sm:w-[1.4px] sm:h-[40px] w-[0.4px] h-[16px] bg-lightWhite"></div>

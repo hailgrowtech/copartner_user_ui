@@ -1,21 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Otp from "./Otp";
 import { closeImg, signupBg } from "../assets";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
-const SignUp = () => {
+const SignUp = ({onComplete}) => {
   const [mobile, setMobile] = useState("");
   const [showOtp, setShowOtp] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [validationMessage, setValidationMessage] = useState("");
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const apid = searchParams.get("apid");
+    const raid = searchParams.get("raid");
+    const landingPageUrl = searchParams.get("apurl");
+
+    if (apid) {
+      sessionStorage.setItem("apid", apid);
+    }
+
+    if (raid) {
+      sessionStorage.setItem("raid", raid);
+    }
+
+    if (landingPageUrl) {
+      sessionStorage.setItem("landingPageUrl", landingPageUrl);
+    }
+  }, [searchParams]);
+
+  const apid = sessionStorage.getItem("apid");
+  const raid = sessionStorage.getItem("raid");
 
   const handleMobileChange = (e) => {
     const value = e.target.value;
     setMobile(value);
 
-    // Ensure the mobile number has more than 10 digits
     if (value.length > 10) {
       setValidationMessage("Mobile number must have more than 10 digits");
     } else {
@@ -95,7 +116,7 @@ const SignUp = () => {
         }}
       ></div>
       <div
-        className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-10 z-50 w-screen h-screen`}
+        className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-30 z-50 w-screen h-screen`}
       >
         <div className="bg-[#18181B] border-[1px] border-[#ffffff2a] m-4 p-6 rounded-lg w-96 relative text-center">
           <div className="absolute top-3 right-0 text-right">
@@ -110,15 +131,21 @@ const SignUp = () => {
             </button>
           </div>
           <div className="mb-4">
-            <h2 className="text-2xl font-semibold text-white">Sign Up</h2>
+            <h2 className="text-2xl font-semibold text-white">Login/Signup</h2>
           </div>
           <p className="text-gray-300 text-center mb-4">
             Get access to daily free calls from varieties of India's SEBI
             Registered Research Analysts.
           </p>
-          {error && <p className="text-red-500 mb-4">{error}</p>}
           {showOtp ? (
-            <Otp mobileNumber={mobile} onClose={handleClosePopups} />
+            <Otp
+              apid={apid}
+              raid={raid}
+              mobileNumber={mobile}
+              onClose={handleClosePopups}
+              onCloseAll={handleClose}
+              onComplete={onComplete}
+            />
           ) : (
             <form
               className="flex flex-col gap-4 text-white"

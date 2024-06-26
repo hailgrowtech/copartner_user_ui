@@ -1,38 +1,97 @@
 import React from "react";
 
 function MobileCourse({ showMobilePopup, handleBuyNowClick, subscriptions }) {
+  const calculateRemainingTime = (discountValidTo) => {
+    const now = new Date();
+    const validTo = new Date(discountValidTo);
+
+    const timeDifference = validTo - now;
+
+    if (timeDifference <= 0) {
+      return "Expired";
+    }
+
+    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor(
+      (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+    );
+
+    if (days > 0) {
+      return `${days} days ${hours} hours left`;
+    } else if (hours > 0) {
+      return `${hours} hours ${minutes} minutes left`;
+    } else if (minutes > 0) {
+      return `${minutes} minutes left`;
+    } else {
+      return "Less than a minute left";
+    }
+  };
+
+  const discountedSubscription = subscriptions.find(
+    (sub) => sub.discountedAmount < sub.amount
+  );
+  const subscription =
+    discountedSubscription ||
+    subscriptions.slice().sort((a, b) => a.amount - b.amount)[1];
+
+  const isDiscounted = subscription?.discountedAmount < subscription?.amount;
+  const remainingTime = subscription?.discountValidTo
+    ? calculateRemainingTime(subscription?.discountValidTo)
+    : null;
+
   return (
     <div>
-      {showMobilePopup && (
+      {showMobilePopup && subscriptions.length > 1 && (
         <div className="fixed bottom-0 left-0 right-0 bg-black p-4 shadow-lg z-50">
-          {subscriptions.length > 1 && (
-            <div className="flex rounded-2xl items-center bg-[#18181B80]">
-              <div className="flex-1 text-white text-left">
-                <div className="flex flex-col">
-                  <span className="text-LG text-white">
-                    {subscriptions[1].planType}
-                  </span>
-                  <div className="flex items-center gap-3">
-                    <span className="text-LG text-white">
-                      <del>₹5,999</del>
-                    </span>
+          <div className="flex rounded-2xl items-center bg-[#18181B80] px-3 py-1">
+            <div className="flex-1 text-white text-left">
+              <div className="flex flex-col">
+                <span className="text-lg text-white">
+                  {subscription.planType}
+                </span>
+                <div className="flex items-center gap-3">
+                  {isDiscounted ? (
+                    <>
+                      <span className="text-lg text-white">
+                        <del>₹{subscription.amount}</del>
+                      </span>
+                      <span className="text-2xl font-bold text-white">
+                        ₹{subscription.discountedAmount}
+                      </span>
+                    </>
+                  ) : (
                     <span className="text-2xl font-bold text-white">
-                      ₹{subscriptions[1].amount}
+                      ₹{subscription.amount}
                     </span>
-                  </div>
+                  )}
                 </div>
-                <p className="text-[#C6CDD5] text-sm">
-                  {subscriptions[1].durationMonth} Month Access
-                </p>
+                {remainingTime && isDiscounted && (
+                  <div className="inline-block bg-gradient-to-r w-[70%] from-[#00c394] to-[#00a143] text-white py-1 px-3 rounded-lg font-bold text-sm animate-pulse">
+                    <i className="fas fa-clock"></i>
+                    Limited Time Offer
+                  </div>
+                )}
               </div>
-              <button
-                onClick={() => handleBuyNowClick("Quarterly", 2999)}
-                className="text-lg px-5 rounded-lg font-semibold flex items-center py-3 bg-[#fff] text-[#000] hover:bg-[#000] hover:text-[#fff] "
-              >
-                Buy Now
-              </button>
+              <p className="text-[#C6CDD5] text-sm">
+                {subscription.durationMonth} Month Access
+              </p>
             </div>
-          )}
+            <button
+              onClick={() =>
+                handleBuyNowClick(
+                  subscription.id,
+                  subscription.planType,
+                  subscription.discountedAmount
+                )
+              }
+              className="text-lg px-5 rounded-lg font-semibold flex items-center py-3 bg-[#0081F1] text-white hover:bg-white hover:text-black"
+            >
+              Buy Now
+            </button>
+          </div>
         </div>
       )}
     </div>

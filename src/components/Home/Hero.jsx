@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "../../style";
 import {
   arrow,
@@ -9,16 +9,41 @@ import {
   feeback,
 } from "../../assets";
 import Expertise from "./Expertise";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useUserData } from "../../constants/context";
-import { UserContext } from "../../constants/userContext";
+import { useUserSession } from "../../constants/userContext";
+import KYCPopup from "../Subscription RA/KYCPopup";
+import { SubscriptionContext } from "../../constants/subscriptionContext";
+import SignUp from "../SignUp";
 
 const Hero = ({ hasVisitedSignUp, token }) => {
   const [showDialog, setShowDialog] = useState(false);
   const userData = useUserData();
+  const dataUser = useUserSession().userData;
   const [nameData, setNameData] = useState("");
   const [emailData, setEmailData] = useState("");
-  const userId = sessionStorage.getItem("userId");
+  const [showKYCDialog, setShowKYCDialog] = useState(false);
+  const { transactionTable } = useContext(SubscriptionContext);
+  const [showSignUp, setShowSignUp] = useState(false);
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const apid = searchParams.get("apid");
+    const raid = searchParams.get("raid");
+    const landingPageUrl = searchParams.get("apurl");
+
+    if (apid) {
+      sessionStorage.setItem("apid", apid);
+    }
+
+    if (raid) {
+      sessionStorage.setItem("raid", raid);
+    }
+
+    if (landingPageUrl) {
+      sessionStorage.setItem("landingPageUrl", landingPageUrl);
+    }
+  }, [searchParams]);
 
   const getExpertType = (typeId) => {
     switch (typeId) {
@@ -27,7 +52,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
       case 2:
         return "Equity";
       case 3:
-        return "Options";
+        return "Futures & Options";
       default:
         return "Unknown";
     }
@@ -58,7 +83,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
 
     try {
       const resUser = await fetch(
-        `https://copartners.in:5131/api/User/${userId}`,
+        `https://copartners.in:5131/api/User?Id=${token}`,
         {
           method: "PATCH",
           headers: {
@@ -87,18 +112,42 @@ const Hero = ({ hasVisitedSignUp, token }) => {
 
   useEffect(() => {
     const fetchUserData = async () => {
-        if (!UserContext().data.name || !UserContext().data.email) {
+      if (dataUser) {
+        if (!dataUser?.name || !dataUser?.email) {
           setShowDialog(true);
         } else {
+          sessionStorage.setItem("isDialogClosed", "true");
           setShowDialog(false);
         }
+      }
+    };
+
+    const KYCCheck = () => {
+      if (
+        (dataUser?.isKYC === null || dataUser?.isKYC === false) &&
+        transactionTable.length > 0
+      ) {
+        setShowKYCDialog(true);
+      } else {
+        setShowKYCDialog(false);
+      }
     };
 
     const isDialogClosed = sessionStorage.getItem("isDialogClosed");
+
+    if (dataUser) {
+      setNameData(dataUser.name || "");
+      setEmailData(dataUser.email || "");
+    }
+
     if (!hasVisitedSignUp && isDialogClosed !== "true") {
       fetchUserData();
     }
-  }, []);
+
+    if (dataUser && transactionTable && dataUser?.name && dataUser?.email) {
+      KYCCheck();
+    }
+  }, [dataUser, hasVisitedSignUp, transactionTable]);
 
   const handleClosed = (e) => {
     e.stopPropagation();
@@ -106,9 +155,34 @@ const Hero = ({ hasVisitedSignUp, token }) => {
     setShowDialog(false);
   };
 
-  const handleTelegram = (link) => {
-    token && window.open(link);
+  const handleTelegram = (e, link) => {
+    e.stopPropagation();
+    if (token) {
+      window.open(link);
+    } else {
+      setShowSignUp(true);
+    }
   };
+
+  const handleSignUpComplete = (e, link) => {
+    e.stopPropagation();
+    setShowSignUp(false);
+    window.open(link, "_blank");
+    window.location.reload();
+  };
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const slicedData = isMobile ? userData.slice(0, 5) : userData.slice(0, 3);
 
   return (
     <div
@@ -163,6 +237,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
           </div>
         </div>
       )}
+      {showKYCDialog && <KYCPopup />}
 
       <div className={`${styles.flexStart} flex-col relative`}>
         <div className="flex flex-col justify-between md:w-[603px]">
@@ -187,93 +262,96 @@ const Hero = ({ hasVisitedSignUp, token }) => {
           <img src={arrow} alt="arrow" className="w-[16px] h-[16px]" />
         </div>
 
-        <div className="md:pt-[2rem] pt-[1rem] grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:flex">
+        <div className="md:pt-[2rem] pt-[1rem] grid grid-cols-2 gap-4 md:flex">
           {userData &&
-            userData.slice(0, 3).map((expert, id) => {
+            slicedData.map((expert, id) => {
               return (
-                <Link
-                  onClick={scrollToTop}
-                  to={`/ra-detail/${expert.id}`}
+                <div
                   key={expert.id}
-                  className="md:w-[256px] md:h-[285px] sm:w-[172px] h-[230px] gap-[3px] rounded-[11px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
+                  className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-[11px] p-2"
                 >
-                  <div className="w-[72px] h-[98px] md:w-[256px] md:h-[146px]  relative profile-image_1 mb-4">
-                    <img
-                      src={userBck}
-                      alt="background"
-                      className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
-                    />
-                    <img
-                      src={expert.expertImagePath}
-                      alt="User"
-                      className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
-                    />
-                  </div>
-
-                  <div className="flex md:w-[212px] md:h-[26px] w-full sm:h-[22px] justify-between md:gap-0">
-                    <div className="flex flex-col gap-1">
-                      <span className="text-[12px] leading-[12px] font-[500] text-white">
-                        {expert.channelName}
-                      </span>
-                      <span className="text-[12px] leading-[10px] font-[400] text-dimWhite">
-                        {expert.name} - {getExpertType(expert.expertTypeId)}
-                      </span>
-                    </div>
-                    <div className="w-[32px] h-[15px] flex">
+                  <Link
+                    onClick={scrollToTop}
+                    to={`/ra-detail/${expert.id}`}
+                    key={expert.id}
+                    className="md:w-[256px] md:h-[265px] sm:w-[172px] h-[230px] gap-[3px] relative flex flex-col items-center"
+                  >
+                    <div className="w-[72px] h-[98px] md:w-[256px] md:h-[146px]  relative profile-image_1 mb-4">
                       <img
-                        src={stars}
-                        className="w-[11.5px] h-[11.5px]"
-                        alt="rating"
+                        src={userBck}
+                        alt="background"
+                        className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
                       />
-                      <span className="text-white font-[600] text-[11.5px] leading-[14px]">
-                        {expert.rating}
-                      </span>
+                      <img
+                        src={expert.expertImagePath}
+                        alt="User"
+                        className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
+                      />
                     </div>
-                  </div>
 
-                  <div className="md:w-[171px] md:h-[33px] w-[125px] h-[23px] flex justify-between mr-[1rem] mt-2">
-                    <div className="flex flex-col w-[52px] h-[33px] items-center">
-                      <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">
-                        Experience
-                      </span>
-                      <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
-                        {expert.experience}
-                      </span>
-                    </div>
-                    <div className="md:w-[1.4px] md:h-[25px] w-[1px] h-[22px] bg-lightWhite"></div>
-                    <div className="flex">
-                      <div className="flex flex-col w-[52px] h-[33px] items-center">
-                        <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">
-                          Followers
+                    <div className="flex md:w-[212px] md:h-[26px] w-full sm:h-[22px] justify-between md:gap-0">
+                      <div className="flex flex-col gap-1">
+                        <span className="text-[12px] leading-[12px] font-[500] text-white">
+                          {expert.channelName}
                         </span>
-                        <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
-                          {`${expert.telegramFollower / 1000}k`}
+                        <span className="text-[12px] leading-[10px] font-[400] text-dimWhite">
+                          {expert.name} - {getExpertType(expert.expertTypeId)}
+                        </span>
+                      </div>
+                      <div className="w-[32px] h-[15px] flex">
+                        <img
+                          src={stars}
+                          className="w-[11.5px] h-[11.5px]"
+                          alt="rating"
+                        />
+                        <span className="text-white font-[600] text-[11.5px] leading-[14px]">
+                          {expert.rating}
                         </span>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="md:mb-1 ml-0 mr-auto md:pl-3">
-                    <div className="text-dimWhite md:text-xs text-xs flex md:flex-row flex-col md:pl-0 pl-[2px]">
-                      <span>SEBI:</span>{" "}
-                      <span className="text-white md:ml-2">
-                        {expert.sebiRegNo}
-                      </span>
+                    <div className="md:w-[171px] md:h-[33px] w-[125px] h-[23px] flex justify-between mr-[1rem] mt-2">
+                      <div className="flex flex-col w-[52px] h-[33px] items-center">
+                        <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">
+                          Experience
+                        </span>
+                        <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
+                          {expert.experience}+
+                        </span>
+                      </div>
+                      <div className="md:w-[1.4px] md:h-[25px] w-[1px] h-[22px] bg-lightWhite"></div>
+                      <div className="flex">
+                        <div className="flex flex-col w-[52px] h-[33px] items-center">
+                          <span className="text-dimWhite font-[400] text-[8.6px] leading-[10px]">
+                            Followers
+                          </span>
+                          <span className="text-lightWhite font-[600] text-[10px] leading-[12px]">
+                            {`${expert.telegramFollower / 1000}k`}
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
 
-                  <div
-                    onClick={() => handleTelegram(expert.telegramChannel)}
-                    className="md:w-[211px] bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0"
-                  >
-                    <div className="flex justify-center items-center gap-2">
+                    <div className="md:mb-1 ml-0 mr-auto md:pl-3">
+                      <div className="text-dimWhite md:text-xs text-xs flex md:flex-row flex-col md:pl-0 pl-[2px]">
+                        <span>SEBI:</span>{" "}
+                        <span className="text-white md:ml-2">
+                          {expert.sebiRegNo}
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                  <div className="md:w-[211px] mx-auto bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
+                    <div
+                      onClick={(e) => handleTelegram(e, expert.telegramChannel)}
+                      className="flex justify-center items-center gap-2"
+                    >
                       <img
                         src={telegram}
                         alt="Telegram"
                         className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"
                       />
                       <button className="text-white font-[400] md:text-[15px] text-[12px] leading-[19px]">
-                        {/* {expert.greet} */}
                         Get Free Calls
                       </button>
                       <img
@@ -282,23 +360,30 @@ const Hero = ({ hasVisitedSignUp, token }) => {
                         className="md:w-[16px] md:h-[16px] w-[11px] h-[11px]"
                       />
                     </div>
+                    {showSignUp && (
+                      <SignUp
+                        onComplete={(e) =>
+                          handleSignUpComplete(e, expert.telegramChannel)
+                        }
+                      />
+                    )}
                   </div>
-                </Link>
+                </div>
               );
             })}
 
-          <div className="md:w-[365px] md:h-[226px] w-[171px] h-[256px] md:px-[3rem] flex flex-col md:gap-2">
-            <span className="md:w-[365px] md:h-[36px] w-[171px] h-[36px] font-[600] md:text-[30px] text-[18px] leading-[36px] text-lightWhite">
+          <div className="md:px-[3rem] flex flex-col md:gap-4 gap-3 md:p-4 p-2">
+            <span className="font-[600] md:text-[30px] text-lg leading-5 text-lightWhite">
               Experience Matters
             </span>
 
-            <span className="text-dimWhite md:w-[365px] md:h-[86px] w-[171px] h-[80px] font-[400] md:text-[16px] text-[14px] md:leading-[28px] md:leading-[21px] leading-[18px]">
-              Connect with India’s SEBI registered Research Analysts,
-              guiding you thoroughly to maximising profits in the dynamic world
-              of stock trading.
+            <span className="text-dimWhite font-[400] md:text-[16px] text-[14px] md:leading-[21px] leading-[18px]">
+              Connect with India’s SEBI registered Research Analysts, guiding
+              you thoroughly to maximising profits in the dynamic world of stock
+              trading.
             </span>
             <Link onClick={scrollToTop} to="expertise">
-              <button className="md:w-[147px] md:h-[40px] w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px] md:mt-12 mt-[4rem]">
+              <button className="md:px-6 md:py-3 px-4 py-2 rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px]">
                 Explore More
               </button>
             </Link>

@@ -62,7 +62,7 @@ const ExpertiseCourse = ({ courseData }) => {
 
             <div className="border-white mt-2 pt-1 flex justify-center">
               <div className="border-r border-white px-[60px] text-center">
-                <p className="mb-1 text-lightWhite">{experience}</p>
+                <p className="mb-1 text-lightWhite">{experience}+</p>
                 <p className="text-lightWhite">{totalExp}</p>
               </div>
               <div className="px-[60px] text-center">

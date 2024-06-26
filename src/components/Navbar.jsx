@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { logo, menu, hamburgerBg, LogOut, close, userImg, login } from "../assets";
+import { logo, menu, hamburgerBg, LogOut, close, login } from "../assets";
 import { navLinks } from "../constants";
 import styles from "../style";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import Footer from "./Home/Footer";
 import { useUserSession } from "../constants/userContext";
 
-const Navbar = () => {
+const Navbar = ({token}) => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
-  const token = sessionStorage.getItem("token");
   const navigate = useNavigate();
   const { userData } = useUserSession();
 
@@ -75,8 +74,7 @@ const Navbar = () => {
   };
 
   const handleLogOut = () => {
-    sessionStorage.removeItem("token");
-    sessionStorage.removeItem("userId");
+    localStorage.removeItem("userId");
     window.location.reload();
   };
 

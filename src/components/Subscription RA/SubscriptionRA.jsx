@@ -2,20 +2,23 @@ import React, { useEffect, useState } from "react";
 import styles from "../../style";
 import "./SubscriptionRA.css";
 import { ToastContainer, toast } from "react-toastify";
-import { arrow, bookmark, bookmarkFill, stars } from "../../assets";
+import { arrow, bookmark, bookmarkFill, duration, stars } from "../../assets";
 import SubscriptionPaymentPopup from "./SubscriptionPaymentPopup";
 import FAQs2 from "../About/FAQs2";
 import CoursePaymentPopup from "./CoursePaymentPopup";
 import MobileCourse from "./MobileCourse";
 import { useParams } from "react-router-dom";
 import { useUserSession } from "../../constants/userContext";
+// import KYCPopup from "./KYCPopup";
+// import LinkPopup from "../InviteLink/LinkPopup";
+import SignUp2 from "../Signup2";
+import Stock from "../Stock";
 
-const SubscriptionRA = () => {
+const SubscriptionRA = ({ userId }) => {
   const { id } = useParams();
   const [isCardSaved, setIsCardSaved] = useState(false);
   const [expertData, setExpertData] = useState(null);
   const [activeHoverIndex, setActiveHoverIndex] = useState(0);
-  const [backgroundColor, setBackgroundColor] = useState("#18181B80");
   const [showMonthlyPopup, setShowMonthlyPopup] = useState(false);
   const [selectedMonthlyPlan, setSelectedMonthlyPlan] = useState(null);
   const [planMonthlyPrice, setPlanMonthlyPrice] = useState(0);
@@ -26,30 +29,50 @@ const SubscriptionRA = () => {
   const [showMobilePopup, setShowMobilePopup] = useState(false);
   const [subscriptions, setSubscriptions] = useState([]);
   const [mobileNum, setMobileNum] = useState("");
-  const { userData } = useUserSession();
+  // const [showKYCPopup, setShowKYCPopup] = useState(false);
+  // const [showLinkPopup, setShowLinkPopup] = useState(false);
+  const [chatID, setChatID] = useState("");
+  const { userData, loading } = useUserSession();
+  // const [inviteLink, setInviteLink] = useState("");
+  const [subscriptionId, setSubscriptionId] = useState("");
+  const [isCustom, setIsCustom] = useState("");
+  const [durationMonth, setDurationMonth] = useState("");
 
   useEffect(() => {
-    userData && setMobileNum(userData.mobileNumber);
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const threshold = 50;
-      if (scrollPosition > threshold) {
-        setShowMobilePopup(true);
-      } else {
-        setShowMobilePopup(false);
-      }
-    };
+    if (!loading && userData) {
+      setMobileNum(userData.mobileNumber);
+    }
+    if (expertData) {
+      const handleScroll = () => {
+        const scrollPosition = window.scrollY;
+        const threshold = 50;
+        if (scrollPosition > threshold) {
+          setShowMobilePopup(true);
+        } else {
+          setShowMobilePopup(false);
+        }
+      };
 
-    window.addEventListener("scroll", handleScroll);
+      window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [userData]);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, [expertData, loading, userData]);
 
-  const handleSelectPlan = (plan, price) => {
+  const handleSelectPlan = (
+    subscriptionId,
+    plan,
+    price,
+    isCustom,
+    durationMonth
+  ) => {
     setSelectedPlan(plan);
     setPlanPrice(price);
+    setSubscriptionId(subscriptionId);
+    setIsCustom(isCustom);
+    setDurationMonth(durationMonth);
   };
 
   const getExpertType = (typeId) => {
@@ -59,7 +82,7 @@ const SubscriptionRA = () => {
       case 2:
         return "Equity";
       case 3:
-        return "Options";
+        return "Futures & Options";
       default:
         return "Unknown";
     }
@@ -90,6 +113,7 @@ const SubscriptionRA = () => {
           throw new Error("Error in fetching API");
         }
         const data = await response.json();
+        setChatID(data.data.chatId);
         fetchSubscriptions(data.data.id);
         setExpertData(data.data);
       } catch (error) {
@@ -101,15 +125,17 @@ const SubscriptionRA = () => {
     };
 
     fetchData();
-  }, []);
+  }, [id]);
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
-    document.getElementById(tab).scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(tab).scrollIntoView({ behavior: "smooth" });
   };
 
   const handleClose = () => {
     setShowPopup(false);
+    // setShowKYCPopup(false);
+    // setShowLinkPopup(false);
   };
 
   const handleSaveCard = () => {
@@ -128,18 +154,19 @@ const SubscriptionRA = () => {
     }
   };
 
-  const handleMouseOver = () => {
-    setBackgroundColor("transparent");
-  };
-
-  const handleMouseOut = () => {
-    setBackgroundColor("#18181B80");
-  };
-
-  const handleBuyNowClick = (plan, price) => {
+  const handleBuyNowClick = (
+    subscriptionId,
+    plan,
+    price,
+    isCustom,
+    durationMonth
+  ) => {
     setSelectedMonthlyPlan(plan);
     setPlanMonthlyPrice(price);
     setShowMonthlyPopup(true);
+    setSubscriptionId(subscriptionId);
+    setIsCustom(isCustom);
+    setDurationMonth(durationMonth);
   };
 
   const handleMouseEnter = (index) => {
@@ -157,6 +184,92 @@ const SubscriptionRA = () => {
   const handleTelegram = (link) => {
     window.open(link);
   };
+
+  // useEffect(() => {
+  //   if (!loading && userData) {
+  //     setMobileNum(userData.mobileNumber);
+  //     const paymentSuccess = checkPaymentStatus();
+  //     handlePaymentSuccess(paymentSuccess);
+  //   }
+  // }, [loading, userData?.isKYC, inviteLink]);
+
+  // const handlePaymentSuccess = (paymentSuccess) => {
+  //   if (paymentSuccess) {
+  //     const detailsComplete = checkKYCDetails(userData);
+  //     if (detailsComplete) {
+  //       console.log("KYC complete.");
+  //       if (inviteLink) {
+  //         setShowLinkPopup(true);
+  //         clearURLParams();
+  //       }
+  //     } else {
+  //       console.log("KYC not complete, showing KYC popup.");
+  //       setShowKYCPopup(true);
+  //     }
+  //   }
+  // };
+
+  // const checkKYCDetails = (data) => {
+  //   const isComplete = data?.isKYC;
+  //   console.log("KYC Details Complete:", isComplete);
+  //   return isComplete;
+  // };
+
+  // const checkPaymentStatus = () => {
+  //   const params = new URLSearchParams(window.location.search);
+  //   const status = params.get("status");
+  //   const transactionId = params.get("transactionId");
+  //   const inviteLink = params.get("inviteLink");
+
+  //   setInviteLink(inviteLink);
+
+  //   if (status === "success") {
+  //     toast.success(`Payment Success: ${transactionId}`);
+  //     return true;
+  //   } else if (status === "failure") {
+  //     toast.error(`Payment Failed: ${transactionId}`);
+  //     return false;
+  //   }
+
+  //   return null;
+  // };
+
+  // const clearURLParams = () => {
+  //   window.history.replaceState({}, document.title, window.location.pathname);
+  // };
+
+  const calculateRemainingTime = (discountValidTo) => {
+    const now = new Date();
+    const validTo = new Date(discountValidTo);
+
+    const timeDifference = validTo - now;
+
+    if (timeDifference <= 0) {
+      return "Expired";
+    }
+
+    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor(
+      (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+    );
+
+    if (days > 0) {
+      return `${days} days ${hours} hours`;
+    } else if (hours > 0) {
+      return `${hours} hours ${minutes} minutes`;
+    } else if (minutes > 0) {
+      return `${minutes} minutes`;
+    } else {
+      return "Less than a minute";
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   if (!expertData) {
     return <div className="text-white">Loading...</div>;
@@ -184,22 +297,19 @@ const SubscriptionRA = () => {
               <span className="font-normal md:text-[22px] text-[12px]">
                 {expertData.name} - {getExpertType(expertData.expertTypeId)}
               </span>
-              {/* <span className="font-normal md:leading-[28px] md:text-[22px] text-[12px]">
-                {getExpertType(expertData.expertTypeId)}
-              </span> */}
             </div>
             <div className="flex justify-between md:w-[350px] w-[176px] md:h-16 h-10 md:mb-6 mb-3">
               <div className="flex flex-col items-center justify-around">
                 <div className="text-[15px] text-[#C6CDD5]">Experience</div>
                 <div className="md:text-xl text-xs font-semibold">
-                  {expertData.experience}
+                  {expertData.experience}+
                 </div>
               </div>
               <div className="w-[1px] md:h-16 h-10 bg-white"></div>
               <div className="flex flex-col items-center justify-around">
                 <div className="text-[15px] text-[#C6CDD5]">Followers</div>
                 <div className="md:text-xl text-xs font-semibold">
-                  {expertData.telegramFollower}
+                  {`${expertData.telegramFollower / 1000}k`}
                 </div>
               </div>
             </div>
@@ -212,11 +322,6 @@ const SubscriptionRA = () => {
               className="bg-[#0081F1] md:block hidden md:rounded-3xl rounded-2xl md:w-44 w-32 md:mb-6"
             >
               <button className="flex mx-auto md:py-2 py-1 items-center">
-                {/* <img
-                  className="md:w-6 w-4 me-3"
-                  src={expertData.telegram}
-                  alt="telegram icon"
-                /> */}
                 <span className="md:text-base text-xs">Get Free Calls</span>
                 <img className="w-4 ms-3" src={arrow} alt="arrow icon" />
               </button>
@@ -224,7 +329,7 @@ const SubscriptionRA = () => {
           </div>
           <div className="flex mx-auto">
             <img
-              className="subscription-RA-img md:w-[400px] w-[470px] my-auto"
+              className="subscription-RA-img md:w-[400px] md:h-[350px] h-[132] w-[470px] my-auto"
               src={expertData.expertImagePath}
               style={{
                 maskImage: "linear-gradient(rgba(0, 0, 0, 1) 70%, transparent)",
@@ -240,7 +345,7 @@ const SubscriptionRA = () => {
             />
             <span className="md:text-3xl text-sm">{expertData.rating}</span>
           </div>
-          <div
+          {/* <div
             onClick={handleSaveCard}
             className={`absolute md:bottom-6 bottom-12 md:right-8 right-3 rounded-full cursor-pointer transition duration-300 hover:scale-110 hover:bg-[#ffffff5e] hover:rounded-full p-2`}
           >
@@ -253,17 +358,12 @@ const SubscriptionRA = () => {
                 className="w-6 h-6"
               />
             )}
-          </div>
+          </div> */}
           <div
             onClick={() => handleTelegram(expertData.telegramChannel)}
             className="bg-[#0081F1] md:hidden w-[90%] block absolute bottom-3 border-opacity-30 md:rounded-3xl rounded-2xl md:w-44 md:mb-6"
           >
             <button className="flex mx-auto text-white md:py-2 py-2 items-center">
-              {/* <img
-                className="md:w-6 w-4 me-3"
-                src={telegram}
-                alt="telegram icon"
-              /> */}
               <span className="md:text-base text-xs">Get Free Calls</span>
               <img className="w-4 ms-3" src={arrow} alt="arrow icon" />
             </button>
@@ -299,7 +399,10 @@ const SubscriptionRA = () => {
             </div>
           </div>
         </section>
-        <section id="subscriptions" className="w-full flex flex-col md:my-14 my-10">
+        <section
+          id="subscriptions"
+          className="w-full flex flex-col md:my-14 my-10"
+        >
           <div className="text-white md:text-left text-center md:flex md:justify-between w-full md:mb-8">
             <div className="text-white md:text-5xl text-3xl font-bold pb-4 md:w-1/2">
               Subscriptions Plans
@@ -312,44 +415,91 @@ const SubscriptionRA = () => {
             </div>
           </div>
           <div className="text-white flex flex-wrap justify-center md:gap-8 gap-2 w-full subscription-cards">
-            {subscriptions.map((subscription, index) => (
-              <div
-                key={subscription.id}
-                onClick={() =>
-                  handleBuyNowClick(subscription.planType, subscription.amount)
-                }
-                className={`flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
-                  activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
-                }`}
-                onMouseOver={handleMouseOver}
-                onMouseOut={handleMouseOut}
-              >
-                <div className="text-center opacity-60 hidden">
-                  21 Days Left
-                </div>
-                <div className="text-center md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
-                  {subscription.planType}
-                </div>
-                <div className="text-center md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-center">
-                  ₹{subscription.amount}/
-                  <span className="md:flex hidden">-</span>
-                  <span className="md:hidden flex font-normal">mo</span>
-                </div>
-                <div className="text-center md:text-lg text-xs mt-auto opacity-60 mb-6">
-                  {subscription.durationMonth} Month Access
-                </div>
-                <div className="text-center">
-                  <button className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2">
-                    Buy Now
-                  </button>
-                </div>
-                {index === 1 && (
-                  <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
-                    Recommended
+            {subscriptions
+              .slice()
+              .sort((a, b) => a.amount - b.amount)
+              .map((subscription, index) => {
+                const isDiscounted =
+                  subscription.discountedAmount < subscription.amount;
+                const isRecommended =
+                  subscriptions.every(
+                    (sub) => sub.discountedAmount >= sub.amount
+                  ) && index === 1;
+                const showBorder = isDiscounted || isRecommended;
+
+                const remainingTime = subscription.discountValidTo
+                  ? calculateRemainingTime(subscription.discountValidTo)
+                  : null;
+
+                return (
+                  <div
+                    key={subscription.id}
+                    onClick={() =>
+                      handleBuyNowClick(
+                        subscription.id,
+                        subscription.planType,
+                        isDiscounted
+                          ? subscription.discountedAmount
+                          : subscription.amount,
+                        subscription.isCustom,
+                        subscription.durationMonth
+                      )
+                    }
+                    className={`my-auto flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
+                      activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
+                    } relative ${showBorder ? "border-2" : ""}`}
+                  >
+                    <div className="text-center md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
+                      {subscription.planType}
+                      {isDiscounted && (
+                        <span className="bg-gradient-to-r from-[#00c394] to-[#00a143] inline-block text-transparent bg-clip-text text-xs md:text-lg ml-2">
+                          ({subscription.discountPercentage}% OFF)
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-center md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-center">
+                      {isDiscounted ? (
+                        <div className="flex flex-col text-center">
+                          <span className="line-through text-gray-500 md:text-xl text-sm">
+                            ₹{subscription.amount}
+                          </span>
+                          <span>₹{subscription.discountedAmount}</span>
+                        </div>
+                      ) : (
+                        <span>₹{subscription.amount}</span>
+                      )}
+                    </div>
+                    <div className="text-center md:text-lg text-xs mt-auto opacity-60 mb-6">
+                      {subscription.durationMonth}{" "}
+                      {subscription.isCustom ? "Days" : "Month"} Access
+                    </div>
+                    <div className="text-center">
+                      <button className="md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2">
+                        Buy Now
+                      </button>
+                    </div>
+                    <div className="text-center mt-4">
+                      {remainingTime && isDiscounted ? (
+                        <div className="inline-block bg-gradient-to-r from-[#00c394] to-[#00a143] text-white py-1 px-3 rounded-lg font-bold text-sm animate-pulse">
+                          <i className="fas fa-clock"></i>
+                          Limited Time Offer
+                        </div>
+                      ) : null}
+                    </div>
+                    {isDiscounted ? (
+                      <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
+                        Discounted
+                      </div>
+                    ) : (
+                      isRecommended && (
+                        <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
+                          Recommended
+                        </div>
+                      )
+                    )}
                   </div>
-                )}
-              </div>
-            ))}
+                );
+              })}
             {showMonthlyPopup && (
               <SubscriptionPaymentPopup
                 onClose={handleClosePopup}
@@ -357,6 +507,11 @@ const SubscriptionRA = () => {
                 planMonthlyPrice={planMonthlyPrice}
                 expertName={expertData.channelName}
                 mobileNumber={mobileNum}
+                chatId={chatID}
+                subscriptionId={subscriptionId}
+                userId={userData.id}
+                isCustom={isCustom}
+                durationMonth={durationMonth}
               />
             )}
           </div>
@@ -365,7 +520,10 @@ const SubscriptionRA = () => {
           <FAQs2 />
         </section>
 
-        <section id="highlights" className="w-full md:my-8 my-2 flex gap-20 md:mb-24 mb-16">
+        <section
+          id="highlights"
+          className="w-full md:my-8 my-2 flex gap-20 md:mb-24 mb-16"
+        >
           <div className="flex flex-col md:w-2/3 w-full text-white">
             <div className="text-white md:text-5xl text-3xl font-bold pb-4 md:text-left text-center">
               Key highlights to join this subscription
@@ -443,33 +601,43 @@ const SubscriptionRA = () => {
               <div className="text-3xl font-bold subheading-gradient mb-4">
                 Subscription Plan
               </div>
-              {subscriptions.map((subscription, index) => (
-                <div
-                  key={subscription.id}
-                  onClick={() =>
-                    handleSelectPlan(subscription.planType, subscription.amount)
-                  }
-                  className={`flex rounded-2xl p-4 ${
-                    selectedPlan === subscription.planType
-                      ? "bg-[#18181B80] border-2 border-[#F4F4F51A]"
-                      : "hover:bg-[#18181B80]"
-                  }`}
-                  onMouseEnter={() => handleMouseEnter(1)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <div className="flex-1 text-left">
-                    <p className="text-lg subheading-gradient">
-                      {subscription.planType}
-                    </p>
-                    <p className="text-[#C6CDD5] text-sm">
-                      {subscription.durationMonth} Month Access
+              {subscriptions
+                .slice()
+                .sort((a, b) => a.amount - b.amount)
+                .map((subscription, index) => (
+                  <div
+                    key={subscription.id}
+                    onClick={() =>
+                      handleSelectPlan(
+                        subscription.id,
+                        subscription.planType,
+                        subscription.discountedAmount,
+                        subscription.isCustom,
+                        subscription.durationMonth
+                      )
+                    }
+                    className={`flex rounded-2xl p-4 ${
+                      selectedPlan === subscription.planType
+                        ? "bg-[#18181B80] border-2 border-[#F4F4F51A]"
+                        : "hover:bg-[#18181B80]"
+                    }`}
+                    onMouseEnter={() => handleMouseEnter(1)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <div className="flex-1 text-left">
+                      <p className="text-lg subheading-gradient">
+                        {subscription.planType}
+                      </p>
+                      <p className="text-[#C6CDD5] text-sm">
+                        {subscription.durationMonth}{" "}
+                        {subscription.isCustom ? "Days" : "Month"} Access
+                      </p>
+                    </div>
+                    <p className="flex-1 text-3xl font-bold">
+                      ₹{subscription.amount}
                     </p>
                   </div>
-                  <p className="flex-1 text-3xl font-bold">
-                    ₹{subscription.amount}
-                  </p>
-                </div>
-              ))}
+                ))}
               <div className="text-center">
                 <button
                   className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2"
@@ -483,13 +651,22 @@ const SubscriptionRA = () => {
                     selectedPlan={selectedPlan}
                     planPrice={planPrice}
                     expertName={expertData.channelName}
+                    mobileNumber={mobileNum}
+                    chatId={chatID}
+                    subscriptionId={subscriptionId}
+                    userId={userData.id}
+                    isCustom={isCustom}
+                    durationMonth={durationMonth}
                   />
                 )}
               </div>
             </div>
           </div>
         </section>
-        <section id="about" className="border-2 rounded-2xl border-[#f4f4f50e] md:p-8 px-4 py-6 md:mb-24 mb-12">
+        <section
+          id="about"
+          className="border-2 rounded-2xl border-[#f4f4f50e] md:p-8 px-4 py-6 md:mb-24 mb-12"
+        >
           <p className="text-white md:text-5xl text-3xl font-bold pb-8">
             Subscriptions Details
           </p>
@@ -514,15 +691,31 @@ const SubscriptionRA = () => {
             </p>
           </div>
         </section>
+        <div className={`md:mt-[5rem] mt-[1.9rem] ${styles.boxWidth}`}>
+          <Stock />
+        </div>
         <ToastContainer />
         <div className="md:hidden block">
-          <MobileCourse
-            handleBuyNowClick={handleBuyNowClick}
-            showMobilePopup={showMobilePopup}
-            subscriptions={subscriptions}
-          />
+          {subscriptions.length !== 0 && (
+            <MobileCourse
+              handleBuyNowClick={handleBuyNowClick}
+              showMobilePopup={showMobilePopup}
+              subscriptions={subscriptions}
+            />
+          )}
         </div>
+        {/* {showKYCPopup && (
+          <KYCPopup inviteLink={inviteLink} onClose={handleClose} />
+        )}
+        {showLinkPopup && (
+          <LinkPopup
+            chatID={chatID}
+            onClose={handleClose}
+            inviteLink={inviteLink}
+          />
+        )} */}
       </div>
+      {!userId && <SignUp2 />}
     </section>
   );
 };
