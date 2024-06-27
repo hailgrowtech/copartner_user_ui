@@ -259,12 +259,6 @@ const Expertise = ({ token }) => {
             </div>
           </div>
 
-<<<<<<< HEAD
-          <div className="flex p-[1rem] gap-[1rem] sm:p-[4rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px] md:mt-[-2rem]">
-            {filteredData?.map((expert, id) => {
-              return (
-                
-=======
           <AnimatePresence mode="wait">
             <motion.div
               className="flex p-[1rem] gap-[1rem] sm:p-[4rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px] md:mt-[-2rem]"
@@ -276,7 +270,6 @@ const Expertise = ({ token }) => {
               transition={{ duration: 0.5 }}
             >
               {filteredData?.map((expert, id) => (
->>>>>>> bfc4a98ba0d7b991fd4195daab50e39f58285a54
                 <Link
                   onClick={scrollToTop}
                   to={`/ra-detail/${expert.id}`}

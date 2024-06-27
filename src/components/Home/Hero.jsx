@@ -298,14 +298,10 @@ const Hero = ({ hasVisitedSignUp, token }) => {
               return (
                 <motion.div
                   key={expert.id}
-<<<<<<< HEAD
-                  className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-xl p-2 border-[#ffffff23] border-[1px] "
-=======
+                  className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-[11px] p-2"
                   initial="hidden"
                   animate="visible"
                   variants={heroVariants}
-                  className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-[11px] p-2"
->>>>>>> bfc4a98ba0d7b991fd4195daab50e39f58285a54
                 >
                   <Link
                     onClick={scrollToTop}
