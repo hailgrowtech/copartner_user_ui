@@ -5,8 +5,9 @@ import styles from "../style";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import Footer from "./Home/Footer";
 import { useUserSession } from "../constants/userContext";
+import { motion } from "framer-motion";
 
-const Navbar = ({token}) => {
+const Navbar = ({ token }) => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -78,9 +79,23 @@ const Navbar = ({token}) => {
     window.location.reload();
   };
 
+  const navbarVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  const menuVariants = {
+    open: { opacity: 1, x: 0 },
+    closed: { opacity: 0, x: "-100%" },
+  };
+
   return (
     <>
-      <div
+      <motion.div
+        key={location.pathname}
+        variants={navbarVariants}
+        initial="hidden"
+        animate="visible"
         className={`${styles.paddingX} ${
           styles.flexCenter
         } fixed top-0 z-50 w-full ${
@@ -112,15 +127,6 @@ const Navbar = ({token}) => {
               ))}
             </ul>
 
-            {/* <Link onClick={scrollToTop} to="/refer&earn">
-              <div style={{ marginLeft: "1rem" }}>
-                <button className="text-dimWhite text-[11px] py-1 px-4 ms-8 rounded-[36px] border border-solid border-white border-opacity-60 flex  items-center">
-                  Refer & Earn
-                </button>
-              </div>
-            </Link> */}
-
-            {/* Profile icon for desktop */}
             {token ? (
               <div className="hidden sm:flex items-center">
                 <Link onClick={scrollToTop} to="/profile">
@@ -150,8 +156,10 @@ const Navbar = ({token}) => {
                 onClick={() => setToggle(!toggle)}
               />
 
-              {/* Mobile menu */}
-              <div
+              <motion.div
+                initial={false}
+                animate={toggle ? "open" : "closed"}
+                variants={menuVariants}
                 className={`${
                   toggle ? "flex" : "hidden"
                 } justify-center items-center fixed top-0 left-0 z-50 w-full bg-[#06030E] h-screen p-3 bg-gradient-to-tr`}
@@ -169,13 +177,11 @@ const Navbar = ({token}) => {
                   <img src={close} alt="Close" />
                 </button>
 
-                {/* Logo in mobile menu */}
                 <ul className="list-none flex flex-col justify-end items-center gap-4">
                   <li className="font-poppins font-normal cursor-pointer text-[16px] text-white mb-6">
                     <img width={"200rem"} src={logo} alt="" />
                   </li>
 
-                  {/* Navigation links in mobile menu */}
                   {navLinks.map((nav, index) => (
                     <li
                       key={nav.id}
@@ -200,18 +206,6 @@ const Navbar = ({token}) => {
                     </li>
                   ))}
 
-                  {/* <Link onClick={scrollToTop} to="/refer&earn">
-                    <li className="mt-4">
-                      <button
-                        onClick={() => setToggle(false)}
-                        className="text-dimWhite text-[11px] py-1 px-4 rounded-[36px] border border-solid border-white border-opacity-60 flex  items-center"
-                      >
-                        Refer & Earn
-                      </button>
-                    </li>
-                  </Link> */}
-
-                  {/* Logout button in mobile menu */}
                   <li className="mt-4">
                     {token ? (
                       <button
@@ -242,11 +236,11 @@ const Navbar = ({token}) => {
                     )}
                   </li>
                 </ul>
-              </div>
+              </motion.div>
             </div>
           </nav>
         </div>
-      </div>
+      </motion.div>
       <Outlet />
       <div>
         <Footer />

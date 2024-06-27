@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { expertise_data } from "../../constants";
 import {
   Ads,
@@ -13,6 +13,7 @@ import CommodityExpertise from "./CommodityExpertise";
 import { Link } from "react-router-dom";
 import { useUserData } from "../../constants/context";
 import SignUp from "../SignUp";
+import { motion, useInView } from "framer-motion";
 
 const OptionExpertise = () => {
   const scrollToTop = () => {
@@ -26,6 +27,9 @@ const OptionExpertise = () => {
   const userData = useUserData();
   const [showSignUp, setShowSignUp] = useState(false);
   const token = localStorage.getItem("userId");
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   const getExpertType = (typeId) => {
     switch (typeId) {
@@ -76,9 +80,24 @@ const OptionExpertise = () => {
     window.open(link);
   };
 
+  const expertiseVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.5, staggerChildren: 0.3 },
+    },
+  };
+
   return (
     <>
-      <div className={`flex ${filteredData.length === 0 ? "hidden" : ""} flex-col sm:mt-[6rem] mt-[30px]`}>
+      <motion.div
+        ref={ref}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={expertiseVariants}
+        className={`flex ${filteredData.length === 0 ? "hidden" : ""} flex-col sm:mt-[6rem] mt-[30px]`}
+      >
         <div className="flex flex-row justify-between xl:px-0">
           <div className="flex flex-col md:h-[52px] h-[34px] justify-center md:justify-between md:items-start">
             <div className="flex flex-row md:h-[52px] h-[34px] justify-center md:justify-between items-center">
@@ -243,7 +262,7 @@ const OptionExpertise = () => {
             />
           </div>
         )}
-      </div>
+      </motion.div>
       <CommodityExpertise token={token} />
     </>
   );

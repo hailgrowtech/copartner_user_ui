@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { motion } from "framer-motion";
 import styles from "../../style";
 import Interest from "./Interest";
 import { addDays, format } from "date-fns";
@@ -113,7 +114,10 @@ const Wallet = ({ userId }) => {
 
   return (
     <>
-      <div
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
         className={`flex md:flex-col flex-col ${styles.paddingY} expertise-Bg`}
       >
         <div className="flex flex-col md:gap-[2rem] gap-[1rem]">
@@ -135,38 +139,8 @@ const Wallet = ({ userId }) => {
                 </p>
               </div>
             </div>
-
-            {/* <div className="md:flex w-[325px] md:h-[301px] h-[279px] bg-[#18181B] bg-opacity-[50%] p-2">
-              <div className="flex flex-col justify-center items-center gap-[1rem]">
-                <span className="text-center text-gradient-2 w-[245px] h-[52px] font-[700] text-[30px leading-[51px] font-inter">
-                  Available Balance
-                </span>
-                <span className="w-[177px] h-[84px] font-[700] text-[72px] leading-[84px] text-lightWhite">
-                  ₹100
-                </span>
-                <span className="w-[288px] h-[40px] font-inter font-[400] text-[14px leading-[20px] text-dimWhite text-center">
-                  With Cobalt, managing your business.{" "}
-                  <span className="text-lightWhite">
-                    Say no to spreadsheets.
-                  </span>
-                </span>
-                <Link to="/refer&earn">
-                  <button className="w-[87px] h-[24px] rounded-[4px] bg-white font-[500] text-[8px] leading-[9px] text-center">
-                    Refer & Earn
-                  </button>
-                </Link>
-              </div>
-            </div> */}
           </div>
 
-          {/* <div className="md:w-1/5 flex mr-4 ml-auto text-white">
-            <button
-              onClick={() => setShowDatePicker(true)}
-              className="border-2 text-base border-white rounded-lg px-4 py-1"
-            >
-              Select Date Range
-            </button>
-          </div> */}
           {showDatePicker && (
             <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
               <div className="bg-white rounded-lg p-4 w-11/12 md:w-1/2 lg:w-1/3">
@@ -339,7 +313,9 @@ const Wallet = ({ userId }) => {
               <Link to={"/signup"}>Login to see your transactions!</Link>
             </div>
           )}
-          {/* <div id="refer" className="mb-[8rem]">
+          <Interest userData={userData} />
+        </div>
+        {/* <div id="refer" className="mb-[8rem]">
             <ReferEarn />
           </div> */}
 
@@ -417,10 +393,8 @@ const Wallet = ({ userId }) => {
             )}
           </div> */}
 
-          <Interest userData={userData} />
-        </div>
         {isKYCDone && <KYCPopup />}
-      </div>
+      </motion.div>
     </>
   );
 };

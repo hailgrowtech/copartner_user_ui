@@ -608,40 +608,59 @@ const SubscriptionRA = ({ userId }) => {
               {subscriptions
                 .slice()
                 .sort((a, b) => a.amount - b.amount)
-                .map((subscription, index) => (
-                  <div
-                    key={subscription.id}
-                    onClick={() =>
-                      handleSelectPlan(
-                        subscription.id,
-                        subscription.planType,
-                        subscription.discountedAmount,
-                        subscription.isCustom,
-                        subscription.durationMonth
-                      )
-                    }
-                    className={`flex rounded-2xl p-4 ${
-                      selectedPlan === subscription.planType
-                        ? "bg-[#18181B80] border-2 border-[#F4F4F51A]"
-                        : "hover:bg-[#18181B80]"
-                    }`}
-                    onMouseEnter={() => handleMouseEnter(1)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    <div className="flex-1 text-left">
-                      <p className="text-lg subheading-gradient">
-                        {subscription.planType}
-                      </p>
-                      <p className="text-[#C6CDD5] text-sm">
-                        {subscription.durationMonth}{" "}
-                        {subscription.isCustom ? "Days" : "Month"} Access
-                      </p>
+                .map((subscription, index) => {
+                  const isDiscounted =
+                    subscription.discountedAmount < subscription.amount;
+                  const remainingTime = subscription.discountValidTo
+                    ? calculateRemainingTime(subscription.discountValidTo)
+                    : null;
+
+                  return (
+                    <div
+                      key={subscription.id}
+                      onClick={() =>
+                        handleSelectPlan(
+                          subscription.id,
+                          subscription.planType,
+                          isDiscounted
+                            ? subscription.discountedAmount
+                            : subscription.amount,
+                          subscription.isCustom,
+                          subscription.durationMonth
+                        )
+                      }
+                      className={`flex rounded-2xl p-4 ${
+                        selectedPlan === subscription.planType
+                          ? "bg-[#18181B80] border-2 border-[#F4F4F51A]"
+                          : "hover:bg-[#18181B80]"
+                      }`}
+                      onMouseEnter={() => handleMouseEnter(1)}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <div className="flex-1 text-left my-auto">
+                        <p className="text-lg subheading-gradient">
+                          {subscription.planType}
+                        </p>
+                        <p className="text-[#C6CDD5] text-sm">
+                          {subscription.durationMonth}{" "}
+                          {subscription.isCustom ? "Days" : "Month"} Access
+                        </p>
+                      </div>
+                      <div className="flex-1 text-3xl font-bold">
+                        {isDiscounted ? (
+                          <div className="flex flex-col">
+                            <span className="line-through text-gray-500 text-xl">
+                              ₹{subscription.amount}
+                            </span>
+                            <span>₹{subscription.discountedAmount}</span>
+                          </div>
+                        ) : (
+                          <span>₹{subscription.amount}</span>
+                        )}
+                      </div>
                     </div>
-                    <p className="flex-1 text-3xl font-bold">
-                      ₹{subscription.amount}
-                    </p>
-                  </div>
-                ))}
+                  );
+                })}
               <div className="text-center">
                 <button
                   className="bg-white text-black md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2"

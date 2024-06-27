@@ -15,6 +15,7 @@ import { useUserSession } from "../../constants/userContext";
 import KYCPopup from "../Subscription RA/KYCPopup";
 import { SubscriptionContext } from "../../constants/subscriptionContext";
 import SignUp from "../SignUp";
+import { motion } from "framer-motion";
 
 const Hero = ({ hasVisitedSignUp, token }) => {
   const [showDialog, setShowDialog] = useState(false);
@@ -25,6 +26,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
   const [showKYCDialog, setShowKYCDialog] = useState(false);
   const { transactionTable } = useContext(SubscriptionContext);
   const [showSignUp, setShowSignUp] = useState(false);
+  // const [loading, setLoading] = useState(true);
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
@@ -149,6 +151,12 @@ const Hero = ({ hasVisitedSignUp, token }) => {
     }
   }, [dataUser, hasVisitedSignUp, transactionTable]);
 
+  useEffect(() => {
+    if (userData.length > 0) {
+      // setLoading(false);
+    }
+  }, [userData]);
+
   const handleClosed = (e) => {
     e.stopPropagation();
     sessionStorage.setItem("isDialogClosed", "true");
@@ -184,8 +192,24 @@ const Hero = ({ hasVisitedSignUp, token }) => {
 
   const slicedData = isMobile ? userData.slice(0, 5) : userData.slice(0, 3);
 
+  const heroVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  const loadingVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: [0, 1, 0],
+      transition: { duration: 1, repeat: Infinity },
+    },
+  };
+
   return (
-    <div
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={heroVariants}
       className={`flex md:flex-col ${styles.paddingX} flex-col ${styles.paddingY} background-img-div`}
     >
       {showDialog && (
@@ -239,7 +263,12 @@ const Hero = ({ hasVisitedSignUp, token }) => {
       )}
       {showKYCDialog && <KYCPopup />}
 
-      <div className={`${styles.flexStart} flex-col relative`}>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={heroVariants}
+        className={`${styles.flexStart} flex-col relative`}
+      >
         <div className="flex flex-col justify-between md:w-[603px]">
           <span
             className="font-inter md:text-[72px] text-[36px] md:w-full md:h-full w-[340px] h-[95px]
@@ -263,12 +292,20 @@ const Hero = ({ hasVisitedSignUp, token }) => {
         </div>
 
         <div className="md:pt-[2rem] pt-[1rem] grid grid-cols-2 gap-4 md:flex">
-          {userData &&
+          {(
+            userData &&
             slicedData.map((expert, id) => {
               return (
-                <div
+                <motion.div
                   key={expert.id}
+<<<<<<< HEAD
                   className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-xl p-2 border-[#ffffff23] border-[1px] "
+=======
+                  initial="hidden"
+                  animate="visible"
+                  variants={heroVariants}
+                  className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-[11px] p-2"
+>>>>>>> bfc4a98ba0d7b991fd4195daab50e39f58285a54
                 >
                   <Link
                     onClick={scrollToTop}
@@ -368,11 +405,17 @@ const Hero = ({ hasVisitedSignUp, token }) => {
                       />
                     )}
                   </div>
-                </div>
+                </motion.div>
               );
-            })}
+            })
+          )}
 
-          <div className="md:px-[3rem] flex flex-col md:gap-4 gap-3 md:p-4 p-2">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={heroVariants}
+            className="md:px-[3rem] flex flex-col md:gap-4 gap-3 md:p-4 p-2"
+          >
             <span className="font-[600] md:text-[30px] text-lg leading-5 text-lightWhite">
               Experience Matters
             </span>
@@ -387,11 +430,11 @@ const Hero = ({ hasVisitedSignUp, token }) => {
                 Explore More
               </button>
             </Link>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
       <Expertise token={token} />
-    </div>
+    </motion.div>
   );
 };
 

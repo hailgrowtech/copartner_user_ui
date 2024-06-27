@@ -1,7 +1,8 @@
 import React, { useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import styles from "../../style";
 import Stock from '../Stock';
-import { Link } from "react-router-dom";
 import { arrow, closeImg, telegram, userBck, stars } from "../../assets";
 import { useUserData } from "../../constants/context";
 
@@ -57,9 +58,25 @@ const Expertise = ({ token }) => {
     [userData, filter]
   );
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const tabChange = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: 20 },
+  };
+
   return (
-    <section
+    <motion.section
       className={`flex md:flex-row flex-col md:px-0 px-3 ${styles.paddingY} expertise-Bg`}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      variants={fadeInUp}
     >
       <div
         className={`flex-1 ${styles.flexStart} flex-col xl:px-0 md:px-28 z-10 md:bottom-[10rem]`}
@@ -162,7 +179,6 @@ const Expertise = ({ token }) => {
                           className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"
                         />
                         <button className="text-white font-[400] md:text-[15px] text-[12px] leading-[19px]">
-                          {/* Get Free Calls */}
                           Get Free Calls
                         </button>
                         <img
@@ -241,23 +257,26 @@ const Expertise = ({ token }) => {
                 Equity
               </button>
             </div>
-            {/* <div className="md:flex-col-6 ms-auto flex flex-row">
-              <select
-                name="cars"
-                id="cars"
-                className="text-white bg-gray-800 bg-opacity-50 rounded-lg md:text-[16px] text-[10px] md:ps-1 ps-2 md:pe-20 md:py-2 py-1 border-2 border-[#4e4e4ecc]"
-              >
-                <option disabled>Filter</option>
-                <option value="volvo">High-to-Low</option>
-                <option value="saab">Low-to-High</option>
-              </select>
-            </div> */}
           </div>
 
+<<<<<<< HEAD
           <div className="flex p-[1rem] gap-[1rem] sm:p-[4rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px] md:mt-[-2rem]">
             {filteredData?.map((expert, id) => {
               return (
                 
+=======
+          <AnimatePresence mode="wait">
+            <motion.div
+              className="flex p-[1rem] gap-[1rem] sm:p-[4rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px] md:mt-[-2rem]"
+              key={filter}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={tabChange}
+              transition={{ duration: 0.5 }}
+            >
+              {filteredData?.map((expert, id) => (
+>>>>>>> bfc4a98ba0d7b991fd4195daab50e39f58285a54
                 <Link
                   onClick={scrollToTop}
                   to={`/ra-detail/${expert.id}`}
@@ -339,7 +358,7 @@ const Expertise = ({ token }) => {
                         alt="Telegram"
                         className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"
                       />
-                      <button className="text-white font-[400] mdf:text-[15px] text-[12px] leading-[19px]">
+                      <button className="text-white font-[400] md:text-[15px] text-[12px] leading-[19px]">
                         Get Free Calls
                       </button>
                       <img
@@ -350,12 +369,14 @@ const Expertise = ({ token }) => {
                     </div>
                   </div>
                 </Link>
-              );
-            })}
-          </div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </section>
 
-        {/* <section className="md:mt-[-3rem]">
+        {/* Commented out section */}
+        {/* 
+        <section className="md:mt-[-3rem]">
           <div className={`{styles.flexStart} flex-col gap-2 xl:px-0`}>
             <div className="flex flex-row md:h-[52px] h-[34px] justify-center md:justify-between items-center">
               <span
@@ -472,8 +493,10 @@ const Expertise = ({ token }) => {
               );
             })}
           </div>
-        </section> */}
-        {/* <section>
+        </section> 
+        */}
+        {/* 
+        <section>
           <div className="mt-6 md:text-left text-center">
             <div className="font-inter font-bold md:text-[50px] text-[30px] subheading-gradient md:leading-[50px] leading-[51px] text-white md:mb-2">
               Similar To Your Interest
@@ -581,12 +604,13 @@ const Expertise = ({ token }) => {
               );
             })}
           </div>
-        </section> */}
+        </section> 
+        */}
         <div className={`md:mt-[5rem] mt-[1.9rem] ${styles.boxWidth}`}>
           <Stock />
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

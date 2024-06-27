@@ -72,6 +72,7 @@ const KYCPage = () => {
     const status = params.get("status");
     const transactionId = params.get("transactionId");
     const inviteLink = params.get("inviteLink");
+    const userId = localStorage.getItem("userId");
 
     if (inviteLink) {
       const decodeLink = decodeURIComponent(inviteLink);
@@ -80,6 +81,32 @@ const KYCPage = () => {
 
     if (status === "success") {
       toast.success(`Payment Success: ${transactionId}`);
+      const trackierScript = document.createElement("script");
+    trackierScript.src = "https://static-cdn.trackier.com/js/trackier-web-sdk.js";
+    trackierScript.onload = () => {
+      console.log("Trackier script loaded successfully.");
+      if (window.TrackierWebSDK && typeof window.TrackierWebSDK.trackConv === 'function') {
+        console.log("TrackierWebSDK is defined.");
+        window.TrackierWebSDK.trackConv(
+          "copartner.gotrackier.com",
+          "662b93eae1a03b602b9163",
+          {
+            goal_value: "ftdpayment",
+            txn_id: userId,
+            is_iframe: true,
+          }
+        );
+        console.log("TrackConv function called with txn_id:", userId);
+      } else {
+        console.error("TrackierWebSDK is not defined or trackConv function is missing.");
+      }
+    };
+
+    trackierScript.onerror = () => {
+      console.error("Failed to load Trackier script.");
+    };
+
+    document.body.appendChild(trackierScript);
       return true;
     } else if (status === "failure") {
       toast.error(`Payment Failed: ${transactionId}`);
