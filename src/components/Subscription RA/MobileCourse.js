@@ -69,7 +69,7 @@ function MobileCourse({ showMobilePopup, handleBuyNowClick, subscriptions }) {
                   )}
                 </div>
                 {remainingTime && isDiscounted && (
-                  <div className="inline-block bg-gradient-to-r w-[70%] from-[#00c394] to-[#00a143] text-white py-1 px-3 rounded-lg font-bold text-sm animate-pulse">
+                  <div className="inline-block bg-gradient-to-r w-[70%] from-[#00c394] to-[#00a143] text-white py-1 px-3 rounded-lg font-bold text-sm ">
                     <i className="fas fa-clock"></i>
                     Limited Time Offer
                   </div>
@@ -87,7 +87,7 @@ function MobileCourse({ showMobilePopup, handleBuyNowClick, subscriptions }) {
                   subscription.discountedAmount
                 )
               }
-              className="text-lg px-5 rounded-lg font-semibold flex items-center py-3 bg-[#0081F1] text-white hover:bg-white hover:text-black"
+              className="text-lg px-5 rounded-lg font-semibold flex items-center py-3 bg-gradient-to-r from-[#6368FA] to-[#0081F1] text-white hover:bg-white hover:text-black animate-pulse"
             >
               Buy Now
             </button>

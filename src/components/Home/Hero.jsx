@@ -268,15 +268,15 @@ const Hero = ({ hasVisitedSignUp, token }) => {
               return (
                 <div
                   key={expert.id}
-                  className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-[11px] p-2"
+                  className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-xl p-2 border-[#ffffff23] border-[1px] "
                 >
                   <Link
                     onClick={scrollToTop}
                     to={`/ra-detail/${expert.id}`}
                     key={expert.id}
-                    className="md:w-[256px] md:h-[265px] sm:w-[172px] h-[230px] gap-[3px] relative flex flex-col items-center"
+                    className="md:w-[256px] md:h-[265px] sm:w-[172px] h-[200px] gap-[3px] relative flex flex-col items-center"
                   >
-                    <div className="w-[72px] h-[98px] md:w-[256px] md:h-[146px]  relative profile-image_1 mb-4">
+                    <div className="w-[80px] h-[98px] md:w-[256px] md:h-[146px] relative profile-image_1 mb-1">
                       <img
                         src={userBck}
                         alt="background"
@@ -285,7 +285,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
                       <img
                         src={expert.expertImagePath}
                         alt="User"
-                        className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
+                        className="absolute top-0 left-0 w-full h-full md:object-contain object-cover rounded-t-[11px]"
                       />
                     </div>
 
@@ -298,7 +298,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
                           {expert.name} - {getExpertType(expert.expertTypeId)}
                         </span>
                       </div>
-                      <div className="w-[32px] h-[15px] flex">
+                      <div className="w-[40px] h-[15px] flex justify-end">
                         <img
                           src={stars}
                           className="w-[11.5px] h-[11.5px]"
@@ -344,7 +344,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
                   <div className="md:w-[211px] mx-auto bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
                     <div
                       onClick={(e) => handleTelegram(e, expert.telegramChannel)}
-                      className="flex justify-center items-center gap-2"
+                      className="flex justify-center items-center gap-2 btn-animate"
                     >
                       <img
                         src={telegram}

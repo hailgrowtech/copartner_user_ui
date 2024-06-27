@@ -277,13 +277,13 @@ const SubscriptionRA = ({ userId }) => {
 
   return (
     <section
-      className={`flex md:flex-row flex-col md:px-0 px-3 ${styles.paddingY} expertise-Bg`}
+      className={`flex md:flex-row flex-col md:px-0 px-3 sm:pt-32 sm:pb-16 pt-[4rem] pb-12 expertise-Bg`}
     >
       <div
         key={expertData.id}
         className={`flex-1 ${styles.flexStart} flex-col xl:px-0 md:px-28 md:bottom-[10rem] font-inter`}
       >
-        <section className="subscription-RA-bg flex flex-row justify-between bg-[#18181B80] relative w-full md:p-[30px] p-[16px] md:pb-0 pb-[3rem] border-2 border-[#f4f4f50e] rounded-xl md:mb-8">
+        <section className="subscription-RA-bg flex flex-row justify-between bg-[#18181B80] relative w-full md:p-[30px] p-[16px] md:pb-0 border-2 border-[#f4f4f50e] rounded-xl md:mb-8">
           <div className="text-white">
             <div className="flex flex-col md:mb-6 mb-1">
               <div className="flex justify-between items-center w-full">
@@ -359,7 +359,7 @@ const SubscriptionRA = ({ userId }) => {
               />
             )}
           </div> */}
-          <div
+          {/* <div
             onClick={() => handleTelegram(expertData.telegramChannel)}
             className="bg-[#0081F1] md:hidden w-[90%] block absolute bottom-3 border-opacity-30 md:rounded-3xl rounded-2xl md:w-44 md:mb-6"
           >
@@ -367,7 +367,7 @@ const SubscriptionRA = ({ userId }) => {
               <span className="md:text-base text-xs">Get Free Calls</span>
               <img className="w-4 ms-3" src={arrow} alt="arrow icon" />
             </button>
-          </div>
+          </div> */}
         </section>
         <section className="w-full md:block hidden">
           <div className="w-full flex flex-row bg-[#18181B80] rounded-2xl">
@@ -378,7 +378,7 @@ const SubscriptionRA = ({ userId }) => {
                   activeTab === "subscriptions" ? "bg-[#ffffff5e]" : ""
                 }`}
               >
-                Subscriptions Plans
+                Subscription Plans
               </button>
               <button
                 onClick={() => handleTabClick("highlights")}
@@ -401,20 +401,20 @@ const SubscriptionRA = ({ userId }) => {
         </section>
         <section
           id="subscriptions"
-          className="w-full flex flex-col md:my-14 my-10"
+          className="w-full flex flex-col md:my-14 my-3"
         >
           <div className="text-white md:text-left text-center md:flex md:justify-between w-full md:mb-8">
             <div className="text-white md:text-5xl text-3xl font-bold pb-4 md:w-1/2">
-              Subscriptions Plans
+              Subscription Plans
             </div>
-            <div className="text-[#A1A1AACC] md:text-lg text-xs md:mb-0 mb-4 md:w-1/2">
+            {/* <div className="text-[#A1A1AACC] md:text-lg text-xs md:mb-0 mb-4 md:w-1/2">
               <span className="text-white">
                 Choose the plan that suits your needs and start trading with
                 confidence today.
               </span>
-            </div>
+            </div> */}
           </div>
-          <div className="text-white flex flex-wrap justify-center md:gap-8 gap-2 w-full subscription-cards">
+          <div className="text-white flex grid md:grid-cols-3 grid-cols-2 justify-center md:gap-8 gap-4 w-full subscription-cards">
             {subscriptions
               .slice()
               .sort((a, b) => a.amount - b.amount)
@@ -469,18 +469,22 @@ const SubscriptionRA = ({ userId }) => {
                         <span>₹{subscription.amount}</span>
                       )}
                     </div>
-                    <div className="text-center md:text-lg text-xs mt-auto opacity-60 mb-6">
+                    <div className="text-center md:text-lg text-xs mt-auto opacity-60 md:mb-6 mb-2">
                       {subscription.durationMonth}{" "}
                       {subscription.isCustom ? "Days" : "Month"} Access
                     </div>
                     <div className="text-center">
-                      <button className="md:px-12 px-6 md:text-base text-xs py-2 md:rounded-lg rounded border-2">
+                    {remainingTime && isDiscounted ? (
+                      <button className="md:px-12 px-6 bg-gradient-to-r from-[#6368FA] to-[#0081F1] md:text-base text-xs py-2 md:rounded-lg rounded border-2 animate-pulse">
                         Buy Now
                       </button>
+                      ) : <button className="md:px-12 px-6 bg-gradient-to-r from-[#6368FA] to-[#0081F1] md:text-base text-xs py-2 md:rounded-lg rounded border-2">
+                      Buy Now
+                    </button>}
                     </div>
                     <div className="text-center mt-4">
                       {remainingTime && isDiscounted ? (
-                        <div className="inline-block bg-gradient-to-r from-[#00c394] to-[#00a143] text-white py-1 px-3 rounded-lg font-bold text-sm animate-pulse">
+                        <div className="inline-block bg-gradient-to-r from-[#00c394] to-[#00a143] text-white py-1 px-3 rounded-lg md:text-sm text-[0.8rem] ">
                           <i className="fas fa-clock"></i>
                           Limited Time Offer
                         </div>
@@ -488,12 +492,12 @@ const SubscriptionRA = ({ userId }) => {
                     </div>
                     {isDiscounted ? (
                       <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
-                        Discounted
+                        Discount
                       </div>
                     ) : (
                       isRecommended && (
                         <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
-                          Recommended
+                          Recommend
                         </div>
                       )
                     )}

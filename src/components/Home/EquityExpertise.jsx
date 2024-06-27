@@ -86,19 +86,19 @@ const EquityExpertise = ({ token }) => {
           </Link>
         </div>
 
-        <div className="flex p-[1rem] gap-[1rem] sm:p-[4rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px] md:mt-0 mt-[-1.5rem]">
+        <div className="flex p-[1rem] gap-[1rem] sm:p-[4rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px] md:mt-0 mt-[-1rem]">
           {filteredData &&
             filteredData.slice(0, 3).map((expert, id) => {
               return (
-                <div key={expert.id} className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-[11px] p-2">
+                <div key={expert.id} className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-xl p-2 border-[#ffffff23] border-[1px] ">
                   <Link
                     onClick={scrollToTop}
                     to={`/ra-detail/${expert.id}`}
                     key={expert.id}
-                    className="md:w-[auto] md:h-[295px] sm:w-[172px] h-[230px] gap-[3px] relative flex flex-col items-center"
+                    className="md:w-[auto] md:h-[295px] sm:w-[172px] h-[200px] gap-[3px] relative flex flex-col items-center"
                   >
-                    <div className="w-[72px] h-[98px] sm:w-[384px] sm:h-[219px]  relative profile-image_1 mb-4">
-                      <img
+                    <div className="w-[80px] h-[98px] md:w-[256px] md:h-[146px] relative profile-image_1 mb-1">
+                    <img
                         src={userBck}
                         alt="background"
                         className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
@@ -106,7 +106,7 @@ const EquityExpertise = ({ token }) => {
                       <img
                         src={expert.expertImagePath}
                         alt="User"
-                        className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
+                        className="absolute top-0 left-0 w-full h-full md:object-contain object-cover rounded-t-[11px]"
                       />
                     </div>
 
@@ -166,8 +166,8 @@ const EquityExpertise = ({ token }) => {
                     onClick={() => handleTelegram(expert.telegramChannel)}
                     className="md:w-[211px] mx-auto bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0"
                   >
-                    <div className="flex justify-center items-center gap-2">
-                      <img
+                    <div className="flex justify-center items-center gap-2 btn-animate">
+                    <img
                         src={telegram}
                         alt="Telegram"
                         className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"

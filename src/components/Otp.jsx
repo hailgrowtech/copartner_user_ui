@@ -53,8 +53,6 @@ const Otp = ({ onClose, onCloseAll, mobileNumber, apid, raid, onComplete }) => {
         setError(data.errorMessages);
         return;
       }
-      // const userId = data.data.id;
-      // responseUser(userId);
       responseUser();
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);
@@ -62,49 +60,6 @@ const Otp = ({ onClose, onCloseAll, mobileNumber, apid, raid, onComplete }) => {
       setLoading(false);
     }
   };
-
-  // const responseUser = async (id) => {
-  //   try {
-  //     let referralMode = "CP";
-  //     let updates = [
-  //       { path: "/referralMode", op: "replace", value: referralMode },
-  //     ];
-
-  //     if (apid) {
-  //       updates.push({ path: "/referralMode", op: "replace", value: "AP" });
-  //       updates.push({
-  //         path: "/affiliatePartnerId",
-  //         op: "replace",
-  //         value: apid,
-  //       });
-  //     } else if (raid) {
-  //       updates.push({ path: "/referralMode", op: "replace", value: "RA" });
-  //       updates.push({ path: "/expertsID", op: "replace", value: raid });
-  //     }
-
-  //     const resUser = await fetch(
-  //       `https://copartners.in:5131/api/User?Id=${id}`,
-  //       {
-  //         method: "PATCH",
-  //         headers: {
-  //           "Content-Type": "application/json-patch+json",
-  //         },
-  //         body: JSON.stringify(updates),
-  //       }
-  //     );
-
-  //     const data = await resUser.json();
-  //     if (!data.isSuccess) {
-  //       setError(data.errorMessages);
-  //     } else {
-  //       sessionStorage.setItem("userId", data.data.id);
-  //       navigate("/");
-  //       window.location.reload();
-  //     }
-  //   } catch (error) {
-  //     console.error("There was a problem with your fetch operation:", error);
-  //   }
-  // };
 
   const responseUser = async () => {
     try {
@@ -149,8 +104,8 @@ const Otp = ({ onClose, onCloseAll, mobileNumber, apid, raid, onComplete }) => {
         localStorage.setItem("userId", data.data.id);
         const userId = data.data.id;
         const scriptContent = `
-      window.TrackierWebSDK.trackConv('copartner.gotrackier.com', '662b93eaeae1a03b602b9163', {"goal_value":"Registration","txn_id":"${userId}","is_iframe":true});
-    `;
+          window.TrackierWebSDK.trackConv('copartner.gotrackier.com', '662b93eaeae1a03b602b9163', {"goal_value":"Registration","txn_id":"${userId}","is_iframe":true});
+        `;
         const scriptElement = document.createElement("script");
         scriptElement.textContent = scriptContent;
         document.body.appendChild(scriptElement);
@@ -248,7 +203,9 @@ const Otp = ({ onClose, onCloseAll, mobileNumber, apid, raid, onComplete }) => {
           />
           <button
             type="submit"
-            className={`bg-white hover:bg-black hover:text-white text-black transition duration-300 font-semibold text-[20px] py-3 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+            className={`${
+              otp.length === 6 && !loading ? "bg-blue-500 text-white" : "bg-white text-black"
+            } hover:bg-black hover:text-white transition duration-300 font-semibold text-[20px] py-3 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${
               isFormEmpty() || loading ? "opacity-50 cursor-not-allowed" : ""
             }`}
             disabled={isFormEmpty() || loading}

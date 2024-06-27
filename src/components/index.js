@@ -7,7 +7,7 @@ import SubscriptionCourseDetail from './Subscription/SubscriptionCourseDetail.js
 import ExpertCard from "./ExpertCard.jsx";
 import RecommendCourse from "./Subscription/RecommendCourse.jsx"
 import Wallet from "./Wallet/Wallet.jsx"
-import Webinar from "./Webinar";
+import Webinar from "./Webinar/Webinar.jsx";
 import Footer from "./Home/Footer";
 import Testimonials from "./Expertise/Testimonials";
 import SubscriptionRA from "./Subscription RA/SubscriptionRA";

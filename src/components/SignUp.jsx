@@ -3,7 +3,7 @@ import Otp from "./Otp";
 import { closeImg, signupBg } from "../assets";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-const SignUp = ({onComplete}) => {
+const SignUp = ({ onComplete }) => {
   const [mobile, setMobile] = useState("");
   const [showOtp, setShowOtp] = useState(false);
   const [error, setError] = useState("");
@@ -164,10 +164,10 @@ const SignUp = ({onComplete}) => {
               )}
               <button
                 type="submit"
-                className={`bg-white hover:bg-black hover:text-white text-black transition duration-300 font-semibold text-[20px] py-3 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  isFormEmpty() || loading
-                    ? "opacity-50 cursor-not-allowed"
-                    : ""
+                className={`${
+                  mobile.length === 10 && !loading ? "bg-[#0081F1] text-white" : "bg-white"
+                } hover:bg-black hover:text-white text-black transition duration-300 font-semibold text-[20px] py-3 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                  isFormEmpty() || loading ? "opacity-50 cursor-not-allowed" : ""
                 }`}
                 disabled={isFormEmpty() || loading}
               >
