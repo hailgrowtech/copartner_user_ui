@@ -12,7 +12,7 @@ const CoursePaymentPopup = ({
   userId,
   mobileNumber,
   isCustom,
-  durationMonth
+  durationMonth,
 }) => {
   const total = planPrice || 0;
   const [loading, setLoading] = useState(false);
@@ -22,10 +22,9 @@ const CoursePaymentPopup = ({
   };
 
   const handlePay = async () => {
-    
     function formatDate(date) {
-      const day = String(date.getDate()).padStart(2, '0');
-      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, "0");
+      const month = String(date.getMonth() + 1).padStart(2, "0");
       const year = date.getFullYear();
       return `${day}-${month}-${year}`;
     }
@@ -42,30 +41,34 @@ const CoursePaymentPopup = ({
       userId,
       mobileNumber,
       transactionDate,
-      isCustom
+      isCustom,
     };
 
     console.log(data);
 
     try {
       setLoading(true);
-      const res = await axios.post(
-        "https://phonepe.copartner.in/api/pay",
-        data
-      );
-      if (res.data.success) {
-        window.location.href =
-          res.data.data.instrumentResponse.redirectInfo.url;
+      const response = await fetch("https://phonepe.copartner.in/api/pay", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const resData = await response.json();
+
+      if (resData.success) {
+        window.location.href = resData.data.instrumentResponse.redirectInfo.url;
       } else {
-        console.error("Payment initiation failed:", res.data);
+        console.error("Payment initiation failed:", resData);
       }
     } catch (error) {
       console.error("Error in handlePay:", error);
-      if (error.response) {
-        console.error("Error Response Data:", error.response.data);
-        console.error("Error Response Status:", error.response.status);
-        console.error("Error Response Headers:", error.response.headers);
-      }
     } finally {
       setLoading(false);
     }
