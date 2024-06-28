@@ -51,7 +51,7 @@ const Interest = ({userData}) => {
         </p>
       </div>
 
-      <div className="md:gap-[18rem] md:gap-6 md:p-0 md:p-[1.5rem] p-[0.5rem] grid sm:grid-cols-3 grid-cols-2 md:px-6 px-0 mt-3">
+      <div className="md:gap-[18rem] gap-2 md:p-0 md:p-[1.5rem] p-[0.5rem] grid sm:grid-cols-3 grid-cols-2 md:px-6 px-0 mt-3">
         {smallScreen
           ? userData.slice(0, 4).map((expert, id) => {
               return (
