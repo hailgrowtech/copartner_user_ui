@@ -49,6 +49,7 @@ const Expertise = ({userData, token}) => {
         <div className="flex p-[1rem] gap-[1rem] sm:p-[4rem] grid sm:grid-cols-3 grid-cols-2 sm:px-2 px-1 md:ml-0 ml-[-5px] md:mt-[-8rem]">
           {userData?.map((expert, id) => {
             return (
+              <div className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-xl p-2 border-[#ffffff23] border-[1px] ">
               <Link
                 to={`/ra-detail/${expert.id}`}
                 onClick={scrollToTop}
@@ -136,6 +137,7 @@ const Expertise = ({userData, token}) => {
                   </div>
                 </div>
               </Link>
+              </div>
             );
           })}
         </div>

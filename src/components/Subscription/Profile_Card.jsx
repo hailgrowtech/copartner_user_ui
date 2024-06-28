@@ -68,6 +68,7 @@ const Expertise = ({ userId }) => {
                 expert.durationMonth
               );
               return (
+                <div className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-xl p-2 border-[#ffffff23] border-[1px] ">
                 <Link
                   to={`/subscription/buy/${expert.id}`}
                   onClick={scrollToTop}
@@ -152,6 +153,7 @@ const Expertise = ({ userId }) => {
                     {daysLeft} Days Left
                   </span>
                 </Link>
+                </div>
               );
             })
           ) : (

@@ -93,7 +93,7 @@ const EquityExpertise = ({ token }) => {
               return (
                 <motion.div
                   key={expert.id}
-                  className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-[11px] p-2"
+                  className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-xl p-2 border-[#ffffff23] border-[1px] "
                   variants={fadeInUp}
                   initial="hidden"
                   whileInView="visible"

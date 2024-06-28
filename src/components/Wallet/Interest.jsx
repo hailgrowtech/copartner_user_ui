@@ -51,16 +51,17 @@ const Interest = ({userData}) => {
         </p>
       </div>
 
-      <div className="md:gap-[18rem] md:gap-6 md:p-0 md:p-[1.5rem] p-[0.5rem] grid sm:grid-cols-3 grid-cols-2 md:px-6 px-0">
+      <div className="md:gap-[18rem] md:gap-6 md:p-0 md:p-[1.5rem] p-[0.5rem] grid sm:grid-cols-3 grid-cols-2 md:px-6 px-0 mt-3">
         {smallScreen
           ? userData.slice(0, 4).map((expert, id) => {
               return (
+                <div className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-xl p-2 border-[#ffffff23] border-[1px] ">
                 <Link to={`/ra-detail/${expert.id}`}
                 key={expert.id}
-                className="md:w-[384px] md:h-[400px] sm:w-[172px] h-[270px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out md:mr-0 mr-2"
-              >
-                <div className="w-[72px] h-[98px] sm:w-[384px] sm:h-[219px]  relative profile-image_1 mb-4">
-                  <img
+                className="md:w-[256px] md:h-[265px] sm:w-[172px] h-[200px] gap-[3px] relative flex flex-col items-center"
+                >
+                    <div className="w-[80px] h-[98px] md:w-[256px] md:h-[146px] relative profile-image_1 mb-1">
+                    <img
                     src={userBck}
                     alt="background"
                     className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
@@ -68,12 +69,12 @@ const Interest = ({userData}) => {
                   <img
                     src={expert.expertImagePath}
                     alt="User"
-                    className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
-                  />
+                    className="absolute top-0 left-0 w-full h-full md:object-contain object-cover rounded-t-[11px]"
+                    />
                 </div>
 
-                <div className="w-[154px] h-[22px] sm:w-[319px] sm:h-[40px] flex justify-between px-[5px] sm:px-[1rem]">
-                  <div className="flex flex-col h-[22px] w-full md:h-[40px] gap-2">
+                <div className="flex md:w-[212px] md:h-[26px] w-full sm:h-[22px] justify-between md:gap-0">
+                <div className="flex flex-col h-[22px] w-full md:h-[40px] gap-2">
                     <span className="sm:text-[18px] text-[12px] sm:leading-[18px] leading-[8px] font-[500] text-lightWhite">
                       {expert.channelName}
                     </span>
@@ -81,8 +82,8 @@ const Interest = ({userData}) => {
                       {expert.name} - {getExpertType(expert.expertTypeId)}
                     </span>
                   </div>
-                  <div className="sm:w-[48px] sm:h-[22px] w-[21px] h-[10px] flex">
-                    <img
+                  <div className="w-[40px] h-[15px] flex justify-end">
+                  <img
                       src={stars}
                       className="sm:w-[12.3px] sm:h-[12.3px] w-[8px] h-[8px]"
                       alt="rating"
@@ -122,7 +123,8 @@ const Interest = ({userData}) => {
                   </div>
 
                 <div className="md:w-[211px] md:h-[40px] bg-[#0081F1] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
-                <div className="flex justify-center items-center gap-2">
+                <div className="flex justify-center items-center gap-2 btn-animate">
+
                   <img
                     src={telegram}
                     alt="Telegram"
@@ -139,6 +141,7 @@ const Interest = ({userData}) => {
                 </div>
               </div>
               </Link>
+              </div>
               );
             })
           : userData.slice(0, 3).map((expert, id) => {
