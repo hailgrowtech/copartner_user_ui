@@ -84,7 +84,11 @@ function MobileCourse({ showMobilePopup, handleBuyNowClick, subscriptions }) {
                 handleBuyNowClick(
                   subscription.id,
                   subscription.planType,
-                  subscription.discountedAmount
+                  isDiscounted
+                    ? subscription.discountedAmount
+                    : subscription.amount,
+                  subscription.isCustom,
+                  subscription.durationMonth
                 )
               }
               className="text-lg px-5 rounded-lg font-semibold flex items-center py-3 bg-gradient-to-r from-[#6368FA] to-[#0081F1] text-white hover:bg-white hover:text-black animate-pulse"
