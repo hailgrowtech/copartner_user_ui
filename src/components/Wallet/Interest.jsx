@@ -146,10 +146,11 @@ const Interest = ({userData}) => {
             })
           : userData.slice(0, 3).map((expert, id) => {
               return (
+
                 <Link
                   to={`/ra-detail/${expert.id}`}
                   key={expert.id}
-                  className="md:w-[384px] md:h-[400px] w-[172px] h-[250px] rounded-[11px] md:mt-0 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
+                  className="md:w-[384px] md:h-[400px] w-[172px] h-[250px] md:mt-0 mt-[16px] relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-xl p-2 border-[#ffffff23] border-[1px]"
                 >
                   <div className="w-[72px] h-[98px] sm:w-[384px] sm:h-[219px]  relative profile-image_1 mb-4">
                     <img
