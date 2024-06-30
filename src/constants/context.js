@@ -8,7 +8,7 @@ export const useUserData = () => useContext(UserDataContext);
 export const UserDataProvider = ({ children }) => {
   const [userData, setUserData] = useState([]);
 
-  const USER_API = "https://copartners.in:5132/api/Experts";
+  const USER_API = "https://copartners.in:5132/api/Experts?page=1&pageSize=1000";
   //   const SIGNIN_API = "https://copartners.in:7188/CoPartnerGateway/SignIn/ValidateOTP"
 
   //   const auth_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE1MDM3NDExLWI5MTQtNDliNy05ZGJkLTU4OTE3YWJkZTU3ZiIsIm5iZiI6MTcxMzc4NzgyMCwiZXhwIjoxNzEzNzg5MDIwLCJpYXQiOjE3MTM3ODc4MjB9.G7e5PAMcb8x_pDia5Swyx6pHVTNykfELQnF5C8MIEBM"

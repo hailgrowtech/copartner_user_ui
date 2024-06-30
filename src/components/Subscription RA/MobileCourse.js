@@ -76,7 +76,8 @@ function MobileCourse({ showMobilePopup, handleBuyNowClick, subscriptions }) {
                 )}
               </div>
               <p className="text-[#C6CDD5] text-sm">
-                {subscription.durationMonth} Month Access
+                {subscription.durationMonth}{" "}
+                {subscription.isCustom ? "Days" : "Month"} Access
               </p>
             </div>
             <button
