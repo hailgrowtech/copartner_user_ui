@@ -736,6 +736,8 @@ export const liveCourseData = [
     experience: "2.5",
     duration: "2.5",
     date: "Live Now",
+    subject: "Commodity",
+    prize:"₹69"
   },
   {
     imageUrl: courseImg,
@@ -747,6 +749,8 @@ export const liveCourseData = [
     experience: "2.5",
     duration: "2.5",
     date: "Live Now",
+    subject: "Investor",
+    prize:"₹69"
   },
   {
     imageUrl: courseImg,
@@ -758,6 +762,8 @@ export const liveCourseData = [
     experience: "2.5",
     duration: "2.5",
     date: "Live Now",
+    subject: "Investor",
+    prize:"₹69"
   },
   {
     imageUrl: courseImg,
@@ -769,6 +775,8 @@ export const liveCourseData = [
     experience: "2.5",
     duration: "2.5",
     date: "Live Now",
+    subject: "Futures & Options",
+    prize:"₹69"
   },
   {
     imageUrl: courseImg,
@@ -780,6 +788,8 @@ export const liveCourseData = [
     experience: "2.5",
     duration: "2.5",
     date: "Live Now",
+    subject: "Futures & Options",
+    prize:"₹69"
   },
   {
     imageUrl: courseImg,
@@ -791,7 +801,10 @@ export const liveCourseData = [
     experience: "2.5",
     duration: "2.5",
     date: "Live Now",
+    subject: "Futures & Options",
+    prize:"₹69"
   },
+  
 ];
 
 export const expertData = [
