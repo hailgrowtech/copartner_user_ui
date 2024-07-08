@@ -13,6 +13,7 @@ const Expertise = ({ userId }) => {
 
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 640);
   const [subscriberData, setSubscriberData] = useState([]);
+  const [setSubscriptionData, setSetSubscriptionData] = useState([]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -33,6 +34,7 @@ const Expertise = ({ userId }) => {
         );
         const recieve = await response.json();
         const data = recieve.data;
+        setSetSubscriptionData(data);
         const getSubscriptionDetails = (data) => {
           return data.map((item) => item.subscription);
         };
@@ -54,7 +56,7 @@ const Expertise = ({ userId }) => {
     const endDate = addMonths(createdDate, durationMonth);
     const currentDate = new Date();
     const daysLeft = differenceInDays(endDate, currentDate);
-    return daysLeft > 0 ? daysLeft : 0;
+    return daysLeft > 0 ? daysLeft - 1 : 0;
   };
 
   return (
@@ -64,7 +66,7 @@ const Expertise = ({ userId }) => {
           {subscriberData.length > 0 ? (
             subscriberData.map((expert, id) => {
               const daysLeft = calculateDaysLeft(
-                expert.createdOn,
+                setSubscriptionData.map((data, id) => {return data.createdOn}),
                 expert.durationMonth
               );
               return (

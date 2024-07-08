@@ -3,6 +3,7 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
 const Receipt = ({ transaction, closePopup }) => {
+  console.log(transaction)
   const downloadPDF = () => {
     const capture = document.querySelector(".receipt-container");
 
@@ -28,7 +29,9 @@ const Receipt = ({ transaction, closePopup }) => {
         useCORS: true,
         logging: true,
         windowHeight: windowHeight,
-        windowWidth: isMobile ? document.documentElement.offsetWidth * 2.2 : document.documentElement.offsetWidth,
+        windowWidth: isMobile
+          ? document.documentElement.offsetWidth * 2.2
+          : document.documentElement.offsetWidth,
       }).then((canvas) => {
         const imgData = canvas.toDataURL("image/png");
         const pdf = new jsPDF("p", "mm", "a3");
@@ -57,7 +60,7 @@ const Receipt = ({ transaction, closePopup }) => {
 
     Promise.all(loadPromises).then(() => {
       if (transaction) {
-        downloadPDF();
+        // downloadPDF();
       }
     });
   }, [transaction]);
@@ -73,12 +76,18 @@ const Receipt = ({ transaction, closePopup }) => {
     transactionDate,
     invoiceId,
   } = transaction;
-  const { experts } = transaction.subscription;
+  const { experts, discountPercentage } = transaction.subscription;
   const invoiceDate = new Date(transactionDate).toLocaleDateString();
 
-  const gstRate = 0.18;
-  const gstAmount = subscription.amount * gstRate;
-  const amountWithoutGst = subscription.amount - gstAmount;
+  const amountWithoutGst = (100 / 118) * subscription.amount;
+  const gstAmount = subscription.amount - amountWithoutGst;
+
+  // Check if the states are the same
+  const sameState =
+    user?.state.toLowerCase().trim() === experts?.state.toLowerCase().trim();
+  const taxRate = 0.18;
+  const halfTaxRate = taxRate / 2;
+  const cgstSgstAmount = gstAmount / 2;
 
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
@@ -157,16 +166,29 @@ const Receipt = ({ transaction, closePopup }) => {
             <tr>
               <th className="border px-2 py-1">Description</th>
               {experts?.gst && <th className="border px-2 py-1">Price</th>}
-              {experts?.gst && <th className="border px-2 py-1">IGST%</th>}
-              {experts?.gst && <th className="border px-2 py-1">IGST Amt</th>}
-              {experts?.gst && <th className="border px-2 py-1">Total Tax</th>}
+              {sameState ? (
+                <>
+                  {experts?.gst && <th className="border px-2 py-1">CGST%</th>}
+                  {experts?.gst && <th className="border px-2 py-1">SGST%</th>}
+                </>
+              ) : (
+                <>
+                  {experts?.gst && <th className="border px-2 py-1">IGST%</th>}
+                  {experts?.gst && (
+                    <th className="border px-2 py-1">IGST Amt</th>
+                  )}
+                </>
+              )}
+              <th className="border px-2 py-1">Total Tax</th>
               <th className="border px-2 py-1">Amount</th>
+              <th className="border px-2 py-1">Discount Percentage</th>
+              <th className="border px-2 py-1">Paid Amount</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td className="border px-2 py-1 text-center">
-                {subscription.description}
+                {subscription.planType}
               </td>
 
               {experts?.gst && (
@@ -174,15 +196,38 @@ const Receipt = ({ transaction, closePopup }) => {
                   <td className="border px-2 py-1 text-center">
                     ₹ {amountWithoutGst.toFixed(2)}
                   </td>
-                  <td className="border px-2 py-1 text-center">18%</td>
-                  <td className="border px-2 py-1 text-center">
-                    ₹ {gstAmount.toFixed(2)}
-                  </td>
-                  <td className="border px-2 py-1 text-center">
-                    ₹ {gstAmount.toFixed(2)}
-                  </td>
+                  {sameState ? (
+                    <>
+                      <td className="border px-2 py-1 text-center">
+                        {(halfTaxRate * 100).toFixed(2)}% <br /> ₹
+                        {cgstSgstAmount.toFixed(2)}
+                      </td>
+                      <td className="border px-2 py-1 text-center">
+                        {(halfTaxRate * 100).toFixed(2)}% <br /> ₹
+                        {cgstSgstAmount.toFixed(2)}
+                      </td>
+                    </>
+                  ) : (
+                    <>
+                      <td className="border px-2 py-1 text-center">
+                        {(taxRate * 100).toFixed(2)}%
+                      </td>
+                      <td className="border px-2 py-1 text-center">
+                        ₹ {gstAmount.toFixed(2)}
+                      </td>
+                    </>
+                  )}
                 </>
               )}
+              <td className="border px-2 py-1 text-center">
+                {cgstSgstAmount.toFixed(2) * 2}
+              </td>
+              <td className="border px-2 py-1 text-center">
+                ₹ {(totalAmount.toFixed(2) * 100)/(100-discountPercentage)}
+              </td>
+              <td className="border px-2 py-1 text-center">
+                {discountPercentage}%
+              </td>
               <td className="border px-2 py-1 text-center">
                 ₹ {totalAmount.toFixed(2)}
               </td>
