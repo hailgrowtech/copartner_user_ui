@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUserData } from "../../constants/context";
 import { arrow, stars, telegram, userBck } from "../../assets";
 import SignUp from "../SignUp";
@@ -9,6 +9,7 @@ import Testimonials from "./Testimonials";
 const EquityExpertise = ({ token }) => {
   const userData = useUserData();
   const [showSignUp, setShowSignUp] = useState(false);
+  const navigate = useNavigate();
 
   const getExpertType = (typeId) => {
     switch (typeId) {
@@ -52,6 +53,10 @@ const EquityExpertise = ({ token }) => {
   const handleAuthSuccess = (link) => {
     setShowSignUp(false);
     window.open(link);
+  };
+
+  const handleExpertClick = (expert) => {
+    navigate(`/ra-detail/${expert.id}`, { state: { filterTab: "equity" } });
   };
 
   const fadeInUp = {
@@ -100,14 +105,13 @@ const EquityExpertise = ({ token }) => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: id * 0.2 }}
                 >
-                  <Link
-                    onClick={scrollToTop}
-                    to={`/ra-detail/${expert.id}`}
+                  <div
+                    onClick={() => handleExpertClick(expert)}
                     key={expert.id}
                     className="md:w-[auto] md:h-[295px] sm:w-[172px] h-[200px] gap-[3px] relative flex flex-col items-center"
                   >
                     <div className="w-[80px] h-[98px] md:w-[256px] md:h-[146px] relative profile-image_1 mb-1">
-                    <img
+                      <img
                         src={userBck}
                         alt="background"
                         className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
@@ -167,13 +171,13 @@ const EquityExpertise = ({ token }) => {
                         </span>
                       </div>
                     </div>
-                  </Link>
+                  </div>
                   <div
                     onClick={() => handleTelegram(expert.telegramChannel)}
                     className="md:w-[211px] mx-auto bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0"
                   >
                     <div className="flex justify-center items-center gap-2 btn-animate">
-                    <img
+                      <img
                         src={telegram}
                         alt="Telegram"
                         className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"

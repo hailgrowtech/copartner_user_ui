@@ -10,7 +10,7 @@ import {
   webBanner2,
 } from "../../assets";
 import CommodityExpertise from "./CommodityExpertise";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import { useUserData } from "../../constants/context";
 import SignUp from "../SignUp";
 import { motion, useInView } from "framer-motion";
@@ -22,7 +22,7 @@ const OptionExpertise = () => {
       behavior: "smooth",
     });
   };
-
+  
   const [smallScreen, setSmallScreen] = useState(false);
   const userData = useUserData();
   const [showSignUp, setShowSignUp] = useState(false);
@@ -30,6 +30,8 @@ const OptionExpertise = () => {
 
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+
+  const navigate = useNavigate(); // Use useNavigate
 
   const getExpertType = (typeId) => {
     switch (typeId) {
@@ -89,6 +91,10 @@ const OptionExpertise = () => {
     },
   };
 
+  const handleExpertClick = (expert) => {
+    navigate(`/ra-detail/${expert.id}`, { state: { filterTab: "futures" } });
+  };
+
   return (
     <>
       <motion.div
@@ -129,9 +135,8 @@ const OptionExpertise = () => {
             filteredData.slice(0, 3).map((expert, id) => {
               return (
                 <div key={expert.id} className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-xl p-2 border-[#ffffff23] border-[1px] ">
-                  <Link
-                    onClick={scrollToTop}
-                    to={`/ra-detail/${expert.id}`}
+                  <div
+                    onClick={() => handleExpertClick(expert)}
                     key={expert.id}
                     className="md:w-[auto] md:h-[295px] sm:w-[172px] h-[200px] gap-[3px] relative flex flex-col items-center"
                   >
@@ -199,7 +204,7 @@ const OptionExpertise = () => {
                         </span>
                       </div>
                     </div>
-                  </Link>
+                  </div>
                   <div
                     onClick={() => handleTelegram(expert.telegramChannel)}
                     className="md:w-[211px] mx-auto bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0"

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import styles from "../../style";
 import "./SubscriptionRA.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -7,15 +8,14 @@ import SubscriptionPaymentPopup from "./SubscriptionPaymentPopup";
 import FAQs2 from "../About/FAQs2";
 import CoursePaymentPopup from "./CoursePaymentPopup";
 import MobileCourse from "./MobileCourse";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { useUserSession } from "../../constants/userContext";
-// import KYCPopup from "./KYCPopup";
-// import LinkPopup from "../InviteLink/LinkPopup";
 import SignUp2 from "../Signup2";
 import Stock from "../Stock";
 
 const SubscriptionRA = ({ userId }) => {
   const { id } = useParams();
+  const location = useLocation();
   const [isCardSaved, setIsCardSaved] = useState(false);
   const [expertData, setExpertData] = useState(null);
   const [activeHoverIndex, setActiveHoverIndex] = useState(0);
@@ -29,11 +29,9 @@ const SubscriptionRA = ({ userId }) => {
   const [showMobilePopup, setShowMobilePopup] = useState(false);
   const [subscriptions, setSubscriptions] = useState([]);
   const [mobileNum, setMobileNum] = useState("");
-  // const [showKYCPopup, setShowKYCPopup] = useState(false);
-  // const [showLinkPopup, setShowLinkPopup] = useState(false);
+  const [filterTab, setFilterTab] = useState(location.state?.filterTab || "all");
   const [chatID, setChatID] = useState("");
   const { userData, loading } = useUserSession();
-  // const [inviteLink, setInviteLink] = useState("");
   const [subscriptionId, setSubscriptionId] = useState("");
   const [isCustom, setIsCustom] = useState("");
   const [durationMonth, setDurationMonth] = useState("");
@@ -134,8 +132,6 @@ const SubscriptionRA = ({ userId }) => {
 
   const handleClose = () => {
     setShowPopup(false);
-    // setShowKYCPopup(false);
-    // setShowLinkPopup(false);
   };
 
   const handleSaveCard = () => {
@@ -185,59 +181,6 @@ const SubscriptionRA = ({ userId }) => {
     window.open(link);
   };
 
-  // useEffect(() => {
-  //   if (!loading && userData) {
-  //     setMobileNum(userData.mobileNumber);
-  //     const paymentSuccess = checkPaymentStatus();
-  //     handlePaymentSuccess(paymentSuccess);
-  //   }
-  // }, [loading, userData?.isKYC, inviteLink]);
-
-  // const handlePaymentSuccess = (paymentSuccess) => {
-  //   if (paymentSuccess) {
-  //     const detailsComplete = checkKYCDetails(userData);
-  //     if (detailsComplete) {
-  //       console.log("KYC complete.");
-  //       if (inviteLink) {
-  //         setShowLinkPopup(true);
-  //         clearURLParams();
-  //       }
-  //     } else {
-  //       console.log("KYC not complete, showing KYC popup.");
-  //       setShowKYCPopup(true);
-  //     }
-  //   }
-  // };
-
-  // const checkKYCDetails = (data) => {
-  //   const isComplete = data?.isKYC;
-  //   console.log("KYC Details Complete:", isComplete);
-  //   return isComplete;
-  // };
-
-  // const checkPaymentStatus = () => {
-  //   const params = new URLSearchParams(window.location.search);
-  //   const status = params.get("status");
-  //   const transactionId = params.get("transactionId");
-  //   const inviteLink = params.get("inviteLink");
-
-  //   setInviteLink(inviteLink);
-
-  //   if (status === "success") {
-  //     toast.success(`Payment Success: ${transactionId}`);
-  //     return true;
-  //   } else if (status === "failure") {
-  //     toast.error(`Payment Failed: ${transactionId}`);
-  //     return false;
-  //   }
-
-  //   return null;
-  // };
-
-  // const clearURLParams = () => {
-  //   window.history.replaceState({}, document.title, window.location.pathname);
-  // };
-
   const calculateRemainingTime = (discountValidTo) => {
     const now = new Date();
     const validTo = new Date(discountValidTo);
@@ -265,6 +208,12 @@ const SubscriptionRA = ({ userId }) => {
     } else {
       return "Less than a minute";
     }
+  };
+
+  const tabVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -20 },
   };
 
   if (loading) {
@@ -345,29 +294,6 @@ const SubscriptionRA = ({ userId }) => {
             />
             <span className="md:text-3xl text-sm">{expertData.rating}</span>
           </div>
-          {/* <div
-            onClick={handleSaveCard}
-            className={`absolute md:bottom-6 bottom-12 md:right-8 right-3 rounded-full cursor-pointer transition duration-300 hover:scale-110 hover:bg-[#ffffff5e] hover:rounded-full p-2`}
-          >
-            {!isCardSaved ? (
-              <img src={bookmark} alt="Save icon" className="w-6 h-6" />
-            ) : (
-              <img
-                src={bookmarkFill}
-                alt="Save fill icon"
-                className="w-6 h-6"
-              />
-            )}
-          </div> */}
-          {/* <div
-            onClick={() => handleTelegram(expertData.telegramChannel)}
-            className="bg-[#0081F1] md:hidden w-[90%] block absolute bottom-3 border-opacity-30 md:rounded-3xl rounded-2xl md:w-44 md:mb-6"
-          >
-            <button className="flex mx-auto text-white md:py-2 py-2 items-center">
-              <span className="md:text-base text-xs">Get Free Calls</span>
-              <img className="w-4 ms-3" src={arrow} alt="arrow icon" />
-            </button>
-          </div> */}
         </section>
         <section className="w-full md:block hidden">
           <div className="w-full flex flex-row bg-[#18181B80] rounded-2xl">
@@ -407,118 +333,167 @@ const SubscriptionRA = ({ userId }) => {
             <div className="text-white md:text-5xl text-3xl font-bold pb-4 md:w-1/2">
               Subscription Plans
             </div>
-            {/* <div className="text-[#A1A1AACC] md:text-lg text-xs md:mb-0 mb-4 md:w-1/2">
-              <span className="text-white">
-                Choose the plan that suits your needs and start trading with
-                confidence today.
-              </span>
-            </div> */}
           </div>
-          <div className="text-white flex grid md:grid-cols-3 grid-cols-2 justify-center md:gap-8 gap-4 w-full subscription-cards">
-            {subscriptions
-              .slice()
-              .sort((a, b) => a.amount - b.amount)
-              .map((subscription, index) => {
-                const isDiscounted =
-                  subscription.discountedAmount < subscription.amount;
-                const isRecommended =
-                  subscriptions.every(
-                    (sub) => sub.discountedAmount >= sub.amount
-                  ) && index === 1;
-                const showBorder = isDiscounted || isRecommended;
+          <div className="w-full flex flex-row bg-[#18181B80] rounded-2xl p-3 mb-4 md:hidden">
+            <div className="activeOptions md:flex-col-6 md:text-[16px] text-[10px] flex flex-row my-auto">
+              <motion.button
+                onClick={() => setFilterTab("futures")}
+                className={`md:flex-col-3 md:mx-2 mx-2 md:text-[1rem] text-[15px] px-3 py-1 ${
+                  filterTab === "futures"
+                    ? "text-[#000] bg-[#fff] rounded-[5px]"
+                    : "text-[#fff]"
+                } hover:text-[#000] hover:bg-[#fff] rounded-[5px]`}
+                initial={false}
+                animate={filterTab === "futures" ? "active" : "inactive"}
+                whileHover={{ scale: 1.05 }}
+              >
+                Futures & Options
+              </motion.button>
+              <motion.button
+                onClick={() => setFilterTab("commodity")}
+                className={`md:flex-col-3 md:mx-2 mx-2 md:text-[1rem] text-[15px] px-3 py-1 ${
+                  filterTab === "commodity"
+                    ? "text-[#000] bg-[#fff] rounded-[5px]"
+                    : "text-[#fff]"
+                } hover:text-[#000] hover:bg-[#fff] rounded-[5px]`}
+                initial={false}
+                animate={filterTab === "commodity" ? "active" : "inactive"}
+                whileHover={{ scale: 1.05 }}
+              >
+                Commodity
+              </motion.button>
+              <motion.button
+                onClick={() => setFilterTab("equity")}
+                className={`md:flex-col-3 md:mx-2 mx-2 md:text-[1rem] text-[15px] px-3 py-1 ${
+                  filterTab === "equity"
+                    ? "text-[#000] bg-[#fff] rounded-[5px]"
+                    : "text-[#fff]"
+                } hover:text-[#000] hover:bg-[#fff] rounded-[5px]`}
+                initial={false}
+                animate={filterTab === "equity" ? "active" : "inactive"}
+                whileHover={{ scale: 1.05 }}
+              >
+                Equity
+              </motion.button>
+            </div>
+          </div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={filterTab}
+              className="text-white flex grid md:grid-cols-3 grid-cols-2 justify-center md:gap-8 gap-4 w-full subscription-cards"
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={tabVariants}
+              transition={{ duration: 0.5 }}
+            >
+              {subscriptions
+                .slice()
+                .sort((a, b) => a.amount - b.amount)
+                .map((subscription, index) => {
+                  const isDiscounted =
+                    subscription.discountedAmount < subscription.amount;
+                  const isRecommended =
+                    subscriptions.every(
+                      (sub) => sub.discountedAmount >= sub.amount
+                    ) && index === 1;
+                  const showBorder = isDiscounted || isRecommended;
 
-                const remainingTime = subscription.discountValidTo
-                  ? calculateRemainingTime(subscription.discountValidTo)
-                  : null;
+                  const remainingTime = subscription.discountValidTo
+                    ? calculateRemainingTime(subscription.discountValidTo)
+                    : null;
 
-                return (
-                  <div
-                    key={subscription.id}
-                    onClick={() =>
-                      handleBuyNowClick(
-                        subscription.id,
-                        subscription.planType,
-                        isDiscounted
-                          ? subscription.discountedAmount
-                          : subscription.amount,
-                        subscription.isCustom,
-                        subscription.durationMonth
-                      )
-                    }
-                    className={`my-auto flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
-                      activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
-                    } relative ${showBorder ? "border-2" : ""}`}
-                  >
-                    <div className="text-center md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
-                      {subscription.planType}
-                      {isDiscounted && (
-                        <span className="bg-gradient-to-r from-[#00c394] to-[#00a143] inline-block text-transparent bg-clip-text text-xs md:text-lg ml-2">
-                          ({subscription.discountPercentage}% OFF)
-                        </span>
-                      )}
-                    </div>
-                    <div className="text-center md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-center">
-                      {isDiscounted ? (
-                        <div className="flex flex-col text-center">
-                          <span className="line-through text-gray-500 md:text-xl text-sm">
-                            ₹{subscription.amount}
+                  return (
+                    <div
+                      key={subscription.id}
+                      onClick={() =>
+                        handleBuyNowClick(
+                          subscription.id,
+                          subscription.planType,
+                          isDiscounted
+                            ? subscription.discountedAmount
+                            : subscription.amount,
+                          subscription.isCustom,
+                          subscription.durationMonth
+                        )
+                      }
+                      className={`my-auto flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
+                        activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
+                      } relative ${showBorder ? "border-2" : ""}`}
+                    >
+                      <div className="text-center md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
+                        {subscription.planType}
+                        {isDiscounted && (
+                          <span className="bg-gradient-to-r from-[#00c394] to-[#00a143] inline-block text-transparent bg-clip-text text-xs md:text-lg ml-2">
+                            ({subscription.discountPercentage}% OFF)
                           </span>
-                          <span>₹{subscription.discountedAmount}</span>
+                        )}
+                      </div>
+                      <div className="text-center md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-center">
+                        {isDiscounted ? (
+                          <div className="flex flex-col text-center">
+                            <span className="line-through text-gray-500 md:text-xl text-sm">
+                              ₹{subscription.amount}
+                            </span>
+                            <span>₹{subscription.discountedAmount}</span>
+                          </div>
+                        ) : (
+                          <span>₹{subscription.amount}</span>
+                        )}
+                      </div>
+                      <div className="text-center md:text-lg text-xs mt-auto opacity-60 md:mb-6 mb-2">
+                        {subscription.durationMonth}{" "}
+                        {subscription.isCustom ? "Days" : "Month"} Access
+                      </div>
+                      <div className="text-center">
+                        {remainingTime && isDiscounted ? (
+                          <button className="md:px-12 px-6 bg-gradient-to-r from-[#6368FA] to-[#0081F1] md:text-base text-xs py-2 md:rounded-lg rounded border-2 animate-pulse">
+                            Buy Now
+                          </button>
+                        ) : (
+                          <button className="md:px-12 px-6 bg-gradient-to-r from-[#6368FA] to-[#0081F1] md:text-base text-xs py-2 md:rounded-lg rounded border-2">
+                            Buy Now
+                          </button>
+                        )}
+                      </div>
+                      <div className="text-center mt-4">
+                        {remainingTime && isDiscounted ? (
+                          <div className="inline-block bg-gradient-to-r from-[#00c394] to-[#00a143] text-white py-1 px-3 rounded-lg md:text-sm text-[0.8rem] ">
+                            <i className="fas fa-clock"></i>
+                            Limited Time Offer
+                          </div>
+                        ) : null}
+                      </div>
+                      {isDiscounted ? (
+                        <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
+                          Discount
                         </div>
                       ) : (
-                        <span>₹{subscription.amount}</span>
+                        isRecommended && (
+                          <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
+                            Recommend
+                          </div>
+                        )
                       )}
                     </div>
-                    <div className="text-center md:text-lg text-xs mt-auto opacity-60 md:mb-6 mb-2">
-                      {subscription.durationMonth}{" "}
-                      {subscription.isCustom ? "Days" : "Month"} Access
-                    </div>
-                    <div className="text-center">
-                    {remainingTime && isDiscounted ? (
-                      <button className="md:px-12 px-6 bg-gradient-to-r from-[#6368FA] to-[#0081F1] md:text-base text-xs py-2 md:rounded-lg rounded border-2 animate-pulse">
-                        Buy Now
-                      </button>
-                      ) : <button className="md:px-12 px-6 bg-gradient-to-r from-[#6368FA] to-[#0081F1] md:text-base text-xs py-2 md:rounded-lg rounded border-2">
-                      Buy Now
-                    </button>}
-                    </div>
-                    <div className="text-center mt-4">
-                      {remainingTime && isDiscounted ? (
-                        <div className="inline-block bg-gradient-to-r from-[#00c394] to-[#00a143] text-white py-1 px-3 rounded-lg md:text-sm text-[0.8rem] ">
-                          <i className="fas fa-clock"></i>
-                          Limited Time Offer
-                        </div>
-                      ) : null}
-                    </div>
-                    {isDiscounted ? (
-                      <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
-                        Discount
-                      </div>
-                    ) : (
-                      isRecommended && (
-                        <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
-                          Recommend
-                        </div>
-                      )
-                    )}
-                  </div>
-                );
-              })}
-            {showMonthlyPopup && (
-              <SubscriptionPaymentPopup
-                onClose={handleClosePopup}
-                selectedMonthlyPlan={selectedMonthlyPlan}
-                planMonthlyPrice={planMonthlyPrice}
-                expertName={expertData.channelName}
-                mobileNumber={mobileNum}
-                chatId={chatID}
-                subscriptionId={subscriptionId}
-                userId={userData.id}
-                isCustom={isCustom}
-                durationMonth={durationMonth}
-              />
-            )}
-          </div>
+                  );
+                })}
+              {showMonthlyPopup && (
+                <SubscriptionPaymentPopup
+                  onClose={handleClosePopup}
+                  selectedMonthlyPlan={selectedMonthlyPlan}
+                  planMonthlyPrice={planMonthlyPrice}
+                  expertName={expertData.channelName}
+                  mobileNumber={mobileNum}
+                  chatId={chatID}
+                  subscriptionId={subscriptionId}
+                  userId={userData.id}
+                  isCustom={isCustom}
+                  durationMonth={durationMonth}
+                />
+              )}
+            </motion.div>
+          </AnimatePresence>
         </section>
         <section className="w-full md:my-8 my-2 flex gap-20 md:mb-24 mb-16">
           <FAQs2 />
@@ -727,16 +702,6 @@ const SubscriptionRA = ({ userId }) => {
             />
           )}
         </div>
-        {/* {showKYCPopup && (
-          <KYCPopup inviteLink={inviteLink} onClose={handleClose} />
-        )}
-        {showLinkPopup && (
-          <LinkPopup
-            chatID={chatID}
-            onClose={handleClose}
-            inviteLink={inviteLink}
-          />
-        )} */}
       </div>
       {!userId && <SignUp2 />}
     </section>
