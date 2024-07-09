@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { back } from "../assets";
 
-const Otp2 = ({ onClose, onCloseAll, mobileNumber, apid, raid }) => {
+const Otp2 = ({ onClose, onCloseAll, mobileNumber }) => {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
   const [timer, setTimer] = useState(25);
 
+  const apid = sessionStorage.getItem("apid");
+  const raid = sessionStorage.getItem("raid");
   const landingPageUrl = sessionStorage.getItem("landingPageUrl");
 
   useEffect(() => {
