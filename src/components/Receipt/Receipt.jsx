@@ -60,7 +60,7 @@ const Receipt = ({ transaction, closePopup }) => {
 
     Promise.all(loadPromises).then(() => {
       if (transaction) {
-        // downloadPDF();
+        downloadPDF();
       }
     });
   }, [transaction]);
