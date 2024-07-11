@@ -8,9 +8,9 @@ const Otp2 = ({ onClose, onCloseAll, mobileNumber }) => {
   const [loading, setLoading] = useState(false);
   const [timer, setTimer] = useState(25);
 
-  const apid = sessionStorage.getItem("apid");
-  const raid = sessionStorage.getItem("raid");
-  const landingPageUrl = sessionStorage.getItem("landingPageUrl");
+  const apid = localStorage.getItem("apid");
+  const raid = localStorage.getItem("raid");
+  const landingPageUrl = localStorage.getItem("landingPageUrl");
 
   useEffect(() => {
     let interval;
@@ -150,6 +150,9 @@ const Otp2 = ({ onClose, onCloseAll, mobileNumber }) => {
         document.body.appendChild(scriptElement);
         window.location.reload();
       }
+      localStorage.removeItem("apid");
+      localStorage.removeItem("raid");
+      localStorage.removeItem("landingPageUrl");
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);
     }
