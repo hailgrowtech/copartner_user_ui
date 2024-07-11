@@ -97,7 +97,7 @@ const OptionExpertise = () => {
 
   return (
     <>
-      <motion.div
+       <motion.div
         ref={ref}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}

@@ -334,7 +334,7 @@ const SubscriptionRA = ({ userId }) => {
               Subscription Plans
             </div>
           </div>
-          <div className="w-full flex flex-row bg-[#18181B80] rounded-2xl p-3 mb-4 md:hidden">
+          {/* <div className="w-full flex flex-row bg-[#18181B80] rounded-2xl p-3 mb-4 md:hidden">
             <div className="activeOptions md:flex-col-6 md:text-[16px] text-[10px] flex flex-row my-auto">
               <motion.button
                 onClick={() => setFilterTab("futures")}
@@ -376,7 +376,7 @@ const SubscriptionRA = ({ userId }) => {
                 Equity
               </motion.button>
             </div>
-          </div>
+          </div> */}
           <AnimatePresence mode="wait">
             <motion.div
               key={filterTab}

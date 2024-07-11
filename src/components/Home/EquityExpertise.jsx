@@ -5,6 +5,7 @@ import { useUserData } from "../../constants/context";
 import { arrow, stars, telegram, userBck } from "../../assets";
 import SignUp from "../SignUp";
 import Testimonials from "./Testimonials";
+import BuyNow from "../BuyNow/BuyNow";
 
 const EquityExpertise = ({ token }) => {
   const userData = useUserData();
@@ -67,14 +68,14 @@ const EquityExpertise = ({ token }) => {
   return (
     <>
       <motion.div
-        className={`flex ${filteredData.length === 0 ? "hidden" : ""} flex-col md:py-[2rem] py-12`}
+        className={`flex ${filteredData.length === 0 ? "hidden" : ""} flex-col md:py-[2rem] py-2`}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
         variants={fadeInUp}
       >
-        <div className="flex flex-row justify-between xl:px-0">
+         <div className="flex flex-row justify-between xl:px-0">
           <div className="flex flex-col md:h-[52px] h-[34px] justify-center md:justify-between pb-[2rem] md:items-start">
             <div className="md:flex md:flex-row block md:h-[52px] h-[34px] justify-center md:justify-between text-center md:items-center">
               <span className="font-inter font-[700] md:text-[50px] text-[30px] text-gradient-2 leading-[51px] text-center">
@@ -212,7 +213,9 @@ const EquityExpertise = ({ token }) => {
               </button>
             </Link>
           </div>
-        </div>
+        </div> 
+
+        <BuyNow />
       </motion.div>
       <Testimonials />
     </>
