@@ -20,7 +20,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
   const { transactionTable } = useContext(SubscriptionContext);
   const [showSignUp, setShowSignUp] = useState(false);
   const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const apid = searchParams.get("apid");
@@ -183,24 +183,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleCardClick = (expert) => {
-    const expertTypeId = expert.expertTypeId;
-    let filterTab = "all";
-    switch (expertTypeId) {
-      case 1:
-        filterTab = "commodity";
-        break;
-      case 2:
-        filterTab = "equity";
-        break;
-      case 3:
-        filterTab = "futures";
-        break;
-      default:
-        filterTab = "all";
-    }
-    navigate(`/ra-detail/${expert.id}`, { state: { filterTab } });
-  };
+ 
 
   const slicedData = isMobile ? userData.slice(0, 4) : userData.slice(0, 3);
 
@@ -306,7 +289,6 @@ const Hero = ({ hasVisitedSignUp, token }) => {
                   initial="hidden"
                   animate="visible"
                   variants={heroVariants}
-                  onClick={() => handleCardClick(expert)}
                 >
                   <div
                     key={expert.id}

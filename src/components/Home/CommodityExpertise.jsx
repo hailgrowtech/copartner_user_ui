@@ -60,7 +60,7 @@ const CommodityExpertise = ({ token }) => {
 
   return (
     <>
-      <div className={`flex ${filteredData.length === 0 ? "hidden" : ""} flex-col sm:py-[4rem] md:mt-0 mt-20`}>
+       <div className={`flex ${filteredData.length === 0 ? "hidden" : ""} flex-col sm:py-[4rem] md:mt-0 mt-20`}>
         <div className="flex flex-row justify-between xl:px-0">
           <div className="flex flex-col md:h-[52px] h-[34px] justify-center md:justify-between pb-[2rem] md:items-start">
             <div className="flex flex-row md:h-[52px] h-[34px] justify-center md:justify-between items-center">
@@ -206,7 +206,7 @@ const CommodityExpertise = ({ token }) => {
             </Link>
           </div>
         </div>
-      </div>
+      </div> 
       <EquityExpertise token={token} />
     </>
   );
