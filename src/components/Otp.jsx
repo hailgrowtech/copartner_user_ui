@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { back, closeImg } from "../assets";
 import { useNavigate } from "react-router-dom";
 
-const Otp = ({ onClose, onCloseAll, mobileNumber, apid, raid, onComplete }) => {
+const Otp = ({ onClose, onCloseAll, mobileNumber, onComplete }) => {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -10,6 +10,8 @@ const Otp = ({ onClose, onCloseAll, mobileNumber, apid, raid, onComplete }) => {
   const [timer, setTimer] = useState(25);
   const navigate = useNavigate();
 
+  const apid = sessionStorage.getItem("apid");
+  const raid = sessionStorage.getItem("raid");
   const landingPageUrl = sessionStorage.getItem("landingPageUrl");
 
   useEffect(() => {

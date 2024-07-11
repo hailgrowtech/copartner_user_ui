@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Otp from "./Otp";
 import { closeImg, signupBg } from "../assets";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SignUp = ({ onComplete }) => {
   const [mobile, setMobile] = useState("");
@@ -10,9 +10,11 @@ const SignUp = ({ onComplete }) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [validationMessage, setValidationMessage] = useState("");
-  const [searchParams] = useSearchParams();
+  const location = useLocation();
 
   useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+
     const apid = searchParams.get("apid");
     const raid = searchParams.get("raid");
     const landingPageUrl = searchParams.get("apurl");
@@ -28,10 +30,7 @@ const SignUp = ({ onComplete }) => {
     if (landingPageUrl) {
       sessionStorage.setItem("landingPageUrl", landingPageUrl);
     }
-  }, [searchParams]);
-
-  const apid = sessionStorage.getItem("apid");
-  const raid = sessionStorage.getItem("raid");
+  }, [location.search]);
 
   const handleMobileChange = (e) => {
     const value = e.target.value;
@@ -139,8 +138,6 @@ const SignUp = ({ onComplete }) => {
           </p>
           {showOtp ? (
             <Otp
-              apid={apid}
-              raid={raid}
               mobileNumber={mobile}
               onClose={handleClosePopups}
               onCloseAll={handleClose}
