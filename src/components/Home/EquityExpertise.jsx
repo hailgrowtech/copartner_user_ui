@@ -6,6 +6,7 @@ import { arrow, stars, telegram, userBck } from "../../assets";
 import SignUp from "../SignUp";
 import Testimonials from "./Testimonials";
 import BuyNow from "../BuyNow/BuyNow";
+import LiveChatSection from "../LiveChat/LiveChatSection";
 
 const EquityExpertise = ({ token }) => {
   const userData = useUserData();
@@ -216,6 +217,7 @@ const EquityExpertise = ({ token }) => {
         </div> 
 
         <BuyNow />
+        <LiveChatSection />
       </motion.div>
       <Testimonials />
     </>
