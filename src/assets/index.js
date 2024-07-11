@@ -78,7 +78,6 @@ import ritik from "./Ritik.png";
 import paridhi from "./paridhi.png";
 import samay from "./Samayavif.png";
 import Group from "./stocGroup.png";
-
 export {
   logo,
   menu,
