@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Otp from "./Otp";
 import { closeImg, signupBg } from "../assets";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SignUp = ({ onComplete }) => {
   const [mobile, setMobile] = useState("");
@@ -10,9 +10,11 @@ const SignUp = ({ onComplete }) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [validationMessage, setValidationMessage] = useState("");
-  const [searchParams] = useSearchParams();
+  const location = useLocation();
 
   useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+
     const apid = searchParams.get("apid");
     const raid = searchParams.get("raid");
     const landingPageUrl = searchParams.get("apurl");
@@ -28,10 +30,7 @@ const SignUp = ({ onComplete }) => {
     if (landingPageUrl) {
       sessionStorage.setItem("landingPageUrl", landingPageUrl);
     }
-  }, [searchParams]);
-
-  const apid = sessionStorage.getItem("apid");
-  const raid = sessionStorage.getItem("raid");
+  }, [location.search]);
 
   const handleMobileChange = (e) => {
     const value = e.target.value;
@@ -139,8 +138,6 @@ const SignUp = ({ onComplete }) => {
           </p>
           {showOtp ? (
             <Otp
-              apid={apid}
-              raid={raid}
               mobileNumber={mobile}
               onClose={handleClosePopups}
               onCloseAll={handleClose}
@@ -165,9 +162,13 @@ const SignUp = ({ onComplete }) => {
               <button
                 type="submit"
                 className={`${
-                  mobile.length === 10 && !loading ? "bg-[#0081F1] text-white" : "bg-white"
+                  mobile.length === 10 && !loading
+                    ? "bg-[#0081F1] text-white"
+                    : "bg-white"
                 } hover:bg-black hover:text-white text-black transition duration-300 font-semibold text-[20px] py-3 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  isFormEmpty() || loading ? "opacity-50 cursor-not-allowed" : ""
+                  isFormEmpty() || loading
+                    ? "opacity-50 cursor-not-allowed"
+                    : ""
                 }`}
                 disabled={isFormEmpty() || loading}
               >

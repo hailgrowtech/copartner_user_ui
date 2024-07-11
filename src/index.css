@@ -66,62 +66,6 @@
   }
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.5s ease-in-out;
-}
-
-.card-bg{
-  border: 2px solid #0000;
-  border-radius: 6px;
-  background: linear-gradient(#0f0e13, #0f0e13) padding-box, linear-gradient(        var(--angle),        #54B848,        #036BC8      ) border-box;
-  animation: 8s rotate linear infinite;
-  -webkit-animation: 8s rotate linear infinite;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  -ms-border-radius: 6px;
-  -o-border-radius: 6px;
-}
-
-.card-bg:hover{
-  background: linear-gradient(#1b1922, #1b1922) padding-box, linear-gradient(
-    var(--angle),
-    #54B848,
-    #036BC8
-  ) border-box;
-  animation: 8s rotate linear infinite;
-
-}
-
-@keyframes rotate {
-  to {
-    --angle: 360deg;
-  }
-}
-
-@property --angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes fade {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-.animate-fade {
-  animation: fade 1s infinite;
-}
-
 
 
 .text-gradient-2 {
@@ -666,6 +610,68 @@
   animation: marquee 25s linear infinite;
 }
 
+.bg-subscription{
+  background: linear-gradient(110.81deg, rgba(24, 24, 27, 0.4) 41.99%, rgba(255, 255, 255, 0.1) 134.07%);
+}
+
+.bg-sub{
+  background: linear-gradient(110.81deg, rgba(24, 24, 27, 0.4) 41.99%, rgba(255, 255, 255, 0.1) 134.07%);
+
+}
+
+.bg-glass {
+  background: rgba(24, 24, 27, 50);
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  z-index: -2;
+  -webkit-border-radius:;
+  -moz-border-radius:;
+  -ms-border-radius:;
+  -o-border-radius:;
+}
+
+.same-height {
+  height: 300px; /* Adjust this value as needed */
+}
+
+
+
+.slick-slide {
+  padding: 0 10px; /* Adjust the value as needed to create gaps between slides */
+}
+
+.slick-list {
+  margin: 0 -10px; /* Negative margin to offset the padding and maintain alignment */
+}
+
+.mask-img {
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, transparent);
+  z-index: 1;
+}
+
+.discount-badge {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 12px;
+  padding: 2px 10px;
+  border-radius: 0 5px 0 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 0 5px 0 20px;
+  -moz-border-radius: 0 5px 0 20px;
+  -ms-border-radius: 0 5px 0 20px;
+  -o-border-radius: 0 5px 0 20px;
+}
+
+
+.bg-subs {
+  border: 2px solid #4caf50;
+}
+
+
 @keyframes marquee {
   0% {
     transform: translateX(50%);
@@ -674,3 +680,4 @@
     transform: translateX(-50%);
   }
 }
+

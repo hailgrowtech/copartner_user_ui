@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUserData } from "../../constants/context";
 import { arrow, stars, telegram, userBck } from "../../assets";
 import SignUp from "../SignUp";
 import Testimonials from "./Testimonials";
-import LiveChatSection from "../LiveChat/LiveChatSection";
-import WebinarSection from "./WebinarSection";
-
-
+import BuyNow from "../BuyNow/BuyNow.jsx";
+import LiveChatSection from "../LiveChat/LiveChatSection.jsx";
+import WebinarSection from "../Webinar/Webinar.jsx";
 const EquityExpertise = ({ token }) => {
   const userData = useUserData();
   const [showSignUp, setShowSignUp] = useState(false);
+  const navigate = useNavigate();
 
   const getExpertType = (typeId) => {
     switch (typeId) {
@@ -57,6 +57,10 @@ const EquityExpertise = ({ token }) => {
     window.open(link);
   };
 
+  const handleExpertClick = (expert) => {
+    navigate(`/ra-detail/${expert.id}`, { state: { filterTab: "equity" } });
+  };
+
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
@@ -65,14 +69,14 @@ const EquityExpertise = ({ token }) => {
   return (
     <>
       <motion.div
-        className={`flex ${filteredData.length === 0 ? "hidden" : ""} flex-col md:py-[2rem] py-12`}
+        className={`flex ${filteredData.length === 0 ? "hidden" : ""} flex-col md:py-[2rem] py-2`}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
         variants={fadeInUp}
       >
-        <div className="flex flex-row justify-between xl:px-0">
+         <div className="flex flex-row justify-between xl:px-0">
           <div className="flex flex-col md:h-[52px] h-[34px] justify-center md:justify-between pb-[2rem] md:items-start">
             <div className="md:flex md:flex-row block md:h-[52px] h-[34px] justify-center md:justify-between text-center md:items-center">
               <span className="font-inter font-[700] md:text-[50px] text-[30px] text-gradient-2 leading-[51px] text-center">
@@ -103,14 +107,13 @@ const EquityExpertise = ({ token }) => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: id * 0.2 }}
                 >
-                  <Link
-                    onClick={scrollToTop}
-                    to={`/ra-detail/${expert.id}`}
+                  <div
+                    onClick={() => handleExpertClick(expert)}
                     key={expert.id}
                     className="md:w-[auto] md:h-[295px] sm:w-[172px] h-[200px] gap-[3px] relative flex flex-col items-center"
                   >
                     <div className="w-[80px] h-[98px] md:w-[256px] md:h-[146px] relative profile-image_1 mb-1">
-                    <img
+                      <img
                         src={userBck}
                         alt="background"
                         className="absolute top-0 left-0 w-full h-full object-contain rounded-t-[11px]"
@@ -170,13 +173,13 @@ const EquityExpertise = ({ token }) => {
                         </span>
                       </div>
                     </div>
-                  </Link>
+                  </div>
                   <div
                     onClick={() => handleTelegram(expert.telegramChannel)}
                     className="md:w-[211px] mx-auto bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0"
                   >
                     <div className="flex justify-center items-center gap-2 btn-animate">
-                    <img
+                      <img
                         src={telegram}
                         alt="Telegram"
                         className="md:w-[24px] md:h-[24px] w-[16px] h-[16px]"
@@ -211,7 +214,9 @@ const EquityExpertise = ({ token }) => {
               </button>
             </Link>
           </div>
-        </div>
+        </div> 
+
+        <BuyNow />
       </motion.div>
       <LiveChatSection />
       <WebinarSection />

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import EquityExpertise from "./EquityExpertise";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUserData } from "../../constants/context";
 import { arrow, stars, telegram, userBck } from "../../assets";
 import SignUp from "../SignUp";
@@ -8,6 +8,7 @@ import SignUp from "../SignUp";
 const CommodityExpertise = ({ token }) => {
   const userData = useUserData();
   const [showSignUp, setShowSignUp] = useState(false);
+  const navigate = useNavigate();
 
   const getExpertType = (typeId) => {
     switch (typeId) {
@@ -53,9 +54,13 @@ const CommodityExpertise = ({ token }) => {
     window.open(link);
   };
 
+  const handleExpertClick = (expert) => {
+    navigate(`/ra-detail/${expert.id}`, { state: { filterTab: "commodity" } });
+  };
+
   return (
     <>
-      <div className={`flex ${filteredData.length === 0 ? "hidden" : ""} flex-col sm:py-[4rem] md:mt-0 mt-20`}>
+       <div className={`flex ${filteredData.length === 0 ? "hidden" : ""} flex-col sm:py-[4rem] md:mt-0 mt-20`}>
         <div className="flex flex-row justify-between xl:px-0">
           <div className="flex flex-col md:h-[52px] h-[34px] justify-center md:justify-between pb-[2rem] md:items-start">
             <div className="flex flex-row md:h-[52px] h-[34px] justify-center md:justify-between items-center">
@@ -87,9 +92,8 @@ const CommodityExpertise = ({ token }) => {
             filteredData.slice(0, 3).map((expert, id) => {
               return (
                 <div className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-[11px] p-2">
-                  <Link
-                    onClick={scrollToTop}
-                    to={`/ra-detail/${expert.id}`}
+                  <div
+                    onClick={() => handleExpertClick(expert)}
                     key={expert.id}
                     className="md:w-[auto] md:h-[295px] sm:w-[172px] h-[230px] gap-[3px] relative flex flex-col items-center"
                   >
@@ -157,7 +161,7 @@ const CommodityExpertise = ({ token }) => {
                         </span>
                       </div>
                     </div>
-                  </Link>
+                  </div>
                   <div
                     onClick={() => handleTelegram(expert.telegramChannel)}
                     className="md:w-[211px] mx-auto bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0"
@@ -202,7 +206,7 @@ const CommodityExpertise = ({ token }) => {
             </Link>
           </div>
         </div>
-      </div>
+      </div> 
       <EquityExpertise token={token} />
     </>
   );

@@ -1,15 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import styles from "../../style";
-import {
-  arrow,
-  closeImg,
-  telegram,
-  userBck,
-  stars,
-  feeback,
-} from "../../assets";
+import { arrow, closeImg, telegram, userBck, stars } from "../../assets";
 import Expertise from "./Expertise";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { useUserData } from "../../constants/context";
 import { useUserSession } from "../../constants/userContext";
 import KYCPopup from "../Subscription RA/KYCPopup";
@@ -26,8 +19,8 @@ const Hero = ({ hasVisitedSignUp, token }) => {
   const [showKYCDialog, setShowKYCDialog] = useState(false);
   const { transactionTable } = useContext(SubscriptionContext);
   const [showSignUp, setShowSignUp] = useState(false);
-  // const [loading, setLoading] = useState(true);
   const [searchParams] = useSearchParams();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const apid = searchParams.get("apid");
@@ -190,19 +183,13 @@ const Hero = ({ hasVisitedSignUp, token }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const slicedData = isMobile ? userData.slice(0, 5) : userData.slice(0, 3);
+ 
+
+  const slicedData = isMobile ? userData.slice(0, 4) : userData.slice(0, 3);
 
   const heroVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
-
-  const loadingVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: [0, 1, 0],
-      transition: { duration: 1, repeat: Infinity },
-    },
   };
 
   return (
@@ -303,9 +290,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
                   animate="visible"
                   variants={heroVariants}
                 >
-                  <Link
-                    onClick={scrollToTop}
-                    to={`/ra-detail/${expert.id}`}
+                  <div
                     key={expert.id}
                     className="md:w-[256px] md:h-[265px] sm:w-[172px] h-[200px] gap-[3px] relative flex flex-col items-center"
                   >
@@ -373,7 +358,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
                         </span>
                       </div>
                     </div>
-                  </Link>
+                  </div>
                   <div className="md:w-[211px] mx-auto bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
                     <div
                       onClick={(e) => handleTelegram(e, expert.telegramChannel)}
@@ -410,7 +395,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
             initial="hidden"
             animate="visible"
             variants={heroVariants}
-            className="md:px-[3rem] flex flex-col md:gap-4 gap-3 md:p-4 p-2"
+            className="md:px-[3rem] md:flex md:flex-col hidden md:gap-4 gap-3 md:p-4 p-2"
           >
             <span className="font-[600] md:text-[30px] text-lg leading-5 text-lightWhite">
               Experience Matters
