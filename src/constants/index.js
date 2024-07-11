@@ -735,7 +735,7 @@ export const liveCourseData = [
     followers: 1800,
     experience: "2.5",
     duration: "2.5",
-    date: "Live Now",
+    date: "Friday - 10 July | 10:00AM",
   },
   {
     imageUrl: courseImg,
@@ -746,7 +746,7 @@ export const liveCourseData = [
     followers: 1800,
     experience: "2.5",
     duration: "2.5",
-    date: "Live Now",
+    date: "Friday - 10 July | 10:00AM",
   },
   {
     imageUrl: courseImg,
@@ -757,7 +757,7 @@ export const liveCourseData = [
     followers: 1800,
     experience: "2.5",
     duration: "2.5",
-    date: "Live Now",
+    date: "Friday - 10 July | 10:00AM",
   },
   {
     imageUrl: courseImg,
@@ -768,7 +768,7 @@ export const liveCourseData = [
     followers: 1800,
     experience: "2.5",
     duration: "2.5",
-    date: "Live Now",
+    date: "Friday - 10 July | 10:00AM",
   },
   {
     imageUrl: courseImg,
@@ -779,7 +779,7 @@ export const liveCourseData = [
     followers: 1800,
     experience: "2.5",
     duration: "2.5",
-    date: "Live Now",
+    date: "Friday - 10 July | 10:00AM",
   },
   {
     imageUrl: courseImg,
@@ -790,7 +790,7 @@ export const liveCourseData = [
     followers: 1800,
     experience: "2.5",
     duration: "2.5",
-    date: "Live Now",
+    date: "Friday - 10 July | 10:00AM",
   },
 ];
 

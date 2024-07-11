@@ -79,6 +79,8 @@ import paridhi from "./paridhi.png";
 import samay from "./Samayavif.png";
 import Group from "./stocGroup.png";
 import LiveChat from './LiveChat.png'
+import SebiReg from './sebiReg.png'
+import demoImg from './demoImg.png'
 export {
   logo,
   menu,
@@ -160,5 +162,7 @@ export {
   paridhi,
   samay,
   Group,
-  LiveChat
+  LiveChat,
+  SebiReg,
+  demoImg,
 };

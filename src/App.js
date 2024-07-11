@@ -38,6 +38,7 @@ import { UserProvider } from "./constants/userContext";
 import { SubscriptionProvider } from "./constants/subscriptionContext";
 import Ad1 from "./components/LandingPages/Ad1";
 import KYCPopup from "./components/KYCPage";
+import WebinarExpert from "./components/Webinar/WebinarExpert";
 
 function App() {
   // const token = sessionStorage.getItem("token");
@@ -153,7 +154,21 @@ function App() {
             path="webinar"
             element={
               userId || hasVisitedSignUp ? (
+                <UserDataProvider>
                 <Webinar />
+                </UserDataProvider>
+              ) : (
+                <Navigate to="/signup" replace={true} />
+              )
+            }
+          />
+          <Route
+            path="/webinar/expert/:id"
+            element={
+              userId || hasVisitedSignUp ? (
+                <UserDataProvider>
+                <WebinarExpert userId={userId}/>
+                </UserDataProvider>
               ) : (
                 <Navigate to="/signup" replace={true} />
               )
