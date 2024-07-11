@@ -217,9 +217,10 @@ const EquityExpertise = ({ token }) => {
         </div> 
 
         <BuyNow />
+        <LiveChatSection />
+
       </motion.div>
-      <LiveChatSection />
-      <WebinarSection />
+
       <Testimonials />
     </>
   );

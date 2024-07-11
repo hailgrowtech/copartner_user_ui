@@ -1,9 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+
+
+
 
 @layer utilities {
   /* Hide scrollbar for Chrome, Safari and Opera */
@@ -64,6 +66,62 @@
   50% {
     transform: scale(1.1);
   }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-in-out;
+}
+
+.card-bg{
+  border: 2px solid #0000;
+  border-radius: 6px;
+  background: linear-gradient(#0f0e13, #0f0e13) padding-box, linear-gradient(        var(--angle),        #54B848,        #036BC8      ) border-box;
+  animation: 8s rotate linear infinite;
+  -webkit-animation: 8s rotate linear infinite;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+.card-bg:hover{
+  background: linear-gradient(#1b1922, #1b1922) padding-box, linear-gradient(
+    var(--angle),
+    #54B848,
+    #036BC8
+  ) border-box;
+  animation: 8s rotate linear infinite;
+
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes fade {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-fade {
+  animation: fade 1s infinite;
 }
 
 
