@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { logo, menu, hamburgerBg, LogOut, close, login } from "../assets";
+import { logo, menu, hamburgerBg, LogOut, close, login, WebinarLogo } from "../assets";
 import { navLinks } from "../constants";
 import styles from "../style";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import Footer from "./Home/Footer";
 import { useUserSession } from "../constants/userContext";
 import { motion } from "framer-motion";
+import Marquee from "react-fast-marquee"; // Ensure you have this dependency installed
 
 const Navbar = ({ token }) => {
   const [active, setActive] = useState("Home");
@@ -89,23 +90,39 @@ const Navbar = ({ token }) => {
     closed: { opacity: 0, x: "-100%" },
   };
 
+  const shouldHideToggle = location.pathname.includes("/webinar/expert");
+  const logoToShow = shouldHideToggle ? WebinarLogo : logo;
+  const logoDimensions = shouldHideToggle ? { width: "150px", height: "45px" } : { width: "153px", height: "39px" };
+  const navbarMarginTop = shouldHideToggle ? 'mt-8' : '';
+
   return (
     <>
+      {shouldHideToggle && (
+        <div className="fixed top-0 z-50 w-full" style={{ zIndex: 51 }}>
+          <div className="" style={{ width: '100vw', margin: '0 -50vw', left: '50%', position: 'relative' }}>
+            <Marquee gradient={false} style={{ background: 'linear-gradient(90.81deg, #0181F1 -6.15%, #5ABEE2 54.57%, #AF53AC 107.78%)', color: 'white', padding: '5px 0' }}>
+              <p className='px-30'>🥳 Celebrating 1 Million+ Learners 🥳 Special Offer!</p>
+              <p className='px-40'>🥳 Celebrating 1 Million+ Learners 🥳 Special Offer!</p>
+              <p className='px-40'>🥳 Celebrating 1 Million+ Learners 🥳 Special Offer!</p>
+              <p className='px-40'>🥳 Celebrating 1 Million+ Learners 🥳 Special Offer!</p>
+            </Marquee>
+          </div>
+        </div>
+      )}
       <motion.div
         key={location.pathname}
         variants={navbarVariants}
         initial="hidden"
         animate="visible"
-        className={`${styles.paddingX} ${
-          styles.flexCenter
-        } fixed top-0 z-50 w-full ${
+        className={`${styles.paddingX} ${styles.flexCenter} fixed top-0 z-50 w-full ${navbarMarginTop} ${
           isScrolled ? styles.transparentNavbar : styles.scrolledNavbar
         }`}
+        style={{ zIndex: 50 }}
       >
         <div className={`${styles.boxWidth}`}>
           <nav className="w-full flex md:py-5 py-4 justify-between items-center">
             <Link onClick={scrollToTop} to="/">
-              <img src={logo} alt="LOGO" className="w-[153px] h-[39px]" />
+              <img src={logoToShow} alt="LOGO" style={logoDimensions} />
             </Link>
 
             <ul className="list-none sm:flex hidden justify-center items-center flex-1">
@@ -148,99 +165,100 @@ const Navbar = ({ token }) => {
               </div>
             )}
 
-            <div className="sm:hidden flex flex-1 justify-end items-center">
-              <img
-                src={toggle ? undefined : menu}
-                alt="Menu"
-                className="w-[28px] h-[28px] object-contain"
-                onClick={() => setToggle(!toggle)}
-              />
+            {!shouldHideToggle && (
+              <div className="sm:hidden flex flex-1 justify-end items-center">
+                <img
+                  src={toggle ? undefined : menu}
+                  alt="Menu"
+                  className="w-[28px] h-[28px] object-contain"
+                  onClick={() => setToggle(!toggle)}
+                />
 
-              <motion.div
-                initial={false}
-                animate={toggle ? "open" : "closed"}
-                variants={menuVariants}
-                className={`${
-                  toggle ? "flex" : "hidden"
-                } justify-center items-center fixed top-0 left-0 z-50 w-full bg-[#06030E] h-screen p-3 bg-gradient-to-tr`}
-                style={{
-                  backgroundImage: `url(${hamburgerBg})`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundPositionY: "bottom",
-                  backgroundSize: "30rem",
-                }}
-              >
-                <button
-                  className="w-[31px] h-[31px] object-contain cursor-pointer text-dimWhite mt-6 absolute top-4 right-4"
-                  onClick={() => setToggle(false)}
+                <motion.div
+                  initial={false}
+                  animate={toggle ? "open" : "closed"}
+                  variants={menuVariants}
+                  className={`${
+                    toggle ? "flex" : "hidden"
+                  } justify-center items-center fixed top-0 left-0 z-50 w-full bg-[#06030E] h-screen p-3 bg-gradient-to-tr`}
+                  style={{
+                    backgroundImage: `url(${hamburgerBg})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundPositionY: "bottom",
+                    backgroundSize: "30rem",
+                  }}
                 >
-                  <img src={close} alt="Close" />
-                </button>
+                  <button
+                    className="w-[31px] h-[31px] object-contain cursor-pointer text-dimWhite mt-6 absolute top-4 right-4"
+                    onClick={() => setToggle(false)}
+                  >
+                    <img src={close} alt="Close" />
+                  </button>
 
-                <ul className="list-none flex flex-col justify-end items-center gap-4">
-                  <li className="font-poppins font-normal cursor-pointer text-[16px] text-white mb-6">
-                    <img width={"200rem"} src={logo} alt="" />
-                  </li>
-
-                  {navLinks.map((nav, index) => (
-                    <li
-                      key={nav.id}
-                      onClick={() => {
-                        setActive(nav.title);
-                        setToggle(false);
-                      }}
-                      className={`font-poppins font-normal cursor-pointer
-                           ${
-                             active === nav.title
-                               ? "text-gradient font-semibold text-xl"
-                               : "text-white"
-                           }
-                           ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
-                    >
-                      <Link
-                        onClick={scrollToTop}
-                        to={`${nav.id === "home" ? "/" : nav.id}`}
-                      >
-                        {nav.title}
-                      </Link>
+                  <ul className="list-none flex flex-col justify-end items-center gap-4">
+                    <li className="font-poppins font-normal cursor-pointer text-[16px] text-white mb-6">
+                      <img width={"200rem"} src={logoToShow} alt="" />
                     </li>
-                  ))}
-
-                  <li className="mt-4">
-                    {token ? (
-                      <button
-                        onClick={handleLogOut}
-                        className="text-black font-semibold text-[11px] py-1 px-4 rounded-[4px] border-2 border-solid bg-white border-dimWhite border-opacity-60 flex items-center"
-                      >
-                        Logout{" "}
-                        <img
-                          className="ms-2"
-                          width={"15rem"}
-                          src={LogOut}
-                          alt=""
-                        />
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => navigate("/signup")}
-                        className="text-black font-semibold text-[11px] py-1 px-4 rounded-[4px] border-2 border-solid bg-white border-dimWhite border-opacity-60 flex items-center"
-                      >
-                        Login{" "}
-                        <img
-                          className="ms-2"
-                          width={"15rem"}
-                          src={LogOut}
-                          alt=""
-                        />
-                      </button>
-                    )}
-                  </li>
-                </ul>
-              </motion.div>
-            </div>
-          </nav>
-        </div>
-      </motion.div>
+                    {navLinks.map((nav, index) => (
+                        <li
+                          key={nav.id}
+                          onClick={() => {
+                            setActive(nav.title);
+                            setToggle(false);
+                          }}
+                          className={`font-poppins font-normal cursor-pointer
+                             ${
+                               active === nav.title
+                                 ? "text-gradient font-semibold text-xl"
+                                 : "text-white"
+                             }
+                             ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
+                        >
+                          <Link
+                            onClick={scrollToTop}
+                            to={`${nav.id === "home" ? "/" : nav.id}`}
+                          >
+                            {nav.title}
+                          </Link>
+                        </li>
+                      ))}
+    
+                      <li className="mt-4">
+                        {token ? (
+                          <button
+                            onClick={handleLogOut}
+                            className="text-black font-semibold text-[11px] py-1 px-4 rounded-[4px] border-2 border-solid bg-white border-dimWhite border-opacity-60 flex items-center"
+                          >
+                            Logout{" "}
+                            <img
+                              className="ms-2"
+                              width={"15rem"}
+                              src={LogOut}
+                              alt=""
+                            />
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => navigate("/signup")}
+                            className="text-black font-semibold text-[11px] py-1 px-4 rounded-[4px] border-2 border-solid bg-white border-dimWhite border-opacity-60 flex items-center"
+                          >
+                            Login{" "}
+                            <img
+                              className="ms-2"
+                              width={"15rem"}
+                              src={LogOut}
+                              alt=""
+                            />
+                          </button>
+                        )}
+                      </li>
+                    </ul>
+                  </motion.div>
+                </div>
+              )}
+            </nav>
+          </div>
+        </motion.div>
       <Outlet />
       <div>
         <Footer />

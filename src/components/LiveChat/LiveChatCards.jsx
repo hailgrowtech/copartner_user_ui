@@ -80,7 +80,7 @@ const LiveChatCards = () => {
     slidesToShow: 4,
     slidesToScroll: 1,
     arrows: false,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 4000,
     pauseOnHover: true,
     responsive: [
@@ -98,25 +98,27 @@ const LiveChatCards = () => {
     <div className="container mx-auto">
       <Slider {...settings}>
         {userData?.map((expert, id) => (
-          <div key={expert.id} className="p-2 text-white">
+          <div key={expert.id} className=" text-white ">
             <Link
               onClick={scrollToTop}
               to={`/ra-detail/${expert.id}`}
-              className="rounded-[11px] md:w-[250px] w-[160px] md:mt-0 mt-[5px] p-1 relative flex flex-col items-center border-[1px] border-[#ffffff43] hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
+              className="rounded-[11px] md:w-[250px] md:mt-0 mt-[5px] p-1 relative flex flex-col items-center border-[1px] border-[#ffffff43] hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
             >
               <div className="relative w-full  md:h-[300px] h-[220px] flex flex-col justify-end items-center overflow-hidden rounded-t-[11px]">
-                <span className="absolute top-2 right-2 animated-border card-bg bg-transparent border-[1px]  text-white text-xs px-3 py-1 animate-fade" style={{ zIndex: 2 }}>🔴 Live</span>
+                <span className="absolute top-2 right-2 flex flex-row items-center card-bg bg-transparent border-[0px]  text-white text-xs px-2 py-[0.9px] animate-fade" style={{ zIndex: 2 }}><span className="w-[0.3rem] h-[0.3rem] bg-[#f62525] mr-1 rounded-full"></span>
+                Live</span>
                 <img src={userBck} alt="Background" className="absolute inset-0 w-full h-full object-cover" />
                 <img src={expert.expertImagePath} alt={expert.name} className="absolute top-0 w-full h-auto object-contain mt-2" style={{ zIndex: 1, maskImage: "linear-gradient(rgba(0, 0, 0, 1) 70%, transparent)" }} />
                 <div className="absolute inset-0 w-full h-full flex flex-col justify-end items-center p-1 bg-gradient-to-t from-black via-transparent" style={{ zIndex: 2 }}>
                   <div className='flex flex-col justify-start items-start w-full'>
                     <span className="text-left md:text-[16px] text-[14px]">Live Chat With</span>
                     <motion.h3 className=" font-bold md:text-[16px] text-[14px] text-white text-left text-gradient md:h-[30px]">
-                      <TypingAnimation name={expert.name} type={getExpertType(expert.expertTypeId)} />
+                      {/* <TypingAnimation name={expert.name} type={getExpertType(expert.expertTypeId)} /> */}
+                      {expert.name}
                     </motion.h3>
                   </div>
-                  <div className="flex items-center md:mt-[0.5px] justify-between w-full">
-                    <div className="flex flex-col items-center justify-between">
+                  <div className="flex items-center md:mt-[0.5px] text-[10px] text-[#ffffff9c] justify-between w-full">
+                    {/* <div className="flex flex-col items-center justify-between">
                       <span className="text-dimWhite font-[400] text-[13px]">Experience</span>
                       <span className="text-lightWhite font-[600] sm:text-[15px] sm:leading-[18px] text-[10px] leading-[10px]">{expert.experience}+</span>
                     </div>
@@ -126,14 +128,15 @@ const LiveChatCards = () => {
                         <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">Followers</span>
                         <span className="text-lightWhite font-[600] sm:text-[15px] sm:leading-[18px] text-[10px] leading-[10px]">{`${expert.telegramFollower / 1000}k`}</span>
                       </div>
-                    </div>
+                    </div> */}
+                    SEBI: {expert.sebiRegNo}
                   </div>
                   <button
                     className="mt-2 w-full flex items-center justify-center text-[#fff] hover:underline"
                     onClick={() => handleTelegram(expert.telegram)}
                     style={{ background: "#2BDE70", padding: '0.5rem 1rem', borderRadius: '2rem' }}
                   >
-                    <span className='flex items-center justify-center btn-animate text-[13px]'>
+                    <span className='flex items-center justify-center btn-animate text-[13px] font-bold'>
                       <img src={LiveChat} alt="Live Chat" className="w-4 h-4 mr-1" />
                       Chat Now
                     </span>

@@ -1,13 +1,10 @@
 import React from 'react';
-import { demoImg, logo } from '../../assets';
-import { FaRegClock, FaChalkboardTeacher, FaCertificate } from 'react-icons/fa';
 import { FaCheck } from "react-icons/fa6";
-
+import './Webinar.css'
 const HowWebinarWorks = () => {
   return (
     <div className='w-full mt-3 flex flex-col'>
-      
-      <div className='bg-[#18181B] rounded-[10px] h-[353px] mt-8 p-6'>
+      <div className='bg-[#18181B] rounded-[10px] mt-8 p-6'>
         <div className='text-[26px]'>
           Here’s how it Works over the <br/><span className='text-gradient font-bold'>3 Hours</span>
         </div>
@@ -15,26 +12,28 @@ const HowWebinarWorks = () => {
         <div className='mt-5'>
           <ul className='list-none space-y-4'>
             <li className='flex items-center'>
-              <FaCheck  className='text-xl mr-2' />
+              <FaCheck className='text-xl mr-2' />
               <span>Field mapping customization</span>
             </li>
             <li className='flex items-center'>
-              <FaCheck  className='text-xl mr-2' />
+              <FaCheck className='text-xl mr-2' />
               <span>Eventbrite embedded checkout</span>
             </li>
             <li className='flex items-center'>
-              <FaCheck  className='text-xl mr-2' />
+              <FaCheck className='text-xl mr-2' />
               <span>Automated event updates</span>
             </li>
             <li className='flex items-center'>
-              <FaCheck  className='text-xl mr-2' />
+              <FaCheck className='text-xl mr-2' />
               <span>Real-time data synchronisation</span>
             </li>
           </ul>
         </div>
       </div>
       <div className='w-full mt-3'>
-      <button className="w-full md:w-[1000px] bg-[#006ADC] text-[15px] font-semibold md:py-3 py-4 rounded-md">Buy Now at ₹1,999</button>
+        <button className="w-full md:w-[1000px] bg-[#006ADC] text-[15px] font-semibold md:py-3 py-4 rounded-md scale-animation">
+          Buy Now at ₹1,999
+        </button>
       </div>
     </div>
   );

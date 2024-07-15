@@ -5,9 +5,11 @@ import styles from "../../style"; // Adjust the path based on your folder struct
 import Marquee from "react-fast-marquee";
 import { SlCalender } from "react-icons/sl";
 import { CgLock } from "react-icons/cg";
-import { demoImg, logo, SebiReg, userBck } from "../../assets";
+import { demoImg, featured1, featured2, logo, SebiReg, userBck } from "../../assets";
 import HowWebinarWorks from "./HowWebinarWorks";
 import LearnWebinar from "./LearnWebinar";
+import FAQs2 from "../About/FAQs2";
+import WebinarFeatured from "./WebinarFeatured";
 
 const WebinarExpert = () => {
   const { id } = useParams();
@@ -47,20 +49,20 @@ const WebinarExpert = () => {
     <div className="expertise-Bg text-white">
       <section className={`flex md:flex-row flex-col md:px-0 px-3 ${styles.paddingY} expertise-Bg`}>
         <div className={`flex-1 ${styles.flexStart} flex-col md:px-28 z-10`}>
-          <div className="md:hidden" style={{ width: '100vw', margin: '0 -50vw', left: '50%', position: 'relative' }}>
+          {/* <div className="md:hidden" style={{ width: '100vw', margin: '0 -50vw', left: '50%', position: 'relative' }}>
             <Marquee gradient={false} style={{ background: 'linear-gradient(90.81deg, #0181F1 -6.15%, #5ABEE2 54.57%, #AF53AC 107.78%)', color: 'white', padding: '10px 0' }}>
               <p className='px-30'>🥳 Celebrating 1 Million+ Learners 🥳 Special Offer!</p>
               <p className='px-40'>🥳 Celebrating 1 Million+ Learners 🥳 Special Offer!</p>
               <p className='px-40'>🥳 Celebrating 1 Million+ Learners 🥳 Special Offer!</p>
               <p className='px-40'>🥳 Celebrating 1 Million+ Learners 🥳 Special Offer!</p>
             </Marquee>
-          </div>
+          </div> */}
           <div className="flex flex-col justify-between items-center w-full">
             <span className="font-inter text-center font-[700] md:text-[62px] text-[36px] text-gradient md:leading-[74px] leading-[48px]">
               Option Trading Tips <br /> Earn More
             </span>
             <p className="mt-2 text-center text-dimWhite md:text-[18px] text-[15px] md:block">
-              Lorem ipsum dolor sit amet consectetur. Sit urna laoreet vel <br />condimentum. Nec enim non blandit diam. Lorem ipsum dolor sit amet consectetur.
+              Lorem ipsum dolor sit amet consectetur. Sit urna laoreet vel condimentum. 
             </p>
             <div className="flex flex-row justify-around items-center py-3 w-full">
               <span className="bg-[#ffffff4b] px-4 py-2 rounded-md border border-[#ffffff4b] flex flex-row items-center justify-center gap-2"><SlCalender />14th July 2024</span>
@@ -68,7 +70,7 @@ const WebinarExpert = () => {
             </div>
           </div>
           
-          <div key={expertData.id} className="flex flex-col justify-center items-center w-full mt-8">
+          <div key={expertData.id} className="flex flex-col justify-center items-center w-full mt-5">
             <div className="webinarProfile flex flex-row justify-around items-center w-full relative p-4">
               <div className="flex flex-col justify-between">
                 <h1 className="text-2xl text-[#e4e4e790]">By</h1>
@@ -99,29 +101,24 @@ const WebinarExpert = () => {
             </div>
           </div>
 
-          <div className='secondSection w-full flex md:flex-row flex-col justify-center items-center gap-4 mt-8'>
-            <div className="flex flex-col md:flex-row justify-center items-center">
-              <div className='flex flex-col justify-center items-center'>
-                <span>Brought to you by</span>
-                <span className='md:mt-4 mt-2'>
-                  <img src={logo} alt="Logo" className='w-50 max-w-[200px]' />
-                </span>
-              </div>
-              <div className='flex flex-col justify-center items-center md:mt-0 mt-8'>
-                <span>Featured In</span>
-                <span className='mt-2'>
-                  <img src={demoImg} alt="Featured In" className='w-80' />
-                </span>
-              </div>
-            </div>
-          </div>
+          <WebinarFeatured />
 
           <div className="flex md:flex-row sm:flex-col flex-col">
             <HowWebinarWorks />
             <LearnWebinar />
           </div>
+          <FAQs2 />
         </div>
       </section>
+      <div className="fixed bottom-0 left-0 right-0 bg-[#006ADC] text-white text-center py-4 md:hidden z-50">
+        <div className="flex justify-between items-center px-4">
+          <div className="flex flex-col">
+          <span className="text-[1.5rem] font-semibold">Enroll Now at </span>
+          <span className="text-[1.5rem] font-semibold"> just ₹1,999</span>
+          </div>
+          <button className="bg-white text-[#006ADC] font-semibold py-2 px-4 rounded-md text-[15px]">Buy Now</button>
+        </div>
+      </div>
     </div>
   );
 };

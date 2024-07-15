@@ -82,7 +82,7 @@
 }
 
 .card-bg{
-  border: 2px solid #0000;
+  border: 1px solid #0000;
   border-radius: 6px;
   background: linear-gradient(#0f0e13, #0f0e13) padding-box, linear-gradient(        var(--angle),        #54B848,        #036BC8      ) border-box;
   animation: 8s rotate linear infinite;
@@ -703,10 +703,16 @@
 }
 
 .mask-img {
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, transparent);
-  z-index: 1;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.1) 30%, transparent);
+  z-index: 2; /* Higher z-index to ensure it appears above the expert image */
+  position: absolute; /* Ensure it's positioned correctly over the expert image */
+  width: 100%;
+  height: 100%;
 }
+
+
+
+
 
 .discount-badge {
   position: absolute;
