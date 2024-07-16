@@ -52,6 +52,14 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+.text-gradient-underline {
+  background: linear-gradient(94.34deg, #FFFFFF 0%, #9BD0F5 100%), linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: underline;
+  background-clip: text;
+}
+
 
 .btn-animate{
   animation: scale-animation 1.5s infinite;

@@ -39,7 +39,7 @@ const FAQs2 = () => {
           </span>
         </div>
 
-        <p className="font-inter md:w-[1136px] md:h-[28px] w-[328px] h-[34px] font-[400] text-dimWhite sm:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
+        <p className="font-inter mx-auto font-[400] text-dimWhite sm:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
           leading-[16px] sm:text-start mt-2 text-center"
         >
           Dive into the expertise of our SEBI registered research analysts.

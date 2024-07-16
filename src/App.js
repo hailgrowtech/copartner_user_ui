@@ -38,6 +38,7 @@ import { UserProvider } from "./constants/userContext";
 import { SubscriptionProvider } from "./constants/subscriptionContext";
 import Ad1 from "./components/LandingPages/Ad1";
 import KYCPopup from "./components/KYCPage";
+import MinorSub from "./components/MinorSub/MinorSub";
 
 function App() {
   // const token = sessionStorage.getItem("token");
@@ -171,6 +172,14 @@ function App() {
               ) : (
                 <Navigate to="/signup" replace={true} />
               )
+            }
+          />
+           <Route
+            path="ra-detail2/:id"
+            element={
+              <UserProvider>
+                <MinorSub userId={userId} />
+              </UserProvider>
             }
           />
           <Route
