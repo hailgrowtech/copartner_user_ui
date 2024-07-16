@@ -10,9 +10,9 @@ const Otp = ({ onClose, onCloseAll, mobileNumber, onComplete }) => {
   const [timer, setTimer] = useState(25);
   const navigate = useNavigate();
 
-  const apid = sessionStorage.getItem("apid");
-  const raid = sessionStorage.getItem("raid");
-  const landingPageUrl = sessionStorage.getItem("landingPageUrl");
+  const apid = localStorage.getItem("apid");
+  const raid = localStorage.getItem("raid");
+  const landingPageUrl = localStorage.getItem("landingPageUrl");
 
   useEffect(() => {
     let interval;
@@ -120,6 +120,9 @@ const Otp = ({ onClose, onCloseAll, mobileNumber, onComplete }) => {
         window.location.reload();
         onComplete();
       }
+      localStorage.removeItem("apid");
+      localStorage.removeItem("raid");
+      localStorage.removeItem("landingPageUrl");
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);
     }
@@ -206,7 +209,9 @@ const Otp = ({ onClose, onCloseAll, mobileNumber, onComplete }) => {
           <button
             type="submit"
             className={`${
-              otp.length === 6 && !loading ? "bg-blue-500 text-white" : "bg-white text-black"
+              otp.length === 6 && !loading
+                ? "bg-blue-500 text-white"
+                : "bg-white text-black"
             } hover:bg-black hover:text-white transition duration-300 font-semibold text-[20px] py-3 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${
               isFormEmpty() || loading ? "opacity-50 cursor-not-allowed" : ""
             }`}

@@ -20,15 +20,15 @@ const SignUp2 = () => {
     const landingPageUrl = searchParams.get("apurl");
 
     if (apid) {
-      sessionStorage.setItem("apid", apid);
+      localStorage.setItem("apid", apid);
     }
 
     if (raid) {
-      sessionStorage.setItem("raid", raid);
+      localStorage.setItem("raid", raid);
     }
 
     if (landingPageUrl) {
-      sessionStorage.setItem("landingPageUrl", landingPageUrl);
+      localStorage.setItem("landingPageUrl", landingPageUrl);
     }
   }, [location.search]);
 
