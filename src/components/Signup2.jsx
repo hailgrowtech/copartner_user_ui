@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { closeImg, signupBg } from "../assets";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Otp2 from "./Otp2";
 
 const SignUp2 = () => {
@@ -10,27 +10,28 @@ const SignUp2 = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [validationMessage, setValidationMessage] = useState("");
-  const location = useLocation();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-
     const apid = searchParams.get("apid");
     const raid = searchParams.get("raid");
     const landingPageUrl = searchParams.get("apurl");
 
     if (apid) {
+      sessionStorage.setItem("apid", apid);
       localStorage.setItem("apid", apid);
     }
 
     if (raid) {
+      sessionStorage.setItem("raid", raid);
       localStorage.setItem("raid", raid);
     }
 
     if (landingPageUrl) {
+      sessionStorage.setItem("landingPageUrl", landingPageUrl);
       localStorage.setItem("landingPageUrl", landingPageUrl);
     }
-  }, [location.search]);
+  }, [searchParams]);
 
   const handleMobileChange = (e) => {
     const value = e.target.value;

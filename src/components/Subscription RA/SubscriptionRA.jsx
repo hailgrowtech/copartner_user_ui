@@ -1,21 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import styles from "../../style";
 import "./SubscriptionRA.css";
 import { ToastContainer, toast } from "react-toastify";
-import { arrow, bookmark, bookmarkFill, duration, stars } from "../../assets";
+import {
+  arrow,
+  bookmark,
+  bookmarkFill,
+  duration,
+  stars,
+  empty,
+} from "../../assets";
 import SubscriptionPaymentPopup from "./SubscriptionPaymentPopup";
 import FAQs2 from "../About/FAQs2";
 import CoursePaymentPopup from "./CoursePaymentPopup";
 import MobileCourse from "./MobileCourse";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useUserSession } from "../../constants/userContext";
+import { motion, AnimatePresence } from "framer-motion";
+// import KYCPopup from "./KYCPopup";
+// import LinkPopup from "../InviteLink/LinkPopup";
 import SignUp2 from "../Signup2";
 import Stock from "../Stock";
 
 const SubscriptionRA = ({ userId }) => {
   const { id } = useParams();
-  const location = useLocation();
   const [isCardSaved, setIsCardSaved] = useState(false);
   const [expertData, setExpertData] = useState(null);
   const [activeHoverIndex, setActiveHoverIndex] = useState(0);
@@ -29,7 +37,6 @@ const SubscriptionRA = ({ userId }) => {
   const [showMobilePopup, setShowMobilePopup] = useState(false);
   const [subscriptions, setSubscriptions] = useState([]);
   const [mobileNum, setMobileNum] = useState("");
-  const [filterTab, setFilterTab] = useState(location.state?.filterTab || "all");
   const [chatID, setChatID] = useState("");
   const { userData, loading } = useUserSession();
   const [subscriptionId, setSubscriptionId] = useState("");
@@ -64,13 +71,15 @@ const SubscriptionRA = ({ userId }) => {
     plan,
     price,
     isCustom,
-    durationMonth
+    durationMonth,
+    chatId
   ) => {
     setSelectedPlan(plan);
     setPlanPrice(price);
     setSubscriptionId(subscriptionId);
     setIsCustom(isCustom);
     setDurationMonth(durationMonth);
+    setChatID(chatId);
   };
 
   const getExpertType = (typeId) => {
@@ -95,7 +104,10 @@ const SubscriptionRA = ({ userId }) => {
         throw new Error("Error in fetching subscriptions");
       }
       const data = await response.json();
-      setSubscriptions(data.data);
+      const isSpecialCourse = data.data.filter((data) => {
+        return !data.isSpecialSubscription;
+      });
+      setSubscriptions(isSpecialCourse);
     } catch (error) {
       console.error("Failed to fetch subscription plans:", error);
     }
@@ -111,7 +123,7 @@ const SubscriptionRA = ({ userId }) => {
           throw new Error("Error in fetching API");
         }
         const data = await response.json();
-        setChatID(data.data.chatId);
+        // setChatID(data.data.chatId);
         fetchSubscriptions(data.data.id);
         setExpertData(data.data);
       } catch (error) {
@@ -155,7 +167,8 @@ const SubscriptionRA = ({ userId }) => {
     plan,
     price,
     isCustom,
-    durationMonth
+    durationMonth,
+    chatId
   ) => {
     setSelectedMonthlyPlan(plan);
     setPlanMonthlyPrice(price);
@@ -163,6 +176,7 @@ const SubscriptionRA = ({ userId }) => {
     setSubscriptionId(subscriptionId);
     setIsCustom(isCustom);
     setDurationMonth(durationMonth);
+    setChatID(chatId);
   };
 
   const handleMouseEnter = (index) => {
@@ -215,6 +229,36 @@ const SubscriptionRA = ({ userId }) => {
     visible: { opacity: 1, y: 0 },
     exit: { opacity: 0, y: -20 },
   };
+
+  const [filterTab, setFilterTab] = useState("");
+  const [availableTypes, setAvailableTypes] = useState([]);
+
+  useEffect(() => {
+    const types = subscriptions.reduce((acc, subscription) => {
+      if (!acc.includes(subscription.serviceType)) {
+        acc.push(subscription.serviceType);
+      }
+      return acc;
+    }, []);
+
+    setAvailableTypes(types);
+
+    if (types.includes("3")) {
+      setFilterTab("3");
+    } else if (types.includes("2")) {
+      setFilterTab("2");
+    } else if (types.includes("1")) {
+      setFilterTab("1");
+    } else {
+      setFilterTab("all");
+    }
+  }, [subscriptions]);
+
+  const filteredSubscriptions = subscriptions.filter((subscription) =>
+    filterTab === "all" ? true : subscription.serviceType === filterTab
+  );
+
+  const shouldHideTabs = availableTypes.length <= 1;
 
   if (loading) {
     return <div>Loading...</div>;
@@ -334,49 +378,57 @@ const SubscriptionRA = ({ userId }) => {
               Subscription Plans
             </div>
           </div>
-          {/* <div className="w-full flex flex-row bg-[#18181B80] rounded-2xl p-3 mb-4 md:hidden">
-            <div className="activeOptions md:flex-col-6 md:text-[16px] text-[10px] flex flex-row my-auto">
-              <motion.button
-                onClick={() => setFilterTab("futures")}
-                className={`md:flex-col-3 md:mx-2 mx-2 md:text-[1rem] text-[15px] px-3 py-1 ${
-                  filterTab === "futures"
-                    ? "text-[#000] bg-[#fff] rounded-[5px]"
-                    : "text-[#fff]"
-                } hover:text-[#000] hover:bg-[#fff] rounded-[5px]`}
-                initial={false}
-                animate={filterTab === "futures" ? "active" : "inactive"}
-                whileHover={{ scale: 1.05 }}
-              >
-                Futures & Options
-              </motion.button>
-              <motion.button
-                onClick={() => setFilterTab("commodity")}
-                className={`md:flex-col-3 md:mx-2 mx-2 md:text-[1rem] text-[15px] px-3 py-1 ${
-                  filterTab === "commodity"
-                    ? "text-[#000] bg-[#fff] rounded-[5px]"
-                    : "text-[#fff]"
-                } hover:text-[#000] hover:bg-[#fff] rounded-[5px]`}
-                initial={false}
-                animate={filterTab === "commodity" ? "active" : "inactive"}
-                whileHover={{ scale: 1.05 }}
-              >
-                Commodity
-              </motion.button>
-              <motion.button
-                onClick={() => setFilterTab("equity")}
-                className={`md:flex-col-3 md:mx-2 mx-2 md:text-[1rem] text-[15px] px-3 py-1 ${
-                  filterTab === "equity"
-                    ? "text-[#000] bg-[#fff] rounded-[5px]"
-                    : "text-[#fff]"
-                } hover:text-[#000] hover:bg-[#fff] rounded-[5px]`}
-                initial={false}
-                animate={filterTab === "equity" ? "active" : "inactive"}
-                whileHover={{ scale: 1.05 }}
-              >
-                Equity
-              </motion.button>
+          {!shouldHideTabs && (
+            <div className="w-full flex flex-row bg-[#18181B80] rounded-2xl p-3 mb-4">
+              <div className="activeOptions md:flex-col-6 md:text-[16px] text-[10px] flex flex-row my-auto">
+                {availableTypes.includes("3") && (
+                  <motion.button
+                    onClick={() => setFilterTab("3")}
+                    className={`md:flex-col-3 md:mx-2 mx-2 md:text-[1rem] text-[15px] px-3 py-1 ${
+                      filterTab === "3"
+                        ? "text-[#000] bg-[#fff] rounded-[5px]"
+                        : "text-[#fff]"
+                    } hover:text-[#000] hover:bg-[#fff] rounded-[5px]`}
+                    initial={false}
+                    animate={filterTab === "3" ? "active" : "inactive"}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    Futures & Options
+                  </motion.button>
+                )}
+                {availableTypes.includes("2") && (
+                  <motion.button
+                    onClick={() => setFilterTab("2")}
+                    className={`md:flex-col-3 md:mx-2 mx-2 md:text-[1rem] text-[15px] px-3 py-1 ${
+                      filterTab === "2"
+                        ? "text-[#000] bg-[#fff] rounded-[5px]"
+                        : "text-[#fff]"
+                    } hover:text-[#000] hover:bg-[#fff] rounded-[5px]`}
+                    initial={false}
+                    animate={filterTab === "2" ? "active" : "inactive"}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    Equity
+                  </motion.button>
+                )}
+                {availableTypes.includes("1") && (
+                  <motion.button
+                    onClick={() => setFilterTab("1")}
+                    className={`md:flex-col-3 md:mx-2 mx-2 md:text-[1rem] text-[15px] px-3 py-1 ${
+                      filterTab === "1"
+                        ? "text-[#000] bg-[#fff] rounded-[5px]"
+                        : "text-[#fff]"
+                    } hover:text-[#000] hover:bg-[#fff] rounded-[5px]`}
+                    initial={false}
+                    animate={filterTab === "1" ? "active" : "inactive"}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    Commodity
+                  </motion.button>
+                )}
+              </div>
             </div>
-          </div> */}
+          )}
           <AnimatePresence mode="wait">
             <motion.div
               key={filterTab}
@@ -387,7 +439,7 @@ const SubscriptionRA = ({ userId }) => {
               variants={tabVariants}
               transition={{ duration: 0.5 }}
             >
-              {subscriptions
+              {filteredSubscriptions
                 .slice()
                 .sort((a, b) => a.amount - b.amount)
                 .map((subscription, index) => {
@@ -414,7 +466,8 @@ const SubscriptionRA = ({ userId }) => {
                             ? subscription.discountedAmount
                             : subscription.amount,
                           subscription.isCustom,
-                          subscription.durationMonth
+                          subscription.durationMonth,
+                          subscription.chatId
                         )
                       }
                       className={`my-auto flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
@@ -575,7 +628,7 @@ const SubscriptionRA = ({ userId }) => {
               </div>
             </div>
           </div>
-          <div className="w-1/3 text-white md:block hidden">
+          {/* <div className="w-1/3 text-white md:block hidden">
             <div className="rounded-2xl flex flex-col gap-4 bg-[#18181B80] p-8 text-center">
               <div className="text-3xl font-bold subheading-gradient mb-4">
                 Subscription Plan
@@ -601,7 +654,8 @@ const SubscriptionRA = ({ userId }) => {
                             ? subscription.discountedAmount
                             : subscription.amount,
                           subscription.isCustom,
-                          subscription.durationMonth
+                          subscription.durationMonth,
+                          subscription.chatId
                         )
                       }
                       className={`flex rounded-2xl p-4 ${
@@ -659,7 +713,7 @@ const SubscriptionRA = ({ userId }) => {
                 )}
               </div>
             </div>
-          </div>
+          </div> */}
         </section>
         <section
           id="about"
@@ -696,12 +750,23 @@ const SubscriptionRA = ({ userId }) => {
         <div className="md:hidden block">
           {subscriptions.length !== 0 && (
             <MobileCourse
+              filterTab={filterTab}
               handleBuyNowClick={handleBuyNowClick}
               showMobilePopup={showMobilePopup}
-              subscriptions={subscriptions}
+              subscriptions={filteredSubscriptions}
             />
           )}
         </div>
+        {/* {showKYCPopup && (
+          <KYCPopup inviteLink={inviteLink} onClose={handleClose} />
+        )}
+        {showLinkPopup && (
+          <LinkPopup
+            chatID={chatID}
+            onClose={handleClose}
+            inviteLink={inviteLink}
+          />
+        )} */}
       </div>
       {!userId && <SignUp2 />}
     </section>

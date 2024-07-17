@@ -7,7 +7,7 @@ import { demoImg, userBck, userImg } from "../../assets";
 import FAQs2 from "../About/FAQs2";
 import MinorSubFeatured from "./MinorSubFeatured";
 import HowMinorWorks from "./HowMinorWorks";
-import Loader from "../Loader/Loeader";
+import Loader from "./Loader";
 import "./Minor.css";
 import SubscriptionPaymentPopup from "../Subscription RA/SubscriptionPaymentPopup";
 import { useUserSession } from "../../constants/userContext";
@@ -225,14 +225,14 @@ const MinorSub = () => {
         </div>
       </section>
 
-      <div className="fixed bottom-0 left-0 right-0 bg-transparent p-4 shadow-lg z-50">
+      <div className="fixed bottom-0 left-0 right-0 bg-transparent p-4 shadow-lg z-40">
         <div className="flex rounded-2xl items-center bg-[#dadada] px-3 py-1">
           <div className="flex-1 text-[#000] text-left">
             <div className="flex flex-col">
               <div className="flex items-center gap-3">
                 <>
                   <span className="text-lg text-[#000] font-bold">
-                    <del>₹{expertData.amount * 1.5}</del>
+                    <del>₹{expertData.amount * 1.5.toFixed(0)}</del>
                   </span>
                   <span className="text-2xl font-bold text-[#000]">
                     ₹{expertData.amount}

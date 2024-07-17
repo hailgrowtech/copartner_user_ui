@@ -460,7 +460,7 @@ const SubscriptionRA = () => {
                 </div>
               </div>
             </div>
-            <div className="w-1/3 text-white md:block hidden">
+            {/* <div className="w-1/3 text-white md:block hidden">
               <div className="rounded-2xl flex flex-col gap-4 bg-[#18181B80] p-8 text-center">
                 <div className="text-3xl font-bold subheading-gradient mb-4">
                   Subscription Plan
@@ -516,7 +516,7 @@ const SubscriptionRA = () => {
                   )}
                 </div>
               </div>
-            </div>
+            </div> */}
           </section>
           <section
             id="about"

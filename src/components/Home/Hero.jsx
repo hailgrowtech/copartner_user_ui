@@ -183,8 +183,6 @@ const Hero = ({ hasVisitedSignUp, token }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
- 
-
   const slicedData = isMobile ? userData.slice(0, 4) : userData.slice(0, 3);
 
   const heroVariants = {
@@ -279,8 +277,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
         </div>
 
         <div className="md:pt-[2rem] pt-[1rem] grid grid-cols-2 gap-4 md:flex">
-          {(
-            userData &&
+          {userData &&
             slicedData.map((expert, id) => {
               return (
                 <motion.div
@@ -290,7 +287,9 @@ const Hero = ({ hasVisitedSignUp, token }) => {
                   animate="visible"
                   variants={heroVariants}
                 >
-                  <div
+                  <Link
+                    onClick={scrollToTop}
+                    to={`/ra-detail/${expert.id}`}
                     key={expert.id}
                     className="md:w-[256px] md:h-[265px] sm:w-[172px] h-[200px] gap-[3px] relative flex flex-col items-center"
                   >
@@ -358,7 +357,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
                         </span>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                   <div className="md:w-[211px] mx-auto bg-[#0081F1] md:h-[40px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] mt-2 md:mt-0">
                     <div
                       onClick={(e) => handleTelegram(e, expert.telegramChannel)}
@@ -388,8 +387,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
                   </div>
                 </motion.div>
               );
-            })
-          )}
+            })}
 
           <motion.div
             initial="hidden"

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { back, closeImg } from "../assets";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Otp = ({ onClose, onCloseAll, mobileNumber, onComplete }) => {
   const [otp, setOtp] = useState("");
@@ -10,9 +11,11 @@ const Otp = ({ onClose, onCloseAll, mobileNumber, onComplete }) => {
   const [timer, setTimer] = useState(25);
   const navigate = useNavigate();
 
-  const apid = localStorage.getItem("apid");
-  const raid = localStorage.getItem("raid");
-  const landingPageUrl = localStorage.getItem("landingPageUrl");
+  const apid = localStorage.getItem("apid") || sessionStorage.getItem("apid");
+  const raid = localStorage.getItem("raid") || sessionStorage.getItem("raid");
+  const landingPageUrl =
+    localStorage.getItem("landingPageUrl") ||
+    sessionStorage.getItem("landingPageUrl");
 
   useEffect(() => {
     let interval;
@@ -117,6 +120,8 @@ const Otp = ({ onClose, onCloseAll, mobileNumber, onComplete }) => {
         } else {
           navigate("/");
         }
+        sendCampaignMessage(mobileNumber);
+        sendSignupMessage(mobileNumber);
         window.location.reload();
         onComplete();
       }
@@ -125,6 +130,63 @@ const Otp = ({ onClose, onCloseAll, mobileNumber, onComplete }) => {
       localStorage.removeItem("landingPageUrl");
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);
+    }
+  };
+
+  const sendSignupMessage = async (phoneNumber) => {
+    const url = "https://backend.aisensy.com/campaign/t1/api/v2";
+    const data = {
+      apiKey:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MmM5ZWNiOTNhMmJkMGFlZTVlMGZiMiIsIm5hbWUiOiJIYWlsZ3JvIHRlY2ggc29sdXRpb25zIHB2dC4gbHRkLiIsImFwcE5hbWUiOiJBaVNlbnN5IiwiY2xpZW50SWQiOiI2NjJjOWVjYjkzYTJiZDBhZWU1ZTBmYWIiLCJhY3RpdmVQbGFuIjoiQkFTSUNfTU9OVEhMWSIsImlhdCI6MTcxNDIwMDI2N30.fQE69zoffweW2Z4_pMiXynoJjextT5jLrhXp6Bh1FgQ",
+      campaignName: "⁠new_signup_1 (On Sign Up) (TEXT)",
+      destination: phoneNumber,
+      userName: "Hailgro tech solutions pvt. ltd.",
+      templateParams: [],
+      source: "new-landing-page form",
+      media: {},
+      buttons: [],
+      carouselCards: [],
+      location: {},
+    };
+
+    try {
+      const response = await axios.post(url, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log(response);
+    } catch (error) {
+      console.error("Error:", error);
+      throw error;
+    }
+  };
+
+  const sendCampaignMessage = async (phone) => {
+    const url = "https://backend.aisensy.com/campaign/t1/api/v2";
+    const data = {
+      apiKey:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MmM5ZWNiOTNhMmJkMGFlZTVlMGZiMiIsIm5hbWUiOiJIYWlsZ3JvIHRlY2ggc29sdXRpb25zIHB2dC4gbHRkLiIsImFwcE5hbWUiOiJBaVNlbnN5IiwiY2xpZW50SWQiOiI2NjJjOWVjYjkzYTJiZDBhZWU1ZTBmYWIiLCJhY3RpdmVQbGFuIjoiQkFTSUNfTU9OVEhMWSIsImlhdCI6MTcxNDIwMDI2N30.fQE69zoffweW2Z4_pMiXynoJjextT5jLrhXp6Bh1FgQ",
+      campaignName: "singup_telegram_link(Just after signup campaign1)[TEXT]",
+      destination: phone,
+      userName: "Hailgro tech solutions pvt. ltd.",
+      templateParams: [],
+      source: "new-landing-page form",
+      media: {},
+      buttons: [],
+      carouselCards: [],
+      location: {},
+    };
+
+    try {
+      const response = await axios.post(url, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      return response;
+    } catch (error) {
+      console.error("Error:", error);
     }
   };
 

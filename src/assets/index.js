@@ -78,6 +78,10 @@ import ritik from "./Ritik.png";
 import paridhi from "./paridhi.png";
 import samay from "./Samayavif.png";
 import Group from "./stocGroup.png";
+import business from "./1.png";
+import moneyControl from "./2.png";
+import ani from "./3.png";
+import HT from "./4.png";
 
 export {
   logo,
@@ -159,5 +163,9 @@ export {
   ritik,
   paridhi,
   samay,
-  Group
+  Group,
+  business,
+  moneyControl,
+  ani,
+  HT
 };
