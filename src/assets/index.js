@@ -83,6 +83,12 @@ import thePrint from "./2.png";
 import moneyControl from "./3.svg";
 import HT from "./4.svg";
 import business from "./5.svg";
+import LiveChat from './LiveChat.png'
+import SebiReg from './SEBI.png'
+import demoImg from './demoImg.png'
+import WebinarLogo from "./webinarLogo.png";
+import featured1 from "./featured1.png";
+import featured2 from "./featured2.png";
 
 export {
   logo,
@@ -169,5 +175,11 @@ export {
   thePrint,
   moneyControl,
   HT,
-  business
+  business,
+  LiveChat,
+  SebiReg,
+  demoImg,
+  WebinarLogo,
+  featured1,
+  featured2,
 };

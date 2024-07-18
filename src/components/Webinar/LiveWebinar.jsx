@@ -1,20 +1,43 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
-import { liveCourseData } from "../../constants";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import { useUserData } from '../../constants/context';
 
 const LiveWebinar = () => {
+  const userData = useUserData();
+  const navigate = useNavigate();
+
+  const getExpertType = (typeId) => {
+    switch (typeId) {
+      case 1:
+        return "Commodity";
+      case 2:
+        return "Equity";
+      case 3:
+        return "Futures & Options";
+      default:
+        return "Unknown";
+    }
+  };
+
+  const handleCardClick = (id) => {
+    navigate(`/webinar/expert/${id}`);
+  };
+
   const settings = {
-    dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: 3,
     slidesToScroll: 1,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    pauseOnHover: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -24,79 +47,48 @@ const LiveWebinar = () => {
   };
 
   return (
-    <div className="w-full p-4">
+    <div className="container mx-auto">
       <Slider {...settings}>
-        {liveCourseData.map((course, index) => (
-          <div key={index} className="p-4">
-            <div className="box-border flex flex-col justify-start items-center w-full p-4 bg-[#18181B] border-[#ffffff21] border-[1px] rounded-xl relative">
-              <img
-                src={course.imageUrl}
-                alt="Course_Image"
-                className="w-full h-60 object-cover rounded-md mb-4"
-                style={{
-                  maskImage: "linear-gradient(rgba(0, 0, 0, 1) 70%, transparent)",
-                }}
-              />
-
-              <div className="p-4 relative z-10 w-full">
-                <h3 className="text-[28px] font-semibold text-lightWhite text-left">
-                  {course.title}
-                </h3>
-
-                <div className="flex items-center mt-4">
-                  <div className="flex-1 flex items-center">
-                    <div className="h-10 w-10 rounded-full overflow-hidden mr-2">
-                      <img
-                        src={course.image}
-                        alt="Profile"
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-
-                    <p className="text-[18px] font-medium text-dimWhite">
-                      {course.instructor}
-                    </p>
+        {userData &&
+          userData.map((expert, id) => (
+            <div key={expert.id} className="p-2" onClick={() => handleCardClick(expert.id)}>
+              <div className="box-border md:h-[310px] xl:h-auto flex flex-col justify-start items-center w-full md:p-1 p-3 bg-[#18181B] border-[#ffffff21] border-[1px] rounded-xl relative cursor-pointer">
+                <div className="md:p-4 relative z-10 w-full">
+                  <div className="flex flex-row justify-between">
+                    <span>Friday - 10 July | 10:00AM </span>
+                    <span>3hrs</span>
                   </div>
-
-                  <div className="border-white mt-2 pt-1 flex justify-center">
-                    <div className="border-r border-white px-12 text-center">
-                      <p className="text-lightWhite">Experience</p>
-                      <p className="mb-1 text-lightWhite">{course.experience}+</p>
-                    </div>
-                    <div className="px-12 text-center">
-                      <p className="text-lightWhite">Followers</p>
-                      <p className="mb-1 text-lightWhite">{course.followers}k</p>
+                  <div className="flex items-center mt-4">
+                    <div className="flex-1 flex items-center gap-2">
+                      <div className="md:h-18 h-14 md:w-18 w-14 rounded-full border-2 bg-[#000] border-[#006adc40] overflow-hidden mr18">
+                        <img
+                          src={expert.expertImagePath}
+                          alt="Profile"
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
+                      <div className="flex flex-col">
+                        <h3 className="md:text-[20px] font-semibold text-lightWhite text-left">
+                          {expert.name}
+                        </h3>
+                        <p className="text-[18px] font-medium text-dimWhite">
+                          {getExpertType(expert.expertTypeId)}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-
-                <div className="mt-2 pt-3 flex flex-col justify-center text-left">
-                  <div className="flex flex-row">
-                    <p className="mb-1 text-dimWhite pr-1">Date & Time:</p>
-                    <p>{course.date}🔴</p>
+                  <div className="border-white mt-2 pt-1 flex justify-start">
+                    <h3 className="text-gradient text-[28px] font-bold">Option Treading Tips Earn More</h3>
                   </div>
-                  <div className="flex flex-row">
-                    <p className="mb-1 text-dimWhite pr-1">Duration:</p>
-                    <p>{course.duration} hrs</p>
-                  </div>
-                </div>
-
-                <div className="mt-4 pt-3 flex justify-between items-center">
-                  <div>
-                    <p className="text-dimWhite">
-                      <span className="text-white text-[50px] font-bold">₹1999</span>{" "}
-                    </p>
-                  </div>
-                  <div>
-                    <button className="bg-white rounded-md hover:bg-gray-200 text-base text-black py-1 px-8">
-                      Register
+                  <div className="mt-4 flex justify-between items-center">
+                    <button className="bg-gradient-to-r from-purple-500 to-blue-500 transition-all duration-300 w-full rounded-xl hover:bg-gray-200 hover:text-[#000] text-base text-white py-2 px-8">
+                      Buy Now at ₹1,999
                     </button>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
       </Slider>
     </div>
   );

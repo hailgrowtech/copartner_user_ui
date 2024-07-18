@@ -8,7 +8,6 @@ import {
   Webinar,
   ErrorPage,
   ExpertiseExplore,
-  // CoursesExplore,
   SubscriptionBuy,
   ReferEarn,
   Blog,
@@ -21,7 +20,6 @@ import {
   Terms,
   SignUp,
   Disclaimer,
-  // RefundPolicy,
   Hero,
 } from "./components";
 import styles from "./style";
@@ -36,12 +34,11 @@ import {
 import { UserDataProvider } from "./constants/context";
 import { UserProvider } from "./constants/userContext";
 import { SubscriptionProvider } from "./constants/subscriptionContext";
-import Ad1 from "./components/LandingPages/Ad1";
 import KYCPopup from "./components/KYCPage";
 import MinorSub from "./components/MinorSub/MinorSub";
+// import WebinarExpert from "./components/Webinar/WebinarExpert";
 
 function App() {
-  // const token = sessionStorage.getItem("token");
   const hasVisitedSignUp = sessionStorage.getItem("visitedSignUp");
   const userId = localStorage.getItem("userId");
 
@@ -60,7 +57,6 @@ function App() {
           <Route
             path=""
             element={
-              // userId || hasVisitedSignUp ? (
               <div className={`${styles.flexStart}`}>
                 <UserDataProvider>
                   <div className={`${styles.boxWidth}`}>
@@ -73,9 +69,6 @@ function App() {
                   </div>
                 </UserDataProvider>
               </div>
-              // ) : (
-              //   <Navigate to="/signup" replace={true} />
-              // )
             }
           />
           <Route
@@ -126,16 +119,6 @@ function App() {
               )
             }
           />
-          {/* <Route
-            path="subscription/course"
-            element={
-              <div className={`${styles.flexStart}`}>
-                <div className={`${styles.boxWidth}`}>
-                  <SubscriptionCourseDetail />
-                </div>
-              </div> : <Navigate to="/signup" replace={true}/>
-            }
-          /> */}
           <Route
             path="blogs"
             element={
@@ -154,12 +137,22 @@ function App() {
             path="webinar"
             element={
               userId || hasVisitedSignUp ? (
-                <Webinar />
+                <UserDataProvider>
+                  <Webinar />
+                </UserDataProvider>
               ) : (
                 <Navigate to="/signup" replace={true} />
               )
             }
           />
+          {/* <Route
+            path="/webinar/expert/:id"
+            element={
+              <UserDataProvider>
+                <WebinarExpert userId={userId} />
+              </UserDataProvider>
+            }
+          /> */}
           <Route
             path="history"
             element={
@@ -212,16 +205,6 @@ function App() {
               )
             }
           />
-          {/* <Route
-            path="courses/explore-courses"
-            element={
-              userId || hasVisitedSignUp ? (
-                <CoursesExplore />
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
-            }
-          /> */}
           <Route path="subscription/buy/:id" element={<SubscriptionBuy />} />
           <Route
             path="refer&earn"
@@ -237,16 +220,6 @@ function App() {
               )
             }
           />
-          {/* <Route
-            path="refund-policy"
-            element={
-              userId || hasVisitedSignUp ? (
-                <RefundPolicy />
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
-            }
-          /> */}
           <Route
             path="about"
             element={
