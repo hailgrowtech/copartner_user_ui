@@ -46,39 +46,40 @@ function MobileCourse({ filterTab, showMobilePopup, handleBuyNowClick, subscript
     <div>
       {showMobilePopup && subscriptions.length > 1 && (
         <div className="fixed bottom-0 left-0 right-0 bg-black p-4 shadow-lg z-50">
-          <div className="flex rounded-2xl items-center bg-[#18181B80] px-3 py-1">
-            <div className="flex-1 text-white text-left">
-              <div className="flex flex-col">
-                <span className="text-lg text-white">
-                  {subscription.planType}
-                </span>
-                <div className="flex items-center gap-3">
-                  {isDiscounted ? (
-                    <>
-                      <span className="text-lg text-white">
-                        <del>₹{subscription.amount}</del>
-                      </span>
-                      <span className="text-2xl font-bold text-white">
-                        ₹{subscription.discountedAmount}
-                      </span>
-                    </>
-                  ) : (
-                    <span className="text-2xl font-bold text-white">
-                      ₹{subscription.amount}
-                    </span>
-                  )}
+          <div className="flex flex-col items-center gap-4">
+            <div className="flex-1 text-[#fff] text-left w-full">
+              <div className="flex justify-between items-center">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-md font-semibold opacity-50">Amount:</span>
+                    <div className="flex gap-1 items-center">
+                      {isDiscounted ? (
+                        <>
+                          <span className="text-lg text-[#fff] font-bold opacity-50">
+                            <del>₹{(subscription.amount * 1.5).toFixed(0)}</del>
+                          </span>
+                          <span className="text-2xl font-bold text-[#fff]">
+                            ₹{subscription.discountedAmount}
+                          </span>
+                        </>
+                      ) : (
+                        <span className="text-2xl font-bold text-[#fff]">
+                          ₹{subscription.amount}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <p className="text-[#fff] text-sm pt-1 font-bold">
+                    {subscription.planType} Access
+                  </p>
                 </div>
                 {remainingTime && isDiscounted && (
-                  <div className="inline-block bg-gradient-to-r w-[70%] from-[#00c394] to-[#00a143] text-white py-1 px-3 rounded-lg font-bold text-sm ">
+                  <div className="inline-block bg-gradient-to-r from-[#00c394] to-[#00a143] text-[#fff] py-1 px-3 rounded-lg font-bold text-sm items-center gap-2">
                     <i className="fas fa-clock"></i>
                     Limited Time Offer
                   </div>
                 )}
               </div>
-              <p className="text-[#C6CDD5] text-sm">
-                {subscription.durationMonth}{" "}
-                {subscription.isCustom ? "Days" : "Month"} Access
-              </p>
             </div>
             <button
               onClick={() =>
@@ -93,7 +94,7 @@ function MobileCourse({ filterTab, showMobilePopup, handleBuyNowClick, subscript
                   subscription.chatId
                 )
               }
-              className="text-lg px-5 rounded-lg font-semibold flex items-center py-3 bg-gradient-to-r from-[#6368FA] to-[#0081F1] text-white hover:bg-white hover:text-black animate-pulse"
+              className="text-lg px-5 rounded-lg w-full font-semibold css-btn flex items-center justify-center py-3 bg-[#006ADC] hover:bg-[#0049dc] text-[#fff] hover:text-white"
             >
               Buy Now
             </button>

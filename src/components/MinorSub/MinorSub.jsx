@@ -225,28 +225,31 @@ const MinorSub = () => {
         </div>
       </section>
 
-      <div className="fixed bottom-0 left-0 right-0 bg-transparent p-4 shadow-lg z-40">
-        <div className="flex rounded-2xl items-center bg-[#dadada] px-3 py-1">
-          <div className="flex-1 text-[#000] text-left">
-            <div className="flex flex-col">
-              <div className="flex items-center gap-3">
-                <>
-                  <span className="text-lg text-[#000] font-bold">
-                    <del>₹{expertData.amount * 1.5.toFixed(0)}</del>
-                  </span>
-                  <span className="text-2xl font-bold text-[#000]">
-                    ₹{expertData.amount}
-                  </span>
-                </>
+      <div className="fixed bottom-0 left-0 right-0 bg-transparent shadow-lg z-40">
+        <div className="flex flex-col items-center bg-[#f7f7f7] px-4 py-2 gap-4">
+          <div className="flex-1 text-[#000] text-left w-full">
+            <div className="flex justify-between items-center">
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="text-md font-semibold opacity-50">Amount:</span>
+                  <div className="flex gap-1 items-center">
+                    <span className="text-lg text-[#000] font-bold opacity-50">
+                      <del>₹{(expertData.amount * 1.5).toFixed(0)}</del>
+                    </span>
+                    <span className="text-2xl font-bold text-[#000]">
+                      ₹{expertData.amount}
+                    </span>
+                  </div>
+                </div>
+                <p className="text-[#000] text-sm pt-1 font-bold">
+                  {expertData.planType} Access
+                </p>
               </div>
-              <div className="inline-block bg-gradient-to-r w-[70%] from-[#00c394] to-[#00a143] text-[#fff] py-1 px-3 rounded-lg font-bold text-sm ">
+              <div className="bg-gradient-to-r from-[#00c394] to-[#00a143] text-[#fff] py-1 px-3 rounded-lg font-bold text-sm flex items-center gap-2">
                 <i className="fas fa-clock"></i>
                 Limited Time Offer
               </div>
             </div>
-            <p className="text-[#000] text-sm pt-1 font-bold">
-              {expertData.planType} Access
-            </p>
           </div>
           <button
             onClick={() =>
@@ -259,7 +262,7 @@ const MinorSub = () => {
                 expertData.chatId
               )
             }
-            className="text-lg px-5 rounded-lg font-semibold css-btn flex items-center py-3 bg-[#006ADC] hover:bg-[#0049dc] text-[#fff] hover:text-white"
+            className="text-lg px-5 rounded-lg w-full font-semibold css-btn flex items-center justify-center py-3 bg-[#006ADC] hover:bg-[#0049dc] text-[#fff] hover:text-white"
           >
             Buy Now
           </button>
@@ -279,7 +282,7 @@ const MinorSub = () => {
           durationMonth={durationMonth}
         />
       )}
-      {!userData && <SignUp2/>}
+      {!userData && <SignUp2 />}
     </div>
   );
 };
