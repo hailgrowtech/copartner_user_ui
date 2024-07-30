@@ -31,13 +31,13 @@ const PrivateCall = () => {
 
   return (
     <>
-      <motion.div
+      {/* <motion.div
         ref={ref}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         variants={bannerVariants}
         className="flex flex-col items-center md:py-0"
-      >
+      > */}
         {/* <div className="flex sm:justify-between justify-center items-center flex-col sm:flex-row gap-2">
         <span className="font-poppins h-[52px] font-[700] md:text-[50px] text-[30px] sm:text-start text-center text-gradient-2 leading-[51px]">
           Private Calls Availability
@@ -47,7 +47,7 @@ const PrivateCall = () => {
           empowering.
         </span>
       </div> */}
-        {smallScreen ? (
+        {/* {smallScreen ? (
           <div className="flex justify-center items-center w-full md:mb-[4rem] mb-[0]">
             <img
               src={mobBanner}
@@ -64,7 +64,7 @@ const PrivateCall = () => {
             />
           </div>
         )}
-      </motion.div>
+      </motion.div> */}
       <StockPlatform />
     </>
   );

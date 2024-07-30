@@ -35,7 +35,7 @@ import { UserDataProvider } from "./constants/context";
 import { UserProvider } from "./constants/userContext";
 import { SubscriptionProvider } from "./constants/subscriptionContext";
 import KYCPopup from "./components/KYCPage";
-import MinorSub from "./components/MinorSub/MinorSub";
+import MinorSub from "./components/MinorSubscription/MinorSub";
 // import WebinarExpert from "./components/Webinar/WebinarExpert";
 
 function App() {
@@ -90,7 +90,7 @@ function App() {
           <Route
             path="kycpage"
             element={
-              userId ? (
+              // userId ? (
                 <div className={`${styles.flexStart}`}>
                   <UserDataProvider>
                     <div className={`${styles.boxWidth}`}>
@@ -98,9 +98,9 @@ function App() {
                     </div>
                   </UserDataProvider>
                 </div>
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
+              // ) : (
+              //   <Navigate to="/signup" replace={true} />
+              // )
             }
           />
           <Route
@@ -183,7 +183,7 @@ function App() {
               </UserProvider>
             }
           />
-          <Route
+          {/* <Route
             path="subscription/buy"
             element={
               userId || hasVisitedSignUp ? (
@@ -192,7 +192,7 @@ function App() {
                 <Navigate to="/signup" replace={true} />
               )
             }
-          />
+          /> */}
           <Route
             path="expertise/explore-expertise"
             element={

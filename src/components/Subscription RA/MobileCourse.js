@@ -1,6 +1,11 @@
 import React from "react";
 
-function MobileCourse({ filterTab, showMobilePopup, handleBuyNowClick, subscriptions }) {
+function MobileCourse({
+  filterTab,
+  showMobilePopup,
+  handleBuyNowClick,
+  subscriptions,
+}) {
   const calculateRemainingTime = (discountValidTo) => {
     const now = new Date();
     const validTo = new Date(discountValidTo);
@@ -51,7 +56,9 @@ function MobileCourse({ filterTab, showMobilePopup, handleBuyNowClick, subscript
               <div className="flex justify-between items-center">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-md font-semibold opacity-50">Amount:</span>
+                    <span className="text-md font-semibold opacity-50">
+                      Amount:
+                    </span>
                     <div className="flex gap-1 items-center">
                       {isDiscounted ? (
                         <>

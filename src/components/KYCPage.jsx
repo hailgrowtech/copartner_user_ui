@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { FiCopy, FiLock } from "react-icons/fi";
 import styles from "../style";
 import { Tooltip } from "react-tooltip";
+import MobileNumberPopup from "./MinorSubscription/MobileNumberPopup";
 
 const KYCPage = () => {
   const [formValues, setFormValues] = useState({
@@ -19,6 +20,9 @@ const KYCPage = () => {
   const [mobileNum, setMobileNum] = useState("");
   const { userData, loading } = useUserSession();
   const telegramLink = sessionStorage.getItem("inviteLink");
+
+  const otpDone = localStorage.getItem("otp");
+  const mobile = userData?.mobileNumber;
 
   useEffect(() => {
     if (userData) {
@@ -41,6 +45,21 @@ const KYCPage = () => {
       }
     }
   }, [loading, userData]);
+
+  const fetchSubscriptionDetail = async (subscriptionId) => {
+    if (subscriptionId) {
+      try {
+        const response = await fetch(
+          `https://copartners.in:5009/api/Subscription/${subscriptionId}`
+        );
+        const data = await response.json();
+        return data.data;
+      } catch (error) {
+        console.log(error);
+        return null;
+      }
+    }
+  };
 
   const sendSMS = async (mobileNumber, inviteLink) => {
     try {
@@ -67,12 +86,48 @@ const KYCPage = () => {
     }
   };
 
-  const checkPaymentStatus = () => {
+  const sendPaidTelegramLinkMessage = async (phoneNumber, link) => {
+    const url = "https://backend.aisensy.com/campaign/t1/api/v2";
+    const data = {
+      apiKey:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MmM5ZWNiOTNhMmJkMGFlZTVlMGZiMiIsIm5hbWUiOiJIYWlsZ3JvIHRlY2ggc29sdXRpb25zIHB2dC4gbHRkLiIsImFwcE5hbWUiOiJBaVNlbnN5IiwiY2xpZW50SWQiOiI2NjJjOWVjYjkzYTJiZDBhZWU1ZTBmYWIiLCJhY3RpdmVQbGFuIjoiQkFTSUNfTU9OVEhMWSIsImlhdCI6MTcxNDIwMDI2N30.fQE69zoffweW2Z4_pMiXynoJjextT5jLrhXp6Bh1FgQ",
+      campaignName: "⁠⁠paid_telegram_link (Upon KYC completion) (TEXT)",
+      destination: phoneNumber,
+      userName: "Hailgro tech solutions pvt. ltd.",
+      templateParams: [`${link}`],
+      source: "new-landing-page form",
+      media: {
+        url: "https://whatsapp-media-library.s3.ap-south-1.amazonaws.com/IMAGE/6353da2e153a147b991dd812/5442184_confidentmansuit.png",
+        filename: "sample_media",
+      },
+      buttons: [],
+      carouselCards: [],
+      location: {},
+    };
+
+    try {
+      const response = await axios.post(url, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      return response;
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const checkPaymentStatus = async () => {
     const params = new URLSearchParams(window.location.search);
     const status = params.get("status");
     const transactionId = params.get("transactionId");
     const inviteLink = params.get("inviteLink");
+    const planType = params.get("planType");
+    const amount = params.get("amount");
+    const subscriptionId = params.get("subscriptionId");
     const userId = localStorage.getItem("userId");
+
+    const subscriptionData = await fetchSubscriptionDetail(subscriptionId);
 
     if (inviteLink) {
       const decodeLink = decodeURIComponent(inviteLink);
@@ -80,33 +135,47 @@ const KYCPage = () => {
     }
 
     if (status === "success") {
+      console.log(subscriptionData);
       toast.success(`Payment Success: ${transactionId}`);
       const trackierScript = document.createElement("script");
-    trackierScript.src = "https://static-cdn.trackier.com/js/trackier-web-sdk.js";
-    trackierScript.onload = () => {
-      console.log("Trackier script loaded successfully.");
-      if (window.TrackierWebSDK && typeof window.TrackierWebSDK.trackConv === 'function') {
-        console.log("TrackierWebSDK is defined.");
-        window.TrackierWebSDK.trackConv(
-          "copartner.gotrackier.com",
-          "662b93eae1a03b602b9163",
-          {
-            goal_value: "ftdpayment",
-            txn_id: userId,
-            is_iframe: true,
-          }
-        );
-        console.log("TrackConv function called with txn_id:", userId);
-      } else {
-        console.error("TrackierWebSDK is not defined or trackConv function is missing.");
-      }
-    };
+      trackierScript.src =
+        "https://static-cdn.trackier.com/js/trackier-web-sdk.js";
+      trackierScript.onload = () => {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "purchase",
+          purchaseValue: amount,
+          currency: "INR",
+          planType: planType,
+          serviceType: subscriptionData && subscriptionData.serviceType,
+          RA_Name: subscriptionData && subscriptionData.experts.name,
+        });
+        if (
+          window.TrackierWebSDK &&
+          typeof window.TrackierWebSDK.trackConv === "function"
+        ) {
+          window.TrackierWebSDK.trackConv(
+            "copartner.gotrackier.com",
+            "662b93eae1a03b602b9163",
+            {
+              goal_value: "ftdpayment",
+              txn_id: userId,
+              is_iframe: true,
+            }
+          );
+        } else {
+          console.error(
+            "TrackierWebSDK is not defined or trackConv function is missing."
+          );
+        }
+      };
 
-    trackierScript.onerror = () => {
-      console.error("Failed to load Trackier script.");
-    };
+      trackierScript.onerror = () => {
+        console.error("Failed to load Trackier script.");
+      };
 
-    document.body.appendChild(trackierScript);
+      document.body.appendChild(trackierScript);
+      window.location.reload();
       return true;
     } else if (status === "failure") {
       toast.error(`Payment Failed: ${transactionId}`);
@@ -157,6 +226,7 @@ const KYCPage = () => {
         toast.success("Details updated successfully!");
         setError(null);
         sendSMS(mobileNum, telegramLink);
+        sendPaidTelegramLinkMessage(mobileNum, telegramLink);
         window.location.reload();
       } else {
         toast.error("Failed to update details!");
@@ -310,34 +380,10 @@ const KYCPage = () => {
                 </div>
               )}
             </div>
-            {/* {showPopover && (
-              <div className="fixed bottom-5 right-5 z-50">
-                <div
-                  className="flex items-center p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-[#000] dark:border-red-800 rounded-xl"
-                  role="alert"
-                  style={{ width: "300px" }}
-                >
-                  <svg
-                    className="flex-shrink-0 w-4 h-4"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M2 2.5A1.5 1.5 0 0 1 3.5 1h13A1.5 1.5 0 0 1 18 2.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 2 15.5v-13zM5.62 7.38a.75.75 0 0 1 1.06-1.06L10 8.94l3.31-3.32a.75.75 0 1 1 1.06 1.06L11.06 10l3.31 3.31a.75.75 0 1 1-1.06 1.06L10 11.06l-3.32 3.31a.75.75 0 1 1-1.06-1.06L8.94 10 5.62 6.69z"
-                    ></path>
-                  </svg>
-                  <div className="ms-5 mr-5 text-sm font-medium">
-                    Please fill the KYC details.
-                  </div>
-                </div>
-              </div>
-            )} */}
           </div>
         </div>
       </div>
+      { otpDone === "false" && <MobileNumberPopup mobileNumber={mobile} /> }
       <Tooltip id="tooltip" />
       <ToastContainer />
     </div>

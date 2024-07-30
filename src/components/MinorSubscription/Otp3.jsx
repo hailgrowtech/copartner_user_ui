@@ -1,25 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { back } from "../assets";
-import Cookies from "js-cookie";
+import { back } from "../../assets";
 import axios from "axios";
 
-const Otp2 = ({ onClose, onCloseAll, mobileNumber }) => {
+const Otp3 = ({ onClose, onCloseAll, mobileNumber }) => {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
   const [timer, setTimer] = useState(25);
 
-  const apid =
-    Cookies.get("apid") ||
-    localStorage.getItem("apid") ||
-    sessionStorage.getItem("apid");
-  const raid =
-    Cookies.get("raid") ||
-    localStorage.getItem("raid") ||
-    sessionStorage.getItem("raid");
+  const apid = localStorage.getItem("apid") || sessionStorage.getItem("apid");
+  const raid = localStorage.getItem("raid") || sessionStorage.getItem("raid");
   const landingPageUrl =
-    Cookies.get("landingPageUrl") ||
     localStorage.getItem("landingPageUrl") ||
     sessionStorage.getItem("landingPageUrl");
 
@@ -32,15 +24,6 @@ const Otp2 = ({ onClose, onCloseAll, mobileNumber }) => {
     }
     return () => clearInterval(interval);
   }, [timer]);
-
-  const handleRemoveCookies = () => {
-    Cookies.remove("apid", { path: '/' });
-    Cookies.remove("raid", { path: '/' });
-    Cookies.remove("landingPageUrl", { path: '/' });
-    localStorage.removeItem("apid");
-    localStorage.removeItem("raid");
-    localStorage.removeItem("landingPageUrl");
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -83,49 +66,6 @@ const Otp2 = ({ onClose, onCloseAll, mobileNumber }) => {
     }
   };
 
-  // const responseUser = async (id) => {
-  //   try {
-  //     let referralMode = "CP";
-  //     let updates = [
-  //       { path: "/referralMode", op: "replace", value: referralMode },
-  //     ];
-
-  //     if (apid) {
-  //       updates.push({ path: "/referralMode", op: "replace", value: "AP" });
-  //       updates.push({
-  //         path: "/affiliatePartnerId",
-  //         op: "replace",
-  //         value: apid,
-  //       });
-  //     } else if (raid) {
-  //       updates.push({ path: "/referralMode", op: "replace", value: "RA" });
-  //       updates.push({ path: "/expertsID", op: "replace", value: raid });
-  //     }
-
-  //     const resUser = await fetch(
-  //       `https://copartners.in:5131/api/User?Id=${id}`,
-  //       {
-  //         method: "PATCH",
-  //         headers: {
-  //           "Content-Type": "application/json-patch+json",
-  //         },
-  //         body: JSON.stringify(updates),
-  //       }
-  //     );
-
-  //     const data = await resUser.json();
-  //     if (!data.isSuccess) {
-  //       setError(data.errorMessages);
-  //     } else {
-  //       sessionStorage.setItem("userId", data.data.id);
-  //       navigate("/");
-  //       window.location.reload();
-  //     }
-  //   } catch (error) {
-  //     console.error("There was a problem with your fetch operation:", error);
-  //   }
-  // };
-
   const responseUser = async () => {
     try {
       const userData = {
@@ -153,8 +93,6 @@ const Otp2 = ({ onClose, onCloseAll, mobileNumber }) => {
         body: JSON.stringify(userData),
       });
 
-      console.log(userData)
-
       const data = await resUser.json();
       if (!data.isSuccess) {
         setError(data.errorMessages);
@@ -170,21 +108,13 @@ const Otp2 = ({ onClose, onCloseAll, mobileNumber }) => {
         const scriptElement = document.createElement("script");
         scriptElement.textContent = scriptContent;
         document.body.appendChild(scriptElement);
-
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: "signup",
-          event_category: "User",
-          event_action: "Signup",
-          event_label: "Phone OTP Signup",
-          phoneNumber: mobileNumber,
-        });
-
         sendCampaignMessage(mobileNumber);
         sendSignupMessage(mobileNumber);
         window.location.reload();
       }
-      handleRemoveCookies();
+      localStorage.removeItem("apid");
+      localStorage.removeItem("raid");
+      localStorage.removeItem("landingPageUrl");
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);
     }
@@ -286,7 +216,7 @@ const Otp2 = ({ onClose, onCloseAll, mobileNumber }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-10 z-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
       <div className="bg-[#18181B] border-[1px] border-[#ffffff2a] m-4 p-8 rounded-lg w-[25rem] relative text-center">
         <div className="absolute top-3 left-2 text-right">
           <div
@@ -342,4 +272,4 @@ const Otp2 = ({ onClose, onCloseAll, mobileNumber }) => {
   );
 };
 
-export default Otp2;
+export default Otp3;

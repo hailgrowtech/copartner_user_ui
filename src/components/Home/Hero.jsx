@@ -267,7 +267,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
           </p>
         </div>
 
-        <div className="flex items-center gap-2 mt-[1rem]">
+        {/* <div className="flex items-center gap-2 mt-[1rem]">
           <Link to="/about">
             <button className="text-white font-normal text-[15px] leading-[28px]">
               Explore More
@@ -410,7 +410,7 @@ const Hero = ({ hasVisitedSignUp, token }) => {
               </button>
             </Link>
           </motion.div>
-        </div>
+        </div> */}
       </motion.div>
       <Expertise token={token} />
     </motion.div>

@@ -19,7 +19,7 @@ const StockPlatform = () => {
 
   return (
     <>
-      <motion.div
+      {/* <motion.div
         ref={ref}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
@@ -67,7 +67,7 @@ const StockPlatform = () => {
             </motion.div>
           ))}
         </div>
-      </motion.div>
+      </motion.div> */}
       <OptionExpertise />
     </>
   );

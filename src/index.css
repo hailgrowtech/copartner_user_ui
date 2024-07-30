@@ -336,7 +336,7 @@
 /* SubHeadings of the page */
 
 .subheading-color{
-    font-weight: 700;
+    font-weight: 500;
     background: linear-gradient(#FFFFFF, #71717A);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

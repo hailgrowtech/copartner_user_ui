@@ -470,11 +470,11 @@ const SubscriptionRA = ({ userId }) => {
                           subscription.chatId
                         )
                       }
-                      className={`my-auto flex-1 rounded-2xl p-5 basic-div max-w-[400px] ${
+                      className={`my-auto flex-1 rounded-2xl p-4 basic-div max-w-[400px] ${
                         activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
                       } relative ${showBorder ? "border-2" : ""}`}
                     >
-                      <div className="text-center md:text-3xl text-lg font-bold subheading-gradient md:mb-4 mb-1">
+                      <div className="text-left md:text-3xl opacity-70 subheading-gradient md:mb-4 mb-1">
                         {subscription.planType}
                         {isDiscounted && (
                           <span className="bg-gradient-to-r from-[#00c394] to-[#00a143] inline-block text-transparent bg-clip-text text-xs md:text-lg ml-2">
@@ -482,9 +482,9 @@ const SubscriptionRA = ({ userId }) => {
                           </span>
                         )}
                       </div>
-                      <div className="text-center md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-center">
+                      <div className="text-left md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-start">
                         {isDiscounted ? (
-                          <div className="flex flex-col text-center">
+                          <div className="flex flex-col text-left">
                             <span className="line-through text-gray-500 md:text-xl text-sm">
                               ₹{subscription.amount}
                             </span>
@@ -494,17 +494,17 @@ const SubscriptionRA = ({ userId }) => {
                           <span>₹{subscription.amount}</span>
                         )}
                       </div>
-                      <div className="text-center md:text-lg text-xs mt-auto opacity-60 md:mb-6 mb-2">
+                      <div className="text-left md:text-lg text-xs mt-auto md:mb-6 mb-2 wave-gradient">
                         {subscription.durationMonth}{" "}
                         {subscription.isCustom ? "Days" : "Month"} Access
                       </div>
                       <div className="text-center">
                         {remainingTime && isDiscounted ? (
-                          <button className="md:px-12 px-6 bg-gradient-to-r from-[#6368FA] to-[#0081F1] md:text-base text-xs py-2 md:rounded-lg rounded border-2 animate-pulse">
+                          <button className="md:px-12 px-6 w-full bg-gradient-to-r from-[#6368FA] to-[#0081F1] md:text-base text-xs py-2 md:rounded-lg rounded border-2 animate-pulse">
                             Buy Now
                           </button>
                         ) : (
-                          <button className="md:px-12 px-6 bg-gradient-to-r from-[#6368FA] to-[#0081F1] md:text-base text-xs py-2 md:rounded-lg rounded border-2">
+                          <button className="md:px-12 px-6 w-full bg-gradient-to-r from-[#6368FA] to-[#0081F1] md:text-base text-xs py-2 md:rounded-lg rounded border-2">
                             Buy Now
                           </button>
                         )}

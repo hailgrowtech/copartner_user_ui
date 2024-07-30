@@ -71,9 +71,9 @@ const Expertise = ({ userId }) => {
               );
               return (
                 <div className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-xl p-2 border-[#ffffff23] border-[1px] ">
-                <Link
-                  to={`/subscription/buy/${expert.id}`}
-                  onClick={scrollToTop}
+                <div
+                  // to={`/subscription/buy/${expert.id}`}
+                  // onClick={scrollToTop}
                   key={expert.id}
                   className="md:w-[384px] md:h-[400px] w-[172px] h-[270px] rounded-[11px] md:mt-8 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
                 >
@@ -154,7 +154,7 @@ const Expertise = ({ userId }) => {
                   <span className="text-[#fff] py-2 md:text-[15px] text-[10px]">
                     {daysLeft} Days Left
                   </span>
-                </Link>
+                </div>
                 </div>
               );
             })

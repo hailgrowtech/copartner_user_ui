@@ -209,6 +209,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder=" "
                     className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-white bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
+                    disabled
                   />
                   <label
                     htmlFor="phone"

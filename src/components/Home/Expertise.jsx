@@ -57,7 +57,7 @@ const Expertise = ({ token }) => {
 
   return (
     <>
-      <div className={`flex flex-col sm:py-[4rem] py-[30px]`}>
+      {/* <div className={`flex flex-col sm:py-[4rem] py-[30px]`}> */}
         {/* <div className={`{styles.flexStart} flex-col gap-2 xl:px-0`}>
           <div className="flex flex-row md:h-[52px] h-[34px] justify-center md:justify-between items-center">
             <span
@@ -265,7 +265,7 @@ const Expertise = ({ token }) => {
             ))}
           </div>
         </div> */}
-      </div>
+      {/* </div> */}
       <PrivateCall userData={userData} />
     </>
   );

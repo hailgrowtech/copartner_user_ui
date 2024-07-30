@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { closeImg, signupBg } from "../assets";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 import Otp2 from "./Otp2";
 
 const SignUp2 = () => {
@@ -10,28 +11,43 @@ const SignUp2 = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [validationMessage, setValidationMessage] = useState("");
-  const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    const apid = searchParams.get("apid");
-    const raid = searchParams.get("raid");
-    const landingPageUrl = searchParams.get("apurl");
+    const captureParams = () => {
+      const params = new URLSearchParams(window.location.search);
+      const apid = params.get("apid");
+      const raid = params.get("raid");
+      const landingPageUrl = params.get("apurl");
 
-    if (apid) {
-      sessionStorage.setItem("apid", apid);
-      localStorage.setItem("apid", apid);
-    }
+      if (apid) {
+        sessionStorage.setItem("apid", apid);
+        localStorage.setItem("apid", apid);
+        Cookies.set("apid", apid, { expires: 7, path: '/' });
+      }
 
-    if (raid) {
-      sessionStorage.setItem("raid", raid);
-      localStorage.setItem("raid", raid);
-    }
+      if (raid) {
+        sessionStorage.setItem("raid", raid);
+        localStorage.setItem("raid", raid);
+        Cookies.set("raid", raid, { expires: 7, path: '/' });
+      }
 
-    if (landingPageUrl) {
-      sessionStorage.setItem("landingPageUrl", landingPageUrl);
-      localStorage.setItem("landingPageUrl", landingPageUrl);
-    }
-  }, [searchParams]);
+      if (landingPageUrl) {
+        sessionStorage.setItem("landingPageUrl", landingPageUrl);
+        localStorage.setItem("landingPageUrl", landingPageUrl);
+        Cookies.set("landingPageUrl", landingPageUrl, { expires: 7, path: '/' });
+      }
+    };
+
+    // Capture the params immediately
+    captureParams();
+
+    // Attach event listener for future URL changes
+    window.addEventListener('popstate', captureParams);
+
+    return () => {
+      window.removeEventListener('popstate', captureParams);
+    };
+  }, []);
 
   const handleMobileChange = (e) => {
     const value = e.target.value;

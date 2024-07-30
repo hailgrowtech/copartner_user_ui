@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { back, closeImg } from "../assets";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 import axios from "axios";
 
 const Otp = ({ onClose, onCloseAll, mobileNumber, onComplete }) => {
@@ -11,9 +12,16 @@ const Otp = ({ onClose, onCloseAll, mobileNumber, onComplete }) => {
   const [timer, setTimer] = useState(25);
   const navigate = useNavigate();
 
-  const apid = localStorage.getItem("apid") || sessionStorage.getItem("apid");
-  const raid = localStorage.getItem("raid") || sessionStorage.getItem("raid");
+  const apid =
+    Cookies.get("apid") ||
+    localStorage.getItem("apid") ||
+    sessionStorage.getItem("apid");
+  const raid =
+    Cookies.get("raid") ||
+    localStorage.getItem("raid") ||
+    sessionStorage.getItem("raid");
   const landingPageUrl =
+    Cookies.get("landingPageUrl") ||
     localStorage.getItem("landingPageUrl") ||
     sessionStorage.getItem("landingPageUrl");
 
@@ -26,6 +34,15 @@ const Otp = ({ onClose, onCloseAll, mobileNumber, onComplete }) => {
     }
     return () => clearInterval(interval);
   }, [timer]);
+
+  const handleRemoveCookies = () => {
+    Cookies.remove("apid", { path: '/' });
+    Cookies.remove("raid", { path: '/' });
+    Cookies.remove("landingPageUrl", { path: '/' });
+    localStorage.removeItem("apid");
+    localStorage.removeItem("raid");
+    localStorage.removeItem("landingPageUrl");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -114,6 +131,16 @@ const Otp = ({ onClose, onCloseAll, mobileNumber, onComplete }) => {
         const scriptElement = document.createElement("script");
         scriptElement.textContent = scriptContent;
         document.body.appendChild(scriptElement);
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "signup",
+          event_category: "User",
+          event_action: "Signup",
+          event_label: "Phone OTP Signup",
+          phoneNumber: mobileNumber,
+        });
+
         console.log("Trackier");
         if (apid) {
           navigate("/expertise");
@@ -125,9 +152,7 @@ const Otp = ({ onClose, onCloseAll, mobileNumber, onComplete }) => {
         window.location.reload();
         onComplete();
       }
-      localStorage.removeItem("apid");
-      localStorage.removeItem("raid");
-      localStorage.removeItem("landingPageUrl");
+      handleRemoveCookies();
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);
     }

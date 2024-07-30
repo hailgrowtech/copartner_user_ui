@@ -9,9 +9,10 @@ import MinorSubFeatured from "./MinorSubFeatured";
 import HowMinorWorks from "./HowMinorWorks";
 import Loader from "./Loader";
 import "./Minor.css";
-import SubscriptionPaymentPopup from "../Subscription RA/SubscriptionPaymentPopup";
+import SubscriptionMinorPopup from "../Subscription RA/SubscriptionMinorPopup";
 import { useUserSession } from "../../constants/userContext";
-import SignUp2 from "../Signup2";
+import SignUp3 from "./SignUp3";
+
 const MinorSub = () => {
   const { id } = useParams();
   const location = useLocation();
@@ -25,6 +26,7 @@ const MinorSub = () => {
   const [subscriptionId, setSubscriptionId] = useState("");
   const [isCustom, setIsCustom] = useState("");
   const [durationMonth, setDurationMonth] = useState("");
+  const [signupPopup, setSignupPopup] = useState(false);
   const { userData } = useUserSession();
 
   const fetchData = async (fetchId) => {
@@ -56,6 +58,19 @@ const MinorSub = () => {
     }
   }, [location]);
 
+  useEffect(() => {
+    if (userData && expertData) {
+      handleBuyNowClick(
+        expertData.id,
+        expertData.planType,
+        expertData.amount,
+        expertData.isCustom,
+        expertData.durationMonth,
+        expertData.chatId
+      );
+    }
+  }, [userData, expertData]);
+
   const handleBuyNowClick = (
     subscriptionId,
     plan,
@@ -64,13 +79,17 @@ const MinorSub = () => {
     durationMonth,
     chatId
   ) => {
-    setSelectedMonthlyPlan(plan);
-    setPlanMonthlyPrice(price);
-    setShowMonthlyPopup(true);
-    setSubscriptionId(subscriptionId);
-    setIsCustom(isCustom);
-    setDurationMonth(durationMonth);
-    setChatID(chatId);
+    if (!userData) {
+      setSignupPopup(true);
+    } else {
+      setSelectedMonthlyPlan(plan);
+      setPlanMonthlyPrice(price);
+      setShowMonthlyPopup(true);
+      setSubscriptionId(subscriptionId);
+      setIsCustom(isCustom);
+      setDurationMonth(durationMonth);
+      setChatID(chatId);
+    }
   };
 
   const handleClosePopup = () => {
@@ -231,7 +250,9 @@ const MinorSub = () => {
             <div className="flex justify-between items-center">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-md font-semibold opacity-50">Amount:</span>
+                  <span className="text-md font-semibold opacity-50">
+                    Amount:
+                  </span>
                   <div className="flex gap-1 items-center">
                     <span className="text-lg text-[#000] font-bold opacity-50">
                       <del>₹{(expertData.amount * 1.5).toFixed(0)}</del>
@@ -269,7 +290,7 @@ const MinorSub = () => {
         </div>
       </div>
       {showMonthlyPopup && (
-        <SubscriptionPaymentPopup
+        <SubscriptionMinorPopup
           onClose={handleClosePopup}
           selectedMonthlyPlan={selectedMonthlyPlan}
           planMonthlyPrice={planMonthlyPrice}
@@ -282,7 +303,7 @@ const MinorSub = () => {
           durationMonth={durationMonth}
         />
       )}
-      {!userData && <SignUp2 />}
+      {signupPopup && <SignUp3 planMonthlyPrice={expertData.amount} />}
     </div>
   );
 };

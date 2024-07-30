@@ -37,3 +37,20 @@
   border: 1px white;
   color: white;
 }
+
+@keyframes wave-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.wave-gradient {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.3));
+  background-size: 200% 100%;
+  animation: wave-gradient 5s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
