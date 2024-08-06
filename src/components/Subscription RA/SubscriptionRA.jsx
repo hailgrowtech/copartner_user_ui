@@ -21,6 +21,8 @@ import { motion, AnimatePresence } from "framer-motion";
 // import LinkPopup from "../InviteLink/LinkPopup";
 import SignUp2 from "../Signup2";
 import Stock from "../Stock";
+import SignUp3 from "../MinorSubscription/SignUp3";
+import SubscriptionMinorPopup from "../Subscription RA/SubscriptionMinorPopup";
 
 const SubscriptionRA = ({ userId }) => {
   const { id } = useParams();
@@ -42,6 +44,7 @@ const SubscriptionRA = ({ userId }) => {
   const [subscriptionId, setSubscriptionId] = useState("");
   const [isCustom, setIsCustom] = useState("");
   const [durationMonth, setDurationMonth] = useState("");
+  const [showSignupPopup, setShowSignupPopup] = useState(false);
 
   useEffect(() => {
     if (!loading && userData) {
@@ -170,13 +173,18 @@ const SubscriptionRA = ({ userId }) => {
     durationMonth,
     chatId
   ) => {
-    setSelectedMonthlyPlan(plan);
-    setPlanMonthlyPrice(price);
-    setShowMonthlyPopup(true);
-    setSubscriptionId(subscriptionId);
-    setIsCustom(isCustom);
-    setDurationMonth(durationMonth);
-    setChatID(chatId);
+    if (!userData) {
+      setPlanMonthlyPrice(price);
+      setShowSignupPopup(true);
+    } else {
+      setSelectedMonthlyPlan(plan);
+      setPlanMonthlyPrice(price);
+      setShowMonthlyPopup(true);
+      setSubscriptionId(subscriptionId);
+      setIsCustom(isCustom);
+      setDurationMonth(durationMonth);
+      setChatID(chatId);
+    }
   };
 
   const handleMouseEnter = (index) => {
@@ -532,7 +540,7 @@ const SubscriptionRA = ({ userId }) => {
                   );
                 })}
               {showMonthlyPopup && (
-                <SubscriptionPaymentPopup
+                <SubscriptionMinorPopup
                   onClose={handleClosePopup}
                   selectedMonthlyPlan={selectedMonthlyPlan}
                   planMonthlyPrice={planMonthlyPrice}
@@ -768,7 +776,7 @@ const SubscriptionRA = ({ userId }) => {
           />
         )} */}
       </div>
-      {!userId && <SignUp2 />}
+      {showSignupPopup && <SignUp3 planMonthlyPrice={planMonthlyPrice}/>}
     </section>
   );
 };

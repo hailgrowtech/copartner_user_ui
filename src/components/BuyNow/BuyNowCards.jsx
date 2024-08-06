@@ -8,6 +8,8 @@ import { telegram, userBck } from "../../assets/index";
 import SubscriptionPaymentPopup from "../Subscription RA/SubscriptionPaymentPopup";
 import { useUserSession } from "../../constants/userContext";
 import SignUp2 from "../Signup2";
+import SignUp3 from "../MinorSubscription/SignUp3";
+import SubscriptionMinorPopup from "../Subscription RA/SubscriptionMinorPopup";
 
 const BuyNowCards = () => {
   const products = useUserData();
@@ -131,6 +133,7 @@ const BuyNowCards = () => {
     chatId
   ) => {
     if (!userData) {
+      setPlanMonthlyPrice(price);
       setShowSignupPopup(true);
     } else {
       setSelectedMonthlyPlan(plan);
@@ -207,7 +210,7 @@ const BuyNowCards = () => {
               </button>
             </div>
             {showSignUp && (
-              <SignUp2
+              <SignUp3
                 onComplete={(e) =>
                   handleSignUpComplete(e, product.telegramChannel)
                 }
@@ -280,7 +283,7 @@ const BuyNowCards = () => {
                   ref={(el) => (sliderRefs.current[product.id] = el)}
                 >
                   {subscriptions[product.id]
-                    ?.sort((a, b) => a.serviceType - b.serviceType)
+                    ?.sort((a, b) => a.discountedAmount - b.discountedAmount)
                     .map((subscription) => (
                       <div className="slide" key={subscription.id}>
                         <div
@@ -325,7 +328,7 @@ const BuyNowCards = () => {
                               handleBuyNowClick(
                                 subscription.id,
                                 subscription.planType,
-                                subscription.amount,
+                                subscription.discountedAmount,
                                 subscription.isCustom,
                                 subscription.durationMonth,
                                 subscription.chatId
@@ -346,7 +349,7 @@ const BuyNowCards = () => {
                 </Slider>
               </div>
               {showMonthlyPopup && (
-                <SubscriptionPaymentPopup
+                <SubscriptionMinorPopup
                   onClose={handleClosePopup}
                   selectedMonthlyPlan={selectedMonthlyPlan}
                   planMonthlyPrice={planMonthlyPrice}
@@ -359,7 +362,7 @@ const BuyNowCards = () => {
                   durationMonth={durationMonth}
                 />
               )}
-              {showSignupPopup && <SignUp2 />}
+              {showSignupPopup && <SignUp3 planMonthlyPrice={planMonthlyPrice} />}
             </div>
           </div>
         ))}

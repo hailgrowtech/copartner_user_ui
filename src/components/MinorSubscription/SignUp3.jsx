@@ -192,7 +192,7 @@ const SignUp3 = ({ onClose, onLoginSuccess, planMonthlyPrice }) => {
 
   return (
     <div
-      className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50 w-screen h-screen`}
+      className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50 w-screen h-screen`}
     >
       <div className="bg-[#18181B] border-[1px] border-[#ffffff2a] m-4 p-6 rounded-lg w-96 relative text-center shadow-lg">
         <button
@@ -221,12 +221,12 @@ const SignUp3 = ({ onClose, onLoginSuccess, planMonthlyPrice }) => {
           {validationMessage && (
             <p className="text-red-500 mt-2">{validationMessage}</p>
           )}
-          <div className="flex justify-between py-2 mb-4 border-b-[1px] border-t-[1px] border-[#c9c9c962]">
+          {total && <div className="flex justify-between py-2 mb-4 border-b-[1px] border-t-[1px] border-[#c9c9c962]">
             <label className="block text-lg text-[#c9c9c9] font-semibold">
               Total
             </label>
             <span className="text-lg font-semibold">₹{total}</span>
-          </div>
+          </div>}
           <button
             type="submit"
             className={`bg-blue-500 hover:bg-blue-700 text-white font-semibold text-[20px] py-3 px-4 rounded-xl transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
