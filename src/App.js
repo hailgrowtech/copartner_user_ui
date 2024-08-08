@@ -319,7 +319,7 @@ function App() {
   );
 
   return (
-    <div className="bg-[#06030E] w-full overflow-hidden">
+    <div className="bg-[#ededed] w-full overflow-hidden font-poppins">
       <RouterProvider router={router} />
     </div>
   );

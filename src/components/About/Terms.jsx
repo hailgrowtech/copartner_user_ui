@@ -4,18 +4,18 @@ import styles from "../../style";
 const Terms = () => {
   return (
     <div
-      className={`flex md:flex-col ${styles.paddingY} ${styles.paddingX} flex-col expertise-Bg`}
+      className={`flex md:flex-col ${styles.paddingY} ${styles.paddingX} flex-col expertise-Bgn bg-white`}
     >
       <div className="flex flex-col items-center">
         <div className="flex md:flex-row items-center flex-col justify-center gap-[1rem]">
           <div className={`flex-col text-center md:gap-[2rem] gap-0`}>
             <div className="flex flex-col justify-between">
-              <span className="flex items-left font-inter font-[700] md:text-[72px] text-[40px] text-gradient md:leading-[84px] leading-[48px]">
+              <span className="flex items-left font-inter font-[700] md:text-[72px] text-[40px] text-black md:leading-[84px] leading-[48px]">
                 TERMS AND CONDITIONS
               </span>
 
-              <div className="md:w-full text-left md:px-0 px-[1rem] md-px-0">
-                <span className="font-inter font-[500] mt-4 text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[16px]">
+              <div className="md:w-full text-left md:px-0 px-[1rem]">
+                <span className="font-inter font-[500] mt-4 text-gray-700 md:text-[18px] text-[16px] md:leading-[28px] leading-[16px]">
                   PLEASE READ THESE TERMS AND CONDITIONS CAREFULLY. BY USING
                   THIS PLATFORM, YOU AGREE TO BE BOUND BY ALL OF THE TERMS AND
                   CONDITIONS OF THIS AGREEMENT. These Terms & Conditions (the
@@ -26,7 +26,7 @@ const Terms = () => {
 
                 <br />
 
-                <span className="font-inter font-[500] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] leading-[16px] mt-[4rem]">
+                <span className="font-inter font-[500] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px] leading-[16px] mt-[4rem]">
                   This Agreement includes, and incorporates by this reference,
                   the policies and guidelines referenced below. The Company
                   reserves the right to change or revise the terms and
@@ -52,7 +52,7 @@ const Terms = () => {
               </div>
 
               <div className="font-inter md:w-full py-[4rem] text-left md:px-0 px-[1rem]">
-                <span className="font-[500] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px] md:leading-[16px] leading-[12px]">
+                <span className="font-[500] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px] md:leading-[16px] leading-[12px]">
                   Please read the Terms and Privacy Policy ( “Privacy Policy” )
                   carefully before using or registering on the Platform or
                   accessing any material, information through the Platform. By
@@ -66,7 +66,7 @@ const Terms = () => {
                   availing the Services through the Platform in accordance with
                   these Terms.
                   <hr />
-                  <span className="font-[700] text-white text-[16px] text-center">
+                  <span className="font-[700] text-black text-[16px] text-center">
                     IF YOU DO NOT AGREE TO BE BOUND BY ALL TERMS AND CONDITIONS
                     CAPTURED IN THE TERMS, PLEASE DO NOT USE THE PLATFORM OR
                     SERVICES
@@ -80,13 +80,13 @@ const Terms = () => {
               <div className="flex flex-col">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
-                  text-gradient-2 leading-[51px] md:w-[635px] md:h-[60px] w-[365px] h-[40px] text-start"
+                  text-black leading-[51px] md:w-[635px] md:h-[60px] w-[365px] h-[40px] text-start"
                 >
                   1. SERVICES:
                 </span>
                 <div className="flex flex-col text-start">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2 md:px-0 px-[1rem]"
                   >
                     a) Terms of Offer: This Platform offers certain services
@@ -128,13 +128,13 @@ const Terms = () => {
               <div className="flex flex-col">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
-                    text-gradient-2 leading-[51px] md:w-[635px] md:h-[60px] w-[365px] h-[40px] text-start"
+                    text-black leading-[51px] md:w-[635px] md:h-[60px] w-[365px] h-[40px] text-start"
                 >
                   2. PLATFORM:
                 </span>
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     a) Content, Intellectual Property, Third-Party Links: In
@@ -162,7 +162,7 @@ const Terms = () => {
                 </div>
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     b) Use of Platform: The Company is not responsible for any
@@ -181,7 +181,7 @@ const Terms = () => {
                 </div>
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     c) License: By using this Platform, you are granted a
@@ -196,7 +196,7 @@ const Terms = () => {
                 </div>
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     d) Posting: By posting, storing, or transmitting any content
@@ -223,13 +223,13 @@ const Terms = () => {
               <div className="flex flex-col pt-[3rem]">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
-                    text-gradient-2 md:w-[735px] w-[395px] text-start"
+                    text-black md:w-[735px] w-[395px] text-start"
                 >
                   3. DISCLAIMER OF WARRANTIES:
                 </span>
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     YOUR USE OF THIS PLATFORM AND/OR SERVICES ARE AT YOUR SOLE
@@ -245,7 +245,7 @@ const Terms = () => {
                     NO WARRANTY:
                   </span>
                   <div
-                    className="font-inter md:ml-4 ml-2 font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter md:ml-4 ml-2 font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     - THAT THE INFORMATION PROVIDED ON THIS PLATFORM IS
@@ -260,7 +260,7 @@ const Terms = () => {
                     PURCHASED OR OBTAINED THROUGH THE PLATFORM.
                   </div>
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN
@@ -272,13 +272,13 @@ const Terms = () => {
               <div className="flex flex-col md:pt-[3rem] pt-[2rem]">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
-                    text-gradient-2 md:w-[735px] w-[365px] text-start"
+                    text-black md:w-[735px] w-[365px] text-start"
                 >
                   4. LIMITATION OF LIABILITY:
                 </span>
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     THE COMPANY'S ENTIRE LIABILITY, AND YOUR EXCLUSIVE REMEDY,
@@ -288,7 +288,7 @@ const Terms = () => {
                     SERVICE VIA THE PLATFORM.
                   </span>
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     THE COMPANY WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT,
@@ -301,7 +301,7 @@ const Terms = () => {
                     THE PLATFORM; OR (4) ANY LOST PROFITS YOU ALLEGE.
                   </span>
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     SOME JURISDICTIONS DO NOT ALLOW THE LIMITATION OR EXCLUSION
@@ -313,13 +313,13 @@ const Terms = () => {
               <div className="flex flex-col md:py-[3rem] py-[3rem]">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
-                    text-gradient-2 md:w-[935px] w-[365px] text-start"
+                    text-black md:w-[935px] w-[365px] text-start"
                 >
                   5. INDEMNIFICATION:
                 </span>
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     You will release, indemnify, defend, and hold harmless the
@@ -356,13 +356,13 @@ const Terms = () => {
               <div className="flex flex-col md:pt-[1rem]">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
-                    text-gradient-2 md:w-[935px] w-[285px] text-start"
+                    text-black md:w-[935px] w-[285px] text-start"
                 >
                   6. PRIVACY:
                 </span>
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     The Company believes strongly in protecting user privacy and
@@ -375,13 +375,13 @@ const Terms = () => {
               <div className="flex flex-col md:pt-[4rem] pt-[3rem]">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
-                    text-gradient-2 md:w-[935px] w-[325px] text-start"
+                    text-black md:w-[935px] w-[325px] text-start"
                 >
                   7. Refund Policy:
                 </span>
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     We are not party to the agreement between creators and
@@ -389,7 +389,7 @@ const Terms = () => {
                     refund in any case.
                   </span>
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     For orders placed directly with Hailgro Tech Solutions, will
@@ -400,7 +400,7 @@ const Terms = () => {
                     return and refund policy of that third party.
                   </span>
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     Your right of return for refund does not apply to all
@@ -414,13 +414,13 @@ const Terms = () => {
               <div className="flex flex-col md:pt-[3rem] pt-[3rem]">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
-                    text-gradient-2 md:leading-[51px] leading-[30px] md:w-[935px] md:h-[110px] w-[385px] h-[90px] text-start"
+                    text-black md:leading-[51px] leading-[30px] md:w-[935px] md:h-[110px] w-[385px] h-[90px] text-start"
                 >
                   8. AGREEMENT TO BE BOUND:
                 </span>
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     By using this Platform or receiving Services, you
@@ -432,13 +432,13 @@ const Terms = () => {
               <div className="flex flex-col pt-[3rem]">
                 <span
                   className="font-inter font-[700] md:text-[50px] text-[25px] md:px-0 px-[1rem]
-                    text-gradient-2 md:leading-[51px] md:w-[935px] md:h-[70px] w-[305px] h-[35px] text-start"
+                    text-black md:leading-[51px] md:w-[935px] md:h-[70px] w-[305px] h-[35px] text-start"
                 >
                   9. GENERAL:
                 </span>
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     a) Force Majeure: The Company will not be deemed in default
@@ -451,7 +451,7 @@ const Terms = () => {
                 </div>
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     b) Cessation of Operation: The Company may at any time, in
@@ -461,7 +461,7 @@ const Terms = () => {
                 </div>
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     c) Entire Agreement: This Agreement comprises the entire
@@ -472,7 +472,7 @@ const Terms = () => {
                 </div>
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     d) Effect of Waiver: The failure of the Company to exercise
@@ -488,7 +488,7 @@ const Terms = () => {
                 </div>
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     e) Governing Law and Jurisdiction: This Platform originates
@@ -509,7 +509,7 @@ const Terms = () => {
                 </div>
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     f) Waiver of Class Action Rights: BY ENTERING INTO THIS
@@ -522,7 +522,7 @@ const Terms = () => {
                 </div>
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     g) Termination: The Company reserves the right to terminate
@@ -542,7 +542,7 @@ const Terms = () => {
                 </div>
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     h) Domestic Use: The Company makes no representation that
@@ -555,7 +555,7 @@ const Terms = () => {
                 </div>
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     i) Assignment: You may not assign your rights and
@@ -566,7 +566,7 @@ const Terms = () => {
                 </div>
                 <div className="flex flex-col text-start md:px-0 px-[1rem]">
                   <span
-                    className="font-inter font-[400] text-dimWhite md:text-[18px] text-[16px] md:leading-[28px]
+                    className="font-inter font-[400] text-gray-700 md:text-[18px] text-[16px] md:leading-[28px]
                    leading-[21px] text-start mt-2"
                   >
                     BY USING THIS PLATFORM OR PURCHASING ANY SERVICE FROM THIS

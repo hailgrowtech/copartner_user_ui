@@ -1,4 +1,4 @@
-import logo from "./copartnerLogo.png";
+import logo from "./CO partner logo png black-17.png";
 import menu from "./menu.svg";
 import hero from "./hero.png";
 import userImg from "./userImg.png";
@@ -89,6 +89,7 @@ import demoImg from './demoImg.png'
 import WebinarLogo from "./webinarLogo.png";
 import featured1 from "./featured1.png";
 import featured2 from "./featured2.png";
+import verifiedCheck from "./Verified Check.png";
 
 export {
   logo,
@@ -182,4 +183,5 @@ export {
   WebinarLogo,
   featured1,
   featured2,
+  verifiedCheck
 };

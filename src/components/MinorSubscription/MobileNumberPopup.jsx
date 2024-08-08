@@ -50,9 +50,9 @@ const MobileNumberPopup = ({ onClose, mobileNumber }) => {
   return (
     <>
       <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
-        <div className="bg-[#18181B] border-[1px] border-[#ffffff2a] m-4 p-8 rounded-lg w-[25rem] relative text-center shadow-lg">
+        <div className="bg-white border-[1px] border-[#333333] m-4 p-8 rounded-lg w-[25rem] relative text-center shadow-lg">
           <div className="mb-1">
-            <h2 className="text-2xl font-semibold text-white mb-4">
+            <h2 className="text-2xl font-semibold text-black mb-4">
               Verify Your Number
             </h2>
           </div>
@@ -62,13 +62,13 @@ const MobileNumberPopup = ({ onClose, mobileNumber }) => {
               value={newMobileNumber}
               disabled={!isEditing}
               onChange={(e) => setNewMobileNumber(e.target.value)}
-              className="text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none px-4 py-3 border border-[#ffffff34] rounded-xl focus:outline-none text-white focus:border-white-500 bg-transparent"
+              className="text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none px-4 py-3 border border-[#333333] rounded-xl focus:outline-none text-black focus:border-black bg-transparent"
               maxLength={10}
             />
             {!isEditing && (
               <button
                 onClick={handleEdit}
-                className="flex mx-auto items-center gap-2 opacity-50 text-white py-2 px-4 rounded focus:outline-none focus:ring-2 text-base md:text-xl"
+                className="flex mx-auto items-center gap-2 text-black opacity-75 py-2 px-4 rounded focus:outline-none focus:ring-2 text-base md:text-xl"
               >
                 <FaPen />
                 Edit
@@ -77,7 +77,7 @@ const MobileNumberPopup = ({ onClose, mobileNumber }) => {
           </div>
           <button
             onClick={handleGenerateOTP}
-            className="w-full bg-white text-black hover:bg-black hover:text-white transition duration-300 font-semibold text-[20px] py-3 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full bg-black text-white hover:bg-gray-800 transition duration-300 font-semibold text-[20px] py-3 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             Send OTP
           </button>

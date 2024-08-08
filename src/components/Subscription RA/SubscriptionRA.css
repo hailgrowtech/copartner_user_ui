@@ -48,9 +48,27 @@
 }
 
 .wave-gradient {
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.3));
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.3));
   background-size: 200% 100%;
   animation: wave-gradient 5s linear infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+@keyframes gradient-rotation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-bg-animate {
+  background: linear-gradient(270deg, #1e3a8a, #3b82f6, #06b6d4, #1e3a8a);
+  background-size: 600% 600%;
+  animation: gradient-rotation 8s ease infinite;
 }

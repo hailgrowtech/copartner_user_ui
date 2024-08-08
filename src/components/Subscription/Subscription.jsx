@@ -50,7 +50,7 @@ const Subscription = ({ userId }) => {
   };
 
   return (
-    <div className="expertise-Bg">
+    <div className="expertise-Bgn">
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -62,16 +62,16 @@ const Subscription = ({ userId }) => {
           className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6 z-10 md:bottom-[10rem] text-center`}
         >
           <div className="justify-between items-center w-full">
-            <span className="font-inter font-[700] md:text-[62px] text-[36px] text-gradient md:leading-[74px] leading-[48px]">
+            <span className="font-inter font-[700] md:text-[62px] text-[36px] text-gray-900 md:leading-[74px] leading-[48px]">
               Explore Our <br /> Premium Groups
             </span>
-            <p className="mt-2 text-center text-dimWhite md:text-[18px] text-[13px] md:block hidden">
+            <p className="mt-2 text-center text-gray-700 md:text-[18px] text-[13px] md:block hidden">
               Access premium insights from our expert team, guiding you
               <br />
               towards successful trades and informed decisions in the markets.
             </p>
 
-            <p className="text-center text-dimWhite md:text-xl text-[13px] md:hidden">
+            <p className="text-center text-gray-700 md:text-xl text-[13px] md:hidden">
               Take your team up a level with easy-to-use tools, effortless{" "}
               templates, and efficient workflows.
             </p>
@@ -83,14 +83,14 @@ const Subscription = ({ userId }) => {
         <div className="flex flex-row md:h-[52px] h-[34px] justify-center md:justify-between items-center">
           <span
             className="font-inter font-[700] md:text-[50px] text-[30px]
-                    text-gradient-2 leading-[51px]"
+                    text-gray-900 leading-[51px]"
           >
             Our Expertise
           </span>
         </div>
 
         <p
-          className="font-inter md:w-[1136px] md:h-[28px] sm:w-[328px] h-[34px] font-[400] text-dimWhite sm:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
+          className="font-inter md:w-[1136px] md:h-[28px] sm:w-[328px] h-[34px] font-[400] text-gray-700 sm:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
           leading-[16px] sm:text-start mt-2 text-center"
         >
           Dive into the expertise of our SEBI registered research analysts,
@@ -100,8 +100,8 @@ const Subscription = ({ userId }) => {
           {userId ? (
             <ProfileCard userId={userId} />
           ) : (
-            <div className="text-center flex flex-col gap-8 mt-12 text-dimWhite md:text-4xl text-lg">
-              <img className="md:w-96 w-60 mx-auto" src={logout} alt="" />
+            <div className="text-center flex flex-col gap-8 mt-12 text-gray-700 md:text-4xl text-lg">
+              <img className="md:w-96 w-60 mx-auto" src={logout} alt="Logout" />
               <Link to={"/signup"}>Login to see your Subscriptions!</Link>
             </div>
           )}
@@ -202,14 +202,14 @@ const Subscription = ({ userId }) => {
           <div className="flex flex-row md:h-[52px] h-[34px] md:justify-between items-center">
             <span
               className="font-inter font-[700] md:text-[50px] text-[30px]
-              text-gradient-2 md:leading-[51px] md:ml-0 ml-2"
+              text-gray-900 md:leading-[51px] md:ml-0 ml-2"
             >
               Similar To Your Interest
             </span>
           </div>
 
           <p
-            className="font-inter md:w-[1136px] md:h-[28px] sm:w-[328px] h-[34px] font-[400] text-dimWhite sm:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
+            className="font-inter md:w-[1136px] md:h-[28px] sm:w-[328px] h-[34px] font-[400] text-gray-700 sm:text-[18px] text-[13px] md:leading-[28px] sm:leading-[17px]
                  leading-[16px] sm:text-start mt-2 text-center"
           >
             Discover related analysts with similar expertise to enhance your
@@ -222,7 +222,7 @@ const Subscription = ({ userId }) => {
             userData.map((expert, id) => {
               return (
                 <div
-                  className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-xl p-2 border-[#ffffff23] border-[1px] "
+                  className="flex flex-col hover:bg-gray-100 hover:opacity[50%] transition duration-150 ease-in-out rounded-xl p-2 border-gray-300 border-[1px] "
                   onClick={() => handleExpertClick(expert)}
                   key={expert.id}
                 >
@@ -242,10 +242,10 @@ const Subscription = ({ userId }) => {
 
                     <div className="w-[154px] h-[22px] sm:w-[319px] sm:h-[40px] flex justify-between px-[5px] sm:px-[1rem]">
                       <div className="flex flex-col h-[22px] w-full md:h-[40px] gap-2">
-                        <span className="sm:text-[18px] text-[12px] sm:leading-[18px] leading-[8px] font-[500] text-lightWhite">
+                        <span className="sm:text-[18px] text-[12px] sm:leading-[18px] leading-[8px] font-[500] text-gray-900">
                           {expert.channelName}
                         </span>
-                        <span className="sm:text-[13px] text-[10px] sm:leading-[16px] leading-[9.6px] font-[400] text-dimWhite">
+                        <span className="sm:text-[13px] text-[10px] sm:leading-[16px] leading-[9.6px] font-[400] text-gray-700">
                           {expert.name} - {getExpertType(expert.expertTypeId)}
                         </span>
                       </div>
@@ -255,7 +255,7 @@ const Subscription = ({ userId }) => {
                           className="sm:w-[12.3px] sm:h-[12.3px] w-[8px] h-[8px]"
                           alt="rating"
                         />
-                        <span className="text-lightWhite font-[600] sm:text-[11.5px] sm:leading-[14px] text-[10px] leading-[10px]">
+                        <span className="text-gray-900 font-[600] sm:text-[11.5px] sm:leading-[14px] text-[10px] leading-[10px]">
                           {expert.rating}
                         </span>
                       </div>
@@ -263,20 +263,20 @@ const Subscription = ({ userId }) => {
 
                     <div className="md:w-[256px] w-[143px] h-[44px] flex items-start md:mt-2 mt-4 justify-between ">
                       <div className="flex flex-col md:w-[78px] w-[43px] h-[22px] items-center justify-between">
-                        <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
+                        <span className="text-gray-700 font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
                           Experience
                         </span>
-                        <span className="text-lightWhite font-[600] sm:text-[15px] sm:leading-[18px] text-[10px] leading-[10px]">
+                        <span className="text-gray-900 font-[600] sm:text-[15px] sm:leading-[18px] text-[10px] leading-[10px]">
                           {expert.experience}+
                         </span>
                       </div>
-                      <div className="sm:w-[1.4px] sm:h-[40px] w-[0.4px] h-[16px] bg-lightWhite"></div>
+                      <div className="sm:w-[1.4px] sm:h-[40px] w-[0.4px] h-[16px] bg-gray-900"></div>
                       <div className="flex">
                         <div className="flex flex-col sm:w-[78px] sm:h-[50px] w-[43px] h-[22px] items-center">
-                          <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
+                          <span className="text-gray-700 font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
                             Followers
                           </span>
-                          <span className="text-lightWhite font-[600] sm:text-[15px] sm:leading-[18px] text-[10px] leading-[10px]">
+                          <span className="text-gray-900 font-[600] sm:text-[15px] sm:leading-[18px] text-[10px] leading-[10px]">
                             {`${expert.telegramFollower / 1000}k`}
                           </span>
                         </div>
@@ -284,9 +284,9 @@ const Subscription = ({ userId }) => {
                     </div>
 
                     <div className="md:w-[300px] w-[143px] md:h-[32px] md:mt-2 w-full md:pl-[5px]">
-                      <div className="text-dimWhite md:text-[14px] flex md:flex-row flex-col text-[11px] md:leading-[18px] leading-[14px] md:pl-0 pl-[2px]">
+                      <div className="text-gray-700 md:text-[14px] flex md:flex-row flex-col text-[11px] md:leading-[18px] leading-[14px] md:pl-0 pl-[2px]">
                         <span>SEBI:</span>{" "}
-                        <span className="text-white md:ml-2">
+                        <span className="text-gray-900 md:ml-2">
                           {expert.sebiRegNo}
                         </span>
                       </div>
@@ -315,8 +315,7 @@ const Subscription = ({ userId }) => {
             })}
         </div>
       </div>
-
-       {/* <section className={`w-full md:px-5 text-white`}>
+      {/* <section className={`w-full md:px-5 text-white`}>
       <div className="md:flex md:flex-row md:justify-between text-center w-full md:mt-16 mt-10 md:mb-8 mb-1 md:px-50">
        <div className="flex-col-6 text-left font-inter font-bold md:text-[50px] text-[30px] subheading-color md:leading-[50px] leading-[51px] md:mb-6 md:mx-[10rem]">
             Course By Expertise

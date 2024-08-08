@@ -56,7 +56,6 @@ const KYCPopup = ({ onClose, inviteLink }) => {
         {
           headers: {
             "Content-Type": "application/json-patch+json",
-            // Authorization: 'Bearer ' + userData.token, // Uncomment this line if you use token-based auth
           },
         }
       );
@@ -65,7 +64,7 @@ const KYCPopup = ({ onClose, inviteLink }) => {
         toast.success("Details updated successfully!");
         setError(null);
         if (inviteLink) {
-          await sendSMS(userData?.mobileNumber, inviteLink)
+          await sendSMS(userData?.mobileNumber, inviteLink);
         }
         window.location.reload();
         onClose();
@@ -110,14 +109,14 @@ const KYCPopup = ({ onClose, inviteLink }) => {
   return (
     <>
       <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-        <div className="bg-[#18181b] border-[1px] border-[#ffffff24] rounded shadow-md w-[90%] md:w-[400px] relative">
+        <div className="bg-white border-[1px] border-gray-300 rounded shadow-md w-[90%] md:w-[400px] relative">
           <div className="border-b-2 py-3 px-6">
-            <h2 className="md:text-2xl text-xl font-bold subheading-color text-left">
+            <h2 className="md:text-2xl text-xl font-bold text-gray-900 text-left">
               KYC Verification
             </h2>
           </div>
           <div className="px-6 py-3">
-            <div className="text-white mb-4">
+            <div className="text-gray-900 mb-4">
               <p>
                 <strong>Precaution:</strong> Closing this popup will lose the
                 Telegram Channel Link!!! (if any)
@@ -125,7 +124,7 @@ const KYCPopup = ({ onClose, inviteLink }) => {
             </div>
             <div className="grid grid-cols-2 gap-2">
               <div className="mb-4 md:col-span-1">
-                <label htmlFor="name" className="block mb-1 text-sm text-white">
+                <label htmlFor="name" className="block mb-1 text-sm text-gray-900">
                   Name
                 </label>
                 <input
@@ -133,14 +132,11 @@ const KYCPopup = ({ onClose, inviteLink }) => {
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="block px-2.5 py-2 w-full text-sm rounded-lg border-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
+                  className="block px-2.5 py-2 w-full text-sm rounded-lg border-2 border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-900 peer"
                 />
               </div>
               <div className="mb-4 md:col-span-1">
-                <label
-                  htmlFor="email"
-                  className="block mb-1 text-sm text-white"
-                >
+                <label htmlFor="email" className="block mb-1 text-sm text-gray-900">
                   Email
                 </label>
                 <input
@@ -148,11 +144,11 @@ const KYCPopup = ({ onClose, inviteLink }) => {
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="block px-2.5 py-2 w-full text-sm rounded-lg border-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
+                  className="block px-2.5 py-2 w-full text-sm rounded-lg border-2 border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-900 peer"
                 />
               </div>
               <div className="mb-4 md:col-span-1">
-                <label htmlFor="pan" className="block mb-1 text-sm text-white">
+                <label htmlFor="pan" className="block mb-1 text-sm text-gray-900">
                   PAN Card
                 </label>
                 <input
@@ -160,14 +156,11 @@ const KYCPopup = ({ onClose, inviteLink }) => {
                   id="pan"
                   value={pan}
                   onChange={(e) => setPan(e.target.value)}
-                  className="block px-2.5 py-2 w-full text-sm rounded-lg border-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
+                  className="block px-2.5 py-2 w-full text-sm rounded-lg border-2 border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-900 peer"
                 />
               </div>
               <div className="mb-4 md:col-span-1">
-                <label
-                  htmlFor="state"
-                  className="block mb-1 text-sm text-white"
-                >
+                <label htmlFor="state" className="block mb-1 text-sm text-gray-900">
                   State
                 </label>
                 <input
@@ -175,14 +168,11 @@ const KYCPopup = ({ onClose, inviteLink }) => {
                   id="state"
                   value={state}
                   onChange={(e) => setState(e.target.value)}
-                  className="block px-2.5 py-2 w-full text-sm rounded-lg border-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
+                  className="block px-2.5 py-2 w-full text-sm rounded-lg border-2 border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-900 peer"
                 />
               </div>
               <div className="mb-4 col-span-2">
-                <label
-                  htmlFor="address"
-                  className="block mb-1 text-sm text-white"
-                >
+                <label htmlFor="address" className="block mb-1 text-sm text-gray-900">
                   Address
                 </label>
                 <input
@@ -190,7 +180,7 @@ const KYCPopup = ({ onClose, inviteLink }) => {
                   id="address"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  className="block px-2.5 py-2 w-full text-sm rounded-lg border-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-[#ffffff4b] focus:outline-none focus:ring-0 focus:border-white peer"
+                  className="block px-2.5 py-2 w-full text-sm rounded-lg border-2 border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-900 peer"
                 />
               </div>
               {error && (
@@ -199,12 +189,12 @@ const KYCPopup = ({ onClose, inviteLink }) => {
                 </div>
               )}
               <button
-                className="bg-white col-span-2 text-black py-3 px-2 rounded-sm hover:bg-black hover:text-white transition duration-300 md:text-[1rem] text-[12px]"
+                className="bg-gray-900 col-span-2 text-white py-3 px-2 rounded-sm hover:bg-black transition duration-300 md:text-[1rem] text-[12px]"
                 onClick={handleSave}
               >
                 Submit
               </button>
-              <div className="flex col-span-2 items-start gap-2 text-white py-2 md:text-[12px] text-[10px]">
+              <div className="flex col-span-2 items-start gap-2 text-gray-900 py-2 md:text-[12px] text-[10px]">
                 <img src={exclamation} className="w-5 h-5" alt="Exclamation" />
                 <span className="flex items-start">
                   Users are solely responsible for the accuracy and authenticity
@@ -227,8 +217,8 @@ const KYCPopup = ({ onClose, inviteLink }) => {
             >
               ✕
             </button>
-            <h2 className="text-2xl font-bold mb-4">Precaution</h2>
-            <p className="mb-4">
+            <h2 className="text-2xl font-bold mb-4 text-gray-900">Precaution</h2>
+            <p className="mb-4 text-gray-900">
               Please make sure all the information provided is accurate. Going
               back may cause loss of unsaved changes. Do you want to continue?
             </p>

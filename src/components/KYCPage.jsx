@@ -238,17 +238,6 @@ const KYCPage = () => {
     }
   };
 
-  // const handleJoinClick = () => {
-  //   if (!userData?.isKYC) {
-  //     setShowPopover(true);
-  //     setTimeout(() => {
-  //       setShowPopover(false);
-  //     }, 3000);
-  //   } else {
-  //     window.open(telegramLink, "_blank");
-  //   }
-  // };
-
   const handleCopy = () => {
     navigator.clipboard.writeText(telegramLink);
     toast.success("Link copied to clipboard!");
@@ -259,12 +248,12 @@ const KYCPage = () => {
       <div
         className={`flex-1 ${styles.flexCenter} flex-col xl:px-0 sm:px-4 px-2 z-10 text-center`}
       >
-        <div className="flex md:flex-row flex-col gap-4 text-white rounded-xl relative md:w-[1200px]">
-          <div className="flex flex-col w-full md:mx-auto md:p-10 px-5 rounded-lg text-left border-[1px] border-[#f2f2f2] border-opacity-50">
-            <h2 className="md:text-6xl text-4xl font-bold my-2 text-gradient">
+        <div className="flex md:flex-row flex-col gap-4 text-black rounded-xl relative md:w-[1200px]">
+          <div className="flex flex-col w-full md:mx-auto md:p-10 px-5 rounded-lg text-left border-[1px] border-[#333333] border-opacity-50">
+            <h2 className="md:text-6xl text-4xl font-bold my-2 ">
               KYC Details
             </h2>
-            <p className="md:text-base text-sm">
+            <p className="md:text-base text-sm text-gray-700">
               Complete Your KYC!⚠. Please complete your KYC Verification to
               unlock your link to join the Premium Channel
             </p>
@@ -285,7 +274,7 @@ const KYCPage = () => {
                       value={formValues.name}
                       onChange={handleInputChange}
                       placeholder="Name"
-                      className="border border-[#ffffff40] border-opacity-50 text-black bg-[#f5f5f5] py-3 p-2 rounded-xl"
+                      className="border border-[#333333] border-opacity-50 text-black bg-[#f5f5f5] py-3 p-2 rounded-xl"
                     />
                   </div>
                   <div className="flex flex-col w-full md:w-1/2">
@@ -295,7 +284,7 @@ const KYCPage = () => {
                       value={formValues.email}
                       onChange={handleInputChange}
                       placeholder="Email"
-                      className="border border-[#ffffff3d] border-opacity-50 text-black bg-[#f5f5f5] py-3 p-2 rounded-xl"
+                      className="border border-[#333333] border-opacity-50 text-black bg-[#f5f5f5] py-3 p-2 rounded-xl"
                     />
                   </div>
                 </div>
@@ -306,7 +295,7 @@ const KYCPage = () => {
                     value={formValues.pan}
                     onChange={handleInputChange}
                     placeholder="PAN"
-                    className="border border-[#ffffff3d] border-opacity-50 text-black bg-[#f5f5f5] py-3 p-2 rounded-xl"
+                    className="border border-[#333333] border-opacity-50 text-black bg-[#f5f5f5] py-3 p-2 rounded-xl"
                   />
                 </div>
                 <div className="flex flex-col pb-4">
@@ -316,7 +305,7 @@ const KYCPage = () => {
                     value={formValues.address}
                     onChange={handleInputChange}
                     placeholder="Address"
-                    className="border border-[#ffffff3d] border-opacity-50 text-black bg-[#f5f5f5] py-3 p-2 rounded-xl"
+                    className="border border-[#333333] border-opacity-50 text-black bg-[#f5f5f5] py-3 p-2 rounded-xl"
                   />
                 </div>
                 <div className="flex flex-col">
@@ -326,7 +315,7 @@ const KYCPage = () => {
                     value={formValues.state}
                     onChange={handleInputChange}
                     placeholder="State"
-                    className="border border-[#ffffff3d] border-opacity-50 text-black bg-[#f5f5f5] py-3 p-2 rounded-xl"
+                    className="border border-[#333333] border-opacity-50 text-black bg-[#f5f5f5] py-3 p-2 rounded-xl"
                   />
                 </div>
                 <div className="text-center md:py-3 py-3">
@@ -340,7 +329,7 @@ const KYCPage = () => {
                 </div>
               </form>
             )}
-            <h2 className="md:text-6xl text-4xl font-bold py-2 text-gradient">
+            <h2 className="md:text-6xl text-4xl font-bold py-2 ">
               Telegram Link
             </h2>
             <div className="relative text-center py-4">

@@ -2,7 +2,10 @@ import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import styles from "../../style";
 import { call, message, location, contact } from "../../assets";
+import { FaLocationDot } from "react-icons/fa6";
 import emailjs from "@emailjs/browser";
+import { IoMdCall } from "react-icons/io";
+import { CgMail } from "react-icons/cg";
 
 const ContactUs = () => {
   const form = useRef();
@@ -64,20 +67,20 @@ const ContactUs = () => {
         ease: [0, 0.71, 0.2, 1.01]
       }}
     >
-      <div className={`flex flex-col ${styles.paddingY} header-bg`}>
+      <div className={`flex flex-col ${styles.paddingY} header-bg `}>
         <div
           className={`flex-1 ${styles.flexCenter} flex-col xl:px-0 sm:px-4 px-2 z-10 md:bottom-[10rem] text-center`}
         >
-          <div className="flex md:flex-row flex-col gap-4 text-white rounded-xl relative md:w-[1200px]">
+          <div className="flex md:flex-row flex-col gap-4 text-black rounded-xl relative md:w-[1200px]">
             {/* Left Column */}
             <h2 className="text-5xl md:text-5xl font-bold text-gradient md:hidden text-left px-3 pt-3">
               Contact Us
             </h2>
-            <p className="text-base text-left px-3 md:text-lg mb-4 text-[#c9c9c9] md:hidden z-20">
+            <p className="text-base text-left px-3 md:text-lg mb-4 text-[#000] md:hidden z-20">
               We'd love to hear from you. Please fill out the form below and we'll
               get back to you as soon as possible.
             </p>
-            <div className="w-full md:w-1/3 md:border md:border-[#ffffff24] p-4 rounded-xl relative md:h-[600px]">
+            <div className="w-full md:w-1/3 md:border md:bg-[#eeeeee] md:shadow-lg bg-transparent md:border-[#33333324] p-4 rounded-xl relative md:h-[600px]">
               {/* Contact Image */}
               <img
                 src={contact}
@@ -86,37 +89,41 @@ const ContactUs = () => {
               />
               {/* Call */}
               <div className="flex items-center mb-4">
-                <img src={call} alt="Call" className="w-3 h-3 mr-2" />
-                <p className="text-left">+91-9205440790 (1 P.M - 7 P.M)</p>
+                {/* <img src={call} alt="Call" className="w-3 h-3 mr-2" /> */}
+                <IoMdCall className="w-4 h-4 mr-2" />
+
+                <p className="text-left text-black">+91-9205440790 (1 P.M - 7 P.M)</p>
               </div>
               {/* Mail */}
               <div className="flex items-center mb-4">
-                <img src={message} alt="Mail" className="w-4 h-4 mr-2" />
-                <a href="mailto:info@copartner.in" className="text-left">
+                {/* <img src={message} alt="Mail" className="w-4 h-4 mr-2" /> */}
+                <CgMail className="w-5 h-5 mr-2"/>
+                <a href="mailto:info@copartner.in" className="text-left text-black">
                   info@copartner.in
                 </a>
               </div>
               {/* Location */}
               <div className="flex">
-                <img
+                {/* <img
                   src={location}
                   alt="Location"
                   className="w-5 h-5 mr-2 mt-1"
-                />
-                <p className="text-left">
+                /> */}
+                <FaLocationDot className="w-5 h-5 mr-2 mt-1" />
+                <p className="text-left text-black">
                   Copartner, Hailgro Tech, 546, 5th floor, JMD MEGAPOLIS, Sector
                   48, Gurugram, Haryana 122018
                 </p>
               </div>
             </div>
             {/* Right Column */}
-            <div className="flex flex-col w-full md:w-2/3 md:p-10 px-5 rounded-lg text-left border-[1px] border-[#ffffff24] md:h-[600px] h-[520px]">
+            <div className="flex flex-col w-full md:w-2/3 md:p-10 px-5 rounded-lg text-left bg-[#eeeeee] shadow-lg border-[1px] border-[#33333324] md:h-[600px] h-[520px]">
               {/* Heading */}
               <h2 className="md:text-6xl font-bold mb-4 text-gradient md:block hidden">
                 Contact Us
               </h2>
               {/* Description */}
-              <p className="text-base md:text-lg mb-4 text-[#ffffff5a] md:block hidden">
+              <p className="text-base md:text-lg mb-4 text-[#000] md:block hidden">
                 We'd love to hear from you. Please fill out the form below and
                 we'll get back to you as soon as possible.
               </p>
@@ -135,7 +142,7 @@ const ContactUs = () => {
                       name="name"
                       value={formValues.name}
                       placeholder="Name"
-                      className="border border-[#ffffff40] border-opacity-50 bg-transparent py-3 p-2 rounded-xl"
+                      className="border border-[#33333340] border-opacity-50 bg-transparent py-3 p-2 rounded-xl"
                     />
                   </div>
                   <div className="flex flex-col w-full md:w-1/2">
@@ -146,7 +153,7 @@ const ContactUs = () => {
                       name="email"
                       value={formValues.email}
                       placeholder="Email"
-                      className="border border-[#ffffff3d] border-opacity-50 bg-transparent py-3 p-2 rounded-xl"
+                      className="border border-[#3333333d] border-opacity-50 bg-transparent py-3 p-2 rounded-xl"
                     />
                   </div>
                 </div>
@@ -158,7 +165,7 @@ const ContactUs = () => {
                     name="mobile"
                     value={formValues.mobile}
                     placeholder="Mobile Number"
-                    className="border border-[#ffffff3d] border-opacity-50 bg-transparent py-3 p-2 rounded-xl"
+                    className="border border-[#3333333d] border-opacity-50 bg-transparent py-3 p-2 rounded-xl"
                   />
                 </div>
                 <div className="flex flex-col">
@@ -169,13 +176,13 @@ const ContactUs = () => {
                     value={formValues.message}
                     rows="6"
                     placeholder="Message"
-                    className="border border-[#ffffff3d] border-opacity-50 bg-transparent py-3 p-2 rounded-xl"
+                    className="border border-[#3333333d] border-opacity-50 bg-transparent py-3 p-2 rounded-xl"
                   ></textarea>
                 </div>
                 <div className="text-center md:py-3 py-3">
                   <button
                     type="submit"
-                    className="bg-[#fff] hover:bg-[#000] hover:text-[#fff] text-black py-2 px-7 rounded-md transition duration-300"
+                    className="bg-[#000] hover:bg-[#333] text-white py-2 px-7 rounded-md transition duration-300"
                   >
                     Submit
                   </button>
@@ -188,7 +195,7 @@ const ContactUs = () => {
           <div className="fixed bottom-5 right-5 z-50">
             <div
               id="alert-border-3"
-              className="flex items-center p-4 mb-4 text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400 dark:bg-[#000] dark:border-green-800 rounded-xl"
+              className="flex items-center p-4 mb-4 text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400 dark:bg-[#fff] dark:border-green-800 rounded-xl"
               role="alert"
               style={{ width: "300px" }}
             >
@@ -211,7 +218,7 @@ const ContactUs = () => {
           <div className="fixed bottom-5 right-5 z-50">
             <div
               id="alert-border-4"
-              className="flex items-center p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-[#000] dark:border-red-800 rounded-xl"
+              className="flex items-center p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-[#fff] dark:border-red-800 rounded-xl"
               role="alert"
               style={{ width: "300px" }}
             >

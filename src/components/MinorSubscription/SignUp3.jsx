@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
+import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 
 const SignUp3 = ({ onClose, onLoginSuccess, planMonthlyPrice }) => {
   const [mobile, setMobile] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
   const [validationMessage, setValidationMessage] = useState("");
   const [searchParams] = useSearchParams();
+  const inputRef = useRef(null); // Reference for the input field
+  const continueButtonRef = useRef(null); // Reference for the continue button
 
   const total = planMonthlyPrice;
 
@@ -32,6 +33,20 @@ const SignUp3 = ({ onClose, onLoginSuccess, planMonthlyPrice }) => {
       localStorage.setItem("landingPageUrl", landingPageUrl);
     }
   }, [searchParams]);
+
+  useEffect(() => {
+    // Focus the input field when the component mounts
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+
+  useEffect(() => {
+    // Automatically click the continue button when mobile number length is 10
+    if (mobile.length === 10 && continueButtonRef.current) {
+      continueButtonRef.current.click();
+    }
+  }, [mobile]);
 
   const apid = localStorage.getItem("apid") || sessionStorage.getItem("apid");
   const raid = localStorage.getItem("raid") || sessionStorage.getItem("raid");
@@ -75,7 +90,7 @@ const SignUp3 = ({ onClose, onLoginSuccess, planMonthlyPrice }) => {
 
   const handleClose = () => {
     sessionStorage.setItem("visitedSignUp", "true");
-    window.location.reload();
+    onClose();
   };
 
   const responseUser = async () => {
@@ -194,47 +209,48 @@ const SignUp3 = ({ onClose, onLoginSuccess, planMonthlyPrice }) => {
     <div
       className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50 w-screen h-screen`}
     >
-      <div className="bg-[#18181B] border-[1px] border-[#ffffff2a] m-4 p-6 rounded-lg w-96 relative text-center shadow-lg">
+      <div className="bg-white border-[1px] border-gray-300 m-4 p-6 rounded-lg w-96 relative text-center shadow-lg">
         <button
           onClick={handleClose}
-          className="absolute top-2 right-2 text-gray-300 text-2xl hover:text-red-500 transition duration-300"
+          className="absolute top-2 right-2 text-gray-500 text-2xl hover:text-red-500 transition duration-300"
         >
           &times;
         </button>
         <div className="mb-4">
-          <h2 className="text-2xl font-bold text-white">Enter your number</h2>
-          {/* <p className="text-gray-400">Enter your mobile number to proceed</p> */}
+          <h2 className="text-2xl font-bold text-black">Enter your number</h2>
         </div>
 
         <form
-          className="flex flex-col gap-4 text-white"
+          className="flex flex-col gap-4 text-black"
           onSubmit={handleSubmit}
         >
           <input
+            ref={inputRef} // Set the ref here
             type="number"
             placeholder="Mobile Number"
             value={mobile}
             onChange={handleMobileChange}
-            className="text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none px-4 py-3 border border-[#ffffff34] rounded-xl focus:outline-none focus:border-blue-500 bg-transparent"
+            className="text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 bg-transparent"
             maxLength={10}
           />
           {validationMessage && (
             <p className="text-red-500 mt-2">{validationMessage}</p>
           )}
-          {total && <div className="flex justify-between py-2 mb-4 border-b-[1px] border-t-[1px] border-[#c9c9c962]">
-            <label className="block text-lg text-[#c9c9c9] font-semibold">
+          {total && <div className="flex justify-between py-2 mb-4 border-b-[1px] border-t-[1px] border-gray-300">
+            <label className="block text-lg text-gray-500 font-semibold">
               Total
             </label>
             <span className="text-lg font-semibold">₹{total}</span>
           </div>}
           <button
+            ref={continueButtonRef} // Set the ref here
             type="submit"
             className={`bg-blue-500 hover:bg-blue-700 text-white font-semibold text-[20px] py-3 px-4 rounded-xl transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
               isFormEmpty() || loading ? "opacity-50 cursor-not-allowed" : ""
             }`}
             disabled={isFormEmpty() || loading}
           >
-            {loading ? "Sending..." : "Proceed to Pay"}
+            {loading ? "Sending..." : "Continue"}
           </button>
           {error && <p className="text-red-500 mt-2">{error}</p>}
         </form>

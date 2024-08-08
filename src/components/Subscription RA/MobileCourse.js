@@ -63,10 +63,10 @@ function MobileCourse({
                       {isDiscounted ? (
                         <>
                           <span className="text-lg text-[#fff] font-bold opacity-50">
-                            <del>₹{(subscription.amount * 1.5).toFixed(0)}</del>
+                            <del>₹{subscription.isSpecialSubscription ? (subscription.amount * 1.5).toFixed(0) : subscription.amount}</del>
                           </span>
                           <span className="text-2xl font-bold text-[#fff]">
-                            ₹{subscription.discountedAmount}
+                            ₹{subscription.discountedAmount.toFixed(0)}
                           </span>
                         </>
                       ) : (

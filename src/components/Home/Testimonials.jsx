@@ -72,12 +72,12 @@ const Testimonials = () => {
       <div className="flex flex-col justify-between items-center md:w-[557px] md:h-[103px] w-[330px] h-[110px] gap-[4px] md:mb-16 mb-2">
         <span
           className="font-[700] md:text-[50px] text-[30px] md:w-[385px] md:h-[103px] w-[224px] h-[70px]
-          text-gradient-2 md:leading-[51px] leading-[35px] text-center"
+          text-gradient md:leading-[51px] leading-[35px] text-center"
         >
           What Our Users Say About Us
         </span>
 
-        <span className="text-dimWhite md:w-[596px] w-[328px] text-center md:h-[56px] h-[34px] font-[400] md:text-[18px] text-[13px] md:leading-[28px] leading-[17px]">
+        <span className="text-gray-700 md:w-[596px] w-[328px] text-center md:h-[56px] h-[34px] font-[400] md:text-[18px] text-[13px] md:leading-[28px] leading-[17px]">
           Our users love our platform for its easy-to-use features, helpful
           insights, and friendly community.
         </span>
@@ -102,7 +102,7 @@ const Testimonials = () => {
             exit="exit"
             transition={{ duration: 0.6 }}
           >
-            <span className="md:w-[678px] md:h-[343px] w-[283px] h-[262px] font-[400] md:text-[26px] text-[14px] md:leading-[44px] leading-[23px] text-lightWhite text-center flex items-center">
+            <span className="md:w-[678px] md:h-[343px] w-[283px] h-[262px] font-[400] md:text-[26px] text-[14px] md:leading-[44px] leading-[23px] text-gray-900 text-center flex items-center">
               {testimonialsData[count].text}
             </span>
 
@@ -114,10 +114,10 @@ const Testimonials = () => {
                   className="md:w-[40px] w-[27px] md:h-[40px] h-[27px]"
                 />
                 <div className="flex flex-col justify-center">
-                  <span className="md:w-[202px] w-[117px] md:h-[25px] h-[13px] font-[700] md:text-[18px] text-[10px] md:leading-[23px] leading-[12px] text-lightWhite">
+                  <span className="md:w-[202px] w-[117px] md:h-[25px] h-[13px] font-[700] md:text-[18px] text-[10px] md:leading-[23px] leading-[12px] text-gray-900">
                     {testimonialsData[count].author}
                   </span>
-                  {/* <span className="md:w-[184px] w-[105px] md:h-[19px] h-[10px] font-[300] md:text-[14px] text-[8px] md:leading-[18.4px] leading-[10px] text-dimWhite">
+                  {/* <span className="md:w-[184px] w-[105px] md:h-[19px] h-[10px] font-[300] md:text-[14px] text-[8px] md:leading-[18.4px] leading-[10px] text-gray-700">
                     {testimonialsData[count].designation}
                   </span> */}
                 </div>
@@ -128,7 +128,7 @@ const Testimonials = () => {
                 <button
                   key={index}
                   className={`w-[8px] h-[8px] rounded-[4px] ${
-                    index === activeDot ? "bg_three-dots_active" : "bg_three-dots"
+                    index === activeDot ? "bg-blue-500" : "bg-gray-300"
                   }`}
                 ></button>
               ))}

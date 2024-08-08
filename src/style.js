@@ -1,12 +1,12 @@
   const styles = {
     boxWidth: "xl:max-w-[1280px] w-full",
-  
-    heading2: "font-poppins font-semibold xs:text-[48px] text-[40px] text-white xs:leading-[76.8px] leading-[66.8px] w-full",
-    paragraph: "font-poppins font-normal text-[#7a7a7a] text-[18px] leading-[30.8px]",
-  
+
+    heading2: "font-poppins font-semibold xs:text-[48px] text-[40px] text-gray-900 xs:leading-[76.8px] leading-[66.8px] w-full",
+    paragraph: "font-poppins font-normal text-gray-700 text-[18px] leading-[30.8px]",
+
     flexCenter: "flex justify-center items-center",
     flexStart: "flex justify-center items-start",
-  
+
     paddingX: "sm:px-28 px-4",
     paddingY: "sm:pt-32 sm:pb-16 pt-24 pb-12",
     padding: "sm:px-16 px-6 sm:py-12 py-4",
@@ -14,10 +14,10 @@
     marginX: "sm:mx-16 mx-6",
     marginY: "sm:my-16 my-6",
 
-    scrolledNavbar: "bg-transparent",
-    transparentNavbar: "backdrop-blur-lg"
+    scrolledNavbar: "bg-white shadow-lg",
+    transparentNavbar: "backdrop-blur-lg",
   };
-  
+
   export const layout = {
     section: `flex md:flex-row flex-col ${styles.paddingY}`,
     sectionReverse: `flex md:flex-row flex-col-reverse ${styles.paddingY}`,
@@ -27,5 +27,5 @@
   
     sectionInfo: `flex-1 ${styles.flexStart} flex-col`,
   };
-  
+
   export default styles;

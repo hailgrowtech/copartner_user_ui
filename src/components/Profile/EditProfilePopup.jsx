@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { close } from "../../assets";
 import axios from "axios";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -111,18 +112,19 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
     <>
       {isOpen && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
-          <div className="bg-[#18181B] border-2 border-[#ffffff3f] rounded-lg px-8 py-2 md:w-[50rem] w-[24rem] h-auto">
+          <div className="bg-white border-2 border-gray-300 rounded-lg px-8 py-2 md:w-[50rem] w-[24rem] h-auto">
             <div className="edit-section flex justify-between items-center">
-              <h2 className="subheading-color font-bold md:text-[50px] text-[30px] subheading-color md:leading-[50px] leading-[51px]">
+              <h2 className="font-bold md:text-[50px] text-[30px] text-black md:leading-[50px] leading-[51px]">
                 Edit Profile
               </h2>
               <button onClick={onClose}>
-                <img src={close} alt="Close Icon" className="w-12 h-12" />
+                {/* <img src={close} alt="Close Icon" className="w-12 h-12" /> */}
+              <IoMdCloseCircleOutline className="w-8 h-8" />
               </button>
             </div>
             {/* Profile Image Upload */}
             <div className="mb-4">
-              <label htmlFor="profileImage" className="block mb-1 text-white">
+              <label htmlFor="profileImage" className="block mb-1 text-black">
                 Upload Profile Picture
               </label>
               <input
@@ -132,7 +134,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                 accept="image/*"
                 className="hidden"
               />
-              <div className="uploadPhoto relative bg-[transparent] border-2 border-dashed border-[#ffffff6c] p-[60px] rounded-lg">
+              <div className="uploadPhoto relative bg-[transparent] border-2 border-dashed border-gray-400 p-[60px] rounded-lg">
                 {imagePreview ? (
                   <>
                     <img
@@ -141,7 +143,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                       className="w-32 h-32 rounded-full mx-auto mb-4"
                     />
                     <button
-                      className="absolute bottom-10 left-0 right-0 bg-[transparent] text-white mx-auto text-xl"
+                      className="absolute bottom-10 left-0 right-0 bg-[transparent] text-black mx-auto text-xl"
                       onClick={() =>
                         document.getElementById("profileImage").click()
                       }
@@ -151,7 +153,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                   </>
                 ) : (
                   <button
-                    className="bg-[transparent] text-white mx-auto text-3xl pl-9"
+                    className="bg-[transparent] text-black mx-auto text-3xl pl-9"
                     onClick={() =>
                       document.getElementById("profileImage").click()
                     }
@@ -170,11 +172,11 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder=" "
-                  className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-white bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
+                  className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-black peer"
                 />
                 <label
                   htmlFor="name"
-                  className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-white peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                  className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
                 >
                   Name
                 </label>
@@ -190,11 +192,11 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder=" "
-                    className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-white bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
+                    className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-black peer"
                   />
                   <label
                     htmlFor="email"
-                    className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-white peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                    className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
                   >
                     Email
                   </label>
@@ -208,12 +210,12 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder=" "
-                    className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-white bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
+                    className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-black peer"
                     disabled
                   />
                   <label
                     htmlFor="phone"
-                    className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-white peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                    className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
                   >
                     Phone Number
                   </label>
@@ -229,11 +231,11 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                   value={panCard}
                   onChange={(e) => setPanCard(e.target.value)}
                   placeholder=" "
-                  className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-white bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
+                  className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-black peer"
                 />
                 <label
                   htmlFor="panCard"
-                  className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-white peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                  className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
                 >
                   PAN Card
                 </label>
@@ -245,11 +247,11 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                   value={state}
                   onChange={(e) => setState(e.target.value)}
                   placeholder=" "
-                  className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-white bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
+                  className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-black peer"
                 />
                 <label
                   htmlFor="state"
-                  className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-white peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                  className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
                 >
                   State
                 </label>
@@ -264,11 +266,11 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                   placeholder=" "
-                  className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-white bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
+                  className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-black peer"
                 />
                 <label
                   htmlFor="address"
-                  className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-white peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                  className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
                 >
                   Address
                 </label>
@@ -278,8 +280,8 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateProfile, userData }) => {
             <div className="flex justify-center">
               <button
                 className={`${
-                  loading ? "bg-gray-500" : "bg-white"
-                } text-black py-2 px-4 rounded-md`}
+                  loading ? "bg-gray-500" : "bg-black"
+                } text-white py-2 px-4 rounded-md`}
                 onClick={handleSave}
                 disabled={loading}
               >

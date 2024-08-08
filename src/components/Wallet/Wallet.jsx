@@ -13,6 +13,7 @@ import { SubscriptionContext } from "../../constants/subscriptionContext";
 import KYCPopup from "../Subscription RA/KYCPopup";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
+import { FiDownload } from "react-icons/fi";
 
 const Wallet = ({ userId }) => {
   const userData = useUserData();
@@ -118,7 +119,7 @@ const Wallet = ({ userId }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`flex md:flex-col flex-col ${styles.paddingY} expertise-Bg`}
+        className={`flex md:flex-col flex-col ${styles.paddingY} bg-white`}
       >
         <div className="flex flex-col md:gap-[2rem] gap-[1rem]">
           <div className="flex md:flex-row flex-col justify-center md:px-[8rem] px-[1rem] gap-[1rem]">
@@ -126,13 +127,13 @@ const Wallet = ({ userId }) => {
               className={`${styles.flexStart} flex-col text-center md:gap-[2rem] gap-0`}
             >
               <div className="flex flex-col justify-center items-center text-center">
-                <span className="font-inter font-[700] md:text-[72px] text-[44px] text-gradient md:leading-[74px] leading-[48px]">
+                <span className="font-inter font-[700] md:text-[72px] text-[44px] text-gray-900 md:leading-[74px] text-gradient leading-[48px]">
                   Transaction History
                 </span>
-                <p className="md:w-[508px] w-[341px] font-inter font-[500] text-dimWhite md:text-[18px] text-[13px] md:leading-[28px] leading-[16px] mt-4">
+                <p className="md:w-[508px] w-[341px] font-inter font-[500] text-gray-700 md:text-[18px] text-[13px] md:leading-[28px] leading-[16px] mt-4">
                   Review the transaction history below to have transparency into
                   payments made to our portal.{" "}
-                  <span className="text-lightWhite">
+                  <span className="text-gray-900">
                     Stay informed about your expenditure and the services you've
                     accessed. 
                   </span>
@@ -177,10 +178,10 @@ const Wallet = ({ userId }) => {
                     .map((row, index) => (
                       <div
                         key={index}
-                        className="flex flex-col justify-around w-[361px] h-[208px] bg-[#18181B] bg-opacity-[50%] rounded-[30px] md:m-4 m-[10px] p-4 max-w-sm"
+                        className="flex flex-col justify-around w-[361px] h-[208px] bg-gray-100 rounded-[30px] md:m-4 m-[10px] p-4 max-w-sm"
                       >
                         <div className="flex flex-row justify-between">
-                          <p className="w-[173px] h-[26px] font-[600] text-[21px] leading-[25px] text-lightWhite">
+                          <p className="w-[173px] h-[26px] font-[600] text-[21px] leading-[25px] text-gray-900">
                             {row.transactionId}
                           </p>
                           <img
@@ -190,27 +191,27 @@ const Wallet = ({ userId }) => {
                             }}
                             src={invoiceImg}
                             alt=""
-                            className="w-[21px] h-[21px] text-white"
+                            className="w-[21px] h-[21px] text-gray-900"
                           />
                         </div>
-                        <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
-                          <span className="text-dimWhite">DATE:</span>{" "}
+                        <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-gray-900">
+                          <span className="text-gray-700">DATE:</span>{" "}
                           {formatDate(row.transactionDate)}
                         </span>
-                        <span className="flex items-center justify-between sm:w-[305px] h-[34px] font-[500] text-[14px] leading-[12px] text-lightWhite">
-                          <span className="text-dimWhite">SUBSCRIPTION:</span>{" "}
+                        <span className="flex items-center justify-between sm:w-[305px] h-[34px] font-[500] text-[14px] leading-[12px] text-gray-900">
+                          <span className="text-gray-700">SUBSCRIPTION:</span>{" "}
                           {getExpertType(row.subscription.serviceType)}
                         </span>
-                        <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
-                          <span className="text-dimWhite">NAME:</span>
+                        <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-gray-900">
+                          <span className="text-gray-700">NAME:</span>
                           {row.subscription.experts.name}
                         </span>
-                        <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
-                          <span className="text-dimWhite">AMOUNT:</span> ₹{" "}
+                        <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-gray-900">
+                          <span className="text-gray-700">AMOUNT:</span> ₹{" "}
                           {row.totalAmount}
                         </span>
-                        <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-lightWhite">
-                          <span className="text-dimWhite">INVITE LINK:</span>{" "}
+                        <span className="flex items-center justify-between sm:w-[305px] h-[13px] font-[500] text-[14px] leading-[12px] text-gray-900">
+                          <span className="text-gray-700">INVITE LINK:</span>{" "}
                           <a
                             target="_blank"
                             rel="noreferrer"
@@ -225,15 +226,15 @@ const Wallet = ({ userId }) => {
                   {visibleTransactions < filteredData.length && (
                     <button
                       onClick={showMoreTransactions}
-                      className="md:w-[147px] md:h-[40px] md:flex items-center justify-center flex w-[110px] h-[30px] rounded-[6px] bg-lightWhite md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px] mt-4"
+                      className="md:w-[147px] md:h-[40px] md:flex items-center justify-center flex w-[110px] h-[30px] rounded-[6px] bg-gray-900 text-white md:text-[14px] text-[10px] font-[500] md:leading-[16px] leading-[12px] mt-4"
                     >
                       Show More
                     </button>
                   )}
                 </div>
               ) : (
-                <table className="w-[1234px] px-[1rem] bg-[#18181B] bg-opacity-[50%] rounded-[30px]">
-                  <thead className="text-dimWhite w-[1234px] h-[51px]">
+                <table className="w-[1234px] px-[1rem] bg-gray-100 rounded-[30px]">
+                  <thead className="text-gray-700 w-[1234px] h-[51px]">
                     <tr>
                       <th className="py-2 px-4">Transaction ID</th>
                       <th className="py-2 px-4">Date</th>
@@ -244,7 +245,7 @@ const Wallet = ({ userId }) => {
                       <th className="py-2 px-4">Invoice</th>
                     </tr>
                   </thead>
-                  <tbody className="text-lightWhite w-[1234px] h-[81px]">
+                  <tbody className="text-gray-900 w-[1234px] h-[81px]">
                     {filteredData &&
                       filteredData
                         .sort((a, b) => {
@@ -256,7 +257,7 @@ const Wallet = ({ userId }) => {
                           return (
                             <tr
                               key={index}
-                              className={index % 2 === 0 ? "bg-[#1E1E22]" : ""}
+                              className={index % 2 === 0 ? "bg-gray-200" : ""}
                             >
                               <td className="py-8 px-12 h-[18px] font-[500] text-[16px] leading-[18px]">
                                 {row.transactionId}
@@ -264,7 +265,7 @@ const Wallet = ({ userId }) => {
                               <td className="py-8 text-center h-[18px] font-[500] text-[16px] leading-[18px]">
                                 {formatDate(row.transactionDate)}
                               </td>
-                              <td className="py-8 px-20 text-center h-[36px] font-[500] text-[16px] text-white leading-[18px]">
+                              <td className="py-8 px-20 text-center h-[36px] font-[500] text-[16px] text-gray-900 leading-[18px]">
                                 {getExpertType(row.subscription.serviceType)}
                               </td>
                               <td className="py-8 text-center w-[105px] h-[18px] font-[500] text-[16px] leading-[18px]">
@@ -283,15 +284,23 @@ const Wallet = ({ userId }) => {
                                 </a>
                               </td>
                               <td className="py-8">
-                                <img
+                                {/* <img
                                   src={invoiceImg}
                                   alt=""
-                                  className="w-[21px] h-[21px] text-white mx-auto"
+                                  className="w-[21px] h-[21px] text-gray-900 mx-auto"
                                   onClick={(e) => {
                                     e.stopPropagation();
                                     downloadTransactionData(row);
                                   }}
+                                /> */}
+                                <FiDownload
+                                className="w-[21px] h-[21px] text-gray-900 mx-auto"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  downloadTransactionData(row);
+                                }}
                                 />
+
                               </td>
                             </tr>
                           );
@@ -308,7 +317,7 @@ const Wallet = ({ userId }) => {
               )}
             </div>
           ) : (
-            <div className="text-center flex flex-col gap-8 mt-12 text-dimWhite md:text-4xl text-lg">
+            <div className="text-center flex flex-col gap-8 mt-12 text-gray-700 md:text-4xl text-lg">
               <img className="md:w-96 w-60 mx-auto" src={logout} alt="" />
               <Link to={"/signup"}>Login to see your transactions!</Link>
             </div>
@@ -392,7 +401,6 @@ const Wallet = ({ userId }) => {
               </table>
             )}
           </div> */}
-
         {isKYCDone && <KYCPopup />}
       </motion.div>
     </>

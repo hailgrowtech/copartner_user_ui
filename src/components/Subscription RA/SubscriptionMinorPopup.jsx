@@ -86,52 +86,52 @@ const SubscriptionPaymentPopup = ({
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-[#18181b] border-[1px] border-[#ffffff24] rounded shadow-md md:w-[400px] w-[90%] relative">
+      <div className="bg-white border-[1px] border-gray-300 rounded shadow-md md:w-[400px] w-[90%] relative">
         <div className="border-b-2 py-3 px-10">
-          <h2 className="md:text-2xl text-xl font-bold subheading-color text-left">
+          <h2 className="md:text-2xl text-xl font-bold text-black text-left">
             Your Subscription Details
           </h2>
         </div>
         <div className="flex flex-col px-6 py-3">
           <div className="flex justify-between mb-2">
-            <label className="block text-sm text-[#c9c9c9] font-normal">
+            <label className="block text-sm text-gray-500 font-normal">
               Subscription
             </label>
-            <span className="text-sm">{selectedMonthlyPlan || "Monthly"}</span>
+            <span className="text-sm text-black">{selectedMonthlyPlan || "Monthly"}</span>
           </div>
           <div className="flex justify-between mb-2">
-            <label className="block text-sm text-[#c9c9c9] font-normal">
+            <label className="block text-sm text-gray-500 font-normal">
               Name
             </label>
-            <span className="text-sm">{expertName}</span>
+            <span className="text-sm text-black">{expertName}</span>
           </div>
           <div className="flex justify-between mb-2">
-            <label className="block text-sm text-[#c9c9c9] font-normal">
+            <label className="block text-sm text-gray-500 font-normal">
               Amount
             </label>
-            <span className="text-sm">₹{planMonthlyPrice}</span>
+            <span className="text-sm text-black">₹{planMonthlyPrice}</span>
           </div>
-          <div className="flex justify-between py-2 mb-4 border-b-[1px] border-t-[1px] border-[#c9c9c962]">
-            <label className="block text-lg text-[#c9c9c9] font-semibold">
+          <div className="flex justify-between py-2 mb-4 border-b-[1px] border-t-[1px] border-gray-300">
+            <label className="block text-lg text-gray-500 font-semibold">
               Total
             </label>
-            <span className="text-lg font-semibold">₹{total.toFixed(2)}</span>
+            <span className="text-lg font-semibold text-black">₹{total.toFixed(2)}</span>
           </div>
           <button
             className={`${
-              loading ? "bg-dimWhite" : "bg-[#fff]"
-            } text-[#000] py-3 px-2 rounded-sm hover:bg-[#000] hover:text-[#fff] transition duration-300 md:text-[1rem] text-[12px] font-semibold`}
+              loading ? "bg-gray-300" : "bg-black"
+            } text-white py-3 px-2 rounded-sm hover:bg-gray-800 transition duration-300 md:text-[1rem] text-[12px] font-semibold`}
             onClick={handlePay}
             disabled={loading}
           >
             {loading ? "Paying" : "Pay"}
           </button>
           <div className="justify-start items-center flex py-2 mt-2">
-            <span className="flex items-start gap-2 md:text-[12px] text-[10px]">
+            <span className="flex items-start gap-2 md:text-[12px] text-[10px] text-gray-500">
               <img src={exclamation} className="w-5 h-5" alt="" />
               Transferring any amount or communicating outside of Copartner may
               result in fraudulent experiences and potential loss of your money.
-              Please pay or communicate exclusively through our platform.
+              Please pay or communicate exclusively through our platform.
             </span>
           </div>
         </div>

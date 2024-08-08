@@ -5,30 +5,30 @@ import "./Minor.css";
 const HowMinorWorks = ({ expertData, handleBuyNowClick }) => {
   return (
     <div className="w-full mt-3 flex flex-col">
-      <div className="bg-[#18181B] rounded-[10px] mt-8 p-6">
-        <div className="text-[26px]">
+      <div className="bg-white rounded-[10px] mt-8 p-6">
+        <div className="text-[26px] text-black">
           Here’s how it works over after{" "}
-          <span className="text-gradient font-bold">Payment</span>
+          <span className="  font-bold">Payment</span>
         </div>
-        <p className="py-3 border-b border-[#fff] text-lg">
+        <p className="py-3 border-b border-gray-300 text-lg text-black">
           {expertData.planType} Access
         </p>
         <div className="mt-5">
           <ul className="list-none space-y-4">
-            <li className="flex items-center">
-              <FaCheck className="text-xl mr-2" />
+            <li className="flex items-center text-black">
+              <FaCheck className="text-xl mr-2 text-green-500" />
               <span>Complete your KYC</span>
             </li>
-            <li className="flex items-center">
-              <FaCheck className="text-xl mr-2" />
-              <span>Get Link to join channel on your whatsapp</span>
+            <li className="flex items-center text-black">
+              <FaCheck className="text-xl mr-2 text-green-500" />
+              <span>Get Link to join channel on your WhatsApp</span>
             </li>
-            <li className="flex items-center">
-              <FaCheck className="text-xl mr-2" />
+            <li className="flex items-center text-black">
+              <FaCheck className="text-xl mr-2 text-green-500" />
               <span>Try out the premium calls</span>
             </li>
-            <li className="flex items-center">
-              <FaCheck className="text-xl mr-2" />
+            <li className="flex items-center text-black">
+              <FaCheck className="text-xl mr-2 text-green-500" />
               <span>Explore more plans on copartner.in</span>
             </li>
           </ul>

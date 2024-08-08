@@ -113,13 +113,13 @@ const MinorSub = () => {
   }
 
   return (
-    <div className="expertise-Bg text-white">
+    <div className="expertise-Bgn text-white">
       <section
-        className={`flex md:flex-row flex-col md:px-0 px-3 ${styles.paddingY} expertise-Bg`}
+        className={`flex md:flex-row flex-col md:px-0 px-3 ${styles.paddingY} expertise-Bgn`}
       >
         <div className={`flex-1 ${styles.flexStart} flex-col md:px-28 z-10`}>
           <div className="flex flex-col justify-between items-center w-full">
-            <h1 className="font-inter text-center font-[700] md:w-[900px] md:text-[62px] text-[30px] text-gradient-underline md:leading-[74px] leading-[40px]">
+            <h1 className="font-inter text-center font-[700] md:w-[900px] md:text-[62px] text-[30px] text-black md:leading-[74px] leading-[40px]">
               Get {expertData.planType} Access to{" "}
               {expertData.experts.channelName} Premium
             </h1>
@@ -129,36 +129,33 @@ const MinorSub = () => {
             key={expertData.id}
             className="flex flex-col justify-center items-center w-full mt-5"
           >
-            <div className="webinarProfile flex flex-row justify-around border-[1px] border-[#ffffff2c] rounded-[10px] items-center w-full relative p-4">
-              <span className="bg-[#ffffff3e] border-[1px] border-[#ffffff36] text-[#fff] text-sm font-medium me-2 px-2.5 py-0.5 rounded absolute top-2 right-2">
+            <div className="webinarProfile flex flex-row justify-around border-[1px] border-gray-300 rounded-[10px] items-center w-full relative p-4">
+              <span className="bg-gray-200 border-[1px] border-gray-300 text-black text-sm font-medium me-2 px-2.5 py-0.5 rounded absolute top-2 right-2">
                 Premium🌟
               </span>
               <div className="flex flex-col justify-between ">
-                <h1 className="text-[20px] text-gradient font-bold">
+                <h1 className="text-[20px] text-black font-bold">
                   {expertData.experts.channelName} Premium
                 </h1>
-                <h1 className="text-[14px] font-semibold text-[#fff] ">
+                <h1 className="text-[14px] font-semibold text-black ">
                   {expertData.experts.name} -{" "}
                   {getExpertType(expertData.experts.expertTypeId)}
                 </h1>
-                {/* <h3 className="text-md text-gray-400">
-                  
-                </h3> */}
-                <div className="border-white mt-2 pt-1 flex justify-start">
-                  <div className="border-r border-white pr-7 lg:px-12 text-center">
-                    <p className="text-gray-300">Experience</p>
-                    <p className="mb-1 text-gray-300">
+                <div className="border-gray-300 mt-2 pt-1 flex justify-start">
+                  <div className="border-r border-gray-300 pr-7 lg:px-12 text-center">
+                    <p className="text-gray-700">Experience</p>
+                    <p className="mb-1 text-gray-700">
                       {expertData.experts.experience}+
                     </p>
                   </div>
                   <div className="pl-7 lg:px-12 text-center">
-                    <p className="text-gray-300">Followers</p>
-                    <p className="mb-1 text-gray-300">
+                    <p className="text-gray-700">Followers</p>
+                    <p className="mb-1 text-gray-700">
                       {(expertData.experts.telegramFollower / 1000).toFixed(1)}k
                     </p>
                   </div>
                 </div>
-                <div className="mt-1 text-[14px]">
+                <div className="mt-1 text-[14px] text-black">
                   SEBI: <span>{expertData.experts.sebiRegNo}</span>
                 </div>
               </div>
@@ -179,11 +176,6 @@ const MinorSub = () => {
                         "linear-gradient(rgba(0, 0, 0, 1) 70%, transparent)",
                     }}
                   />
-                  {/* <img
-                    src={userImg}
-                    alt="SEBI Registration"
-                    className="absolute top-0 right-0 h-7 md:h-10 md:w-10"
-                  /> */}
                 </div>
               </div>
             </div>
@@ -203,26 +195,26 @@ const MinorSub = () => {
               >
                 Buy Now at ₹<span className="">{expertData.amount}</span>
               </button>
-              <div className="inline-block bg-gradient-to-r mt-2 from-[#00c394] to-[#00a143] text-white py-1 px-3 rounded-lg md:text-sm text-[0.8rem] ">
+              <div className="inline-block bg-gradient-to-r mt-2 from-[#00c394] to-[#00a143] text-black py-1 px-3 rounded-lg md:text-sm text-[0.8rem] ">
                 <i className="fas fa-clock"></i>
                 Limited Time Offer
               </div>
             </div>
-            <ul className="mt-4 text-center text-dimWhite md:text-[18px] text-[15px] md:block list-none space-y-2">
+            <ul className="mt-4 text-center text-gray-700 md:text-[18px] text-[15px] md:block list-none space-y-2">
               <li className="flex items-center space-x-2 text-[18px]">
-                <span className="inline-block text-[#14B082] ">
+                <span className="inline-block text-green-500">
                   <FaCheckSquare />
                 </span>
                 <span>Daily 5-6 Premium Calls</span>
               </li>
               <li className="flex items-center space-x-2 text-[18px]">
-                <span className="inline-block  text-[#14B082] ">
+                <span className="inline-block text-green-500">
                   <FaCheckSquare />
                 </span>
                 <span>Better Accuracy, Best Rates</span>
               </li>
               <li className="flex items-center space-x-2 text-[18px]">
-                <span className="inline-block text-[#14B082] ">
+                <span className="inline-block text-green-500">
                   <FaCheckSquare />
                 </span>
                 <span>Direct Access to SEBI Registered Analyst</span>

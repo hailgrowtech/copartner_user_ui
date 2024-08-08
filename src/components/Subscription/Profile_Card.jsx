@@ -70,12 +70,10 @@ const Expertise = ({ userId }) => {
                 expert.durationMonth
               );
               return (
-                <div className="flex flex-col hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out rounded-xl p-2 border-[#ffffff23] border-[1px] ">
+                <div className="flex flex-col hover:bg-gray-100 hover:opacity[50%] transition duration-150 ease-in-out rounded-xl p-2 border-gray-300 border-[1px] ">
                 <div
-                  // to={`/subscription/buy/${expert.id}`}
-                  // onClick={scrollToTop}
                   key={expert.id}
-                  className="md:w-[384px] md:h-[400px] w-[172px] h-[270px] rounded-[11px] md:mt-8 mt-[16px] p-2 relative flex flex-col items-center hover:bg-[#18181B] hover:opacity[50%] transition duration-150 ease-in-out"
+                  className="md:w-[384px] md:h-[400px] w-[172px] h-[270px] rounded-[11px] md:mt-8 mt-[16px] p-2 relative flex flex-col items-center hover:bg-gray-100 hover:opacity[50%] transition duration-150 ease-in-out"
                 >
                   <div className="w-[72px] h-[98px] sm:w-[384px] sm:h-[219px]  relative profile-image_1 mb-4">
                     <img
@@ -92,10 +90,10 @@ const Expertise = ({ userId }) => {
 
                   <div className="w-[154px] h-[22px] sm:w-[319px] sm:h-[40px] flex justify-between px-[5px] sm:px-[1rem]">
                     <div className="flex flex-col h-[22px] w-full md:h-[40px] gap-2">
-                      <span className="sm:text-[18px] text-[12px] sm:leading-[18px] leading-[8px] font-[500] text-lightWhite">
+                      <span className="sm:text-[18px] text-[12px] sm:leading-[18px] leading-[8px] font-[500] text-gray-900">
                         {expert.experts.channelName}
                       </span>
-                      <span className="sm:text-[13px] text-[10px] sm:leading-[16px] leading-[9.6px] font-[400] text-dimWhite">
+                      <span className="sm:text-[13px] text-[10px] sm:leading-[16px] leading-[9.6px] font-[400] text-gray-700">
                         {expert.serviceType}
                       </span>
                     </div>
@@ -105,7 +103,7 @@ const Expertise = ({ userId }) => {
                         className="sm:w-[12.3px] sm:h-[12.3px] w-[8px] h-[8px]"
                         alt="rating"
                       />
-                      <span className="text-lightWhite font-[600] sm:text-[11.5px] sm:leading-[14px] text-[8px] leading-[10px]">
+                      <span className="text-gray-900 font-[600] sm:text-[11.5px] sm:leading-[14px] text-[8px] leading-[10px]">
                         {expert.experts.rating}
                       </span>
                     </div>
@@ -113,20 +111,20 @@ const Expertise = ({ userId }) => {
 
                   <div className="md:w-[256px] w-[143px] h-[44px] flex items-start md:mt-2 mt-4 justify-between">
                     <div className="flex flex-col md:w-[78px] w-[43px] h-[22px] items-center justify-between">
-                      <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
+                      <span className="text-gray-700 font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
                         Experience
                       </span>
-                      <span className="text-lightWhite font-[600] sm:text-[15px] sm:leading-[18px] text-[10px] leading-[10px]">
+                      <span className="text-gray-900 font-[600] sm:text-[15px] sm:leading-[18px] text-[10px] leading-[10px]">
                         {expert.experts.experience}+
                       </span>
                     </div>
-                    <div className="sm:w-[1.4px] sm:h-[40px] w-[0.4px] h-[16px] bg-lightWhite"></div>
+                    <div className="sm:w-[1.4px] sm:h-[40px] w-[0.4px] h-[16px] bg-gray-900"></div>
                     <div className="flex">
                       <div className="flex flex-col sm:w-[78px] sm:h-[50px] w-[43px] h-[22px] items-center">
-                        <span className="text-dimWhite font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
+                        <span className="text-gray-700 font-[400] sm:text-[13px] sm:leading-[16px] text-[9px] leading-[10px]">
                           Followers
                         </span>
-                        <span className="text-lightWhite font-[600] sm:text-[15px] sm:leading-[18px] text-[10px] leading-[10px]">
+                        <span className="text-gray-900 font-[600] sm:text-[15px] sm:leading-[18px] text-[10px] leading-[10px]">
                           {`${expert.experts.telegramFollower / 1000}k`}
                         </span>
                       </div>
@@ -134,14 +132,14 @@ const Expertise = ({ userId }) => {
                   </div>
 
                   <div className="md:w-[300px] md:h-[30px] w-[144px] h-[42px] mb-4 sm:block contents md:ml-2 ml-4">
-                    <span className="text-dimWhite md:text-[14px] text-[11px] sm:leading-[24px] md:leading-[12px] leading-[14px]">
+                    <span className="text-gray-700 md:text-[14px] text-[11px] sm:leading-[24px] md:leading-[12px] leading-[14px]">
                       SEBI: {expert.experts.sebiRegNo}
                     </span>
                   </div>
 
-                  <div className="md:w-[220px] md:h-[50px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] border-[1.5px] border-[#4e4e4ecc] bg-[#ffffff30] mt-2 md:mt-0">
+                  <div className="md:w-[220px] md:h-[50px] w-[146px] h-[38px] flex items-center justify-center rounded-[21.5px] border-[1.5px] border-gray-300 bg-gray-100 mt-2 md:mt-0">
                     <div className="flex justify-center items-center gap-2">
-                      <button className="text-white font-[400] md:text-[15px] text-[10px] leading-[19px]">
+                      <button className="text-gray-900 font-[400] md:text-[15px] text-[10px] leading-[19px]">
                         {expert.planType} subscription
                       </button>
                       <img
@@ -151,7 +149,7 @@ const Expertise = ({ userId }) => {
                       />
                     </div>
                   </div>
-                  <span className="text-[#fff] py-2 md:text-[15px] text-[10px]">
+                  <span className="text-gray-900 py-2 md:text-[15px] text-[10px]">
                     {daysLeft} Days Left
                   </span>
                 </div>
@@ -159,7 +157,7 @@ const Expertise = ({ userId }) => {
               );
             })
           ) : (
-            <div className="text-center flex flex-col gap-8 mt-12 col-span-3 text-dimWhite md:text-4xl text-lg">
+            <div className="text-center flex flex-col gap-8 mt-12 col-span-3 text-gray-700 md:text-4xl text-lg">
               No Subscriptions Found!
             </div>
           )}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { back } from "../../assets";
-import { FaSpinner, FaPen } from "react-icons/fa";
+import { FaSpinner } from "react-icons/fa";
 import { toast } from "react-toastify";
 
 const EditNumber = ({ onClose, mobileNumber, userId, setOtpPopup, setIsEditing }) => {
@@ -37,7 +37,7 @@ const EditNumber = ({ onClose, mobileNumber, userId, setOtpPopup, setIsEditing }
         setOtpPopup(false); // close OTP popup
         window.location.reload();
       } else {
-        toast.error("Mobile Number already exists. Please try again with different number.");
+        toast.error("Mobile Number already exists. Please try again with a different number.");
       }
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);
@@ -136,39 +136,39 @@ const EditNumber = ({ onClose, mobileNumber, userId, setOtpPopup, setIsEditing }
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
-      <div className="bg-[#18181B] border-[1px] border-[#ffffff2a] m-4 p-8 rounded-lg w-[25rem] relative text-center shadow-lg">
+      <div className="bg-white border-[1px] border-gray-300 m-4 p-8 rounded-lg w-[25rem] relative text-center shadow-lg">
         <div className="absolute top-3 left-2 text-right">
           <div
             onClick={onClose}
-            className="text-gray-400 w-8 text-[20px] cursor-pointer hover:text-white"
+            className="text-gray-700 w-8 text-[20px] cursor-pointer hover:text-black"
           >
             <img src={back} alt="back" />
           </div>
         </div>
         <div className="mb-1">
-          <h2 className="text-2xl font-semibold text-white">
+          <h2 className="text-2xl font-semibold text-black">
             Verify Your Number
           </h2>
         </div>
-        <p className="text-gray-300 text-center mb-4">
+        <p className="text-gray-700 text-center mb-4">
           Enter the verification code we just sent to your mobile number
         </p>
         {error && <p className="text-red-500 mb-4">{error}</p>}
         {success && <p className="text-green-500 mb-4">{success}</p>}
         <form
-          className="flex flex-col gap-4 text-white"
+          className="flex flex-col gap-4 text-black"
           onSubmit={handleSubmit}
         >
           <input
             type="text"
             value={otp}
             onChange={(e) => setOtp(e.target.value)}
-            className="px-4 py-3 border border-[#ffffff34] rounded-xl focus:outline-none focus:border-white-500 bg-transparent text-center"
+            className="px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-black bg-transparent text-center"
             maxLength={6}
           />
           <button
             type="submit"
-            className={`bg-white hover:bg-black hover:text-white text-black transition duration-300 font-semibold text-[20px] py-3 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+            className={`bg-black hover:bg-gray-800 text-white transition duration-300 font-semibold text-[20px] py-3 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${
               isFormEmpty() || loading ? "opacity-50 cursor-not-allowed" : ""
             }`}
             disabled={isFormEmpty() || loading}
@@ -177,7 +177,7 @@ const EditNumber = ({ onClose, mobileNumber, userId, setOtpPopup, setIsEditing }
           </button>
           <button
             type="button"
-            className={`mt-2 text-white ${
+            className={`mt-2 text-black ${
               timer > 0 ? "opacity-50" : ""
             } md:text-base text-sm underline`}
             onClick={handleResendOTP}

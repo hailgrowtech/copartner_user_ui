@@ -3,8 +3,11 @@
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
-
+.worksans {
+  font-family: "Work Sans", sans-serif;
+}
 
 
 @layer utilities {
@@ -47,12 +50,17 @@
   border-top: 1px solid #2c2735;
 }
 
+.custom-gradient {
+  background: linear-gradient(to bottom, #d2d2d2 0%, #FFFFFF 100%);
+}
+
 .text-gradient {
-  background: linear-gradient(94.34deg, #FFFFFF 0%, #9BD0F5 100%),
+  /* background: linear-gradient(94.34deg, #FFFFFF 0%, #9BD0F5 100%),
   linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background-clip: text; */
+  color: #0070BF; background-image: -webkit-linear-gradient(45deg, #0070BF 6%, #1a1f21 84%); background-clip: text; -webkit-background-clip: text; text-fill-color: transparent; -webkit-text-fill-color: transparent;
 }
 .text-gradient-underline {
   background: linear-gradient(94.34deg, #FFFFFF 0%, #9BD0F5 100%), linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
@@ -752,5 +760,4 @@
     transform: translateX(-50%);
   }
 }
-
 

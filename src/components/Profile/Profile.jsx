@@ -9,11 +9,11 @@ const Profile = () => {
   const { userData, loading, error } = useUserSession();
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="text-black">Loading...</div>;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div className="text-black">Error: {error}</div>;
   }
 
   return (

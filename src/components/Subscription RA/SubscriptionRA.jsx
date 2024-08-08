@@ -9,6 +9,7 @@ import {
   duration,
   stars,
   empty,
+  verifiedCheck,
 } from "../../assets";
 import SubscriptionPaymentPopup from "./SubscriptionPaymentPopup";
 import FAQs2 from "../About/FAQs2";
@@ -22,6 +23,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import SignUp2 from "../Signup2";
 import Stock from "../Stock";
 import SignUp3 from "../MinorSubscription/SignUp3";
+import { MdDiscount } from "react-icons/md";
 import SubscriptionMinorPopup from "../Subscription RA/SubscriptionMinorPopup";
 
 const SubscriptionRA = ({ userId }) => {
@@ -146,7 +148,7 @@ const SubscriptionRA = ({ userId }) => {
   };
 
   const handleClose = () => {
-    setShowPopup(false);
+    setShowSignupPopup(false);
   };
 
   const handleSaveCard = () => {
@@ -278,19 +280,19 @@ const SubscriptionRA = ({ userId }) => {
 
   return (
     <section
-      className={`flex md:flex-row flex-col md:px-0 px-3 sm:pt-32 sm:pb-16 pt-[4rem] pb-12 expertise-Bg`}
+      className={`flex md:flex-row flex-col md:px-0 px-3 sm:pt-32 sm:pb-16 pt-[4rem] pb-12 expertise-Bgn`}
     >
       <div
         key={expertData.id}
         className={`flex-1 ${styles.flexStart} flex-col xl:px-0 md:px-28 md:bottom-[10rem] font-inter`}
       >
-        <section className="subscription-RA-bg flex flex-row justify-between bg-[#18181B80] relative w-full md:p-[30px] p-[16px] md:pb-0 border-2 border-[#f4f4f50e] rounded-xl md:mb-8">
-          <div className="text-white">
+        {/* <section className="subscription-RA-bg flex flex-row justify-between bg-white relative w-full md:p-[30px] p-[16px] md:pb-0 border-2 border-gray-200 rounded-xl md:mb-8">
+          <div className="text-black">
             <div className="flex flex-col md:mb-6 mb-1">
               <div className="flex justify-between items-center w-full">
                 <span
                   className="flex-1 font-bold md:text-[72px] text-[26px]
-                  text-gradient md:leading-[88px] leading-[30px] md:pb-3"
+          text-gradient md:leading-[88px] leading-[30px] md:pb-3"
                 >
                   {expertData.channelName}
                 </span>
@@ -301,28 +303,28 @@ const SubscriptionRA = ({ userId }) => {
             </div>
             <div className="flex justify-between md:w-[350px] w-[176px] md:h-16 h-10 md:mb-6 mb-3">
               <div className="flex flex-col items-center justify-around">
-                <div className="text-[15px] text-[#C6CDD5]">Experience</div>
+                <div className="text-[15px] text-gray-500">Experience</div>
                 <div className="md:text-xl text-xs font-semibold">
                   {expertData.experience}+
                 </div>
               </div>
-              <div className="w-[1px] md:h-16 h-10 bg-white"></div>
+              <div className="w-[1px] md:h-16 h-10 bg-black"></div>
               <div className="flex flex-col items-center justify-around">
-                <div className="text-[15px] text-[#C6CDD5]">Followers</div>
+                <div className="text-[15px] text-gray-500">Followers</div>
                 <div className="md:text-xl text-xs font-semibold">
                   {`${expertData.telegramFollower / 1000}k`}
                 </div>
               </div>
             </div>
             <div className="md:text-lg text-sm md:font-semibold md:w-[508px] md:mb-4 mb-2">
-              <span className="text-dimWhite">SEBI:</span>{" "}
+              <span className="text-gray-500">SEBI:</span>{" "}
               {expertData.sebiRegNo}
             </div>
             <div
               onClick={() => handleTelegram(expertData.telegramChannel)}
-              className="bg-[#0081F1] md:block hidden md:rounded-3xl rounded-2xl md:w-44 w-32 md:mb-6"
+              className="bg-blue-500 md:block hidden md:rounded-3xl rounded-2xl md:w-44 w-32 md:mb-6"
             >
-              <button className="flex mx-auto md:py-2 py-1 items-center">
+              <button className="flex mx-auto md:py-2 py-1 items-center text-white">
                 <span className="md:text-base text-xs">Get Free Calls</span>
                 <img className="w-4 ms-3" src={arrow} alt="arrow icon" />
               </button>
@@ -338,7 +340,7 @@ const SubscriptionRA = ({ userId }) => {
               alt=""
             />
           </div>
-          <div className="flex text-white items-end absolute top-6 right-6">
+          <div className="flex text-black items-end absolute top-6 right-6">
             <img
               className="md:w-8 w-4 md:h-8 h-4 me-1"
               src={stars}
@@ -346,93 +348,126 @@ const SubscriptionRA = ({ userId }) => {
             />
             <span className="md:text-3xl text-sm">{expertData.rating}</span>
           </div>
+        </section> */}
+        <section className="flex flex-row justify-between bg-white md:w-full w-screen md:ml-0 -ml-3 md:mb-8 md:mt-0 mt-8 mb-2 px-6 py-4 md:py-6 shadow-md rounded-lg">
+          <div className="flex items-center">
+            <div className="w-16 h-16">
+              <img
+                className="rounded-full w-full h-full object-cover"
+                src={expertData.expertImagePath}
+                alt=""
+              />
+            </div>
+            <div className="flex flex-col justify-center ml-4">
+              <h1 className="font-semibold text-lg md:text-xl">
+                {expertData.channelName}
+              </h1>
+              <p className="text-[#9C9C9C] text-sm md:text-base">
+                {expertData.name}
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center">
+            <img className="w-6 h-6 md:w-8 md:h-8" src={verifiedCheck} alt="" />
+            <h1 className="ml-2 text-sm md:text-base font-medium">SEBI Reg.</h1>
+          </div>
         </section>
-        <section className="w-full md:block hidden">
-          <div className="w-full flex flex-row bg-[#18181B80] rounded-2xl">
+        {/* <section className="w-full md:block hidden">
+          <div className="w-full flex flex-row bg-white rounded-2xl">
             <div className="md:flex-col-6 md:text-[16px] text-[12px] flex flex-row md:mx-px mx-auto">
               <button
                 onClick={() => handleTabClick("subscriptions")}
-                className={`hover:text-white text-dimWhite md:flex-col-3 rounded-full p-2 md:px-6 md:py-5 mx-2 md:text-[1rem] text-[9.5px] ${
-                  activeTab === "subscriptions" ? "bg-[#ffffff5e]" : ""
+                className={`hover:text-black text-gray-500 md:flex-col-3 rounded-full p-2 md:px-6 md:py-5 mx-2 md:text-[1rem] text-[9.5px] ${
+                  activeTab === "subscriptions" ? "bg-gray-300" : ""
                 }`}
               >
                 Subscription Plans
               </button>
               <button
                 onClick={() => handleTabClick("highlights")}
-                className={`md:flex-col-3 md:px-6 md:py-5 mx-2 rounded-full p-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white ${
-                  activeTab === "highlights" ? "bg-[#ffffff5e]" : ""
+                className={`md:flex-col-3 md:px-6 md:py-5 mx-2 rounded-full p-2 md:text-[1rem] text-[9.5px] text-gray-500 hover:text-black ${
+                  activeTab === "highlights" ? "bg-gray-300" : ""
                 }`}
               >
                 Key Highlights
               </button>
               <button
                 onClick={() => handleTabClick("about")}
-                className={`md:flex-col-3 md:px-6 md:py-5 mx-2 rounded-full p-2 md:text-[1rem] text-[9.5px] text-dimWhite hover:text-white ${
-                  activeTab === "about" ? "bg-[#ffffff5e]" : ""
+                className={`md:flex-col-3 md:px-6 md:py-5 mx-2 rounded-full p-2 md:text-[1rem] text-[9.5px] text-gray-500 hover:text-black ${
+                  activeTab === "about" ? "bg-gray-300" : ""
                 }`}
               >
                 About Subscriptions
               </button>
             </div>
           </div>
-        </section>
+        </section> */}
         <section
           id="subscriptions"
           className="w-full flex flex-col md:my-14 my-3"
         >
-          <div className="text-white md:text-left text-center md:flex md:justify-between w-full md:mb-8">
-            <div className="text-white md:text-5xl text-3xl font-bold pb-4 md:w-1/2">
+          <div className="text-black md:text-left text-center md:flex md:justify-between w-full md:mb-8">
+            <div className="flex gap-2 items-center text-black md:text-5xl text-lg font-bold pb-4 md:w-1/2">
+              <MdDiscount />
               Subscription Plans
             </div>
           </div>
           {!shouldHideTabs && (
-            <div className="w-full flex flex-row bg-[#18181B80] rounded-2xl p-3 mb-4">
+            <div className="w-full flex flex-row bg-white rounded-2xl p-3 mb-4">
               <div className="activeOptions md:flex-col-6 md:text-[16px] text-[10px] flex flex-row my-auto">
                 {availableTypes.includes("3") && (
-                  <motion.button
-                    onClick={() => setFilterTab("3")}
-                    className={`md:flex-col-3 md:mx-2 mx-2 md:text-[1rem] text-[15px] px-3 py-1 ${
-                      filterTab === "3"
-                        ? "text-[#000] bg-[#fff] rounded-[5px]"
-                        : "text-[#fff]"
-                    } hover:text-[#000] hover:bg-[#fff] rounded-[5px]`}
-                    initial={false}
-                    animate={filterTab === "3" ? "active" : "inactive"}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    Futures & Options
-                  </motion.button>
+                  <>
+                    <motion.button
+                      onClick={() => setFilterTab("3")}
+                      className={`md:flex-col-3 md:mx-2 mx-2 md:text-[1rem] text-[15px] px-3 py-1 ${
+                        filterTab === "3"
+                          ? "text-white bg-black rounded-[5px]"
+                          : "text-black"
+                      } hover:text-white hover:bg-black rounded-[5px]`}
+                      initial={false}
+                      animate={filterTab === "3" ? "active" : "inactive"}
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      Futures & Options
+                    </motion.button>
+                    <div className="border-l border-gray-300 mx-2 h-full"></div>
+                  </>
                 )}
                 {availableTypes.includes("2") && (
-                  <motion.button
-                    onClick={() => setFilterTab("2")}
-                    className={`md:flex-col-3 md:mx-2 mx-2 md:text-[1rem] text-[15px] px-3 py-1 ${
-                      filterTab === "2"
-                        ? "text-[#000] bg-[#fff] rounded-[5px]"
-                        : "text-[#fff]"
-                    } hover:text-[#000] hover:bg-[#fff] rounded-[5px]`}
-                    initial={false}
-                    animate={filterTab === "2" ? "active" : "inactive"}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    Equity
-                  </motion.button>
+                  <>
+                    <motion.button
+                      onClick={() => setFilterTab("2")}
+                      className={`md:flex-col-3 md:mx-2 mx-2 md:text-[1rem] text-[15px] px-3 py-1 ${
+                        filterTab === "2"
+                          ? "text-white bg-black rounded-[5px]"
+                          : "text-black"
+                      } hover:text-white hover:bg-black rounded-[5px]`}
+                      initial={false}
+                      animate={filterTab === "2" ? "active" : "inactive"}
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      Equity
+                    </motion.button>
+                    <div className="border-l border-gray-300 mx-2 h-full"></div>
+                  </>
                 )}
                 {availableTypes.includes("1") && (
-                  <motion.button
-                    onClick={() => setFilterTab("1")}
-                    className={`md:flex-col-3 md:mx-2 mx-2 md:text-[1rem] text-[15px] px-3 py-1 ${
-                      filterTab === "1"
-                        ? "text-[#000] bg-[#fff] rounded-[5px]"
-                        : "text-[#fff]"
-                    } hover:text-[#000] hover:bg-[#fff] rounded-[5px]`}
-                    initial={false}
-                    animate={filterTab === "1" ? "active" : "inactive"}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    Commodity
-                  </motion.button>
+                  <>
+                    <motion.button
+                      onClick={() => setFilterTab("1")}
+                      className={`md:flex-col-3 md:mx-2 mx-2 md:text-[1rem] text-[15px] px-3 py-1 ${
+                        filterTab === "1"
+                          ? "text-white bg-black rounded-[5px]"
+                          : "text-black"
+                      } hover:text-white hover:bg-black rounded-[5px]`}
+                      initial={false}
+                      animate={filterTab === "1" ? "active" : "inactive"}
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      Commodity
+                    </motion.button>
+                    <div className="border-l border-gray-300 mx-2 h-full"></div>
+                  </>
                 )}
               </div>
             </div>
@@ -440,7 +475,7 @@ const SubscriptionRA = ({ userId }) => {
           <AnimatePresence mode="wait">
             <motion.div
               key={filterTab}
-              className="text-white flex grid md:grid-cols-3 grid-cols-2 justify-center md:gap-8 gap-4 w-full subscription-cards"
+              className="text-black md:grid flex md:grid-cols-2 flex-col justify-center gap-4 w-full subscription-cards"
               initial="hidden"
               animate="visible"
               exit="exit"
@@ -478,64 +513,61 @@ const SubscriptionRA = ({ userId }) => {
                           subscription.chatId
                         )
                       }
-                      className={`my-auto flex-1 rounded-2xl p-4 basic-div max-w-[400px] ${
-                        activeHoverIndex === 0 ? "hover:bg-[#18181B80]" : ""
-                      } relative ${showBorder ? "border-2" : ""}`}
+                      className={`flex flex-row items-center rounded-2xl px-4 py-2 basic-div justify-between max-w-[400px] ${
+                        activeHoverIndex === 0 ? "hover:bg-gray-200" : ""
+                      } relative ${
+                        isDiscounted
+                          ? "border-2 border-green-700 bg-[#05b147] bg-opacity-10"
+                          : "border-2 bg-white"
+                      }`}
                     >
-                      <div className="text-left md:text-3xl opacity-70 subheading-gradient md:mb-4 mb-1">
-                        {subscription.planType}
-                        {isDiscounted && (
-                          <span className="bg-gradient-to-r from-[#00c394] to-[#00a143] inline-block text-transparent bg-clip-text text-xs md:text-lg ml-2">
-                            ({subscription.discountPercentage}% OFF)
-                          </span>
-                        )}
-                      </div>
-                      <div className="text-left md:text-5xl text-2xl font-bold md:mb-3 mb-1 flex justify-start">
-                        {isDiscounted ? (
-                          <div className="flex flex-col text-left">
-                            <span className="line-through text-gray-500 md:text-xl text-sm">
+                      <div className="flex flex-col">
+                        <div className="text-left md:text-3xl md:mb-2 mb-1">
+                          {subscription.planType}
+                          {isDiscounted && (
+                            <span className="font-semibold text-green-600 text-xs md:text-lg ml-2">
+                              ({subscription.discountPercentage}% OFF)
+                            </span>
+                          )}
+                        </div>
+                        <div className="text-left md:text-lg text-xs mt-auto md:mb-2 mb-1">
+                          {isDiscounted ? (
+                            <div className="flex gap-2 items-center">
+                              <span className="line-through text-gray-500 md:text-xl text-sm">
+                                ₹{subscription.amount}
+                              </span>
+                              <span className="text-xl font-bold">
+                                ₹{subscription.discountedAmount.toFixed(0)}
+                              </span>
+                            </div>
+                          ) : (
+                            <span className="text-xl font-bold">
                               ₹{subscription.amount}
                             </span>
-                            <span>₹{subscription.discountedAmount}</span>
-                          </div>
-                        ) : (
-                          <span>₹{subscription.amount}</span>
-                        )}
-                      </div>
-                      <div className="text-left md:text-lg text-xs mt-auto md:mb-6 mb-2 wave-gradient">
-                        {subscription.durationMonth}{" "}
-                        {subscription.isCustom ? "Days" : "Month"} Access
-                      </div>
-                      <div className="text-center">
-                        {remainingTime && isDiscounted ? (
-                          <button className="md:px-12 px-6 w-full bg-gradient-to-r from-[#6368FA] to-[#0081F1] md:text-base text-xs py-2 md:rounded-lg rounded border-2 animate-pulse">
-                            Buy Now
-                          </button>
-                        ) : (
-                          <button className="md:px-12 px-6 w-full bg-gradient-to-r from-[#6368FA] to-[#0081F1] md:text-base text-xs py-2 md:rounded-lg rounded border-2">
-                            Buy Now
-                          </button>
-                        )}
-                      </div>
-                      <div className="text-center mt-4">
-                        {remainingTime && isDiscounted ? (
-                          <div className="inline-block bg-gradient-to-r from-[#00c394] to-[#00a143] text-white py-1 px-3 rounded-lg md:text-sm text-[0.8rem] ">
-                            <i className="fas fa-clock"></i>
-                            Limited Time Offer
-                          </div>
-                        ) : null}
-                      </div>
-                      {isDiscounted ? (
-                        <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
-                          Discount
+                          )}
+                          /
+                          <span className="font-bold opacity-70">
+                            {subscription.durationMonth}{" "}
+                            {subscription.isCustom ? "Days" : "Month"} Access
+                          </span>
                         </div>
-                      ) : (
-                        isRecommended && (
-                          <div className="absolute top-1 md:left-[6.5rem] left-[6.8rem] md:text-md text-xs transform -translate-x-2/3 -translate-y-2/3 bg-[#ffffff] text-[#000] px-3 py-1 font-semibold rounded-lg">
+                      </div>
+                      <div className="flex flex-col items-center">
+                        {remainingTime && isDiscounted ? (
+                          <button className="md:px-12 px-6 w-full gradient-bg-animate font-semibold md:text-base text-sm py-3 rounded-lg border-2 text-white mb-2">
+                            Buy Now
+                          </button>
+                        ) : (
+                          <button className="md:px-12 px-6 w-full bg-gradient-to-r from-blue-500 to-blue-700 font-semibold md:text-base text-sm py-3 rounded-lg border-2 text-white mb-2">
+                            Buy Now
+                          </button>
+                        )}
+                        {isRecommended && (
+                          <div className="absolute top-1 right-2 md:text-md text-xs bg-black text-white px-3 py-1 font-semibold rounded-lg">
                             Recommend
                           </div>
-                        )
-                      )}
+                        )}
+                      </div>
                     </div>
                   );
                 })}
@@ -564,72 +596,72 @@ const SubscriptionRA = ({ userId }) => {
           id="highlights"
           className="w-full md:my-8 my-2 flex gap-20 md:mb-24 mb-16"
         >
-          <div className="flex flex-col md:w-2/3 w-full text-white">
-            <div className="text-white md:text-5xl text-3xl font-bold pb-4 md:text-left text-center">
+          <div className="flex flex-col md:w-2/3 w-full text-black">
+            <div className="text-black md:text-5xl text-3xl font-bold pb-4 md:text-left text-center">
               Key highlights to join this subscription
             </div>
-            <div className="text-[#A1A1AACC] md:mb-9 mb-4 md:text-base text-xs md:text-left text-center">
+            <div className="text-gray-600 md:mb-9 mb-4 md:text-base text-xs md:text-left text-center">
               Experience the power of our subscription. Gain exclusive access to
-              expert insights, advanced trading tools and personalised support.
+              expert insights, advanced trading tools, and personalised support.
             </div>
             <div className="flex md:flex-row flex-col md:gap-8 gap-3">
               <div className="flex-1 flex flex-col md:gap-6 gap-3">
-                <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
-                  <div className="w-28 h-14 border-2 rounded-xl border-[#F4F4F51A] flex items-center justify-center">
+                <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-gray-100 border-2 border-transparent hover:border-gray-200">
+                  <div className="w-28 h-14 border-2 rounded-xl border-gray-200 flex items-center justify-center">
                     1.
                   </div>
                   <div>
-                    <p className="text-[#E4E4E7] md:text-lg text-base">
+                    <p className="text-gray-800 md:text-lg text-base">
                       Expert Insights
                     </p>
-                    <p className="text-[#A1A1AACC] md:text-sm text-xs">
+                    <p className="text-gray-600 md:text-sm text-xs">
                       Gain exclusive access to expert analysis and insights from
-                      SEBI Registered Research Analysts.{" "}
+                      SEBI Registered Research Analysts.
                     </p>
                   </div>
                 </div>
-                <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
-                  <div className="w-28 h-14 border-2 rounded-xl border-[#F4F4F51A] flex items-center justify-center">
+                <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-gray-100 border-2 border-transparent hover:border-gray-200">
+                  <div className="w-28 h-14 border-2 rounded-xl border-gray-200 flex items-center justify-center">
                     2.
                   </div>
                   <div>
-                    <p className="text-[#E4E4E7] md:text-lg text-base">
+                    <p className="text-gray-800 md:text-lg text-base">
                       Risk Management
                     </p>
-                    <p className="text-[#A1A1AACC] md:text-sm text-xs">
+                    <p className="text-gray-600 md:text-sm text-xs">
                       Learn essential risk management techniques and gain access
-                      to tools to help protect your investments.{" "}
+                      to tools to help protect your investments.
                     </p>
                   </div>
                 </div>
               </div>
               <div className="flex-1 flex flex-col md:gap-6 gap-3">
-                <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
-                  <div className="w-28 h-14 border-2 rounded-xl border-[#F4F4F51A] flex items-center justify-center">
+                <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-gray-100 border-2 border-transparent hover:border-gray-200">
+                  <div className="w-28 h-14 border-2 rounded-xl border-gray-200 flex items-center justify-center">
                     3.
                   </div>
                   <div>
-                    <p className="text-[#E4E4E7] md:text-lg text-base">
+                    <p className="text-gray-800 md:text-lg text-base">
                       Performance Tracking
                     </p>
-                    <p className="text-[#A1A1AACC] md:text-sm text-xs">
+                    <p className="text-gray-600 md:text-sm text-xs">
                       Monitor your trading performance with detailed analytics
                       and reports to identify strengths and areas for
-                      improvement.{" "}
+                      improvement.
                     </p>
                   </div>
                 </div>
-                <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-[#18181B80] border-2 border-transparent hover:border-[#F4F4F51A]">
-                  <div className="w-28 h-14 border-2 rounded-xl border-[#F4F4F51A] flex items-center justify-center">
+                <div className="rounded-xl flex md:py-6 py-4 px-5 items-center gap-5 hover:bg-gray-100 border-2 border-transparent hover:border-gray-200">
+                  <div className="w-28 h-14 border-2 rounded-xl border-gray-200 flex items-center justify-center">
                     4.
                   </div>
                   <div>
-                    <p className="text-[#E4E4E7] md:text-lg text-base">
+                    <p className="text-gray-800 md:text-lg text-base">
                       Market Alerts
                     </p>
-                    <p className="text-[#A1A1AACC] md:text-sm text-xs">
+                    <p className="text-gray-600 md:text-sm text-xs">
                       Stay informed with real-time market alerts and
-                      notifications to capitalise on opportunities. {" "}
+                      notifications to capitalise on opportunities.
                     </p>
                   </div>
                 </div>
@@ -725,16 +757,16 @@ const SubscriptionRA = ({ userId }) => {
         </section>
         <section
           id="about"
-          className="border-2 rounded-2xl border-[#f4f4f50e] md:p-8 px-4 py-6 md:mb-24 mb-12"
+          className="border-2 rounded-2xl border-gray-200 md:p-8 px-4 py-6 md:mb-24 mb-12"
         >
-          <p className="text-white md:text-5xl text-3xl font-bold pb-8">
+          <p className="text-black md:text-5xl text-3xl font-bold pb-8">
             Subscriptions Details
           </p>
-          <div className="text-[#A1A1AACC]">
+          <div className="text-gray-600">
             <p>
               Welcome to our subscription plans, tailored to cater to traders of
               all levels. Our plans are designed to provide you with the tools,
-              resources and support you need to thrive in this dynamic world of
+              resources, and support you need to thrive in this dynamic world of
               trading. Whether you're a new trader, looking to learn the basics
               or an experienced trader seeking advanced analytics, there's a
               plan that's right for you. Each of our subscription plans offers a
@@ -747,7 +779,7 @@ const SubscriptionRA = ({ userId }) => {
               of our vibrant community of traders. Here, you can connect with
               fellow traders, share ideas and learn from each other's
               experiences. Our community is a valuable resource for support,
-              inspiration and collaboration.
+              inspiration, and collaboration.
             </p>
           </div>
         </section>
@@ -776,7 +808,9 @@ const SubscriptionRA = ({ userId }) => {
           />
         )} */}
       </div>
-      {showSignupPopup && <SignUp3 planMonthlyPrice={planMonthlyPrice}/>}
+      {showSignupPopup && (
+        <SignUp3 onClose={handleClose} planMonthlyPrice={planMonthlyPrice} />
+      )}
     </section>
   );
 };
