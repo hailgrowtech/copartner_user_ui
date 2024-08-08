@@ -413,7 +413,7 @@ const SubscriptionRA = ({ userId }) => {
             </div>
           </div>
           {!shouldHideTabs && (
-            <div className="w-full flex flex-row bg-white rounded-2xl p-3 mb-4">
+            <div className="w-full flex justify-evenly flex-row bg-white rounded-2xl p-3 mb-4">
               <div className="activeOptions md:flex-col-6 md:text-[16px] text-[10px] flex flex-row my-auto">
                 {availableTypes.includes("3") && (
                   <>
@@ -428,9 +428,9 @@ const SubscriptionRA = ({ userId }) => {
                       animate={filterTab === "3" ? "active" : "inactive"}
                       whileHover={{ scale: 1.05 }}
                     >
-                      Futures & Options
+                      F&O
                     </motion.button>
-                    <div className="border-l border-gray-300 mx-2 h-full"></div>
+                    <div className="border-[1px]"></div>
                   </>
                 )}
                 {availableTypes.includes("2") && (
@@ -448,7 +448,7 @@ const SubscriptionRA = ({ userId }) => {
                     >
                       Equity
                     </motion.button>
-                    <div className="border-l border-gray-300 mx-2 h-full"></div>
+                    <div className="border-[1px]"></div>
                   </>
                 )}
                 {availableTypes.includes("1") && (
@@ -466,7 +466,7 @@ const SubscriptionRA = ({ userId }) => {
                     >
                       Commodity
                     </motion.button>
-                    <div className="border-l border-gray-300 mx-2 h-full"></div>
+                    <div className="border-[1px]"></div>
                   </>
                 )}
               </div>
